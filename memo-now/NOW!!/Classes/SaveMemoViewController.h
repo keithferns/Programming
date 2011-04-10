@@ -11,15 +11,15 @@
 
 @interface SaveMemoViewController : UIViewController {
 
-UIButton *backButton;
+		//UIButton *backButton;
 	
-//FIX:  reusing some of the buttons.  make separate classes for each. 
+		//FIX:  reusing some of the buttons.  make separate classes for each. 
 
 }
 
 @property(nonatomic, retain) IBOutlet UIButton *backButton;
 
-- (IBAction)backAction:(id)sender;
+		//- (IBAction)backAction:(id)sender;
 
 
 @end

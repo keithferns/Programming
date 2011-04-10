@@ -15,6 +15,12 @@
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		28D801B40F44B63D00FB423F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28D801B30F44B63D00FB423F /* CoreData.framework */; };
+		53BDD1B9135179DD00C1C44E /* DateTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53BDD1B7135179DD00C1C44E /* DateTimeViewController.m */; };
+		53BDD1BA135179DD00C1C44E /* DateTimeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53BDD1B8135179DD00C1C44E /* DateTimeViewController.xib */; };
+		53BDD1C013517ADE00C1C44E /* WallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53BDD1BE13517ADE00C1C44E /* WallViewController.m */; };
+		53BDD1C113517ADE00C1C44E /* WallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53BDD1BF13517ADE00C1C44E /* WallViewController.xib */; };
+		53BDD1C813517C2C00C1C44E /* SaveMemoViewContoller.m in Sources */ = {isa = PBXBuildFile; fileRef = 53BDD1C613517C2C00C1C44E /* SaveMemoViewContoller.m */; };
+		53BDD1C913517C2C00C1C44E /* SaveMemoViewContoller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53BDD1C713517C2C00C1C44E /* SaveMemoViewContoller.xib */; };
 		53DF3FF6134E337C001FE4E4 /* EnterTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53DF3FF4134E337C001FE4E4 /* EnterTextViewController.m */; };
 		53DF3FF7134E337C001FE4E4 /* EnterTextViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53DF3FF5134E337C001FE4E4 /* EnterTextViewController.xib */; };
 		53DF4066134E554A001FE4E4 /* SaveMemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53DF4064134E554A001FE4E4 /* SaveMemoViewController.m */; };
@@ -39,6 +45,15 @@
 		28D801B30F44B63D00FB423F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* NOW___Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NOW___Prefix.pch"; sourceTree = "<group>"; };
+		53BDD1B6135179DD00C1C44E /* DateTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateTimeViewController.h; sourceTree = "<group>"; };
+		53BDD1B7135179DD00C1C44E /* DateTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateTimeViewController.m; sourceTree = "<group>"; };
+		53BDD1B8135179DD00C1C44E /* DateTimeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DateTimeViewController.xib; sourceTree = "<group>"; };
+		53BDD1BD13517ADE00C1C44E /* WallViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WallViewController.h; sourceTree = "<group>"; };
+		53BDD1BE13517ADE00C1C44E /* WallViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WallViewController.m; sourceTree = "<group>"; };
+		53BDD1BF13517ADE00C1C44E /* WallViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WallViewController.xib; sourceTree = "<group>"; };
+		53BDD1C513517C2C00C1C44E /* SaveMemoViewContoller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaveMemoViewContoller.h; sourceTree = "<group>"; };
+		53BDD1C613517C2C00C1C44E /* SaveMemoViewContoller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaveMemoViewContoller.m; sourceTree = "<group>"; };
+		53BDD1C713517C2C00C1C44E /* SaveMemoViewContoller.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SaveMemoViewContoller.xib; sourceTree = "<group>"; };
 		53DF3FF3134E337C001FE4E4 /* EnterTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnterTextViewController.h; sourceTree = "<group>"; };
 		53DF3FF4134E337C001FE4E4 /* EnterTextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnterTextViewController.m; sourceTree = "<group>"; };
 		53DF3FF5134E337C001FE4E4 /* EnterTextViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EnterTextViewController.xib; sourceTree = "<group>"; };
@@ -133,10 +148,43 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		53BDD1B51351798200C1C44E /* DateTimeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				53BDD1B6135179DD00C1C44E /* DateTimeViewController.h */,
+				53BDD1B7135179DD00C1C44E /* DateTimeViewController.m */,
+				53BDD1B8135179DD00C1C44E /* DateTimeViewController.xib */,
+			);
+			name = DateTimeViewController;
+			sourceTree = "<group>";
+		};
+		53BDD1BC13517AA700C1C44E /* WallViewController */ = {
+			isa = PBXGroup;
+			children = (
+				53BDD1BD13517ADE00C1C44E /* WallViewController.h */,
+				53BDD1BE13517ADE00C1C44E /* WallViewController.m */,
+				53BDD1BF13517ADE00C1C44E /* WallViewController.xib */,
+			);
+			name = WallViewController;
+			sourceTree = "<group>";
+		};
+		53BDD1C413517BBB00C1C44E /* SaveMemoViewContoller */ = {
+			isa = PBXGroup;
+			children = (
+				53BDD1C513517C2C00C1C44E /* SaveMemoViewContoller.h */,
+				53BDD1C613517C2C00C1C44E /* SaveMemoViewContoller.m */,
+				53BDD1C713517C2C00C1C44E /* SaveMemoViewContoller.xib */,
+			);
+			name = SaveMemoViewContoller;
+			sourceTree = "<group>";
+		};
 		53DF3FF2134E3346001FE4E4 /* EnterTextViewController */ = {
 			isa = PBXGroup;
 			children = (
-				53DF4062134E5517001FE4E4 /* SaveMemoViewController */,
+				53BDD1C413517BBB00C1C44E /* SaveMemoViewContoller */,
+				53BDD1BC13517AA700C1C44E /* WallViewController */,
+				53BDD1B51351798200C1C44E /* DateTimeViewController */,
+				53DF4062134E5517001FE4E4 /* SaveMemoView1Controller */,
 				53DF3FF3134E337C001FE4E4 /* EnterTextViewController.h */,
 				53DF3FF4134E337C001FE4E4 /* EnterTextViewController.m */,
 				53DF3FF5134E337C001FE4E4 /* EnterTextViewController.xib */,
@@ -144,14 +192,14 @@
 			name = EnterTextViewController;
 			sourceTree = "<group>";
 		};
-		53DF4062134E5517001FE4E4 /* SaveMemoViewController */ = {
+		53DF4062134E5517001FE4E4 /* SaveMemoView1Controller */ = {
 			isa = PBXGroup;
 			children = (
 				53DF4063134E554A001FE4E4 /* SaveMemoViewController.h */,
 				53DF4064134E554A001FE4E4 /* SaveMemoViewController.m */,
 				53DF4065134E554A001FE4E4 /* SaveMemoViewController.xib */,
 			);
-			name = SaveMemoViewController;
+			name = SaveMemoView1Controller;
 			sourceTree = "<group>";
 		};
 		53DF4068134E565D001FE4E4 /* Buttons */ = {
@@ -249,6 +297,9 @@
 				53DF4070134E57DD001FE4E4 /* gotowallButton.xib in Resources */,
 				53DF4077134E58B4001FE4E4 /* newmemoButton.xib in Resources */,
 				53DF407E134E5936001FE4E4 /* savememoButton.xib in Resources */,
+				53BDD1BA135179DD00C1C44E /* DateTimeViewController.xib in Resources */,
+				53BDD1C113517ADE00C1C44E /* WallViewController.xib in Resources */,
+				53BDD1C913517C2C00C1C44E /* SaveMemoViewContoller.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,6 +318,9 @@
 				53DF406C134E56AB001FE4E4 /* gotowallButton.m in Sources */,
 				53DF4075134E5898001FE4E4 /* newmemoButton.m in Sources */,
 				53DF407C134E5924001FE4E4 /* savememoButton.m in Sources */,
+				53BDD1B9135179DD00C1C44E /* DateTimeViewController.m in Sources */,
+				53BDD1C013517ADE00C1C44E /* WallViewController.m in Sources */,
+				53BDD1C813517C2C00C1C44E /* SaveMemoViewContoller.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

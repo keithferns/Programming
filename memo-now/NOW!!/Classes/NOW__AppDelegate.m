@@ -95,6 +95,7 @@
 
 //KJF: REMOVING THE FOLLOWING FUNCTION WILL STOP THE APPLICATION FROM RETURNING THE LAST STATE. 
 //CHECK: WHAT OTHER EFFECTS DOES THIS HAVE. 
+/*
 - (NSManagedObjectContext *)managedObjectContext {
     
     if (managedObjectContext_ != nil) {
@@ -109,6 +110,7 @@
     return managedObjectContext_;
 }
 
+*/
 
 /**
  Returns the managed object model for the application.

@@ -1,23 +1,16 @@
 //
-//  SaveMemoViewController.m
+//  DateTimeViewController.m
 //  NOW!!
 //
-//  Created by Keith Fernandes on 4/7/11.
+//  Created by Keith Fernandes on 4/10/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "SaveMemoViewController.h"
+#import "DateTimeViewController.h"
 
 
-@implementation SaveMemoViewController
+@implementation DateTimeViewController
 
-@synthesize backButton;
-
-- (IBAction)backAction:(id)sender{
-	[self dismissModalViewControllerAnimated:YES];
-	
-}
-	
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 /*
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -32,17 +25,14 @@
 /*
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
- 
     [super viewDidLoad];
 }
 */
 
 
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    return YES; 
+    return YES;
 }
-
 
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
@@ -59,7 +49,6 @@
 
 
 - (void)dealloc {
-		//[backButton release];
     [super dealloc];
 }
 
