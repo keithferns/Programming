@@ -1,0 +1,404 @@
+// !$*UTF8*$!
+{
+	1D3623240D0F684500981E51 /* NOW__AppDelegate.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {720, 607}}";
+			sepNavSelRange = "{301, 0}";
+			sepNavVisRange = "{0, 972}";
+		};
+	};
+	1D3623250D0F684500981E51 /* NOW__AppDelegate.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {720, 2821}}";
+			sepNavSelRange = "{228, 0}";
+			sepNavVisRange = "{0, 1412}";
+		};
+	};
+	1D6058900D05DD3D006BFB54 /* NOW!! */ = {
+		activeExec = 0;
+		executables = (
+			53DF3FD2134E3012001FE4E4 /* NOW!! */,
+		);
+	};
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = 53DF3FD2134E3012001FE4E4 /* NOW!! */;
+		activeTarget = 1D6058900D05DD3D006BFB54 /* NOW!! */;
+		addToTargets = (
+			1D6058900D05DD3D006BFB54 /* NOW!! */,
+		);
+		codeSenseManager = 53DF3FDF134E3031001FE4E4 /* Code sense */;
+		executables = (
+			53DF3FD2134E3012001FE4E4 /* NOW!! */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = 1;
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					542,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 324093324;
+			PBXWorkspaceStateSaveDate = 324093324;
+		};
+		perUserProjectItems = {
+			53BDD18F1351458F00C1C44E /* PBXTextBookmark */ = 53BDD18F1351458F00C1C44E /* PBXTextBookmark */;
+			53DF3FFD134E3928001FE4E4 = 53DF3FFD134E3928001FE4E4 /* PBXTextBookmark */;
+			53DF3FFF134E3928001FE4E4 = 53DF3FFF134E3928001FE4E4 /* PBXTextBookmark */;
+			53DF4084134E5953001FE4E4 = 53DF4084134E5953001FE4E4 /* PBXTextBookmark */;
+			53DF4088134E5953001FE4E4 = 53DF4088134E5953001FE4E4 /* PBXTextBookmark */;
+			53DF40A0134E5D5C001FE4E4 = 53DF40A0134E5D5C001FE4E4 /* PBXTextBookmark */;
+			53DF40A2134E5D5C001FE4E4 = 53DF40A2134E5D5C001FE4E4 /* PBXTextBookmark */;
+			53DF40AF134E5E3E001FE4E4 = 53DF40AF134E5E3E001FE4E4 /* PBXTextBookmark */;
+			53DF40DA134E631D001FE4E4 = 53DF40DA134E631D001FE4E4 /* PBXTextBookmark */;
+			53DF40E8134E64AB001FE4E4 = 53DF40E8134E64AB001FE4E4 /* PBXTextBookmark */;
+			53DF413513512D74001FE4E4 = 53DF413513512D74001FE4E4 /* PBXTextBookmark */;
+			53DF413613512D74001FE4E4 = 53DF413613512D74001FE4E4 /* PBXTextBookmark */;
+			53DF413713512D74001FE4E4 = 53DF413713512D74001FE4E4 /* PBXTextBookmark */;
+			53DF413913512D74001FE4E4 = 53DF413913512D74001FE4E4 /* PBXTextBookmark */;
+			53DF413A13512D74001FE4E4 = 53DF413A13512D74001FE4E4 /* PBXTextBookmark */;
+			53DF413B13512D74001FE4E4 = 53DF413B13512D74001FE4E4 /* PBXTextBookmark */;
+			53DF413C13512D74001FE4E4 = 53DF413C13512D74001FE4E4 /* PBXTextBookmark */;
+			53DF413E135139BF001FE4E4 = 53DF413E135139BF001FE4E4 /* PBXTextBookmark */;
+		};
+		sourceControlManager = 53DF3FDE134E3031001FE4E4 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	29B97316FDCFA39411CA2CEA /* main.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {720, 607}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 361}";
+		};
+	};
+	53BDD18F1351458F00C1C44E /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53DF3FF4134E337C001FE4E4 /* EnterTextViewController.m */;
+		name = "EnterTextViewController.m: 22";
+		rLen = 0;
+		rLoc = 647;
+		rType = 0;
+		vrLen = 1141;
+		vrLoc = 0;
+	};
+	53DF3FD2134E3012001FE4E4 /* NOW!! */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = "NOW!!";
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+	};
+	53DF3FDE134E3031001FE4E4 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	53DF3FDF134E3031001FE4E4 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	53DF3FF3134E337C001FE4E4 /* EnterTextViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {720, 391}}";
+			sepNavSelRange = "{705, 0}";
+			sepNavVisRange = "{0, 711}";
+		};
+	};
+	53DF3FF4134E337C001FE4E4 /* EnterTextViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {720, 1053}}";
+			sepNavSelRange = "{647, 0}";
+			sepNavVisRange = "{0, 1141}";
+		};
+	};
+	53DF3FFD134E3928001FE4E4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53DF3FFE134E3928001FE4E4 /* UIViewController.h */;
+		name = "UIViewController.h: 140";
+		rLen = 0;
+		rLoc = 6838;
+		rType = 0;
+		vrLen = 1580;
+		vrLoc = 6427;
+	};
+	53DF3FFE134E3928001FE4E4 /* UIViewController.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = UIViewController.h;
+		path = /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIViewController.h;
+		sourceTree = "<absolute>";
+	};
+	53DF3FFF134E3928001FE4E4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53DF4000134E3928001FE4E4 /* UIWindow.h */;
+		name = "UIWindow.h: 77";
+		rLen = 108;
+		rLoc = 3070;
+		rType = 0;
+		vrLen = 1416;
+		vrLoc = 2575;
+	};
+	53DF4000134E3928001FE4E4 /* UIWindow.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = UIWindow.h;
+		path = /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIWindow.h;
+		sourceTree = "<absolute>";
+	};
+	53DF4063134E554A001FE4E4 /* SaveMemoViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {720, 391}}";
+			sepNavSelRange = "{427, 0}";
+			sepNavVisRange = "{0, 434}";
+		};
+	};
+	53DF4064134E554A001FE4E4 /* SaveMemoViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1215, 806}}";
+			sepNavSelRange = "{1392, 0}";
+			sepNavVisRange = "{87, 573}";
+		};
+	};
+	53DF406A134E56AB001FE4E4 /* gotowallButton.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {720, 391}}";
+			sepNavSelRange = "{161, 0}";
+			sepNavVisRange = "{0, 241}";
+		};
+	};
+	53DF406B134E56AB001FE4E4 /* gotowallButton.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1215, 546}}";
+			sepNavSelRange = "{202, 0}";
+			sepNavVisRange = "{24, 451}";
+		};
+	};
+	53DF4073134E5898001FE4E4 /* newmemoButton.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {720, 420}}";
+			sepNavSelRange = "{207, 0}";
+			sepNavVisRange = "{0, 216}";
+		};
+	};
+	53DF407A134E5924001FE4E4 /* savememoButton.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {720, 420}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 214}";
+		};
+	};
+	53DF4084134E5953001FE4E4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53DF4073134E5898001FE4E4 /* newmemoButton.h */;
+		name = "newmemoButton.h: 14";
+		rLen = 0;
+		rLoc = 207;
+		rType = 0;
+		vrLen = 216;
+		vrLoc = 0;
+	};
+	53DF4088134E5953001FE4E4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53DF407A134E5924001FE4E4 /* savememoButton.h */;
+		name = "savememoButton.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 214;
+		vrLoc = 0;
+	};
+	53DF40A0134E5D5C001FE4E4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53DF40A1134E5D5C001FE4E4 /* UIFont.h */;
+		name = "UIFont.h: 12";
+		rLen = 58;
+		rLoc = 193;
+		rType = 0;
+		vrLen = 1266;
+		vrLoc = 336;
+	};
+	53DF40A1134E5D5C001FE4E4 /* UIFont.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = UIFont.h;
+		path = /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIFont.h;
+		sourceTree = "<absolute>";
+	};
+	53DF40A2134E5D5C001FE4E4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53DF406A134E56AB001FE4E4 /* gotowallButton.h */;
+		name = "gotowallButton.h: 8";
+		rLen = 0;
+		rLoc = 161;
+		rType = 0;
+		vrLen = 241;
+		vrLoc = 0;
+	};
+	53DF40AF134E5E3E001FE4E4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53DF406B134E56AB001FE4E4 /* gotowallButton.m */;
+		name = "gotowallButton.m: 26";
+		rLen = 47;
+		rLoc = 574;
+		rType = 0;
+		vrLen = 743;
+		vrLoc = 37;
+	};
+	53DF40DA134E631D001FE4E4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53DF3FF3134E337C001FE4E4 /* EnterTextViewController.h */;
+		name = "EnterTextViewController.h: 27";
+		rLen = 0;
+		rLoc = 705;
+		rType = 0;
+		vrLen = 711;
+		vrLoc = 0;
+	};
+	53DF40E0134E640E001FE4E4 /* UINavigationBar.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = UINavigationBar.h;
+		path = /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/UIKit.framework/Headers/UINavigationBar.h;
+		sourceTree = "<absolute>";
+	};
+	53DF40E8134E64AB001FE4E4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53DF40E0134E640E001FE4E4 /* UINavigationBar.h */;
+		name = "UINavigationBar.h: 67";
+		rLen = 65;
+		rLoc = 2463;
+		rType = 0;
+		vrLen = 1046;
+		vrLoc = 250;
+	};
+	53DF413513512D74001FE4E4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53DF4064134E554A001FE4E4 /* SaveMemoViewController.m */;
+		name = "SaveMemoViewController.m: 63";
+		rLen = 0;
+		rLoc = 1393;
+		rType = 0;
+		vrLen = 672;
+		vrLoc = 742;
+	};
+	53DF413613512D74001FE4E4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53DF4063134E554A001FE4E4 /* SaveMemoViewController.h */;
+		name = "SaveMemoViewController.h: 23";
+		rLen = 0;
+		rLoc = 427;
+		rType = 0;
+		vrLen = 434;
+		vrLoc = 0;
+	};
+	53DF413713512D74001FE4E4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53DF413813512D74001FE4E4 /* UIApplication.h */;
+		name = "UIApplication.h: 244";
+		rLen = 0;
+		rLoc = 12161;
+		rType = 0;
+		vrLen = 1838;
+		vrLoc = 12197;
+	};
+	53DF413813512D74001FE4E4 /* UIApplication.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = UIApplication.h;
+		path = /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIApplication.h;
+		sourceTree = "<absolute>";
+	};
+	53DF413913512D74001FE4E4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* NOW__AppDelegate.m */;
+		name = "NOW__AppDelegate.m: 14";
+		rLen = 0;
+		rLoc = 228;
+		rType = 0;
+		vrLen = 1412;
+		vrLoc = 0;
+	};
+	53DF413A13512D74001FE4E4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 29B97316FDCFA39411CA2CEA /* main.m */;
+		name = "main.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 361;
+		vrLoc = 0;
+	};
+	53DF413B13512D74001FE4E4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623240D0F684500981E51 /* NOW__AppDelegate.h */;
+		name = "NOW__AppDelegate.h: 15";
+		rLen = 0;
+		rLoc = 301;
+		rType = 0;
+		vrLen = 972;
+		vrLoc = 0;
+	};
+	53DF413C13512D74001FE4E4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53DF3FF4134E337C001FE4E4 /* EnterTextViewController.m */;
+		name = "EnterTextViewController.m: 22";
+		rLen = 0;
+		rLoc = 647;
+		rType = 0;
+		vrLen = 735;
+		vrLoc = 0;
+	};
+	53DF413E135139BF001FE4E4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53DF3FF4134E337C001FE4E4 /* EnterTextViewController.m */;
+		name = "EnterTextViewController.m: 22";
+		rLen = 0;
+		rLoc = 647;
+		rType = 0;
+		vrLen = 1141;
+		vrLoc = 0;
+	};
+}

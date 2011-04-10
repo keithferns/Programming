@@ -1,0 +1,246 @@
+TNOW!!
+v7
+r0
+t323891317.055849
+cCheck dependencies
+cProcessInfoPlistFile /Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/Debug-iphonesimulator/NOW!!.app/Info.plist NOW__-Info.plist
+cCompileXIB /Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/MainWindow.xib
+cProcessPCH /var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/NOW___Prefix-avuhwpkvxfsvxpcujbdvrtjxczga/NOW___Prefix.pch.gch NOW___Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
+cDataModelVersionCompile /Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/Debug-iphonesimulator/NOW!!.app/NOW__.momd /Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/NOW__.xcdatamodeld
+cCompileC build/NOW!!.build/Debug-iphonesimulator/NOW!!.build/Objects-normal/i386/main.o /Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/main.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/NOW!!.build/Debug-iphonesimulator/NOW!!.build/Objects-normal/i386/NOW__AppDelegate.o /Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/Classes/NOW__AppDelegate.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cLd /Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/Debug-iphonesimulator/NOW!!.app/NOW!! normal i386
+cGenerateDSYMFile /Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/Debug-iphonesimulator/NOW!!.app.dSYM /Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/Debug-iphonesimulator/NOW!!.app/NOW!!
+cTouch /Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/Debug-iphonesimulator/NOW!!.app
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk
+c000000004D5C9B4E0000000000000110
+t1297914702
+s272
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/CoreData.framework/CoreData
+c000000004D54D02800000000001D6EC0
+t1297403944
+s1928896
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/CoreData.framework/Headers/CoreData.h
+c000000004D54D01A000000000000046B
+t1297403930
+s1131
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
+c000000004D54CFFA00000000002999B0
+t1297403898
+s2726320
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/Foundation.framework/Foundation
+c000000004D54CFE5000000000029DA70
+t1297403877
+s2742896
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h
+c000000004D54CFB80000000000001466
+t1297403832
+s5222
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h
+c000000004D5615B40000000000000AA1
+t1297487284
+s2721
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/UIKit.framework/UIKit
+c000000004D5616030000000000766870
+t1297487363
+s7759984
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/usr/include/Availability.h
+c000000004D4F7A2B0000000000001B19
+t1297054251
+s6937
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/Classes/NOW__AppDelegate.h
+c000000004D9DF8EF00000000000003CC
+t1302198511
+s972
+i<UIKit/UIKit.h>
+i<CoreData/CoreData.h>
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/Classes/NOW__AppDelegate.m
+c000000004D9DF8920000000000001DD3
+t1302198418
+s7635
+i"NOW__AppDelegate.h"
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/MainWindow.xib
+c000000004D9DF89200000000000021B9
+t1302198418
+s8633
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/NOW__.xcdatamodeld
+c000000004D9DF8920000000000000088
+t1302198418
+s136
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/NOW___Prefix.pch
+c000000004D9DF892000000000000015E
+t1302198418
+s350
+i<Availability.h>
+i<Foundation/Foundation.h>
+i<UIKit/UIKit.h>
+i<CoreData/CoreData.h>
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/Debug-iphonesimulator/NOW!!.app
+t1302198517
+s238
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/Debug-iphonesimulator/NOW!!.app.dSYM
+t1302198516
+s102
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/Debug-iphonesimulator/NOW!!.app/Info.plist
+t1302198514
+s583
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/Debug-iphonesimulator/NOW!!.app/MainWindow.nib
+t1302198515
+s1529
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/Debug-iphonesimulator/NOW!!.app/NOW!!
+t1302198516
+s17488
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/Debug-iphonesimulator/NOW!!.app/NOW__.momd
+t1302198516
+s136
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/Debug-iphonesimulator/NOW!!.app/PkgInfo
+t1302198514
+s8
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/NOW!!.build/Debug-iphonesimulator/NOW!!.build/Objects-normal/i386/NOW!!.LinkFileList
+c000000004D9DF8F20000000000000118
+t1302198514
+s280
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/NOW!!.build/Debug-iphonesimulator/NOW!!.build/Objects-normal/i386/NOW__AppDelegate.o
+t1302198516
+s61588
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/NOW!!.build/Debug-iphonesimulator/NOW!!.build/Objects-normal/i386/main.o
+t1302198516
+s6344
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/main.m
+c000000004D9DF8920000000000000169
+t1302198418
+s361
+i<UIKit/UIKit.h>
+
+N/var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/NOW___Prefix-avuhwpkvxfsvxpcujbdvrtjxczga/NOW___Prefix.pch.gch
+t1302198516
+s16679120
+
+NNOW__-Info.plist
+c000000004D9DF892000000000000038D
+t1302198418
+s909
+
+CCheck dependencies
+r0
+lSLF07#2@18"Check dependencies323891314#323891314#0(0"0(0#1#0"3343187568374212096#0"0#
+
+CCompileC build/NOW!!.build/Debug-iphonesimulator/NOW!!.build/Objects-normal/i386/NOW__AppDelegate.o /Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/Classes/NOW__AppDelegate.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s323891316.762410
+e323891316.914150
+r1
+xCompileC
+xbuild/NOW!!.build/Debug-iphonesimulator/NOW!!.build/Objects-normal/i386/NOW__AppDelegate.o
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/Classes/NOW__AppDelegate.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+o/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/Classes/NOW__AppDelegate.m:202: warning: property 'viewController' requires method '-viewController' to be defined - use @synthesize, @dynamic or provide a method implementation
+o/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/Classes/NOW__AppDelegate.m:202: warning: property 'viewController' requires the method 'setViewController:' to be defined - use @synthesize, @dynamic or provide a method implementation
+lSLF07#2@89"Compile /Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/Classes/NOW__AppDelegate.m323891316#323891316#0(473"/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/Classes/NOW__AppDelegate.m:202: warning: property 'viewController' requires method '-viewController' to be defined - use @synthesize, @dynamic or provide a method implementation/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/Classes/NOW__AppDelegate.m:202: warning: property 'viewController' requires the method 'setViewController:' to be defined - use @synthesize, @dynamic or provide a method implementation2(22@136"Property 'viewController' requires method '-viewController' to be defined - use @synthesize, @dynamic or provide a method implementation323891316#0#233#0(6@81"/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/Classes/NOW__AppDelegate.m323891218#202#0#202#0#0"0(22@143"Property 'viewController' requires the method 'setViewController:' to be defined - use @synthesize, @dynamic or provide a method implementation323891316#233#240#0(6@81"/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/Classes/NOW__AppDelegate.m323891218#202#0#202#0#0"0(0#0#81"/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/Classes/NOW__AppDelegate.m8613217888#2084"    cd "/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/NOW!!.build/Debug-iphonesimulator/NOW!!.build/NOW!!-generated-files.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/NOW!!.build/Debug-iphonesimulator/NOW!!.build/NOW!!-own-target-headers.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/NOW!!.build/Debug-iphonesimulator/NOW!!.build/NOW!!-all-target-headers.hmap -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/NOW!!.build/Debug-iphonesimulator/NOW!!.build/NOW!!-project-headers.hmap -F/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/Debug-iphonesimulator -I/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/Debug-iphonesimulator/include -I/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/NOW!!.build/Debug-iphonesimulator/NOW!!.build/DerivedSources/i386 -I/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/NOW!!.build/Debug-iphonesimulator/NOW!!.build/DerivedSources -include /var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/NOW___Prefix-avuhwpkvxfsvxpcujbdvrtjxczga/NOW___Prefix.pch -c /Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/Classes/NOW__AppDelegate.m -o /Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/NOW!!.build/Debug-iphonesimulator/NOW!!.build/Objects-normal/i386/NOW__AppDelegate.o0#
+
+CCompileC build/NOW!!.build/Debug-iphonesimulator/NOW!!.build/Objects-normal/i386/main.o /Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/main.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s323891316.712954
+e323891316.821097
+r1
+xCompileC
+xbuild/NOW!!.build/Debug-iphonesimulator/NOW!!.build/Objects-normal/i386/main.o
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/main.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@69"Compile /Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/main.m323891316#323891316#0(0"0(0#0#61"/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/main.m8611341920#2052"    cd "/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/NOW!!.build/Debug-iphonesimulator/NOW!!.build/NOW!!-generated-files.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/NOW!!.build/Debug-iphonesimulator/NOW!!.build/NOW!!-own-target-headers.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/NOW!!.build/Debug-iphonesimulator/NOW!!.build/NOW!!-all-target-headers.hmap -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/NOW!!.build/Debug-iphonesimulator/NOW!!.build/NOW!!-project-headers.hmap -F/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/Debug-iphonesimulator -I/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/Debug-iphonesimulator/include -I/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/NOW!!.build/Debug-iphonesimulator/NOW!!.build/DerivedSources/i386 -I/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/NOW!!.build/Debug-iphonesimulator/NOW!!.build/DerivedSources -include /var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/NOW___Prefix-avuhwpkvxfsvxpcujbdvrtjxczga/NOW___Prefix.pch -c /Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/main.m -o /Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/NOW!!.build/Debug-iphonesimulator/NOW!!.build/Objects-normal/i386/main.o0#
+
+CCompileXIB /Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/MainWindow.xib
+s323891314.965398
+e323891315.438075
+r1
+xCompileXIB
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/MainWindow.xib
+lSLF07#2@25"CompileXIB MainWindow.xib323891314#323891315#0(0"0(0#0#69"/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/MainWindow.xib30962681237012596#618"    cd "/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!"    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 4.3    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/Debug-iphonesimulator/NOW!!.app/MainWindow.nib /Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/MainWindow.xib --sdk /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk0#
+
+CDataModelVersionCompile /Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/Debug-iphonesimulator/NOW!!.app/NOW__.momd /Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/NOW__.xcdatamodeld
+s323891316.711744
+e323891316.762298
+r1
+xDataModelVersionCompile
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/Debug-iphonesimulator/NOW!!.app/NOW__.momd
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/NOW__.xcdatamodeld
+lSLF07#2@91"DataModelVersionCompile build/Debug-iphonesimulator/NOW!!.app/NOW__.momd NOW__.xcdatamodeld323891316#323891316#0(0"0(0#0#73"/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/NOW__.xcdatamodeld8613181760#430"    cd "/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/momc -XD_MOMC_TARGET_VERSION=10.6 /Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/NOW__.xcdatamodeld /Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/Debug-iphonesimulator/NOW!!.app/NOW__.momd0#
+
+CGenerateDSYMFile /Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/Debug-iphonesimulator/NOW!!.app.dSYM /Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/Debug-iphonesimulator/NOW!!.app/NOW!!
+s323891316.949635
+e323891317.051831
+r1
+xGenerateDSYMFile
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/Debug-iphonesimulator/NOW!!.app.dSYM
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/Debug-iphonesimulator/NOW!!.app/NOW!!
+lSLF07#2@103"GenerateDSYMFile build/Debug-iphonesimulator/NOW!!.app.dSYM build/Debug-iphonesimulator/NOW!!.app/NOW!!323891316#323891317#0(0"0(0#0#98"/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/Debug-iphonesimulator/NOW!!.app/NOW!!8611543584#427"    cd "/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/dsymutil /Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/Debug-iphonesimulator/NOW!!.app/NOW!! -o /Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/Debug-iphonesimulator/NOW!!.app.dSYM0#
+
+CLd /Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/Debug-iphonesimulator/NOW!!.app/NOW!! normal i386
+s323891316.914249
+e323891316.949535
+r1
+xLd
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/Debug-iphonesimulator/NOW!!.app/NOW!!
+xnormal
+xi386
+lSLF07#2@103"Link /Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/Debug-iphonesimulator/NOW!!.app/NOW!!323891316#323891316#0(0"0(0#0#0"32932993185021984#992"    cd "/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!"    setenv MACOSX_DEPLOYMENT_TARGET 10.6    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -arch i386 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -L/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/Debug-iphonesimulator -F/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/Debug-iphonesimulator -filelist /Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/NOW!!.build/Debug-iphonesimulator/NOW!!.build/Objects-normal/i386/NOW!!.LinkFileList -mmacosx-version-min=10.6 -Xlinker -objc_abi_version -Xlinker 2 -framework Foundation -framework UIKit -framework CoreGraphics -framework CoreData -o /Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/Debug-iphonesimulator/NOW!!.app/NOW!!0#
+
+CProcessInfoPlistFile /Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/Debug-iphonesimulator/NOW!!.app/Info.plist NOW__-Info.plist
+s323891314.952679
+e323891314.965283
+r1
+xProcessInfoPlistFile
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/Debug-iphonesimulator/NOW!!.app/Info.plist
+xNOW__-Info.plist
+lSLF07#2@24"Process NOW__-Info.plist323891314#323891314#0(0"0(0#0#71"/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/NOW__-Info.plist9289047898783822#523"    cd "/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-infoPlistUtility NOW__-Info.plist -genpkginfo /Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/Debug-iphonesimulator/NOW!!.app/PkgInfo -expandbuildsettings -format binary -platform iphonesimulator -o /Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/Debug-iphonesimulator/NOW!!.app/Info.plist0#
+
+CProcessPCH /var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/NOW___Prefix-avuhwpkvxfsvxpcujbdvrtjxczga/NOW___Prefix.pch.gch NOW___Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
+s323891315.438305
+e323891316.711480
+r1
+xProcessPCH
+x/var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/NOW___Prefix-avuhwpkvxfsvxpcujbdvrtjxczga/NOW___Prefix.pch.gch
+xNOW___Prefix.pch
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@27"Precompile NOW___Prefix.pch323891315#323891316#0(0"0(0#0#71"/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/NOW___Prefix.pch8611786368#1930"    cd "/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c-header -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/NOW!!.build/Debug-iphonesimulator/NOW!!.build/NOW!!-generated-files.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/NOW!!.build/Debug-iphonesimulator/NOW!!.build/NOW!!-own-target-headers.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/NOW!!.build/Debug-iphonesimulator/NOW!!.build/NOW!!-all-target-headers.hmap -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/NOW!!.build/Debug-iphonesimulator/NOW!!.build/NOW!!-project-headers.hmap -F/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/Debug-iphonesimulator -I/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/Debug-iphonesimulator/include -I/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/NOW!!.build/Debug-iphonesimulator/NOW!!.build/DerivedSources/i386 -I/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/NOW!!.build/Debug-iphonesimulator/NOW!!.build/DerivedSources -c /Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/NOW___Prefix.pch -o /var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/NOW___Prefix-avuhwpkvxfsvxpcujbdvrtjxczga/NOW___Prefix.pch.gch0#
+
+CTouch /Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/Debug-iphonesimulator/NOW!!.app
+s323891317.051921
+e323891317.055795
+r1
+xTouch
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/Debug-iphonesimulator/NOW!!.app
+lSLF07#2@98"Touch /Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/Debug-iphonesimulator/NOW!!.app323891317#323891317#0(0"0(0#0#0"8613534976#310"    cd "/Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /usr/bin/touch -c /Users/Keith/Documents/Dropbox/KEITH/Programming/NOW!!/build/Debug-iphonesimulator/NOW!!.app0#
+
