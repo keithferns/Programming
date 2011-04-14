@@ -8,22 +8,25 @@
 
 
 #import <UIKit/UIKit.h>
+#import "EditTextView.h"
+#import "NavButton.h"
 
 
 @interface EnterTextViewController : UIViewController {
 
-	UIButton *savememoButton, *gotowallButton, *newmemoButton;
-	UILabel *memotitleLabel;
-	UITextView *editmemopTextView;
+	NavButton *saveButton, *wallButton, *newButton;
+		//	UILabel *memotitleLabel;
+	EditTextView *editmemoTextView, *reeditmemoTextView;
 }
 
-@property (nonatomic, retain) IBOutlet UIButton *savememoButton, *gotowallButton, *newmemoButton;
-@property (nonatomic, retain) IBOutlet UILabel *memotitleLabel; 
-@property (nonatomic, retain) IBOutlet UITextView *editmemoTextView;
+@property (nonatomic, retain) IBOutlet NavButton *saveButton, *wallButton, *newButton;
+	//@property (nonatomic, retain) IBOutlet UILabel *memotitleLabel; 
+@property (nonatomic, retain) IBOutlet EditTextView *editmemoTextView, *reeditmemoTextView;
 
 - (IBAction)savememoAction:(id)sender;
 - (IBAction)gotowallAction:(id)sender;
 - (IBAction)newmemoAction:(id)sender;
+- (IBAction)movebottomTextView:(id)sender;
 
 
 @end

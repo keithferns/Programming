@@ -96,11 +96,11 @@
 //KJF: REMOVING THE FOLLOWING FUNCTION WILL STOP THE APPLICATION FROM RETURNING THE LAST STATE. 
 //CHECK: WHAT OTHER EFFECTS DOES THIS HAVE. 
 /*
-- (NSManagedObjectContext *)managedObjectContext {
+- (NSManagedObjectContext *) managedObjectContext {
     
-    if (managedObjectContext_ != nil) {
+		if (managedObjectContext_ != nil) {
         return managedObjectContext_;
-    }
+		}
     
     NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
     if (coordinator != nil) {
@@ -108,9 +108,10 @@
         [managedObjectContext_ setPersistentStoreCoordinator:coordinator];
     }
     return managedObjectContext_;
+	 
 }
-
 */
+
 
 /**
  Returns the managed object model for the application.

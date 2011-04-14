@@ -11,16 +11,16 @@
 
 @implementation newmemoButton
 
-
+/*
 - (id)initWithFrame:(CGRect)frame {
     
-    self = [super initWithFrame:frame];
+    self = [super initWithFrame:CGRectMake(<#CGFloat x#>, <#CGFloat y#>, <#CGFloat width#>, <#CGFloat height#>)];
     if (self) {
         // Initialization code.
     }
     return self;
 }
-
+*/
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

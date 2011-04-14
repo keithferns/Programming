@@ -11,13 +11,16 @@
 
 @implementation EnterTextViewController
 
-@synthesize savememoButton;
-@synthesize gotowallButton;
-@synthesize newmemoButton;
-@synthesize memotitleLabel;
+	//@synthesize saveButton;
+	//@synthesize wallButton;
+	//@synthesize newButton;
+	//@synthesize memotitleLabel;
 @synthesize editmemoTextView;
+@synthesize reeditmemoTextView;
+
 
 - (IBAction)savememoAction:(id)sender{
+	
 	SaveMemoViewController *savememoView = [[[SaveMemoViewController alloc] initWithNibName:@"SaveMemoViewController" bundle:nil] autorelease];
 	[self presentModalViewController:savememoView animated:YES];
 	
@@ -29,6 +32,10 @@
 - (IBAction)newmemoAction:(id)sender{
 }
 
+- (IBAction)movebottomTextView:(id)sender{
+
+	
+}
 
 /* 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -42,13 +49,78 @@
 }
 */
 
-/*
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
-    [super viewDidLoad];
-}
-*/
+/*	
+	saveButton = [NavButton buttonWithType:UIButtonTypeCustom];
+	[saveButton addTarget:self 
+			 action:@selector(aMethod:)
+	forControlEvents:UIControlEventTouchDown];
+	saveButton.frame = CGRectMake(220, 229, 100, 10);
+	[saveButton setUserInteractionEnabled:YES];
+	[saveButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+	[saveButton setHighlighted:YES];
+	[saveButton setTitle:@"SAVE" forState:UIControlStateNormal];
+	[self.view addSubview:saveButton];
+*/			
+	
+	editmemoTextView = [[EditTextView alloc] initWithFrame:CGRectMake	(0, 0, 320, 205)];
+		[editmemoTextView setBackgroundColor:[UIColor blueColor]];
+		[editmemoTextView setEditable:YES];
+		[reeditmemoTextView setText:@"Start Typing Here..."];
 
+	reeditmemoTextView = [[EditTextView alloc] initWithFrame:CGRectMake	(0, 245, 320, 215)];
+		[reeditmemoTextView setBackgroundColor:[UIColor greenColor]];
+		[reeditmemoTextView setEditable:YES];
+		[reeditmemoTextView setText:@"This is my last memo. "];
+		[reeditmemoTextView setUserInteractionEnabled:YES];
+		//		[reeditmemoTextView setInputView:reeditmemoTextView];
+		//[reeditmemoTextView.inputView addTarget:self
+		//					   action:@selector(touchesForView:)
+		//				forControlEvents:UIControlEventAllEvents];
+		
+	
+NSLog(@"adding editmemoTextView to view");
+		[self.view	addSubview:editmemoTextView];	
+NSLog(@"adding reeditmemoTextView to view");
+		[self.view	addSubview:reeditmemoTextView];
+
+	
+		//NSLog(@"topframe_start - %@", NSStringFromRect([editmemoTextView frame]));
+		//NSLog(@"bottonframe_start - %@", NSStringFromRect([reeditmemoTextView frame]));
+	
+
+	
+	if ([reeditmemoTextView.inputView  isUserInteractionEnabled]) {
+		NSLog(@"I am inside while loop");
+
+		[reeditmemoTextView becomeFirstResponder];
+			//		if([editmemoTextView isFirstResponder]) {
+		
+		editmemoTextView.text = reeditmemoTextView.text; 
+		[editmemoTextView setBackgroundColor:[UIColor lightGrayColor]];
+		[reeditmemoTextView setFont:[UIFont boldSystemFontOfSize:30.0]];
+		[reeditmemoTextView setEditable:YES];
+			//[self.view addSubview:reeditmemoTextView];
+		
+	}
+	
+	
+			
+
+				
+	
+	[super viewDidLoad];
+	
+		//NSLog(@"topframe_finish - %@", NSStringFromRect([editmemoTextView frame]));
+		//NSLog(@"bottomframe_finish - %@", NSStringFromRect([reeditmemoTextView frame]));
+	
+	
+}
+			//[reeditmemoTextView [setFrame:(CGRectMake(0, 0, 320, 215)]];
+			
+			//editmemoTextView.frame = CGRectOffset(editmemoTextView.frame, 222, 107);
+
+							
 
  - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
 	 return YES; 
@@ -70,11 +142,13 @@
 
 
 - (void)dealloc {
-	[savememoButton release];
-	[newmemoButton release];
-	[gotowallButton release];
-	[memotitleLabel release];
+	[saveButton release];
+	[newButton release];
+	[wallButton release];
+		//	[memotitleLabel release];
 	[editmemoTextView release]; 
+	[reeditmemoTextView release]; 
+
     [super dealloc];
 }
 

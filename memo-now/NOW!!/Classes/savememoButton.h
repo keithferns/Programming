@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 
 
-@interface savememoButton : UIView {
+@interface savememoButton : UIButton {
 
+	
 }
 
 @end

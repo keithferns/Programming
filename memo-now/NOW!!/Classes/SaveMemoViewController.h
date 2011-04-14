@@ -7,19 +7,26 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "NavButton.h"
 
 @interface SaveMemoViewController : UIViewController {
 
-		//UIButton *backButton;
+		NavButton *backButton;
+		NavButton *newButton;
+		NavButton *wallButton;
 	
 		//FIX:  reusing some of the buttons.  make separate classes for each. 
 
 }
 
-@property(nonatomic, retain) IBOutlet UIButton *backButton;
+@property(nonatomic, retain) IBOutlet NavButton *backButton;
+@property(nonatomic, retain) IBOutlet NavButton *newButton;
+@property(nonatomic, retain) IBOutlet NavButton *wallButton;
 
-		//- (IBAction)backAction:(id)sender;
+
+- (IBAction)backAction:(id)sender;
+- (IBAction)newAction:(id)sender;
+
 
 
 @end

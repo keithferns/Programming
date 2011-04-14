@@ -12,8 +12,8 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="12"/>
 			<integer value="17"/>
+			<integer value="12"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -154,7 +154,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>UIApplication</string>
 					<string>UIResponder</string>
-					<string>{{664, 2}, {320, 480}}</string>
+					<string>{{405, -79}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>EnterTextViewController</string>
 					<string>{{337, 276}, {320, 480}}</string>
@@ -192,11 +192,13 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>gotowallAction:</string>
+							<string>movebottomTextView:</string>
 							<string>newmemoAction:</string>
 							<string>savememoAction:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -207,6 +209,7 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>gotowallAction:</string>
+							<string>movebottomTextView:</string>
 							<string>newmemoAction:</string>
 							<string>savememoAction:</string>
 						</object>
@@ -214,6 +217,10 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBActionInfo">
 								<string key="name">gotowallAction:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">movebottomTextView:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
@@ -234,6 +241,7 @@
 							<string>gotowallButton</string>
 							<string>memotitleLabel</string>
 							<string>newmemoButton</string>
+							<string>reeditmemoTextView</string>
 							<string>savememoButton</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
@@ -242,6 +250,7 @@
 							<string>UIButton</string>
 							<string>UILabel</string>
 							<string>UIButton</string>
+							<string>UITextView</string>
 							<string>UIButton</string>
 						</object>
 					</object>
@@ -253,6 +262,7 @@
 							<string>gotowallButton</string>
 							<string>memotitleLabel</string>
 							<string>newmemoButton</string>
+							<string>reeditmemoTextView</string>
 							<string>savememoButton</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
@@ -272,6 +282,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">newmemoButton</string>
 								<string key="candidateClassName">UIButton</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">reeditmemoTextView</string>
+								<string key="candidateClassName">UITextView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">savememoButton</string>

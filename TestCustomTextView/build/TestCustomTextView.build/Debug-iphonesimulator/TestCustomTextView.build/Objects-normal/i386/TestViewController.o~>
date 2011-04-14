@@ -1,0 +1,8 @@
+In file included from /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/Classes/TestViewController.m:9:
+/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/Classes/TestViewController.h:14: error: expected specifier-qualifier-list before 'EditTextView'
+/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/Classes/TestViewController.h:19: error: expected specifier-qualifier-list before 'EditTextView'
+/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/Classes/TestViewController.m:14: error: no declaration of property 'newTV' found in the interface
+/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/Classes/TestViewController.m: In function '-[TestViewController dealloc]':
+/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/Classes/TestViewController.m:54: error: 'newTV' undeclared (first use in this function)
+/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/Classes/TestViewController.m:54: error: (Each undeclared identifier is reported only once
+/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/Classes/TestViewController.m:54: error: for each function it appears in.)

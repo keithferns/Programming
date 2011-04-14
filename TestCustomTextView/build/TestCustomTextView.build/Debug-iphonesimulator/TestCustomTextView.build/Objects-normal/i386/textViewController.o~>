@@ -1,0 +1,3 @@
+/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/Classes/textViewController.m:54: warning: property 'editable' requires the method 'setEditable:' to be defined - use @synthesize, @dynamic or provide a method implementation
+/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/Classes/textViewController.m:54: warning: property 'delegate' requires method '-delegate' to be defined - use @synthesize, @dynamic or provide a method implementation
+/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/Classes/textViewController.m:54: warning: property 'delegate' requires the method 'setDelegate:' to be defined - use @synthesize, @dynamic or provide a method implementation
