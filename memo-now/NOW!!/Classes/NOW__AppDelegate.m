@@ -7,25 +7,69 @@
 //
 
 #import "NOW__AppDelegate.h"
-
+#import "MyMemosTableViewController.h"
 
 @implementation NOW__AppDelegate
 
 @synthesize window;
 @synthesize viewController;
+	//@synthesize navigationController;
 
 #pragma mark -
 #pragma mark Application lifecycle
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
-    
-    // Override point for customization after application launch.
-    
+- (void)applicationDidFinishLaunching:(UIApplication *)application;
+	{    
+	
+		MyMemosTableViewController *tableController =[[MyMemosTableViewController alloc] initWithStyle:UITableViewStylePlain];
+				//tableController.managedObjectContext =  self.managedObjectContext;
+			//self.navigationController = [[UINavigationController alloc]initWithRootViewController:tableController];
+			//[tableController release];
+	
+		
 	[self.window addSubview:viewController.view];
+		//[self.window addSubview:[self.navigationController view]];
 	[self.window makeKeyAndVisible];
     
-    return YES;
 }
+
+
+
+ - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex;
+ {
+ 
+ if (buttonIndex == 4) {
+	 NSLog(@"1st Button Clicked on WallAlert");
+
+ MyMemosTableViewController *tableController = [[MyMemosTableViewController alloc] initWithStyle:UITableViewStylePlain];												
+ [self presentModalViewController:tableController animated:YES];
+ }
+ else if (buttonIndex == 3) {
+	 NSLog(@"2nd Button Clicked on WallAlert");
+
+	 
+ MyMemosTableViewController *tableController = [[MyMemosTableViewController alloc] initWithStyle:UITableViewStylePlain];												
+ [self presentModalViewController:tableController animated:YES];
+ }
+ else if (buttonIndex == 2) {
+	 NSLog(@"3rd Button Clicked on WallAlert");
+
+ MyMemosTableViewController *tableController = [[MyMemosTableViewController alloc] initWithStyle:UITableViewStylePlain];												
+ [self presentModalViewController:tableController animated:YES];
+ }
+ else if (buttonIndex == 1) {
+	 NSLog(@"4th Button Clicked on WallAlert");
+
+ MyMemosTableViewController *tableController = [[MyMemosTableViewController alloc] initWithStyle:UITableViewStylePlain];												
+ [self presentModalViewController:tableController animated:YES];
+ }	
+ else if (buttonIndex == 0) {
+ //CancelButton Clicked
+ }
+ 
+ [alertView release];
+ }
+ 
 
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -35,42 +79,39 @@
      */
 }
 
-
+/*
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    /*
-     Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
-     If your application supports background execution, called instead of applicationWillTerminate: when the user quits.
-     */
+
+ //Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
+ // If your application supports background execution, called instead of applicationWillTerminate: when the user quits.
+     
     [self saveContext];
 }
 
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
-    /*
-     Called as part of the transition from the background to the inactive state: here you can undo many of the changes made on entering the background.
-     */
+    
+	 //   Called as part of the transition from the background to the inactive state: here you can undo many of the changes made on entering the background.
+     
 }
 
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    /*
+
      Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-     */
+	
 }
+*/
 
 
-/**
- applicationWillTerminate: saves changes in the application's managed object context before the application terminates.
- */
+	// applicationWillTerminate: saves changes in the application's managed object context before the application terminates.
+
 - (void)applicationWillTerminate:(UIApplication *)application {
-   [self saveContext];
-}
 
-
-- (void)saveContext {
-    
     NSError *error = nil;
-	NSManagedObjectContext *managedObjectContext = self.managedObjectContext;
+	
+		//NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
+	
     if (managedObjectContext != nil) {
         if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
             /*
@@ -93,24 +134,20 @@
  If the context doesn't already exist, it is created and bound to the persistent store coordinator for the application.
  */
 
-//KJF: REMOVING THE FOLLOWING FUNCTION WILL STOP THE APPLICATION FROM RETURNING THE LAST STATE. 
-//CHECK: WHAT OTHER EFFECTS DOES THIS HAVE. 
-/*
 - (NSManagedObjectContext *) managedObjectContext {
-    
-		if (managedObjectContext_ != nil) {
-        return managedObjectContext_;
+		if (managedObjectContext != nil) {
+        return managedObjectContext;
 		}
     
     NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
     if (coordinator != nil) {
-        managedObjectContext_ = [[NSManagedObjectContext alloc] init];
-        [managedObjectContext_ setPersistentStoreCoordinator:coordinator];
+        managedObjectContext = [[NSManagedObjectContext alloc] init];
+        [managedObjectContext setPersistentStoreCoordinator:coordinator];
     }
-    return managedObjectContext_;
-	 
+ 
+    return managedObjectContext;	 
 }
-*/
+
 
 
 /**
@@ -119,12 +156,12 @@
  */
 - (NSManagedObjectModel *)managedObjectModel {
     
-    if (managedObjectModel_ != nil) {
-        return managedObjectModel_;
+    if (managedObjectModel != nil) {
+        return managedObjectModel;
     }
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"NOW__" withExtension:@"momd"];
-    managedObjectModel_ = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];    
-    return managedObjectModel_;
+	
+    managedObjectModel = [[NSManagedObjectModel mergedModelFromBundles:nil] retain];    
+    return managedObjectModel;
 }
 
 
@@ -134,15 +171,15 @@
  */
 - (NSPersistentStoreCoordinator *)persistentStoreCoordinator {
     
-    if (persistentStoreCoordinator_ != nil) {
-        return persistentStoreCoordinator_;
+    if (persistentStoreCoordinator != nil) {
+        return persistentStoreCoordinator;
     }
     
-    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"NOW__.sqlite"];
+    NSURL *storeUrl = [NSURL fileURLWithPath: [[self applicationDocumentsDirectory] stringByAppendingPathComponent: @"NOW__.sqlite"]];
     
     NSError *error = nil;
-    persistentStoreCoordinator_ = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-    if (![persistentStoreCoordinator_ addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
+    persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
+    if (![persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeUrl options:nil error:&error]) {
         /*
          Replace this implementation with code to handle the error appropriately.
          
@@ -170,7 +207,7 @@
         abort();
     }    
     
-    return persistentStoreCoordinator_;
+    return persistentStoreCoordinator;
 }
 
 
@@ -180,8 +217,8 @@
 /**
  Returns the URL to the application's Documents directory.
  */
-- (NSURL *)applicationDocumentsDirectory {
-    return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+- (NSString *)applicationDocumentsDirectory {
+	return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
 }
 
 
@@ -197,12 +234,13 @@
 
 - (void)dealloc {
     
-    [managedObjectContext_ release];
-    [managedObjectModel_ release];
-    [persistentStoreCoordinator_ release];
+    [managedObjectContext release];
+    [managedObjectModel release];
+    [persistentStoreCoordinator release];
     
     [window release];
     [viewController release];
+		//[navigationController release];
 	[super dealloc];
 }
 

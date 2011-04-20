@@ -7,16 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "EditTextView.h"
 
 @interface TestViewController : UIViewController {
 
-	EditTextView *newTV;
 
 }
 
 
-@property (nonatomic, retain) IBOutlet EditTextView *newTV;
 
 
 

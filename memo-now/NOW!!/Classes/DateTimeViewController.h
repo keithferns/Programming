@@ -10,7 +10,17 @@
 
 
 @interface DateTimeViewController : UIViewController {
-
+	
+	UISegmentedControl *segmentedControl;
+	
+	
 }
+
+@property (nonatomic,retain) IBOutlet UISegmentedControl *segmentedControl;
+- (IBAction)segmentedControlAction:(id)sender;
+
+	//- (IBAction)backAction:(id)sender;
+
+
 
 @end

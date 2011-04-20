@@ -1,7 +1,7 @@
 TTestCustomTextView
 v7
 r0
-t324380453.416703
+t324692212.494567
 cCheck dependencies
 cProcessInfoPlistFile /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/Debug-iphonesimulator/TestCustomTextView.app/Info.plist TestCustomTextView-Info.plist
 cCompileXIB /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/MainWindow.xib
@@ -10,8 +10,10 @@ cProcessPCH /var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode
 cDataModelVersionCompile /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/Debug-iphonesimulator/TestCustomTextView.app/TestCustomTextView.momd /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/TestCustomTextView.xcdatamodeld
 cCompileC build/TestCustomTextView.build/Debug-iphonesimulator/TestCustomTextView.build/Objects-normal/i386/main.o /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/main.m normal i386 objective-c com.apple.compilers.gcc.4_2
 cCompileC build/TestCustomTextView.build/Debug-iphonesimulator/TestCustomTextView.build/Objects-normal/i386/TestCustomTextViewAppDelegate.o /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/Classes/TestCustomTextViewAppDelegate.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/TestCustomTextView.build/Debug-iphonesimulator/TestCustomTextView.build/Objects-normal/i386/EditTextView.o /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/Classes/EditTextView.m normal i386 objective-c com.apple.compilers.gcc.4_2
 cCompileC build/TestCustomTextView.build/Debug-iphonesimulator/TestCustomTextView.build/Objects-normal/i386/TestViewController.o /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/Classes/TestViewController.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cLd /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/Debug-iphonesimulator/TestCustomTextView.app/TestCustomTextView normal i386
+cGenerateDSYMFile /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/Debug-iphonesimulator/TestCustomTextView.app.dSYM /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/Debug-iphonesimulator/TestCustomTextView.app/TestCustomTextView
+cTouch /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/Debug-iphonesimulator/TestCustomTextView.app
 
 N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk
 c000000004D5C9B4E0000000000000110
@@ -59,15 +61,15 @@ t1297054251
 s6937
 
 N/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/Classes/EditTextView.h
-c000000004DA5B4810000000000000587
-t1302705281
-s1415
+c000000004DAA30B50000000000000589
+t1302999221
+s1417
 i<UIKit/UIKit.h>
 
 N/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/Classes/EditTextView.m
-c000000004DA56FA40000000000000447
-t1302687652
-s1095
+c000000004DAA30FF0000000000000451
+t1302999295
+s1105
 i"EditTextView.h"
 
 N/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/Classes/TestCustomTextViewAppDelegate.h
@@ -84,16 +86,15 @@ s7784
 i"TestCustomTextViewAppDelegate.h"
 
 N/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/Classes/TestViewController.h
-c000000004DA56A0A0000000000000165
-t1302686218
-s357
+c000000004DAA314C00000000000000FA
+t1302999372
+s250
 i<UIKit/UIKit.h>
-i"EditTextView.h"
 
 N/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/Classes/TestViewController.m
-c000000004DA56A07000000000000046C
-t1302686215
-s1132
+c000000004DAA3159000000000000042B
+t1302999385
+s1067
 i"TestViewController.h"
 
 N/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/Classes/TestViewController.xib
@@ -138,11 +139,11 @@ i<UIKit/UIKit.h>
 i<CoreData/CoreData.h>
 
 N/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/Debug-iphonesimulator/TestCustomTextView.app
-t1302687340
+t1302999387
 s306
 
 N/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/Debug-iphonesimulator/TestCustomTextView.app.dSYM
-t1302687340
+t1302999387
 s102
 
 N/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/Debug-iphonesimulator/TestCustomTextView.app/Info.plist
@@ -158,8 +159,8 @@ t1302667269
 s8
 
 N/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/Debug-iphonesimulator/TestCustomTextView.app/TestCustomTextView
-t1302687340
-s25356
+t1302999387
+s19864
 
 N/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/Debug-iphonesimulator/TestCustomTextView.app/TestCustomTextView.momd
 t1302667272
@@ -174,21 +175,21 @@ t1302680042
 s1231
 
 N/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/TestCustomTextView.build/Debug-iphonesimulator/TestCustomTextView.build/Objects-normal/i386/EditTextView.o
-t2
-s0
+t1302999296
+s4004
 
 N/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/TestCustomTextView.build/Debug-iphonesimulator/TestCustomTextView.build/Objects-normal/i386/TestCustomTextView.LinkFileList
-c000000004DA5581600000000000002E3
-t1302681622
-s739
+c000000004DAA3121000000000000022E
+t1302999329
+s558
 
 N/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/TestCustomTextView.build/Debug-iphonesimulator/TestCustomTextView.build/Objects-normal/i386/TestCustomTextViewAppDelegate.o
 t1302681624
 s63752
 
 N/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/TestCustomTextView.build/Debug-iphonesimulator/TestCustomTextView.build/Objects-normal/i386/TestViewController.o
-t1302687308
-s41412
+t1302999386
+s39044
 
 N/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/TestCustomTextView.build/Debug-iphonesimulator/TestCustomTextView.build/Objects-normal/i386/main.o
 t1302667272
@@ -215,12 +216,12 @@ s909
 
 CCheck dependencies
 r0
-lSLF07#2@18"Check dependencies324380452#324380452#0(0"0(0#1#0"8623809184#0"0#
+lSLF07#2@18"Check dependencies324692212#324692212#0(0"0(0#1#0"8604501824#0"0#
 
 CCompileC build/TestCustomTextView.build/Debug-iphonesimulator/TestCustomTextView.build/Objects-normal/i386/EditTextView.o /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/Classes/EditTextView.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s324380452.860701
-e324380453.416626
-r0
+s324692096.130708
+e324692096.269173
+r1
 xCompileC
 xbuild/TestCustomTextView.build/Debug-iphonesimulator/TestCustomTextView.build/Objects-normal/i386/EditTextView.o
 x/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/Classes/EditTextView.m
@@ -228,9 +229,8 @@ xnormal
 xi386
 xobjective-c
 xcom.apple.compilers.gcc.4_2
-o/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/Classes/EditTextView.m:14: error: expected identifier before '{' token
-o/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/Classes/EditTextView.m:14: confused by earlier errors, bailing out
-lSLF07#2@98"Compile /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/Classes/EditTextView.m324380452#324380453#0(274"/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/Classes/EditTextView.m:14: error: expected identifier before '{' token/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/Classes/EditTextView.m:14: confused by earlier errors, bailing out2(4@36"Expected identifier before '{' token324380453#0#139#0(6@90"/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/Classes/EditTextView.m324380452#14#0#14#0#19"expected * before *0(4@39"Confused by earlier errors, bailing out324380453#139#135#0(6@90"/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/Classes/EditTextView.m324380452#14#0#14#0#39"confused by earlier errors, bailing out0(0#0#90"/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/Classes/EditTextView.m8618344992#2477"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/TestCustomTextView.build/Debug-iphonesimulator/TestCustomTextView.build/TestCustomTextView-generated-files.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/TestCustomTextView.build/Debug-iphonesimulator/TestCustomTextView.build/TestCustomTextView-own-target-headers.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/TestCustomTextView.build/Debug-iphonesimulator/TestCustomTextView.build/TestCustomTextView-all-target-headers.hmap -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/TestCustomTextView.build/Debug-iphonesimulator/TestCustomTextView.build/TestCustomTextView-project-headers.hmap -F/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/Debug-iphonesimulator -I/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/Debug-iphonesimulator/include -I/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/TestCustomTextView.build/Debug-iphonesimulator/TestCustomTextView.build/DerivedSources/i386 -I/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/TestCustomTextView.build/Debug-iphonesimulator/TestCustomTextView.build/DerivedSources -include /var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TestCustomTextView_Prefix-efenwsiviifcmacmtgeshbmsldoa/TestCustomTextView_Prefix.pch -c /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/Classes/EditTextView.m -o /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/TestCustomTextView.build/Debug-iphonesimulator/TestCustomTextView.build/Objects-normal/i386/EditTextView.o1#
+o/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/Classes/EditTextView.m:70: warning: '@end' must appear in an @implementation context
+lSLF07#2@98"Compile /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/Classes/EditTextView.m324692096#324692096#0(153"/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/Classes/EditTextView.m:70: warning: '@end' must appear in an @implementation context1(22@48"'@end' must appear in an @implementation context324692096#0#153#0(6@90"/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/Classes/EditTextView.m324692095#70#0#70#0#0"0(0#0#90"/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/Classes/EditTextView.m8619843072#2477"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/TestCustomTextView.build/Debug-iphonesimulator/TestCustomTextView.build/TestCustomTextView-generated-files.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/TestCustomTextView.build/Debug-iphonesimulator/TestCustomTextView.build/TestCustomTextView-own-target-headers.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/TestCustomTextView.build/Debug-iphonesimulator/TestCustomTextView.build/TestCustomTextView-all-target-headers.hmap -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/TestCustomTextView.build/Debug-iphonesimulator/TestCustomTextView.build/TestCustomTextView-project-headers.hmap -F/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/Debug-iphonesimulator -I/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/Debug-iphonesimulator/include -I/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/TestCustomTextView.build/Debug-iphonesimulator/TestCustomTextView.build/DerivedSources/i386 -I/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/TestCustomTextView.build/Debug-iphonesimulator/TestCustomTextView.build/DerivedSources -include /var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TestCustomTextView_Prefix-efenwsiviifcmacmtgeshbmsldoa/TestCustomTextView_Prefix.pch -c /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/Classes/EditTextView.m -o /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/TestCustomTextView.build/Debug-iphonesimulator/TestCustomTextView.build/Objects-normal/i386/EditTextView.o0#
 
 CCompileC build/TestCustomTextView.build/Debug-iphonesimulator/TestCustomTextView.build/Objects-normal/i386/TestCustomTextViewAppDelegate.o /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/Classes/TestCustomTextViewAppDelegate.m normal i386 objective-c com.apple.compilers.gcc.4_2
 s324374423.813354
@@ -246,8 +246,8 @@ xcom.apple.compilers.gcc.4_2
 lSLF07#2@115"Compile /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/Classes/TestCustomTextViewAppDelegate.m324374423#324374424#0(0"0(0#0#107"/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/Classes/TestCustomTextViewAppDelegate.m8621433408#2511"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/TestCustomTextView.build/Debug-iphonesimulator/TestCustomTextView.build/TestCustomTextView-generated-files.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/TestCustomTextView.build/Debug-iphonesimulator/TestCustomTextView.build/TestCustomTextView-own-target-headers.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/TestCustomTextView.build/Debug-iphonesimulator/TestCustomTextView.build/TestCustomTextView-all-target-headers.hmap -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/TestCustomTextView.build/Debug-iphonesimulator/TestCustomTextView.build/TestCustomTextView-project-headers.hmap -F/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/Debug-iphonesimulator -I/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/Debug-iphonesimulator/include -I/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/TestCustomTextView.build/Debug-iphonesimulator/TestCustomTextView.build/DerivedSources/i386 -I/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/TestCustomTextView.build/Debug-iphonesimulator/TestCustomTextView.build/DerivedSources -include /var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TestCustomTextView_Prefix-efenwsiviifcmacmtgeshbmsldoa/TestCustomTextView_Prefix.pch -c /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/Classes/TestCustomTextViewAppDelegate.m -o /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/TestCustomTextView.build/Debug-iphonesimulator/TestCustomTextView.build/Objects-normal/i386/TestCustomTextViewAppDelegate.o0#
 
 CCompileC build/TestCustomTextView.build/Debug-iphonesimulator/TestCustomTextView.build/Objects-normal/i386/TestViewController.o /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/Classes/TestViewController.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s324380107.976129
-e324380108.085462
+s324692186.698981
+e324692186.784550
 r1
 xCompileC
 xbuild/TestCustomTextView.build/Debug-iphonesimulator/TestCustomTextView.build/Objects-normal/i386/TestViewController.o
@@ -256,7 +256,7 @@ xnormal
 xi386
 xobjective-c
 xcom.apple.compilers.gcc.4_2
-lSLF07#2@104"Compile /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/Classes/TestViewController.m324380107#324380108#0(0"0(0#0#96"/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/Classes/TestViewController.m8621324352#2489"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/TestCustomTextView.build/Debug-iphonesimulator/TestCustomTextView.build/TestCustomTextView-generated-files.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/TestCustomTextView.build/Debug-iphonesimulator/TestCustomTextView.build/TestCustomTextView-own-target-headers.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/TestCustomTextView.build/Debug-iphonesimulator/TestCustomTextView.build/TestCustomTextView-all-target-headers.hmap -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/TestCustomTextView.build/Debug-iphonesimulator/TestCustomTextView.build/TestCustomTextView-project-headers.hmap -F/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/Debug-iphonesimulator -I/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/Debug-iphonesimulator/include -I/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/TestCustomTextView.build/Debug-iphonesimulator/TestCustomTextView.build/DerivedSources/i386 -I/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/TestCustomTextView.build/Debug-iphonesimulator/TestCustomTextView.build/DerivedSources -include /var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TestCustomTextView_Prefix-efenwsiviifcmacmtgeshbmsldoa/TestCustomTextView_Prefix.pch -c /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/Classes/TestViewController.m -o /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/TestCustomTextView.build/Debug-iphonesimulator/TestCustomTextView.build/Objects-normal/i386/TestViewController.o0#
+lSLF07#2@104"Compile /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/Classes/TestViewController.m324692186#324692186#0(0"0(0#0#96"/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/Classes/TestViewController.m8614607616#2489"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/TestCustomTextView.build/Debug-iphonesimulator/TestCustomTextView.build/TestCustomTextView-generated-files.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/TestCustomTextView.build/Debug-iphonesimulator/TestCustomTextView.build/TestCustomTextView-own-target-headers.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/TestCustomTextView.build/Debug-iphonesimulator/TestCustomTextView.build/TestCustomTextView-all-target-headers.hmap -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/TestCustomTextView.build/Debug-iphonesimulator/TestCustomTextView.build/TestCustomTextView-project-headers.hmap -F/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/Debug-iphonesimulator -I/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/Debug-iphonesimulator/include -I/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/TestCustomTextView.build/Debug-iphonesimulator/TestCustomTextView.build/DerivedSources/i386 -I/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/TestCustomTextView.build/Debug-iphonesimulator/TestCustomTextView.build/DerivedSources -include /var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TestCustomTextView_Prefix-efenwsiviifcmacmtgeshbmsldoa/TestCustomTextView_Prefix.pch -c /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/Classes/TestViewController.m -o /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/TestCustomTextView.build/Debug-iphonesimulator/TestCustomTextView.build/Objects-normal/i386/TestViewController.o0#
 
 CCompileC build/TestCustomTextView.build/Debug-iphonesimulator/TestCustomTextView.build/Objects-normal/i386/main.o /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/main.m normal i386 objective-c com.apple.compilers.gcc.4_2
 s324360072.456428
@@ -323,23 +323,23 @@ x/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/TestCustomT
 lSLF07#2@130"DataModelVersionCompile build/Debug-iphonesimulator/TestCustomTextView.app/TestCustomTextView.momd TestCustomTextView.xcdatamodeld324360072#324360072#0(0"0(0#0#99"/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/TestCustomTextView.xcdatamodeld8621628672#506"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/momc -XD_MOMC_TARGET_VERSION=10.6 /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/TestCustomTextView.xcdatamodeld /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/Debug-iphonesimulator/TestCustomTextView.app/TestCustomTextView.momd0#
 
 CGenerateDSYMFile /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/Debug-iphonesimulator/TestCustomTextView.app.dSYM /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/Debug-iphonesimulator/TestCustomTextView.app/TestCustomTextView
-s324380140.203849
-e324380140.360320
+s324692187.212833
+e324692187.591536
 r1
 xGenerateDSYMFile
 x/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/Debug-iphonesimulator/TestCustomTextView.app.dSYM
 x/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/Debug-iphonesimulator/TestCustomTextView.app/TestCustomTextView
-lSLF07#2@142"GenerateDSYMFile build/Debug-iphonesimulator/TestCustomTextView.app.dSYM build/Debug-iphonesimulator/TestCustomTextView.app/TestCustomTextView324380140#324380140#0(0"0(0#0#137"/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/Debug-iphonesimulator/TestCustomTextView.app/TestCustomTextView8625273408#503"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/dsymutil /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/Debug-iphonesimulator/TestCustomTextView.app/TestCustomTextView -o /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/Debug-iphonesimulator/TestCustomTextView.app.dSYM0#
+lSLF07#2@142"GenerateDSYMFile build/Debug-iphonesimulator/TestCustomTextView.app.dSYM build/Debug-iphonesimulator/TestCustomTextView.app/TestCustomTextView324692187#324692187#0(0"0(0#0#137"/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/Debug-iphonesimulator/TestCustomTextView.app/TestCustomTextView8620119072#503"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/dsymutil /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/Debug-iphonesimulator/TestCustomTextView.app/TestCustomTextView -o /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/Debug-iphonesimulator/TestCustomTextView.app.dSYM0#
 
 CLd /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/Debug-iphonesimulator/TestCustomTextView.app/TestCustomTextView normal i386
-s324380139.818658
-e324380140.203727
+s324692186.784652
+e324692187.212731
 r1
 xLd
 x/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/Debug-iphonesimulator/TestCustomTextView.app/TestCustomTextView
 xnormal
 xi386
-lSLF07#2@142"Link /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/Debug-iphonesimulator/TestCustomTextView.app/TestCustomTextView324380139#324380140#0(0"0(0#0#0"8620865952#1120"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView    setenv MACOSX_DEPLOYMENT_TARGET 10.6    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -arch i386 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -L/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/Debug-iphonesimulator -F/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/Debug-iphonesimulator -filelist /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/TestCustomTextView.build/Debug-iphonesimulator/TestCustomTextView.build/Objects-normal/i386/TestCustomTextView.LinkFileList -mmacosx-version-min=10.6 -Xlinker -objc_abi_version -Xlinker 2 -framework Foundation -framework UIKit -framework CoreGraphics -framework CoreData -o /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/Debug-iphonesimulator/TestCustomTextView.app/TestCustomTextView0#
+lSLF07#2@142"Link /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/Debug-iphonesimulator/TestCustomTextView.app/TestCustomTextView324692186#324692187#0(0"0(0#0#0"8609567936#1120"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView    setenv MACOSX_DEPLOYMENT_TARGET 10.6    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -arch i386 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -L/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/Debug-iphonesimulator -F/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/Debug-iphonesimulator -filelist /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/TestCustomTextView.build/Debug-iphonesimulator/TestCustomTextView.build/Objects-normal/i386/TestCustomTextView.LinkFileList -mmacosx-version-min=10.6 -Xlinker -objc_abi_version -Xlinker 2 -framework Foundation -framework UIKit -framework CoreGraphics -framework CoreData -o /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/Debug-iphonesimulator/TestCustomTextView.app/TestCustomTextView0#
 
 CProcessInfoPlistFile /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/Debug-iphonesimulator/TestCustomTextView.app/Info.plist TestCustomTextView-Info.plist
 s324360069.210201
@@ -364,10 +364,10 @@ xcom.apple.compilers.gcc.4_2
 lSLF07#2@40"Precompile TestCustomTextView_Prefix.pch324360070#324360072#0(0"0(0#0#97"/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/TestCustomTextView_Prefix.pch8603918048#2305"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c-header -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/TestCustomTextView.build/Debug-iphonesimulator/TestCustomTextView.build/TestCustomTextView-generated-files.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/TestCustomTextView.build/Debug-iphonesimulator/TestCustomTextView.build/TestCustomTextView-own-target-headers.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/TestCustomTextView.build/Debug-iphonesimulator/TestCustomTextView.build/TestCustomTextView-all-target-headers.hmap -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/TestCustomTextView.build/Debug-iphonesimulator/TestCustomTextView.build/TestCustomTextView-project-headers.hmap -F/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/Debug-iphonesimulator -I/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/Debug-iphonesimulator/include -I/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/TestCustomTextView.build/Debug-iphonesimulator/TestCustomTextView.build/DerivedSources/i386 -I/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/TestCustomTextView.build/Debug-iphonesimulator/TestCustomTextView.build/DerivedSources -c /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/TestCustomTextView_Prefix.pch -o /var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TestCustomTextView_Prefix-efenwsiviifcmacmtgeshbmsldoa/TestCustomTextView_Prefix.pch.gch0#
 
 CTouch /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/Debug-iphonesimulator/TestCustomTextView.app
-s324380140.360410
-e324380140.370114
+s324692187.591634
+e324692187.613134
 r1
 xTouch
 x/Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/Debug-iphonesimulator/TestCustomTextView.app
-lSLF07#2@124"Touch /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/Debug-iphonesimulator/TestCustomTextView.app324380140#324380140#0(0"0(0#0#0"8621274464#347"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /usr/bin/touch -c /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/Debug-iphonesimulator/TestCustomTextView.app0#
+lSLF07#2@124"Touch /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/Debug-iphonesimulator/TestCustomTextView.app324692187#324692187#0(0"0(0#0#0"8623134816#347"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /usr/bin/touch -c /Users/Keith/Documents/Dropbox/KEITH/Programming/TestCustomTextView/build/Debug-iphonesimulator/TestCustomTextView.app0#
 

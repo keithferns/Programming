@@ -5,16 +5,16 @@
 //  Created by Keith Fernandes on 4/12/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
-
+/*
 #import "EditTextView.h"
 
 
 @implementation EditTextView
 
 - (void) setEditable:(BOOL) {
-	//[self	[setEditable:(isEditable YES)]];		
+		//[self	[setEditable:(isEditable YES)]];		
 }
-
+	/*
 - (void) setDelegate:(id <UITextViewDelegate>){
 
 }
@@ -60,11 +60,11 @@
     }
 }
 */ 
-
+/*
 
 - (void)dealloc {
     [super dealloc];
 }
 
-
+*/
 @end

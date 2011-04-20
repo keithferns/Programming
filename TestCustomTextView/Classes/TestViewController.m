@@ -7,11 +7,9 @@
 //
 
 #import "TestViewController.h"
-	//#import "EditTextView.h"
 
 @implementation TestViewController
 
-@synthesize newTV;
 
 - (IBAction)changeBkColor{
 
@@ -51,7 +49,6 @@
 
 
 - (void)dealloc {
-	[newTV release];
     [super dealloc];
 }
 

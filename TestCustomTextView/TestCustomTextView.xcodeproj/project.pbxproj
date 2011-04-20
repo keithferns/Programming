@@ -15,7 +15,6 @@
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		28D801B40F44B63D00FB423F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28D801B30F44B63D00FB423F /* CoreData.framework */; };
-		531E5ACD13555546004A46A5 /* EditTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 531E5ACC13555546004A46A5 /* EditTextView.m */; };
 		531E5AD21355557B004A46A5 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 531E5AD01355557B004A46A5 /* TestViewController.m */; };
 		531E5AD31355557B004A46A5 /* TestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 531E5AD11355557B004A46A5 /* TestViewController.xib */; };
 /* End PBXBuildFile section */
@@ -32,8 +31,6 @@
 		28D801B30F44B63D00FB423F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* TestCustomTextView_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestCustomTextView_Prefix.pch; sourceTree = "<group>"; };
-		531E5ACB13555546004A46A5 /* EditTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditTextView.h; sourceTree = "<group>"; };
-		531E5ACC13555546004A46A5 /* EditTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditTextView.m; sourceTree = "<group>"; };
 		531E5ACF1355557B004A46A5 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
 		531E5AD01355557B004A46A5 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		531E5AD11355557B004A46A5 /* TestViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestViewController.xib; sourceTree = "<group>"; };
@@ -58,8 +55,6 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				531E5ACB13555546004A46A5 /* EditTextView.h */,
-				531E5ACC13555546004A46A5 /* EditTextView.m */,
 				1D3623240D0F684500981E51 /* TestCustomTextViewAppDelegate.h */,
 				1D3623250D0F684500981E51 /* TestCustomTextViewAppDelegate.m */,
 				531E5ACF1355557B004A46A5 /* TestViewController.h */,
@@ -183,7 +178,6 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* TestCustomTextViewAppDelegate.m in Sources */,
 				28193060112F816700ECF9B4 /* TestCustomTextView.xcdatamodeld in Sources */,
-				531E5ACD13555546004A46A5 /* EditTextView.m in Sources */,
 				531E5AD21355557B004A46A5 /* TestViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

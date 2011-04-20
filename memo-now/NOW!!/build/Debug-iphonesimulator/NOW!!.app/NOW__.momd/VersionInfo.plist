@@ -7,7 +7,28 @@
 	<key>NSManagedObjectModel_VersionHashes</key>
 	<dict>
 		<key>NOW__</key>
-		<dict/>
+		<dict>
+			<key>Appointment</key>
+			<data>
+			95IgpTdJmeOQw9Exu099C1cSGpI+DhE7hU7wUZTX+wU=
+			</data>
+			<key>File</key>
+			<data>
+			FoDhW3OGZGbwFyV47MLALP3wjvEL4lmgjwWpketGczc=
+			</data>
+			<key>Folder</key>
+			<data>
+			RRED5gY/4yucW97QrPYLbbxkRPDgsFJ2OJdhLiRG81g=
+			</data>
+			<key>Memo</key>
+			<data>
+			jO9BB5mvNEbHpyS7vICoQmoVXZ68A70HurjFuvZslzQ=
+			</data>
+			<key>ToDo</key>
+			<data>
+			KbmG6ukr+i95+uTYHHg2Smt94Ue7AgLkksnvVj26uzI=
+			</data>
+		</dict>
 	</dict>
 </dict>
 </plist>

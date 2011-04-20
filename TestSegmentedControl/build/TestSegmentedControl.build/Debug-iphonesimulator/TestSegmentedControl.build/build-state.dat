@@ -1,0 +1,341 @@
+TTestSegmentedControl
+v7
+r0
+t324709844.537440
+cCheck dependencies
+cProcessInfoPlistFile /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/Debug-iphonesimulator/TestSegmentedControl.app/Info.plist TestSegmentedControl-Info.plist
+cCompileXIB /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/MainWindow.xib
+cCompileXIB /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/Classes/firstscreen.xib
+cCompileXIB /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/Classes/second.xib
+cProcessPCH /var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TestSegmentedControl_Prefix-gphlcvuwgyofmtcaawxqnvmpjekx/TestSegmentedControl_Prefix.pch.gch TestSegmentedControl_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
+cDataModelVersionCompile /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/Debug-iphonesimulator/TestSegmentedControl.app/TestSegmentedControl.momd /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/TestSegmentedControl.xcdatamodeld
+cCompileC build/TestSegmentedControl.build/Debug-iphonesimulator/TestSegmentedControl.build/Objects-normal/i386/main.o /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/main.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/TestSegmentedControl.build/Debug-iphonesimulator/TestSegmentedControl.build/Objects-normal/i386/TestSegmentedControlAppDelegate.o /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/Classes/TestSegmentedControlAppDelegate.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/TestSegmentedControl.build/Debug-iphonesimulator/TestSegmentedControl.build/Objects-normal/i386/firstscreen.o /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/Classes/firstscreen.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/TestSegmentedControl.build/Debug-iphonesimulator/TestSegmentedControl.build/Objects-normal/i386/second.o /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/Classes/second.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cLd /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/Debug-iphonesimulator/TestSegmentedControl.app/TestSegmentedControl normal i386
+cGenerateDSYMFile /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/Debug-iphonesimulator/TestSegmentedControl.app.dSYM /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/Debug-iphonesimulator/TestSegmentedControl.app/TestSegmentedControl
+cTouch /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/Debug-iphonesimulator/TestSegmentedControl.app
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk
+c000000004D5C9B4E0000000000000110
+t1297914702
+s272
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/CoreData.framework/CoreData
+c000000004D54D02800000000001D6EC0
+t1297403944
+s1928896
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/CoreData.framework/Headers/CoreData.h
+c000000004D54D01A000000000000046B
+t1297403930
+s1131
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
+c000000004D54CFFA00000000002999B0
+t1297403898
+s2726320
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/Foundation.framework/Foundation
+c000000004D54CFE5000000000029DA70
+t1297403877
+s2742896
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h
+c000000004D54CFB80000000000001466
+t1297403832
+s5222
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h
+c000000004D5615B40000000000000AA1
+t1297487284
+s2721
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/UIKit.framework/UIKit
+c000000004D5616030000000000766870
+t1297487363
+s7759984
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/usr/include/Availability.h
+c000000004D4F7A2B0000000000001B19
+t1297054251
+s6937
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/Classes/TestSegmentedControlAppDelegate.h
+c000000004DAA329000000000000003FA
+t1302999696
+s1018
+i<UIKit/UIKit.h>
+i<CoreData/CoreData.h>
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/Classes/TestSegmentedControlAppDelegate.m
+c000000004DAA33150000000000001E92
+t1302999829
+s7826
+i"TestSegmentedControlAppDelegate.h"
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/Classes/firstscreen.h
+c000000004DAA3B6A000000000000014F
+t1303001962
+s335
+i<UIKit/UIKit.h>
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/Classes/firstscreen.m
+c000000004DAA457D0000000000000683
+t1303004541
+s1667
+i"firstscreen.h"
+i"second.h"
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/Classes/firstscreen.xib
+c000000004DAA65610000000000004AE9
+t1303012705
+s19177
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/Classes/second.h
+c000000004DAA648D00000000000001D7
+t1303012493
+s471
+i<UIKit/UIKit.h>
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/Classes/second.m
+c000000004DAA685200000000000009B7
+t1303013458
+s2487
+i"second.h"
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/Classes/second.xib
+c000000004DAA651D0000000000005F49
+t1303012637
+s24393
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/MainWindow.xib
+c000000004DAA66FF000000000000569A
+t1303013119
+s22170
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/TestSegmentedControl.xcdatamodeld
+c000000004DAA31DA0000000000000088
+t1302999514
+s136
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/TestSegmentedControl_Prefix.pch
+c000000004DAA31DA000000000000017C
+t1302999514
+s380
+i<Availability.h>
+i<Foundation/Foundation.h>
+i<UIKit/UIKit.h>
+i<CoreData/CoreData.h>
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/Debug-iphonesimulator/TestSegmentedControl.app
+t1303013792
+s306
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/Debug-iphonesimulator/TestSegmentedControl.app.dSYM
+t1303013792
+s102
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/Debug-iphonesimulator/TestSegmentedControl.app/Info.plist
+t1303001913
+s649
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/Debug-iphonesimulator/TestSegmentedControl.app/MainWindow.nib
+t1303013792
+s1721
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/Debug-iphonesimulator/TestSegmentedControl.app/PkgInfo
+t1303001913
+s8
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/Debug-iphonesimulator/TestSegmentedControl.app/TestSegmentedControl
+t1303013792
+s25816
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/Debug-iphonesimulator/TestSegmentedControl.app/TestSegmentedControl.momd
+t1303001934
+s136
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/Debug-iphonesimulator/TestSegmentedControl.app/firstscreen.nib
+t1303013792
+s2452
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/Debug-iphonesimulator/TestSegmentedControl.app/second.nib
+t1303012642
+s3929
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/TestSegmentedControl.build/Debug-iphonesimulator/TestSegmentedControl.build/Objects-normal/i386/TestSegmentedControl.LinkFileList
+c000000004DAA3B3800000000000002F0
+t1303001912
+s752
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/TestSegmentedControl.build/Debug-iphonesimulator/TestSegmentedControl.build/Objects-normal/i386/TestSegmentedControlAppDelegate.o
+t1303001935
+s63984
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/TestSegmentedControl.build/Debug-iphonesimulator/TestSegmentedControl.build/Objects-normal/i386/firstscreen.o
+t1303012499
+s41780
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/TestSegmentedControl.build/Debug-iphonesimulator/TestSegmentedControl.build/Objects-normal/i386/main.o
+t1303001934
+s6372
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/TestSegmentedControl.build/Debug-iphonesimulator/TestSegmentedControl.build/Objects-normal/i386/second.o
+t1303013792
+s43100
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/main.m
+c000000004DAA31DA0000000000000179
+t1302999514
+s377
+i<UIKit/UIKit.h>
+
+N/var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TestSegmentedControl_Prefix-gphlcvuwgyofmtcaawxqnvmpjekx/TestSegmentedControl_Prefix.pch.gch
+t1303001934
+s16679120
+
+NTestSegmentedControl-Info.plist
+c000000004DAA31DA000000000000038D
+t1302999514
+s909
+
+CCheck dependencies
+r0
+lSLF07#2@18"Check dependencies324709844#324709844#0(0"0(0#1#0"8617305312#0"0#
+
+CCompileC build/TestSegmentedControl.build/Debug-iphonesimulator/TestSegmentedControl.build/Objects-normal/i386/TestSegmentedControlAppDelegate.o /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/Classes/TestSegmentedControlAppDelegate.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s324694734.892300
+e324694735.137398
+r1
+xCompileC
+xbuild/TestSegmentedControl.build/Debug-iphonesimulator/TestSegmentedControl.build/Objects-normal/i386/TestSegmentedControlAppDelegate.o
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/Classes/TestSegmentedControlAppDelegate.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@119"Compile /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/Classes/TestSegmentedControlAppDelegate.m324694734#324694735#0(0"0(0#0#111"/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/Classes/TestSegmentedControlAppDelegate.m8615797920#2577"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/TestSegmentedControl.build/Debug-iphonesimulator/TestSegmentedControl.build/TestSegmentedControl-generated-files.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/TestSegmentedControl.build/Debug-iphonesimulator/TestSegmentedControl.build/TestSegmentedControl-own-target-headers.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/TestSegmentedControl.build/Debug-iphonesimulator/TestSegmentedControl.build/TestSegmentedControl-all-target-headers.hmap -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/TestSegmentedControl.build/Debug-iphonesimulator/TestSegmentedControl.build/TestSegmentedControl-project-headers.hmap -F/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/Debug-iphonesimulator -I/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/Debug-iphonesimulator/include -I/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/TestSegmentedControl.build/Debug-iphonesimulator/TestSegmentedControl.build/DerivedSources/i386 -I/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/TestSegmentedControl.build/Debug-iphonesimulator/TestSegmentedControl.build/DerivedSources -include /var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TestSegmentedControl_Prefix-gphlcvuwgyofmtcaawxqnvmpjekx/TestSegmentedControl_Prefix.pch -c /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/Classes/TestSegmentedControlAppDelegate.m -o /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/TestSegmentedControl.build/Debug-iphonesimulator/TestSegmentedControl.build/Objects-normal/i386/TestSegmentedControlAppDelegate.o0#
+
+CCompileC build/TestSegmentedControl.build/Debug-iphonesimulator/TestSegmentedControl.build/Objects-normal/i386/firstscreen.o /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/Classes/firstscreen.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s324705299.178309
+e324705299.303814
+r1
+xCompileC
+xbuild/TestSegmentedControl.build/Debug-iphonesimulator/TestSegmentedControl.build/Objects-normal/i386/firstscreen.o
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/Classes/firstscreen.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@99"Compile /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/Classes/firstscreen.m324705299#324705299#0(0"0(0#0#91"/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/Classes/firstscreen.m8598560192#2537"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/TestSegmentedControl.build/Debug-iphonesimulator/TestSegmentedControl.build/TestSegmentedControl-generated-files.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/TestSegmentedControl.build/Debug-iphonesimulator/TestSegmentedControl.build/TestSegmentedControl-own-target-headers.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/TestSegmentedControl.build/Debug-iphonesimulator/TestSegmentedControl.build/TestSegmentedControl-all-target-headers.hmap -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/TestSegmentedControl.build/Debug-iphonesimulator/TestSegmentedControl.build/TestSegmentedControl-project-headers.hmap -F/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/Debug-iphonesimulator -I/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/Debug-iphonesimulator/include -I/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/TestSegmentedControl.build/Debug-iphonesimulator/TestSegmentedControl.build/DerivedSources/i386 -I/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/TestSegmentedControl.build/Debug-iphonesimulator/TestSegmentedControl.build/DerivedSources -include /var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TestSegmentedControl_Prefix-gphlcvuwgyofmtcaawxqnvmpjekx/TestSegmentedControl_Prefix.pch -c /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/Classes/firstscreen.m -o /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/TestSegmentedControl.build/Debug-iphonesimulator/TestSegmentedControl.build/Objects-normal/i386/firstscreen.o0#
+
+CCompileC build/TestSegmentedControl.build/Debug-iphonesimulator/TestSegmentedControl.build/Objects-normal/i386/main.o /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/main.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s324694734.570727
+e324694734.892176
+r1
+xCompileC
+xbuild/TestSegmentedControl.build/Debug-iphonesimulator/TestSegmentedControl.build/Objects-normal/i386/main.o
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/main.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@84"Compile /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/main.m324694734#324694734#0(0"0(0#0#76"/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/main.m8617930464#2515"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/TestSegmentedControl.build/Debug-iphonesimulator/TestSegmentedControl.build/TestSegmentedControl-generated-files.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/TestSegmentedControl.build/Debug-iphonesimulator/TestSegmentedControl.build/TestSegmentedControl-own-target-headers.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/TestSegmentedControl.build/Debug-iphonesimulator/TestSegmentedControl.build/TestSegmentedControl-all-target-headers.hmap -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/TestSegmentedControl.build/Debug-iphonesimulator/TestSegmentedControl.build/TestSegmentedControl-project-headers.hmap -F/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/Debug-iphonesimulator -I/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/Debug-iphonesimulator/include -I/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/TestSegmentedControl.build/Debug-iphonesimulator/TestSegmentedControl.build/DerivedSources/i386 -I/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/TestSegmentedControl.build/Debug-iphonesimulator/TestSegmentedControl.build/DerivedSources -include /var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TestSegmentedControl_Prefix-gphlcvuwgyofmtcaawxqnvmpjekx/TestSegmentedControl_Prefix.pch -c /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/main.m -o /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/TestSegmentedControl.build/Debug-iphonesimulator/TestSegmentedControl.build/Objects-normal/i386/main.o0#
+
+CCompileC build/TestSegmentedControl.build/Debug-iphonesimulator/TestSegmentedControl.build/Objects-normal/i386/second.o /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/Classes/second.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s324706592.665736
+e324706592.767703
+r1
+xCompileC
+xbuild/TestSegmentedControl.build/Debug-iphonesimulator/TestSegmentedControl.build/Objects-normal/i386/second.o
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/Classes/second.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@94"Compile /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/Classes/second.m324706592#324706592#0(0"0(0#0#86"/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/Classes/second.m8608971776#2527"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/TestSegmentedControl.build/Debug-iphonesimulator/TestSegmentedControl.build/TestSegmentedControl-generated-files.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/TestSegmentedControl.build/Debug-iphonesimulator/TestSegmentedControl.build/TestSegmentedControl-own-target-headers.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/TestSegmentedControl.build/Debug-iphonesimulator/TestSegmentedControl.build/TestSegmentedControl-all-target-headers.hmap -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/TestSegmentedControl.build/Debug-iphonesimulator/TestSegmentedControl.build/TestSegmentedControl-project-headers.hmap -F/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/Debug-iphonesimulator -I/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/Debug-iphonesimulator/include -I/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/TestSegmentedControl.build/Debug-iphonesimulator/TestSegmentedControl.build/DerivedSources/i386 -I/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/TestSegmentedControl.build/Debug-iphonesimulator/TestSegmentedControl.build/DerivedSources -include /var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TestSegmentedControl_Prefix-gphlcvuwgyofmtcaawxqnvmpjekx/TestSegmentedControl_Prefix.pch -c /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/Classes/second.m -o /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/TestSegmentedControl.build/Debug-iphonesimulator/TestSegmentedControl.build/Objects-normal/i386/second.o0#
+
+CCompileXIB /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/Classes/firstscreen.xib
+s324706592.048434
+e324706592.663993
+r1
+xCompileXIB
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/Classes/firstscreen.xib
+lSLF07#2@34"CompileXIB Classes/firstscreen.xib324706592#324706592#0(0"0(0#0#93"/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/Classes/firstscreen.xib8621988992#686"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 4.3    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/Debug-iphonesimulator/TestSegmentedControl.app/firstscreen.nib /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/Classes/firstscreen.xib --sdk /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk0#
+
+CCompileXIB /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/Classes/second.xib
+s324705442.032803
+e324705442.523496
+r1
+xCompileXIB
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/Classes/second.xib
+lSLF07#2@29"CompileXIB Classes/second.xib324705442#324705442#0(0"0(0#0#88"/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/Classes/second.xib8620318464#676"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 4.3    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/Debug-iphonesimulator/TestSegmentedControl.app/second.nib /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/Classes/second.xib --sdk /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk0#
+
+CCompileXIB /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/MainWindow.xib
+s324706592.047653
+e324706592.568051
+r1
+xCompileXIB
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/MainWindow.xib
+lSLF07#2@25"CompileXIB MainWindow.xib324706592#324706592#0(0"0(0#0#84"/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/MainWindow.xib8622838624#676"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 4.3    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/Debug-iphonesimulator/TestSegmentedControl.app/MainWindow.nib /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/MainWindow.xib --sdk /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk0#
+
+CDataModelVersionCompile /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/Debug-iphonesimulator/TestSegmentedControl.app/TestSegmentedControl.momd /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/TestSegmentedControl.xcdatamodeld
+s324694734.569412
+e324694734.945371
+r1
+xDataModelVersionCompile
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/Debug-iphonesimulator/TestSegmentedControl.app/TestSegmentedControl.momd
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/TestSegmentedControl.xcdatamodeld
+lSLF07#2@136"DataModelVersionCompile build/Debug-iphonesimulator/TestSegmentedControl.app/TestSegmentedControl.momd TestSegmentedControl.xcdatamodeld324694734#324694734#0(0"0(0#0#103"/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/TestSegmentedControl.xcdatamodeld8622884160#518"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/momc -XD_MOMC_TARGET_VERSION=10.6 /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/TestSegmentedControl.xcdatamodeld /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/Debug-iphonesimulator/TestSegmentedControl.app/TestSegmentedControl.momd0#
+
+CGenerateDSYMFile /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/Debug-iphonesimulator/TestSegmentedControl.app.dSYM /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/Debug-iphonesimulator/TestSegmentedControl.app/TestSegmentedControl
+s324706592.850943
+e324706592.939757
+r1
+xGenerateDSYMFile
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/Debug-iphonesimulator/TestSegmentedControl.app.dSYM
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/Debug-iphonesimulator/TestSegmentedControl.app/TestSegmentedControl
+lSLF07#2@148"GenerateDSYMFile build/Debug-iphonesimulator/TestSegmentedControl.app.dSYM build/Debug-iphonesimulator/TestSegmentedControl.app/TestSegmentedControl324706592#324706592#0(0"0(0#0#143"/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/Debug-iphonesimulator/TestSegmentedControl.app/TestSegmentedControl8624811392#515"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/dsymutil /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/Debug-iphonesimulator/TestSegmentedControl.app/TestSegmentedControl -o /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/Debug-iphonesimulator/TestSegmentedControl.app.dSYM0#
+
+CLd /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/Debug-iphonesimulator/TestSegmentedControl.app/TestSegmentedControl normal i386
+s324706592.767804
+e324706592.850849
+r1
+xLd
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/Debug-iphonesimulator/TestSegmentedControl.app/TestSegmentedControl
+xnormal
+xi386
+lSLF07#2@148"Link /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/Debug-iphonesimulator/TestSegmentedControl.app/TestSegmentedControl324706592#324706592#0(0"0(0#0#0"8619370560#1140"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl    setenv MACOSX_DEPLOYMENT_TARGET 10.6    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -arch i386 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -L/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/Debug-iphonesimulator -F/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/Debug-iphonesimulator -filelist /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/TestSegmentedControl.build/Debug-iphonesimulator/TestSegmentedControl.build/Objects-normal/i386/TestSegmentedControl.LinkFileList -mmacosx-version-min=10.6 -Xlinker -objc_abi_version -Xlinker 2 -framework Foundation -framework UIKit -framework CoreGraphics -framework CoreData -o /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/Debug-iphonesimulator/TestSegmentedControl.app/TestSegmentedControl0#
+
+CProcessInfoPlistFile /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/Debug-iphonesimulator/TestSegmentedControl.app/Info.plist TestSegmentedControl-Info.plist
+s324694713.164419
+e324694713.282730
+r1
+xProcessInfoPlistFile
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/Debug-iphonesimulator/TestSegmentedControl.app/Info.plist
+xTestSegmentedControl-Info.plist
+lSLF07#2@39"Process TestSegmentedControl-Info.plist324694713#324694713#0(0"0(0#0#101"/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/TestSegmentedControl-Info.plist8619379456#611"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-infoPlistUtility TestSegmentedControl-Info.plist -genpkginfo /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/Debug-iphonesimulator/TestSegmentedControl.app/PkgInfo -expandbuildsettings -format binary -platform iphonesimulator -o /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/Debug-iphonesimulator/TestSegmentedControl.app/Info.plist0#
+
+CProcessPCH /var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TestSegmentedControl_Prefix-gphlcvuwgyofmtcaawxqnvmpjekx/TestSegmentedControl_Prefix.pch.gch TestSegmentedControl_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
+s324694726.001622
+e324694734.569222
+r1
+xProcessPCH
+x/var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TestSegmentedControl_Prefix-gphlcvuwgyofmtcaawxqnvmpjekx/TestSegmentedControl_Prefix.pch.gch
+xTestSegmentedControl_Prefix.pch
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@42"Precompile TestSegmentedControl_Prefix.pch324694726#324694734#0(0"0(0#0#101"/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/TestSegmentedControl_Prefix.pch8603400608#2363"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c-header -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/TestSegmentedControl.build/Debug-iphonesimulator/TestSegmentedControl.build/TestSegmentedControl-generated-files.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/TestSegmentedControl.build/Debug-iphonesimulator/TestSegmentedControl.build/TestSegmentedControl-own-target-headers.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/TestSegmentedControl.build/Debug-iphonesimulator/TestSegmentedControl.build/TestSegmentedControl-all-target-headers.hmap -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/TestSegmentedControl.build/Debug-iphonesimulator/TestSegmentedControl.build/TestSegmentedControl-project-headers.hmap -F/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/Debug-iphonesimulator -I/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/Debug-iphonesimulator/include -I/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/TestSegmentedControl.build/Debug-iphonesimulator/TestSegmentedControl.build/DerivedSources/i386 -I/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/TestSegmentedControl.build/Debug-iphonesimulator/TestSegmentedControl.build/DerivedSources -c /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/TestSegmentedControl_Prefix.pch -o /var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TestSegmentedControl_Prefix-gphlcvuwgyofmtcaawxqnvmpjekx/TestSegmentedControl_Prefix.pch.gch0#
+
+CTouch /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/Debug-iphonesimulator/TestSegmentedControl.app
+s324706592.939848
+e324706592.949438
+r1
+xTouch
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/Debug-iphonesimulator/TestSegmentedControl.app
+lSLF07#2@128"Touch /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/Debug-iphonesimulator/TestSegmentedControl.app324706592#324706593#0(0"0(0#0#0"8624003744#353"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /usr/bin/touch -c /Users/Keith/Documents/Dropbox/KEITH/Programming/TestSegmentedControl/build/Debug-iphonesimulator/TestSegmentedControl.app0#
+

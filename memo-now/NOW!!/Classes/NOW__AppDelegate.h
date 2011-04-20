@@ -8,27 +8,30 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
+#import "Memo.h"
 
 @interface NOW__AppDelegate : NSObject <UIApplicationDelegate> {
     
     UIWindow *window;
 	UIViewController *viewController;
+		//	UINavigationController *navigationController;
     
-@private
-    NSManagedObjectContext *managedObjectContext_;
-    NSManagedObjectModel *managedObjectModel_;
-    NSPersistentStoreCoordinator *persistentStoreCoordinator_;
+    NSManagedObjectContext *managedObjectContext;
+    NSManagedObjectModel *managedObjectModel;
+    NSPersistentStoreCoordinator *persistentStoreCoordinator;
+	
+	
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet UIViewController	*viewController;
+	//@property (nonatomic, retain) UINavigationController *navigationController;
 
 @property (nonatomic, retain, readonly) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain, readonly) NSManagedObjectModel *managedObjectModel;
 @property (nonatomic, retain, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
-- (NSURL *)applicationDocumentsDirectory;
-- (void)saveContext;
+- (NSString *)applicationDocumentsDirectory;
 
 @end
 
