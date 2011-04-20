@@ -28,8 +28,12 @@
 		5306DF1B135AE30700FA773F /* MyFilesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5306DF1A135AE30700FA773F /* MyFilesTableViewController.m */; };
 		5306DF22135AE3DF00FA773F /* MyFilesTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5306DF21135AE3DF00FA773F /* MyFilesTableViewController.xib */; };
 		53136123135E5AC900624C08 /* Memo.m in Sources */ = {isa = PBXBuildFile; fileRef = 53136122135E5AC900624C08 /* Memo.m */; };
-		5313613E135E5C8600624C08 /* MyMemosTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5313613D135E5C8600624C08 /* MyMemosTableViewController.m */; };
 		531E5A8F13554D13004A46A5 /* EditTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 531E5A8E13554D13004A46A5 /* EditTextView.m */; };
+		53522B1E135F793A00437445 /* testImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 53522B1D135F793A00437445 /* testImage.png */; };
+		537D1693135F360A00C389FC /* MyMemosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 537D1691135F360A00C389FC /* MyMemosViewController.m */; };
+		537D1694135F360A00C389FC /* MyMemosViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 537D1692135F360A00C389FC /* MyMemosViewController.xib */; };
+		537D1698135F362100C389FC /* MyMemosTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 537D1696135F362100C389FC /* MyMemosTableViewController.m */; };
+		537D1699135F362100C389FC /* MyMemosTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 537D1697135F362100C389FC /* MyMemosTableViewController.xib */; };
 		53BDD1B9135179DD00C1C44E /* DateTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53BDD1B7135179DD00C1C44E /* DateTimeViewController.m */; };
 		53BDD1BA135179DD00C1C44E /* DateTimeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53BDD1B8135179DD00C1C44E /* DateTimeViewController.xib */; };
 		53DF3FF6134E337C001FE4E4 /* EnterTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53DF3FF4134E337C001FE4E4 /* EnterTextViewController.m */; };
@@ -70,10 +74,15 @@
 		5306DF21135AE3DF00FA773F /* MyFilesTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyFilesTableViewController.xib; sourceTree = "<group>"; };
 		53136121135E5AC900624C08 /* Memo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Memo.h; sourceTree = "<group>"; };
 		53136122135E5AC900624C08 /* Memo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Memo.m; sourceTree = "<group>"; };
-		5313613C135E5C8600624C08 /* MyMemosTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMemosTableViewController.h; sourceTree = "<group>"; };
-		5313613D135E5C8600624C08 /* MyMemosTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMemosTableViewController.m; sourceTree = "<group>"; };
 		531E5A8D13554D13004A46A5 /* EditTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditTextView.h; sourceTree = "<group>"; };
 		531E5A8E13554D13004A46A5 /* EditTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditTextView.m; sourceTree = "<group>"; };
+		53522B1D135F793A00437445 /* testImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testImage.png; sourceTree = "<group>"; };
+		537D1690135F360A00C389FC /* MyMemosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMemosViewController.h; sourceTree = "<group>"; };
+		537D1691135F360A00C389FC /* MyMemosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMemosViewController.m; sourceTree = "<group>"; };
+		537D1692135F360A00C389FC /* MyMemosViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyMemosViewController.xib; sourceTree = "<group>"; };
+		537D1695135F362100C389FC /* MyMemosTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMemosTableViewController.h; sourceTree = "<group>"; };
+		537D1696135F362100C389FC /* MyMemosTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMemosTableViewController.m; sourceTree = "<group>"; };
+		537D1697135F362100C389FC /* MyMemosTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyMemosTableViewController.xib; sourceTree = "<group>"; };
 		53BDD1B6135179DD00C1C44E /* DateTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateTimeViewController.h; sourceTree = "<group>"; };
 		53BDD1B7135179DD00C1C44E /* DateTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateTimeViewController.m; sourceTree = "<group>"; };
 		53BDD1B8135179DD00C1C44E /* DateTimeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DateTimeViewController.xib; sourceTree = "<group>"; };
@@ -104,6 +113,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				537D168E135F35D300C389FC /* MyMemosViewController */,
 				53136125135E5AE600624C08 /* MemoManagedObject */,
 				5306DF1F135AE31E00FA773F /* MyFilesTableViewController */,
 				1D3623240D0F684500981E51 /* NOW__AppDelegate.h */,
@@ -155,6 +165,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				53522B1D135F793A00437445 /* testImage.png */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				2819305F112F816700ECF9B4 /* NOW__.xcdatamodeld */,
 				8D1107310486CEB800E47090 /* NOW__-Info.plist */,
@@ -279,20 +290,10 @@
 		53136125135E5AE600624C08 /* MemoManagedObject */ = {
 			isa = PBXGroup;
 			children = (
-				5313613B135E5BB400624C08 /* MyMemosTableViewController */,
 				53136122135E5AC900624C08 /* Memo.m */,
 				53136121135E5AC900624C08 /* Memo.h */,
 			);
 			name = MemoManagedObject;
-			sourceTree = "<group>";
-		};
-		5313613B135E5BB400624C08 /* MyMemosTableViewController */ = {
-			isa = PBXGroup;
-			children = (
-				5313613C135E5C8600624C08 /* MyMemosTableViewController.h */,
-				5313613D135E5C8600624C08 /* MyMemosTableViewController.m */,
-			);
-			name = MyMemosTableViewController;
 			sourceTree = "<group>";
 		};
 		531E5A8913554CCA004A46A5 /* Views */ = {
@@ -301,6 +302,27 @@
 				5306DA621357CD3200FA773F /* EditTextView */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		537D168E135F35D300C389FC /* MyMemosViewController */ = {
+			isa = PBXGroup;
+			children = (
+				537D168F135F35E300C389FC /* MyMemosTableViewController */,
+				537D1690135F360A00C389FC /* MyMemosViewController.h */,
+				537D1691135F360A00C389FC /* MyMemosViewController.m */,
+				537D1692135F360A00C389FC /* MyMemosViewController.xib */,
+			);
+			name = MyMemosViewController;
+			sourceTree = "<group>";
+		};
+		537D168F135F35E300C389FC /* MyMemosTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				537D1695135F362100C389FC /* MyMemosTableViewController.h */,
+				537D1696135F362100C389FC /* MyMemosTableViewController.m */,
+				537D1697135F362100C389FC /* MyMemosTableViewController.xib */,
+			);
+			name = MyMemosTableViewController;
 			sourceTree = "<group>";
 		};
 		53BDD1B51351798200C1C44E /* AppointmentDateTimeViewController */ = {
@@ -404,6 +426,9 @@
 				5306DBBB135838C600FA773F /* SaveFileViewController.xib in Resources */,
 				5306DC121358449700FA773F /* MyPlanner1.xib in Resources */,
 				5306DF22135AE3DF00FA773F /* MyFilesTableViewController.xib in Resources */,
+				537D1694135F360A00C389FC /* MyMemosViewController.xib in Resources */,
+				537D1699135F362100C389FC /* MyMemosTableViewController.xib in Resources */,
+				53522B1E135F793A00437445 /* testImage.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,7 +453,8 @@
 				5306DE9F135AD5CB00FA773F /* AppendFileViewController.m in Sources */,
 				5306DF1B135AE30700FA773F /* MyFilesTableViewController.m in Sources */,
 				53136123135E5AC900624C08 /* Memo.m in Sources */,
-				5313613E135E5C8600624C08 /* MyMemosTableViewController.m in Sources */,
+				537D1693135F360A00C389FC /* MyMemosViewController.m in Sources */,
+				537D1698135F362100C389FC /* MyMemosTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

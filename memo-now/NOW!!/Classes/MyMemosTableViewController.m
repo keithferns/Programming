@@ -2,7 +2,7 @@
 //  MyMemosTableViewController.m
 //  NOW!!
 //
-//  Created by Keith Fernandes on 4/19/11.
+//  Created by Keith Fernandes on 4/20/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
@@ -14,45 +14,36 @@
 
 @synthesize managedObjectContext;
 @synthesize memoArray;
-	//@synthesize	mymemoView;
-	//@synthesize memoTable;
-
-#pragma mark -
-#pragma mark Initialization
-
-/*
-- (id)initWithStyle:(UITableViewStyle)style {
-    // Override initWithStyle: if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization.
-    }
-    return self;
-}
-*/
+@synthesize tableView;
 
 
 #pragma mark -
 #pragma mark View lifecycle
 
+
 - (void)viewDidLoad {
+	NSLog(@"Loading view from MyMemosTableViewCOntroller");
     [super viewDidLoad];
-		if (managedObjectContext == nil) 
-		{ 
+	[self.view addSubview:tableView];
+
+	if (managedObjectContext == nil) 
+	{ 
 		managedObjectContext = [(NOW__AppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext]; 
         NSLog(@"After managedObjectContext: %@",  managedObjectContext);
-		}
-	self.title = @"All Memos";
-
+	}
 	
+	self.title = @"All Memos";
 	[self fetchMemoRecords];
 	
-		//[self.tableView reloadData];  
-		// self.navigationItem.rightBarButtonItem = self.editButtonItem;
+ 
+	
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 -(void) fetchMemoRecords{
 	
+NSLog(@"Going to fetch Memo records now");
 		//defining table to use
 	NSEntityDescription *entity = [NSEntityDescription entityForName:@"Memo" inManagedObjectContext:managedObjectContext];
 	
@@ -63,13 +54,13 @@
 		//defines how to sort the records
 	NSSortDescriptor *sortByDate = [[NSSortDescriptor alloc] initWithKey:@"timeStamp" ascending:YES];
 	NSArray *sortDescriptors = [NSArray arrayWithObject:sortByDate];//note: if adding other sortdescriptors, then use  method -arraywithObjects. If the fetch request must meet some conditions, then use the NSPredicate class 
-															
+	
 	[request setSortDescriptors:sortDescriptors];
 	[sortByDate release];
 	
 	NSError *error;
 	NSMutableArray *mutableFetchResults = [[managedObjectContext executeFetchRequest:request error:&error] mutableCopy];
-
+	
 	if (!mutableFetchResults) {
 		
 	}
@@ -82,7 +73,6 @@
 	
 	
 }
-
 
 /*
 - (void)viewWillAppear:(BOOL)animated {
@@ -104,45 +94,55 @@
     [super viewDidDisappear:animated];
 }
 */
-
-
- - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-	 return YES;
- }
-
+/*
+// Override to allow orientations other than the default portrait orientation.
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    // Return YES for supported orientations.
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+*/
 
 
 #pragma mark -
 #pragma mark Table view data source
+
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+	
+	
+	
+}
+
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
     return 1;
 }
 
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
     return [memoArray count];
-	
 }
 
-// Customizes the appearance of table view cells.
+
+
+
+// Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *CellIdentifier = @"Cell";
-    static NSDateFormatter *dateFormatter = nil;
+	static NSDateFormatter *dateFormatter = nil;
 	if (dateFormatter == nil) {
 		dateFormatter = [[NSDateFormatter alloc] init];
 		[dateFormatter setDateFormat:@"h:mm.ss a"];
 	}
-	
-	
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
-	
-	
+    
 	Memo *newMemo = [memoArray objectAtIndex:[indexPath row]];
 		//Memo *previousMemo = nil;
 	
@@ -151,18 +151,7 @@
 	}
 	[cell.textLabel setText: [dateFormatter stringFromDate:[newMemo timeStamp]]];
 	[cell.detailTextLabel setText:[NSString stringWithFormat:@"%@,", newMemo.Text]];
-		//if (previousMemo) {
-		//NSTimeInterval timeDifference = [[newMemo timeStamp] timeIntervalSinceDate: [previousMemo timeStamp]];
-		//[cell.detailTextLabel setText: [NSString stringWithFormat:@"+%.02f sec", timeDifference]];
-		
-
-		//} else{
-		
-
-		//[cell.detailTextLabel setText:@"---"];
-		//}
-	
-    // Configure the cell...    
+    
     return cell;
 }
 
@@ -214,8 +203,8 @@
     // Navigation logic may go here. Create and push another view controller.
     /*
     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
+    // ...
+    // Pass the selected object to the new view controller.
     [self.navigationController pushViewController:detailViewController animated:YES];
     [detailViewController release];
     */
@@ -239,8 +228,6 @@
 
 
 - (void)dealloc {
-	[managedObjectContext release];
-	[memoArray release];
     [super dealloc];
 }
 

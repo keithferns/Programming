@@ -2,30 +2,24 @@
 //  MyMemosTableViewController.h
 //  NOW!!
 //
-//  Created by Keith Fernandes on 4/19/11.
+//  Created by Keith Fernandes on 4/20/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
-
 
 #import <UIKit/UIKit.h>
 #import "Memo.h"
 
 @interface MyMemosTableViewController : UITableViewController {
-
+	
 	NSManagedObjectContext *managedObjectContext;	
 	NSMutableArray *memoArray;
-		//UITableView *memoTable;
-		//UIView *mymemoView;
+	UITableView	*tableView;
 
 }
 
 @property(nonatomic, retain) NSManagedObjectContext *managedObjectContext;
-
-
 @property(nonatomic, retain) NSMutableArray *memoArray;
-
-	//@property(nonatomic, retain) IBOutlet UIView *mymemoView;
-	//@property(nonatomic, retain) IBOutlet UITableView *memoTable;
+@property (nonatomic, retain) IBOutlet UITableView *tableView;
 
 -(void) fetchMemoRecords; 
 

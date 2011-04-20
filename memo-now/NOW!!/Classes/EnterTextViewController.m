@@ -9,7 +9,7 @@
 #import "DateTimeViewController.h"
 #import	"MyPlanner.h"
 #import "AppendFileViewController.h"
-#import "MyMemosTableViewController.h"
+#import "MyMemosViewController.h"
 #import "NOW__AppDelegate.h"
 
 
@@ -22,21 +22,28 @@
 
 
 - (void) addTimeStamp{
+	NSLog(@"firing addTimeStamp");
 	
 	Memo *newMemo = (Memo *)[NSEntityDescription insertNewObjectForEntityForName:@"Memo" inManagedObjectContext: managedObjectContext];
 	[newMemo setTimeStamp:[NSDate	date]];
 		//[newMemo setText:[NSString text:editmemoTextView.text]];
 		NSString *string = [NSString stringWithFormat:@"%@,", editmemoTextView.text];
 		[newMemo setText:string];
+	
+	NSLog(@"%", string);
 
 	
 	
 	NSError *error;
 	
+	
 	if(![managedObjectContext save:&error]){  
 	}
 	
 	[memoArray insertObject:newMemo atIndex:0];
+	
+	
+	
 }
 
 - (IBAction)savememoAction:(id)sender{
@@ -171,9 +178,10 @@
 	
 - (IBAction)newmemoAction:(id)sender{
 		//just testing
-	MyMemosTableViewController *tableController = [[[MyMemosTableViewController alloc] initWithNibName:@"MyMemosTableViewController" bundle:nil] autorelease];
-	[self presentModalViewController:tableController animated:YES];	
+	MyMemosViewController *viewController = [[[MyMemosViewController alloc] initWithNibName:@"MyMemosViewController" bundle:nil] autorelease];
 	[self addTimeStamp];
+
+	[self presentModalViewController:viewController animated:YES];	
 
 }
 

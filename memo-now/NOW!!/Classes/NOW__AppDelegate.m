@@ -21,7 +21,7 @@
 - (void)applicationDidFinishLaunching:(UIApplication *)application;
 	{    
 	
-		MyMemosTableViewController *tableController =[[MyMemosTableViewController alloc] initWithStyle:UITableViewStylePlain];
+			//MyMemosTableViewController *tableController =[[MyMemosTableViewController alloc] initWithStyle:UITableViewStylePlain];
 				//tableController.managedObjectContext =  self.managedObjectContext;
 			//self.navigationController = [[UINavigationController alloc]initWithRootViewController:tableController];
 			//[tableController release];
@@ -33,7 +33,7 @@
     
 }
 
-
+/*
 
  - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex;
  {
@@ -69,7 +69,7 @@
  
  [alertView release];
  }
- 
+ */
 
 
 - (void)applicationWillResignActive:(UIApplication *)application {
