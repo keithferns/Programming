@@ -16,10 +16,10 @@
 @implementation EnterTextViewController
 
 @synthesize segmentedControl;
-@synthesize editmemoTextView, topView, bottomView, memoTitleLabel;
+@synthesize editmemoTextView, topView, bottomView, memoTitleLabel, lastMemoView, urgentMemoView;
 @synthesize saveAlert, wallAlert;
 @synthesize memoArray, managedObjectContext;
-@synthesize tableView;
+	//@synthesize tableView;
 
 -(IBAction) segmentedControlAction:(id)sender{
 	switch (self.segmentedControl.selectedSegmentIndex) {
@@ -48,11 +48,11 @@
 			if ([editmemoTextView hasText]) {
 				
 			[self addTimeStamp];
-
+			}
 				//just testing
 			MyMemosViewController *viewController = [[[MyMemosViewController alloc] initWithNibName:@"MyMemosViewController" bundle:nil] autorelease];
 			[self presentModalViewController:viewController animated:YES];	
-			}
+		
 			
 			break;
 		case 2:
@@ -66,7 +66,7 @@
 							  message:@"Manage Your Time ... or Folders?" 
 							  delegate:self 
 							  cancelButtonTitle:@"Later" 
-							  otherButtonTitles:@"Name and Save as File", @"Append To an Existing File", @"Set Appointment Time", @"Set TODO Reminder", nil];
+							  otherButtonTitles:@"Name and Save as File", @"Append To an Existing File", @"Set Appointment Time", @"Set To Do Reminder", nil];
 			[saveAlert show];
 				//[saveAlert release]; 
 			
@@ -76,25 +76,65 @@
 	}
 }
 
+	//fetch Memo Records, then get the most recent memo. Is there a more economical way to do this? 
+-(void) fetchMemoRecords{
+	
+	NSLog(@"Going to fetch Memo records now");
+		//defining table to use
+	NSEntityDescription *aMemo = [NSEntityDescription entityForName:@"Memo" inManagedObjectContext:managedObjectContext];
+	
+		//setting up the fetch request
+	NSFetchRequest *request	= [[NSFetchRequest alloc] init];
+	[request setEntity:aMemo];
+	
+		//defines how to sort the records
+	NSSortDescriptor *sortByDate = [[NSSortDescriptor alloc] initWithKey:@"timeStamp" ascending:NO];
+	NSArray *sortDescriptors = [NSArray arrayWithObject:sortByDate];//note: if adding other sortdescriptors, then use method -arraywithObjects. If the fetch request must meet some conditions, then use the NSPredicate class 
+	
+	[request setSortDescriptors:sortDescriptors];
+	[sortByDate release];
+	
+	NSError *error;
+	NSMutableArray *mutableFetchResults = [[managedObjectContext executeFetchRequest:request error:&error] mutableCopy];
+	
+	if (!mutableFetchResults) {
+			//	
+	}
+	
+		//save fetched data to an array
+	
+	[self setMemoArray:mutableFetchResults];
+	
+	[mutableFetchResults release];
+	[request release];
+		
+	
+}
+
+
+
 
 - (void) addTimeStamp{
 	NSLog(@"firing addTimeStamp");
 	
+		
+	
+		//copy contents of editmemoTextView to nsstring variable
+	NSString *mytext = [NSString stringWithFormat: @"%@", editmemoTextView.text]; 
+			//Initialize a new Memo Object and Insert it into Memo table in the ManagedObjectContext
 	Memo *newMemo = (Memo *)[NSEntityDescription insertNewObjectForEntityForName:@"Memo" inManagedObjectContext: managedObjectContext];
-	[newMemo setTimeStamp:[NSDate	date]];
-	NSString *mytext;
-		//mytext = editmemoTextView.text;
-	mytext = [NSString stringWithFormat: @"%@", editmemoTextView.text]; 
-	[newMemo setText:mytext];
+		//sets the timeStamp of the new Memo
+	[newMemo setTimeStamp:[NSDate	date]]; 
+		//copies the input text to the new Memo. 
+	[newMemo setMemoText:mytext]; 
 	
 	NSLog(@"%@", mytext);
 
 	NSError *error;
-	
-	if(![managedObjectContext save:&error]){  
+	if(![managedObjectContext save:&error]){  //???
 	}
 	
-	[memoArray insertObject:newMemo atIndex:0];
+	[memoArray insertObject:newMemo atIndex:0];//NOTE: NOT used here as far as I can tell
 	
 	
 	
@@ -149,13 +189,7 @@
 		[alertView release];
 	}
 
-/*  Method Works. Intended to be used to pull up the designated modalviewcontroller but that design choice was abandoned in favor of Alert Window popups. The said view controller and nib file are in the folder labelled xSameMemoViewController.
- 
-- (IBAction)savememoAction:(id)sender{	
-	SaveMemoViewController *savememoView = [[[SaveMemoViewController alloc] initWithNibName:@"SaveMemoViewController" bundle:nil] autorelease];
-	[self presentModalViewController:savememoView animated:YES];
-}
-*/
+
 
 - (IBAction)gotowallAction:(id)sender{
 
@@ -229,22 +263,40 @@
         managedObjectContext = [(NOW__AppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext]; 
         NSLog(@"After managedObjectContext: %@",  managedObjectContext);
 	}
+	
+	
+	/* Fetch Records and Get text of last Memo*/
+	[self fetchMemoRecords];
+	int myInt = [memoArray count];
+	NSLog(@"Number of Memos in the data store: %d", myInt);
+	if (myInt>0) { //calling up the last memo and putting the text on the textview1 of the bottomView. 
+		Memo *lastMemo = [memoArray objectAtIndex:0];
+		NSLog(@"trying to get the value for memoText for the last Memo");
+		NSString *lastMemoText = [lastMemo valueForKey:@"memoText"];
+		NSLog(@"This is the text of the last Memo: %@", lastMemoText);
+		[lastMemoView setText:lastMemoText];
+			//[lastMemoView setText:[lastMemo valueForKey:@"memoText"]];
+			//NSLog(@"This is the text of the last Memo: %@", lastMemoView.text);
+	}
 		
+		//
+	
 	
 	[super viewDidLoad];
-	
 	[self.view addSubview:memoTitleLabel];
 	[self.view addSubview:segmentedControl];
 	[self.view addSubview:topView];
 	[self.view addSubview:bottomView];
 	NSLog(@"adding editmemoTextView to view");
 	[self.topView addSubview:editmemoTextView];
-	NSLog(@"adding tableView to view");
-	[self.bottomView addSubview:tableView];
-	
+	NSLog(@"adding lastMemoView and urgentMemoView to view");
+	[self.bottomView addSubview:lastMemoView];
+    [self.bottomView addSubview:urgentMemoView];
+		//[lastMemoView setText:@"hello world"];
+
+
 }
 			
-
 							
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
 	 return YES; 
@@ -263,6 +315,9 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+	self.editmemoTextView = nil;
+	self.topView = nil;
+	managedObjectContext = nil;
 }
 
 - (void)dealloc {
@@ -270,8 +325,10 @@
 	[memoArray release];
 	[managedObjectContext release];
 	[segmentedControl release];
-	[editmemoTextView release]; 
-	[tableView release];
+	[editmemoTextView release];
+	[lastMemoView release];
+	[urgentMemoView release];
+		//[tableView release];
 	[topView release];
 	[bottomView release];
     [super dealloc];
@@ -281,6 +338,14 @@
 @end
 
 	//DONE: FIX: Autorotation of the textviews. The code and the IB are not in synch. 
+
+/*  Method Works. Intended to be used to pull up the designated modalviewcontroller but that design choice was abandoned in favor of Alert Window popups. The said view controller and nib file are in the folder labelled xSameMemoViewController.
+ 
+ - (IBAction)savememoAction:(id)sender{	
+ SaveMemoViewController *savememoView = [[[SaveMemoViewController alloc] initWithNibName:@"SaveMemoViewController" bundle:nil] autorelease];
+ [self presentModalViewController:savememoView animated:YES];
+ }
+ */
 
 
 /*	CODE DOES NOT WORK AS IS. Part of the code is an attempt to test a generic NavButton class and the rest to programmatically code the navigation buttons. Not very successful at this point. 

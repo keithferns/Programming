@@ -23,8 +23,7 @@
 
 - (void)viewDidLoad {
 	NSLog(@"Loading view from MyMemosTableViewCOntroller");
-    [super viewDidLoad];
-	[self.view addSubview:tableView];
+
 
 	if (managedObjectContext == nil) 
 	{ 
@@ -32,7 +31,9 @@
         NSLog(@"After managedObjectContext: %@",  managedObjectContext);
 	}
 	
-	self.title = @"All Memos";
+	[super viewDidLoad];
+	[self.view addSubview:tableView];
+	self.title = @"All Memos"; // FIX: This does nothing right now
 	[self fetchMemoRecords];
 	
  
@@ -151,7 +152,7 @@ NSLog(@"Going to fetch Memo records now");
 	}
 	
 	[cell.detailTextLabel setText: [dateFormatter stringFromDate:[newMemo timeStamp]]];
-	[cell.textLabel setText:[NSString stringWithFormat:@"%@", newMemo.Text]];
+	[cell.textLabel setText:[NSString stringWithFormat:@"%@", [newMemo memoText]]];
     
     return cell;
 }

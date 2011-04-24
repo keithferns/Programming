@@ -14,9 +14,9 @@
 }
 
 @property (nonatomic, retain) NSDate * timeStamp;
-@property (nonatomic, retain) NSString * Text;
-@property (nonatomic, retain) NSString * KeyWords;
-@property (nonatomic, retain) NSString * Tags;
+@property (nonatomic, retain) NSString * memoText;
+@property (nonatomic, retain) NSString * keyWords;
+@property (nonatomic, retain) NSString * tags;
 
 @end
 

@@ -66,6 +66,7 @@
 	*/
 	[self.bottomView addSubview:tableViewController.tableView];
 	NSLog(@"added an instance of MyMemosTableViewController to the view");	
+	[myTestImage release];
 }
 
 

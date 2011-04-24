@@ -25,7 +25,7 @@
 				//tableController.managedObjectContext =  self.managedObjectContext;
 			//self.navigationController = [[UINavigationController alloc]initWithRootViewController:tableController];
 			//[tableController release];
-	
+		managedObjectContext = nil;
 		
 	[self.window addSubview:viewController.view];
 		//[self.window addSubview:[self.navigationController view]];
@@ -114,7 +114,8 @@
 	
     if (managedObjectContext != nil) {
         if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
-            /*
+            
+			/*
              Replace this implementation with code to handle the error appropriately.
              
              abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. If it is not possible to recover from the error, display an alert panel that instructs the user to quit the application by pressing the Home button.
@@ -136,14 +137,14 @@
 
 - (NSManagedObjectContext *) managedObjectContext {
 		if (managedObjectContext != nil) {
-        return managedObjectContext;
+		return managedObjectContext;
 		}
     
-    NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
-    if (coordinator != nil) {
+		 NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
+		if (coordinator != nil) {
         managedObjectContext = [[NSManagedObjectContext alloc] init];
         [managedObjectContext setPersistentStoreCoordinator:coordinator];
-    }
+		}
  
     return managedObjectContext;	 
 }

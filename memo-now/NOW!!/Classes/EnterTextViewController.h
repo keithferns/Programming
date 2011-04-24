@@ -17,10 +17,10 @@
 	UISegmentedControl *segmentedControl;
 
 	NavButton *saveButton, *wallButton, *newButton;
-	UITextView *editmemoTextView; 
+	UITextView *editmemoTextView, *lastMemoView, *urgentMemoView; 
 	UILabel *memoTitleLabel;
 	UIView *topView, *bottomView;
-	UITableView *tableView;
+		//UITableView *tableView;
 	
 	UIAlertView *saveAlert, *wallAlert;
 	NSManagedObjectContext *managedObjectContext;
@@ -31,20 +31,20 @@
 /*.....Data ....*/
 @property(nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 @property(nonatomic, retain) NSMutableArray *memoArray;
+-(void) fetchMemoRecords;
 
 -(void) addTimeStamp;
 	
 /*....Views and Navigation ....*/
 @property (nonatomic, retain) IBOutlet UISegmentedControl *segmentedControl;
 @property (nonatomic, retain) IBOutlet UIView *topView, *bottomView;
-@property (nonatomic, retain) IBOutlet UITableView *tableView;
+	//@property (nonatomic, retain) IBOutlet UITableView *tableView;
 @property (nonatomic, retain) IBOutlet UILabel *memoTitleLabel; 
-@property (nonatomic, retain) IBOutlet UITextView *editmemoTextView; 
+@property (nonatomic, retain) IBOutlet UITextView *editmemoTextView, *lastMemoView, *urgentMemoView; 
 @property (nonatomic, retain) UIAlertView *saveAlert, *wallAlert;
 	
 -(IBAction) segmentedControlAction:(id)sender;
 
-- (void) addTimeStamp;
 
 	///////NAMING AND ARCHIVING ACTIONS
 

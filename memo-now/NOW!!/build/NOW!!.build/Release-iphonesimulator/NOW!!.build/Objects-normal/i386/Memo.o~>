@@ -1,0 +1,9 @@
+/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/Memo.m:16: error: no declaration of property 'memoText' found in the interface
+/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/Memo.m:17: error: no declaration of property 'keyWords' found in the interface
+/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/Memo.m:18: error: no declaration of property 'tags' found in the interface
+/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/Memo.m:20: warning: property 'Text' requires method '-Text' to be defined - use @synthesize, @dynamic or provide a method implementation
+/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/Memo.m:20: warning: property 'Text' requires the method 'setText:' to be defined - use @synthesize, @dynamic or provide a method implementation
+/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/Memo.m:20: warning: property 'KeyWords' requires method '-KeyWords' to be defined - use @synthesize, @dynamic or provide a method implementation
+/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/Memo.m:20: warning: property 'KeyWords' requires the method 'setKeyWords:' to be defined - use @synthesize, @dynamic or provide a method implementation
+/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/Memo.m:20: warning: property 'Tags' requires method '-Tags' to be defined - use @synthesize, @dynamic or provide a method implementation
+/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/Memo.m:20: warning: property 'Tags' requires the method 'setTags:' to be defined - use @synthesize, @dynamic or provide a method implementation

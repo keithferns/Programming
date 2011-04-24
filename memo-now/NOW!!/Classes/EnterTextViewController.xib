@@ -12,7 +12,6 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="48"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -42,11 +41,12 @@
 				<int key="NSvFlags">1343</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
-					<object class="IBUISegmentedControl" id="779031761">
+					<object class="IBUISegmentedControl" id="920959844">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">1327</int>
 						<string key="NSFrame">{{0, 205}, {320, 40}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
+						<reference key="NSWindow"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -54,9 +54,9 @@
 						<int key="IBNumberOfSegments">3</int>
 						<object class="NSArray" key="IBSegmentTitles">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>Back</string>
+							<string>Go To...</string>
 							<string>New</string>
-							<string>Go To</string>
+							<string>Save As...</string>
 						</object>
 						<object class="NSMutableArray" key="IBSegmentWidths">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -88,11 +88,12 @@
 							<bytes key="NSRGB">MC4wNzg0MzEzNzUzMiAwLjIxOTYwNzg1OTggMQA</bytes>
 						</object>
 					</object>
-					<object class="IBUILabel" id="1057120857">
+					<object class="IBUILabel" id="604804846">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">1335</int>
 						<string key="NSFrameSize">{320, 25}</string>
 						<reference key="NSSuperview" ref="191373211"/>
+						<reference key="NSWindow"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">2</int>
 							<bytes key="NSRGB">MCAwLjA3ODQzMTM3NTMyIDAuNDAzOTIxNjA0MgA</bytes>
@@ -112,17 +113,18 @@
 						<float key="IBUIMinimumFontSize">12</float>
 						<int key="IBUITextAlignment">1</int>
 					</object>
-					<object class="IBUIView" id="610761288">
+					<object class="IBUIView" id="261429220">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">1343</int>
 						<object class="NSMutableArray" key="NSSubviews">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<object class="IBUITextView" id="801710585">
-								<reference key="NSNextResponder" ref="610761288"/>
+							<object class="IBUITextView" id="755037996">
+								<reference key="NSNextResponder" ref="261429220"/>
 								<int key="NSvFlags">1343</int>
 								<string key="NSFrameSize">{320, 182}</string>
-								<reference key="NSSuperview" ref="610761288"/>
-								<object class="NSColor" key="IBUIBackgroundColor" id="521698879">
+								<reference key="NSSuperview" ref="261429220"/>
+								<reference key="NSWindow"/>
+								<object class="NSColor" key="IBUIBackgroundColor" id="944235798">
 									<int key="NSColorSpace">3</int>
 									<bytes key="NSWhite">MAA</bytes>
 								</object>
@@ -139,6 +141,7 @@
 						</object>
 						<string key="NSFrame">{{0, 25}, {320, 182}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
+						<reference key="NSWindow"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MC42NjY2NjY2NjY3AA</bytes>
@@ -148,28 +151,50 @@
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
-					<object class="IBUIView" id="289044517">
+					<object class="IBUIView" id="868669957">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">1311</int>
 						<object class="NSMutableArray" key="NSSubviews">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<object class="IBUITableView" id="185493658">
-								<reference key="NSNextResponder" ref="289044517"/>
-								<int key="NSvFlags">1343</int>
-								<string key="NSFrameSize">{320, 215}</string>
-								<reference key="NSSuperview" ref="289044517"/>
+							<object class="IBUITextView" id="376334596">
+								<reference key="NSNextResponder" ref="868669957"/>
+								<int key="NSvFlags">1335</int>
+								<string key="NSFrameSize">{320, 107}</string>
+								<reference key="NSSuperview" ref="868669957"/>
+								<reference key="NSWindow"/>
 								<reference key="IBUIBackgroundColor" ref="823390942"/>
 								<bool key="IBUIClipsSubviews">YES</bool>
+								<bool key="IBUIMultipleTouchEnabled">YES</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<bool key="IBUIAlwaysBounceVertical">YES</bool>
-								<int key="IBUISeparatorStyle">1</int>
-								<int key="IBUISectionIndexMinimumDisplayRowCount">0</int>
-								<bool key="IBUIShowsSelectionImmediatelyOnTouchBegin">YES</bool>
-								<float key="IBUIRowHeight">84</float>
+								<string key="IBUIText"/>
+								<object class="IBUITextInputTraits" key="IBUITextInputTraits">
+									<int key="IBUIAutocapitalizationType">2</int>
+									<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								</object>
+							</object>
+							<object class="IBUITextView" id="735844046">
+								<reference key="NSNextResponder" ref="868669957"/>
+								<int key="NSvFlags">1295</int>
+								<string key="NSFrame">{{0, 107}, {320, 108}}</string>
+								<reference key="NSSuperview" ref="868669957"/>
+								<reference key="NSWindow"/>
+								<object class="NSColor" key="IBUIBackgroundColor">
+									<int key="NSColorSpace">2</int>
+									<bytes key="NSRGB">MSAwLjI5MDE5NjA5MDkgMC4xOTIxNTY4ODExAA</bytes>
+								</object>
+								<bool key="IBUIClipsSubviews">YES</bool>
+								<bool key="IBUIMultipleTouchEnabled">YES</bool>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<string key="IBUIText">Urgent</string>
+								<object class="IBUITextInputTraits" key="IBUITextInputTraits">
+									<int key="IBUIAutocapitalizationType">2</int>
+									<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								</object>
 							</object>
 						</object>
 						<string key="NSFrame">{{0, 243}, {320, 215}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
+						<reference key="NSWindow"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">1</int>
 							<bytes key="NSRGB">MC45ODI1NDA1NzMzIDAuOTg2OTA1NDMgMQA</bytes>
@@ -183,6 +208,7 @@
 				</object>
 				<string key="NSFrameSize">{320, 460}</string>
 				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">1</int>
 					<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
@@ -212,7 +238,7 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">bottomView</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="289044517"/>
+						<reference key="destination" ref="868669957"/>
 					</object>
 					<int key="connectionID">50</int>
 				</object>
@@ -220,7 +246,7 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">topView</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="610761288"/>
+						<reference key="destination" ref="261429220"/>
 					</object>
 					<int key="connectionID">51</int>
 				</object>
@@ -228,7 +254,7 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">editmemoTextView</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="801710585"/>
+						<reference key="destination" ref="755037996"/>
 					</object>
 					<int key="connectionID">53</int>
 				</object>
@@ -236,14 +262,14 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">segmentedControl</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="779031761"/>
+						<reference key="destination" ref="920959844"/>
 					</object>
 					<int key="connectionID">54</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">segmentedControlAction:</string>
-						<reference key="source" ref="779031761"/>
+						<reference key="source" ref="920959844"/>
 						<reference key="destination" ref="975951072"/>
 						<int key="IBEventType">13</int>
 					</object>
@@ -253,9 +279,25 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">memoTitleLabel</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="1057120857"/>
+						<reference key="destination" ref="604804846"/>
 					</object>
 					<int key="connectionID">60</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">lastMemoView</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="376334596"/>
+					</object>
+					<int key="connectionID">65</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">urgentMemoView</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="735844046"/>
+					</object>
+					<int key="connectionID">66</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -272,10 +314,10 @@
 						<reference key="object" ref="191373211"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="1057120857"/>
-							<reference ref="610761288"/>
-							<reference ref="289044517"/>
-							<reference ref="779031761"/>
+							<reference ref="604804846"/>
+							<reference ref="261429220"/>
+							<reference ref="868669957"/>
+							<reference ref="920959844"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -292,46 +334,54 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">47</int>
-						<reference key="object" ref="779031761"/>
+						<reference key="object" ref="920959844"/>
 						<reference key="parent" ref="191373211"/>
 						<string key="objectName">Navigation Control (Back, New, Go To)</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">44</int>
-						<reference key="object" ref="1057120857"/>
+						<reference key="object" ref="604804846"/>
 						<reference key="parent" ref="191373211"/>
 						<string key="objectName">Top Label (My Memos)</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">46</int>
-						<reference key="object" ref="610761288"/>
+						<reference key="object" ref="261429220"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="801710585"/>
+							<reference ref="755037996"/>
 						</object>
 						<reference key="parent" ref="191373211"/>
 						<string key="objectName">Top View</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">48</int>
-						<reference key="object" ref="289044517"/>
+						<reference key="object" ref="868669957"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="185493658"/>
+							<reference ref="376334596"/>
+							<reference ref="735844046"/>
 						</object>
 						<reference key="parent" ref="191373211"/>
 						<string key="objectName">Bottom View</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">52</int>
-						<reference key="object" ref="801710585"/>
-						<reference key="parent" ref="610761288"/>
+						<reference key="object" ref="755037996"/>
+						<reference key="parent" ref="261429220"/>
 						<string key="objectName">edittextView</string>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">49</int>
-						<reference key="object" ref="185493658"/>
-						<reference key="parent" ref="289044517"/>
+						<int key="objectID">61</int>
+						<reference key="object" ref="376334596"/>
+						<reference key="parent" ref="868669957"/>
+						<string key="objectName">LastMemo</string>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">62</int>
+						<reference key="object" ref="735844046"/>
+						<reference key="parent" ref="868669957"/>
+						<string key="objectName">UpComing</string>
 					</object>
 				</object>
 			</object>
@@ -359,12 +409,15 @@
 					<string>48.IBPluginDependency</string>
 					<string>48.IBViewBoundsToFrameTransform</string>
 					<string>48.notes</string>
-					<string>49.IBEditorWindowLastContentRect</string>
-					<string>49.IBPluginDependency</string>
-					<string>49.IBViewBoundsToFrameTransform</string>
 					<string>52.IBEditorWindowLastContentRect</string>
 					<string>52.IBPluginDependency</string>
 					<string>52.IBViewBoundsToFrameTransform</string>
+					<string>61.IBPluginDependency</string>
+					<string>61.IBViewBoundsToFrameTransform</string>
+					<string>61.notes</string>
+					<string>62.IBPluginDependency</string>
+					<string>62.IBViewBoundsToFrameTransform</string>
+					<string>62.notes</string>
 				</object>
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -414,7 +467,7 @@
 									<double key="NSSize">11</double>
 									<int key="NSfFlags">16</int>
 								</object>
-								<object class="NSParagraphStyle">
+								<object class="NSParagraphStyle" id="234724290">
 									<int key="NSAlignment">4</int>
 									<double key="NSTighteningFactorForTruncation">0.05000000074505806</double>
 									<object class="NSArray" key="NSTabStops">
@@ -485,11 +538,11 @@
 							</object>
 							<object class="NSMutableArray" key="dict.values">
 								<bool key="EncodedWithXMLCoder">YES</bool>
-								<object class="NSColor">
+								<object class="NSColor" id="559484809">
 									<int key="NSColorSpace">6</int>
 									<string key="NSCatalogName">System</string>
 									<string key="NSColorName">textColor</string>
-									<reference key="NSColor" ref="521698879"/>
+									<reference key="NSColor" ref="944235798"/>
 								</object>
 								<object class="NSFont" id="26">
 									<string key="NSName">LucidaGrande</string>
@@ -504,14 +557,45 @@
 							</object>
 						</object>
 					</object>
-					<string>{{342, 545}, {320, 205}}</string>
-					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAAAAAAAAw1MAAA</bytes>
-					</object>
 					<string>{{360, 440}, {320, 190}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform"/>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<object class="NSAffineTransform">
+						<bytes key="NSTransformStruct">P4AAAL+AAAAAAAAAwyIAAA</bytes>
+					</object>
+					<object class="NSMutableAttributedString">
+						<object class="NSMutableString" key="NSString">
+							<characters key="NS.bytes">Link this to the memo in memoarray at current index</characters>
+						</object>
+						<object class="NSDictionary" key="NSAttributes" id="486269319">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="NSArray" key="dict.sortedKeys">
+								<bool key="EncodedWithXMLCoder">YES</bool>
+								<string>NSColor</string>
+								<string>NSFont</string>
+								<string>NSOriginalFont</string>
+								<string>NSParagraphStyle</string>
+							</object>
+							<object class="NSMutableArray" key="dict.values">
+								<bool key="EncodedWithXMLCoder">YES</bool>
+								<reference ref="559484809"/>
+								<reference ref="26"/>
+								<reference ref="26"/>
+								<reference ref="234724290"/>
+							</object>
+						</object>
+					</object>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<object class="NSAffineTransform">
+						<bytes key="NSTransformStruct">P4AAAL+AAABB0AAAw1UAAA</bytes>
+					</object>
+					<object class="NSMutableAttributedString">
+						<object class="NSMutableString" key="NSString">
+							<characters key="NS.bytes">Link this to impending reminder or appointment. </characters>
+						</object>
+						<reference key="NSAttributes" ref="486269319"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="unlocalizedProperties">
@@ -530,7 +614,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">60</int>
+			<int key="maxID">66</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -643,19 +727,21 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>bottomView</string>
 							<string>editmemoTextView</string>
+							<string>lastMemoView</string>
 							<string>memoTitleLabel</string>
 							<string>segmentedControl</string>
-							<string>tableView</string>
 							<string>topView</string>
+							<string>urgentMemoView</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>UIView</string>
 							<string>UITextView</string>
+							<string>UITextView</string>
 							<string>UILabel</string>
 							<string>UISegmentedControl</string>
-							<string>UITableView</string>
 							<string>UIView</string>
+							<string>UITextView</string>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -664,10 +750,11 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>bottomView</string>
 							<string>editmemoTextView</string>
+							<string>lastMemoView</string>
 							<string>memoTitleLabel</string>
 							<string>segmentedControl</string>
-							<string>tableView</string>
 							<string>topView</string>
+							<string>urgentMemoView</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -680,6 +767,10 @@
 								<string key="candidateClassName">UITextView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
+								<string key="name">lastMemoView</string>
+								<string key="candidateClassName">UITextView</string>
+							</object>
+							<object class="IBToOneOutletInfo">
 								<string key="name">memoTitleLabel</string>
 								<string key="candidateClassName">UILabel</string>
 							</object>
@@ -688,12 +779,12 @@
 								<string key="candidateClassName">UISegmentedControl</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">tableView</string>
-								<string key="candidateClassName">UITableView</string>
-							</object>
-							<object class="IBToOneOutletInfo">
 								<string key="name">topView</string>
 								<string key="candidateClassName">UIView</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">urgentMemoView</string>
+								<string key="candidateClassName">UITextView</string>
 							</object>
 						</object>
 					</object>

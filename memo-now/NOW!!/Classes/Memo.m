@@ -13,8 +13,8 @@
 
 
 @dynamic timeStamp;
-@dynamic Text;
-@dynamic KeyWords;
-@dynamic Tags;
+@dynamic memoText;
+@dynamic keyWords;
+@dynamic tags;
 
 @end
