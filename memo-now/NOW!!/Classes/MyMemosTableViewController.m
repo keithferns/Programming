@@ -52,7 +52,7 @@ NSLog(@"Going to fetch Memo records now");
 	[request setEntity:entity];
 	
 		//defines how to sort the records
-	NSSortDescriptor *sortByDate = [[NSSortDescriptor alloc] initWithKey:@"timeStamp" ascending:YES];
+	NSSortDescriptor *sortByDate = [[NSSortDescriptor alloc] initWithKey:@"timeStamp" ascending:NO];
 	NSArray *sortDescriptors = [NSArray arrayWithObject:sortByDate];//note: if adding other sortdescriptors, then use  method -arraywithObjects. If the fetch request must meet some conditions, then use the NSPredicate class 
 	
 	[request setSortDescriptors:sortDescriptors];
@@ -147,10 +147,11 @@ NSLog(@"Going to fetch Memo records now");
 		//Memo *previousMemo = nil;
 	
 	if ([memoArray count] > ([indexPath row] + 1)) {
-			//previousMemo = [memoArray objectAtIndex:([indexPath row] + 1)];
+			//	previousMemo = [memoArray objectAtIndex:([indexPath row] + 1)];
 	}
-	[cell.textLabel setText: [dateFormatter stringFromDate:[newMemo timeStamp]]];
-	[cell.detailTextLabel setText:[NSString stringWithFormat:@"%@,", newMemo.Text]];
+	
+	[cell.detailTextLabel setText: [dateFormatter stringFromDate:[newMemo timeStamp]]];
+	[cell.textLabel setText:[NSString stringWithFormat:@"%@", newMemo.Text]];
     
     return cell;
 }

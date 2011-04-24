@@ -14,9 +14,13 @@
 
 
 @interface EnterTextViewController : UIViewController {
+	UISegmentedControl *segmentedControl;
 
 	NavButton *saveButton, *wallButton, *newButton;
-	EditTextView *editmemoTextView; 
+	UITextView *editmemoTextView; 
+	UILabel *memoTitleLabel;
+	UIView *topView, *bottomView;
+	UITableView *tableView;
 	
 	UIAlertView *saveAlert, *wallAlert;
 	NSManagedObjectContext *managedObjectContext;
@@ -31,20 +35,16 @@
 -(void) addTimeStamp;
 	
 /*....Views and Navigation ....*/
-
-@property (nonatomic, retain) IBOutlet NavButton *saveButton, *wallButton, *newButton;
-	//@property (nonatomic, retain) IBOutlet UILabel *memotitleLabel; 
-@property (nonatomic, retain) IBOutlet EditTextView *editmemoTextView; //*reeditmemoTextView;
+@property (nonatomic, retain) IBOutlet UISegmentedControl *segmentedControl;
+@property (nonatomic, retain) IBOutlet UIView *topView, *bottomView;
+@property (nonatomic, retain) IBOutlet UITableView *tableView;
+@property (nonatomic, retain) IBOutlet UILabel *memoTitleLabel; 
+@property (nonatomic, retain) IBOutlet UITextView *editmemoTextView; 
 @property (nonatomic, retain) UIAlertView *saveAlert, *wallAlert;
 	
-	//
+-(IBAction) segmentedControlAction:(id)sender;
 
-- (IBAction)savememoAction:(id)sender;
-- (IBAction)gotowallAction:(id)sender;
-- (IBAction)newmemoAction:(id)sender;
-- (IBAction)movebottomTextView:(id)sender;
-
-
+- (void) addTimeStamp;
 
 	///////NAMING AND ARCHIVING ACTIONS
 
