@@ -38,8 +38,6 @@
 		53BDD1BA135179DD00C1C44E /* DateTimeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53BDD1B8135179DD00C1C44E /* DateTimeViewController.xib */; };
 		53DF3FF6134E337C001FE4E4 /* EnterTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53DF3FF4134E337C001FE4E4 /* EnterTextViewController.m */; };
 		53DF3FF7134E337C001FE4E4 /* EnterTextViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53DF3FF5134E337C001FE4E4 /* EnterTextViewController.xib */; };
-		53DF4066134E554A001FE4E4 /* SaveMemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53DF4064134E554A001FE4E4 /* SaveMemoViewController.m */; };
-		53DF4067134E554A001FE4E4 /* SaveMemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53DF4065134E554A001FE4E4 /* SaveMemoViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,9 +87,6 @@
 		53DF3FF3134E337C001FE4E4 /* EnterTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnterTextViewController.h; sourceTree = "<group>"; };
 		53DF3FF4134E337C001FE4E4 /* EnterTextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnterTextViewController.m; sourceTree = "<group>"; };
 		53DF3FF5134E337C001FE4E4 /* EnterTextViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EnterTextViewController.xib; sourceTree = "<group>"; };
-		53DF4063134E554A001FE4E4 /* SaveMemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaveMemoViewController.h; sourceTree = "<group>"; };
-		53DF4064134E554A001FE4E4 /* SaveMemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaveMemoViewController.m; sourceTree = "<group>"; };
-		53DF4065134E554A001FE4E4 /* SaveMemoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SaveMemoViewController.xib; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* NOW__-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "NOW__-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -342,19 +337,8 @@
 				5306DA5E1357CB8C00FA773F /* AppendFileViewController */,
 				53BDD1B51351798200C1C44E /* AppointmentDateTimeViewController */,
 				5306DA611357CC9D00FA773F /* ReminderDayWeekViewController */,
-				53DF4062134E5517001FE4E4 /* xSaveMemoViewController */,
 			);
 			name = SaveAsViewControllers;
-			sourceTree = "<group>";
-		};
-		53DF4062134E5517001FE4E4 /* xSaveMemoViewController */ = {
-			isa = PBXGroup;
-			children = (
-				53DF4065134E554A001FE4E4 /* SaveMemoViewController.xib */,
-				53DF4063134E554A001FE4E4 /* SaveMemoViewController.h */,
-				53DF4064134E554A001FE4E4 /* SaveMemoViewController.m */,
-			);
-			name = xSaveMemoViewController;
 			sourceTree = "<group>";
 		};
 		53DF4068134E565D001FE4E4 /* Buttons */ = {
@@ -418,7 +402,6 @@
 			files = (
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
 				53DF3FF7134E337C001FE4E4 /* EnterTextViewController.xib in Resources */,
-				53DF4067134E554A001FE4E4 /* SaveMemoViewController.xib in Resources */,
 				53BDD1BA135179DD00C1C44E /* DateTimeViewController.xib in Resources */,
 				5306DA691357CEC700FA773F /* WallNavViewController.xib in Resources */,
 				5306DAF01357F8F000FA773F /* MyPlanner.xib in Resources */,
@@ -443,7 +426,6 @@
 				1D3623260D0F684500981E51 /* NOW__AppDelegate.m in Sources */,
 				28193060112F816700ECF9B4 /* NOW__.xcdatamodeld in Sources */,
 				53DF3FF6134E337C001FE4E4 /* EnterTextViewController.m in Sources */,
-				53DF4066134E554A001FE4E4 /* SaveMemoViewController.m in Sources */,
 				53BDD1B9135179DD00C1C44E /* DateTimeViewController.m in Sources */,
 				531E5A8F13554D13004A46A5 /* EditTextView.m in Sources */,
 				5306D83B1356A14500FA773F /* NavButton.m in Sources */,

@@ -48,9 +48,12 @@
 
 	///////NAMING AND ARCHIVING ACTIONS
 
-/*XX The following action consolidated with other name and save actions. some of the design choices are discussed below. See also the file saveMemoViewController for more of the context and most of the text below. 
- 
-	- (IBAction)makeNewFolderAction:(id)sender;
+	//XX The following action consolidated with other name and save actions. some of the design choices are discussed below. 
+ /* 
+ VERY IMPORTANT TO FIND THE MOST EFFICIENT and EFFECTIVE NAMING ROUTINE. Efficient in terms ofthe effort to name is minimal and the name itself is part of the organizational solution. Effective entails that the named entities are kept minimal or are sufficiently informative so as not to overload the user's memory. Would names like  "vacation@myhome@mylife" be more informative to the user after a few months than just a name like "vacation". 
+ TODO: research on naming and organizational efficiency. what do highly organized people do for naming. 
+
+ - (IBAction)makeNewFolderAction:(id)sender;
 		//On Done, this action will create a folder with the User given name and save the file to that folder.  
 //NOTE:  maybe conjoin the above two actions - have a alert window popup up with the query - save to new folder or save to existing folder - two paths from the same button. Which is less costly to the user? Probably less crowded and more efficient to have a single button path to the MyFolders page where there will be option to create NEW. On the other hand, it may be distracting to go to the MyFolder page. Maybe have option to type in name of folder, and autofill from existing folders list or override for new folder. Autoname the file to match the folder name with the date added to the name.   
 
@@ -60,13 +63,10 @@
  //NOTE: IDEALLY: the app should do most of the organizing work behind the scenes. Create a schema, get user feedback and proceed. 
  - (IBAction)nameListAction:(id)sender;
 		// saves file as a list. note same issues as pertain to the file and folder naming exist. 
-
  */
 
+/*	.......UTILITY ACTIONS......
 
-
-	/*........UTILITY ACTIONS...... */
-/*
 - (IBAction)appendToFileAction:(id)sender; 
 	//Adds memo txt to an existing file.  Should bring up an Alert window which queries whether the txt should be added to the beginning or the end of the file. Alert window should allow search function or go to Myfolders button. 
 - (IBAction)callCalenderAction:(id)sender;
@@ -77,11 +77,8 @@
 
 - (IBAction)nameFileAction:(id)sender;
 	//names file and saves to a folder or orphans. 
+*/
 
-/* 
- VERY IMPORTANT TO FIND THE MOST EFFICIENT and EFFECTIVE NAMING ROUTINE. Efficient in terms ofthe effort to name is minimal and the name itself is part of the organizational solution. Effective entails that the named entities are kept minimal or are sufficiently informative so as not to overload the user's memory. Would names like 
- "vacation@myhome@mylife" be more informative to the user after a few months than just a name like "vacation". TODO: research on naming and organizational efficiency. what do highly organized people do for naming. 
- */ 
 
 
 

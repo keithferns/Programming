@@ -6,13 +6,15 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
+	//FIX: LAYOUT of the subviews messed up. 
+
 #import "MyMemosViewController.h"
 
 @implementation MyMemosViewController
 
 @synthesize segmentedControl;
 @synthesize tableViewController;
-@synthesize bottomView, topView, myTestLabel;
+@synthesize bottomView, topView, myTestLabel, viewSelectedMemo;
 
 
 -(IBAction) segmentedControlAction:(id)sender{
@@ -42,38 +44,76 @@
 }
 */
 
-
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
-	NSLog(@"will add an instance of MyMemosTableViewController to the view");	
 
     [super viewDidLoad];
+	isSearching = NO;
 	[self.view	addSubview:bottomView];
 	[self.view addSubview:topView];
+	NSLog(@"added an instance of topView and bottomView to view");
 	
+	/* 
+	CODE TO TEST IMAGE INSERTION
 	CGRect mytestFrame = CGRectMake(0, 0, 320, 193);
 	UIImageView	*myTestImage = [[UIImageView alloc] initWithFrame:mytestFrame];
 	[myTestImage setImage:[UIImage imageNamed:@"testImage.png"]];
 	[self.topView addSubview: myTestImage];
-		
-		//[mytestlabel initWithFrame: myTestFrame];
-		//[self.bottomView addSubview:myTestLabel];
-		//[myTestLabel setText:@"this is another test"];
-	/*
+	[myTestImage release];
+
+	CODE TO TEST INSERTION INTO SUBVIEWS. 
+	[mytestlabel initWithFrame: myTestFrame];
+	[self.bottomView addSubview:myTestLabel];
+	[myTestLabel setText:@"this is another test"];
 	[myTestLabel setText:@"this is a test"];
 	[myTestLabel setTextAlignment:UITextAlignmentCenter];
 	[self.bottomView addSubview:myTestLabel];
 	*/
+	[self.topView addSubview:viewSelectedMemo];
+	NSLog(@"added an instance of viewSelectedMemo to the view");	
+
+	NSLog(@"will add an instance of MyMemosTableViewController to the view");	
+
 	[self.bottomView addSubview:tableViewController.tableView];
+	
 	NSLog(@"added an instance of MyMemosTableViewController to the view");	
-	[myTestImage release];
+	
+
 }
+
+- (void) searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+	
+	NSLog(@"isSearching is set to %d", isSearching);
+	isSearching = YES;
+	NSLog(@"isSearching is now set to %d", isSearching);
+	
+		//create new subview and initialize with the frame for the topView
+	CGRect mytestFrame = CGRectMake(0, 0, 320, 215);
+	UIView *myNewView = [[[UIView	alloc] initWithFrame:mytestFrame] autorelease];
+		//When the user taps inside the search bar, the new subview is set to blue background and the tableView is added to it. 
+	
+	if (isSearching) {
+
+		[myNewView setBackgroundColor:[UIColor blueColor]];
+		[self.view addSubview:myNewView];
+		[myNewView addSubview:tableViewController.tableView];
+		}
+	
+		
+		//letUserSelectRow = NO;
+		//self.tableView.scrollEnabled = NO;
+	
+		//Add the done button.
+		//self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc]
+		//									   initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+		//									   target:self action:@selector(doneSearching_Clicked:)] autorelease];
+}
+
 
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return YES;
 }
-
 
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.

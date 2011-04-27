@@ -107,18 +107,14 @@
 	
 	[mutableFetchResults release];
 	[request release];
-		
-	
+			
 }
-
-
 
 
 - (void) addTimeStamp{
 	NSLog(@"firing addTimeStamp");
 	
 		
-	
 		//copy contents of editmemoTextView to nsstring variable
 	NSString *mytext = [NSString stringWithFormat: @"%@", editmemoTextView.text]; 
 			//Initialize a new Memo Object and Insert it into Memo table in the ManagedObjectContext

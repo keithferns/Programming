@@ -12,8 +12,7 @@
 @interface SaveFileViewController : UIViewController {
 
 	UISegmentedControl *segmentedControl;
-	
-	
+		
 }
 
 @property (nonatomic,retain) IBOutlet UISegmentedControl *segmentedControl;

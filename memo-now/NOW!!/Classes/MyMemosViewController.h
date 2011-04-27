@@ -7,14 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
-
+	/*Changes
+	 2/27/11 Added a SearchDisplayController variable; Added a TextView variable.
+	 */
 
 @interface MyMemosViewController : UIViewController {
 	
 	UISegmentedControl *segmentedControl;
 	UITableViewController *tableViewController;
-	UIView *bottomView, *topView;
+	UIView *bottomView, *topView; 
 	UILabel *myTestLabel;
+	UITextView *viewSelectedMemo;
+	BOOL isSearching;
 
 }
 
@@ -22,8 +26,13 @@
 @property (nonatomic,retain) IBOutlet UISegmentedControl *segmentedControl;
 @property (nonatomic, retain) IBOutlet UIView *bottomView, *topView;
 @property (nonatomic,retain) IBOutlet UILabel *myTestLabel;
+@property (nonatomic, retain) IBOutlet UITextView *viewSelectedMemo;
+
 
 - (IBAction)segmentedControlAction:(id)sender;
+	//- (void) searchTable;
+
+
 
 @end
 

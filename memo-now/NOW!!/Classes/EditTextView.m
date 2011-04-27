@@ -12,7 +12,7 @@
 @implementation EditTextView
 
 	//@synthesize backgroundColor;
-@synthesize inputView;
+	//@synthesize inputView;
 	//@synthesize touch;
 	//@synthesize type; 
 
@@ -24,9 +24,6 @@
     
  //    self = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, 200, 200)];
 	
-
-    
-
 /*
 -(void)sendEvent:(UIEvent *)event {
 		//loop over touches for this event

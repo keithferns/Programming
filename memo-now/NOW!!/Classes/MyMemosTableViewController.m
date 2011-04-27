@@ -15,15 +15,15 @@
 @synthesize managedObjectContext;
 @synthesize memoArray;
 @synthesize tableView;
+@synthesize searchBar;
+
 
 
 #pragma mark -
 #pragma mark View lifecycle
 
-
 - (void)viewDidLoad {
 	NSLog(@"Loading view from MyMemosTableViewCOntroller");
-
 
 	if (managedObjectContext == nil) 
 	{ 
@@ -33,10 +33,10 @@
 	
 	[super viewDidLoad];
 	[self.view addSubview:tableView];
-	self.title = @"All Memos"; // FIX: This does nothing right now
+	self.tableView.tableHeaderView = searchBar;
+	searchBar.autocorrectionType = UITextAutocorrectionTypeNo;
 	[self fetchMemoRecords];
 	
- 
 	
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
@@ -72,8 +72,9 @@ NSLog(@"Going to fetch Memo records now");
 	[mutableFetchResults release];
 	[request release];
 	
-	
 }
+
+
 
 /*
 - (void)viewWillAppear:(BOOL)animated {
@@ -109,9 +110,7 @@ NSLog(@"Going to fetch Memo records now");
 
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-	
-	
-	
+		
 }
 
 
@@ -125,8 +124,6 @@ NSLog(@"Going to fetch Memo records now");
     // Return the number of rows in the section.
     return [memoArray count];
 }
-
-
 
 
 // Customize the appearance of table view cells.
@@ -157,7 +154,6 @@ NSLog(@"Going to fetch Memo records now");
     return cell;
 }
 
-
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -187,7 +183,6 @@ NSLog(@"Going to fetch Memo records now");
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
 }
 */
-
 
 /*
 // Override to support conditional rearranging of the table view.
