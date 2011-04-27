@@ -1,7 +1,7 @@
 TNOW!!
 v7
 r0
-t325613310.988313
+t325628421.252369
 cCheck dependencies
 cProcessInfoPlistFile /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/Release-iphonesimulator/NOW!!.app/Info.plist NOW__-Info.plist
 cCompileXIB /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/MainWindow.xib
@@ -141,8 +141,8 @@ i"NavButton.h"
 i"Memo.h"
 
 N/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/EnterTextViewController.m
-c000000004DB83E690000000000003912
-t1303920233
+c000000004DB846380000000000003912
+t1303922232
 s14610
 i"MyFoldersViewController.h"
 i"EnterTextViewController.h"
@@ -205,21 +205,21 @@ t1303917241
 s7327
 
 N/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/MyFoldersViewController.h
-c000000004DB83A090000000000000327
-t1303919113
-s807
+c000000004DB8469500000000000003D5
+t1303922325
+s981
 i<UIKit/UIKit.h>
 
 N/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/MyFoldersViewController.m
-c000000004DB83E870000000000000815
-t1303920263
-s2069
+c000000004DB87A8000000000000008F9
+t1303935616
+s2297
 i"MyFoldersViewController.h"
 
 N/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/MyFoldersViewController.xib
-c000000004DB83F73000000000000CB5B
-t1303920499
-s52059
+c000000004DB84722000000000000D2DC
+t1303922466
+s53980
 
 N/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/MyMemosTableViewController.h
 c000000004DB7AB0000000000000002B1
@@ -393,8 +393,8 @@ t1303830173
 s37632
 
 N/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/Objects-normal/i386/EnterTextViewController.o
-t1303920238
-s84280
+t1303922327
+s84300
 
 N/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/Objects-normal/i386/Memo.o
 t1303627610
@@ -409,8 +409,8 @@ t1303918905
 s42216
 
 N/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/Objects-normal/i386/MyFoldersViewController.o
-t1303920510
-s47904
+t1303935620
+s50648
 
 N/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/Objects-normal/i386/MyMemosTableViewController-94BA821E613B1655.o
 t2
@@ -522,11 +522,11 @@ t1303619835
 s276
 
 N/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/Release-iphonesimulator/NOW!!.app
-t1303920510
+t1303935621
 s714
 
 N/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/Release-iphonesimulator/NOW!!.app.dSYM
-t1303920510
+t1303935621
 s102
 
 N/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/Release-iphonesimulator/NOW!!.app/AppendFileViewController.nib
@@ -558,8 +558,8 @@ t1303918782
 s1516
 
 N/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/Release-iphonesimulator/NOW!!.app/MyFoldersViewController.nib
-t1303920510
-s4993
+t1303922477
+s5490
 
 N/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/Release-iphonesimulator/NOW!!.app/MyMemosTableViewController.nib
 t1303880069
@@ -578,8 +578,8 @@ t1303619645
 s8450
 
 N/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/Release-iphonesimulator/NOW!!.app/NOW!!
-t1303920510
-s81028
+t1303935621
+s81608
 
 N/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/Release-iphonesimulator/NOW!!.app/NOW__.momd
 t1303876395
@@ -755,7 +755,7 @@ lSLF07#2@78"Analyze /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NO
 
 CCheck dependencies
 r0
-lSLF07#2@18"Check dependencies325613310#325613310#0(0"0(0#1#0"8619520864#0"0#
+lSLF07#2@18"Check dependencies325628420#325628420#0(0"0(0#1#0"8624024416#0"0#
 
 CCompileC build/NOW!!.build/Release-iphonesimulator/NOW!!.build/Objects-normal/i386/AppendFileViewController.o /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/AppendFileViewController.m normal i386 objective-c com.apple.compilers.gcc.4_2
 s325312451.574449
@@ -797,8 +797,8 @@ xcom.apple.compilers.gcc.4_2
 lSLF07#2@94"Compile /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/EditTextView.m325522973#325522973#0(0"0(0#0#86"/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/EditTextView.m8625238912#2234"    cd "/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -mdynamic-no-pic -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/NOW!!-generated-files.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/NOW!!-own-target-headers.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/NOW!!-all-target-headers.hmap -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/NOW!!-project-headers.hmap -F/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/Release-iphonesimulator -I/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/Release-iphonesimulator/include -I/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/DerivedSources/i386 -I/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/DerivedSources -DNS_BLOCK_ASSERTIONS=1 -include /var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/NOW___Prefix-fcmdfivdxmpbqmbajyfdqqgjevxb/NOW___Prefix.pch -c /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/EditTextView.m -o /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/Objects-normal/i386/EditTextView.o0#
 
 CCompileC build/NOW!!.build/Release-iphonesimulator/NOW!!.build/Objects-normal/i386/EnterTextViewController.o /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/EnterTextViewController.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s325613037.873882
-e325613038.229952
+s325615127.396043
+e325615127.749101
 r1
 xCompileC
 xbuild/NOW!!.build/Release-iphonesimulator/NOW!!.build/Objects-normal/i386/EnterTextViewController.o
@@ -807,7 +807,7 @@ xnormal
 xi386
 xobjective-c
 xcom.apple.compilers.gcc.4_2
-lSLF07#2@105"Compile /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/EnterTextViewController.m325613037#325613038#0(0"0(0#0#97"/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/EnterTextViewController.m8621124640#2256"    cd "/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -mdynamic-no-pic -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/NOW!!-generated-files.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/NOW!!-own-target-headers.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/NOW!!-all-target-headers.hmap -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/NOW!!-project-headers.hmap -F/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/Release-iphonesimulator -I/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/Release-iphonesimulator/include -I/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/DerivedSources/i386 -I/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/DerivedSources -DNS_BLOCK_ASSERTIONS=1 -include /var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/NOW___Prefix-fcmdfivdxmpbqmbajyfdqqgjevxb/NOW___Prefix.pch -c /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/EnterTextViewController.m -o /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/Objects-normal/i386/EnterTextViewController.o0#
+lSLF07#2@105"Compile /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/EnterTextViewController.m325615127#325615127#0(0"0(0#0#97"/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/EnterTextViewController.m8616939136#2256"    cd "/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -mdynamic-no-pic -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/NOW!!-generated-files.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/NOW!!-own-target-headers.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/NOW!!-all-target-headers.hmap -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/NOW!!-project-headers.hmap -F/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/Release-iphonesimulator -I/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/Release-iphonesimulator/include -I/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/DerivedSources/i386 -I/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/DerivedSources -DNS_BLOCK_ASSERTIONS=1 -include /var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/NOW___Prefix-fcmdfivdxmpbqmbajyfdqqgjevxb/NOW___Prefix.pch -c /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/EnterTextViewController.m -o /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/Objects-normal/i386/EnterTextViewController.o0#
 
 CCompileC build/NOW!!.build/Release-iphonesimulator/NOW!!.build/Objects-normal/i386/Memo.o /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/Memo.m normal i386 objective-c com.apple.compilers.gcc.4_2
 s325320410.847331
@@ -849,8 +849,8 @@ xcom.apple.compilers.gcc.4_2
 lSLF07#2@110"Compile /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/MyFoldersTableViewController.m325611705#325611705#0(0"0(0#0#102"/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/MyFoldersTableViewController.m8617927456#2266"    cd "/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -mdynamic-no-pic -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/NOW!!-generated-files.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/NOW!!-own-target-headers.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/NOW!!-all-target-headers.hmap -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/NOW!!-project-headers.hmap -F/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/Release-iphonesimulator -I/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/Release-iphonesimulator/include -I/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/DerivedSources/i386 -I/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/DerivedSources -DNS_BLOCK_ASSERTIONS=1 -include /var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/NOW___Prefix-fcmdfivdxmpbqmbajyfdqqgjevxb/NOW___Prefix.pch -c /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/MyFoldersTableViewController.m -o /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/Objects-normal/i386/MyFoldersTableViewController.o0#
 
 CCompileC build/NOW!!.build/Release-iphonesimulator/NOW!!.build/Objects-normal/i386/MyFoldersViewController.o /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/MyFoldersViewController.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s325613310.616984
-e325613310.801868
+s325628420.781852
+e325628420.947850
 r1
 xCompileC
 xbuild/NOW!!.build/Release-iphonesimulator/NOW!!.build/Objects-normal/i386/MyFoldersViewController.o
@@ -859,7 +859,7 @@ xnormal
 xi386
 xobjective-c
 xcom.apple.compilers.gcc.4_2
-lSLF07#2@105"Compile /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/MyFoldersViewController.m325613310#325613310#0(0"0(0#0#97"/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/MyFoldersViewController.m8619700992#2256"    cd "/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -mdynamic-no-pic -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/NOW!!-generated-files.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/NOW!!-own-target-headers.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/NOW!!-all-target-headers.hmap -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/NOW!!-project-headers.hmap -F/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/Release-iphonesimulator -I/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/Release-iphonesimulator/include -I/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/DerivedSources/i386 -I/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/DerivedSources -DNS_BLOCK_ASSERTIONS=1 -include /var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/NOW___Prefix-fcmdfivdxmpbqmbajyfdqqgjevxb/NOW___Prefix.pch -c /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/MyFoldersViewController.m -o /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/Objects-normal/i386/MyFoldersViewController.o0#
+lSLF07#2@105"Compile /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/MyFoldersViewController.m325628420#325628420#0(0"0(0#0#97"/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/MyFoldersViewController.m8618171616#2256"    cd "/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -mdynamic-no-pic -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/NOW!!-generated-files.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/NOW!!-own-target-headers.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/NOW!!-all-target-headers.hmap -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/NOW!!-project-headers.hmap -F/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/Release-iphonesimulator -I/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/Release-iphonesimulator/include -I/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/DerivedSources/i386 -I/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/DerivedSources -DNS_BLOCK_ASSERTIONS=1 -include /var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/NOW___Prefix-fcmdfivdxmpbqmbajyfdqqgjevxb/NOW___Prefix.pch -c /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/MyFoldersViewController.m -o /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/Objects-normal/i386/MyFoldersViewController.o0#
 
 CCompileC build/NOW!!.build/Release-iphonesimulator/NOW!!.build/Objects-normal/i386/MyMemosTableViewController-94BA821E613B1655.o /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/MyMemosTableViewController.m normal i386 objective-c com.apple.compilers.gcc.4_2
 s325006395.007488
@@ -1056,12 +1056,12 @@ x/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/MyFolde
 lSLF07#2@51"CompileXIB Classes/MyFoldersTableViewController.xib325611581#325611582#0(0"0(0#0#104"/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/MyFoldersTableViewController.xib8624069984#691"    cd "/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!"    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 4.3    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/Release-iphonesimulator/NOW!!.app/MyFoldersTableViewController.nib /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/MyFoldersTableViewController.xib --sdk /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk0#
 
 CCompileXIB /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/MyFoldersViewController.xib
-s325613310.074242
-e325613310.614904
+s325615276.906517
+e325615277.553773
 r1
 xCompileXIB
 x/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/MyFoldersViewController.xib
-lSLF07#2@46"CompileXIB Classes/MyFoldersViewController.xib325613310#325613310#0(0"0(0#0#99"/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/MyFoldersViewController.xib8618151296#681"    cd "/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!"    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 4.3    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/Release-iphonesimulator/NOW!!.app/MyFoldersViewController.nib /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/MyFoldersViewController.xib --sdk /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk0#
+lSLF07#2@46"CompileXIB Classes/MyFoldersViewController.xib325615276#325615277#0(0"0(0#0#99"/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/MyFoldersViewController.xib8616720448#681"    cd "/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!"    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 4.3    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/Release-iphonesimulator/NOW!!.app/MyFoldersViewController.nib /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/MyFoldersViewController.xib --sdk /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk0#
 
 CCompileXIB /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/MyMemosTableViewController.xib
 s325572868.472481
@@ -1166,23 +1166,23 @@ x/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/NOW__.xcdatamod
 lSLF07#2@93"DataModelVersionCompile build/Release-iphonesimulator/NOW!!.app/NOW__.momd NOW__.xcdatamodeld325569195#325569195#0(0"0(0#0#82"/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/NOW__.xcdatamodeld12947990664773720#459"    cd "/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/momc -XD_MOMC_TARGET_VERSION=10.6 /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/NOW__.xcdatamodeld /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/Release-iphonesimulator/NOW!!.app/NOW__.momd0#
 
 CGenerateDSYMFile /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/Release-iphonesimulator/NOW!!.app.dSYM /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/Release-iphonesimulator/NOW!!.app/NOW!!
-s325613310.879827
-e325613310.983926
+s325628421.093621
+e325628421.245549
 r1
 xGenerateDSYMFile
 x/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/Release-iphonesimulator/NOW!!.app.dSYM
 x/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/Release-iphonesimulator/NOW!!.app/NOW!!
-lSLF07#2@107"GenerateDSYMFile build/Release-iphonesimulator/NOW!!.app.dSYM build/Release-iphonesimulator/NOW!!.app/NOW!!325613310#325613310#0(0"0(0#0#109"/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/Release-iphonesimulator/NOW!!.app/NOW!!8617899392#458"    cd "/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/dsymutil /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/Release-iphonesimulator/NOW!!.app/NOW!! -o /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/Release-iphonesimulator/NOW!!.app.dSYM0#
+lSLF07#2@107"GenerateDSYMFile build/Release-iphonesimulator/NOW!!.app.dSYM build/Release-iphonesimulator/NOW!!.app/NOW!!325628421#325628421#0(0"0(0#0#109"/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/Release-iphonesimulator/NOW!!.app/NOW!!8623541344#458"    cd "/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/dsymutil /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/Release-iphonesimulator/NOW!!.app/NOW!! -o /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/Release-iphonesimulator/NOW!!.app.dSYM0#
 
 CLd /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/Release-iphonesimulator/NOW!!.app/NOW!! normal i386
-s325613310.801998
-e325613310.879723
+s325628420.947950
+e325628421.093519
 r1
 xLd
 x/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/Release-iphonesimulator/NOW!!.app/NOW!!
 xnormal
 xi386
-lSLF07#2@114"Link /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/Release-iphonesimulator/NOW!!.app/NOW!!325613310#325613310#0(0"0(0#0#0"8618036992#1045"    cd "/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!"    setenv MACOSX_DEPLOYMENT_TARGET 10.6    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -arch i386 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -L/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/Release-iphonesimulator -F/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/Release-iphonesimulator -filelist /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/Objects-normal/i386/NOW!!.LinkFileList -mmacosx-version-min=10.6 -Xlinker -objc_abi_version -Xlinker 2 -framework Foundation -framework UIKit -framework CoreGraphics -framework CoreData -o /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/Release-iphonesimulator/NOW!!.app/NOW!!0#
+lSLF07#2@114"Link /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/Release-iphonesimulator/NOW!!.app/NOW!!325628420#325628421#0(0"0(0#0#0"8620275200#1045"    cd "/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!"    setenv MACOSX_DEPLOYMENT_TARGET 10.6    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -arch i386 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -L/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/Release-iphonesimulator -F/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/Release-iphonesimulator -filelist /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/Objects-normal/i386/NOW!!.LinkFileList -mmacosx-version-min=10.6 -Xlinker -objc_abi_version -Xlinker 2 -framework Foundation -framework UIKit -framework CoreGraphics -framework CoreData -o /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/Release-iphonesimulator/NOW!!.app/NOW!!0#
 
 CProcessInfoPlistFile /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/Release-iphonesimulator/NOW!!.app/Info.plist NOW__-Info.plist
 s325312439.001542
@@ -1220,10 +1220,10 @@ xcom.apple.compilers.llvm.clang.1_0.analyzer
 lSLF07#2@27"Precompile NOW___Prefix.pch325312634#325312635#0(0"0(0#0#80"/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/NOW___Prefix.pch8623033152#2068"    cd "/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/clang -x objective-c-header -arch i386 -fmessage-length=0 -pipe -fdiagnostics-print-source-range-info -std=c99 -Wno-trigraphs -fpascal-strings -Os -mdynamic-no-pic -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fasm-blocks -mmacosx-version-min=10.6 -gdwarf-2 -fvisibility=hidden -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/NOW!!-generated-files.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/NOW!!-own-target-headers.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/NOW!!-all-target-headers.hmap -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/NOW!!-project-headers.hmap -F/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/Release-iphonesimulator -I/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/Release-iphonesimulator/include -I/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/DerivedSources/i386 -I/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/DerivedSources -DNS_BLOCK_ASSERTIONS=1 -c /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/NOW___Prefix.pch -o /var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/NOW___Prefix-gaobnqvrhlibzeccoijmwgjbhtqa/NOW___Prefix.pch.pth0#
 
 CTouch /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/Release-iphonesimulator/NOW!!.app
-s325613310.984028
-e325613310.988239
+s325628421.247443
+e325628421.252313
 r1
 xTouch
 x/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/Release-iphonesimulator/NOW!!.app
-lSLF07#2@109"Touch /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/Release-iphonesimulator/NOW!!.app325613310#325613310#0(0"0(0#0#0"8623805792#330"    cd "/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /usr/bin/touch -c /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/Release-iphonesimulator/NOW!!.app0#
+lSLF07#2@109"Touch /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/Release-iphonesimulator/NOW!!.app325628421#325628421#0(0"0(0#0#0"8621276448#330"    cd "/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /usr/bin/touch -c /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/Release-iphonesimulator/NOW!!.app0#
 

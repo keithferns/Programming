@@ -16,7 +16,8 @@
 	UIView *topView, *bottomView;
 	UILabel	*viewLabel;
 	UISegmentedControl *segmentedControl;
-	
+	UITextView *textView;
+		//	UIButton *doneButton;
 }
 
 @property (nonatomic, retain) IBOutlet UITableViewController *tableViewController;
@@ -24,6 +25,9 @@
 @property (nonatomic, retain) IBOutlet UIView *topView, *bottomView;
 @property (nonatomic, retain) IBOutlet UILabel *viewLabel;
 @property (nonatomic, retain) IBOutlet UISegmentedControl *segmentedControl;
+@property (nonatomic, retain) IBOutlet UITextView *textView;
+	//@property (nonatomic, retain) IBOutlet UIButton *doneButton;
+
 
 - (IBAction)segmentedControlAction:(id)sender;
 

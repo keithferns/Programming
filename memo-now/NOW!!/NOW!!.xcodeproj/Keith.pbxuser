@@ -478,6 +478,39 @@
 			530197B41368760900236402 /* PBXTextBookmark */ = 530197B41368760900236402 /* PBXTextBookmark */;
 			530197B51368760900236402 /* PBXTextBookmark */ = 530197B51368760900236402 /* PBXTextBookmark */;
 			530197B61368760900236402 /* PBXTextBookmark */ = 530197B61368760900236402 /* PBXTextBookmark */;
+			530197B91368799000236402 /* XCBuildMessageTextBookmark */ = 530197B91368799000236402 /* XCBuildMessageTextBookmark */;
+			530197BA1368799000236402 /* PBXTextBookmark */ = 530197BA1368799000236402 /* PBXTextBookmark */;
+			530197BB136879FB00236402 /* PBXTextBookmark */ = 530197BB136879FB00236402 /* PBXTextBookmark */;
+			530197BC136879FB00236402 /* PBXTextBookmark */ = 530197BC136879FB00236402 /* PBXTextBookmark */;
+			530197BD136879FB00236402 /* PBXTextBookmark */ = 530197BD136879FB00236402 /* PBXTextBookmark */;
+			530197C013687B0A00236402 /* PBXTextBookmark */ = 530197C013687B0A00236402 /* PBXTextBookmark */;
+			530197C113687B0A00236402 /* PBXTextBookmark */ = 530197C113687B0A00236402 /* PBXTextBookmark */;
+			530197C213687B0A00236402 /* PBXTextBookmark */ = 530197C213687B0A00236402 /* PBXTextBookmark */;
+			530197C713687BE500236402 /* PBXTextBookmark */ = 530197C713687BE500236402 /* PBXTextBookmark */;
+			530197C813687BE700236402 /* PBXTextBookmark */ = 530197C813687BE700236402 /* PBXTextBookmark */;
+			530197CB13687C6200236402 /* PBXTextBookmark */ = 530197CB13687C6200236402 /* PBXTextBookmark */;
+			530197D013687C8500236402 /* PBXTextBookmark */ = 530197D013687C8500236402 /* PBXTextBookmark */;
+			530197D513687D2600236402 /* PBXTextBookmark */ = 530197D513687D2600236402 /* PBXTextBookmark */;
+			530197D813687D3A00236402 /* PBXTextBookmark */ = 530197D813687D3A00236402 /* PBXTextBookmark */;
+			530197DB13687D4400236402 /* PBXTextBookmark */ = 530197DB13687D4400236402 /* PBXTextBookmark */;
+			530197DC13687D7E00236402 /* PBXTextBookmark */ = 530197DC13687D7E00236402 /* PBXTextBookmark */;
+			530197E113687D9E00236402 /* PBXTextBookmark */ = 530197E113687D9E00236402 /* PBXTextBookmark */;
+			530197E213687DA400236402 /* PBXTextBookmark */ = 530197E213687DA400236402 /* PBXTextBookmark */;
+			530197E313687DA400236402 /* XCBuildMessageTextBookmark */ = 530197E313687DA400236402 /* XCBuildMessageTextBookmark */;
+			530197E413687DA400236402 /* PBXTextBookmark */ = 530197E413687DA400236402 /* PBXTextBookmark */;
+			530197E513687DCE00236402 /* PBXTextBookmark */ = 530197E513687DCE00236402 /* PBXTextBookmark */;
+			530197E613687DCE00236402 /* PBXTextBookmark */ = 530197E613687DCE00236402 /* PBXTextBookmark */;
+			530197E713687DCE00236402 /* PBXTextBookmark */ = 530197E713687DCE00236402 /* PBXTextBookmark */;
+			530197E813687DCE00236402 /* PBXTextBookmark */ = 530197E813687DCE00236402 /* PBXTextBookmark */;
+			530197ED13687DFB00236402 /* PBXTextBookmark */ = 530197ED13687DFB00236402 /* PBXTextBookmark */;
+			530197EE13687E0400236402 /* PBXTextBookmark */ = 530197EE13687E0400236402 /* PBXTextBookmark */;
+			530197F113687E1800236402 /* PBXTextBookmark */ = 530197F113687E1800236402 /* PBXTextBookmark */;
+			530197F213687E1800236402 /* PBXTextBookmark */ = 530197F213687E1800236402 /* PBXTextBookmark */;
+			530197F513687EE600236402 /* PBXTextBookmark */ = 530197F513687EE600236402 /* PBXTextBookmark */;
+			530197F813687EF600236402 /* PBXTextBookmark */ = 530197F813687EF600236402 /* PBXTextBookmark */;
+			530197F913687EF600236402 /* PBXTextBookmark */ = 530197F913687EF600236402 /* PBXTextBookmark */;
+			530197FA13687EF600236402 /* PBXTextBookmark */ = 530197FA13687EF600236402 /* PBXTextBookmark */;
+			530197FD1368B20600236402 /* PBXTextBookmark */ = 530197FD1368B20600236402 /* PBXTextBookmark */;
 			5306D8831356AF6C00FA773F = 5306D8831356AF6C00FA773F /* PBXTextBookmark */;
 			5306D92A1356C10800FA773F = 5306D92A1356C10800FA773F /* PBXTextBookmark */;
 			5306D9421356C38A00FA773F = 5306D9421356C38A00FA773F /* PBXTextBookmark */;
@@ -2388,15 +2421,15 @@
 	5301975D13686A1A00236402 /* MyFoldersViewController.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {804, 534}}";
-			sepNavSelRange = "{388, 0}";
-			sepNavVisRange = "{0, 807}";
+			sepNavSelRange = "{423, 0}";
+			sepNavVisRange = "{0, 981}";
 		};
 	};
 	5301975E13686A1A00236402 /* MyFoldersViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {804, 1196}}";
-			sepNavSelRange = "{361, 0}";
-			sepNavVisRange = "{0, 1064}";
+			sepNavIntBoundsRect = "{{0, 0}, {804, 1287}}";
+			sepNavSelRange = "{1905, 0}";
+			sepNavVisRange = "{1140, 1022}";
 		};
 	};
 	5301976213686A3900236402 /* MyFoldersTableViewController.h */ = {
@@ -2409,9 +2442,9 @@
 	5301976313686A3900236402 /* MyFoldersTableViewController.m */ = {
 		uiCtxt = {
 			sepNavFolds = "{\n    c =     (\n                {\n            l = DetailViewController;\n            r = \"{3620, 24}\";\n            s = 1;\n        },\n                {\n            l = DetailViewController;\n            r = \"{3671, 24}\";\n            s = 1;\n        },\n                {\n            l = \"Nib name\";\n            r = \"{3721, 12}\";\n            s = 1;\n        }\n    );\n    r = \"{0, 4422}\";\n    s = 0;\n}";
-			sepNavIntBoundsRect = "{{0, 0}, {804, 2353}}";
+			sepNavIntBoundsRect = "{{0, 0}, {804, 2210}}";
 			sepNavSelRange = "{293, 0}";
-			sepNavVisRange = "{341, 1006}";
+			sepNavVisRange = "{1347, 1356}";
 		};
 	};
 	5301976D1368707A00236402 /* PBXTextBookmark */ = {
@@ -2450,7 +2483,7 @@
 		fRef = 5301975E13686A1A00236402 /* MyFoldersViewController.m */;
 		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
-		rLoc = 59;
+		rLoc = 58;
 		rType = 1;
 	};
 	530197711368707A00236402 /* PBXTextBookmark */ = {
@@ -2458,7 +2491,7 @@
 		fRef = 5301975E13686A1A00236402 /* MyFoldersViewController.m */;
 		name = "MyFoldersViewController.m: 60";
 		rLen = 61;
-		rLoc = 1304;
+		rLoc = 1373;
 		rType = 0;
 		vrLen = 731;
 		vrLoc = 915;
@@ -2538,7 +2571,7 @@
 		fRef = 5301975D13686A1A00236402 /* MyFoldersViewController.h */;
 		name = "MyFoldersViewController.h: 21";
 		rLen = 0;
-		rLoc = 401;
+		rLoc = 449;
 		rType = 0;
 		vrLen = 727;
 		vrLoc = 0;
@@ -2548,7 +2581,7 @@
 		fRef = 5301975E13686A1A00236402 /* MyFoldersViewController.m */;
 		name = "MyFoldersViewController.m: 59";
 		rLen = 0;
-		rLoc = 1304;
+		rLoc = 1373;
 		rType = 0;
 		vrLen = 934;
 		vrLoc = 855;
@@ -2905,10 +2938,338 @@
 		fRef = 5301975E13686A1A00236402 /* MyFoldersViewController.m */;
 		name = "MyFoldersViewController.m: 18";
 		rLen = 0;
-		rLoc = 361;
+		rLoc = 397;
 		rType = 0;
 		vrLen = 1064;
 		vrLoc = 0;
+	};
+	530197B91368799000236402 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Passing argument 1 of 'initWithNibName:bundle:' from incompatible pointer type";
+		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 32;
+		rType = 1;
+	};
+	530197BA1368799000236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
+		name = "EnterTextViewController.m: 30";
+		rLen = 0;
+		rLoc = 870;
+		rType = 0;
+		vrLen = 1112;
+		vrLoc = 0;
+	};
+	530197BB136879FB00236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5301975D13686A1A00236402 /* MyFoldersViewController.h */;
+		name = "MyFoldersViewController.h: 27";
+		rLen = 0;
+		rLoc = 925;
+		rType = 0;
+		vrLen = 887;
+		vrLoc = 0;
+	};
+	530197BC136879FB00236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5301975E13686A1A00236402 /* MyFoldersViewController.m */;
+		name = "MyFoldersViewController.m: 16";
+		rLen = 0;
+		rLoc = 339;
+		rType = 0;
+		vrLen = 1084;
+		vrLoc = 0;
+	};
+	530197BD136879FB00236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5301975E13686A1A00236402 /* MyFoldersViewController.m */;
+		name = "MyFoldersViewController.m: 51";
+		rLen = 0;
+		rLoc = 1162;
+		rType = 0;
+		vrLen = 916;
+		vrLoc = 934;
+	};
+	530197C013687B0A00236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5301975D13686A1A00236402 /* MyFoldersViewController.h */;
+		name = "MyFoldersViewController.h: 29";
+		rLen = 0;
+		rLoc = 924;
+		rType = 0;
+		vrLen = 972;
+		vrLoc = 0;
+	};
+	530197C113687B0A00236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5301975E13686A1A00236402 /* MyFoldersViewController.m */;
+		name = "MyFoldersViewController.m: 18";
+		rLen = 0;
+		rLoc = 397;
+		rType = 0;
+		vrLen = 1107;
+		vrLoc = 0;
+	};
+	530197C213687B0A00236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5301975E13686A1A00236402 /* MyFoldersViewController.m */;
+		name = "MyFoldersViewController.m: 60";
+		rLen = 0;
+		rLoc = 1593;
+		rType = 0;
+		vrLen = 986;
+		vrLoc = 1129;
+	};
+	530197C713687BE500236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
+		name = "EnterTextViewController.m: 297";
+		rLen = 0;
+		rLoc = 9944;
+		rType = 0;
+		vrLen = 1176;
+		vrLoc = 8773;
+	};
+	530197C813687BE700236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
+		name = "EnterTextViewController.m: 297";
+		rLen = 0;
+		rLoc = 9944;
+		rType = 0;
+		vrLen = 1176;
+		vrLoc = 8773;
+	};
+	530197CB13687C6200236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5301975E13686A1A00236402 /* MyFoldersViewController.m */;
+		name = "MyFoldersViewController.m: 64";
+		rLen = 0;
+		rLoc = 1652;
+		rType = 0;
+		vrLen = 964;
+		vrLoc = 1132;
+	};
+	530197D013687C8500236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5301975E13686A1A00236402 /* MyFoldersViewController.m */;
+		name = "MyFoldersViewController.m: 60";
+		rLen = 0;
+		rLoc = 1444;
+		rType = 0;
+		vrLen = 1004;
+		vrLoc = 1136;
+	};
+	530197D513687D2600236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5301975E13686A1A00236402 /* MyFoldersViewController.m */;
+		name = "MyFoldersViewController.m: 67";
+		rLen = 0;
+		rLoc = 1658;
+		rType = 0;
+		vrLen = 1026;
+		vrLoc = 1138;
+	};
+	530197D813687D3A00236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5301975E13686A1A00236402 /* MyFoldersViewController.m */;
+		name = "MyFoldersViewController.m: 67";
+		rLen = 0;
+		rLoc = 1658;
+		rType = 0;
+		vrLen = 1025;
+		vrLoc = 1185;
+	};
+	530197DB13687D4400236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5301975E13686A1A00236402 /* MyFoldersViewController.m */;
+		name = "MyFoldersViewController.m: 67";
+		rLen = 0;
+		rLoc = 1658;
+		rType = 0;
+		vrLen = 1055;
+		vrLoc = 1187;
+	};
+	530197DC13687D7E00236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5301975E13686A1A00236402 /* MyFoldersViewController.m */;
+		name = "MyFoldersViewController.m: 67";
+		rLen = 0;
+		rLoc = 1658;
+		rType = 0;
+		vrLen = 1089;
+		vrLoc = 1187;
+	};
+	530197E113687D9E00236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5301975E13686A1A00236402 /* MyFoldersViewController.m */;
+		name = "MyFoldersViewController.m: 67";
+		rLen = 0;
+		rLoc = 1658;
+		rType = 0;
+		vrLen = 1014;
+		vrLoc = 1264;
+	};
+	530197E213687DA400236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
+		name = "EnterTextViewController.m: 297";
+		rLen = 0;
+		rLoc = 9944;
+		rType = 0;
+		vrLen = 1062;
+		vrLoc = 8972;
+	};
+	530197E313687DA400236402 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "'clearButtonSelected' undeclared (first use in this function)";
+		fRef = 5301975E13686A1A00236402 /* MyFoldersViewController.m */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 63;
+		rType = 1;
+	};
+	530197E413687DA400236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5301975E13686A1A00236402 /* MyFoldersViewController.m */;
+		name = "MyFoldersViewController.m: 62";
+		rLen = 0;
+		rLoc = 1595;
+		rType = 0;
+		vrLen = 854;
+		vrLoc = 1136;
+	};
+	530197E513687DCE00236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
+		name = "EnterTextViewController.m: 303";
+		rLen = 0;
+		rLoc = 10031;
+		rType = 0;
+		vrLen = 1095;
+		vrLoc = 9415;
+	};
+	530197E613687DCE00236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5301976313686A3900236402 /* MyFoldersTableViewController.m */;
+		name = "MyFoldersTableViewController.m: 18";
+		rLen = 0;
+		rLoc = 293;
+		rType = 0;
+		vrLen = 831;
+		vrLoc = 0;
+	};
+	530197E713687DCE00236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5301975E13686A1A00236402 /* MyFoldersViewController.m */;
+		name = "MyFoldersViewController.m: 67";
+		rLen = 0;
+		rLoc = 1658;
+		rType = 0;
+		vrLen = 1014;
+		vrLoc = 1264;
+	};
+	530197E813687DCE00236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5301975E13686A1A00236402 /* MyFoldersViewController.m */;
+		name = "MyFoldersViewController.m: 67";
+		rLen = 0;
+		rLoc = 1658;
+		rType = 0;
+		vrLen = 975;
+		vrLoc = 1097;
+	};
+	530197ED13687DFB00236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5301975E13686A1A00236402 /* MyFoldersViewController.m */;
+		name = "MyFoldersViewController.m: 67";
+		rLen = 0;
+		rLoc = 1658;
+		rType = 0;
+		vrLen = 986;
+		vrLoc = 1129;
+	};
+	530197EE13687E0400236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5301975E13686A1A00236402 /* MyFoldersViewController.m */;
+		name = "MyFoldersViewController.m: 18";
+		rLen = 0;
+		rLoc = 374;
+		rType = 0;
+		vrLen = 910;
+		vrLoc = 0;
+	};
+	530197F113687E1800236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5301975E13686A1A00236402 /* MyFoldersViewController.m */;
+		name = "MyFoldersViewController.m: 67";
+		rLen = 0;
+		rLoc = 1658;
+		rType = 0;
+		vrLen = 988;
+		vrLoc = 1132;
+	};
+	530197F213687E1800236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5301975D13686A1A00236402 /* MyFoldersViewController.h */;
+		name = "MyFoldersViewController.h: 20";
+		rLen = 0;
+		rLoc = 423;
+		rType = 0;
+		vrLen = 981;
+		vrLoc = 0;
+	};
+	530197F513687EE600236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5301975E13686A1A00236402 /* MyFoldersViewController.m */;
+		name = "MyFoldersViewController.m: 18";
+		rLen = 0;
+		rLoc = 374;
+		rType = 0;
+		vrLen = 781;
+		vrLoc = 845;
+	};
+	530197F813687EF600236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5301975D13686A1A00236402 /* MyFoldersViewController.h */;
+		name = "MyFoldersViewController.h: 20";
+		rLen = 0;
+		rLoc = 423;
+		rType = 0;
+		vrLen = 981;
+		vrLoc = 0;
+	};
+	530197F913687EF600236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5301976313686A3900236402 /* MyFoldersTableViewController.m */;
+		name = "MyFoldersTableViewController.m: 18";
+		rLen = 0;
+		rLoc = 293;
+		rType = 0;
+		vrLen = 1356;
+		vrLoc = 1347;
+	};
+	530197FA13687EF600236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5301975E13686A1A00236402 /* MyFoldersViewController.m */;
+		name = "MyFoldersViewController.m: 58";
+		rLen = 0;
+		rLoc = 1350;
+		rType = 0;
+		vrLen = 1002;
+		vrLoc = 1139;
+	};
+	530197FD1368B20600236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5301975E13686A1A00236402 /* MyFoldersViewController.m */;
+		name = "MyFoldersViewController.m: 75";
+		rLen = 0;
+		rLoc = 1905;
+		rType = 0;
+		vrLen = 1022;
+		vrLoc = 1140;
 	};
 	5306D8391356A14500FA773F /* NavButton.h */ = {
 		uiCtxt = {
@@ -3324,9 +3685,9 @@
 		path = "/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/EnterTextViewController.m";
 		sourceTree = "<absolute>";
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {804, 5564}}";
-			sepNavSelRange = "{1835, 0}";
-			sepNavVisRange = "{796, 1297}";
+			sepNavIntBoundsRect = "{{0, 0}, {804, 5681}}";
+			sepNavSelRange = "{10031, 0}";
+			sepNavVisRange = "{9415, 1095}";
 		};
 	};
 	53BDD1B6135179DD00C1C44E /* DateTimeViewController.h */ = {

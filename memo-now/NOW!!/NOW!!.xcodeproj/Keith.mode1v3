@@ -316,7 +316,7 @@
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 147}, {272, 664}}</string>
+							<string>{{0, 180}, {272, 664}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -365,7 +365,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>530197B61368760900236402</string>
+										<string>530197FD1368B20600236402</string>
 										<key>history</key>
 										<array>
 											<string>53DF3FFD134E3928001FE4E4</string>
@@ -414,12 +414,12 @@
 											<string>5301977E136870E400236402</string>
 											<string>5301978B136871A700236402</string>
 											<string>5301978C136871A700236402</string>
-											<string>530197981368733300236402</string>
 											<string>530197991368733300236402</string>
-											<string>530197B31368760900236402</string>
 											<string>530197B41368760900236402</string>
-											<string>530197B51368760900236402</string>
-											<string>5301978D136871A700236402</string>
+											<string>530197E513687DCE00236402</string>
+											<string>530197F813687EF600236402</string>
+											<string>530197F913687EF600236402</string>
+											<string>530197F113687E1800236402</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -600,7 +600,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>325613065.676328</real>
+	<real>325628422.00942701</real>
 	<key>ToolbarConfigUserDefaultsMinorVersion</key>
 	<string>2</string>
 	<key>ToolbarDisplayMode</key>
@@ -619,8 +619,8 @@
 	<array>
 		<string>1C78EAAD065D492600B07095</string>
 		<string>1CD10A99069EF8BA00B06720</string>
-		<string>53DF3FE2134E3088001FE4E4</string>
 		<string>/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/NOW!!.xcodeproj</string>
+		<string>53DF3FE2134E3088001FE4E4</string>
 	</array>
 	<key>WindowString</key>
 	<string>68 55 1159 723 0 0 1280 778 </string>
@@ -644,7 +644,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>EnterTextViewController.m</string>
+								<string>MyFoldersViewController.m</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>

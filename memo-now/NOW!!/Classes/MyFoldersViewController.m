@@ -13,9 +13,9 @@
 
 @synthesize tableViewController;
 @synthesize	tableView;
-@synthesize topView, bottomView, viewLabel;
+@synthesize topView, bottomView, viewLabel, textView;
 @synthesize segmentedControl;
-
+	//@synthesize doneButton;
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 /*
@@ -46,8 +46,6 @@
 	}
 	
 }
-	
-	
 
 
 - (void)viewDidLoad {
@@ -57,19 +55,19 @@
 	[self.view addSubview:segmentedControl];
 	[self.view addSubview:topView];
 	[self.view addSubview:bottomView];
+	[self.topView addSubview:textView];
 	[self.bottomView addSubview:tableViewController.tableView];
-	
-	
-	
+		//[self.textView addSubview:doneButton];
+		//[doneButton addTarget:self action:@selector(clearButtonSelected:) forControlEvents:UIControlEventTouchUpInside];
 }
 
-/*
-// Override to allow orientations other than the default portrait orientation.
+	//- (void)clearButtonSelected{
+	//textView.text = @"";
+
+	//}	
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations.
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return YES;
 }
-*/
 
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
@@ -90,6 +88,11 @@
 
 - (void)dealloc {
     [super dealloc];
+	[viewLabel release];
+	[topView release];
+	[bottomView release];
+	[segmentedControl release];
+	[tableViewController release];
 }
 
 
