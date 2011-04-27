@@ -366,6 +366,118 @@
 			530196DC1367F3FD00236402 /* PBXTextBookmark */ = 530196DC1367F3FD00236402 /* PBXTextBookmark */;
 			530196DD1367F41800236402 /* PBXTextBookmark */ = 530196DD1367F41800236402 /* PBXTextBookmark */;
 			530196DE1367F41800236402 /* PBXTextBookmark */ = 530196DE1367F41800236402 /* PBXTextBookmark */;
+			530196E11367F5FE00236402 /* PBXTextBookmark */ = 530196E11367F5FE00236402 /* PBXTextBookmark */;
+			530196E21367F5FE00236402 /* PBXTextBookmark */ = 530196E21367F5FE00236402 /* PBXTextBookmark */;
+			530196E51367F62E00236402 /* PBXTextBookmark */ = 530196E51367F62E00236402 /* PBXTextBookmark */;
+			530196E61367F62E00236402 /* PBXTextBookmark */ = 530196E61367F62E00236402 /* PBXTextBookmark */;
+			530196E91367F64F00236402 /* PBXTextBookmark */ = 530196E91367F64F00236402 /* PBXTextBookmark */;
+			530196EA1367F64F00236402 /* PBXTextBookmark */ = 530196EA1367F64F00236402 /* PBXTextBookmark */;
+			530196ED1367F67C00236402 /* PBXTextBookmark */ = 530196ED1367F67C00236402 /* PBXTextBookmark */;
+			530196EE1367F67C00236402 /* PBXTextBookmark */ = 530196EE1367F67C00236402 /* PBXTextBookmark */;
+			530196F91367F7CA00236402 /* PBXTextBookmark */ = 530196F91367F7CA00236402 /* PBXTextBookmark */;
+			530196FA1367F7CA00236402 /* PBXTextBookmark */ = 530196FA1367F7CA00236402 /* PBXTextBookmark */;
+			530196FF1367F88200236402 /* PBXTextBookmark */ = 530196FF1367F88200236402 /* PBXTextBookmark */;
+			530197001367F88200236402 /* PBXTextBookmark */ = 530197001367F88200236402 /* PBXTextBookmark */;
+			530197031367F89100236402 /* PBXTextBookmark */ = 530197031367F89100236402 /* PBXTextBookmark */;
+			530197041367F89100236402 /* PBXTextBookmark */ = 530197041367F89100236402 /* PBXTextBookmark */;
+			530197071367F89D00236402 /* PBXTextBookmark */ = 530197071367F89D00236402 /* PBXTextBookmark */;
+			530197081367F89D00236402 /* PBXTextBookmark */ = 530197081367F89D00236402 /* PBXTextBookmark */;
+			5301970B1367F95500236402 /* PBXTextBookmark */ = 5301970B1367F95500236402 /* PBXTextBookmark */;
+			5301970C1367F95500236402 /* PBXTextBookmark */ = 5301970C1367F95500236402 /* PBXTextBookmark */;
+			5301970D1367F95500236402 /* PBXTextBookmark */ = 5301970D1367F95500236402 /* PBXTextBookmark */;
+			5301970E1367F95500236402 /* PBXTextBookmark */ = 5301970E1367F95500236402 /* PBXTextBookmark */;
+			530197111367F96800236402 /* PBXTextBookmark */ = 530197111367F96800236402 /* PBXTextBookmark */;
+			530197121367F96800236402 /* PBXTextBookmark */ = 530197121367F96800236402 /* PBXTextBookmark */;
+			530197131367F9D800236402 /* PBXTextBookmark */ = 530197131367F9D800236402 /* PBXTextBookmark */;
+			530197141367F9D800236402 /* PBXTextBookmark */ = 530197141367F9D800236402 /* PBXTextBookmark */;
+			530197171367FC6B00236402 /* PBXTextBookmark */ = 530197171367FC6B00236402 /* PBXTextBookmark */;
+			530197181367FC6B00236402 /* PBXTextBookmark */ = 530197181367FC6B00236402 /* PBXTextBookmark */;
+			530197191367FC6B00236402 /* PBXTextBookmark */ = 530197191367FC6B00236402 /* PBXTextBookmark */;
+			5301971A1367FEFD00236402 /* PBXTextBookmark */ = 5301971A1367FEFD00236402 /* PBXTextBookmark */;
+			5301971B1367FF5700236402 /* PBXTextBookmark */ = 5301971B1367FF5700236402 /* PBXTextBookmark */;
+			5301971C1367FF5700236402 /* PBXTextBookmark */ = 5301971C1367FF5700236402 /* PBXTextBookmark */;
+			5301971D1367FF5700236402 /* PBXTextBookmark */ = 5301971D1367FF5700236402 /* PBXTextBookmark */;
+			530197201368010D00236402 /* PBXTextBookmark */ = 530197201368010D00236402 /* PBXTextBookmark */;
+			530197271368015000236402 /* PBXTextBookmark */ = 530197271368015000236402 /* PBXTextBookmark */;
+			530197281368015000236402 /* PBXTextBookmark */ = 530197281368015000236402 /* PBXTextBookmark */;
+			530197291368015000236402 /* PBXTextBookmark */ = 530197291368015000236402 /* PBXTextBookmark */;
+			5301972B1368015000236402 /* PBXTextBookmark */ = 5301972B1368015000236402 /* PBXTextBookmark */;
+			5301972C1368015000236402 /* XCBuildMessageTextBookmark */ = 5301972C1368015000236402 /* XCBuildMessageTextBookmark */;
+			5301972D1368015000236402 /* PBXTextBookmark */ = 5301972D1368015000236402 /* PBXTextBookmark */;
+			5301972E1368016C00236402 /* PBXTextBookmark */ = 5301972E1368016C00236402 /* PBXTextBookmark */;
+			530197311368017900236402 /* PBXTextBookmark */ = 530197311368017900236402 /* PBXTextBookmark */;
+			53019738136801C300236402 /* PBXTextBookmark */ = 53019738136801C300236402 /* PBXTextBookmark */;
+			530197391368027100236402 /* PBXTextBookmark */ = 530197391368027100236402 /* PBXTextBookmark */;
+			5301973C136802DA00236402 /* PBXTextBookmark */ = 5301973C136802DA00236402 /* PBXTextBookmark */;
+			5301973D1368037E00236402 /* PBXTextBookmark */ = 5301973D1368037E00236402 /* PBXTextBookmark */;
+			5301973E1368037E00236402 /* XCBuildMessageTextBookmark */ = 5301973E1368037E00236402 /* XCBuildMessageTextBookmark */;
+			5301973F1368037E00236402 /* PBXTextBookmark */ = 5301973F1368037E00236402 /* PBXTextBookmark */;
+			53019742136803C900236402 /* PBXTextBookmark */ = 53019742136803C900236402 /* PBXTextBookmark */;
+			53019743136803C900236402 /* PBXTextBookmark */ = 53019743136803C900236402 /* PBXTextBookmark */;
+			53019744136803C900236402 /* PBXTextBookmark */ = 53019744136803C900236402 /* PBXTextBookmark */;
+			53019745136803C900236402 /* PBXTextBookmark */ = 53019745136803C900236402 /* PBXTextBookmark */;
+			53019746136803C900236402 /* PBXTextBookmark */ = 53019746136803C900236402 /* PBXTextBookmark */;
+			53019749136866E600236402 /* PBXBookmark */ = 53019749136866E600236402 /* PBXBookmark */;
+			5301974D1368698C00236402 /* PBXTextBookmark */ = 5301974D1368698C00236402 /* PBXTextBookmark */;
+			5301974E1368698C00236402 /* PBXTextBookmark */ = 5301974E1368698C00236402 /* PBXTextBookmark */;
+			5301974F1368698C00236402 /* PBXTextBookmark */ = 5301974F1368698C00236402 /* PBXTextBookmark */;
+			530197501368698C00236402 /* PBXTextBookmark */ = 530197501368698C00236402 /* PBXTextBookmark */;
+			530197511368698C00236402 /* PBXTextBookmark */ = 530197511368698C00236402 /* PBXTextBookmark */;
+			530197521368698C00236402 /* PBXTextBookmark */ = 530197521368698C00236402 /* PBXTextBookmark */;
+			530197531368698C00236402 /* PBXTextBookmark */ = 530197531368698C00236402 /* PBXTextBookmark */;
+			530197541368698C00236402 /* PBXTextBookmark */ = 530197541368698C00236402 /* PBXTextBookmark */;
+			530197551368698C00236402 /* PBXTextBookmark */ = 530197551368698C00236402 /* PBXTextBookmark */;
+			530197581368698C00236402 /* PBXTextBookmark */ = 530197581368698C00236402 /* PBXTextBookmark */;
+			5301976D1368707A00236402 /* PBXTextBookmark */ = 5301976D1368707A00236402 /* PBXTextBookmark */;
+			5301976E1368707A00236402 /* PBXTextBookmark */ = 5301976E1368707A00236402 /* PBXTextBookmark */;
+			5301976F1368707A00236402 /* PBXTextBookmark */ = 5301976F1368707A00236402 /* PBXTextBookmark */;
+			530197701368707A00236402 /* XCBuildMessageTextBookmark */ = 530197701368707A00236402 /* XCBuildMessageTextBookmark */;
+			530197711368707A00236402 /* PBXTextBookmark */ = 530197711368707A00236402 /* PBXTextBookmark */;
+			53019778136870E400236402 /* PBXTextBookmark */ = 53019778136870E400236402 /* PBXTextBookmark */;
+			53019779136870E400236402 /* PBXTextBookmark */ = 53019779136870E400236402 /* PBXTextBookmark */;
+			5301977A136870E400236402 /* PBXTextBookmark */ = 5301977A136870E400236402 /* PBXTextBookmark */;
+			5301977B136870E400236402 /* PBXTextBookmark */ = 5301977B136870E400236402 /* PBXTextBookmark */;
+			5301977C136870E400236402 /* PBXTextBookmark */ = 5301977C136870E400236402 /* PBXTextBookmark */;
+			5301977D136870E400236402 /* PBXTextBookmark */ = 5301977D136870E400236402 /* PBXTextBookmark */;
+			5301977E136870E400236402 /* PBXTextBookmark */ = 5301977E136870E400236402 /* PBXTextBookmark */;
+			5301977F136870E400236402 /* PBXTextBookmark */ = 5301977F136870E400236402 /* PBXTextBookmark */;
+			53019780136870E400236402 /* PBXTextBookmark */ = 53019780136870E400236402 /* PBXTextBookmark */;
+			53019781136870E400236402 /* PBXTextBookmark */ = 53019781136870E400236402 /* PBXTextBookmark */;
+			53019782136870E400236402 /* PBXTextBookmark */ = 53019782136870E400236402 /* PBXTextBookmark */;
+			53019783136870E400236402 /* PBXTextBookmark */ = 53019783136870E400236402 /* PBXTextBookmark */;
+			5301978A136871A700236402 /* PBXTextBookmark */ = 5301978A136871A700236402 /* PBXTextBookmark */;
+			5301978B136871A700236402 /* PBXTextBookmark */ = 5301978B136871A700236402 /* PBXTextBookmark */;
+			5301978C136871A700236402 /* PBXTextBookmark */ = 5301978C136871A700236402 /* PBXTextBookmark */;
+			5301978D136871A700236402 /* PBXTextBookmark */ = 5301978D136871A700236402 /* PBXTextBookmark */;
+			5301978E136871A700236402 /* PBXTextBookmark */ = 5301978E136871A700236402 /* PBXTextBookmark */;
+			5301978F136871A700236402 /* PBXTextBookmark */ = 5301978F136871A700236402 /* PBXTextBookmark */;
+			53019790136871A700236402 /* PBXTextBookmark */ = 53019790136871A700236402 /* PBXTextBookmark */;
+			53019791136871A700236402 /* PBXTextBookmark */ = 53019791136871A700236402 /* PBXTextBookmark */;
+			53019792136871A700236402 /* PBXTextBookmark */ = 53019792136871A700236402 /* PBXTextBookmark */;
+			53019795136872A100236402 /* PBXTextBookmark */ = 53019795136872A100236402 /* PBXTextBookmark */;
+			53019796136872A100236402 /* XCBuildMessageTextBookmark */ = 53019796136872A100236402 /* XCBuildMessageTextBookmark */;
+			53019797136872A100236402 /* PBXTextBookmark */ = 53019797136872A100236402 /* PBXTextBookmark */;
+			530197981368733300236402 /* PBXTextBookmark */ = 530197981368733300236402 /* PBXTextBookmark */;
+			530197991368733300236402 /* PBXTextBookmark */ = 530197991368733300236402 /* PBXTextBookmark */;
+			5301979A1368733300236402 /* PBXTextBookmark */ = 5301979A1368733300236402 /* PBXTextBookmark */;
+			5301979B1368733300236402 /* PBXTextBookmark */ = 5301979B1368733300236402 /* PBXTextBookmark */;
+			5301979C1368733300236402 /* PBXTextBookmark */ = 5301979C1368733300236402 /* PBXTextBookmark */;
+			5301979D1368734C00236402 /* PBXTextBookmark */ = 5301979D1368734C00236402 /* PBXTextBookmark */;
+			5301979E1368734C00236402 /* PBXTextBookmark */ = 5301979E1368734C00236402 /* PBXTextBookmark */;
+			530197A31368737300236402 /* XCBuildMessageTextBookmark */ = 530197A31368737300236402 /* XCBuildMessageTextBookmark */;
+			530197A41368737300236402 /* PBXTextBookmark */ = 530197A41368737300236402 /* PBXTextBookmark */;
+			530197A51368737300236402 /* PBXTextBookmark */ = 530197A51368737300236402 /* PBXTextBookmark */;
+			530197A61368746600236402 /* PBXTextBookmark */ = 530197A61368746600236402 /* PBXTextBookmark */;
+			530197A71368746600236402 /* PBXTextBookmark */ = 530197A71368746600236402 /* PBXTextBookmark */;
+			530197AC136875D600236402 /* XCBuildMessageTextBookmark */ = 530197AC136875D600236402 /* XCBuildMessageTextBookmark */;
+			530197AD136875D600236402 /* PBXTextBookmark */ = 530197AD136875D600236402 /* PBXTextBookmark */;
+			530197AE136875D600236402 /* PBXTextBookmark */ = 530197AE136875D600236402 /* PBXTextBookmark */;
+			530197B1136875EF00236402 /* PBXTextBookmark */ = 530197B1136875EF00236402 /* PBXTextBookmark */;
+			530197B2136875EF00236402 /* PBXTextBookmark */ = 530197B2136875EF00236402 /* PBXTextBookmark */;
+			530197B31368760900236402 /* PBXTextBookmark */ = 530197B31368760900236402 /* PBXTextBookmark */;
+			530197B41368760900236402 /* PBXTextBookmark */ = 530197B41368760900236402 /* PBXTextBookmark */;
+			530197B51368760900236402 /* PBXTextBookmark */ = 530197B51368760900236402 /* PBXTextBookmark */;
+			530197B61368760900236402 /* PBXTextBookmark */ = 530197B61368760900236402 /* PBXTextBookmark */;
 			5306D8831356AF6C00FA773F = 5306D8831356AF6C00FA773F /* PBXTextBookmark */;
 			5306D92A1356C10800FA773F = 5306D92A1356C10800FA773F /* PBXTextBookmark */;
 			5306D9421356C38A00FA773F = 5306D9421356C38A00FA773F /* PBXTextBookmark */;
@@ -470,7 +582,7 @@
 		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
 		name = "EnterTextViewController.m: 117";
 		rLen = 0;
-		rLoc = 3710;
+		rLoc = 4064;
 		rType = 0;
 		vrLen = 1140;
 		vrLoc = 3589;
@@ -540,7 +652,7 @@
 		fRef = 537D1691135F360A00C389FC /* MyMemosViewController.m */;
 		name = "MyMemosViewController.m: 78";
 		rLen = 0;
-		rLoc = 3384;
+		rLoc = 3063;
 		rType = 0;
 		vrLen = 1766;
 		vrLoc = 1137;
@@ -550,7 +662,7 @@
 		fRef = 537D1691135F360A00C389FC /* MyMemosViewController.m */;
 		name = "MyMemosViewController.m: 88";
 		rLen = 0;
-		rLoc = 3693;
+		rLoc = 3372;
 		rType = 0;
 		vrLen = 1581;
 		vrLoc = 1329;
@@ -728,7 +840,7 @@
 		fRef = 537D1691135F360A00C389FC /* MyMemosViewController.m */;
 		name = "MyMemosViewController.m: 83";
 		rLen = 0;
-		rLoc = 3384;
+		rLoc = 3063;
 		rType = 0;
 		vrLen = 1169;
 		vrLoc = 902;
@@ -738,7 +850,7 @@
 		fRef = 537D1691135F360A00C389FC /* MyMemosViewController.m */;
 		name = "MyMemosViewController.m: 83";
 		rLen = 0;
-		rLoc = 3384;
+		rLoc = 3063;
 		rType = 0;
 		vrLen = 1169;
 		vrLoc = 902;
@@ -788,7 +900,7 @@
 		fRef = 537D1691135F360A00C389FC /* MyMemosViewController.m */;
 		name = "MyMemosViewController.m: 83";
 		rLen = 0;
-		rLoc = 3384;
+		rLoc = 3063;
 		rType = 0;
 		vrLen = 1124;
 		vrLoc = 902;
@@ -970,7 +1082,7 @@
 		fRef = 53DF3FF3134E337C001FE4E4 /* EnterTextViewController.h */;
 		name = "EnterTextViewController.h: 67";
 		rLen = 0;
-		rLoc = 3597;
+		rLoc = 3616;
 		rType = 0;
 		vrLen = 1302;
 		vrLoc = 33;
@@ -980,7 +1092,7 @@
 		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
 		name = "EnterTextViewController.m: 117";
 		rLen = 0;
-		rLoc = 3710;
+		rLoc = 4064;
 		rType = 0;
 		vrLen = 1110;
 		vrLoc = 3589;
@@ -1661,6 +1773,1143 @@
 		vrLen = 1778;
 		vrLoc = 1518;
 	};
+	530196E11367F5FE00236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D1691135F360A00C389FC /* MyMemosViewController.m */;
+		name = "MyMemosViewController.m: 86";
+		rLen = 0;
+		rLoc = 2437;
+		rType = 0;
+		vrLen = 825;
+		vrLoc = 2867;
+	};
+	530196E21367F5FE00236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D1691135F360A00C389FC /* MyMemosViewController.m */;
+		name = "MyMemosViewController.m: 101";
+		rLen = 0;
+		rLoc = 3058;
+		rType = 0;
+		vrLen = 1473;
+		vrLoc = 2042;
+	};
+	530196E51367F62E00236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D1691135F360A00C389FC /* MyMemosViewController.m */;
+		name = "MyMemosViewController.m: 86";
+		rLen = 0;
+		rLoc = 2437;
+		rType = 0;
+		vrLen = 825;
+		vrLoc = 2867;
+	};
+	530196E61367F62E00236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D1691135F360A00C389FC /* MyMemosViewController.m */;
+		name = "MyMemosViewController.m: 101";
+		rLen = 0;
+		rLoc = 3058;
+		rType = 0;
+		vrLen = 1473;
+		vrLoc = 2042;
+	};
+	530196E91367F64F00236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D1691135F360A00C389FC /* MyMemosViewController.m */;
+		name = "MyMemosViewController.m: 86";
+		rLen = 0;
+		rLoc = 2437;
+		rType = 0;
+		vrLen = 931;
+		vrLoc = 2761;
+	};
+	530196EA1367F64F00236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D1691135F360A00C389FC /* MyMemosViewController.m */;
+		name = "MyMemosViewController.m: 101";
+		rLen = 0;
+		rLoc = 3058;
+		rType = 0;
+		vrLen = 1473;
+		vrLoc = 2042;
+	};
+	530196ED1367F67C00236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D1691135F360A00C389FC /* MyMemosViewController.m */;
+		name = "MyMemosViewController.m: 86";
+		rLen = 0;
+		rLoc = 2437;
+		rType = 0;
+		vrLen = 825;
+		vrLoc = 2867;
+	};
+	530196EE1367F67C00236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D1691135F360A00C389FC /* MyMemosViewController.m */;
+		name = "MyMemosViewController.m: 101";
+		rLen = 0;
+		rLoc = 3058;
+		rType = 0;
+		vrLen = 1473;
+		vrLoc = 2042;
+	};
+	530196F91367F7CA00236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D1691135F360A00C389FC /* MyMemosViewController.m */;
+		name = "MyMemosViewController.m: 86";
+		rLen = 0;
+		rLoc = 2437;
+		rType = 0;
+		vrLen = 1050;
+		vrLoc = 87;
+	};
+	530196FA1367F7CA00236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D1691135F360A00C389FC /* MyMemosViewController.m */;
+		name = "MyMemosViewController.m: 101";
+		rLen = 0;
+		rLoc = 3058;
+		rType = 0;
+		vrLen = 1473;
+		vrLoc = 2042;
+	};
+	530196FF1367F88200236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D1691135F360A00C389FC /* MyMemosViewController.m */;
+		name = "MyMemosViewController.m: 86";
+		rLen = 0;
+		rLoc = 2437;
+		rType = 0;
+		vrLen = 1104;
+		vrLoc = 150;
+	};
+	530197001367F88200236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D1691135F360A00C389FC /* MyMemosViewController.m */;
+		name = "MyMemosViewController.m: 102";
+		rLen = 0;
+		rLoc = 3058;
+		rType = 0;
+		vrLen = 1511;
+		vrLoc = 2042;
+	};
+	530197031367F89100236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D1691135F360A00C389FC /* MyMemosViewController.m */;
+		name = "MyMemosViewController.m: 86";
+		rLen = 0;
+		rLoc = 2437;
+		rType = 0;
+		vrLen = 1104;
+		vrLoc = 194;
+	};
+	530197041367F89100236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D1691135F360A00C389FC /* MyMemosViewController.m */;
+		name = "MyMemosViewController.m: 102";
+		rLen = 0;
+		rLoc = 3058;
+		rType = 0;
+		vrLen = 1510;
+		vrLoc = 2042;
+	};
+	530197071367F89D00236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D1691135F360A00C389FC /* MyMemosViewController.m */;
+		name = "MyMemosViewController.m: 86";
+		rLen = 0;
+		rLoc = 2437;
+		rType = 0;
+		vrLen = 1138;
+		vrLoc = 229;
+	};
+	530197081367F89D00236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D1691135F360A00C389FC /* MyMemosViewController.m */;
+		name = "MyMemosViewController.m: 102";
+		rLen = 0;
+		rLoc = 3058;
+		rType = 0;
+		vrLen = 1511;
+		vrLoc = 2042;
+	};
+	5301970B1367F95500236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D1696135F362100C389FC /* MyMemosTableViewController.m */;
+		name = "MyMemosTableViewController.m: 76";
+		rLen = 0;
+		rLoc = 2184;
+		rType = 0;
+		vrLen = 705;
+		vrLoc = 2128;
+	};
+	5301970C1367F95500236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D1691135F360A00C389FC /* MyMemosViewController.m */;
+		name = "MyMemosViewController.m: 92";
+		rLen = 6;
+		rLoc = 2683;
+		rType = 0;
+		vrLen = 1047;
+		vrLoc = 2150;
+	};
+	5301970D1367F95500236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 531D7A971355F89E00DB07A1 /* UIView.h */;
+		rLen = 1;
+		rLoc = 82;
+		rType = 1;
+	};
+	5301970E1367F95500236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 531D7A971355F89E00DB07A1 /* UIView.h */;
+		name = "UIView.h: 83";
+		rLen = 71;
+		rLoc = 3554;
+		rType = 0;
+		vrLen = 1962;
+		vrLoc = 6607;
+	};
+	530197111367F96800236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D1691135F360A00C389FC /* MyMemosViewController.m */;
+		name = "MyMemosViewController.m: 86";
+		rLen = 0;
+		rLoc = 2437;
+		rType = 0;
+		vrLen = 1140;
+		vrLoc = 298;
+	};
+	530197121367F96800236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D1691135F360A00C389FC /* MyMemosViewController.m */;
+		name = "MyMemosViewController.m: 98";
+		rLen = 0;
+		rLoc = 2961;
+		rType = 0;
+		vrLen = 1511;
+		vrLoc = 2042;
+	};
+	530197131367F9D800236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D1691135F360A00C389FC /* MyMemosViewController.m */;
+		name = "MyMemosViewController.m: 86";
+		rLen = 0;
+		rLoc = 2437;
+		rType = 0;
+		vrLen = 1220;
+		vrLoc = 298;
+	};
+	530197141367F9D800236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D1691135F360A00C389FC /* MyMemosViewController.m */;
+		name = "MyMemosViewController.m: 100";
+		rLen = 0;
+		rLoc = 3053;
+		rType = 0;
+		vrLen = 1492;
+		vrLoc = 2042;
+	};
+	530197171367FC6B00236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 531D7A971355F89E00DB07A1 /* UIView.h */;
+		name = "UIView.h: 162";
+		rLen = 4;
+		rLoc = 7655;
+		rType = 0;
+		vrLen = 2052;
+		vrLoc = 6405;
+	};
+	530197181367FC6B00236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53DF40E0134E640E001FE4E4 /* UINavigationBar.h */;
+		rLen = 1;
+		rLoc = 49;
+		rType = 1;
+	};
+	530197191367FC6B00236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53DF40E0134E640E001FE4E4 /* UINavigationBar.h */;
+		name = "UINavigationBar.h: 45";
+		rLen = 0;
+		rLoc = 1363;
+		rType = 0;
+		vrLen = 1547;
+		vrLoc = 981;
+	};
+	5301971A1367FEFD00236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53DF40E0134E640E001FE4E4 /* UINavigationBar.h */;
+		name = "UINavigationBar.h: 45";
+		rLen = 0;
+		rLoc = 1363;
+		rType = 0;
+		vrLen = 1547;
+		vrLoc = 981;
+	};
+	5301971B1367FF5700236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D1691135F360A00C389FC /* MyMemosViewController.m */;
+		name = "MyMemosViewController.m: 39";
+		rLen = 0;
+		rLoc = 1028;
+		rType = 0;
+		vrLen = 1123;
+		vrLoc = 395;
+	};
+	5301971C1367FF5700236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
+		name = "EnterTextViewController.m: 297";
+		rLen = 0;
+		rLoc = 10036;
+		rType = 0;
+		vrLen = 1358;
+		vrLoc = 8691;
+	};
+	5301971D1367FF5700236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
+		name = "EnterTextViewController.m: 284";
+		rLen = 0;
+		rLoc = 9618;
+		rType = 0;
+		vrLen = 1358;
+		vrLoc = 8691;
+	};
+	530197201368010D00236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53DF40E0134E640E001FE4E4 /* UINavigationBar.h */;
+		name = "UINavigationBar.h: 45";
+		rLen = 0;
+		rLoc = 1363;
+		rType = 0;
+		vrLen = 1548;
+		vrLoc = 981;
+	};
+	530197271368015000236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D1690135F360A00C389FC /* MyMemosViewController.h */;
+		name = "MyMemosViewController.h: 22";
+		rLen = 0;
+		rLoc = 515;
+		rType = 0;
+		vrLen = 963;
+		vrLoc = 0;
+	};
+	530197281368015000236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D1696135F362100C389FC /* MyMemosTableViewController.m */;
+		name = "MyMemosTableViewController.m: 8";
+		rLen = 0;
+		rLoc = 154;
+		rType = 0;
+		vrLen = 1358;
+		vrLoc = 726;
+	};
+	530197291368015000236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5301972A1368015000236402 /* UISearchBar.h */;
+		name = "UISearchBar.h: 83";
+		rLen = 0;
+		rLoc = 4411;
+		rType = 0;
+		vrLen = 2231;
+		vrLoc = 3283;
+	};
+	5301972A1368015000236402 /* UISearchBar.h */ = {
+		isa = PBXFileReference;
+		name = UISearchBar.h;
+		path = /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/UIKit.framework/Headers/UISearchBar.h;
+		sourceTree = "<absolute>";
+	};
+	5301972B1368015000236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D1691135F360A00C389FC /* MyMemosViewController.m */;
+		name = "MyMemosViewController.m: 88";
+		rLen = 0;
+		rLoc = 2548;
+		rType = 0;
+		vrLen = 1237;
+		vrLoc = 1940;
+	};
+	5301972C1368015000236402 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Local declaration of 'editmemoTextView' hides instance variable";
+		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 0;
+		rLoc = 144;
+		rType = 1;
+	};
+	5301972D1368015000236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
+		name = "EnterTextViewController.m: 141";
+		rLen = 0;
+		rLoc = 4777;
+		rType = 0;
+		vrLen = 1209;
+		vrLoc = 4052;
+	};
+	5301972E1368016C00236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
+		name = "EnterTextViewController.m: 139";
+		rLen = 0;
+		rLoc = 4777;
+		rType = 0;
+		vrLen = 1258;
+		vrLoc = 4052;
+	};
+	530197311368017900236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
+		name = "EnterTextViewController.m: 139";
+		rLen = 0;
+		rLoc = 4777;
+		rType = 0;
+		vrLen = 1261;
+		vrLoc = 4114;
+	};
+	53019738136801C300236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
+		name = "EnterTextViewController.m: 139";
+		rLen = 0;
+		rLoc = 4777;
+		rType = 0;
+		vrLen = 1254;
+		vrLoc = 4198;
+	};
+	530197391368027100236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
+		name = "EnterTextViewController.m: 139";
+		rLen = 0;
+		rLoc = 4777;
+		rType = 0;
+		vrLen = 1254;
+		vrLoc = 4198;
+	};
+	5301973C136802DA00236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
+		name = "EnterTextViewController.m: 139";
+		rLen = 0;
+		rLoc = 4777;
+		rType = 0;
+		vrLen = 1223;
+		vrLoc = 4230;
+	};
+	5301973D1368037E00236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53DF40E0134E640E001FE4E4 /* UINavigationBar.h */;
+		name = "UINavigationBar.h: 45";
+		rLen = 0;
+		rLoc = 1363;
+		rType = 0;
+		vrLen = 1548;
+		vrLoc = 981;
+	};
+	5301973E1368037E00236402 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Request for member 'editmemoTextView' in something not a structure or union";
+		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 303;
+		rType = 1;
+	};
+	5301973F1368037E00236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
+		name = "EnterTextViewController.m: 297";
+		rLen = 0;
+		rLoc = 10031;
+		rType = 0;
+		vrLen = 993;
+		vrLoc = 0;
+	};
+	53019742136803C900236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D1691135F360A00C389FC /* MyMemosViewController.m */;
+		name = "MyMemosViewController.m: 88";
+		rLen = 0;
+		rLoc = 2548;
+		rType = 0;
+		vrLen = 1443;
+		vrLoc = 846;
+	};
+	53019743136803C900236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D1696135F362100C389FC /* MyMemosTableViewController.m */;
+		name = "MyMemosTableViewController.m: 8";
+		rLen = 0;
+		rLoc = 154;
+		rType = 0;
+		vrLen = 1033;
+		vrLoc = 0;
+	};
+	53019744136803C900236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53DF3FF3134E337C001FE4E4 /* EnterTextViewController.h */;
+		name = "EnterTextViewController.h: 28";
+		rLen = 0;
+		rLoc = 668;
+		rType = 0;
+		vrLen = 1121;
+		vrLoc = 0;
+	};
+	53019745136803C900236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
+		name = "EnterTextViewController.m: 143";
+		rLen = 0;
+		rLoc = 4902;
+		rType = 0;
+		vrLen = 1223;
+		vrLoc = 4230;
+	};
+	53019746136803C900236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
+		name = "EnterTextViewController.m: 143";
+		rLen = 0;
+		rLoc = 4902;
+		rType = 0;
+		vrLen = 969;
+		vrLoc = 3454;
+	};
+	53019749136866E600236402 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 5306DE9E135AD5CB00FA773F /* AppendFileViewController.m */;
+	};
+	5301974D1368698C00236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53BDD1B6135179DD00C1C44E /* DateTimeViewController.h */;
+		name = "DateTimeViewController.h: 27";
+		rLen = 0;
+		rLoc = 450;
+		rType = 0;
+		vrLen = 450;
+		vrLoc = 0;
+	};
+	5301974E1368698C00236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53BDD1B7135179DD00C1C44E /* DateTimeViewController.m */;
+		name = "DateTimeViewController.m: 76";
+		rLen = 0;
+		rLoc = 1741;
+		rType = 0;
+		vrLen = 841;
+		vrLoc = 32;
+	};
+	5301974F1368698C00236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5306DAEC1357F88900FA773F /* MyPlanner.m */;
+		name = "MyPlanner.m: 28";
+		rLen = 0;
+		rLoc = 642;
+		rType = 0;
+		vrLen = 1029;
+		vrLoc = 877;
+	};
+	530197501368698C00236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5306DE9D135AD5CB00FA773F /* AppendFileViewController.h */;
+		name = "AppendFileViewController.h: 20";
+		rLen = 0;
+		rLoc = 528;
+		rType = 0;
+		vrLen = 631;
+		vrLoc = 0;
+	};
+	530197511368698C00236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5306DE9E135AD5CB00FA773F /* AppendFileViewController.m */;
+		name = "AppendFileViewController.m: 45";
+		rLen = 0;
+		rLoc = 1080;
+		rType = 0;
+		vrLen = 836;
+		vrLoc = 1109;
+	};
+	530197521368698C00236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5306DE8E135AD44000FA773F /* SaveFileViewController.h */;
+		name = "SaveFileViewController.h: 22";
+		rLen = 0;
+		rLoc = 407;
+		rType = 0;
+		vrLen = 407;
+		vrLoc = 0;
+	};
+	530197531368698C00236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5306DA661357CEC700FA773F /* WallNavViewController.m */;
+		name = "WallNavViewController.m: 32";
+		rLen = 0;
+		rLoc = 773;
+		rType = 0;
+		vrLen = 1083;
+		vrLoc = 0;
+	};
+	530197541368698C00236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
+		name = "EnterTextViewController.m: 276";
+		rLen = 0;
+		rLoc = 9521;
+		rType = 0;
+		vrLen = 1200;
+		vrLoc = 8618;
+	};
+	530197551368698C00236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
+		name = "EnterTextViewController.m: 287";
+		rLen = 0;
+		rLoc = 9792;
+		rType = 0;
+		vrLen = 1229;
+		vrLoc = 8620;
+	};
+	530197581368698C00236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5306DE9E135AD5CB00FA773F /* AppendFileViewController.m */;
+		name = "AppendFileViewController.m: 30";
+		rLen = 0;
+		rLoc = 615;
+		rType = 0;
+		vrLen = 1111;
+		vrLoc = 0;
+	};
+	5301975D13686A1A00236402 /* MyFoldersViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {804, 534}}";
+			sepNavSelRange = "{388, 0}";
+			sepNavVisRange = "{0, 807}";
+		};
+	};
+	5301975E13686A1A00236402 /* MyFoldersViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {804, 1196}}";
+			sepNavSelRange = "{361, 0}";
+			sepNavVisRange = "{0, 1064}";
+		};
+	};
+	5301976213686A3900236402 /* MyFoldersTableViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {804, 534}}";
+			sepNavSelRange = "{287, 0}";
+			sepNavVisRange = "{0, 297}";
+		};
+	};
+	5301976313686A3900236402 /* MyFoldersTableViewController.m */ = {
+		uiCtxt = {
+			sepNavFolds = "{\n    c =     (\n                {\n            l = DetailViewController;\n            r = \"{3620, 24}\";\n            s = 1;\n        },\n                {\n            l = DetailViewController;\n            r = \"{3671, 24}\";\n            s = 1;\n        },\n                {\n            l = \"Nib name\";\n            r = \"{3721, 12}\";\n            s = 1;\n        }\n    );\n    r = \"{0, 4422}\";\n    s = 0;\n}";
+			sepNavIntBoundsRect = "{{0, 0}, {804, 2353}}";
+			sepNavSelRange = "{293, 0}";
+			sepNavVisRange = "{341, 1006}";
+		};
+	};
+	5301976D1368707A00236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
+		name = "EnterTextViewController.m: 24";
+		rLen = 0;
+		rLoc = 730;
+		rType = 0;
+		vrLen = 1044;
+		vrLoc = 30;
+	};
+	5301976E1368707A00236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5301975D13686A1A00236402 /* MyFoldersViewController.h */;
+		name = "MyFoldersViewController.h: 16";
+		rLen = 0;
+		rLoc = 324;
+		rType = 0;
+		vrLen = 815;
+		vrLoc = 0;
+	};
+	5301976F1368707A00236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5301976313686A3900236402 /* MyFoldersTableViewController.m */;
+		name = "MyFoldersTableViewController.m: 67";
+		rLen = 0;
+		rLoc = 1489;
+		rType = 0;
+		vrLen = 1093;
+		vrLoc = 957;
+	};
+	530197701368707A00236402 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Accessing unknown 'tableView' class method";
+		fRef = 5301975E13686A1A00236402 /* MyFoldersViewController.m */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 59;
+		rType = 1;
+	};
+	530197711368707A00236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5301975E13686A1A00236402 /* MyFoldersViewController.m */;
+		name = "MyFoldersViewController.m: 60";
+		rLen = 61;
+		rLoc = 1304;
+		rType = 0;
+		vrLen = 731;
+		vrLoc = 915;
+	};
+	53019778136870E400236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
+		name = "EnterTextViewController.m: 287";
+		rLen = 0;
+		rLoc = 9792;
+		rType = 0;
+		vrLen = 1229;
+		vrLoc = 8620;
+	};
+	53019779136870E400236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5306DE9D135AD5CB00FA773F /* AppendFileViewController.h */;
+		name = "AppendFileViewController.h: 20";
+		rLen = 0;
+		rLoc = 528;
+		rType = 0;
+		vrLen = 631;
+		vrLoc = 0;
+	};
+	5301977A136870E400236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53BDD1B7135179DD00C1C44E /* DateTimeViewController.m */;
+		name = "DateTimeViewController.m: 76";
+		rLen = 0;
+		rLoc = 1741;
+		rType = 0;
+		vrLen = 841;
+		vrLoc = 32;
+	};
+	5301977B136870E400236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5301976213686A3900236402 /* MyFoldersTableViewController.h */;
+		name = "MyFoldersTableViewController.h: 18";
+		rLen = 0;
+		rLoc = 287;
+		rType = 0;
+		vrLen = 297;
+		vrLoc = 0;
+	};
+	5301977C136870E400236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5301976313686A3900236402 /* MyFoldersTableViewController.m */;
+		name = "MyFoldersTableViewController.m: 18";
+		rLen = 0;
+		rLoc = 293;
+		rType = 0;
+		vrLen = 789;
+		vrLoc = 0;
+	};
+	5301977D136870E400236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5306DE8F135AD44100FA773F /* SaveFileViewController.m */;
+		name = "SaveFileViewController.m: 37";
+		rLen = 0;
+		rLoc = 668;
+		rType = 0;
+		vrLen = 859;
+		vrLoc = 192;
+	};
+	5301977E136870E400236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5306DE8E135AD44000FA773F /* SaveFileViewController.h */;
+		name = "SaveFileViewController.h: 20";
+		rLen = 0;
+		rLoc = 401;
+		rType = 0;
+		vrLen = 407;
+		vrLoc = 0;
+	};
+	5301977F136870E400236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5301975D13686A1A00236402 /* MyFoldersViewController.h */;
+		name = "MyFoldersViewController.h: 21";
+		rLen = 0;
+		rLoc = 401;
+		rType = 0;
+		vrLen = 727;
+		vrLoc = 0;
+	};
+	53019780136870E400236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5301975E13686A1A00236402 /* MyFoldersViewController.m */;
+		name = "MyFoldersViewController.m: 59";
+		rLen = 0;
+		rLoc = 1304;
+		rType = 0;
+		vrLen = 934;
+		vrLoc = 855;
+	};
+	53019781136870E400236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D1696135F362100C389FC /* MyMemosTableViewController.m */;
+		name = "MyMemosTableViewController.m: 8";
+		rLen = 0;
+		rLoc = 154;
+		rType = 0;
+		vrLen = 1102;
+		vrLoc = 0;
+	};
+	53019782136870E400236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D1691135F360A00C389FC /* MyMemosViewController.m */;
+		name = "MyMemosViewController.m: 88";
+		rLen = 0;
+		rLoc = 2548;
+		rType = 0;
+		vrLen = 1114;
+		vrLoc = 0;
+	};
+	53019783136870E400236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5306DE9E135AD5CB00FA773F /* AppendFileViewController.m */;
+		name = "AppendFileViewController.m: 30";
+		rLen = 0;
+		rLoc = 615;
+		rType = 0;
+		vrLen = 1115;
+		vrLoc = 0;
+	};
+	5301978A136871A700236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D1696135F362100C389FC /* MyMemosTableViewController.m */;
+		name = "MyMemosTableViewController.m: 8";
+		rLen = 0;
+		rLoc = 154;
+		rType = 0;
+		vrLen = 1102;
+		vrLoc = 0;
+	};
+	5301978B136871A700236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D1690135F360A00C389FC /* MyMemosViewController.h */;
+		name = "MyMemosViewController.h: 22";
+		rLen = 0;
+		rLoc = 515;
+		rType = 0;
+		vrLen = 963;
+		vrLoc = 0;
+	};
+	5301978C136871A700236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D1691135F360A00C389FC /* MyMemosViewController.m */;
+		name = "MyMemosViewController.m: 88";
+		rLen = 0;
+		rLoc = 2548;
+		rType = 0;
+		vrLen = 1438;
+		vrLoc = 712;
+	};
+	5301978D136871A700236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5301975E13686A1A00236402 /* MyFoldersViewController.m */;
+		name = "MyFoldersViewController.m: 15";
+		rLen = 0;
+		rLoc = 276;
+		rType = 0;
+		vrLen = 1077;
+		vrLoc = 0;
+	};
+	5301978E136871A700236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5301976213686A3900236402 /* MyFoldersTableViewController.h */;
+		name = "MyFoldersTableViewController.h: 18";
+		rLen = 0;
+		rLoc = 287;
+		rType = 0;
+		vrLen = 297;
+		vrLoc = 0;
+	};
+	5301978F136871A700236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5301976313686A3900236402 /* MyFoldersTableViewController.m */;
+		name = "MyFoldersTableViewController.m: 18";
+		rLen = 0;
+		rLoc = 293;
+		rType = 0;
+		vrLen = 831;
+		vrLoc = 0;
+	};
+	53019790136871A700236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5301975D13686A1A00236402 /* MyFoldersViewController.h */;
+		name = "MyFoldersViewController.h: 15";
+		rLen = 25;
+		rLoc = 280;
+		rType = 0;
+		vrLen = 807;
+		vrLoc = 0;
+	};
+	53019791136871A700236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5301975D13686A1A00236402 /* MyFoldersViewController.h */;
+		name = "MyFoldersViewController.h: 18";
+		rLen = 0;
+		rLoc = 388;
+		rType = 0;
+		vrLen = 807;
+		vrLoc = 0;
+	};
+	53019792136871A700236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5306DE9E135AD5CB00FA773F /* AppendFileViewController.m */;
+		name = "AppendFileViewController.m: 30";
+		rLen = 0;
+		rLoc = 615;
+		rType = 0;
+		vrLen = 1111;
+		vrLoc = 0;
+	};
+	53019795136872A100236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5301976313686A3900236402 /* MyFoldersTableViewController.m */;
+		name = "MyFoldersTableViewController.m: 67";
+		rLen = 0;
+		rLoc = 1519;
+		rType = 0;
+		vrLen = 1018;
+		vrLoc = 831;
+	};
+	53019796136872A100236402 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Expected ';' before 'tableView'";
+		fRef = 5301975E13686A1A00236402 /* MyFoldersViewController.m */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 14;
+		rType = 1;
+	};
+	53019797136872A100236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5301975E13686A1A00236402 /* MyFoldersViewController.m */;
+		name = "MyFoldersViewController.m: 15";
+		rLen = 0;
+		rLoc = 276;
+		rType = 0;
+		vrLen = 841;
+		vrLoc = 33;
+	};
+	530197981368733300236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5301975D13686A1A00236402 /* MyFoldersViewController.h */;
+		name = "MyFoldersViewController.h: 18";
+		rLen = 0;
+		rLoc = 388;
+		rType = 0;
+		vrLen = 807;
+		vrLoc = 0;
+	};
+	530197991368733300236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5301976213686A3900236402 /* MyFoldersTableViewController.h */;
+		name = "MyFoldersTableViewController.h: 18";
+		rLen = 0;
+		rLoc = 287;
+		rType = 0;
+		vrLen = 297;
+		vrLoc = 0;
+	};
+	5301979A1368733300236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5301976313686A3900236402 /* MyFoldersTableViewController.m */;
+		name = "MyFoldersTableViewController.m: 18";
+		rLen = 0;
+		rLoc = 293;
+		rType = 0;
+		vrLen = 1006;
+		vrLoc = 341;
+	};
+	5301979B1368733300236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
+		name = "EnterTextViewController.m: 54";
+		rLen = 0;
+		rLoc = 1980;
+		rType = 0;
+		vrLen = 1304;
+		vrLoc = 1117;
+	};
+	5301979C1368733300236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5306DE9E135AD5CB00FA773F /* AppendFileViewController.m */;
+		name = "AppendFileViewController.m: 30";
+		rLen = 0;
+		rLoc = 615;
+		rType = 0;
+		vrLen = 1111;
+		vrLoc = 0;
+	};
+	5301979D1368734C00236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
+		name = "EnterTextViewController.m: 54";
+		rLen = 0;
+		rLoc = 2008;
+		rType = 0;
+		vrLen = 1326;
+		vrLoc = 1117;
+	};
+	5301979E1368734C00236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5306DE9E135AD5CB00FA773F /* AppendFileViewController.m */;
+		name = "AppendFileViewController.m: 30";
+		rLen = 0;
+		rLoc = 615;
+		rType = 0;
+		vrLen = 1111;
+		vrLoc = 0;
+	};
+	530197A31368737300236402 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Incompatible Objective-C types assigning 'struct NSString *', expected 'struct UITextView *'";
+		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 58;
+		rType = 1;
+	};
+	530197A41368737300236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
+		name = "EnterTextViewController.m: 54";
+		rLen = 0;
+		rLoc = 1977;
+		rType = 0;
+		vrLen = 1236;
+		vrLoc = 1237;
+	};
+	530197A51368737300236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5306DE9E135AD5CB00FA773F /* AppendFileViewController.m */;
+		name = "AppendFileViewController.m: 30";
+		rLen = 0;
+		rLoc = 615;
+		rType = 0;
+		vrLen = 1111;
+		vrLoc = 0;
+	};
+	530197A61368746600236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5301975E13686A1A00236402 /* MyFoldersViewController.m */;
+		name = "MyFoldersViewController.m: 15";
+		rLen = 0;
+		rLoc = 276;
+		rType = 0;
+		vrLen = 891;
+		vrLoc = 43;
+	};
+	530197A71368746600236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
+		name = "EnterTextViewController.m: 54";
+		rLen = 0;
+		rLoc = 2001;
+		rType = 0;
+		vrLen = 1024;
+		vrLoc = 1200;
+	};
+	530197AC136875D600236402 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Conflicting types for 'viewController'";
+		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 57;
+		rType = 1;
+	};
+	530197AD136875D600236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
+		name = "EnterTextViewController.m: 58";
+		rLen = 0;
+		rLoc = 1835;
+		rType = 0;
+		vrLen = 1347;
+		vrLoc = 731;
+	};
+	530197AE136875D600236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5306DE9E135AD5CB00FA773F /* AppendFileViewController.m */;
+		name = "AppendFileViewController.m: 30";
+		rLen = 0;
+		rLoc = 615;
+		rType = 0;
+		vrLen = 1111;
+		vrLoc = 0;
+	};
+	530197B1136875EF00236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
+		name = "EnterTextViewController.m: 58";
+		rLen = 0;
+		rLoc = 1835;
+		rType = 0;
+		vrLen = 1297;
+		vrLoc = 796;
+	};
+	530197B2136875EF00236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5306DE9E135AD5CB00FA773F /* AppendFileViewController.m */;
+		name = "AppendFileViewController.m: 30";
+		rLen = 0;
+		rLoc = 615;
+		rType = 0;
+		vrLen = 1111;
+		vrLoc = 0;
+	};
+	530197B31368760900236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
+		name = "EnterTextViewController.m: 58";
+		rLen = 0;
+		rLoc = 1835;
+		rType = 0;
+		vrLen = 1297;
+		vrLoc = 796;
+	};
+	530197B41368760900236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D1696135F362100C389FC /* MyMemosTableViewController.m */;
+		name = "MyMemosTableViewController.m: 8";
+		rLen = 0;
+		rLoc = 154;
+		rType = 0;
+		vrLen = 1033;
+		vrLoc = 0;
+	};
+	530197B51368760900236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5301976313686A3900236402 /* MyFoldersTableViewController.m */;
+		name = "MyFoldersTableViewController.m: 18";
+		rLen = 0;
+		rLoc = 293;
+		rType = 0;
+		vrLen = 1006;
+		vrLoc = 341;
+	};
+	530197B61368760900236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5301975E13686A1A00236402 /* MyFoldersViewController.m */;
+		name = "MyFoldersViewController.m: 18";
+		rLen = 0;
+		rLoc = 361;
+		rType = 0;
+		vrLen = 1064;
+		vrLoc = 0;
+	};
 	5306D8391356A14500FA773F /* NavButton.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {852, 501}}";
@@ -1721,9 +2970,9 @@
 	};
 	5306DA661357CEC700FA773F /* WallNavViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {804, 793}}";
-			sepNavSelRange = "{185, 0}";
-			sepNavVisRange = "{0, 1268}";
+			sepNavIntBoundsRect = "{{0, 0}, {804, 689}}";
+			sepNavSelRange = "{773, 0}";
+			sepNavVisRange = "{0, 1083}";
 		};
 	};
 	5306DA741357D14E00FA773F /* PBXTextBookmark */ = {
@@ -1747,9 +2996,9 @@
 	5306DAEC1357F88900FA773F /* MyPlanner.m */ = {
 		uiCtxt = {
 			sepNavFolds = "{\n    c =     (\n                {\n            r = \"{2578, 232}\";\n            s = 0;\n        },\n                {\n            r = \"{2814, 112}\";\n            s = 0;\n        },\n                {\n            r = \"{2930, 146}\";\n            s = 0;\n        }\n    );\n    r = \"{0, 3871}\";\n    s = 0;\n}";
-			sepNavIntBoundsRect = "{{0, 0}, {804, 1807}}";
+			sepNavIntBoundsRect = "{{0, 0}, {804, 1755}}";
 			sepNavSelRange = "{642, 0}";
-			sepNavVisRange = "{0, 1029}";
+			sepNavVisRange = "{877, 1029}";
 			sepNavWindowFrame = "{{19, 0}, {1172, 773}}";
 		};
 	};
@@ -1775,22 +3024,22 @@
 	};
 	5306DE8E135AD44000FA773F /* SaveFileViewController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {804, 582}}";
-			sepNavSelRange = "{407, 0}";
+			sepNavIntBoundsRect = "{{0, 0}, {804, 534}}";
+			sepNavSelRange = "{401, 0}";
 			sepNavVisRange = "{0, 407}";
 			sepNavWindowFrame = "{{19, 0}, {1172, 773}}";
 		};
 	};
 	5306DE8F135AD44100FA773F /* SaveFileViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {804, 1378}}";
-			sepNavSelRange = "{543, 340}";
-			sepNavVisRange = "{1284, 985}";
+			sepNavIntBoundsRect = "{{0, 0}, {804, 1391}}";
+			sepNavSelRange = "{668, 0}";
+			sepNavVisRange = "{192, 859}";
 		};
 	};
 	5306DE9D135AD5CB00FA773F /* AppendFileViewController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {804, 561}}";
+			sepNavIntBoundsRect = "{{0, 0}, {804, 534}}";
 			sepNavSelRange = "{528, 0}";
 			sepNavVisRange = "{0, 631}";
 			sepNavWindowFrame = "{{19, 0}, {1172, 773}}";
@@ -1798,9 +3047,9 @@
 	};
 	5306DE9E135AD5CB00FA773F /* AppendFileViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {804, 1209}}";
-			sepNavSelRange = "{1080, 0}";
-			sepNavVisRange = "{1109, 842}";
+			sepNavIntBoundsRect = "{{0, 0}, {1113, 1209}}";
+			sepNavSelRange = "{615, 0}";
+			sepNavVisRange = "{0, 1111}";
 			sepNavWindowFrame = "{{19, 0}, {1172, 773}}";
 		};
 	};
@@ -1879,6 +3128,11 @@
 		name = UIView.h;
 		path = /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIView.h;
 		sourceTree = "<absolute>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1190, 3848}}";
+			sepNavSelRange = "{7655, 4}";
+			sepNavVisRange = "{6405, 2052}";
+		};
 	};
 	531D7AE8135623D600DB07A1 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -2031,9 +3285,9 @@
 	};
 	537D1691135F360A00C389FC /* MyMemosViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1113, 1755}}";
-			sepNavSelRange = "{2437, 0}";
-			sepNavVisRange = "{1518, 1778}";
+			sepNavIntBoundsRect = "{{0, 0}, {804, 1664}}";
+			sepNavSelRange = "{2548, 0}";
+			sepNavVisRange = "{712, 1438}";
 			sepNavWindowFrame = "{{19, 0}, {1172, 773}}";
 		};
 	};
@@ -2047,9 +3301,9 @@
 	537D1696135F362100C389FC /* MyMemosTableViewController.m */ = {
 		uiCtxt = {
 			sepNavFolds = "{\n    c =     (\n                {\n            l = DetailViewController;\n            r = \"{5945, 24}\";\n            s = 1;\n        },\n                {\n            l = DetailViewController;\n            r = \"{5996, 24}\";\n            s = 1;\n        },\n                {\n            l = \"Nib name\";\n            r = \"{6046, 12}\";\n            s = 1;\n        }\n    );\n    r = \"{0, 6747}\";\n    s = 0;\n}";
-			sepNavIntBoundsRect = "{{0, 0}, {1190, 3094}}";
-			sepNavSelRange = "{2184, 0}";
-			sepNavVisRange = "{2128, 705}";
+			sepNavIntBoundsRect = "{{0, 0}, {804, 3120}}";
+			sepNavSelRange = "{154, 0}";
+			sepNavVisRange = "{0, 1033}";
 			sepNavWindowFrame = "{{19, 0}, {1172, 773}}";
 		};
 	};
@@ -2070,14 +3324,14 @@
 		path = "/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/EnterTextViewController.m";
 		sourceTree = "<absolute>";
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {804, 5707}}";
-			sepNavSelRange = "{3710, 0}";
-			sepNavVisRange = "{3589, 1110}";
+			sepNavIntBoundsRect = "{{0, 0}, {804, 5564}}";
+			sepNavSelRange = "{1835, 0}";
+			sepNavVisRange = "{796, 1297}";
 		};
 	};
 	53BDD1B6135179DD00C1C44E /* DateTimeViewController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {804, 561}}";
+			sepNavIntBoundsRect = "{{0, 0}, {804, 534}}";
 			sepNavSelRange = "{450, 0}";
 			sepNavVisRange = "{0, 450}";
 			sepNavWindowFrame = "{{19, 0}, {1172, 773}}";
@@ -2087,7 +3341,7 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {804, 1222}}";
 			sepNavSelRange = "{1741, 0}";
-			sepNavVisRange = "{0, 873}";
+			sepNavVisRange = "{32, 841}";
 			sepNavWindowFrame = "{{19, 0}, {1172, 773}}";
 		};
 	};
@@ -2167,9 +3421,9 @@
 	};
 	53DF3FF3134E337C001FE4E4 /* EnterTextViewController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {804, 1352}}";
-			sepNavSelRange = "{3597, 0}";
-			sepNavVisRange = "{33, 1302}";
+			sepNavIntBoundsRect = "{{0, 0}, {804, 1430}}";
+			sepNavSelRange = "{668, 0}";
+			sepNavVisRange = "{0, 1121}";
 			sepNavWindowFrame = "{{76, -164}, {1172, 773}}";
 		};
 	};
@@ -2204,6 +3458,12 @@
 		name = UIViewController.h;
 		path = /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIViewController.h;
 		sourceTree = "<absolute>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1113, 2782}}";
+			sepNavSelRange = "{10180, 0}";
+			sepNavVisRange = "{8007, 2961}";
+			sepNavWindowFrame = "{{19, 0}, {1172, 773}}";
+		};
 	};
 	53DF3FFF134E3928001FE4E4 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -2260,6 +3520,11 @@
 		name = UINavigationBar.h;
 		path = /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/UIKit.framework/Headers/UINavigationBar.h;
 		sourceTree = "<absolute>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1190, 1651}}";
+			sepNavSelRange = "{1363, 0}";
+			sepNavVisRange = "{981, 1548}";
+		};
 	};
 	53DF40E8134E64AB001FE4E4 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -2435,7 +3700,7 @@
 		fRef = 53DF3FF3134E337C001FE4E4 /* EnterTextViewController.h */;
 		name = "EnterTextViewController.h: 67";
 		rLen = 0;
-		rLoc = 3597;
+		rLoc = 3616;
 		rType = 0;
 		vrLen = 1335;
 		vrLoc = 0;
@@ -2445,7 +3710,7 @@
 		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
 		name = "EnterTextViewController.m: 378";
 		rLen = 0;
-		rLoc = 13133;
+		rLoc = 13390;
 		rType = 0;
 		vrLen = 1358;
 		vrLoc = 0;

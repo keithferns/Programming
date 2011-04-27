@@ -3,7 +3,7 @@
 //
 //  Created by Keith Fernandes on 4/7/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
-
+#import "MyFoldersViewController.h"
 #import "EnterTextViewController.h"
 #import	"SaveFileViewController.h"
 #import "DateTimeViewController.h"
@@ -28,7 +28,12 @@
 								
 			[self addTimeStamp];
 			}
-
+			
+				//testing
+			MyFoldersViewController *modalViewController = [[[MyFoldersViewController alloc] initWithNibName:@"MyFoldersViewController" bundle:nil]autorelease];
+			[self presentModalViewController:modalViewController animated:YES];
+			
+			/*FIX to bring up the modal view controllers'	
 				//this action will bring up another alert window. Dismissing this will take us back to the EnterTextScreen, or to the appropriate modalviewcontrollers: My Folders, My Appointments, My R.
 			
 			self.wallAlert = [[UIAlertView alloc] 
@@ -39,8 +44,8 @@
 							  otherButtonTitles:@"My Folders", @"My Appointments", @"My To-Do's", @"The Wall", nil];
 			
 			[wallAlert show];
-				//[wallAlert release];	//???
-			
+			[wallAlert release];
+			*/
 			
 			
 			break;
@@ -51,6 +56,7 @@
 			}
 				//just testing
 			MyMemosViewController *viewController = [[[MyMemosViewController alloc] initWithNibName:@"MyMemosViewController" bundle:nil] autorelease];
+			editmemoTextView.text = @"";
 			[self presentModalViewController:viewController animated:YES];	
 		
 			
@@ -135,6 +141,8 @@
 	
 	
 }
+
+
 
 
 	//Dismisses the saveAlert object by a system call. Note -1 is called if the CancelButton is not set. 
@@ -271,11 +279,8 @@
 		NSString *lastMemoText = [lastMemo valueForKey:@"memoText"];
 		NSLog(@"This is the text of the last Memo: %@", lastMemoText);
 		[lastMemoView setText:lastMemoText];
-			//[lastMemoView setText:[lastMemo valueForKey:@"memoText"]];
-			//NSLog(@"This is the text of the last Memo: %@", lastMemoView.text);
 	}
 		
-		//
 	
 	
 	[super viewDidLoad];
@@ -288,11 +293,17 @@
 	NSLog(@"adding lastMemoView and urgentMemoView to view");
 	[self.bottomView addSubview:lastMemoView];
     [self.bottomView addSubview:urgentMemoView];
-		//[lastMemoView setText:@"hello world"];
 
 
 }
-			
+
+
+- (void)textViewDidEndEditing:(UITextView *)editmemoTextView{
+
+	doneEditing = YES;
+	
+}
+
 							
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
 	 return YES; 

@@ -216,48 +216,7 @@
 		</dict>
 	</array>
 	<key>OpenEditors</key>
-	<array>
-		<dict>
-			<key>Content</key>
-			<dict>
-				<key>PBXProjectModuleGUID</key>
-				<string>530196551367E2A700236402</string>
-				<key>PBXProjectModuleLabel</key>
-				<string>MyMemosViewController.m</string>
-				<key>PBXSplitModuleInNavigatorKey</key>
-				<dict>
-					<key>Split0</key>
-					<dict>
-						<key>PBXProjectModuleGUID</key>
-						<string>530196561367E2A700236402</string>
-						<key>PBXProjectModuleLabel</key>
-						<string>MyMemosViewController.m</string>
-						<key>_historyCapacity</key>
-						<integer>0</integer>
-						<key>bookmark</key>
-						<string>530196DE1367F41800236402</string>
-						<key>history</key>
-						<array>
-							<string>5301966A1367E37600236402</string>
-						</array>
-					</dict>
-					<key>SplitCount</key>
-					<string>1</string>
-				</dict>
-				<key>StatusBarVisibility</key>
-				<true/>
-			</dict>
-			<key>Geometry</key>
-			<dict>
-				<key>Frame</key>
-				<string>{{0, 20}, {1172, 676}}</string>
-				<key>PBXModuleWindowStatusBarHidden2</key>
-				<false/>
-				<key>RubberWindowFrame</key>
-				<string>19 56 1172 717 0 0 1280 778 </string>
-			</dict>
-		</dict>
-	</array>
+	<array/>
 	<key>PerspectiveWidths</key>
 	<array>
 		<integer>-1</integer>
@@ -328,8 +287,8 @@
 								<string>537D168E135F35D300C389FC</string>
 								<string>537D168F135F35E300C389FC</string>
 								<string>53136125135E5AE600624C08</string>
-								<string>5306DA5D1357CAC600FA773F</string>
 								<string>5306DA6C1357CF5E00FA773F</string>
+								<string>5301975C136869DC00236402</string>
 								<string>5306DA6D1357CF8A00FA773F</string>
 								<string>5306DA6E1357CFE600FA773F</string>
 								<string>53DF3FF2134E3346001FE4E4</string>
@@ -350,14 +309,14 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>8</integer>
-									<integer>2</integer>
+									<integer>26</integer>
+									<integer>20</integer>
 									<integer>1</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 0}, {272, 664}}</string>
+							<string>{{0, 147}, {272, 664}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -394,7 +353,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>MyMemosViewController.m</string>
+								<string>MyFoldersViewController.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -402,11 +361,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>MyMemosViewController.m</string>
+										<string>MyFoldersViewController.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>530196DD1367F41800236402</string>
+										<string>530197B61368760900236402</string>
 										<key>history</key>
 										<array>
 											<string>53DF3FFD134E3928001FE4E4</string>
@@ -435,27 +394,32 @@
 											<string>53E4C5F51363E8600024375D</string>
 											<string>53E4C71C136400590024375D</string>
 											<string>53E4C80A1367A3550024375D</string>
-											<string>53E4C80C1367A3550024375D</string>
 											<string>53E4C80E1367A3550024375D</string>
 											<string>53E4C80F1367A3550024375D</string>
 											<string>53E4C8101367A3550024375D</string>
 											<string>53E4C8131367A3550024375D</string>
 											<string>53E4C8141367A3550024375D</string>
 											<string>53E4C8171367A3550024375D</string>
-											<string>53E4C8191367A3550024375D</string>
-											<string>53E4C81A1367A3550024375D</string>
-											<string>53E4C81B1367A3550024375D</string>
-											<string>53E4C81C1367A3550024375D</string>
-											<string>530195F01367D92000236402</string>
-											<string>530195F21367D92000236402</string>
-											<string>530195F31367D92000236402</string>
-											<string>5301964D1367E2A700236402</string>
-											<string>5301964E1367E2A700236402</string>
 											<string>5301964F1367E2A700236402</string>
 											<string>530196501367E2A700236402</string>
-											<string>530196511367E2A700236402</string>
-											<string>530196521367E2A700236402</string>
-											<string>530196531367E2A700236402</string>
+											<string>530197291368015000236402</string>
+											<string>53019744136803C900236402</string>
+											<string>5301974D1368698C00236402</string>
+											<string>5301974F1368698C00236402</string>
+											<string>530197511368698C00236402</string>
+											<string>530197531368698C00236402</string>
+											<string>53019779136870E400236402</string>
+											<string>5301977A136870E400236402</string>
+											<string>5301977D136870E400236402</string>
+											<string>5301977E136870E400236402</string>
+											<string>5301978B136871A700236402</string>
+											<string>5301978C136871A700236402</string>
+											<string>530197981368733300236402</string>
+											<string>530197991368733300236402</string>
+											<string>530197B31368760900236402</string>
+											<string>530197B41368760900236402</string>
+											<string>530197B51368760900236402</string>
+											<string>5301978D136871A700236402</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -636,7 +600,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>325579800.944745</real>
+	<real>325613065.676328</real>
 	<key>ToolbarConfigUserDefaultsMinorVersion</key>
 	<string>2</string>
 	<key>ToolbarDisplayMode</key>
@@ -653,11 +617,10 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>1CD10A99069EF8BA00B06720</string>
-		<string>/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/NOW!!.xcodeproj</string>
-		<string>530196551367E2A700236402</string>
 		<string>1C78EAAD065D492600B07095</string>
+		<string>1CD10A99069EF8BA00B06720</string>
 		<string>53DF3FE2134E3088001FE4E4</string>
+		<string>/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/NOW!!.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
 	<string>68 55 1159 723 0 0 1280 778 </string>
@@ -676,14 +639,12 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>MyMemosViewController.m</string>
+								<string>EnterTextViewController.m</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -700,6 +661,8 @@
 							<string>474pt</string>
 						</dict>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -1033,7 +996,7 @@
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>Identifier</key>

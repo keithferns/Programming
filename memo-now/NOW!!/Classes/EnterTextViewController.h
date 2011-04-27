@@ -25,6 +25,7 @@
 	UIAlertView *saveAlert, *wallAlert;
 	NSManagedObjectContext *managedObjectContext;
 	NSMutableArray *memoArray;
+	BOOL doneEditing;
 	
 }
 

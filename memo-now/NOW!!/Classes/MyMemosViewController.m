@@ -88,7 +88,7 @@
 	NSLog(@"isSearching is now set to %d", isSearching);
 	
 		//create new subview and initialize with the frame for the topView
-	CGRect mytestFrame = CGRectMake(0, 0, 320, 215);
+	CGRect mytestFrame = CGRectMake(0, 0, 320, 192);
 	UIView *myNewView = [[[UIView	alloc] initWithFrame:mytestFrame] autorelease];
 		//When the user taps inside the search bar, the new subview is set to blue background and the tableView is added to it. 
 	
@@ -99,14 +99,6 @@
 		[myNewView addSubview:tableViewController.tableView];
 		}
 	
-		
-		//letUserSelectRow = NO;
-		//self.tableView.scrollEnabled = NO;
-	
-		//Add the done button.
-		//self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc]
-		//									   initWithBarButtonSystemItem:UIBarButtonSystemItemDone
-		//									   target:self action:@selector(doneSearching_Clicked:)] autorelease];
 }
 
 

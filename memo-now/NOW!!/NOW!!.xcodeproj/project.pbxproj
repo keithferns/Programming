@@ -15,6 +15,10 @@
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		28D801B40F44B63D00FB423F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28D801B30F44B63D00FB423F /* CoreData.framework */; };
+		5301976013686A1A00236402 /* MyFoldersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5301975E13686A1A00236402 /* MyFoldersViewController.m */; };
+		5301976113686A1A00236402 /* MyFoldersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5301975F13686A1A00236402 /* MyFoldersViewController.xib */; };
+		5301976513686A3900236402 /* MyFoldersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5301976313686A3900236402 /* MyFoldersTableViewController.m */; };
+		5301976613686A3900236402 /* MyFoldersTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5301976413686A3900236402 /* MyFoldersTableViewController.xib */; };
 		5306D83B1356A14500FA773F /* NavButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5306D83A1356A14500FA773F /* NavButton.m */; };
 		5306DA681357CEC700FA773F /* WallNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5306DA661357CEC700FA773F /* WallNavViewController.m */; };
 		5306DA691357CEC700FA773F /* WallNavViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5306DA671357CEC700FA773F /* WallNavViewController.xib */; };
@@ -52,6 +56,12 @@
 		28D801B30F44B63D00FB423F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* NOW___Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NOW___Prefix.pch"; sourceTree = "<group>"; };
+		5301975D13686A1A00236402 /* MyFoldersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFoldersViewController.h; sourceTree = "<group>"; };
+		5301975E13686A1A00236402 /* MyFoldersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFoldersViewController.m; sourceTree = "<group>"; };
+		5301975F13686A1A00236402 /* MyFoldersViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyFoldersViewController.xib; sourceTree = "<group>"; };
+		5301976213686A3900236402 /* MyFoldersTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFoldersTableViewController.h; sourceTree = "<group>"; };
+		5301976313686A3900236402 /* MyFoldersTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFoldersTableViewController.m; sourceTree = "<group>"; };
+		5301976413686A3900236402 /* MyFoldersTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyFoldersTableViewController.xib; sourceTree = "<group>"; };
 		5306D8391356A14500FA773F /* NavButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavButton.h; sourceTree = "<group>"; };
 		5306D83A1356A14500FA773F /* NavButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavButton.m; sourceTree = "<group>"; };
 		5306DA651357CEC700FA773F /* WallNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WallNavViewController.h; sourceTree = "<group>"; };
@@ -179,6 +189,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		5301975C136869DC00236402 /* NyFoldersTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5301976213686A3900236402 /* MyFoldersTableViewController.h */,
+				5301976313686A3900236402 /* MyFoldersTableViewController.m */,
+				5301976413686A3900236402 /* MyFoldersTableViewController.xib */,
+			);
+			name = NyFoldersTableViewController;
+			sourceTree = "<group>";
+		};
 		5306D8381356A12100FA773F /* NavButton */ = {
 			isa = PBXGroup;
 			children = (
@@ -254,6 +274,10 @@
 		5306DA6C1357CF5E00FA773F /* MyFoldersViewController */ = {
 			isa = PBXGroup;
 			children = (
+				5301975C136869DC00236402 /* NyFoldersTableViewController */,
+				5301975D13686A1A00236402 /* MyFoldersViewController.h */,
+				5301975E13686A1A00236402 /* MyFoldersViewController.m */,
+				5301975F13686A1A00236402 /* MyFoldersViewController.xib */,
 			);
 			name = MyFoldersViewController;
 			sourceTree = "<group>";
@@ -412,6 +436,8 @@
 				537D1694135F360A00C389FC /* MyMemosViewController.xib in Resources */,
 				537D1699135F362100C389FC /* MyMemosTableViewController.xib in Resources */,
 				53522B1E135F793A00437445 /* testImage.png in Resources */,
+				5301976113686A1A00236402 /* MyFoldersViewController.xib in Resources */,
+				5301976613686A3900236402 /* MyFoldersTableViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,6 +463,8 @@
 				53136123135E5AC900624C08 /* Memo.m in Sources */,
 				537D1693135F360A00C389FC /* MyMemosViewController.m in Sources */,
 				537D1698135F362100C389FC /* MyMemosTableViewController.m in Sources */,
+				5301976013686A1A00236402 /* MyFoldersViewController.m in Sources */,
+				5301976513686A3900236402 /* MyFoldersTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
