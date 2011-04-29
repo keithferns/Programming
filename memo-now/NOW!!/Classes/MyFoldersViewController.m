@@ -47,7 +47,6 @@
 	
 }
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
@@ -73,9 +72,6 @@
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
     
-	
-	
-	
     // Release any cached data, images, etc. that aren't in use.
 }
 
@@ -85,7 +81,6 @@
     // e.g. self.myOutlet = nil;
 }
 
-
 - (void)dealloc {
     [super dealloc];
 	[viewLabel release];
@@ -94,6 +89,5 @@
 	[segmentedControl release];
 	[tableViewController release];
 }
-
 
 @end

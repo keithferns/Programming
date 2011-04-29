@@ -9,6 +9,7 @@
 #import "DateTimeViewController.h"
 #import	"MyPlanner.h"
 #import "AppendFileViewController.h"
+#import "MyFoldersViewController.h"
 #import "MyMemosViewController.h"
 #import "NOW__AppDelegate.h"
 
@@ -30,23 +31,20 @@
 			}
 			
 				//testing
-			MyFoldersViewController *modalViewController = [[[MyFoldersViewController alloc] initWithNibName:@"MyFoldersViewController" bundle:nil]autorelease];
+			/*MyFoldersViewController *modalViewController = [[[MyFoldersViewController alloc] initWithNibName:@"MyFoldersViewController" bundle:nil]autorelease];
 			[self presentModalViewController:modalViewController animated:YES];
-			
-			/*FIX to bring up the modal view controllers'	
+			*/
 				//this action will bring up another alert window. Dismissing this will take us back to the EnterTextScreen, or to the appropriate modalviewcontrollers: My Folders, My Appointments, My R.
 			
 			self.wallAlert = [[UIAlertView alloc] 
 							  initWithTitle:@"Choose An Option"
 							  message:@"Take me to your Leader!" 
-							  delegate:@"Now_AppDelegate" 
+							  delegate:self 
 							  cancelButtonTitle:@"Later" 
 							  otherButtonTitles:@"My Folders", @"My Appointments", @"My To-Do's", @"The Wall", nil];
 			
 			[wallAlert show];
 			[wallAlert release];
-			*/
-			
 			
 			break;
 		case 1:
@@ -58,7 +56,6 @@
 			MyMemosViewController *viewController = [[[MyMemosViewController alloc] initWithNibName:@"MyMemosViewController" bundle:nil] autorelease];
 			editmemoTextView.text = @"";
 			[self presentModalViewController:viewController animated:YES];	
-		
 			
 			break;
 		case 2:
@@ -104,148 +101,98 @@
 	NSMutableArray *mutableFetchResults = [[managedObjectContext executeFetchRequest:request error:&error] mutableCopy];
 	
 	if (!mutableFetchResults) {
-			//	
+			//
 	}
 	
-		//save fetched data to an array
-	
-	[self setMemoArray:mutableFetchResults];
-	
+	[self setMemoArray:mutableFetchResults];		//save fetched data to an array
 	[mutableFetchResults release];
 	[request release];
 			
 }
 
-
 - (void) addTimeStamp{
 	NSLog(@"firing addTimeStamp");
-	
-		
-		//copy contents of editmemoTextView to nsstring variable
-	NSString *mytext = [NSString stringWithFormat: @"%@", editmemoTextView.text]; 
-			//Initialize a new Memo Object and Insert it into Memo table in the ManagedObjectContext
-	Memo *newMemo = (Memo *)[NSEntityDescription insertNewObjectForEntityForName:@"Memo" inManagedObjectContext: managedObjectContext];
-		//sets the timeStamp of the new Memo
-	[newMemo setTimeStamp:[NSDate	date]]; 
-		//copies the input text to the new Memo. 
-	[newMemo setMemoText:mytext]; 
-	
+	NSString *mytext = [NSString stringWithFormat: @"%@", editmemoTextView.text]; //copy contents of editmemoTextView to mytext
+	Memo *newMemo = (Memo *)[NSEntityDescription insertNewObjectForEntityForName:@"Memo" inManagedObjectContext: managedObjectContext];	//Initialize a new Memo Object and Insert it into Memo table in the ManagedObjectContext
+	[newMemo setTimeStamp:[NSDate	date]];  //sets the timeStamp of the new Memo
+	[newMemo setMemoText:mytext]; 		//copies the input text to the new Memo. 
 	NSLog(@"%@", mytext);
-
+	
 	NSError *error;
 	if(![managedObjectContext save:&error]){  //???
 	}
-	
 	[memoArray insertObject:newMemo atIndex:0];//NOTE: NOT used here as far as I can tell
-	
-	
-	
 }
-
-
-
 
 	//Dismisses the saveAlert object by a system call. Note -1 is called if the CancelButton is not set. 
 - (void)dismissViewAlert{
-	
 	[self.saveAlert dismissWithClickedButtonIndex:-1 animated:YES];
 }
 
 	//???what does this do???
-- (void)viewAlertCancel:(UIAlertView *)alertView
-	{
+- (void)viewAlertCancel:(UIAlertView *)alertView{
 		[saveAlert	release];
 	}
 
 	//Alert view to prompt the User to select the next action to perform with the memo. Save it as an Appointment (-> directly to the Appt scheduling screen for setting the date and time), as a To Do Reminder( -> the MyPlanner screen with simplified scheduler, save to a Folder or Append to an existing file.
-- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
-	{
-	
-		  if (buttonIndex == 4) {
-			  NSLog(@"1st Button Clicked on WallAlert");
+- (void)alertView:(UIAlertView *)saveAlert didDismissWithButtonIndex:(NSInteger)buttonIndex{
+		  if (buttonIndex == 4) {NSLog(@"1st Button Clicked on WallAlert");
 			MyPlanner *gotoView = [[[MyPlanner alloc] initWithNibName:@"MyPlanner" bundle:nil] autorelease];
 			[self presentModalViewController:gotoView animated:YES];
 			}
-		else if (buttonIndex == 3) {
-			NSLog(@"2nd Button Clicked on WallAlert");
-
+		else if (buttonIndex == 3) {NSLog(@"2nd Button Clicked on WallAlert");
 			DateTimeViewController *gotoView = [[[DateTimeViewController alloc] initWithNibName:@"DateTimeViewController" bundle:nil] autorelease];
 			[self presentModalViewController:gotoView animated:YES];
 			}
-		else if (buttonIndex == 2) {
-			NSLog(@"3rd Button Clicked on WallAlert");
+		else if (buttonIndex == 2) { NSLog(@"3rd Button Clicked on WallAlert");
 
 			AppendFileViewController *gotoView = [[[AppendFileViewController alloc] initWithNibName:@"AppendFileViewController" bundle:nil] autorelease];
 			[self presentModalViewController:gotoView animated:YES];
 		} 
-		else if (buttonIndex == 1) {
-			NSLog(@"4th Button Clicked on WallAlert");
-
-				SaveFileViewController *gotoView = [[[SaveFileViewController alloc] initWithNibName:@"SaveFileViewController" bundle:nil] autorelease];
+		else if (buttonIndex == 1) { NSLog(@"4th Button Clicked on WallAlert");
+			SaveFileViewController *gotoView = [[[SaveFileViewController alloc] initWithNibName:@"SaveFileViewController" bundle:nil] autorelease];
 				[self presentModalViewController:gotoView animated:YES];
 			}	
-		else if (buttonIndex == 0) {
-			NSLog(@"Cancel Button Clicked on WallAlert");
+		else if (buttonIndex == 0) { NSLog(@"Cancel Button Clicked on WallAlert");
 
 				//CancelButton Clicked
 		}
 	
-		[alertView release];
 	}
-
-
-
-- (IBAction)gotowallAction:(id)sender{
-
-}
 
 - (void)dimisswallAlert{
 	[self.wallAlert dismissWithClickedButtonIndex:-1 animated:YES];
 }
 
-
-
 	//???what does this do???
-- (void)wallAlertCancel:(UIAlertView *)alertView
-{
+- (void)wallAlertCancel:(UIAlertView *)alertView {
 	[wallAlert	release];
 }
-/*
-	- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex;
+
+	- (void)alertView:(UIAlertView *)wallAlert clickedButtonAtIndex:(NSInteger)buttonIndex;
 	{
-		
-		if (buttonIndex == 4) {
-			NSLog(@"1st Button Clicked on WallAlert");
-			
-			MyMemosTableViewController *tableController = [[MyMemosTableViewController alloc] initWithStyle:UITableViewStylePlain];												
-			[self presentModalViewController:tableController animated:YES];
+		if (buttonIndex == 4) { NSLog(@"1st Button Clicked on WallAlert");
+			MyMemosViewController *viewController = [[[MyMemosViewController alloc] initWithNibName:@"MyMemosViewController" bundle:nil] autorelease];		
+			[self presentModalViewController:viewController animated:YES];
 		}
-		else if (buttonIndex == 3) {
-			NSLog(@"2nd Button Clicked on WallAlert");
-			
-			
-			MyMemosTableViewController *tableController = [[MyMemosTableViewController alloc] initWithStyle:UITableViewStylePlain];												
-			[self presentModalViewController:tableController animated:YES];
+		else if (buttonIndex == 3) { NSLog(@"2nd Button Clicked on WallAlert");
+			MyMemosViewController *viewController = [[[MyMemosViewController alloc] initWithNibName:@"MyMemosViewController" bundle:nil] autorelease];					
+			[self presentModalViewController:viewController animated:YES];
 		}
-		else if (buttonIndex == 2) {
-			NSLog(@"3rd Button Clicked on WallAlert");
-			
-			MyMemosTableViewController *tableController = [[MyMemosTableViewController alloc] initWithStyle:UITableViewStylePlain];												
-			[self presentModalViewController:tableController animated:YES];
+		else if (buttonIndex == 2) { NSLog(@"3rd Button Clicked on WallAlert");
+			MyMemosViewController *viewController = [[[MyMemosViewController alloc] initWithNibName:@"MyMemosViewController" bundle:nil] autorelease];
+			[self presentModalViewController:viewController animated:YES];
 		}
-		else if (buttonIndex == 1) {
-			NSLog(@"4th Button Clicked on WallAlert");
-			
-			MyMemosTableViewController *tableController = [[MyMemosTableViewController alloc] initWithStyle:UITableViewStylePlain];												
-			[self presentModalViewController:tableController animated:YES];
+		else if (buttonIndex == 1) { NSLog(@"4th Button Clicked on WallAlert");
+			MyFoldersViewController *viewController = [[[MyFoldersViewController alloc] initWithNibName:@"MyFoldersViewController" bundle:nil] autorelease];				
+			[self presentModalViewController:viewController animated:YES];
 		}	
-		else if (buttonIndex == 0) {
-				//CancelButton Clicked
+		else if (buttonIndex == 0) {//CancelButton Clicked
 		}
 		
-		[alertView release];
 	}
-*/	
+
+
 
 
 /* 

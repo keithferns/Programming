@@ -9,9 +9,9 @@
 	};
 	1D3623250D0F684500981E51 /* NOW__AppDelegate.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {804, 3653}}";
-			sepNavSelRange = "{4176, 0}";
-			sepNavVisRange = "{0, 1152}";
+			sepNavIntBoundsRect = "{{0, 0}, {799, 2834}}";
+			sepNavSelRange = "{541, 0}";
+			sepNavVisRange = "{3, 1098}";
 			sepNavWindowFrame = "{{19, 0}, {1172, 773}}";
 		};
 	};
@@ -199,7 +199,7 @@
 				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
-					626,
+					621,
 					20,
 					48,
 					43,
@@ -511,6 +511,41 @@
 			530197F913687EF600236402 /* PBXTextBookmark */ = 530197F913687EF600236402 /* PBXTextBookmark */;
 			530197FA13687EF600236402 /* PBXTextBookmark */ = 530197FA13687EF600236402 /* PBXTextBookmark */;
 			530197FD1368B20600236402 /* PBXTextBookmark */ = 530197FD1368B20600236402 /* PBXTextBookmark */;
+			530198061369316700236402 /* PBXTextBookmark */ = 530198061369316700236402 /* PBXTextBookmark */;
+			530198071369316700236402 /* PBXTextBookmark */ = 530198071369316700236402 /* PBXTextBookmark */;
+			530198081369316700236402 /* PBXTextBookmark */ = 530198081369316700236402 /* PBXTextBookmark */;
+			530198091369316700236402 /* PBXTextBookmark */ = 530198091369316700236402 /* PBXTextBookmark */;
+			5301980A1369316700236402 /* PBXTextBookmark */ = 5301980A1369316700236402 /* PBXTextBookmark */;
+			5301980B1369316700236402 /* PBXTextBookmark */ = 5301980B1369316700236402 /* PBXTextBookmark */;
+			5301980C1369316700236402 /* PBXTextBookmark */ = 5301980C1369316700236402 /* PBXTextBookmark */;
+			5301980D1369316700236402 /* PBXTextBookmark */ = 5301980D1369316700236402 /* PBXTextBookmark */;
+			5301980E1369316700236402 /* PBXTextBookmark */ = 5301980E1369316700236402 /* PBXTextBookmark */;
+			5301980F1369316700236402 /* PBXTextBookmark */ = 5301980F1369316700236402 /* PBXTextBookmark */;
+			530198101369316700236402 /* PBXTextBookmark */ = 530198101369316700236402 /* PBXTextBookmark */;
+			530198111369316700236402 /* PBXTextBookmark */ = 530198111369316700236402 /* PBXTextBookmark */;
+			530198121369316700236402 /* PBXTextBookmark */ = 530198121369316700236402 /* PBXTextBookmark */;
+			530198131369316700236402 /* PBXTextBookmark */ = 530198131369316700236402 /* PBXTextBookmark */;
+			5301981C136932B200236402 /* PBXTextBookmark */ = 5301981C136932B200236402 /* PBXTextBookmark */;
+			5301981F1369333400236402 /* PBXTextBookmark */ = 5301981F1369333400236402 /* PBXTextBookmark */;
+			530198221369336300236402 /* PBXTextBookmark */ = 530198221369336300236402 /* PBXTextBookmark */;
+			530198271369346C00236402 /* PBXTextBookmark */ = 530198271369346C00236402 /* PBXTextBookmark */;
+			530198281369346C00236402 /* PBXTextBookmark */ = 530198281369346C00236402 /* PBXTextBookmark */;
+			530198291369346C00236402 /* PBXTextBookmark */ = 530198291369346C00236402 /* PBXTextBookmark */;
+			5301982A1369346C00236402 /* PBXTextBookmark */ = 5301982A1369346C00236402 /* PBXTextBookmark */;
+			53019831136934E800236402 /* PBXTextBookmark */ = 53019831136934E800236402 /* PBXTextBookmark */;
+			530198341369350500236402 /* PBXTextBookmark */ = 530198341369350500236402 /* PBXTextBookmark */;
+			5301983B1369CCA900236402 /* PBXTextBookmark */ = 5301983B1369CCA900236402 /* PBXTextBookmark */;
+			5301984C136A34D300236402 /* PBXTextBookmark */ = 5301984C136A34D300236402 /* PBXTextBookmark */;
+			53019851136A355400236402 /* PBXTextBookmark */ = 53019851136A355400236402 /* PBXTextBookmark */;
+			53019854136A357F00236402 /* PBXTextBookmark */ = 53019854136A357F00236402 /* PBXTextBookmark */;
+			53019855136A39AD00236402 /* PBXTextBookmark */ = 53019855136A39AD00236402 /* PBXTextBookmark */;
+			53019856136A39AD00236402 /* XCBuildMessageTextBookmark */ = 53019856136A39AD00236402 /* XCBuildMessageTextBookmark */;
+			53019857136A39AD00236402 /* PBXTextBookmark */ = 53019857136A39AD00236402 /* PBXTextBookmark */;
+			53019858136A39AF00236402 /* PBXTextBookmark */ = 53019858136A39AF00236402 /* PBXTextBookmark */;
+			53019859136A39AF00236402 /* PBXTextBookmark */ = 53019859136A39AF00236402 /* PBXTextBookmark */;
+			5301985A136A39AF00236402 /* PBXTextBookmark */ = 5301985A136A39AF00236402 /* PBXTextBookmark */;
+			5301985B136A39B100236402 /* PBXTextBookmark */ = 5301985B136A39B100236402 /* PBXTextBookmark */;
+			5301985E136A39B700236402 /* PBXTextBookmark */ = 5301985E136A39B700236402 /* PBXTextBookmark */;
 			5306D8831356AF6C00FA773F = 5306D8831356AF6C00FA773F /* PBXTextBookmark */;
 			5306D92A1356C10800FA773F = 5306D92A1356C10800FA773F /* PBXTextBookmark */;
 			5306D9421356C38A00FA773F = 5306D9421356C38A00FA773F /* PBXTextBookmark */;
@@ -615,7 +650,7 @@
 		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
 		name = "EnterTextViewController.m: 117";
 		rLen = 0;
-		rLoc = 4064;
+		rLoc = 4015;
 		rType = 0;
 		vrLen = 1140;
 		vrLoc = 3589;
@@ -1115,7 +1150,7 @@
 		fRef = 53DF3FF3134E337C001FE4E4 /* EnterTextViewController.h */;
 		name = "EnterTextViewController.h: 67";
 		rLen = 0;
-		rLoc = 3616;
+		rLoc = 3614;
 		rType = 0;
 		vrLen = 1302;
 		vrLoc = 33;
@@ -1125,7 +1160,7 @@
 		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
 		name = "EnterTextViewController.m: 117";
 		rLen = 0;
-		rLoc = 4064;
+		rLoc = 4015;
 		rType = 0;
 		vrLen = 1110;
 		vrLoc = 3589;
@@ -2095,7 +2130,7 @@
 		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
 		name = "EnterTextViewController.m: 297";
 		rLen = 0;
-		rLoc = 10036;
+		rLoc = 9829;
 		rType = 0;
 		vrLen = 1358;
 		vrLoc = 8691;
@@ -2105,7 +2140,7 @@
 		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
 		name = "EnterTextViewController.m: 284";
 		rLen = 0;
-		rLoc = 9618;
+		rLoc = 9411;
 		rType = 0;
 		vrLen = 1358;
 		vrLoc = 8691;
@@ -2172,7 +2207,7 @@
 		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
 		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 0;
-		rLoc = 144;
+		rLoc = 124;
 		rType = 1;
 	};
 	5301972D1368015000236402 /* PBXTextBookmark */ = {
@@ -2180,7 +2215,7 @@
 		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
 		name = "EnterTextViewController.m: 141";
 		rLen = 0;
-		rLoc = 4777;
+		rLoc = 4697;
 		rType = 0;
 		vrLen = 1209;
 		vrLoc = 4052;
@@ -2190,7 +2225,7 @@
 		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
 		name = "EnterTextViewController.m: 139";
 		rLen = 0;
-		rLoc = 4777;
+		rLoc = 4697;
 		rType = 0;
 		vrLen = 1258;
 		vrLoc = 4052;
@@ -2200,7 +2235,7 @@
 		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
 		name = "EnterTextViewController.m: 139";
 		rLen = 0;
-		rLoc = 4777;
+		rLoc = 4697;
 		rType = 0;
 		vrLen = 1261;
 		vrLoc = 4114;
@@ -2210,7 +2245,7 @@
 		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
 		name = "EnterTextViewController.m: 139";
 		rLen = 0;
-		rLoc = 4777;
+		rLoc = 4697;
 		rType = 0;
 		vrLen = 1254;
 		vrLoc = 4198;
@@ -2220,7 +2255,7 @@
 		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
 		name = "EnterTextViewController.m: 139";
 		rLen = 0;
-		rLoc = 4777;
+		rLoc = 4697;
 		rType = 0;
 		vrLen = 1254;
 		vrLoc = 4198;
@@ -2230,7 +2265,7 @@
 		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
 		name = "EnterTextViewController.m: 139";
 		rLen = 0;
-		rLoc = 4777;
+		rLoc = 4697;
 		rType = 0;
 		vrLen = 1223;
 		vrLoc = 4230;
@@ -2251,7 +2286,7 @@
 		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
 		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
-		rLoc = 303;
+		rLoc = 250;
 		rType = 1;
 	};
 	5301973F1368037E00236402 /* PBXTextBookmark */ = {
@@ -2259,7 +2294,7 @@
 		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
 		name = "EnterTextViewController.m: 297";
 		rLen = 0;
-		rLoc = 10031;
+		rLoc = 9824;
 		rType = 0;
 		vrLen = 993;
 		vrLoc = 0;
@@ -2299,7 +2334,7 @@
 		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
 		name = "EnterTextViewController.m: 143";
 		rLen = 0;
-		rLoc = 4902;
+		rLoc = 4821;
 		rType = 0;
 		vrLen = 1223;
 		vrLoc = 4230;
@@ -2309,7 +2344,7 @@
 		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
 		name = "EnterTextViewController.m: 143";
 		rLen = 0;
-		rLoc = 4902;
+		rLoc = 4821;
 		rType = 0;
 		vrLen = 969;
 		vrLoc = 3454;
@@ -2393,7 +2428,7 @@
 		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
 		name = "EnterTextViewController.m: 276";
 		rLen = 0;
-		rLoc = 9521;
+		rLoc = 9314;
 		rType = 0;
 		vrLen = 1200;
 		vrLoc = 8618;
@@ -2403,7 +2438,7 @@
 		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
 		name = "EnterTextViewController.m: 287";
 		rLen = 0;
-		rLoc = 9792;
+		rLoc = 9585;
 		rType = 0;
 		vrLen = 1229;
 		vrLoc = 8620;
@@ -2420,21 +2455,21 @@
 	};
 	5301975D13686A1A00236402 /* MyFoldersViewController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {804, 534}}";
-			sepNavSelRange = "{423, 0}";
-			sepNavVisRange = "{0, 981}";
+			sepNavIntBoundsRect = "{{0, 0}, {906, 534}}";
+			sepNavSelRange = "{440, 0}";
+			sepNavVisRange = "{0, 973}";
 		};
 	};
 	5301975E13686A1A00236402 /* MyFoldersViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {804, 1287}}";
-			sepNavSelRange = "{1905, 0}";
-			sepNavVisRange = "{1140, 1022}";
+			sepNavIntBoundsRect = "{{0, 0}, {1190, 1196}}";
+			sepNavSelRange = "{1138, 0}";
+			sepNavVisRange = "{774, 819}";
 		};
 	};
 	5301976213686A3900236402 /* MyFoldersTableViewController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {804, 534}}";
+			sepNavIntBoundsRect = "{{0, 0}, {906, 534}}";
 			sepNavSelRange = "{287, 0}";
 			sepNavVisRange = "{0, 297}";
 		};
@@ -2442,9 +2477,9 @@
 	5301976313686A3900236402 /* MyFoldersTableViewController.m */ = {
 		uiCtxt = {
 			sepNavFolds = "{\n    c =     (\n                {\n            l = DetailViewController;\n            r = \"{3620, 24}\";\n            s = 1;\n        },\n                {\n            l = DetailViewController;\n            r = \"{3671, 24}\";\n            s = 1;\n        },\n                {\n            l = \"Nib name\";\n            r = \"{3721, 12}\";\n            s = 1;\n        }\n    );\n    r = \"{0, 4422}\";\n    s = 0;\n}";
-			sepNavIntBoundsRect = "{{0, 0}, {804, 2210}}";
+			sepNavIntBoundsRect = "{{0, 0}, {906, 2093}}";
 			sepNavSelRange = "{293, 0}";
-			sepNavVisRange = "{1347, 1356}";
+			sepNavVisRange = "{2949, 1231}";
 		};
 	};
 	5301976D1368707A00236402 /* PBXTextBookmark */ = {
@@ -2452,7 +2487,7 @@
 		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
 		name = "EnterTextViewController.m: 24";
 		rLen = 0;
-		rLoc = 730;
+		rLoc = 766;
 		rType = 0;
 		vrLen = 1044;
 		vrLoc = 30;
@@ -2462,7 +2497,7 @@
 		fRef = 5301975D13686A1A00236402 /* MyFoldersViewController.h */;
 		name = "MyFoldersViewController.h: 16";
 		rLen = 0;
-		rLoc = 324;
+		rLoc = 316;
 		rType = 0;
 		vrLen = 815;
 		vrLoc = 0;
@@ -2483,7 +2518,7 @@
 		fRef = 5301975E13686A1A00236402 /* MyFoldersViewController.m */;
 		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
-		rLoc = 58;
+		rLoc = 57;
 		rType = 1;
 	};
 	530197711368707A00236402 /* PBXTextBookmark */ = {
@@ -2491,7 +2526,7 @@
 		fRef = 5301975E13686A1A00236402 /* MyFoldersViewController.m */;
 		name = "MyFoldersViewController.m: 60";
 		rLen = 61;
-		rLoc = 1373;
+		rLoc = 1372;
 		rType = 0;
 		vrLen = 731;
 		vrLoc = 915;
@@ -2501,7 +2536,7 @@
 		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
 		name = "EnterTextViewController.m: 287";
 		rLen = 0;
-		rLoc = 9792;
+		rLoc = 9585;
 		rType = 0;
 		vrLen = 1229;
 		vrLoc = 8620;
@@ -2571,7 +2606,7 @@
 		fRef = 5301975D13686A1A00236402 /* MyFoldersViewController.h */;
 		name = "MyFoldersViewController.h: 21";
 		rLen = 0;
-		rLoc = 449;
+		rLoc = 441;
 		rType = 0;
 		vrLen = 727;
 		vrLoc = 0;
@@ -2581,7 +2616,7 @@
 		fRef = 5301975E13686A1A00236402 /* MyFoldersViewController.m */;
 		name = "MyFoldersViewController.m: 59";
 		rLen = 0;
-		rLoc = 1373;
+		rLoc = 1372;
 		rType = 0;
 		vrLen = 934;
 		vrLoc = 855;
@@ -2681,7 +2716,7 @@
 		fRef = 5301975D13686A1A00236402 /* MyFoldersViewController.h */;
 		name = "MyFoldersViewController.h: 15";
 		rLen = 25;
-		rLoc = 280;
+		rLoc = 272;
 		rType = 0;
 		vrLen = 807;
 		vrLoc = 0;
@@ -2691,7 +2726,7 @@
 		fRef = 5301975D13686A1A00236402 /* MyFoldersViewController.h */;
 		name = "MyFoldersViewController.h: 18";
 		rLen = 0;
-		rLoc = 388;
+		rLoc = 380;
 		rType = 0;
 		vrLen = 807;
 		vrLoc = 0;
@@ -2740,7 +2775,7 @@
 		fRef = 5301975D13686A1A00236402 /* MyFoldersViewController.h */;
 		name = "MyFoldersViewController.h: 18";
 		rLen = 0;
-		rLoc = 388;
+		rLoc = 380;
 		rType = 0;
 		vrLen = 807;
 		vrLoc = 0;
@@ -2770,7 +2805,7 @@
 		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
 		name = "EnterTextViewController.m: 54";
 		rLen = 0;
-		rLoc = 1980;
+		rLoc = 1946;
 		rType = 0;
 		vrLen = 1304;
 		vrLoc = 1117;
@@ -2790,7 +2825,7 @@
 		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
 		name = "EnterTextViewController.m: 54";
 		rLen = 0;
-		rLoc = 2008;
+		rLoc = 1974;
 		rType = 0;
 		vrLen = 1326;
 		vrLoc = 1117;
@@ -2811,7 +2846,7 @@
 		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
 		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
-		rLoc = 58;
+		rLoc = 56;
 		rType = 1;
 	};
 	530197A41368737300236402 /* PBXTextBookmark */ = {
@@ -2819,7 +2854,7 @@
 		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
 		name = "EnterTextViewController.m: 54";
 		rLen = 0;
-		rLoc = 1977;
+		rLoc = 1943;
 		rType = 0;
 		vrLen = 1236;
 		vrLoc = 1237;
@@ -2849,7 +2884,7 @@
 		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
 		name = "EnterTextViewController.m: 54";
 		rLen = 0;
-		rLoc = 2001;
+		rLoc = 1967;
 		rType = 0;
 		vrLen = 1024;
 		vrLoc = 1200;
@@ -2860,7 +2895,7 @@
 		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
 		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
-		rLoc = 57;
+		rLoc = 55;
 		rType = 1;
 	};
 	530197AD136875D600236402 /* PBXTextBookmark */ = {
@@ -2868,7 +2903,7 @@
 		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
 		name = "EnterTextViewController.m: 58";
 		rLen = 0;
-		rLoc = 1835;
+		rLoc = 1801;
 		rType = 0;
 		vrLen = 1347;
 		vrLoc = 731;
@@ -2888,7 +2923,7 @@
 		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
 		name = "EnterTextViewController.m: 58";
 		rLen = 0;
-		rLoc = 1835;
+		rLoc = 1801;
 		rType = 0;
 		vrLen = 1297;
 		vrLoc = 796;
@@ -2908,7 +2943,7 @@
 		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
 		name = "EnterTextViewController.m: 58";
 		rLen = 0;
-		rLoc = 1835;
+		rLoc = 1801;
 		rType = 0;
 		vrLen = 1297;
 		vrLoc = 796;
@@ -2949,7 +2984,7 @@
 		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
 		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
-		rLoc = 32;
+		rLoc = 33;
 		rType = 1;
 	};
 	530197BA1368799000236402 /* PBXTextBookmark */ = {
@@ -2957,7 +2992,7 @@
 		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
 		name = "EnterTextViewController.m: 30";
 		rLen = 0;
-		rLoc = 870;
+		rLoc = 906;
 		rType = 0;
 		vrLen = 1112;
 		vrLoc = 0;
@@ -2967,7 +3002,7 @@
 		fRef = 5301975D13686A1A00236402 /* MyFoldersViewController.h */;
 		name = "MyFoldersViewController.h: 27";
 		rLen = 0;
-		rLoc = 925;
+		rLoc = 917;
 		rType = 0;
 		vrLen = 887;
 		vrLoc = 0;
@@ -2987,7 +3022,7 @@
 		fRef = 5301975E13686A1A00236402 /* MyFoldersViewController.m */;
 		name = "MyFoldersViewController.m: 51";
 		rLen = 0;
-		rLoc = 1162;
+		rLoc = 1161;
 		rType = 0;
 		vrLen = 916;
 		vrLoc = 934;
@@ -2997,7 +3032,7 @@
 		fRef = 5301975D13686A1A00236402 /* MyFoldersViewController.h */;
 		name = "MyFoldersViewController.h: 29";
 		rLen = 0;
-		rLoc = 924;
+		rLoc = 916;
 		rType = 0;
 		vrLen = 972;
 		vrLoc = 0;
@@ -3017,7 +3052,7 @@
 		fRef = 5301975E13686A1A00236402 /* MyFoldersViewController.m */;
 		name = "MyFoldersViewController.m: 60";
 		rLen = 0;
-		rLoc = 1593;
+		rLoc = 1592;
 		rType = 0;
 		vrLen = 986;
 		vrLoc = 1129;
@@ -3027,7 +3062,7 @@
 		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
 		name = "EnterTextViewController.m: 297";
 		rLen = 0;
-		rLoc = 9944;
+		rLoc = 9737;
 		rType = 0;
 		vrLen = 1176;
 		vrLoc = 8773;
@@ -3037,7 +3072,7 @@
 		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
 		name = "EnterTextViewController.m: 297";
 		rLen = 0;
-		rLoc = 9944;
+		rLoc = 9737;
 		rType = 0;
 		vrLen = 1176;
 		vrLoc = 8773;
@@ -3047,7 +3082,7 @@
 		fRef = 5301975E13686A1A00236402 /* MyFoldersViewController.m */;
 		name = "MyFoldersViewController.m: 64";
 		rLen = 0;
-		rLoc = 1652;
+		rLoc = 1651;
 		rType = 0;
 		vrLen = 964;
 		vrLoc = 1132;
@@ -3057,7 +3092,7 @@
 		fRef = 5301975E13686A1A00236402 /* MyFoldersViewController.m */;
 		name = "MyFoldersViewController.m: 60";
 		rLen = 0;
-		rLoc = 1444;
+		rLoc = 1443;
 		rType = 0;
 		vrLen = 1004;
 		vrLoc = 1136;
@@ -3067,7 +3102,7 @@
 		fRef = 5301975E13686A1A00236402 /* MyFoldersViewController.m */;
 		name = "MyFoldersViewController.m: 67";
 		rLen = 0;
-		rLoc = 1658;
+		rLoc = 1657;
 		rType = 0;
 		vrLen = 1026;
 		vrLoc = 1138;
@@ -3077,7 +3112,7 @@
 		fRef = 5301975E13686A1A00236402 /* MyFoldersViewController.m */;
 		name = "MyFoldersViewController.m: 67";
 		rLen = 0;
-		rLoc = 1658;
+		rLoc = 1657;
 		rType = 0;
 		vrLen = 1025;
 		vrLoc = 1185;
@@ -3087,7 +3122,7 @@
 		fRef = 5301975E13686A1A00236402 /* MyFoldersViewController.m */;
 		name = "MyFoldersViewController.m: 67";
 		rLen = 0;
-		rLoc = 1658;
+		rLoc = 1657;
 		rType = 0;
 		vrLen = 1055;
 		vrLoc = 1187;
@@ -3097,7 +3132,7 @@
 		fRef = 5301975E13686A1A00236402 /* MyFoldersViewController.m */;
 		name = "MyFoldersViewController.m: 67";
 		rLen = 0;
-		rLoc = 1658;
+		rLoc = 1657;
 		rType = 0;
 		vrLen = 1089;
 		vrLoc = 1187;
@@ -3107,7 +3142,7 @@
 		fRef = 5301975E13686A1A00236402 /* MyFoldersViewController.m */;
 		name = "MyFoldersViewController.m: 67";
 		rLen = 0;
-		rLoc = 1658;
+		rLoc = 1657;
 		rType = 0;
 		vrLen = 1014;
 		vrLoc = 1264;
@@ -3117,7 +3152,7 @@
 		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
 		name = "EnterTextViewController.m: 297";
 		rLen = 0;
-		rLoc = 9944;
+		rLoc = 9737;
 		rType = 0;
 		vrLen = 1062;
 		vrLoc = 8972;
@@ -3128,7 +3163,7 @@
 		fRef = 5301975E13686A1A00236402 /* MyFoldersViewController.m */;
 		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
-		rLoc = 63;
+		rLoc = 62;
 		rType = 1;
 	};
 	530197E413687DA400236402 /* PBXTextBookmark */ = {
@@ -3136,7 +3171,7 @@
 		fRef = 5301975E13686A1A00236402 /* MyFoldersViewController.m */;
 		name = "MyFoldersViewController.m: 62";
 		rLen = 0;
-		rLoc = 1595;
+		rLoc = 1594;
 		rType = 0;
 		vrLen = 854;
 		vrLoc = 1136;
@@ -3146,7 +3181,7 @@
 		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
 		name = "EnterTextViewController.m: 303";
 		rLen = 0;
-		rLoc = 10031;
+		rLoc = 9824;
 		rType = 0;
 		vrLen = 1095;
 		vrLoc = 9415;
@@ -3166,7 +3201,7 @@
 		fRef = 5301975E13686A1A00236402 /* MyFoldersViewController.m */;
 		name = "MyFoldersViewController.m: 67";
 		rLen = 0;
-		rLoc = 1658;
+		rLoc = 1657;
 		rType = 0;
 		vrLen = 1014;
 		vrLoc = 1264;
@@ -3176,7 +3211,7 @@
 		fRef = 5301975E13686A1A00236402 /* MyFoldersViewController.m */;
 		name = "MyFoldersViewController.m: 67";
 		rLen = 0;
-		rLoc = 1658;
+		rLoc = 1657;
 		rType = 0;
 		vrLen = 975;
 		vrLoc = 1097;
@@ -3186,7 +3221,7 @@
 		fRef = 5301975E13686A1A00236402 /* MyFoldersViewController.m */;
 		name = "MyFoldersViewController.m: 67";
 		rLen = 0;
-		rLoc = 1658;
+		rLoc = 1657;
 		rType = 0;
 		vrLen = 986;
 		vrLoc = 1129;
@@ -3206,7 +3241,7 @@
 		fRef = 5301975E13686A1A00236402 /* MyFoldersViewController.m */;
 		name = "MyFoldersViewController.m: 67";
 		rLen = 0;
-		rLoc = 1658;
+		rLoc = 1657;
 		rType = 0;
 		vrLen = 988;
 		vrLoc = 1132;
@@ -3216,7 +3251,7 @@
 		fRef = 5301975D13686A1A00236402 /* MyFoldersViewController.h */;
 		name = "MyFoldersViewController.h: 20";
 		rLen = 0;
-		rLoc = 423;
+		rLoc = 415;
 		rType = 0;
 		vrLen = 981;
 		vrLoc = 0;
@@ -3236,7 +3271,7 @@
 		fRef = 5301975D13686A1A00236402 /* MyFoldersViewController.h */;
 		name = "MyFoldersViewController.h: 20";
 		rLen = 0;
-		rLoc = 423;
+		rLoc = 415;
 		rType = 0;
 		vrLen = 981;
 		vrLoc = 0;
@@ -3256,7 +3291,7 @@
 		fRef = 5301975E13686A1A00236402 /* MyFoldersViewController.m */;
 		name = "MyFoldersViewController.m: 58";
 		rLen = 0;
-		rLoc = 1350;
+		rLoc = 1349;
 		rType = 0;
 		vrLen = 1002;
 		vrLoc = 1139;
@@ -3266,10 +3301,359 @@
 		fRef = 5301975E13686A1A00236402 /* MyFoldersViewController.m */;
 		name = "MyFoldersViewController.m: 75";
 		rLen = 0;
-		rLoc = 1905;
+		rLoc = 1904;
 		rType = 0;
 		vrLen = 1022;
 		vrLoc = 1140;
+	};
+	530198061369316700236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D1696135F362100C389FC /* MyMemosTableViewController.m */;
+		name = "MyMemosTableViewController.m: 10";
+		rLen = 16;
+		rLoc = 203;
+		rType = 0;
+		vrLen = 1033;
+		vrLoc = 0;
+	};
+	530198071369316700236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53136122135E5AC900624C08 /* Memo.m */;
+		name = "Memo.m: 18";
+		rLen = 0;
+		rLoc = 245;
+		rType = 0;
+		vrLen = 256;
+		vrLoc = 0;
+	};
+	530198081369316700236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* NOW__AppDelegate.m */;
+		name = "NOW__AppDelegate.m: 118";
+		rLen = 0;
+		rLoc = 2483;
+		rType = 0;
+		vrLen = 1127;
+		vrLoc = 26;
+	};
+	530198091369316700236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D139C135EB40500C389FC /* NOW__AppDelegate.h */;
+		name = "NOW__AppDelegate.h: 14";
+		rLen = 0;
+		rLoc = 285;
+		rType = 0;
+		vrLen = 1088;
+		vrLoc = 0;
+	};
+	5301980A1369316700236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5301976213686A3900236402 /* MyFoldersTableViewController.h */;
+		name = "MyFoldersTableViewController.h: 18";
+		rLen = 0;
+		rLoc = 287;
+		rType = 0;
+		vrLen = 297;
+		vrLoc = 0;
+	};
+	5301980B1369316700236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5301975D13686A1A00236402 /* MyFoldersViewController.h */;
+		name = "MyFoldersViewController.h: 20";
+		rLen = 0;
+		rLoc = 440;
+		rType = 0;
+		vrLen = 973;
+		vrLoc = 0;
+	};
+	5301980C1369316700236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5301975E13686A1A00236402 /* MyFoldersViewController.m */;
+		name = "MyFoldersViewController.m: 21";
+		rLen = 0;
+		rLoc = 563;
+		rType = 0;
+		vrLen = 1100;
+		vrLoc = 0;
+	};
+	5301980D1369316700236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5301976313686A3900236402 /* MyFoldersTableViewController.m */;
+		name = "MyFoldersTableViewController.m: 18";
+		rLen = 0;
+		rLoc = 293;
+		rType = 0;
+		vrLen = 1288;
+		vrLoc = 2949;
+	};
+	5301980E1369316700236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D1695135F362100C389FC /* MyMemosTableViewController.h */;
+		name = "MyMemosTableViewController.h: 8";
+		rLen = 0;
+		rLoc = 154;
+		rType = 0;
+		vrLen = 689;
+		vrLoc = 0;
+	};
+	5301980F1369316700236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5306DE9D135AD5CB00FA773F /* AppendFileViewController.h */;
+		name = "AppendFileViewController.h: 20";
+		rLen = 0;
+		rLoc = 528;
+		rType = 0;
+		vrLen = 631;
+		vrLoc = 0;
+	};
+	530198101369316700236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5306DE8E135AD44000FA773F /* SaveFileViewController.h */;
+		name = "SaveFileViewController.h: 20";
+		rLen = 0;
+		rLoc = 401;
+		rType = 0;
+		vrLen = 407;
+		vrLoc = 0;
+	};
+	530198111369316700236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53DF3FF3134E337C001FE4E4 /* EnterTextViewController.h */;
+		name = "EnterTextViewController.h: 44";
+		rLen = 11;
+		rLoc = 1316;
+		rType = 0;
+		vrLen = 1596;
+		vrLoc = 223;
+	};
+	530198121369316700236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
+		name = "EnterTextViewController.m: 139";
+		rLen = 0;
+		rLoc = 4697;
+		rType = 0;
+		vrLen = 1450;
+		vrLoc = 3989;
+	};
+	530198131369316700236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
+		name = "EnterTextViewController.m: 192";
+		rLen = 0;
+		rLoc = 8066;
+		rType = 0;
+		vrLen = 1433;
+		vrLoc = 7084;
+	};
+	5301981C136932B200236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
+		name = "EnterTextViewController.m: 192";
+		rLen = 0;
+		rLoc = 8066;
+		rType = 0;
+		vrLen = 1526;
+		vrLoc = 7088;
+	};
+	5301981F1369333400236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
+		name = "EnterTextViewController.m: 191";
+		rLen = 0;
+		rLoc = 8066;
+		rType = 0;
+		vrLen = 1610;
+		vrLoc = 7117;
+	};
+	530198221369336300236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
+		name = "EnterTextViewController.m: 191";
+		rLen = 0;
+		rLoc = 8066;
+		rType = 0;
+		vrLen = 1619;
+		vrLoc = 7188;
+	};
+	530198271369346C00236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
+		name = "EnterTextViewController.m: 189";
+		rLen = 0;
+		rLoc = 8030;
+		rType = 0;
+		vrLen = 1526;
+		vrLoc = 7357;
+	};
+	530198281369346C00236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D1691135F360A00C389FC /* MyMemosViewController.m */;
+		name = "MyMemosViewController.m: 78";
+		rLen = 0;
+		rLoc = 2290;
+		rType = 0;
+		vrLen = 1114;
+		vrLoc = 0;
+	};
+	530198291369346C00236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D1696135F362100C389FC /* MyMemosTableViewController.m */;
+		name = "MyMemosTableViewController.m: 10";
+		rLen = 16;
+		rLoc = 203;
+		rType = 0;
+		vrLen = 1104;
+		vrLoc = 0;
+	};
+	5301982A1369346C00236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D1696135F362100C389FC /* MyMemosTableViewController.m */;
+		name = "MyMemosTableViewController.m: 30";
+		rLen = 0;
+		rLoc = 566;
+		rType = 0;
+		vrLen = 1479;
+		vrLoc = 372;
+	};
+	53019831136934E800236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D1696135F362100C389FC /* MyMemosTableViewController.m */;
+		name = "MyMemosTableViewController.m: 30";
+		rLen = 0;
+		rLoc = 566;
+		rType = 0;
+		vrLen = 1344;
+		vrLoc = 923;
+	};
+	530198341369350500236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D1696135F362100C389FC /* MyMemosTableViewController.m */;
+		name = "MyMemosTableViewController.m: 30";
+		rLen = 0;
+		rLoc = 566;
+		rType = 0;
+		vrLen = 1170;
+		vrLoc = 1102;
+	};
+	5301983B1369CCA900236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D1696135F362100C389FC /* MyMemosTableViewController.m */;
+		name = "MyMemosTableViewController.m: 30";
+		rLen = 0;
+		rLoc = 566;
+		rType = 0;
+		vrLen = 1179;
+		vrLoc = 1176;
+	};
+	5301984C136A34D300236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D1696135F362100C389FC /* MyMemosTableViewController.m */;
+		name = "MyMemosTableViewController.m: 30";
+		rLen = 0;
+		rLoc = 566;
+		rType = 0;
+		vrLen = 820;
+		vrLoc = 2011;
+	};
+	53019851136A355400236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D1696135F362100C389FC /* MyMemosTableViewController.m */;
+		name = "MyMemosTableViewController.m: 30";
+		rLen = 0;
+		rLoc = 566;
+		rType = 0;
+		vrLen = 820;
+		vrLoc = 2011;
+	};
+	53019854136A357F00236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D1696135F362100C389FC /* MyMemosTableViewController.m */;
+		name = "MyMemosTableViewController.m: 30";
+		rLen = 0;
+		rLoc = 566;
+		rType = 0;
+		vrLen = 819;
+		vrLoc = 2013;
+	};
+	53019855136A39AD00236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5301975E13686A1A00236402 /* MyFoldersViewController.m */;
+		name = "MyFoldersViewController.m: 48";
+		rLen = 0;
+		rLoc = 1138;
+		rType = 0;
+		vrLen = 819;
+		vrLoc = 774;
+	};
+	53019856136A39AD00236402 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Confused by earlier errors, bailing out";
+		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 176;
+		rType = 1;
+	};
+	53019857136A39AD00236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
+		name = "EnterTextViewController.m: 176";
+		rLen = 0;
+		rLoc = 7157;
+		rType = 0;
+		vrLen = 1417;
+		vrLoc = 6683;
+	};
+	53019858136A39AF00236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D1696135F362100C389FC /* MyMemosTableViewController.m */;
+		name = "MyMemosTableViewController.m: 30";
+		rLen = 0;
+		rLoc = 566;
+		rType = 0;
+		vrLen = 819;
+		vrLoc = 2013;
+	};
+	53019859136A39AF00236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53DF3FF3134E337C001FE4E4 /* EnterTextViewController.h */;
+		name = "EnterTextViewController.h: 44";
+		rLen = 11;
+		rLoc = 1316;
+		rType = 0;
+		vrLen = 1650;
+		vrLoc = 241;
+	};
+	5301985A136A39AF00236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* NOW__AppDelegate.m */;
+		name = "NOW__AppDelegate.m: 27";
+		rLen = 0;
+		rLoc = 541;
+		rType = 0;
+		vrLen = 1100;
+		vrLoc = 0;
+	};
+	5301985B136A39B100236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
+		name = "EnterTextViewController.m: 176";
+		rLen = 0;
+		rLoc = 7157;
+		rType = 0;
+		vrLen = 1417;
+		vrLoc = 6683;
+	};
+	5301985E136A39B700236402 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* NOW__AppDelegate.m */;
+		name = "NOW__AppDelegate.m: 27";
+		rLen = 0;
+		rLoc = 541;
+		rType = 0;
+		vrLen = 1098;
+		vrLoc = 3;
 	};
 	5306D8391356A14500FA773F /* NavButton.h */ = {
 		uiCtxt = {
@@ -3385,7 +3769,7 @@
 	};
 	5306DE8E135AD44000FA773F /* SaveFileViewController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {804, 534}}";
+			sepNavIntBoundsRect = "{{0, 0}, {906, 534}}";
 			sepNavSelRange = "{401, 0}";
 			sepNavVisRange = "{0, 407}";
 			sepNavWindowFrame = "{{19, 0}, {1172, 773}}";
@@ -3400,7 +3784,7 @@
 	};
 	5306DE9D135AD5CB00FA773F /* AppendFileViewController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {804, 534}}";
+			sepNavIntBoundsRect = "{{0, 0}, {906, 534}}";
 			sepNavSelRange = "{528, 0}";
 			sepNavVisRange = "{0, 631}";
 			sepNavWindowFrame = "{{19, 0}, {1172, 773}}";
@@ -3439,7 +3823,7 @@
 	};
 	53136122135E5AC900624C08 /* Memo.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {804, 561}}";
+			sepNavIntBoundsRect = "{{0, 0}, {804, 534}}";
 			sepNavSelRange = "{245, 0}";
 			sepNavVisRange = "{0, 256}";
 			sepNavWindowFrame = "{{19, 0}, {1172, 773}}";
@@ -3555,6 +3939,11 @@
 		name = NOW__AppDelegate.h;
 		path = "/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/NOW__AppDelegate.h";
 		sourceTree = "<absolute>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {906, 534}}";
+			sepNavSelRange = "{285, 0}";
+			sepNavVisRange = "{0, 1088}";
+		};
 	};
 	537D13BC135EBA5800C389FC /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -3646,15 +4035,15 @@
 	};
 	537D1691135F360A00C389FC /* MyMemosViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {804, 1664}}";
-			sepNavSelRange = "{2548, 0}";
-			sepNavVisRange = "{712, 1438}";
+			sepNavIntBoundsRect = "{{0, 0}, {906, 1755}}";
+			sepNavSelRange = "{2290, 0}";
+			sepNavVisRange = "{0, 1114}";
 			sepNavWindowFrame = "{{19, 0}, {1172, 773}}";
 		};
 	};
 	537D1695135F362100C389FC /* MyMemosTableViewController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {804, 557}}";
+			sepNavIntBoundsRect = "{{0, 0}, {906, 534}}";
 			sepNavSelRange = "{154, 0}";
 			sepNavVisRange = "{0, 689}";
 		};
@@ -3662,9 +4051,9 @@
 	537D1696135F362100C389FC /* MyMemosTableViewController.m */ = {
 		uiCtxt = {
 			sepNavFolds = "{\n    c =     (\n                {\n            l = DetailViewController;\n            r = \"{5945, 24}\";\n            s = 1;\n        },\n                {\n            l = DetailViewController;\n            r = \"{5996, 24}\";\n            s = 1;\n        },\n                {\n            l = \"Nib name\";\n            r = \"{6046, 12}\";\n            s = 1;\n        }\n    );\n    r = \"{0, 6747}\";\n    s = 0;\n}";
-			sepNavIntBoundsRect = "{{0, 0}, {804, 3120}}";
-			sepNavSelRange = "{154, 0}";
-			sepNavVisRange = "{0, 1033}";
+			sepNavIntBoundsRect = "{{0, 0}, {799, 3198}}";
+			sepNavSelRange = "{566, 0}";
+			sepNavVisRange = "{2013, 819}";
 			sepNavWindowFrame = "{{19, 0}, {1172, 773}}";
 		};
 	};
@@ -3685,9 +4074,9 @@
 		path = "/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/EnterTextViewController.m";
 		sourceTree = "<absolute>";
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {804, 5681}}";
-			sepNavSelRange = "{10031, 0}";
-			sepNavVisRange = "{9415, 1095}";
+			sepNavIntBoundsRect = "{{0, 0}, {1090, 4654}}";
+			sepNavSelRange = "{7157, 0}";
+			sepNavVisRange = "{6683, 1417}";
 		};
 	};
 	53BDD1B6135179DD00C1C44E /* DateTimeViewController.h */ = {
@@ -3782,9 +4171,9 @@
 	};
 	53DF3FF3134E337C001FE4E4 /* EnterTextViewController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {804, 1430}}";
-			sepNavSelRange = "{668, 0}";
-			sepNavVisRange = "{0, 1121}";
+			sepNavIntBoundsRect = "{{0, 0}, {799, 1274}}";
+			sepNavSelRange = "{1316, 11}";
+			sepNavVisRange = "{241, 1650}";
 			sepNavWindowFrame = "{{76, -164}, {1172, 773}}";
 		};
 	};
@@ -4041,7 +4430,7 @@
 		fRef = 1D3623250D0F684500981E51 /* NOW__AppDelegate.m */;
 		name = "NOW__AppDelegate.m: 118";
 		rLen = 0;
-		rLoc = 4176;
+		rLoc = 2483;
 		rType = 0;
 		vrLen = 1152;
 		vrLoc = 0;
@@ -4051,7 +4440,7 @@
 		fRef = 537D139C135EB40500C389FC /* NOW__AppDelegate.h */;
 		name = "NOW__AppDelegate.h: 20";
 		rLen = 0;
-		rLoc = 480;
+		rLoc = 475;
 		rType = 0;
 		vrLen = 1093;
 		vrLoc = 0;
@@ -4061,7 +4450,7 @@
 		fRef = 53DF3FF3134E337C001FE4E4 /* EnterTextViewController.h */;
 		name = "EnterTextViewController.h: 67";
 		rLen = 0;
-		rLoc = 3616;
+		rLoc = 3614;
 		rType = 0;
 		vrLen = 1335;
 		vrLoc = 0;
@@ -4071,7 +4460,7 @@
 		fRef = 537D16E1135F416200C389FC /* EnterTextViewController.m */;
 		name = "EnterTextViewController.m: 378";
 		rLen = 0;
-		rLoc = 13390;
+		rLoc = 13183;
 		rType = 0;
 		vrLen = 1358;
 		vrLoc = 0;

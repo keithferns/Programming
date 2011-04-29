@@ -15,7 +15,6 @@
     UIWindow *window;
 	UIViewController *viewController;
 		//	UINavigationController *navigationController;
-    
     NSManagedObjectContext *managedObjectContext;
     NSManagedObjectModel *managedObjectModel;
     NSPersistentStoreCoordinator *persistentStoreCoordinator;

@@ -26,7 +26,6 @@
 	NSManagedObjectContext *managedObjectContext;
 	NSMutableArray *memoArray;
 	BOOL doneEditing;
-	
 }
 
 /*.....Data ....*/

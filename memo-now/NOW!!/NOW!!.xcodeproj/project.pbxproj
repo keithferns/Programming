@@ -189,14 +189,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		5301975C136869DC00236402 /* NyFoldersTableViewController */ = {
+		5301975C136869DC00236402 /* MyFoldersTableViewController */ = {
 			isa = PBXGroup;
 			children = (
 				5301976213686A3900236402 /* MyFoldersTableViewController.h */,
 				5301976313686A3900236402 /* MyFoldersTableViewController.m */,
 				5301976413686A3900236402 /* MyFoldersTableViewController.xib */,
 			);
-			name = NyFoldersTableViewController;
+			name = MyFoldersTableViewController;
 			sourceTree = "<group>";
 		};
 		5306D8381356A12100FA773F /* NavButton */ = {
@@ -274,7 +274,7 @@
 		5306DA6C1357CF5E00FA773F /* MyFoldersViewController */ = {
 			isa = PBXGroup;
 			children = (
-				5301975C136869DC00236402 /* NyFoldersTableViewController */,
+				5301975C136869DC00236402 /* MyFoldersTableViewController */,
 				5301975D13686A1A00236402 /* MyFoldersViewController.h */,
 				5301975E13686A1A00236402 /* MyFoldersViewController.m */,
 				5301975F13686A1A00236402 /* MyFoldersViewController.xib */,

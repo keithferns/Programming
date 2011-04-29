@@ -23,7 +23,7 @@
 #pragma mark View lifecycle
 
 - (void)viewDidLoad {
-	NSLog(@"Loading view from MyMemosTableViewCOntroller");
+	NSLog(@"Loading view from MyMemosTableViewController");
 
 	if (managedObjectContext == nil) 
 	{ 

@@ -21,55 +21,14 @@
 - (void)applicationDidFinishLaunching:(UIApplication *)application;
 	{    
 	
-			//MyMemosTableViewController *tableController =[[MyMemosTableViewController alloc] initWithStyle:UITableViewStylePlain];
-				//tableController.managedObjectContext =  self.managedObjectContext;
-			//self.navigationController = [[UINavigationController alloc]initWithRootViewController:tableController];
-			//[tableController release];
 		managedObjectContext = nil;
 		
 	[self.window addSubview:viewController.view];
-		//[self.window addSubview:[self.navigationController view]];
 	[self.window makeKeyAndVisible];
     
 }
 
-/*
 
- - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex;
- {
- 
- if (buttonIndex == 4) {
-	 NSLog(@"1st Button Clicked on WallAlert");
-
- MyMemosTableViewController *tableController = [[MyMemosTableViewController alloc] initWithStyle:UITableViewStylePlain];												
- [self presentModalViewController:tableController animated:YES];
- }
- else if (buttonIndex == 3) {
-	 NSLog(@"2nd Button Clicked on WallAlert");
-
-	 
- MyMemosTableViewController *tableController = [[MyMemosTableViewController alloc] initWithStyle:UITableViewStylePlain];												
- [self presentModalViewController:tableController animated:YES];
- }
- else if (buttonIndex == 2) {
-	 NSLog(@"3rd Button Clicked on WallAlert");
-
- MyMemosTableViewController *tableController = [[MyMemosTableViewController alloc] initWithStyle:UITableViewStylePlain];												
- [self presentModalViewController:tableController animated:YES];
- }
- else if (buttonIndex == 1) {
-	 NSLog(@"4th Button Clicked on WallAlert");
-
- MyMemosTableViewController *tableController = [[MyMemosTableViewController alloc] initWithStyle:UITableViewStylePlain];												
- [self presentModalViewController:tableController animated:YES];
- }	
- else if (buttonIndex == 0) {
- //CancelButton Clicked
- }
- 
- [alertView release];
- }
- */
 
 
 - (void)applicationWillResignActive:(UIApplication *)application {
