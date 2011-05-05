@@ -19,9 +19,10 @@
 		5301976113686A1A00236402 /* MyFoldersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5301975F13686A1A00236402 /* MyFoldersViewController.xib */; };
 		5301976513686A3900236402 /* MyFoldersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5301976313686A3900236402 /* MyFoldersTableViewController.m */; };
 		5301976613686A3900236402 /* MyFoldersTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5301976413686A3900236402 /* MyFoldersTableViewController.xib */; };
+		53019948136C714A00236402 /* MyAppointmentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53019946136C714A00236402 /* MyAppointmentsViewController.m */; };
+		53019949136C714A00236402 /* MyAppointmentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53019947136C714A00236402 /* MyAppointmentsViewController.xib */; };
+		53019958136C74C200236402 /* MyAppointmentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53019957136C74C200236402 /* MyAppointmentsTableViewController.m */; };
 		5306D83B1356A14500FA773F /* NavButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5306D83A1356A14500FA773F /* NavButton.m */; };
-		5306DA681357CEC700FA773F /* WallNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5306DA661357CEC700FA773F /* WallNavViewController.m */; };
-		5306DA691357CEC700FA773F /* WallNavViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5306DA671357CEC700FA773F /* WallNavViewController.xib */; };
 		5306DAED1357F88900FA773F /* MyPlanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 5306DAEC1357F88900FA773F /* MyPlanner.m */; };
 		5306DAF01357F8F000FA773F /* MyPlanner.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5306DAEF1357F8F000FA773F /* MyPlanner.xib */; };
 		5306DBB3135833E200FA773F /* AppendFileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5306DBB1135833E200FA773F /* AppendFileViewController.xib */; };
@@ -29,8 +30,6 @@
 		5306DC121358449700FA773F /* MyPlanner1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5306DC111358449700FA773F /* MyPlanner1.xib */; };
 		5306DE90135AD44100FA773F /* SaveFileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5306DE8F135AD44100FA773F /* SaveFileViewController.m */; };
 		5306DE9F135AD5CB00FA773F /* AppendFileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5306DE9E135AD5CB00FA773F /* AppendFileViewController.m */; };
-		5306DF1B135AE30700FA773F /* MyFilesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5306DF1A135AE30700FA773F /* MyFilesTableViewController.m */; };
-		5306DF22135AE3DF00FA773F /* MyFilesTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5306DF21135AE3DF00FA773F /* MyFilesTableViewController.xib */; };
 		53136123135E5AC900624C08 /* Memo.m in Sources */ = {isa = PBXBuildFile; fileRef = 53136122135E5AC900624C08 /* Memo.m */; };
 		531E5A8F13554D13004A46A5 /* EditTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 531E5A8E13554D13004A46A5 /* EditTextView.m */; };
 		53522B1E135F793A00437445 /* testImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 53522B1D135F793A00437445 /* testImage.png */; };
@@ -40,6 +39,20 @@
 		537D1699135F362100C389FC /* MyMemosTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 537D1697135F362100C389FC /* MyMemosTableViewController.xib */; };
 		53BDD1B9135179DD00C1C44E /* DateTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53BDD1B7135179DD00C1C44E /* DateTimeViewController.m */; };
 		53BDD1BA135179DD00C1C44E /* DateTimeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53BDD1B8135179DD00C1C44E /* DateTimeViewController.xib */; };
+		53D051541371CCD900D33C4A /* blackbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D0514C1371CCD800D33C4A /* blackbutton.png */; };
+		53D051551371CCD900D33C4A /* bluebutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D0514D1371CCD800D33C4A /* bluebutton.png */; };
+		53D051561371CCD900D33C4A /* brownbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D0514E1371CCD800D33C4A /* brownbutton.png */; };
+		53D051571371CCD900D33C4A /* greenbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D0514F1371CCD900D33C4A /* greenbutton.png */; };
+		53D051581371CCD900D33C4A /* marinebluebutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D051501371CCD900D33C4A /* marinebluebutton.png */; };
+		53D051591371CCD900D33C4A /* orangebutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D051511371CCD900D33C4A /* orangebutton.png */; };
+		53D0515A1371CCD900D33C4A /* redbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D051521371CCD900D33C4A /* redbutton.png */; };
+		53D0515B1371CCD900D33C4A /* yellowbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D051531371CCD900D33C4A /* yellowbutton.png */; };
+		53D051651371CCF700D33C4A /* free4all.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D0515F1371CCF700D33C4A /* free4all.png */; };
+		53D051661371CCF700D33C4A /* free4all1.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D051601371CCF700D33C4A /* free4all1.png */; };
+		53D051671371CCF700D33C4A /* free4all2.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D051611371CCF700D33C4A /* free4all2.png */; };
+		53D051681371CCF700D33C4A /* free4all3.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D051621371CCF700D33C4A /* free4all3.png */; };
+		53D051691371CCF700D33C4A /* free4all4.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D051631371CCF700D33C4A /* free4all4.png */; };
+		53D0516A1371CCF700D33C4A /* free4all5.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D051641371CCF700D33C4A /* free4all5.png */; };
 		53DF3FF6134E337C001FE4E4 /* EnterTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53DF3FF4134E337C001FE4E4 /* EnterTextViewController.m */; };
 		53DF3FF7134E337C001FE4E4 /* EnterTextViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53DF3FF5134E337C001FE4E4 /* EnterTextViewController.xib */; };
 /* End PBXBuildFile section */
@@ -62,11 +75,13 @@
 		5301976213686A3900236402 /* MyFoldersTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFoldersTableViewController.h; sourceTree = "<group>"; };
 		5301976313686A3900236402 /* MyFoldersTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFoldersTableViewController.m; sourceTree = "<group>"; };
 		5301976413686A3900236402 /* MyFoldersTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyFoldersTableViewController.xib; sourceTree = "<group>"; };
+		53019945136C714A00236402 /* MyAppointmentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAppointmentsViewController.h; sourceTree = "<group>"; };
+		53019946136C714A00236402 /* MyAppointmentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAppointmentsViewController.m; sourceTree = "<group>"; };
+		53019947136C714A00236402 /* MyAppointmentsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyAppointmentsViewController.xib; sourceTree = "<group>"; };
+		53019956136C74C200236402 /* MyAppointmentsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAppointmentsTableViewController.h; sourceTree = "<group>"; };
+		53019957136C74C200236402 /* MyAppointmentsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAppointmentsTableViewController.m; sourceTree = "<group>"; };
 		5306D8391356A14500FA773F /* NavButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavButton.h; sourceTree = "<group>"; };
 		5306D83A1356A14500FA773F /* NavButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavButton.m; sourceTree = "<group>"; };
-		5306DA651357CEC700FA773F /* WallNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WallNavViewController.h; sourceTree = "<group>"; };
-		5306DA661357CEC700FA773F /* WallNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WallNavViewController.m; sourceTree = "<group>"; };
-		5306DA671357CEC700FA773F /* WallNavViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WallNavViewController.xib; sourceTree = "<group>"; };
 		5306DAEB1357F88900FA773F /* MyPlanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPlanner.h; sourceTree = "<group>"; };
 		5306DAEC1357F88900FA773F /* MyPlanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPlanner.m; sourceTree = "<group>"; };
 		5306DAEF1357F8F000FA773F /* MyPlanner.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyPlanner.xib; sourceTree = "<group>"; };
@@ -77,9 +92,6 @@
 		5306DE8F135AD44100FA773F /* SaveFileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaveFileViewController.m; sourceTree = "<group>"; };
 		5306DE9D135AD5CB00FA773F /* AppendFileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppendFileViewController.h; sourceTree = "<group>"; };
 		5306DE9E135AD5CB00FA773F /* AppendFileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppendFileViewController.m; sourceTree = "<group>"; };
-		5306DF19135AE30700FA773F /* MyFilesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFilesTableViewController.h; sourceTree = "<group>"; };
-		5306DF1A135AE30700FA773F /* MyFilesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFilesTableViewController.m; sourceTree = "<group>"; };
-		5306DF21135AE3DF00FA773F /* MyFilesTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyFilesTableViewController.xib; sourceTree = "<group>"; };
 		53136121135E5AC900624C08 /* Memo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Memo.h; sourceTree = "<group>"; };
 		53136122135E5AC900624C08 /* Memo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Memo.m; sourceTree = "<group>"; };
 		531E5A8D13554D13004A46A5 /* EditTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditTextView.h; sourceTree = "<group>"; };
@@ -94,6 +106,26 @@
 		53BDD1B6135179DD00C1C44E /* DateTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateTimeViewController.h; sourceTree = "<group>"; };
 		53BDD1B7135179DD00C1C44E /* DateTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateTimeViewController.m; sourceTree = "<group>"; };
 		53BDD1B8135179DD00C1C44E /* DateTimeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DateTimeViewController.xib; sourceTree = "<group>"; };
+		53D0513D1371CC9D00D33C4A /* free4all.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = free4all.png; sourceTree = "<group>"; };
+		53D0513E1371CC9D00D33C4A /* free4all1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = free4all1.png; sourceTree = "<group>"; };
+		53D0513F1371CC9D00D33C4A /* free4all2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = free4all2.png; sourceTree = "<group>"; };
+		53D051401371CC9D00D33C4A /* free4all3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = free4all3.png; sourceTree = "<group>"; };
+		53D051411371CC9D00D33C4A /* free4all4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = free4all4.png; sourceTree = "<group>"; };
+		53D051421371CC9D00D33C4A /* free4all5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = free4all5.png; sourceTree = "<group>"; };
+		53D0514C1371CCD800D33C4A /* blackbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackbutton.png; sourceTree = "<group>"; };
+		53D0514D1371CCD800D33C4A /* bluebutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bluebutton.png; sourceTree = "<group>"; };
+		53D0514E1371CCD800D33C4A /* brownbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = brownbutton.png; sourceTree = "<group>"; };
+		53D0514F1371CCD900D33C4A /* greenbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greenbutton.png; sourceTree = "<group>"; };
+		53D051501371CCD900D33C4A /* marinebluebutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marinebluebutton.png; sourceTree = "<group>"; };
+		53D051511371CCD900D33C4A /* orangebutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orangebutton.png; sourceTree = "<group>"; };
+		53D051521371CCD900D33C4A /* redbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redbutton.png; sourceTree = "<group>"; };
+		53D051531371CCD900D33C4A /* yellowbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yellowbutton.png; sourceTree = "<group>"; };
+		53D0515F1371CCF700D33C4A /* free4all.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = free4all.png; sourceTree = "<group>"; };
+		53D051601371CCF700D33C4A /* free4all1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = free4all1.png; sourceTree = "<group>"; };
+		53D051611371CCF700D33C4A /* free4all2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = free4all2.png; sourceTree = "<group>"; };
+		53D051621371CCF700D33C4A /* free4all3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = free4all3.png; sourceTree = "<group>"; };
+		53D051631371CCF700D33C4A /* free4all4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = free4all4.png; sourceTree = "<group>"; };
+		53D051641371CCF700D33C4A /* free4all5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = free4all5.png; sourceTree = "<group>"; };
 		53DF3FF3134E337C001FE4E4 /* EnterTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnterTextViewController.h; sourceTree = "<group>"; };
 		53DF3FF4134E337C001FE4E4 /* EnterTextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnterTextViewController.m; sourceTree = "<group>"; };
 		53DF3FF5134E337C001FE4E4 /* EnterTextViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EnterTextViewController.xib; sourceTree = "<group>"; };
@@ -118,18 +150,17 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				537D168E135F35D300C389FC /* MyMemosViewController */,
 				53136125135E5AE600624C08 /* MemoManagedObject */,
-				5306DF1F135AE31E00FA773F /* MyFilesTableViewController */,
+				537D168E135F35D300C389FC /* MyMemosViewController */,
+				5306DA6E1357CFE600FA773F /* MyRemindersViewController */,
+				5306DA5D1357CAC600FA773F /* WallNavViewController */,
+				5306DA6C1357CF5E00FA773F /* MyFoldersViewController */,
+				5306DA6D1357CF8A00FA773F /* MyAppoinmentsViewController */,
 				1D3623240D0F684500981E51 /* NOW__AppDelegate.h */,
 				1D3623250D0F684500981E51 /* NOW__AppDelegate.m */,
 				53DF3FF3134E337C001FE4E4 /* EnterTextViewController.h */,
 				53DF3FF4134E337C001FE4E4 /* EnterTextViewController.m */,
 				53DF3FF5134E337C001FE4E4 /* EnterTextViewController.xib */,
-				5306DA5D1357CAC600FA773F /* WallNavViewController */,
-				5306DA6C1357CF5E00FA773F /* MyFoldersViewController */,
-				5306DA6D1357CF8A00FA773F /* MyAppoinmentsViewController */,
-				5306DA6E1357CFE600FA773F /* MyRemindersViewController */,
 				53DF3FF2134E3346001FE4E4 /* SaveAsViewControllers */,
 				531E5A8913554CCA004A46A5 /* Views */,
 				53DF4068134E565D001FE4E4 /* Buttons */,
@@ -170,6 +201,9 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				53D0515E1371CCF700D33C4A /* Buttons_3 */,
+				53D0514B1371CCD800D33C4A /* Buttons_2 */,
+				53D0513C1371CC9D00D33C4A /* Buttons_1 */,
 				53522B1D135F793A00437445 /* testImage.png */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				2819305F112F816700ECF9B4 /* NOW__.xcdatamodeld */,
@@ -199,6 +233,15 @@
 			name = MyFoldersTableViewController;
 			sourceTree = "<group>";
 		};
+		53019955136C748200236402 /* MyAppointmentsTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				53019956136C74C200236402 /* MyAppointmentsTableViewController.h */,
+				53019957136C74C200236402 /* MyAppointmentsTableViewController.m */,
+			);
+			name = MyAppointmentsTableViewController;
+			sourceTree = "<group>";
+		};
 		5306D8381356A12100FA773F /* NavButton */ = {
 			isa = PBXGroup;
 			children = (
@@ -225,9 +268,6 @@
 		5306DA5D1357CAC600FA773F /* WallNavViewController */ = {
 			isa = PBXGroup;
 			children = (
-				5306DA651357CEC700FA773F /* WallNavViewController.h */,
-				5306DA661357CEC700FA773F /* WallNavViewController.m */,
-				5306DA671357CEC700FA773F /* WallNavViewController.xib */,
 			);
 			name = WallNavViewController;
 			sourceTree = "<group>";
@@ -285,6 +325,10 @@
 		5306DA6D1357CF8A00FA773F /* MyAppoinmentsViewController */ = {
 			isa = PBXGroup;
 			children = (
+				53019955136C748200236402 /* MyAppointmentsTableViewController */,
+				53019945136C714A00236402 /* MyAppointmentsViewController.h */,
+				53019946136C714A00236402 /* MyAppointmentsViewController.m */,
+				53019947136C714A00236402 /* MyAppointmentsViewController.xib */,
 			);
 			name = MyAppoinmentsViewController;
 			sourceTree = "<group>";
@@ -294,16 +338,6 @@
 			children = (
 			);
 			name = MyRemindersViewController;
-			sourceTree = "<group>";
-		};
-		5306DF1F135AE31E00FA773F /* MyFilesTableViewController */ = {
-			isa = PBXGroup;
-			children = (
-				5306DF19135AE30700FA773F /* MyFilesTableViewController.h */,
-				5306DF1A135AE30700FA773F /* MyFilesTableViewController.m */,
-				5306DF21135AE3DF00FA773F /* MyFilesTableViewController.xib */,
-			);
-			name = MyFilesTableViewController;
 			sourceTree = "<group>";
 		};
 		53136125135E5AE600624C08 /* MemoManagedObject */ = {
@@ -352,6 +386,48 @@
 				53BDD1B8135179DD00C1C44E /* DateTimeViewController.xib */,
 			);
 			name = AppointmentDateTimeViewController;
+			sourceTree = "<group>";
+		};
+		53D0513C1371CC9D00D33C4A /* Buttons_1 */ = {
+			isa = PBXGroup;
+			children = (
+				53D0513D1371CC9D00D33C4A /* free4all.png */,
+				53D0513E1371CC9D00D33C4A /* free4all1.png */,
+				53D0513F1371CC9D00D33C4A /* free4all2.png */,
+				53D051401371CC9D00D33C4A /* free4all3.png */,
+				53D051411371CC9D00D33C4A /* free4all4.png */,
+				53D051421371CC9D00D33C4A /* free4all5.png */,
+			);
+			name = Buttons_1;
+			path = PNG;
+			sourceTree = "<group>";
+		};
+		53D0514B1371CCD800D33C4A /* Buttons_2 */ = {
+			isa = PBXGroup;
+			children = (
+				53D0514C1371CCD800D33C4A /* blackbutton.png */,
+				53D0514D1371CCD800D33C4A /* bluebutton.png */,
+				53D0514E1371CCD800D33C4A /* brownbutton.png */,
+				53D0514F1371CCD900D33C4A /* greenbutton.png */,
+				53D051501371CCD900D33C4A /* marinebluebutton.png */,
+				53D051511371CCD900D33C4A /* orangebutton.png */,
+				53D051521371CCD900D33C4A /* redbutton.png */,
+				53D051531371CCD900D33C4A /* yellowbutton.png */,
+			);
+			path = Buttons_2;
+			sourceTree = "<group>";
+		};
+		53D0515E1371CCF700D33C4A /* Buttons_3 */ = {
+			isa = PBXGroup;
+			children = (
+				53D0515F1371CCF700D33C4A /* free4all.png */,
+				53D051601371CCF700D33C4A /* free4all1.png */,
+				53D051611371CCF700D33C4A /* free4all2.png */,
+				53D051621371CCF700D33C4A /* free4all3.png */,
+				53D051631371CCF700D33C4A /* free4all4.png */,
+				53D051641371CCF700D33C4A /* free4all5.png */,
+			);
+			path = Buttons_3;
 			sourceTree = "<group>";
 		};
 		53DF3FF2134E3346001FE4E4 /* SaveAsViewControllers */ = {
@@ -427,17 +503,30 @@
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
 				53DF3FF7134E337C001FE4E4 /* EnterTextViewController.xib in Resources */,
 				53BDD1BA135179DD00C1C44E /* DateTimeViewController.xib in Resources */,
-				5306DA691357CEC700FA773F /* WallNavViewController.xib in Resources */,
 				5306DAF01357F8F000FA773F /* MyPlanner.xib in Resources */,
 				5306DBB3135833E200FA773F /* AppendFileViewController.xib in Resources */,
 				5306DBBB135838C600FA773F /* SaveFileViewController.xib in Resources */,
 				5306DC121358449700FA773F /* MyPlanner1.xib in Resources */,
-				5306DF22135AE3DF00FA773F /* MyFilesTableViewController.xib in Resources */,
 				537D1694135F360A00C389FC /* MyMemosViewController.xib in Resources */,
 				537D1699135F362100C389FC /* MyMemosTableViewController.xib in Resources */,
 				53522B1E135F793A00437445 /* testImage.png in Resources */,
 				5301976113686A1A00236402 /* MyFoldersViewController.xib in Resources */,
 				5301976613686A3900236402 /* MyFoldersTableViewController.xib in Resources */,
+				53019949136C714A00236402 /* MyAppointmentsViewController.xib in Resources */,
+				53D051541371CCD900D33C4A /* blackbutton.png in Resources */,
+				53D051551371CCD900D33C4A /* bluebutton.png in Resources */,
+				53D051561371CCD900D33C4A /* brownbutton.png in Resources */,
+				53D051571371CCD900D33C4A /* greenbutton.png in Resources */,
+				53D051581371CCD900D33C4A /* marinebluebutton.png in Resources */,
+				53D051591371CCD900D33C4A /* orangebutton.png in Resources */,
+				53D0515A1371CCD900D33C4A /* redbutton.png in Resources */,
+				53D0515B1371CCD900D33C4A /* yellowbutton.png in Resources */,
+				53D051651371CCF700D33C4A /* free4all.png in Resources */,
+				53D051661371CCF700D33C4A /* free4all1.png in Resources */,
+				53D051671371CCF700D33C4A /* free4all2.png in Resources */,
+				53D051681371CCF700D33C4A /* free4all3.png in Resources */,
+				53D051691371CCF700D33C4A /* free4all4.png in Resources */,
+				53D0516A1371CCF700D33C4A /* free4all5.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,16 +544,16 @@
 				53BDD1B9135179DD00C1C44E /* DateTimeViewController.m in Sources */,
 				531E5A8F13554D13004A46A5 /* EditTextView.m in Sources */,
 				5306D83B1356A14500FA773F /* NavButton.m in Sources */,
-				5306DA681357CEC700FA773F /* WallNavViewController.m in Sources */,
 				5306DAED1357F88900FA773F /* MyPlanner.m in Sources */,
 				5306DE90135AD44100FA773F /* SaveFileViewController.m in Sources */,
 				5306DE9F135AD5CB00FA773F /* AppendFileViewController.m in Sources */,
-				5306DF1B135AE30700FA773F /* MyFilesTableViewController.m in Sources */,
 				53136123135E5AC900624C08 /* Memo.m in Sources */,
 				537D1693135F360A00C389FC /* MyMemosViewController.m in Sources */,
 				537D1698135F362100C389FC /* MyMemosTableViewController.m in Sources */,
 				5301976013686A1A00236402 /* MyFoldersViewController.m in Sources */,
 				5301976513686A3900236402 /* MyFoldersTableViewController.m in Sources */,
+				53019948136C714A00236402 /* MyAppointmentsViewController.m in Sources */,
+				53019958136C74C200236402 /* MyAppointmentsTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

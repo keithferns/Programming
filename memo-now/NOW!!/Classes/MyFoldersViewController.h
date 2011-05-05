@@ -15,7 +15,6 @@
 	UILabel	*viewLabel;
 	UISegmentedControl *segmentedControl;
 	UITextView *textView;
-		//	UIButton *doneButton;
 }
 
 @property (nonatomic, retain) IBOutlet UITableViewController *tableViewController;

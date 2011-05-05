@@ -7,9 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-	/*Changes
-	 2/27/11 Added a SearchDisplayController variable; Added a TextView variable.
-	 */
 
 @interface MyMemosViewController : UIViewController {
 	
@@ -30,7 +27,6 @@
 
 
 - (IBAction)segmentedControlAction:(id)sender;
-	//- (void) searchTable;
 
 
 

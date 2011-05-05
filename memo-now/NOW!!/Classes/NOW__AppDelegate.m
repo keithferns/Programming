@@ -7,28 +7,24 @@
 //
 
 #import "NOW__AppDelegate.h"
-#import "MyMemosTableViewController.h"
-
 @implementation NOW__AppDelegate
 
 @synthesize window;
 @synthesize viewController;
-	//@synthesize navigationController;
 
 #pragma mark -
 #pragma mark Application lifecycle
 
+
 - (void)applicationDidFinishLaunching:(UIApplication *)application;
 	{    
-	
 		managedObjectContext = nil;
-		
+		NSLog(@"NOW__AppDelegate. After managedObjectContext: %@",  managedObjectContext);
+
 	[self.window addSubview:viewController.view];
 	[self.window makeKeyAndVisible];
-    
+
 }
-
-
 
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -96,7 +92,9 @@
 
 - (NSManagedObjectContext *) managedObjectContext {
 		if (managedObjectContext != nil) {
+			
 		return managedObjectContext;
+			
 		}
     
 		 NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
@@ -105,7 +103,7 @@
         [managedObjectContext setPersistentStoreCoordinator:coordinator];
 		}
  
-    return managedObjectContext;	 
+		return managedObjectContext;	 
 }
 
 
@@ -122,6 +120,7 @@
 	
     managedObjectModel = [[NSManagedObjectModel mergedModelFromBundles:nil] retain];    
     return managedObjectModel;
+
 }
 
 
@@ -200,7 +199,6 @@
     
     [window release];
     [viewController release];
-		//[navigationController release];
 	[super dealloc];
 }
 

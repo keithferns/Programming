@@ -8,28 +8,12 @@
 
 #import "SaveFileViewController.h"
 
-
 @implementation SaveFileViewController
 
 @synthesize segmentedControl;
 
-
-
 #pragma mark -
 #pragma mark Navigation
-/*
- - (IBAction)backAction:(id)sender{
- [self dismissModalViewControllerAnimated:YES];
- 
- }
- - (IBAction)newmemoAction:(id)sender{
- //SAME AS ON ALL SCREENS. 	
- }
- 
- - (IBAction)gotowallAction:(id)sender{
- //SAME AS ON ALL SCREENS
- }
- */
 
 -(IBAction) segmentedControlAction:(id)sender{
 	switch (self.segmentedControl.selectedSegmentIndex) {
@@ -46,7 +30,6 @@
 			break;
 	}
 }
-
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 /*
@@ -96,7 +79,6 @@
 
 - (void)dealloc {
 	[segmentedControl release];
-
     [super dealloc];
 }
 

@@ -17,14 +17,12 @@
 @synthesize tableView;
 @synthesize searchBar;
 
-
-
 #pragma mark -
 #pragma mark View lifecycle
 
 - (void)viewDidLoad {
 	NSLog(@"Loading view from MyMemosTableViewController");
-
+	
 	if (managedObjectContext == nil) 
 	{ 
 		managedObjectContext = [(NOW__AppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext]; 
@@ -38,13 +36,13 @@
 	[self fetchMemoRecords];
 	
 	
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+		// Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+		// self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 -(void) fetchMemoRecords{
 	
-NSLog(@"Going to fetch Memo records now");
+	NSLog(@"Going to fetch Memo records now");
 		//defining table to use
 	NSEntityDescription *entity = [NSEntityDescription entityForName:@"Memo" inManagedObjectContext:managedObjectContext];
 	
@@ -73,7 +71,6 @@ NSLog(@"Going to fetch Memo records now");
 	[request release];
 	
 }
-
 
 
 /*
@@ -110,23 +107,23 @@ NSLog(@"Going to fetch Memo records now");
 
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-		
+	
 }
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // Return the number of sections.
+		// Return the number of sections.
     return 1;
 }
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
+		// Return the number of rows in the section.
     return [memoArray count];
 }
 
 
-// Customize the appearance of table view cells.
+	// Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *CellIdentifier = @"Cell";
@@ -154,6 +151,7 @@ NSLog(@"Going to fetch Memo records now");
     return cell;
 }
 
+
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -161,7 +159,6 @@ NSLog(@"Going to fetch Memo records now");
     return YES;
 }
 */
-
 
 /*
 // Override to support editing the table view.
@@ -197,14 +194,14 @@ NSLog(@"Going to fetch Memo records now");
 #pragma mark Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic may go here. Create and push another view controller.
+		// Navigation logic may go here. Create and push another view controller.
     /*
-    <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-    // ...
-    // Pass the selected object to the new view controller.
-    [self.navigationController pushViewController:detailViewController animated:YES];
-    [detailViewController release];
-    */
+	 <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
+	 // ...
+	 // Pass the selected object to the new view controller.
+	 [self.navigationController pushViewController:detailViewController animated:YES];
+	 [detailViewController release];
+	 */
 }
 
 
@@ -212,20 +209,21 @@ NSLog(@"Going to fetch Memo records now");
 #pragma mark Memory management
 
 - (void)didReceiveMemoryWarning {
-    // Releases the view if it doesn't have a superview.
+		// Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
     
-    // Relinquish ownership any cached data, images, etc. that aren't in use.
+		// Relinquish ownership any cached data, images, etc. that aren't in use.
 }
 
 - (void)viewDidUnload {
-    // Relinquish ownership of anything that can be recreated in viewDidLoad or on demand.
-    // For example: self.myOutlet = nil;
+		// Relinquish ownership of anything that can be recreated in viewDidLoad or on demand.
+		// For example: self.myOutlet = nil;
 }
 
 
 - (void)dealloc {
     [super dealloc];
+	
 }
 
 

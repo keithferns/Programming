@@ -10,9 +10,6 @@
 #import "NavButton.h"
 
 @interface MyPlanner : UIViewController {
-
-		
-		//	NavButton *backButton, *newButton, *wallButton;
 		
 		UIButton *todayButton, *tomorrowButton, *somedayButton, *thisdayButton, *thisWeekButton, *nextWeekButton, *thisMonthButton, *thisYearButton;
 		

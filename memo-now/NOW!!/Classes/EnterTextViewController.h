@@ -8,20 +8,14 @@
 
 
 #import <UIKit/UIKit.h>
-#import "EditTextView.h"
-#import "NavButton.h"
 #import "Memo.h"
 
 
 @interface EnterTextViewController : UIViewController {
 	UISegmentedControl *segmentedControl;
-
-	NavButton *saveButton, *wallButton, *newButton;
 	UITextView *editmemoTextView, *lastMemoView, *urgentMemoView; 
 	UILabel *memoTitleLabel;
-	UIView *topView, *bottomView;
-		//UITableView *tableView;
-	
+	UIView *topView, *bottomView;	
 	UIAlertView *saveAlert, *wallAlert;
 	NSManagedObjectContext *managedObjectContext;
 	NSMutableArray *memoArray;
@@ -32,13 +26,11 @@
 @property(nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 @property(nonatomic, retain) NSMutableArray *memoArray;
 -(void) fetchMemoRecords;
-
 -(void) addTimeStamp;
 	
 /*....Views and Navigation ....*/
 @property (nonatomic, retain) IBOutlet UISegmentedControl *segmentedControl;
 @property (nonatomic, retain) IBOutlet UIView *topView, *bottomView;
-	//@property (nonatomic, retain) IBOutlet UITableView *tableView;
 @property (nonatomic, retain) IBOutlet UILabel *memoTitleLabel; 
 @property (nonatomic, retain) IBOutlet UITextView *editmemoTextView, *lastMemoView, *urgentMemoView; 
 @property (nonatomic, retain) UIAlertView *saveAlert, *wallAlert;

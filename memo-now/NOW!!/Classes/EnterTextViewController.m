@@ -3,67 +3,58 @@
 //
 //  Created by Keith Fernandes on 4/7/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
-#import "MyFoldersViewController.h"
+
+#import "MyFoldersViewController.h"	
 #import "EnterTextViewController.h"
 #import	"SaveFileViewController.h"
 #import "DateTimeViewController.h"
 #import	"MyPlanner.h"
 #import "AppendFileViewController.h"
-#import "MyFoldersViewController.h"
+#import "MyAppointmentsViewController.h"
 #import "MyMemosViewController.h"
 #import "NOW__AppDelegate.h"
 
 
 @implementation EnterTextViewController
 
-@synthesize segmentedControl;
-@synthesize editmemoTextView, topView, bottomView, memoTitleLabel, lastMemoView, urgentMemoView;
-@synthesize saveAlert, wallAlert;
+@synthesize segmentedControl,saveAlert, wallAlert;
+@synthesize editmemoTextView, topView, bottomView, memoTitleLabel, lastMemoView, urgentMemoView; 
 @synthesize memoArray, managedObjectContext;
-	//@synthesize tableView;
+
+#pragma mark -
+#pragma mark Navigation	
 
 -(IBAction) segmentedControlAction:(id)sender{
 	switch (self.segmentedControl.selectedSegmentIndex) {
 		case 0:
-			if ([editmemoTextView hasText]) {
-								
-			[self addTimeStamp];
+			if ([editmemoTextView hasText]) {NSLog(@"The Go To... button was clicked");
+				[self addTimeStamp];
 			}
-			
-				//testing
-			/*MyFoldersViewController *modalViewController = [[[MyFoldersViewController alloc] initWithNibName:@"MyFoldersViewController" bundle:nil]autorelease];
-			[self presentModalViewController:modalViewController animated:YES];
-			*/
-				//this action will bring up another alert window. Dismissing this will take us back to the EnterTextScreen, or to the appropriate modalviewcontrollers: My Folders, My Appointments, My R.
-			
 			self.wallAlert = [[UIAlertView alloc] 
 							  initWithTitle:@"Choose An Option"
 							  message:@"Take me to your Leader!" 
 							  delegate:self 
 							  cancelButtonTitle:@"Later" 
 							  otherButtonTitles:@"My Folders", @"My Appointments", @"My To-Do's", @"The Wall", nil];
-			
 			[wallAlert show];
-			[wallAlert release];
-			
+			NSLog(@"The Wall AlertView was Shown");
+				//[wallAlert release];
 			break;
 		case 1:
 			if ([editmemoTextView hasText]) {
-				
-			[self addTimeStamp];
+				[self addTimeStamp];
 			}
-				//just testing
 			MyMemosViewController *viewController = [[[MyMemosViewController alloc] initWithNibName:@"MyMemosViewController" bundle:nil] autorelease];
 			editmemoTextView.text = @"";
 			[self presentModalViewController:viewController animated:YES];	
 			
 			break;
+			
 		case 2:
-			if ([editmemoTextView hasText]) {
+			if ([editmemoTextView hasText]) {NSLog(@"The Save As... button was clicked");
 				[self addTimeStamp];
 			}
-				
-				//this action will bring up a pop-up window instead of a modalviewcontroller. Dismissing this will take us back to the EnterTextScreen, or to the appropriate modalviewcontrollers: Name and Save, Append, Schedule.
+
 			self.saveAlert = [[UIAlertView alloc] 
 							  initWithTitle:@"Choose An Option"
 							  message:@"Manage Your Time ... or Folders?" 
@@ -71,6 +62,8 @@
 							  cancelButtonTitle:@"Later" 
 							  otherButtonTitles:@"Name and Save as File", @"Append To an Existing File", @"Set Appointment Time", @"Set To Do Reminder", nil];
 			[saveAlert show];
+			
+			NSLog(@"The SaveAs AlertView was Shown");
 				//[saveAlert release]; 
 			
 			break;
@@ -80,23 +73,17 @@
 }
 
 	//fetch Memo Records, then get the most recent memo. Is there a more economical way to do this? 
--(void) fetchMemoRecords{
-	
-	NSLog(@"Going to fetch Memo records now");
+-(void) fetchMemoRecords{NSLog(@"Going to fetch Memo records now");
 		//defining table to use
 	NSEntityDescription *aMemo = [NSEntityDescription entityForName:@"Memo" inManagedObjectContext:managedObjectContext];
-	
 		//setting up the fetch request
 	NSFetchRequest *request	= [[NSFetchRequest alloc] init];
 	[request setEntity:aMemo];
-	
 		//defines how to sort the records
 	NSSortDescriptor *sortByDate = [[NSSortDescriptor alloc] initWithKey:@"timeStamp" ascending:NO];
 	NSArray *sortDescriptors = [NSArray arrayWithObject:sortByDate];//note: if adding other sortdescriptors, then use method -arraywithObjects. If the fetch request must meet some conditions, then use the NSPredicate class 
-	
 	[request setSortDescriptors:sortDescriptors];
 	[sortByDate release];
-	
 	NSError *error;
 	NSMutableArray *mutableFetchResults = [[managedObjectContext executeFetchRequest:request error:&error] mutableCopy];
 	
@@ -104,20 +91,18 @@
 			//
 	}
 	
-	[self setMemoArray:mutableFetchResults];		//save fetched data to an array
+	[self setMemoArray:mutableFetchResults];//save fetched data to an array
 	[mutableFetchResults release];
-	[request release];
-			
+	[request release];	
 }
 
 - (void) addTimeStamp{
 	NSLog(@"firing addTimeStamp");
-	NSString *mytext = [NSString stringWithFormat: @"%@", editmemoTextView.text]; //copy contents of editmemoTextView to mytext
+	NSString *mytext = [NSString stringWithFormat: @"%@", editmemoTextView.text];//copy contents of editmemoTextView to mytext
 	Memo *newMemo = (Memo *)[NSEntityDescription insertNewObjectForEntityForName:@"Memo" inManagedObjectContext: managedObjectContext];	//Initialize a new Memo Object and Insert it into Memo table in the ManagedObjectContext
-	[newMemo setTimeStamp:[NSDate	date]];  //sets the timeStamp of the new Memo
-	[newMemo setMemoText:mytext]; 		//copies the input text to the new Memo. 
+	[newMemo setTimeStamp:[NSDate	date]];//sets the timeStamp of the new Memo
+	[newMemo setMemoText:mytext];//copies the input text to the new Memo. 
 	NSLog(@"%@", mytext);
-	
 	NSError *error;
 	if(![managedObjectContext save:&error]){  //???
 	}
@@ -125,79 +110,55 @@
 }
 
 	//Dismisses the saveAlert object by a system call. Note -1 is called if the CancelButton is not set. 
-- (void)dismissViewAlert{
-	[self.saveAlert dismissWithClickedButtonIndex:-1 animated:YES];
-}
+- (void)dismissViewAlert{[self.saveAlert dismissWithClickedButtonIndex:-1 animated:YES];}
 
 	//???what does this do???
-- (void)viewAlertCancel:(UIAlertView *)alertView{
-		[saveAlert	release];
-	}
+- (void)viewAlertCancel:(UIAlertView *)alertView{[saveAlert	release];}
 
 	//Alert view to prompt the User to select the next action to perform with the memo. Save it as an Appointment (-> directly to the Appt scheduling screen for setting the date and time), as a To Do Reminder( -> the MyPlanner screen with simplified scheduler, save to a Folder or Append to an existing file.
-- (void)alertView:(UIAlertView *)saveAlert didDismissWithButtonIndex:(NSInteger)buttonIndex{
-		  if (buttonIndex == 4) {NSLog(@"1st Button Clicked on WallAlert");
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex{
+	if (alertView == saveAlert){
+		if (buttonIndex == 4) {NSLog(@"1st Button Clicked on saveAlert");
 			MyPlanner *gotoView = [[[MyPlanner alloc] initWithNibName:@"MyPlanner" bundle:nil] autorelease];
-			[self presentModalViewController:gotoView animated:YES];
-			}
-		else if (buttonIndex == 3) {NSLog(@"2nd Button Clicked on WallAlert");
+			[self presentModalViewController:gotoView animated:YES];}
+		else if (buttonIndex == 3) {NSLog(@"2nd Button Clicked on saveAlert");
 			DateTimeViewController *gotoView = [[[DateTimeViewController alloc] initWithNibName:@"DateTimeViewController" bundle:nil] autorelease];
-			[self presentModalViewController:gotoView animated:YES];
-			}
-		else if (buttonIndex == 2) { NSLog(@"3rd Button Clicked on WallAlert");
-
+			[self presentModalViewController:gotoView animated:YES];}
+		else if (buttonIndex == 2) { NSLog(@"3rd Button Clicked on saveAlert");
 			AppendFileViewController *gotoView = [[[AppendFileViewController alloc] initWithNibName:@"AppendFileViewController" bundle:nil] autorelease];
-			[self presentModalViewController:gotoView animated:YES];
-		} 
-		else if (buttonIndex == 1) { NSLog(@"4th Button Clicked on WallAlert");
+			[self presentModalViewController:gotoView animated:YES];} 
+		else if (buttonIndex == 1) { NSLog(@"4th Button Clicked on saveAlert");
 			SaveFileViewController *gotoView = [[[SaveFileViewController alloc] initWithNibName:@"SaveFileViewController" bundle:nil] autorelease];
-				[self presentModalViewController:gotoView animated:YES];
-			}	
-		else if (buttonIndex == 0) { NSLog(@"Cancel Button Clicked on WallAlert");
-
-				//CancelButton Clicked
-		}
-	
+		[self presentModalViewController:gotoView animated:YES];}	
+		else if (buttonIndex == 0) { NSLog(@"Cancel Button Clicked on saveAlert");}
+  }
+	else if (alertView == wallAlert){
+		if (buttonIndex == 4) { NSLog(@"1st Button Clicked on WallAlert");
+			MyMemosViewController *viewController = [[[MyMemosViewController alloc] initWithNibName:@"MyMemosViewController" bundle:nil] autorelease];
+			[self presentModalViewController:viewController animated:YES];}
+		else if (buttonIndex == 3) { NSLog(@"2nd Button Clicked on WallAlert");
+			MyMemosViewController *viewController = [[[MyMemosViewController alloc] initWithNibName:@"MyMemosViewController" bundle:nil] autorelease];			
+			[self presentModalViewController:viewController animated:YES];}
+		else if (buttonIndex == 2) { NSLog(@"3rd Button Clicked on WallAlert");
+			MyMemosViewController *viewController = [[[MyMemosViewController alloc] initWithNibName:@"MyMemosViewController" bundle:nil] autorelease];
+			[self presentModalViewController:viewController animated:YES];}
+		else if (buttonIndex == 1) { NSLog(@"4th Button Clicked on WallAlert");
+			MyFoldersViewController *viewController = [[[MyFoldersViewController alloc] initWithNibName:@"MyFoldersViewController" bundle:nil] autorelease];		
+			[self presentModalViewController:viewController animated:YES];}	
+		else if (buttonIndex == 0) {NSLog(@"Cancel Button Clicked on wallAlert");}
 	}
+}
 
 - (void)dimisswallAlert{
 	[self.wallAlert dismissWithClickedButtonIndex:-1 animated:YES];
 }
-
 	//???what does this do???
 - (void)wallAlertCancel:(UIAlertView *)alertView {
 	[wallAlert	release];
 }
 
-	- (void)alertView:(UIAlertView *)wallAlert clickedButtonAtIndex:(NSInteger)buttonIndex;
-	{
-		if (buttonIndex == 4) { NSLog(@"1st Button Clicked on WallAlert");
-			MyMemosViewController *viewController = [[[MyMemosViewController alloc] initWithNibName:@"MyMemosViewController" bundle:nil] autorelease];		
-			[self presentModalViewController:viewController animated:YES];
-		}
-		else if (buttonIndex == 3) { NSLog(@"2nd Button Clicked on WallAlert");
-			MyMemosViewController *viewController = [[[MyMemosViewController alloc] initWithNibName:@"MyMemosViewController" bundle:nil] autorelease];					
-			[self presentModalViewController:viewController animated:YES];
-		}
-		else if (buttonIndex == 2) { NSLog(@"3rd Button Clicked on WallAlert");
-			MyMemosViewController *viewController = [[[MyMemosViewController alloc] initWithNibName:@"MyMemosViewController" bundle:nil] autorelease];
-			[self presentModalViewController:viewController animated:YES];
-		}
-		else if (buttonIndex == 1) { NSLog(@"4th Button Clicked on WallAlert");
-			MyFoldersViewController *viewController = [[[MyFoldersViewController alloc] initWithNibName:@"MyFoldersViewController" bundle:nil] autorelease];				
-			[self presentModalViewController:viewController animated:YES];
-		}	
-		else if (buttonIndex == 0) {//CancelButton Clicked
-		}
-		
-	}
-
-
-
-
 /* 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
@@ -207,15 +168,23 @@
 }
 */
 
-
 - (void)viewDidLoad {
+	[super viewDidLoad];
+	[self.view addSubview:memoTitleLabel];
+	[self.view addSubview:segmentedControl];
+	[self.view addSubview:topView];
+	[self.view addSubview:bottomView];
+	NSLog(@"adding editmemoTextView to view");
+	[self.topView addSubview:editmemoTextView];
+	NSLog(@"adding lastMemoView and urgentMemoView to view");
+	[self.bottomView addSubview:lastMemoView];
+    [self.bottomView addSubview:urgentMemoView];
+	
 	if (managedObjectContext == nil) 
 	{ 
         managedObjectContext = [(NOW__AppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext]; 
         NSLog(@"After managedObjectContext: %@",  managedObjectContext);
 	}
-	
-	
 	/* Fetch Records and Get text of last Memo*/
 	[self fetchMemoRecords];
 	int myInt = [memoArray count];
@@ -227,48 +196,38 @@
 		NSLog(@"This is the text of the last Memo: %@", lastMemoText);
 		[lastMemoView setText:lastMemoText];
 	}
-		
-	
-	
-	[super viewDidLoad];
-	[self.view addSubview:memoTitleLabel];
-	[self.view addSubview:segmentedControl];
-	[self.view addSubview:topView];
-	[self.view addSubview:bottomView];
-	NSLog(@"adding editmemoTextView to view");
-	[self.topView addSubview:editmemoTextView];
-	NSLog(@"adding lastMemoView and urgentMemoView to view");
-	[self.bottomView addSubview:lastMemoView];
-    [self.bottomView addSubview:urgentMemoView];
-
-
 }
+#pragma mark -
+#pragma mark DATA MANAGEMENT
 
+
+
+
+
+#pragma mark -
+#pragma mark VIEW MANAGEMENT
 
 - (void)textViewDidEndEditing:(UITextView *)editmemoTextView{
-
 	doneEditing = YES;
-	
 }
 
-							
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-	 return YES; 
+	return YES; 
 }
 
 #pragma mark -
 #pragma mark Memory	Management
 
 - (void)didReceiveMemoryWarning {
-    // Releases the view if it doesn't have a superview.
+		// Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];    
-    // Release any cached data, images, etc. that aren't in use.
+		// Release any cached data, images, etc. that aren't in use.
 }
 
 - (void)viewDidUnload {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+		// Release any retained subviews of the main view.
+		// e.g. self.myOutlet = nil;
 	self.editmemoTextView = nil;
 	self.topView = nil;
 	managedObjectContext = nil;
@@ -287,20 +246,9 @@
 	[bottomView release];
     [super dealloc];
 }
-
-
 @end
 
-	//DONE: FIX: Autorotation of the textviews. The code and the IB are not in synch. 
-
-/*  Method Works. Intended to be used to pull up the designated modalviewcontroller but that design choice was abandoned in favor of Alert Window popups. The said view controller and nib file are in the folder labelled xSameMemoViewController.
- 
- - (IBAction)savememoAction:(id)sender{	
- SaveMemoViewController *savememoView = [[[SaveMemoViewController alloc] initWithNibName:@"SaveMemoViewController" bundle:nil] autorelease];
- [self presentModalViewController:savememoView animated:YES];
- }
- */
-
+//DONE: FIX: Autorotation of the textviews. The code and the IB are not in synch. 
 
 /*	CODE DOES NOT WORK AS IS. Part of the code is an attempt to test a generic NavButton class and the rest to programmatically code the navigation buttons. Not very successful at this point. 
  saveButton = [NavButton buttonWithType:UIButtonTypeCustom];
@@ -342,7 +290,6 @@
  
  [self.view	addSubview:reeditmemoTextView];
  
- 
  //X....  The following code came from attempts to get the lower textview 'reeditTextView'to move in response to an event. The isFirstResponder method is supposed to respond YES when the TextView is touched - the text view becomes firstresponder on touch - but it never did. Couldn't get control to enter the if section of the code. 
  
  if ([reeditmemoTextView.inputView  hastext]) {
@@ -360,5 +307,4 @@
  //[reeditmemoTextView [setFrame:(CGRectMake(0, 0, 320, 215)]];
  //reeditmemoTextView.frame = CGRectOffset(editmemoTextView.frame, 222, 107);
  }
- 
  */	
