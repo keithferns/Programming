@@ -11,34 +11,20 @@
 
 @implementation MyPlanner
 
-//@synthesize backButton, newButton, wallButton;
 @synthesize todayButton, tomorrowButton, somedayButton, thisdayButton, thisWeekButton, nextWeekButton, thisMonthButton, thisYearButton;
-@synthesize segmentedControl;
 
 #pragma mark -
 #pragma mark Navigation
-/*
-- (IBAction)backAction:(id)sender{
-	[self dismissModalViewControllerAnimated:YES];
-	
-}
-- (IBAction)newmemoAction:(id)sender{
-		//SAME AS ON ALL SCREENS. 	
-}
 
-- (IBAction)gotowallAction:(id)sender{
-		//SAME AS ON ALL SCREENS
-}
-*/
--(IBAction) segmentedControlAction:(id)sender{
-	switch (self.segmentedControl.selectedSegmentIndex) {
-		case 0:
-			[self dismissModalViewControllerAnimated:YES];	
-			break;
+-(IBAction) navigationAction:(id)sender{
+	switch ([sender tag]) {
 		case 1:
 			[self dismissModalViewControllerAnimated:YES];	
 			break;
 		case 2:
+			[self dismissModalViewControllerAnimated:YES];	
+			break;
+		case 3:
 			[self dismissModalViewControllerAnimated:YES];	
 			break;
 		default:
@@ -56,7 +42,6 @@
 - (IBAction)tomorrowAction:(id)sender{	
 		//save to reminders and return to main screen
 }
-
 
 - (IBAction)someDayAction:(id)sender{
 		//save to reminders and return to main screen
@@ -84,7 +69,6 @@
 		//FIX: This is a temporary measure. Finally, move to calendar should dismiss current screen and release all objects associated with this screen. 
 	DateTimeViewController *datetimeView = [[[DateTimeViewController alloc] initWithNibName:@"DateTimeViewController" bundle:nil] autorelease];
 	[self presentModalViewController:datetimeView animated:YES];
-	
 }
 
 #pragma mark -
@@ -142,7 +126,6 @@
 	[nextWeekButton release];
 	[thisMonthButton release];
 	[thisYearButton release];
-	[segmentedControl release];
     [super dealloc];
 }
 

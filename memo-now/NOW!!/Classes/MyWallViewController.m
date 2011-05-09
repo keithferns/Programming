@@ -1,33 +1,47 @@
 //
-//  MyAppointmentsViewController.m
+//  MyWallViewController.m
 //  NOW!!
 //
-//  Created by Keith Fernandes on 4/30/11.
+//  Created by Keith Fernandes on 5/9/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "MyAppointmentsViewController.h"
+#import "MyWallViewController.h"
 
 
-@implementation MyAppointmentsViewController
-
-@synthesize bottomView, topView, label, textView, tableViewController;
+@implementation MyWallViewController
 
 
--(IBAction) navigationAction:(id)sender{
-	switch ([sender tag]) {
+-(IBAction)showActionSheet:(id)sender{
+	
+	UIActionSheet *myActionSheet = [[UIActionSheet alloc] initWithTitle:@"My Action Sheet" delegate:self cancelButtonTitle:@"Later" destructiveButtonTitle:nil otherButtonTitles:@"My Folders", @"My Appointments", @"My To-Do's", @"The Wall", nil];
+	[myActionSheet showInView:self.view];
+	[myActionSheet release];
+}
+
+- (void)actionSheet:(UIActionSheet *)myActionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+
+	switch (buttonIndex) {
+		case 0:
+			NSLog(@"1st Button Clicked on actionSheet");
+			break;
 		case 1:
-			[self dismissModalViewControllerAnimated:YES];	
+			NSLog(@"2nd Button Clicked on saveAlert");
 			break;
 		case 2:
-			[self dismissModalViewControllerAnimated:YES];	
+			NSLog(@"3rd Button Clicked on saveAlert");
 			break;
 		case 3:
-			[self dismissModalViewControllerAnimated:YES];	
+			NSLog(@"4th Button Clicked on saveAlert");
+			break;
+		case 4:
+			NSLog(@"5t Button Clicked on saveAlert");
 			break;
 		default:
 			break;
 	}
+	[self dismissModalViewControllerAnimated:YES];
 }
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -43,14 +57,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
- 
- [self.view addSubview:label];
- [self.view addSubview:bottomView];
- [self.view addSubview:topView];
- [topView addSubview:textView];
- [bottomView addSubview:tableViewController.tableView];
 }
-
 
 /*
 // Override to allow orientations other than the default portrait orientation.
@@ -76,10 +83,6 @@
 
 - (void)dealloc {
     [super dealloc];
-	[bottomView release];
-	[topView release];
-	[label release];
-	[textView release];
 }
 
 

@@ -11,8 +11,7 @@
 #import "Memo.h"
 
 
-@interface EnterTextViewController : UIViewController {
-	UISegmentedControl *segmentedControl;
+@interface EnterTextViewController : UIViewController <UIActionSheetDelegate> {
 	UITextView *editmemoTextView, *lastMemoView, *urgentMemoView; 
 	UILabel *memoTitleLabel;
 	UIView *topView, *bottomView;	
@@ -29,13 +28,12 @@
 -(void) addTimeStamp;
 	
 /*....Views and Navigation ....*/
-@property (nonatomic, retain) IBOutlet UISegmentedControl *segmentedControl;
 @property (nonatomic, retain) IBOutlet UIView *topView, *bottomView;
 @property (nonatomic, retain) IBOutlet UILabel *memoTitleLabel; 
 @property (nonatomic, retain) IBOutlet UITextView *editmemoTextView, *lastMemoView, *urgentMemoView; 
 @property (nonatomic, retain) UIAlertView *saveAlert, *wallAlert;
 	
--(IBAction) segmentedControlAction:(id)sender;
+-(IBAction) navigationAction:(id)sender;
 
 
 	///////NAMING AND ARCHIVING ACTIONS
@@ -57,19 +55,6 @@
 		// saves file as a list. note same issues as pertain to the file and folder naming exist. 
  */
 
-/*	.......UTILITY ACTIONS......
-
-- (IBAction)appendToFileAction:(id)sender; 
-	//Adds memo txt to an existing file.  Should bring up an Alert window which queries whether the txt should be added to the beginning or the end of the file. Alert window should allow search function or go to Myfolders button. 
-- (IBAction)callCalenderAction:(id)sender;
-	//Call up the calender to schedule an appointment
-
-- (IBAction)callReminderAction:(id)sender;
-	//calls up the simplified scheduler for a todo memo. Do Today, Tomorrow, This Week
-
-- (IBAction)nameFileAction:(id)sender;
-	//names file and saves to a folder or orphans. 
-*/
 
 
 

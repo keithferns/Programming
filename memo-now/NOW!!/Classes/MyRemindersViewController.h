@@ -1,19 +1,19 @@
 //
-//  SaveFileViewController.h
+//  MyRemindersViewController.h
 //  NOW!!
 //
-//  Created by Keith Fernandes on 4/17/11.
+//  Created by Keith Fernandes on 5/8/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
 
-@interface SaveFileViewController : UIViewController {
+@interface MyRemindersViewController : UIViewController {
 
-		
 }
 
 -(IBAction) navigationAction:(id)sender;
+
 
 @end

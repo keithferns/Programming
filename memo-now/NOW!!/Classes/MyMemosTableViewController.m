@@ -9,7 +9,6 @@
 #import "MyMemosTableViewController.h"
 #import "NOW__AppDelegate.h"
 
-
 @implementation MyMemosTableViewController
 
 @synthesize managedObjectContext;
@@ -33,9 +32,7 @@
 	[self.view addSubview:tableView];
 	self.tableView.tableHeaderView = searchBar;
 	searchBar.autocorrectionType = UITextAutocorrectionTypeNo;
-	[self fetchMemoRecords];
-	
-	
+	[self fetchMemoRecords];	
 		// Uncomment the following line to display an Edit button in the navigation bar for this view controller.
 		// self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
@@ -53,11 +50,9 @@
 		//defines how to sort the records
 	NSSortDescriptor *sortByDate = [[NSSortDescriptor alloc] initWithKey:@"timeStamp" ascending:NO];
 	NSArray *sortDescriptors = [NSArray arrayWithObject:sortByDate];//note: if adding other sortdescriptors, then use  method -arraywithObjects. If the fetch request must meet some conditions, then use the NSPredicate class 
-	
 	[request setSortDescriptors:sortDescriptors];
 	[sortByDate release];
-	
-	NSError *error;
+		NSError *error;
 	NSMutableArray *mutableFetchResults = [[managedObjectContext executeFetchRequest:request error:&error] mutableCopy];
 	
 	if (!mutableFetchResults) {
@@ -71,7 +66,6 @@
 	[request release];
 	
 }
-
 
 /*
 - (void)viewWillAppear:(BOOL)animated {
@@ -110,18 +104,15 @@
 	
 }
 
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 		// Return the number of sections.
     return 1;
 }
 
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 		// Return the number of rows in the section.
     return [memoArray count];
 }
-
 
 	// Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -189,7 +180,6 @@
 }
 */
 
-
 #pragma mark -
 #pragma mark Table view delegate
 
@@ -203,7 +193,6 @@
 	 [detailViewController release];
 	 */
 }
-
 
 #pragma mark -
 #pragma mark Memory management
@@ -220,12 +209,10 @@
 		// For example: self.myOutlet = nil;
 }
 
-
 - (void)dealloc {
     [super dealloc];
 	
 }
-
 
 @end
 

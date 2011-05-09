@@ -12,7 +12,6 @@
 @implementation AppendFileViewController
 
 
-@synthesize segmentedControl;
 @synthesize myfilesTableViewController;
 @synthesize myfiles;
 
@@ -20,15 +19,15 @@
 #pragma mark Navigation
 
 
--(IBAction) segmentedControlAction:(id)sender{
-	switch (self.segmentedControl.selectedSegmentIndex) {
-		case 0:
-			[self dismissModalViewControllerAnimated:YES];	
-			break;
+-(IBAction) navigationAction:(id)sender{
+	switch ([sender tag]) {
 		case 1:
 			[self dismissModalViewControllerAnimated:YES];	
 			break;
 		case 2:
+			[self dismissModalViewControllerAnimated:YES];	
+			break;
+		case 3:
 			[self dismissModalViewControllerAnimated:YES];	
 			break;
 		default:
@@ -81,7 +80,6 @@
 
 
 - (void)dealloc {
-	[segmentedControl release];
 	[myfilesTableViewController release];
 	[myfiles release];
     [super dealloc];

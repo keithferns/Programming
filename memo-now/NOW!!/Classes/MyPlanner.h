@@ -7,18 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "NavButton.h"
 
 @interface MyPlanner : UIViewController {
 		
 		UIButton *todayButton, *tomorrowButton, *somedayButton, *thisdayButton, *thisWeekButton, *nextWeekButton, *thisMonthButton, *thisYearButton;
-		
-		UISegmentedControl *segmentedControl;
-	
 	}
-@property (nonatomic,retain) IBOutlet UISegmentedControl *segmentedControl;
 
-	//@property(nonatomic, retain) IBOutlet NavButton *backButton, *newButton, *wallButton;
 
 @property(nonatomic, retain) IBOutlet UIButton *todayButton, *tomorrowButton, *somedayButton, *thisdayButton, *thisWeekButton, *nextWeekButton, *thisMonthButton, *thisYearButton;
 	
@@ -31,7 +25,8 @@
 - (IBAction)nextweekAction:(id)sender;
 - (IBAction)thisMonthAction:(id)sender;
 - (IBAction)thisYearAction:(id)sender;
-- (IBAction)segmentedControlAction:(id)sender;
+
+- (IBAction)navigationAction:(id)sender;
 
 
 @end

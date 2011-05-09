@@ -1,41 +1,43 @@
-//
 //  DateTimeViewController.m
 //  NOW!!
 //
 //  Created by Keith Fernandes on 4/10/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
-//
 
 #import "DateTimeViewController.h"
 
 int appMonth;
 int appDay;
+float appTime;
+int count;
 
 @implementation DateTimeViewController
 
-
-@synthesize segmentedControl;
-@synthesize  m1, m2, m3, m4, m5, m6, m7, m8, m9, m10, m11, m12, d1, d2, d3, d4, d5, d6, d7, d8, d9, d0, backslash, timeButton;
-@synthesize monthLabel, dateLabel;
-
+@synthesize backslash, timeButton;
+@synthesize topLabel, bottomLabel;
+@synthesize monthView, dateView, timeView;
 
 #pragma mark -
 #pragma mark Navigation
 
--(IBAction) segmentedControlAction:(id)sender{
-	switch (self.segmentedControl.selectedSegmentIndex) {
-		case 0:
-			[self dismissModalViewControllerAnimated:YES];	
-			break;
+-(IBAction) navigationAction:(id)sender{
+	switch ([sender tag]) {
 		case 1:
 			[self dismissModalViewControllerAnimated:YES];	
 			break;
 		case 2:
 			[self dismissModalViewControllerAnimated:YES];	
 			break;
+		case 3:
+			[self dismissModalViewControllerAnimated:YES];	
+			break;
 		default:
 			break;
 	}
+}
+
+- (IBAction) doneAction{
+	[self dismissModalViewControllerAnimated:YES];
 }
 
 #pragma mark -
@@ -44,80 +46,103 @@ int appDay;
 	appMonth = [sender tag];
 	switch ([sender tag]) {
 		case 1:
-			NSLog(@"January");
-			[monthLabel setText:@"January"];
+			[topLabel setText:@"January"];
 			break;
 		case 2:
-			NSLog(@"February");
-			[monthLabel setText:@"February"];			
+			[topLabel setText:@"February"];			
 			break;
 		case 3:
-			NSLog(@"March");
-			[monthLabel setText:@"March"];
+			[topLabel setText:@"March"];
 			break;
 		case 4:
-			NSLog(@"April");
-			[monthLabel setText:@"April"];
+			[topLabel setText:@"April"];
 			break;
 		case 5:
-			NSLog(@"May");
-			[monthLabel setText:@"May"];
+			[topLabel setText:@"May"];
 			break;
 		case 6:
-			NSLog(@"June");
-			[monthLabel setText:@"June"];
+			[topLabel setText:@"June"];
 			break;
 		case 7:
-			NSLog(@"July");
-			[monthLabel setText:@"July"];
+			[topLabel setText:@"July"];
 			break;
 		case 8:
-			NSLog(@"August");
-			[monthLabel setText:@"August"];
+			[topLabel setText:@"August"];
 			break;
 		case 9:
-			NSLog(@"September");
-			[monthLabel setText:@"September"];
+			[topLabel setText:@"September"];
 			break;
 		case 10:
-			NSLog(@"October");
-			[monthLabel setText:@"October"];
+			[topLabel setText:@"October"];
 			break;
 		case 11:
-			NSLog(@"November");
-			[monthLabel setText:@"November"];
+			[topLabel setText:@"November"];
 			break;
 		case 12:
-			NSLog(@"December");
-			[monthLabel setText:@"December"];
+			[topLabel setText:@"December"];
 			break;
 		default:
 			break;
 	}
 }
 
-	
-#pragma mark -
-#pragma mark SetDate
-
 - (IBAction)dayAction:(id)sender{
-
-
-	NSLog(@"DateButtonPressed");
-	NSLog(@"The Month is %i", appMonth);
 		appDay = appDay*10 + [sender tag];
-	
 	if (appDay > 31) {
 		appDay = [sender tag];
 	}
-	[dateLabel setText:[NSString stringWithFormat:@"%i",appDay]];
+	[bottomLabel setText:[NSString stringWithFormat:@"%i",appDay]];
 
-	
-		//correct this for months with 30 days, and for Feb
-		//if (appMonth < 8 && appMonth%2 !=0) {
-		//}
-		//else  (appMonth > 7 && appMonth%2 ==0)
+		//FIX correct this for months with 30 days, and for Feb
+		/*if (appMonth < 8 && appMonth%2 !=0) {
+		}
+		else  (appMonth > 7 && appMonth%2 ==0)
+		*/	
 }
+
+- (IBAction)timeAction:(id)sender{
+	NSLog(@"button pressed %i times", count);
+	if ([sender tag]==10 && count < 2) {
+		if (count==0) { 
+			[bottomLabel setText:@"."];
+			}
+		count = 2;
+		return;
+		}	
+		//NSLog(@"isMinutes is %i", isMinutes);
+		//NSLog(@"the sender tag is %i", [sender tag]);
+	switch (count) {
+		case 0:
+			appTime = [sender tag];
+			count = count + 1;
+		break;
+		case 1:
+			if ((appTime*10 + [sender tag])>12){
+				return;
+			}
+			appTime = appTime*10 + [sender tag];
+			count = count + 1;
+			break;
+		case 2:
+			if ([sender tag]>5) {
+				return;
+			}
+			appTime = appTime + [sender tag]*0.1;
+			count = count + 1;
+			break;
+		case 3:
+			appTime = appTime + [sender tag]*0.01;
+			count += 1;
+			break;
+	default:
+		break;
+	}
+	[bottomLabel setText:[NSString stringWithFormat:@"%.2f",appTime]];
+	
+		//FIX: NEED A RESET BUTTON in case the user makes an input mistake.
+		//TO DO: Put a feature to revise the appointment time in the My Appointments view.
+}
+
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 /*
@@ -130,17 +155,25 @@ int appDay;
 }
 */
 
-
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
-	[self.view addSubview:monthLabel];
-	[monthLabel setText:@"Month"];
-	[self.view addSubview:dateLabel];
-	[dateLabel setText:@"Date"];
+	[self.view addSubview:timeView];
+	[self.view addSubview:monthView];
+	[self.view addSubview:dateView];
+	[self.view addSubview:topLabel];
+	[topLabel setText:@"Month"];
+	[self.view addSubview:bottomLabel];
+	[bottomLabel setText:@"Date"];
+	count = 0;
+	appTime = 0;
+	
 }
-
-
+	
+- (IBAction) timeButtonAction{
+	[dateView removeFromSuperview];
+	[bottomLabel setText:@"Time"];
+}	
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return YES;
@@ -149,7 +182,6 @@ int appDay;
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-    
     // Release any cached data, images, etc. that aren't in use.
 }
 
@@ -161,34 +193,13 @@ int appDay;
 
 
 - (void)dealloc {
-	[segmentedControl release];
-	[dateLabel release];
-	[monthLabel release];
-	[d0 release];
-	[d1 release];
-	[d2 release];
-	[d3 release];
-	[d4 release];
-	[d5 release];
-	[d6 release];
-	[d7 release];
-	[d8 release];
-	[d9 release];
+	[bottomLabel release];
+	[topLabel release];
+	[dateView release];
+	[monthView release];
 	[backslash release];
-	[m1 release];
-	[m2 release];
-	[m3 release];
-	[m4 release];
-	[m5 release];
-	[m6 release];
-	[m7 release];
-	[m8 release];
-	[m9 release];
-	[m10 release];
-	[m11 release];
-	[m12 release];
+	[timeButton release];
     [super dealloc];
 }
-
 
 @end

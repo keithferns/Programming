@@ -11,20 +11,19 @@
 
 @implementation MyMemosViewController
 
-@synthesize segmentedControl;
 @synthesize tableViewController;
 @synthesize bottomView, topView, myTestLabel, viewSelectedMemo;
 
 
--(IBAction) segmentedControlAction:(id)sender{
-	switch (self.segmentedControl.selectedSegmentIndex) {
-		case 0:
-			[self dismissModalViewControllerAnimated:YES];	
-			break;
+-(IBAction) navigationAction:(id)sender{
+	switch ([sender tag]) {
 		case 1:
 			[self dismissModalViewControllerAnimated:YES];	
 			break;
 		case 2:
+			[self dismissModalViewControllerAnimated:YES];	
+			break;
+		case 3:
 			[self dismissModalViewControllerAnimated:YES];	
 			break;
 		default:
@@ -104,7 +103,6 @@
 
 - (void)dealloc {
 	[tableViewController release];
-	[segmentedControl release];
 	[topView release];
 	[bottomView release];
 	[myTestLabel release];

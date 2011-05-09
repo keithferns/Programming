@@ -10,7 +10,6 @@
 
 @interface MyMemosViewController : UIViewController {
 	
-	UISegmentedControl *segmentedControl;
 	UITableViewController *tableViewController;
 	UIView *bottomView, *topView; 
 	UILabel *myTestLabel;
@@ -20,13 +19,12 @@
 }
 
 @property (nonatomic, retain) IBOutlet UITableViewController *tableViewController;
-@property (nonatomic,retain) IBOutlet UISegmentedControl *segmentedControl;
 @property (nonatomic, retain) IBOutlet UIView *bottomView, *topView;
 @property (nonatomic,retain) IBOutlet UILabel *myTestLabel;
 @property (nonatomic, retain) IBOutlet UITextView *viewSelectedMemo;
 
 
-- (IBAction)segmentedControlAction:(id)sender;
+-(IBAction) navigationAction:(id)sender;
 
 
 

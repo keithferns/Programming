@@ -20,12 +20,10 @@
 	{    
 		managedObjectContext = nil;
 		NSLog(@"NOW__AppDelegate. After managedObjectContext: %@",  managedObjectContext);
-
 	[self.window addSubview:viewController.view];
 	[self.window makeKeyAndVisible];
 
 }
-
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     /*
@@ -57,7 +55,6 @@
 	
 }
 */
-
 
 	// applicationWillTerminate: saves changes in the application's managed object context before the application terminates.
 
@@ -106,8 +103,6 @@
 		return managedObjectContext;	 
 }
 
-
-
 /**
  Returns the managed object model for the application.
  If the model doesn't already exist, it is created from the application's model.
@@ -122,7 +117,6 @@
     return managedObjectModel;
 
 }
-
 
 /**
  Returns the persistent store coordinator for the application.

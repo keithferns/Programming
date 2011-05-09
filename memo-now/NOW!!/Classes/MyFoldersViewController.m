@@ -14,8 +14,22 @@
 @synthesize tableViewController;
 @synthesize	tableView;
 @synthesize topView, bottomView, viewLabel, textView;
-@synthesize segmentedControl;
-	//@synthesize doneButton;
+
+-(IBAction) navigationAction:(id)sender{
+	switch ([sender tag]) {
+		case 1:
+			[self dismissModalViewControllerAnimated:YES];	
+			break;
+		case 2:
+			[self dismissModalViewControllerAnimated:YES];	
+			break;
+		case 3:
+			[self dismissModalViewControllerAnimated:YES];	
+			break;
+		default:
+			break;
+	}
+}
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 /*
@@ -28,30 +42,9 @@
 }
 */
 
-- (IBAction)segmentedControlAction:(id)sender{
-
-	switch (self.segmentedControl.selectedSegmentIndex) {
-		case 0:
-			[self dismissModalViewControllerAnimated:YES];
-			break;
-		case 1:
-			[self dismissModalViewControllerAnimated:YES];
-			break;
-		case 2:
-			[self dismissModalViewControllerAnimated:YES];
-			break;
-
-		default:
-			break;
-	}
-	
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-	
 	[self.view addSubview:viewLabel];
-	[self.view addSubview:segmentedControl];
 	[self.view addSubview:topView];
 	[self.view addSubview:bottomView];
 	[self.topView addSubview:textView];
@@ -60,10 +53,6 @@
 		//[doneButton addTarget:self action:@selector(clearButtonSelected:) forControlEvents:UIControlEventTouchUpInside];
 }
 
-	//- (void)clearButtonSelected{
-	//textView.text = @"";
-
-	//}	
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return YES;
 }
@@ -86,7 +75,6 @@
 	[viewLabel release];
 	[topView release];
 	[bottomView release];
-	[segmentedControl release];
 	[tableViewController release];
 }
 

@@ -11,26 +11,29 @@
 
 @interface DateTimeViewController : UIViewController {
 	
-		//int appDay, appMonth, appTime;
-	UISegmentedControl *segmentedControl;
-	UIButton *m1, *m2, *m3, *m4, *m5, *m6, *m7, *m8, *m9, *m10, *m11, *m12, *d1, *d2, *d3, *d4, *d5, *d6, *d7, *d8, *d9, *d0, *backslash, *timeButton;
-	UILabel *monthLabel, *dateLabel;
+	UIButton *backslash, *timeButton;
+	UILabel *topLabel, *bottomLabel;
+	UIView *monthView, *dateView, *timeVIew;
 	
 }
 
-@property (nonatomic,retain) IBOutlet UISegmentedControl *segmentedControl;
-@property (nonatomic, retain) IBOutlet UILabel *monthLabel, *dateLabel;
-@property (nonatomic, retain) IBOutlet UIButton *m1, *m2, *m3, *m4, *m5, *m6, *m7, *m8, *m9, *m10, *m11, *m12, *d1, *d2, *d3, *d4, *d5, *d6, *d7, *d8, *d9, *d0, *backslash, *timeButton;
+@property (nonatomic, retain) IBOutlet UILabel *topLabel, *bottomLabel;
+@property (nonatomic, retain) IBOutlet UIButton  *backslash, *timeButton;
+@property (nonatomic, retain) IBOutlet UIView *monthView, *dateView, *timeView; 
 
 
 
-- (IBAction)segmentedControlAction:(id)sender;
+-(IBAction) navigationAction:(id)sender;
 
 - (IBAction)monthAction:(id)sender;
 
-
 - (IBAction)dayAction:(id)sender;
 
+- (IBAction)timeButtonAction;
+
+- (IBAction)timeAction:(id)sender;
+
+- (IBAction) doneAction;
 
 
 

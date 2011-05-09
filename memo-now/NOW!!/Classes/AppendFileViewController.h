@@ -8,7 +8,6 @@
 
 
 @interface AppendFileViewController : UIViewController {
-	UISegmentedControl *segmentedControl;
 	UITableViewController *myfilesTableViewController;	
 	UITableView *myfiles;
 }
@@ -17,9 +16,8 @@
 @property (nonatomic, retain) IBOutlet UITableView *myfiles;
 
 @property (nonatomic, retain) IBOutlet UITableViewController *myfilesTableViewController;
-@property (nonatomic,retain) IBOutlet UISegmentedControl *segmentedControl;
 
-- (IBAction)segmentedControlAction:(id)sender;
+-(IBAction) navigationAction:(id)sender;
 
 
 

@@ -15,8 +15,6 @@
 	NSMutableArray *memoArray;
 	UITableView	*tableView;
 	UISearchBar *searchBar;
-	
-
 }
 
 @property(nonatomic, retain) NSManagedObjectContext *managedObjectContext;

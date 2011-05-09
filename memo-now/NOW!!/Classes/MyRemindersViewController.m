@@ -1,17 +1,15 @@
 //
-//  MyAppointmentsViewController.m
+//  MyRemindersViewController.m
 //  NOW!!
 //
-//  Created by Keith Fernandes on 4/30/11.
+//  Created by Keith Fernandes on 5/8/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "MyAppointmentsViewController.h"
+#import "MyRemindersViewController.h"
 
 
-@implementation MyAppointmentsViewController
-
-@synthesize bottomView, topView, label, textView, tableViewController;
+@implementation MyRemindersViewController
 
 
 -(IBAction) navigationAction:(id)sender{
@@ -41,16 +39,12 @@
 }
 */
 
+/*
+// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
- 
- [self.view addSubview:label];
- [self.view addSubview:bottomView];
- [self.view addSubview:topView];
- [topView addSubview:textView];
- [bottomView addSubview:tableViewController.tableView];
 }
-
+*/
 
 /*
 // Override to allow orientations other than the default portrait orientation.
@@ -76,10 +70,6 @@
 
 - (void)dealloc {
     [super dealloc];
-	[bottomView release];
-	[topView release];
-	[label release];
-	[textView release];
 }
 
 

@@ -13,7 +13,6 @@
 	UITableView *tableView;
 	UIView *topView, *bottomView;
 	UILabel	*viewLabel;
-	UISegmentedControl *segmentedControl;
 	UITextView *textView;
 }
 
@@ -21,12 +20,11 @@
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
 @property (nonatomic, retain) IBOutlet UIView *topView, *bottomView;
 @property (nonatomic, retain) IBOutlet UILabel *viewLabel;
-@property (nonatomic, retain) IBOutlet UISegmentedControl *segmentedControl;
 @property (nonatomic, retain) IBOutlet UITextView *textView;
 	//@property (nonatomic, retain) IBOutlet UIButton *doneButton;
 
 
-- (IBAction)segmentedControlAction:(id)sender;
+-(IBAction) navigationAction:(id)sender;
 
 
 @end
