@@ -18,8 +18,7 @@
 
 
 @implementation EnterTextViewController
-
-@synthesize saveAlert, wallAlert;
+@synthesize goActionSheet, saveActionSheet;
 @synthesize editmemoTextView, topView, bottomView, memoTitleLabel, lastMemoView, urgentMemoView; 
 @synthesize memoArray, managedObjectContext;
 
@@ -32,16 +31,12 @@
 			if ([editmemoTextView hasText]) {NSLog(@"The Go To... button was clicked");
 				[self addTimeStamp];
 			}
-			self.wallAlert = [[UIAlertView alloc] 
-							  initWithTitle:@"Choose An Option"
-							  message:@"Take me to your Leader!" 
-							  delegate:self 
-							  cancelButtonTitle:@"Later" 
-							  otherButtonTitles:@"My Folders", @"My Appointments", @"My To-Do's", @"The Wall", nil];
-			[wallAlert show];
-			NSLog(@"The Wall AlertView was Shown");
-				//[wallAlert release];
-			break;
+			self.goActionSheet = [[UIActionSheet alloc] initWithTitle:@"Go To" delegate:self cancelButtonTitle:@"Later" destructiveButtonTitle:nil otherButtonTitles:@"My Folders", @"My Appointments", @"My To-Do's", @"The Wall", nil];
+			goActionSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
+			[goActionSheet showInView:self.view];
+			[goActionSheet release];
+			NSLog(@"The Go To Action was Shown");
+						break;
 		case 2:
 			if ([editmemoTextView hasText]) {
 				[self addTimeStamp];
@@ -55,15 +50,15 @@
 			if ([editmemoTextView hasText]) {NSLog(@"The Save As... button was clicked");
 				[self addTimeStamp];
 			}
-			self.saveAlert = [[UIAlertView alloc] 
+			self.saveActionSheet = [[UIActionSheet alloc] 
 							  initWithTitle:@"Choose An Option"
-							  message:@"Manage Your Time ... or Folders?" 
 							  delegate:self 
-							  cancelButtonTitle:@"Later" 
+							  cancelButtonTitle:@"Later"
+							  destructiveButtonTitle:nil
 							  otherButtonTitles:@"Name and Save as File", @"Append To an Existing File", @"Set Appointment Time", @"Set To Do Reminder", nil];
-			[saveAlert show];
+			[saveActionSheet showInView:self.view];
 			NSLog(@"The SaveAs AlertView was Shown");
-				//[saveAlert release]; 
+			[saveActionSheet release]; 
 			
 			break;
 		default:
@@ -97,6 +92,10 @@
 - (void) addTimeStamp{
 	NSLog(@"firing addTimeStamp");
 	NSString *mytext = [NSString stringWithFormat: @"%@", editmemoTextView.text];//copy contents of editmemoTextView to mytext
+	if ([mytext isEqualToString:[[memoArray objectAtIndex:0] valueForKey:@"memoText"]]) {
+			//compare the current contents of the text view to the contents saved in the memoArray and if they are the same then gets out of addTimeStamp.
+		return;
+	}
 	Memo *newMemo = (Memo *)[NSEntityDescription insertNewObjectForEntityForName:@"Memo" inManagedObjectContext: managedObjectContext];	//Initialize a new Memo Object and Insert it into Memo table in the ManagedObjectContext
 	[newMemo setTimeStamp:[NSDate	date]];//sets the timeStamp of the new Memo
 	[newMemo setMemoText:mytext];//copies the input text to the new Memo. 
@@ -104,56 +103,74 @@
 	NSError *error;
 	if(![managedObjectContext save:&error]){  //???
 	}
-	[memoArray insertObject:newMemo atIndex:0];//NOTE: NOT used here as far as I can tell
+	[memoArray insertObject:newMemo atIndex:0];
+	NSLog(@"the memo at index 0 is %@", [[memoArray objectAtIndex:0] valueForKey:@"memoText"]);
+	NSLog(@"the memo at index 1 is %@", [[memoArray objectAtIndex:1] valueForKey:@"memoText"]);
+	[lastMemoView setText:[[memoArray objectAtIndex:0] valueForKey:@"memoText"]];
+	
+	
 }
-
-	//Dismisses the saveAlert object by a system call. Note -1 is called if the CancelButton is not set. 
-- (void)dismissViewAlert{[self.saveAlert dismissWithClickedButtonIndex:-1 animated:YES];}
-
-	//???what does this do???
-- (void)viewAlertCancel:(UIAlertView *)alertView{[saveAlert	release];}
-
-	//Alert view to prompt the User to select the next action to perform with the memo. Save it as an Appointment (-> directly to the Appt scheduling screen for setting the date and time), as a To Do Reminder( -> the MyPlanner screen with simplified scheduler, save to a Folder or Append to an existing file.
-- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex{
-	if (alertView == saveAlert){
-		if (buttonIndex == 4) {NSLog(@"1st Button Clicked on saveAlert");
-			MyPlanner *gotoView = [[[MyPlanner alloc] initWithNibName:@"MyPlanner" bundle:nil] autorelease];
+ - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+	
+	if (actionSheet	== saveActionSheet){
+		switch (buttonIndex) {
+			case 4:
+				NSLog(@"Cancel Button Clicked on saveAlert");
+				break;
+			case 3:
+				NSLog(@"1st Button Clicked on saveAlert");
+			{MyPlanner *gotoView = [[[MyPlanner alloc] initWithNibName:@"MyPlanner" bundle:nil] autorelease];
 			[self presentModalViewController:gotoView animated:YES];}
-		else if (buttonIndex == 3) {NSLog(@"2nd Button Clicked on saveAlert");
-			DateTimeViewController *gotoView = [[[DateTimeViewController alloc] initWithNibName:@"DateTimeViewController" bundle:nil] autorelease];
+				break;
+			case 2:
+			NSLog(@"2nd Button Clicked on saveAlert");
+			{DateTimeViewController *gotoView = [[[DateTimeViewController alloc] initWithNibName:@"DateTimeViewController" bundle:nil] autorelease];
 			[self presentModalViewController:gotoView animated:YES];}
-		else if (buttonIndex == 2) { NSLog(@"3rd Button Clicked on saveAlert");
-			AppendFileViewController *gotoView = [[[AppendFileViewController alloc] initWithNibName:@"AppendFileViewController" bundle:nil] autorelease];
-			[self presentModalViewController:gotoView animated:YES];} 
-		else if (buttonIndex == 1) { NSLog(@"4th Button Clicked on saveAlert");
-			SaveFileViewController *gotoView = [[[SaveFileViewController alloc] initWithNibName:@"SaveFileViewController" bundle:nil] autorelease];
-		[self presentModalViewController:gotoView animated:YES];}	
-		else if (buttonIndex == 0) { NSLog(@"Cancel Button Clicked on saveAlert");}
-  }
-	else if (alertView == wallAlert){
-		if (buttonIndex == 4) { NSLog(@"1st Button Clicked on WallAlert");
-			MyWallViewController *viewController = [[[MyWallViewController alloc] initWithNibName:@"MyWallViewController" bundle:nil] autorelease];
-			[self presentModalViewController:viewController animated:YES];}
-		else if (buttonIndex == 3) { NSLog(@"2nd Button Clicked on WallAlert");
-			MyRemindersViewController *viewController = [[[MyRemindersViewController alloc] initWithNibName:@"MyRemindersViewController" bundle:nil] autorelease];			
-			[self presentModalViewController:viewController animated:YES];}
-		else if (buttonIndex == 2) { NSLog(@"3rd Button Clicked on WallAlert");
-			MyAppointmentsViewController *viewController = [[[MyAppointmentsViewController alloc] initWithNibName:@"MyAppointmentsViewController" bundle:nil] autorelease];
-			[self presentModalViewController:viewController animated:YES];}
-		else if (buttonIndex == 1) { NSLog(@"4th Button Clicked on WallAlert");
-			MyFoldersViewController *viewController = [[[MyFoldersViewController alloc] initWithNibName:@"MyFoldersViewController" bundle:nil] autorelease];		
-			[self presentModalViewController:viewController animated:YES];}	
-		else if (buttonIndex == 0) {NSLog(@"Cancel Button Clicked on wallAlert");}
+				break;
+			case 1:
+				NSLog(@"3rd Button Clicked on saveAlert");
+			{AppendFileViewController *gotoView = [[[AppendFileViewController alloc] initWithNibName:@"AppendFileViewController" bundle:nil] autorelease];
+				[self presentModalViewController:gotoView animated:YES]; }
+				break;
+			case 0:
+				NSLog(@"4th Button Clicked on saveAlert");
+			{SaveFileViewController *gotoView = [[[SaveFileViewController alloc] initWithNibName:@"SaveFileViewController" bundle:nil] autorelease];
+			[self presentModalViewController:gotoView animated:YES];}
+				break;
+			default:
+				break;
+	
+		}
 	}
-}
-
-- (void)dimisswallAlert{
-	[self.wallAlert dismissWithClickedButtonIndex:-1 animated:YES];
-}
-	//???what does this do???
-- (void)wallAlertCancel:(UIAlertView *)alertView {
-	[wallAlert	release];
-}
+	else if (actionSheet == goActionSheet){
+		switch (buttonIndex){
+		case 3:
+			NSLog(@"1st Button Clicked on WallAlert");
+			{MyWallViewController *viewController = [[[MyWallViewController alloc] initWithNibName:@"MyWallViewController" bundle:nil] autorelease];
+				[self presentModalViewController:viewController animated:YES];}
+			break;
+		case 2:
+			NSLog(@"2nd Button Clicked on WallAlert");
+			MyRemindersViewController *viewController = [[[MyRemindersViewController alloc] initWithNibName:@"MyRemindersViewController" bundle:nil] autorelease];			
+			[self presentModalViewController:viewController animated:YES];
+			break;
+		case 1:
+			NSLog(@"3rd Button Clicked on WallAlert");
+			{MyAppointmentsViewController *viewController = [[[MyAppointmentsViewController alloc] initWithNibName:@"MyAppointmentsViewController" bundle:nil] autorelease];
+				[self presentModalViewController:viewController animated:YES];}
+			break;
+		case 0:
+			NSLog(@"4th Button Clicked on WallAlert");
+			{MyFoldersViewController *viewController = [[[MyFoldersViewController alloc] initWithNibName:@"MyFoldersViewController" bundle:nil] autorelease];		
+				[self presentModalViewController:viewController animated:YES];}
+			break;
+		case 4:
+			NSLog(@"Cancel Button Clicked on wallAlert");
+		default:
+			break;
+		}
+	}
+ }
 
 /* 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -171,9 +188,7 @@
 	[self.view addSubview:memoTitleLabel];
 	[self.view addSubview:topView];
 	[self.view addSubview:bottomView];
-	NSLog(@"adding editmemoTextView to view");
 	[self.topView addSubview:editmemoTextView];
-	NSLog(@"adding lastMemoView and urgentMemoView to view");
 	[self.bottomView addSubview:lastMemoView];
     [self.bottomView addSubview:urgentMemoView];
 	if (managedObjectContext == nil) 
@@ -184,14 +199,10 @@
 	/* Fetch Records and Get text of last Memo*/
 	[self fetchMemoRecords];
 	int myInt = [memoArray count];
-	NSLog(@"Number of Memos in the data store: %d", myInt);
 	if (myInt>0) { //calling up the last memo and putting the text on the textview1 of the bottomView. 
-		Memo *lastMemo = [memoArray objectAtIndex:0];
-		NSLog(@"trying to get the value for memoText for the last Memo");
-		NSString *lastMemoText = [lastMemo valueForKey:@"memoText"];
-		NSLog(@"This is the text of the last Memo: %@", lastMemoText);
-		[lastMemoView setText:lastMemoText];
+		[lastMemoView setText:[[memoArray objectAtIndex:0] valueForKey:@"memoText"]];
 	}
+
 }
 #pragma mark -
 #pragma mark DATA MANAGEMENT
@@ -204,8 +215,8 @@
 #pragma mark VIEW MANAGEMENT
 
 - (void)textViewDidEndEditing:(UITextView *)editmemoTextView{
-	doneEditing = YES;
-}
+	[self.editmemoTextView resignFirstResponder];
+	 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
 	return YES; 
@@ -239,6 +250,8 @@
 		//[tableView release];
 	[topView release];
 	[bottomView release];
+	[saveActionSheet release];
+	[goActionSheet release];
     [super dealloc];
 }
 @end

@@ -36,6 +36,7 @@
 		5367426B137679F50014A80A /* MyRemindersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5367426A137679F50014A80A /* MyRemindersTableViewController.m */; };
 		536742A113788EAC0014A80A /* MyWallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5367429F13788EAC0014A80A /* MyWallViewController.m */; };
 		536742A213788EAC0014A80A /* MyWallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 536742A013788EAC0014A80A /* MyWallViewController.xib */; };
+		536743F41379F1FD0014A80A /* Folder.m in Sources */ = {isa = PBXBuildFile; fileRef = 536743F31379F1FD0014A80A /* Folder.m */; };
 		537D1693135F360A00C389FC /* MyMemosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 537D1691135F360A00C389FC /* MyMemosViewController.m */; };
 		537D1694135F360A00C389FC /* MyMemosViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 537D1692135F360A00C389FC /* MyMemosViewController.xib */; };
 		537D1698135F362100C389FC /* MyMemosTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 537D1696135F362100C389FC /* MyMemosTableViewController.m */; };
@@ -104,6 +105,8 @@
 		5367429E13788EAC0014A80A /* MyWallViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWallViewController.h; sourceTree = "<group>"; };
 		5367429F13788EAC0014A80A /* MyWallViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyWallViewController.m; sourceTree = "<group>"; };
 		536742A013788EAC0014A80A /* MyWallViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyWallViewController.xib; sourceTree = "<group>"; };
+		536743F21379F1FD0014A80A /* Folder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Folder.h; sourceTree = "<group>"; };
+		536743F31379F1FD0014A80A /* Folder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Folder.m; sourceTree = "<group>"; };
 		537D1690135F360A00C389FC /* MyMemosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMemosViewController.h; sourceTree = "<group>"; };
 		537D1691135F360A00C389FC /* MyMemosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMemosViewController.m; sourceTree = "<group>"; };
 		537D1692135F360A00C389FC /* MyMemosViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyMemosViewController.xib; sourceTree = "<group>"; };
@@ -321,8 +324,10 @@
 		53136125135E5AE600624C08 /* MemoManagedObject */ = {
 			isa = PBXGroup;
 			children = (
-				53136122135E5AC900624C08 /* Memo.m */,
-				53136121135E5AC900624C08 /* Memo.h */,
+				536743EE1379F1050014A80A /* ToDo */,
+				536743ED1379F0F20014A80A /* File */,
+				536743EC1379F0E40014A80A /* Folder */,
+				536743EB1379F0CF0014A80A /* Memo */,
 			);
 			name = MemoManagedObject;
 			sourceTree = "<group>";
@@ -353,6 +358,38 @@
 				537D168E135F35D300C389FC /* MyMemosViewController */,
 			);
 			name = GoToViewControllers;
+			sourceTree = "<group>";
+		};
+		536743EB1379F0CF0014A80A /* Memo */ = {
+			isa = PBXGroup;
+			children = (
+				53136122135E5AC900624C08 /* Memo.m */,
+				53136121135E5AC900624C08 /* Memo.h */,
+			);
+			name = Memo;
+			sourceTree = "<group>";
+		};
+		536743EC1379F0E40014A80A /* Folder */ = {
+			isa = PBXGroup;
+			children = (
+				536743F21379F1FD0014A80A /* Folder.h */,
+				536743F31379F1FD0014A80A /* Folder.m */,
+			);
+			name = Folder;
+			sourceTree = "<group>";
+		};
+		536743ED1379F0F20014A80A /* File */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = File;
+			sourceTree = "<group>";
+		};
+		536743EE1379F1050014A80A /* ToDo */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ToDo;
 			sourceTree = "<group>";
 		};
 		537D168E135F35D300C389FC /* MyMemosViewController */ = {
@@ -552,6 +589,7 @@
 				53674267137679C10014A80A /* MyRemindersViewController.m in Sources */,
 				5367426B137679F50014A80A /* MyRemindersTableViewController.m in Sources */,
 				536742A113788EAC0014A80A /* MyWallViewController.m in Sources */,
+				536743F41379F1FD0014A80A /* Folder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

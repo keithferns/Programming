@@ -15,7 +15,7 @@
 	UITextView *editmemoTextView, *lastMemoView, *urgentMemoView; 
 	UILabel *memoTitleLabel;
 	UIView *topView, *bottomView;	
-	UIAlertView *saveAlert, *wallAlert;
+	UIActionSheet *goActionSheet, *saveActionSheet;
 	NSManagedObjectContext *managedObjectContext;
 	NSMutableArray *memoArray;
 	BOOL doneEditing;
@@ -31,7 +31,7 @@
 @property (nonatomic, retain) IBOutlet UIView *topView, *bottomView;
 @property (nonatomic, retain) IBOutlet UILabel *memoTitleLabel; 
 @property (nonatomic, retain) IBOutlet UITextView *editmemoTextView, *lastMemoView, *urgentMemoView; 
-@property (nonatomic, retain) UIAlertView *saveAlert, *wallAlert;
+@property (nonatomic, retain) UIActionSheet *goActionSheet, *saveActionSheet;
 	
 -(IBAction) navigationAction:(id)sender;
 
