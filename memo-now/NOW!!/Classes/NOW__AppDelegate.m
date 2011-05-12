@@ -93,13 +93,11 @@
 		return managedObjectContext;
 			
 		}
-    
 		 NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
 		if (coordinator != nil) {
         managedObjectContext = [[NSManagedObjectContext alloc] init];
         [managedObjectContext setPersistentStoreCoordinator:coordinator];
 		}
- 
 		return managedObjectContext;	 
 }
 
@@ -112,10 +110,8 @@
     if (managedObjectModel != nil) {
         return managedObjectModel;
     }
-	
     managedObjectModel = [[NSManagedObjectModel mergedModelFromBundles:nil] retain];    
     return managedObjectModel;
-
 }
 
 /**
@@ -190,7 +186,6 @@
     [managedObjectContext release];
     [managedObjectModel release];
     [persistentStoreCoordinator release];
-    
     [window release];
     [viewController release];
 	[super dealloc];

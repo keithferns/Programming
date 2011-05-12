@@ -38,11 +38,9 @@
 }
 
 -(void) fetchMemoRecords{
-	
 	NSLog(@"Going to fetch Memo records now");
 		//defining table to use
 	NSEntityDescription *entity = [NSEntityDescription entityForName:@"Memo" inManagedObjectContext:managedObjectContext];
-	
 		//setting up the fetch request
 	NSFetchRequest *request	= [[NSFetchRequest alloc] init];
 	[request setEntity:entity];
@@ -64,7 +62,6 @@
 	
 	[mutableFetchResults release];
 	[request release];
-	
 }
 
 /*

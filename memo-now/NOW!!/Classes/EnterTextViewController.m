@@ -1,6 +1,5 @@
 //  EnterTextViewController.m
 //  NOW!!
-//
 //  Created by Keith Fernandes on 4/7/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 
@@ -28,11 +27,14 @@
 -(IBAction) navigationAction:(id)sender{
 	switch ([sender tag]) {
 		case 1:
-			if ([editmemoTextView hasText]) {NSLog(@"The Go To... button was clicked");
+			if ([editmemoTextView hasText]) {
 				[self addTimeStamp];
-			}
-			self.goActionSheet = [[UIActionSheet alloc] initWithTitle:@"Go To" delegate:self cancelButtonTitle:@"Later" destructiveButtonTitle:nil otherButtonTitles:@"My Folders", @"My Appointments", @"My To-Do's", @"The Wall", nil];
-			goActionSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
+				}
+			self.goActionSheet = [[UIActionSheet alloc] 
+								  initWithTitle:@"Go To"			
+								  delegate:self cancelButtonTitle:@"Later"
+								  destructiveButtonTitle:nil 
+								  otherButtonTitles:@"My Folders", @"My Appointments", @"My To-Do's", @"The Wall", nil];
 			[goActionSheet showInView:self.view];
 			[goActionSheet release];
 			NSLog(@"The Go To Action was Shown");
@@ -40,24 +42,24 @@
 		case 2:
 			if ([editmemoTextView hasText]) {
 				[self addTimeStamp];
-			}
+				}
 			MyMemosViewController *viewController = [[[MyMemosViewController alloc] initWithNibName:@"MyMemosViewController" bundle:nil] autorelease];
 			editmemoTextView.text = @"";
 			[self presentModalViewController:viewController animated:YES];	
 			break;
 			
 		case 3:
-			if ([editmemoTextView hasText]) {NSLog(@"The Save As... button was clicked");
+			if ([editmemoTextView hasText]) {
 				[self addTimeStamp];
-			}
+				}
 			self.saveActionSheet = [[UIActionSheet alloc] 
-							  initWithTitle:@"Choose An Option"
-							  delegate:self 
-							  cancelButtonTitle:@"Later"
-							  destructiveButtonTitle:nil
-							  otherButtonTitles:@"Name and Save as File", @"Append To an Existing File", @"Set Appointment Time", @"Set To Do Reminder", nil];
+									initWithTitle:@"Choose An Option"
+									delegate:self 
+									cancelButtonTitle:@"Later"
+									destructiveButtonTitle:nil
+									otherButtonTitles:@"Name and Save as File", @"Append To an Existing File", @"Set Appointment Time", @"Set To Do Reminder", nil];
+			goActionSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
 			[saveActionSheet showInView:self.view];
-			NSLog(@"The SaveAs AlertView was Shown");
 			[saveActionSheet release]; 
 			
 			break;
@@ -92,9 +94,12 @@
 - (void) addTimeStamp{
 	NSLog(@"firing addTimeStamp");
 	NSString *mytext = [NSString stringWithFormat: @"%@", editmemoTextView.text];//copy contents of editmemoTextView to mytext
+	if ([memoArray count]>0) {
+		
 	if ([mytext isEqualToString:[[memoArray objectAtIndex:0] valueForKey:@"memoText"]]) {
 			//compare the current contents of the text view to the contents saved in the memoArray and if they are the same then gets out of addTimeStamp.
 		return;
+	}
 	}
 	Memo *newMemo = (Memo *)[NSEntityDescription insertNewObjectForEntityForName:@"Memo" inManagedObjectContext: managedObjectContext];	//Initialize a new Memo Object and Insert it into Memo table in the ManagedObjectContext
 	[newMemo setTimeStamp:[NSDate	date]];//sets the timeStamp of the new Memo
@@ -105,10 +110,7 @@
 	}
 	[memoArray insertObject:newMemo atIndex:0];
 	NSLog(@"the memo at index 0 is %@", [[memoArray objectAtIndex:0] valueForKey:@"memoText"]);
-	NSLog(@"the memo at index 1 is %@", [[memoArray objectAtIndex:1] valueForKey:@"memoText"]);
 	[lastMemoView setText:[[memoArray objectAtIndex:0] valueForKey:@"memoText"]];
-	
-	
 }
  - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
 	
@@ -139,7 +141,6 @@
 				break;
 			default:
 				break;
-	
 		}
 	}
 	else if (actionSheet == goActionSheet){
@@ -188,21 +189,32 @@
 	[self.view addSubview:memoTitleLabel];
 	[self.view addSubview:topView];
 	[self.view addSubview:bottomView];
+	NSLog(@"adding editmemoTextView to view");
 	[self.topView addSubview:editmemoTextView];
+	NSLog(@"adding lastMemoView and urgentMemoView to view");
 	[self.bottomView addSubview:lastMemoView];
     [self.bottomView addSubview:urgentMemoView];
+	
+	UIButton *myTestButton = [[UIButton alloc] init];
+	[self.topView addSubview:myTestButton];
+	
 	if (managedObjectContext == nil) 
 	{ 
         managedObjectContext = [(NOW__AppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext]; 
         NSLog(@"After managedObjectContext: %@",  managedObjectContext);
 	}
+	
 	/* Fetch Records and Get text of last Memo*/
 	[self fetchMemoRecords];
 	int myInt = [memoArray count];
+	NSLog(@"Number of Memos in the data store: %d", myInt);
 	if (myInt>0) { //calling up the last memo and putting the text on the textview1 of the bottomView. 
-		[lastMemoView setText:[[memoArray objectAtIndex:0] valueForKey:@"memoText"]];
+		Memo *lastMemo = [memoArray objectAtIndex:0];
+		NSLog(@"trying to get the value for memoText for the last Memo");
+		NSString *lastMemoText = [lastMemo valueForKey:@"memoText"];
+		NSLog(@"This is the text of the last Memo: %@", lastMemoText);
+		[lastMemoView setText:lastMemoText];
 	}
-
 }
 #pragma mark -
 #pragma mark DATA MANAGEMENT
@@ -213,11 +225,11 @@
 
 #pragma mark -
 #pragma mark VIEW MANAGEMENT
-
+/*
 - (void)textViewDidEndEditing:(UITextView *)editmemoTextView{
 	[self.editmemoTextView resignFirstResponder];
 	 }
-
+*/
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
 	return YES; 
 }
@@ -235,9 +247,6 @@
     [super viewDidUnload];
 		// Release any retained subviews of the main view.
 		// e.g. self.myOutlet = nil;
-	self.editmemoTextView = nil;
-	self.topView = nil;
-	managedObjectContext = nil;
 }
 
 - (void)dealloc {
@@ -247,7 +256,6 @@
 	[editmemoTextView release];
 	[lastMemoView release];
 	[urgentMemoView release];
-		//[tableView release];
 	[topView release];
 	[bottomView release];
 	[saveActionSheet release];
@@ -268,6 +276,8 @@
  [saveButton setTitle:@"SAVE" forState:UIControlStateNormal];
  [self.view addSubview:saveButton];
  */	
+
+
 /*..........New Memo TEXT VIEW..............//	
  editmemoTextView = [[EditTextView alloc] initWithFrame:CGRectMake	(0, 0, 320, 195)];
  [editmemoTextView setBackgroundColor:[UIColor blackColor]];
