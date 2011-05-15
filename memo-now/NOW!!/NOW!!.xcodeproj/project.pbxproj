@@ -19,7 +19,6 @@
 		5301976013686A1A00236402 /* MyFoldersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5301975E13686A1A00236402 /* MyFoldersViewController.m */; };
 		5301976113686A1A00236402 /* MyFoldersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5301975F13686A1A00236402 /* MyFoldersViewController.xib */; };
 		5301976513686A3900236402 /* MyFoldersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5301976313686A3900236402 /* MyFoldersTableViewController.m */; };
-		5301976613686A3900236402 /* MyFoldersTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5301976413686A3900236402 /* MyFoldersTableViewController.xib */; };
 		53019948136C714A00236402 /* MyAppointmentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53019946136C714A00236402 /* MyAppointmentsViewController.m */; };
 		53019949136C714A00236402 /* MyAppointmentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53019947136C714A00236402 /* MyAppointmentsViewController.xib */; };
 		53019958136C74C200236402 /* MyAppointmentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53019957136C74C200236402 /* MyAppointmentsTableViewController.m */; };
@@ -90,7 +89,6 @@
 		5301975F13686A1A00236402 /* MyFoldersViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyFoldersViewController.xib; sourceTree = "<group>"; };
 		5301976213686A3900236402 /* MyFoldersTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFoldersTableViewController.h; sourceTree = "<group>"; };
 		5301976313686A3900236402 /* MyFoldersTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFoldersTableViewController.m; sourceTree = "<group>"; };
-		5301976413686A3900236402 /* MyFoldersTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyFoldersTableViewController.xib; sourceTree = "<group>"; };
 		53019945136C714A00236402 /* MyAppointmentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAppointmentsViewController.h; sourceTree = "<group>"; };
 		53019946136C714A00236402 /* MyAppointmentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAppointmentsViewController.m; sourceTree = "<group>"; };
 		53019947136C714A00236402 /* MyAppointmentsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyAppointmentsViewController.xib; sourceTree = "<group>"; };
@@ -259,7 +257,6 @@
 			children = (
 				5301976213686A3900236402 /* MyFoldersTableViewController.h */,
 				5301976313686A3900236402 /* MyFoldersTableViewController.m */,
-				5301976413686A3900236402 /* MyFoldersTableViewController.xib */,
 			);
 			name = MyFoldersTableViewController;
 			sourceTree = "<group>";
@@ -572,7 +569,6 @@
 				537D1699135F362100C389FC /* MyMemosTableViewController.xib in Resources */,
 				53522B1E135F793A00437445 /* testImage.png in Resources */,
 				5301976113686A1A00236402 /* MyFoldersViewController.xib in Resources */,
-				5301976613686A3900236402 /* MyFoldersTableViewController.xib in Resources */,
 				53019949136C714A00236402 /* MyAppointmentsViewController.xib in Resources */,
 				53D051541371CCD900D33C4A /* blackbutton.png in Resources */,
 				53D051551371CCD900D33C4A /* bluebutton.png in Resources */,

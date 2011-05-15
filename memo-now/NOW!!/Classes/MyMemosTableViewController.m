@@ -27,7 +27,6 @@
 		managedObjectContext = [(NOW__AppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext]; 
         NSLog(@"After managedObjectContext: %@",  managedObjectContext);
 	}
-	
 	[super viewDidLoad];
 	[self.view addSubview:tableView];
 	self.tableView.tableHeaderView = searchBar;
@@ -54,9 +53,7 @@
 	NSMutableArray *mutableFetchResults = [[managedObjectContext executeFetchRequest:request error:&error] mutableCopy];
 	
 	if (!mutableFetchResults) {
-		
 	}
-	
 		//save fetched data to an array
 	[self setMemoArray:mutableFetchResults];
 	

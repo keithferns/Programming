@@ -19,8 +19,6 @@
 @synthesize topView, bottomView, getFileName, getFolderName, getTag, searchBar, tableViewController;
 @synthesize folderArray, managedObjectContext;
 
-
-
 #pragma mark -
 #pragma mark Navigation
 
@@ -51,24 +49,50 @@
 }
 */
 
-/*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView {
-}
-*/
-
 - (void)viewDidLoad {
     [super viewDidLoad];
 	isSearching = NO;
 	NSLog(@"added an instance of topView and bottomView to view");
 	[self.bottomView addSubview:tableViewController.tableView];
+	[self.view addSubview:topView];
+	[self.view addSubview:bottomView];
+	[self.topView addSubview:getFolderName];
+	getFolderName.delegate = self;
+	if (managedObjectContext == nil) 
+	{ 
+        managedObjectContext = [(NOW__AppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext]; 
+        NSLog(@"After managedObjectContext: %@",  managedObjectContext);
+	}
+	[self fetchFolderRecords];	
+}
+
+
+-(void) fetchFolderRecords{NSLog(@"Going to fetch Folder records now");
+		//defining table to use
+	NSEntityDescription *aFolder = [NSEntityDescription entityForName:@"Folder" inManagedObjectContext:managedObjectContext];
+		//setting up the fetch request
+	NSFetchRequest *request	= [[NSFetchRequest alloc] init];
+	[request setEntity:aFolder];
+		//defines how to sort the records
+	NSSortDescriptor *sortByDate = [[NSSortDescriptor alloc] initWithKey:@"timeStamp" ascending:NO];
+	NSArray *sortDescriptors = [NSArray arrayWithObject:sortByDate];//note: if adding other sortdescriptors, then use method -arraywithObjects. If the fetch request must meet some conditions, then use the NSPredicate class 
+	[request setSortDescriptors:sortDescriptors];
+	[sortByDate release];
+	NSError *error;
+	NSMutableArray *mutableFetchResults = [[managedObjectContext executeFetchRequest:request error:&error] mutableCopy];
+	
+	if (!mutableFetchResults) {
+			//
+		}
+	[self setFolderArray:mutableFetchResults];//save fetched data to an array
+	[mutableFetchResults release];
+	[request release];	
 }
 
 - (void) searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
 	NSLog(@"isSearching is set to %d", isSearching);
 	isSearching = YES;
 	NSLog(@"isSearching is now set to %d", isSearching);
-	/*
 		//create new subview and initialize with the frame for the topView
 	CGRect mytestFrame = CGRectMake(0, 0, 320, 192);
 	UIView *myNewView = [[[UIView	alloc] initWithFrame:mytestFrame] autorelease];
@@ -80,28 +104,48 @@
 		[self.view addSubview:myNewView];
 		[myNewView addSubview:tableViewController.tableView];
 	}
-	*/
 }
 
-- (IBAction) nameFile{
+- (BOOL) textFieldShouldReturn:(UITextField *)textField{
 	
-}
-- (IBAction) makeFolder{
-	NSLog(@"firing myFolder");
-	NSString *mytext = [NSString stringWithFormat: @"%@", getFolderName.text];
-	NSLog(@"%@", mytext);
-	Folder *newFolder = (Folder *)[NSEntityDescription insertNewObjectForEntityForName:@"Folder" inManagedObjectContext: managedObjectContext];	
-	[newFolder setTimeStamp:[NSDate	date]];
-	[newFolder setFolderName:mytext];
-	NSError *error;
-	if(![managedObjectContext save:&error]){  //???
+	NSString *aString = [NSString stringWithFormat:@"%@", textField.text];
+	NSLog(@"aString is set to %@", aString);
+	if ([textField tag] == 3){
+	
+			NSLog(@"aString is set to %@", aString);
+			Folder *newFolder = (Folder *)[NSEntityDescription insertNewObjectForEntityForName:@"Folder" inManagedObjectContext: managedObjectContext];	//Initialize a new Memo Object and Insert it into Memo table in the ManagedObjectContext
+			[newFolder setTimeStamp:[NSDate	date]];//sets the timeStamp of the new Memo
+			[newFolder setFolderName:aString];//copies the input text to the new Memo. 
+			NSError *error;
+			if(![managedObjectContext save:&error]){  //???
+			}
+			[folderArray insertObject:newFolder atIndex:0];
+			Folder *lastFolder = [folderArray objectAtIndex:0] ;
+			NSLog(@"The new folder is %@", [lastFolder valueForKey:@"folderName"]);
 	}
-	[folderArray insertObject:newFolder atIndex:0];
+
+	else if ([textField tag]==1){
+	Memo *newMemo = (Memo *)[NSEntityDescription insertNewObjectForEntityForName:@"Memo" inManagedObjectContext: managedObjectContext];	//Initialize a new Memo Object and Insert it into Memo table in the ManagedObjectContext
+			[newMemo setTimeStamp:[NSDate	date]];//sets the timeStamp of the new Memo
+			[newMemo setMemoText:aString];//copies the input text to the new Memo. 
+			NSError *error;
+			if(![managedObjectContext save:&error]){  //???
+			}
+
+	}
+	else if ([textField tag] ==2){
+		File *newFile = (File *)[NSEntityDescription insertNewObjectForEntityForName:@"File" inManagedObjectContext: managedObjectContext];	//Initialize a new Memo Object and Insert it into Memo table in the ManagedObjectContext
+		[newFile setTimeStamp:[NSDate	date]];//sets the timeStamp of the new Memo
+		[newFile setMemoText:aString];//copies the input text to the new Memo. 
+		NSError *error;
+		if(![managedObjectContext save:&error]){  //???
+		}
+	}
+
+	[textField resignFirstResponder];
+	return YES;
 }
 
-- (IBAction) addTag{
-	
-}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return YES;
@@ -129,7 +173,26 @@
 	[getTag release];
 	[searchBar release];
 	[tableViewController release];
+		//[managedObjectContext release];
+		//[folderArray release];
 }
 
 
 @end
+
+/*
+	// this method is used to resign the keyboard 
+
+-(void) touchesBegan :(NSSet *) touches withEvent:(UIEvent *)event
+
+{
+	
+    [textField resignFirstResponder];
+	
+    [textField1 resignFirstResponder];
+	
+    [super touchesBegan:touches withEvent:event ];
+	
+}
+
+*/

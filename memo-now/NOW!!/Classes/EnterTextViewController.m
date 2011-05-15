@@ -100,7 +100,7 @@
 			//compare the current contents of the text view to the contents saved in the memoArray and if they are the same then gets out of addTimeStamp.
 		return;
 	}
-	}
+}
 	Memo *newMemo = (Memo *)[NSEntityDescription insertNewObjectForEntityForName:@"Memo" inManagedObjectContext: managedObjectContext];	//Initialize a new Memo Object and Insert it into Memo table in the ManagedObjectContext
 	[newMemo setTimeStamp:[NSDate	date]];//sets the timeStamp of the new Memo
 	[newMemo setMemoText:mytext];//copies the input text to the new Memo. 
@@ -111,9 +111,9 @@
 	[memoArray insertObject:newMemo atIndex:0];
 	NSLog(@"the memo at index 0 is %@", [[memoArray objectAtIndex:0] valueForKey:@"memoText"]);
 	[lastMemoView setText:[[memoArray objectAtIndex:0] valueForKey:@"memoText"]];
+	[self.view endEditing:YES]; //this resigns first responder status for the view and all subviews.
 }
  - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
-	
 	if (actionSheet	== saveActionSheet){
 		switch (buttonIndex) {
 			case 4:
@@ -172,7 +172,6 @@
 		}
 	}
  }
-
 /* 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -183,7 +182,6 @@
     return self;
 }
 */
-
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	[self.view addSubview:memoTitleLabel];
@@ -203,8 +201,8 @@
         managedObjectContext = [(NOW__AppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext]; 
         NSLog(@"After managedObjectContext: %@",  managedObjectContext);
 	}
-	
 	/* Fetch Records and Get text of last Memo*/
+	
 	[self fetchMemoRecords];
 	int myInt = [memoArray count];
 	NSLog(@"Number of Memos in the data store: %d", myInt);

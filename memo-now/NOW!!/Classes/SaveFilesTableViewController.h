@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Folder.h"
+#import "File.h"
 
 @interface SaveFilesTableViewController : UITableViewController {
 

@@ -6,9 +6,8 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 
 #import <UIKit/UIKit.h>
-#import "Folder.h"
 
-@interface SaveFileViewController : UIViewController {
+@interface SaveFileViewController : UIViewController <UITextFieldDelegate> {
 
 	UITextField *getFileName, *getFolderName, *getTag;	
 	UIView *bottomView, *topView; 
@@ -29,10 +28,7 @@
 
 
 - (IBAction) navigationAction:(id)sender;
-
-- (IBAction) nameFile;
-- (IBAction) makeFolder;
-- (IBAction) addTag;
+-(void) fetchFolderRecords;
 
 
 @end

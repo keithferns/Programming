@@ -32,14 +32,17 @@
 }
 */
 
-
 #pragma mark -
 #pragma mark View lifecycle
 
 
 - (void)viewDidLoad {
-	NSLog(@"Loading view from MyMemosTableViewController");
-	
+	NSLog(@"Loading view from SaveFilesTableViewController");
+	if (managedObjectContext == nil) 
+	{ 
+		managedObjectContext = [(NOW__AppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext]; 
+        NSLog(@"After managedObjectContext: %@",  managedObjectContext);
+	}
 	[super viewDidLoad];
 	[self.view addSubview:tableView];
 	self.tableView.tableHeaderView = searchBar;
@@ -50,7 +53,7 @@
 }
 
 -(void) fetchFolderRecords{
-	NSLog(@"Going to fetch Memo records now");
+	NSLog(@"Going to fetch Folder records now");
 		//defining table to use
 	NSEntityDescription *entity = [NSEntityDescription entityForName:@"Folder" inManagedObjectContext:managedObjectContext];
 		//setting up the fetch request
@@ -63,6 +66,7 @@
 	[sortByDate release];
 	NSError *error;
 	NSMutableArray *mutableFetchResults = [[managedObjectContext executeFetchRequest:request error:&error] mutableCopy];
+	
 	if (!mutableFetchResults) {
 	}
 		//save fetched data to an array
@@ -125,7 +129,9 @@
 	Folder *newFolder = [folderArray objectAtIndex:[indexPath row]];
 	if ([folderArray count] > ([indexPath row] + 1)) {
 	}
-	[cell.detailTextLabel setText: [dateFormatter stringFromDate:[newFolder timeStamp]]];
+		//[cell.detailTextLabel setText: [dateFormatter stringFromDate:[newFolder timeStamp]]];
+	[cell.textLabel setText:[NSString stringWithFormat:@"%@", [newFolder folderName]]];
+	
     return cell;
 }
 
@@ -136,7 +142,6 @@
     return YES;
 }
 */
-
 
 /*
 // Override to support editing the table view.
@@ -200,6 +205,10 @@
 
 - (void)dealloc {
     [super dealloc];
+		//[managedObjectContext release];
+		//[folderArray release];
+	[tableView release];
+	[searchBar release];
 }
 
 

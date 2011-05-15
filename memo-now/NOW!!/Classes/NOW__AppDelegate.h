@@ -10,6 +10,7 @@
 #import <CoreData/CoreData.h>
 #import "Memo.h"
 #import "Folder.h"
+#import "File.h"
 
 @interface NOW__AppDelegate : NSObject <UIApplicationDelegate> {
     
