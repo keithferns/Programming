@@ -61,7 +61,7 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
 
     NSError *error = nil;
-	
+//KF: PERHAPS HERE IS THE PLACE TO INSERT THE CODE TO DISMISS ALL VIEWS
 		//NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
 	
     if (managedObjectContext != nil) {

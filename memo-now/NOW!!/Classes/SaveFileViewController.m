@@ -5,11 +5,7 @@
 //  Created by Keith Fernandes on 4/17/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
-//TO DO. Add TextField To Put File Name.
-//TO DO. ADD TextField To Put Folder Name.
-//TO DO. Add TextField To Add Tag.
-//TO Do. Add Search Box to Search For Folders. Resuse Code from MyMemos
-//TO 
+
 
 
 #import "SaveFileViewController.h"
@@ -174,7 +170,7 @@
 	[searchBar release];
 	[tableViewController release];
 		//[managedObjectContext release];
-		//[folderArray release];
+	[folderArray release];
 }
 
 

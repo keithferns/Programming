@@ -30,31 +30,17 @@
 	}
 }
 
-// The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
-/*
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization.
-    }
-    return self;
-}
-*/
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
 	isSearching = NO;
 	[self.view	addSubview:bottomView];
-	[self.view addSubview:topView];
-	NSLog(@"added an instance of topView and bottomView to view");
-	
+	[self.view addSubview:topView];	
 	[self.topView addSubview:viewSelectedMemo];
-	NSLog(@"added an instance of viewSelectedMemo to the view");	
-	NSLog(@"will add an instance of MyMemosTableViewController to the view");	
-	
 	[self.bottomView addSubview:tableViewController.tableView];
-	NSLog(@"added an instance of MyMemosTableViewController to the view");	
+	
+	NSLog(@"View loaded with modalViewController: MyMemosViewController");	
 }
 
 - (void) searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
@@ -70,6 +56,7 @@
 		[self.view addSubview:myNewView];
 		[myNewView addSubview:tableViewController.tableView];
 	}
+
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {

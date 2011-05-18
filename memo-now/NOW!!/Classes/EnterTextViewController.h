@@ -6,12 +6,37 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
+/* TO DOs
+ 
+- NOW__AppDelegate
+	~ Save on exit and return to main view always. 
+ 
+- EnterTextViewController
+	~ Find way to resize the cells for the action sheets. Currently, in landscape, only 3 out of 4 cells are visible. Alternately, merge two functions so that there are only 3 options apart from the later button in the action sheet.
+	~ Move the LastMemo text view to TopView and make editable. 
+	~ Connent the UrgentAppointment/todo's textview to the data.  
+	~ Format both the textview for presentation of info. 
+ 
+- SaveFileViewController
+	~ Add Search Box to Search For Folders. Resuse Code from MyMemos
+	~
+- AppointmentDateTimeViewController.
+ 
+	~ remove the backslash date option. keep it simple. replace with the option to SAVE and leave without setting a specific time. 
+	~ need to add an option to set a custom reminder for each appointment. there will be a default setting which can be turned on/off or customized in the preferences window, but the user should have the option to add or change reminder alarms on a case by case basis. 
+ 
+- ReminderDayWeekViewController aka MyPlanner
+	~ for the THIS DAY button, put a calendar icon as the background
+ 
+- 
+ 
+*/
 
 #import <UIKit/UIKit.h>
 #import "Memo.h"
 
 
-@interface EnterTextViewController : UIViewController <UIActionSheetDelegate> {
+@interface EnterTextViewController : UIViewController <UIActionSheetDelegate, UITextViewDelegate> {
 	UITextView *editmemoTextView, *lastMemoView, *urgentMemoView; 
 	UILabel *memoTitleLabel;
 	UIView *topView, *bottomView;	
@@ -24,6 +49,7 @@
 /*.....Data ....*/
 @property(nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 @property(nonatomic, retain) NSMutableArray *memoArray;
+
 -(void) fetchMemoRecords;
 -(void) addTimeStamp;
 	
@@ -35,9 +61,7 @@
 	
 -(IBAction) navigationAction:(id)sender;
 
-
 	///////NAMING AND ARCHIVING ACTIONS
-
 	//XX The following action consolidated with other name and save actions. some of the design choices are discussed below. 
  /* 
  VERY IMPORTANT TO FIND THE MOST EFFICIENT and EFFECTIVE NAMING ROUTINE. Efficient in terms ofthe effort to name is minimal and the name itself is part of the organizational solution. Effective entails that the named entities are kept minimal or are sufficiently informative so as not to overload the user's memory. Would names like  "vacation@myhome@mylife" be more informative to the user after a few months than just a name like "vacation". 

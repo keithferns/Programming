@@ -22,7 +22,7 @@
 @synthesize memoArray, managedObjectContext;
 
 #pragma mark -
-#pragma mark Navigation	
+#pragma mark Navigation
 
 -(IBAction) navigationAction:(id)sender{
 	switch ([sender tag]) {
@@ -34,7 +34,7 @@
 								  initWithTitle:@"Go To"			
 								  delegate:self cancelButtonTitle:@"Later"
 								  destructiveButtonTitle:nil 
-								  otherButtonTitles:@"My Folders", @"My Appointments", @"My To-Do's", @"The Wall", nil];
+								  otherButtonTitles:@"Files and Folders", @"Appointments", @"Tasks", @"The Wall", nil];
 			[goActionSheet showInView:self.view];
 			[goActionSheet release];
 			NSLog(@"The Go To Action was Shown");
@@ -47,17 +47,16 @@
 			editmemoTextView.text = @"";
 			[self presentModalViewController:viewController animated:YES];	
 			break;
-			
 		case 3:
 			if ([editmemoTextView hasText]) {
 				[self addTimeStamp];
 				}
 			self.saveActionSheet = [[UIActionSheet alloc] 
-									initWithTitle:@"Choose An Option"
+									initWithTitle:@"What do you want to do with this Memo?"
 									delegate:self 
 									cancelButtonTitle:@"Later"
 									destructiveButtonTitle:nil
-									otherButtonTitles:@"Name and Save as File", @"Append To an Existing File", @"Set Appointment Time", @"Set To Do Reminder", nil];
+									otherButtonTitles:@"Name, Tag and Save", @"Append to Existing File", @"Schedule as Appointment", @"Make Task Reminder", nil];
 			goActionSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
 			[saveActionSheet showInView:self.view];
 			[saveActionSheet release]; 
@@ -112,6 +111,9 @@
 	NSLog(@"the memo at index 0 is %@", [[memoArray objectAtIndex:0] valueForKey:@"memoText"]);
 	[lastMemoView setText:[[memoArray objectAtIndex:0] valueForKey:@"memoText"]];
 	[self.view endEditing:YES]; //this resigns first responder status for the view and all subviews.
+	[self.view resignFirstResponder];
+
+	
 }
  - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
 	if (actionSheet	== saveActionSheet){
@@ -191,7 +193,9 @@
 	[self.topView addSubview:editmemoTextView];
 	NSLog(@"adding lastMemoView and urgentMemoView to view");
 	[self.bottomView addSubview:lastMemoView];
-    [self.bottomView addSubview:urgentMemoView];
+	[lastMemoView setDelegate:self];
+	[editmemoTextView setDelegate:self];
+
 	
 	UIButton *myTestButton = [[UIButton alloc] init];
 	[self.topView addSubview:myTestButton];
@@ -214,6 +218,9 @@
 		[lastMemoView setText:lastMemoText];
 	}
 }
+
+
+
 #pragma mark -
 #pragma mark DATA MANAGEMENT
 
@@ -228,6 +235,34 @@
 	[self.editmemoTextView resignFirstResponder];
 	 }
 */
+
+- (void) textViewDidBeginEditing:(UITextView *)textView{	
+	if (textView == lastMemoView) {
+		/*set a flag isEditing = YES if the last memo is being edited. 
+		 modify addTimeStamp to check if lastMemo is flagged for editing
+		 if yes, then copy the text to last memo and return. If no then proceed as normal.
+		 
+		 */
+		Memo *lastMemo = [memoArray objectAtIndex:0];
+		editmemoTextView.text = [lastMemo valueForKey:@"memoText"];
+		[lastMemoView removeFromSuperview];
+		[editmemoTextView becomeFirstResponder];
+	}	
+}
+
+- (void) textViewDidEndEditing:(UITextView *)textView {
+		if (textView == editmemoTextView) {
+			NSLog(@"edittextview ended editing");
+			[self.bottomView addSubview:lastMemoView];
+			[lastMemoView resignFirstResponder];
+			[self.view endEditing:YES];
+/* FIX: 
+ 1. when a save action via addTimeStamp fires, then the new text must overwrite the old text. this can be easily achieved by copying the content of the last memo to a new memo. The old timestamp must also be copied to the new memo. Add a field for lastEditTimeStamp.
+ */
+		}
+
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
 	return YES; 
 }
