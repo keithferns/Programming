@@ -129,8 +129,8 @@
     }
 	Folder *newFolder = [folderArray objectAtIndex:[indexPath row]];
 	if ([folderArray count] > ([indexPath row] + 1)) {
+			///
 	}
-		//[cell.detailTextLabel setText: [dateFormatter stringFromDate:[newFolder timeStamp]]];
 	[cell.textLabel setText:[NSString stringWithFormat:@"%@", [newFolder folderName]]];
 	
     return cell;

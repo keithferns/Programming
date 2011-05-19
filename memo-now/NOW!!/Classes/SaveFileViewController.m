@@ -47,7 +47,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	isSearching = NO;
 	NSLog(@"added an instance of topView and bottomView to view");
 	[self.bottomView addSubview:tableViewController.tableView];
 	[self.view addSubview:topView];
@@ -85,29 +84,12 @@
 	[request release];	
 }
 
-- (void) searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
-	NSLog(@"isSearching is set to %d", isSearching);
-	isSearching = YES;
-	NSLog(@"isSearching is now set to %d", isSearching);
-		//create new subview and initialize with the frame for the topView
-	CGRect mytestFrame = CGRectMake(0, 0, 320, 192);
-	UIView *myNewView = [[[UIView	alloc] initWithFrame:mytestFrame] autorelease];
-		
-		//When the user taps inside the search bar, the new subview is set to blue background and the tableView is added to it. 
-	if (isSearching) {
-		
-		[myNewView setBackgroundColor:[UIColor blueColor]];
-		[self.view addSubview:myNewView];
-		[myNewView addSubview:tableViewController.tableView];
-	}
-}
 
 - (BOOL) textFieldShouldReturn:(UITextField *)textField{
 	
 	NSString *aString = [NSString stringWithFormat:@"%@", textField.text];
 	NSLog(@"aString is set to %@", aString);
 	if ([textField tag] == 3){
-	
 			NSLog(@"aString is set to %@", aString);
 			Folder *newFolder = (Folder *)[NSEntityDescription insertNewObjectForEntityForName:@"Folder" inManagedObjectContext: managedObjectContext];	//Initialize a new Memo Object and Insert it into Memo table in the ManagedObjectContext
 			[newFolder setTimeStamp:[NSDate	date]];//sets the timeStamp of the new Memo
@@ -143,6 +125,17 @@
 }
 
 
+- (void) searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+		//create new subview and initialize with the frame for the topView
+	CGRect mytestFrame = CGRectMake(0, 0, 320, 192);
+	UIView *myNewView = [[[UIView	alloc] initWithFrame:mytestFrame] autorelease];
+		//When the user taps inside the search bar, the new subview is set to blue background and the tableView is added to it. 
+	[myNewView setBackgroundColor:[UIColor blueColor]];
+	[self.view addSubview:myNewView];
+	[myNewView addSubview:tableViewController.tableView];
+}
+
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return YES;
 }
@@ -169,8 +162,6 @@
 	[getTag release];
 	[searchBar release];
 	[tableViewController release];
-		//[managedObjectContext release];
-	[folderArray release];
 }
 
 

@@ -6,8 +6,10 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
+
 #import "SaveFilesTableViewController.h"
 #import "NOW__AppDelegate.h"
+#import "FileCustomCell.h"
 
 @implementation SaveFilesTableViewController
 
@@ -65,7 +67,6 @@
 	[sortByDate release];
 	NSError *error;
 	NSMutableArray *mutableFetchResults = [[managedObjectContext executeFetchRequest:request error:&error] mutableCopy];
-	
 	if (!mutableFetchResults) {
 	}
 		//save fetched data to an array
@@ -115,22 +116,25 @@
 	// Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    static NSString *CellIdentifier = @"Cell";
-	static NSDateFormatter *dateFormatter = nil;
-	if (dateFormatter == nil) {
-		dateFormatter = [[NSDateFormatter alloc] init];
-		[dateFormatter setDateFormat:@"h:mm.ss a"];
-	}
-    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    static NSString *CellIdentifier = @"FileCustomCell";
+
+    FileCustomCell *cell = (FileCustomCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
-    }
-	Folder *newFolder = [folderArray objectAtIndex:[indexPath row]];
-	if ([folderArray count] > ([indexPath row] + 1)) {
+		NSArray *topLevelObjects = [[NSBundle mainBundle]
+									loadNibNamed:@"FileCustomCell"
+									owner:nil options:nil];
+		
+		for (id currentObject in topLevelObjects){
+			if([currentObject isKindOfClass:[UITableViewCell class]]){
+				cell = (FileCustomCell *) currentObject;
+				break;
+			}
+		}
 	}
-		//[cell.detailTextLabel setText: [dateFormatter stringFromDate:[newFolder timeStamp]]];
-	[cell.textLabel setText:[NSString stringWithFormat:@"%@", [newFolder folderName]]];
+	Folder *newFolder = [folderArray objectAtIndex:[indexPath row]];
 	
+	[cell.fileName setText:[NSString stringWithFormat:@"%@", [newFolder valueForKey:@"folderName"]]];
+		
     return cell;
 }
 
@@ -204,8 +208,6 @@
 
 - (void)dealloc {
     [super dealloc];
-		//[managedObjectContext release];
-		//[folderArray release];
 	[tableView release];
 	[searchBar release];
 }

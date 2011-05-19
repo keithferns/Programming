@@ -100,6 +100,18 @@
 		return;
 	}
 }
+	Memo *lastMemo = [memoArray objectAtIndex:0];
+	if ([lastMemo valueForKey:@"isEditing"] == YES){//FIX:  call the right getter method (bool)validateisediting:(NSNumber *)valueRef....
+													//NOTE: to find the declarations and implementations, select the attribute in the DataModel and then right-click and choose copy declarations/implementation to clipboard.
+		[lastMemo setMemoText:mytext];
+		[lastMemo setLastEditTimeStamp:[NSDate date]];
+		[lastMemo setIsEditing:NO];
+		return;
+	}
+	
+	else {
+		
+	
 	Memo *newMemo = (Memo *)[NSEntityDescription insertNewObjectForEntityForName:@"Memo" inManagedObjectContext: managedObjectContext];	//Initialize a new Memo Object and Insert it into Memo table in the ManagedObjectContext
 	[newMemo setTimeStamp:[NSDate	date]];//sets the timeStamp of the new Memo
 	[newMemo setMemoText:mytext];//copies the input text to the new Memo. 
@@ -109,6 +121,7 @@
 	}
 	[memoArray insertObject:newMemo atIndex:0];
 	NSLog(@"the memo at index 0 is %@", [[memoArray objectAtIndex:0] valueForKey:@"memoText"]);
+	}	
 	[lastMemoView setText:[[memoArray objectAtIndex:0] valueForKey:@"memoText"]];
 	[self.view endEditing:YES]; //this resigns first responder status for the view and all subviews.
 	[self.view resignFirstResponder];
@@ -206,7 +219,6 @@
         NSLog(@"After managedObjectContext: %@",  managedObjectContext);
 	}
 	/* Fetch Records and Get text of last Memo*/
-	
 	[self fetchMemoRecords];
 	int myInt = [memoArray count];
 	NSLog(@"Number of Memos in the data store: %d", myInt);
@@ -216,10 +228,9 @@
 		NSString *lastMemoText = [lastMemo valueForKey:@"memoText"];
 		NSLog(@"This is the text of the last Memo: %@", lastMemoText);
 		[lastMemoView setText:lastMemoText];
+			//FIND: should lastMemo object be released here?	
 	}
 }
-
-
 
 #pragma mark -
 #pragma mark DATA MANAGEMENT
@@ -244,9 +255,13 @@
 		 
 		 */
 		Memo *lastMemo = [memoArray objectAtIndex:0];
+		[lastMemo setIsEditing:NO];//changes the value of isEditing.
+		
 		editmemoTextView.text = [lastMemo valueForKey:@"memoText"];
+
 		[lastMemoView removeFromSuperview];
 		[editmemoTextView becomeFirstResponder];
+		[lastMemo release];
 	}	
 }
 

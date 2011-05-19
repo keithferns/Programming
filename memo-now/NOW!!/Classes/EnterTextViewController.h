@@ -13,8 +13,8 @@
  
 - EnterTextViewController
 	~ Find way to resize the cells for the action sheets. Currently, in landscape, only 3 out of 4 cells are visible. Alternately, merge two functions so that there are only 3 options apart from the later button in the action sheet.
-	~ Move the LastMemo text view to TopView and make editable. 
-	~ Connent the UrgentAppointment/todo's textview to the data.  
+	~ DONE:	Move the LastMemo text view to TopView and make editable. 
+	~ Connect the UrgentAppointment/todo's textview to the data.  
 	~ Format both the textview for presentation of info. 
  
 - SaveFileViewController

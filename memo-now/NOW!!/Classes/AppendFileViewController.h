@@ -7,18 +7,27 @@
 #import <UIKit/UIKit.h>
 
 
-@interface AppendFileViewController : UIViewController {
-	UITableViewController *myfilesTableViewController;	
-	UITableView *myfiles;
+@interface AppendFileViewController : UIViewController <UISearchBarDelegate> {
+	UITableViewController *tableViewController;	
+	UIView *bottomView, *topView; 
+	UISearchBar *searchBar;
+	NSManagedObjectContext *managedObjectContext;
+	NSMutableArray *memoArray;
 }
 
 
-@property (nonatomic, retain) IBOutlet UITableView *myfiles;
 
-@property (nonatomic, retain) IBOutlet UITableViewController *myfilesTableViewController;
+@property (nonatomic, retain) IBOutlet UITableViewController *tableViewController;
 
--(IBAction) navigationAction:(id)sender;
+@property(nonatomic, retain) NSManagedObjectContext *managedObjectContext;
+@property(nonatomic, retain) NSMutableArray *memoArray;
 
+@property (nonatomic, retain) IBOutlet UIView *bottomView, *topView;
+@property (nonatomic, retain) IBOutlet UISearchBar *searchBar;
+
+
+- (IBAction) navigationAction:(id)sender;
+-(void) fetchMemoRecords;
 
 
 @end

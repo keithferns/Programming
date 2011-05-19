@@ -30,11 +30,8 @@
 	}
 }
 
-
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
-	isSearching = NO;
 	[self.view	addSubview:bottomView];
 	[self.view addSubview:topView];	
 	[self.topView addSubview:viewSelectedMemo];
@@ -44,18 +41,13 @@
 }
 
 - (void) searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
-	NSLog(@"isSearching is set to %d", isSearching);
-	isSearching = YES;
-	NSLog(@"isSearching is now set to %d", isSearching);
 		//create new subview and initialize with the frame for the topView
 	CGRect mytestFrame = CGRectMake(0, 0, 320, 192);
 	UIView *myNewView = [[[UIView	alloc] initWithFrame:mytestFrame] autorelease];
 		//When the user taps inside the search bar, the new subview is set to blue background and the tableView is added to it. 
-	if (isSearching) {
 		[myNewView setBackgroundColor:[UIColor blueColor]];
 		[self.view addSubview:myNewView];
 		[myNewView addSubview:tableViewController.tableView];
-	}
 
 }
 

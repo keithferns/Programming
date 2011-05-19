@@ -16,5 +16,7 @@
 @dynamic memoText;
 @dynamic keyWords;
 @dynamic tags;
+@dynamic isEditing;
+@dynamic lastEditTimeStamp;
 
 @end

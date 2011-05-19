@@ -7,13 +7,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SaveFileViewController : UIViewController <UITextFieldDelegate> {
+@interface SaveFileViewController : UIViewController <UITextFieldDelegate, UISearchBarDelegate> {
 
 	UITextField *getFileName, *getFolderName, *getTag;	
 	UIView *bottomView, *topView; 
 	UISearchBar *searchBar;
 	UITableViewController *tableViewController;
-	BOOL isSearching;
 	NSManagedObjectContext *managedObjectContext;
 	NSMutableArray *folderArray;
 }

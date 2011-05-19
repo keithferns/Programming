@@ -14,7 +14,6 @@
 	UIView *bottomView, *topView; 
 	UILabel *myTestLabel;
 	UITextView *viewSelectedMemo;
-	BOOL isSearching;
 
 }
 

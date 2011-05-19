@@ -205,6 +205,8 @@
 
 - (void)dealloc {
     [super dealloc];
+	[tableView release];
+	[searchBar release];
 	
 }
 

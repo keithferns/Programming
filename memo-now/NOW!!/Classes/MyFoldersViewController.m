@@ -13,7 +13,7 @@
 
 @synthesize tableViewController;
 @synthesize	tableView;
-@synthesize topView, bottomView, viewLabel, textView;
+@synthesize topView, bottomView, viewLabel, textView, textField;
 
 -(IBAction) navigationAction:(id)sender{
 	switch ([sender tag]) {
@@ -49,9 +49,23 @@
 	[self.view addSubview:bottomView];
 	[self.topView addSubview:textView];
 	[self.bottomView addSubview:tableViewController.tableView];
+	
+		//[self.topView addSubview:textField];
+	
 		//[self.textView addSubview:doneButton];
 		//[doneButton addTarget:self action:@selector(clearButtonSelected:) forControlEvents:UIControlEventTouchUpInside];
 }
+
+- (void) searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+		//create new subview and initialize with the frame for the topView
+	CGRect mytestFrame = CGRectMake(0, 0, 320, 192);
+	UIView *myNewView = [[[UIView	alloc] initWithFrame:mytestFrame] autorelease];
+		//When the user taps inside the search bar, the new subview is set to blue background and the tableView is added to it. 
+		[myNewView setBackgroundColor:[UIColor blueColor]];
+		[self.view addSubview:myNewView];
+		[myNewView addSubview:tableViewController.tableView];	
+}
+
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return YES;

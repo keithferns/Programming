@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="31"/>
+			<integer value="34"/>
 			<integer value="82"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
@@ -262,6 +262,7 @@
 										<reference key="NSSuperview" ref="67377859"/>
 										<int key="IBUIContentMode">3</int>
 										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+										<string key="IBPlaceholder">Search For a File or Folder</string>
 										<object class="IBUITextInputTraits" key="IBTextInputTraits">
 											<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 										</object>
@@ -274,13 +275,12 @@
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">3</int>
 								<bool key="IBUIMultipleTouchEnabled">YES</bool>
-								<string key="IBUIContentStretch">{{0, 0}, {1, 0.6}}</string>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<bool key="IBUIAlwaysBounceVertical">YES</bool>
 								<int key="IBUISeparatorStyle">1</int>
 								<int key="IBUISectionIndexMinimumDisplayRowCount">0</int>
 								<bool key="IBUIShowsSelectionImmediatelyOnTouchBegin">YES</bool>
-								<float key="IBUIRowHeight">30</float>
+								<float key="IBUIRowHeight">34</float>
 								<reference key="IBUITableHeaderView" ref="361302333"/>
 							</object>
 						</object>
@@ -300,7 +300,6 @@
 					<int key="NSColorSpace">2</int>
 					<bytes key="NSRGB">MC41MDE5NjA4MTQgMC42MTk2MDc4NjU4IDEAA</bytes>
 				</object>
-				<bool key="IBUIClipsSubviews">YES</bool>
 				<bool key="IBUIMultipleTouchEnabled">YES</bool>
 				<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
 				<object class="IBUIAccessibilityConfiguration" key="IBUIAccessibilityConfiguration">
@@ -458,6 +457,14 @@
 						<reference key="destination" ref="204005305"/>
 					</object>
 					<int key="connectionID">115</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">delegate</string>
+						<reference key="source" ref="361302333"/>
+						<reference key="destination" ref="372490531"/>
+					</object>
+					<int key="connectionID">116</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -811,7 +818,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">115</int>
+			<int key="maxID">116</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -834,31 +841,45 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>myfiles</string>
-							<string>myfilesTableViewController</string>
+							<string>bottomView</string>
+							<string>searchBar</string>
+							<string>tableViewController</string>
+							<string>topView</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>UITableView</string>
+							<string>UIView</string>
+							<string>UISearchBar</string>
 							<string>UITableViewController</string>
+							<string>UIView</string>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>myfiles</string>
-							<string>myfilesTableViewController</string>
+							<string>bottomView</string>
+							<string>searchBar</string>
+							<string>tableViewController</string>
+							<string>topView</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBToOneOutletInfo">
-								<string key="name">myfiles</string>
-								<string key="candidateClassName">UITableView</string>
+								<string key="name">bottomView</string>
+								<string key="candidateClassName">UIView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">myfilesTableViewController</string>
+								<string key="name">searchBar</string>
+								<string key="candidateClassName">UISearchBar</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">tableViewController</string>
 								<string key="candidateClassName">UITableViewController</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">topView</string>
+								<string key="candidateClassName">UIView</string>
 							</object>
 						</object>
 					</object>
@@ -1174,6 +1195,7 @@
 							<string>bottomView</string>
 							<string>tableView</string>
 							<string>tableViewController</string>
+							<string>textField</string>
 							<string>textView</string>
 							<string>topView</string>
 							<string>viewLabel</string>
@@ -1183,6 +1205,7 @@
 							<string>UIView</string>
 							<string>UITableView</string>
 							<string>UITableViewController</string>
+							<string>UITextField</string>
 							<string>UITextView</string>
 							<string>UIView</string>
 							<string>UILabel</string>
@@ -1195,6 +1218,7 @@
 							<string>bottomView</string>
 							<string>tableView</string>
 							<string>tableViewController</string>
+							<string>textField</string>
 							<string>textView</string>
 							<string>topView</string>
 							<string>viewLabel</string>
@@ -1212,6 +1236,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">tableViewController</string>
 								<string key="candidateClassName">UITableViewController</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">textField</string>
+								<string key="candidateClassName">UITextField</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">textView</string>

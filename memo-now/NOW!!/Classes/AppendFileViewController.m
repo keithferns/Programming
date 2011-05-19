@@ -7,13 +7,15 @@
 //
 
 #import "AppendFileViewController.h"
+#import "NOW__AppDelegate.h"
 
 
 @implementation AppendFileViewController
 
 
-@synthesize myfilesTableViewController;
-@synthesize myfiles;
+@synthesize topView, bottomView, searchBar, tableViewController;
+@synthesize memoArray, managedObjectContext;
+
 
 #pragma mark -
 #pragma mark Navigation
@@ -53,12 +55,52 @@
 }
 */
 
-/*
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
-
+    [super viewDidLoad];
+	NSLog(@"added an instance of topView and bottomView to view");
+	[self.bottomView addSubview:tableViewController.tableView];
+	[self.view addSubview:topView];
+	[self.view addSubview:bottomView];
+	if (managedObjectContext == nil) 
+	{ 
+        managedObjectContext = [(NOW__AppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext]; 
+        NSLog(@"After managedObjectContext: %@",  managedObjectContext);
+	}
+	[self fetchMemoRecords];	
 }
-*/
+
+
+-(void) fetchMemoRecords{NSLog(@"Going to fetch Memo records now");
+		//defining table to use
+	NSEntityDescription *aMemo = [NSEntityDescription entityForName:@"Memo" inManagedObjectContext:managedObjectContext];
+		//setting up the fetch request
+	NSFetchRequest *request	= [[NSFetchRequest alloc] init];
+	[request setEntity:aMemo];
+		//defines how to sort the records
+	NSSortDescriptor *sortByDate = [[NSSortDescriptor alloc] initWithKey:@"timeStamp" ascending:NO];
+	NSArray *sortDescriptors = [NSArray arrayWithObject:sortByDate];//note: if adding other sortdescriptors, then use method -arraywithObjects. If the fetch request must meet some conditions, then use the NSPredicate class 
+	[request setSortDescriptors:sortDescriptors];
+	[sortByDate release];
+	NSError *error;
+	NSMutableArray *mutableFetchResults = [[managedObjectContext executeFetchRequest:request error:&error] mutableCopy];
+	
+	if (!mutableFetchResults) {
+			//
+	}
+	[self setMemoArray:mutableFetchResults];//save fetched data to an array
+	[mutableFetchResults release];
+	[request release];	
+}
+
+- (void) searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+		//create new subview and initialize with the frame for the topView
+	CGRect mytestFrame = CGRectMake(0, 0, 320, 192);
+	UIView *myNewView = [[[UIView	alloc] initWithFrame:mytestFrame] autorelease];
+		//When the user taps inside the search bar, the new subview is set to blue background and the tableView is added to it. 
+	[myNewView setBackgroundColor:[UIColor blueColor]];
+	[self.view addSubview:myNewView];
+	[myNewView addSubview:tableViewController.tableView];	
+}
 
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -80,8 +122,11 @@
 
 
 - (void)dealloc {
-	[myfilesTableViewController release];
-	[myfiles release];
+	[tableViewController release];
+	[memoArray release];
+	[searchBar release];
+	[topView release];
+	[bottomView release];
     [super dealloc];
 }
 

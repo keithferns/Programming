@@ -11,6 +11,7 @@
 
 @interface Folder :  NSManagedObject  
 {
+	
 }
 
 @property (nonatomic, retain) NSDate * timeStamp;

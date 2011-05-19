@@ -17,6 +17,11 @@
 @property (nonatomic, retain) NSString * memoText;
 @property (nonatomic, retain) NSString * keyWords;
 @property (nonatomic, retain) NSString * tags;
+@property (nonatomic, retain) NSNumber * isEditing;
+@property (nonatomic, retain) NSDate * lastEditTimeStamp;
+
+
+
 
 @end
 
