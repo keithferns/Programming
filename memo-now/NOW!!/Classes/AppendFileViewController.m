@@ -14,7 +14,7 @@
 
 
 @synthesize topView, bottomView, searchBar, tableViewController;
-@synthesize memoArray, managedObjectContext;
+@synthesize fileArray, managedObjectContext;
 
 
 #pragma mark -
@@ -23,6 +23,7 @@
 
 -(IBAction) navigationAction:(id)sender{
 	switch ([sender tag]) {
+/*FIX: the BACK button should return the user to the current memo; the NEW button should return the user to a blank memo page; the GOTO button should raise the GOTO action sheet */			
 		case 1:
 			[self dismissModalViewControllerAnimated:YES];	
 			break;
@@ -38,23 +39,6 @@
 }
 	
 
-	// The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
-/*
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization.
-    }
-    return self;
-}
-*/
-
-/*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView {
-}
-*/
-
 - (void)viewDidLoad {
     [super viewDidLoad];
 	NSLog(@"added an instance of topView and bottomView to view");
@@ -66,28 +50,26 @@
         managedObjectContext = [(NOW__AppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext]; 
         NSLog(@"After managedObjectContext: %@",  managedObjectContext);
 	}
-	[self fetchMemoRecords];	
+	[self fetchFileRecords];	
 }
 
-
--(void) fetchMemoRecords{NSLog(@"Going to fetch Memo records now");
-		//defining table to use
-	NSEntityDescription *aMemo = [NSEntityDescription entityForName:@"Memo" inManagedObjectContext:managedObjectContext];
+-(void) fetchFileRecords{NSLog(@"Going to fetch Memo records now");
+	NSEntityDescription *aFile = [NSEntityDescription entityForName:@"File" inManagedObjectContext:managedObjectContext];
 		//setting up the fetch request
 	NSFetchRequest *request	= [[NSFetchRequest alloc] init];
-	[request setEntity:aMemo];
+	[request setEntity:aFile];
 		//defines how to sort the records
-	NSSortDescriptor *sortByDate = [[NSSortDescriptor alloc] initWithKey:@"timeStamp" ascending:NO];
-	NSArray *sortDescriptors = [NSArray arrayWithObject:sortByDate];//note: if adding other sortdescriptors, then use method -arraywithObjects. If the fetch request must meet some conditions, then use the NSPredicate class 
+	NSSortDescriptor *sortByName = [[NSSortDescriptor alloc] initWithKey:@"fileName" ascending:YES];
+	NSArray *sortDescriptors = [NSArray arrayWithObject:sortByName];//note: if adding other sortdescriptors, then use method -arraywithObjects. If the fetch request must meet some conditions, then use the NSPredicate class 
 	[request setSortDescriptors:sortDescriptors];
-	[sortByDate release];
+	[sortByName release];
 	NSError *error;
 	NSMutableArray *mutableFetchResults = [[managedObjectContext executeFetchRequest:request error:&error] mutableCopy];
 	
 	if (!mutableFetchResults) {
 			//
 	}
-	[self setMemoArray:mutableFetchResults];//save fetched data to an array
+	[self setFileArray:mutableFetchResults];//save fetched data to an array
 	[mutableFetchResults release];
 	[request release];	
 }
@@ -123,7 +105,7 @@
 
 - (void)dealloc {
 	[tableViewController release];
-	[memoArray release];
+	[fileArray release];
 	[searchBar release];
 	[topView release];
 	[bottomView release];

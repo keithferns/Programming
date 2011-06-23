@@ -14,12 +14,11 @@
 	UISearchBar *searchBar;
 	UITableViewController *tableViewController;
 	NSManagedObjectContext *managedObjectContext;
-	NSMutableArray *folderArray;
+	NSMutableArray *folderArray, *memoArray, *fileArray;
 }
 
 @property(nonatomic, retain) NSManagedObjectContext *managedObjectContext;
-@property(nonatomic, retain) NSMutableArray *folderArray;
-
+@property(nonatomic, retain) NSMutableArray *folderArray, *memoArray, *fileArray;
 @property (nonatomic, retain) IBOutlet UIView *bottomView, *topView;
 @property (nonatomic, retain) IBOutlet UITextField *getFileName, *getFolderName, *getTag;
 @property (nonatomic, retain) IBOutlet UISearchBar *searchBar;
@@ -28,6 +27,8 @@
 
 - (IBAction) navigationAction:(id)sender;
 -(void) fetchFolderRecords;
+-(void) fetchMemoRecords;
+-(void) fetchFileRecords;
 
 
 @end

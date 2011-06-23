@@ -11,6 +11,17 @@
 
 @implementation MyWallViewController
 
+-(IBAction)sendMail:(id)sender{
+	NSLog(@"Trying to send mail");
+	MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];  
+	mc.mailComposeDelegate = self;  
+
+	[mc setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];  
+    [self presentModalViewController:mc animated:YES];  
+    [mc release];  
+
+}
+
 
 -(IBAction)showActionSheet:(id)sender{
 	

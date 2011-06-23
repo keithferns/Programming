@@ -13,7 +13,7 @@
 @implementation AppendFileTableViewController
 
 @synthesize managedObjectContext;
-@synthesize memoArray;
+@synthesize fileArray;
 @synthesize tableView;
 @synthesize searchBar;
 
@@ -46,28 +46,27 @@
 	[self.view addSubview:tableView];
 	self.tableView.tableHeaderView = searchBar;
 	searchBar.autocorrectionType = UITextAutocorrectionTypeNo;
-	[self fetchMemoRecords];	
+	[self fetchFileRecords];	
 }
 
--(void) fetchMemoRecords{
-	NSLog(@"Going to fetch Memo records now");
+-(void) fetchFileRecords{
+	NSLog(@"Going to fetch File records now");
 		//defining table to use
-	NSEntityDescription *entity = [NSEntityDescription entityForName:@"Memo" inManagedObjectContext:managedObjectContext];
+	NSEntityDescription *entity = [NSEntityDescription entityForName:@"File" inManagedObjectContext:managedObjectContext];
 		//setting up the fetch request
 	NSFetchRequest *request	= [[NSFetchRequest alloc] init];
 	[request setEntity:entity];
 		//defines how to sort the records
-	NSSortDescriptor *sortByDate = [[NSSortDescriptor alloc] initWithKey:@"timeStamp" ascending:NO];
+	NSSortDescriptor *sortByDate = [[NSSortDescriptor alloc] initWithKey:@"fileName" ascending:NO];
 	NSArray *sortDescriptors = [NSArray arrayWithObject:sortByDate];//note: if adding other sortdescriptors, then use  method -arraywithObjects. If the fetch request must meet some conditions, then use the NSPredicate class 
 	[request setSortDescriptors:sortDescriptors];
 	[sortByDate release];
 	NSError *error;
 	NSMutableArray *mutableFetchResults = [[managedObjectContext executeFetchRequest:request error:&error] mutableCopy];
-	
 	if (!mutableFetchResults) {
 	}
 		//save fetched data to an array
-	[self setMemoArray:mutableFetchResults];
+	[self setFileArray:mutableFetchResults];
 	[mutableFetchResults release];
 	[request release];
 }
@@ -107,7 +106,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 		// Return the number of rows in the section.
-    return [memoArray count];
+    return [fileArray count];
 }
 
 	// Customize the appearance of table view cells.
@@ -123,11 +122,14 @@
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
-	Memo *newMemo = [memoArray objectAtIndex:[indexPath row]];
-	if ([memoArray count] > ([indexPath row] + 1)) {
+	
+	cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
+	
+	File *newFile = [fileArray objectAtIndex:[indexPath row]];
+	if ([fileArray count] > ([indexPath row] + 1)) {
 	}
-		//[cell.detailTextLabel setText: [dateFormatter stringFromDate:[newFolder timeStamp]]];
-	[cell.textLabel setText:[NSString stringWithFormat:@"%@", [newMemo memoText]]];
+	
+	[cell.textLabel setText:[NSString stringWithFormat:@"%@", [newFile fileName]]];
 	
     return cell;
 }
@@ -140,7 +142,6 @@
     return YES;
 }
 */
-
 
 /*
 // Override to support editing the table view.

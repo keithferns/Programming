@@ -59,6 +59,7 @@
 	// applicationWillTerminate: saves changes in the application's managed object context before the application terminates.
 
 - (void)applicationWillTerminate:(UIApplication *)application {
+	NSLog(@"The application Will Terminate");
 
     NSError *error = nil;
 //KF: PERHAPS HERE IS THE PLACE TO INSERT THE CODE TO DISMISS ALL VIEWS
@@ -76,6 +77,9 @@
             abort();
         } 
     }
+	managedObjectContext = nil;
+	window = nil;
+	viewController = nil;
 }    
 
 

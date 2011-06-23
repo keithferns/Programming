@@ -2,20 +2,20 @@
 //  Folder.m
 //  NOW!!
 //
-//  Created by Keith Fernandes on 5/10/11.
+//  Created by Keith Fernandes on 6/23/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
 #import "Folder.h"
 
+#import "File.h"
 
 @implementation Folder 
 
 @dynamic timeStamp;
-@dynamic folderTags;
-@dynamic folderID;
+@dynamic folderTag;
 @dynamic folderName;
-@dynamic folderKeyWords;
+@dynamic folderKeyWord;
 @dynamic contains;
 
 @end

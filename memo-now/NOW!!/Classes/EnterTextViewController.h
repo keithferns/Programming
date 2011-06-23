@@ -17,11 +17,7 @@
 	~ Connect the UrgentAppointment/todo's textview to the data.  
 	~ Format both the textview for presentation of info. 
  
-- SaveFileViewController
-	~ Add Search Box to Search For Folders. Resuse Code from MyMemos
-	~
-- AppointmentDateTimeViewController.
- 
+ - AppointmentDateTimeViewController.
 	~ remove the backslash date option. keep it simple. replace with the option to SAVE and leave without setting a specific time. 
 	~ need to add an option to set a custom reminder for each appointment. there will be a default setting which can be turned on/off or customized in the preferences window, but the user should have the option to add or change reminder alarms on a case by case basis. 
  

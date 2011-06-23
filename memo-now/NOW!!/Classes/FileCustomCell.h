@@ -12,12 +12,13 @@
 @interface FileCustomCell : UITableViewCell {
 
 	
-	UILabel	*timeStamp;
 	UILabel *fileName;
+	UITextView *fileText;
 	
 }
 
-@property (nonatomic, retain) IBOutlet UILabel *timeStamp, *fileName;
+@property (nonatomic, retain) IBOutlet UILabel *fileName;
+@property (nonatomic, retain) IBOutlet UITextView *fileText;
 
 
 @end

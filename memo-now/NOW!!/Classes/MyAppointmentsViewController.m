@@ -44,21 +44,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
  
- [self.view addSubview:label];
- [self.view addSubview:bottomView];
- [self.view addSubview:topView];
- [topView addSubview:textView];
- [bottomView addSubview:tableViewController.tableView];
+	[self.view addSubview:label];
+	[self.view addSubview:bottomView];
+	[self.view addSubview:topView];
+	[topView addSubview:textView];
+	[bottomView addSubview:tableViewController.tableView];
 }
 
 
-/*
-// Override to allow orientations other than the default portrait orientation.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations.
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return YES;
 }
-*/
 
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.

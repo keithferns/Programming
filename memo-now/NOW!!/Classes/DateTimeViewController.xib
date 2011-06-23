@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="193"/>
+			<integer value="200"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -319,6 +319,67 @@
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
+					<object class="IBUIView" id="207999804">
+						<reference key="NSNextResponder" ref="191373211"/>
+						<int key="NSvFlags">319</int>
+						<object class="NSMutableArray" key="NSSubviews">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBUILabel" id="746067653">
+								<reference key="NSNextResponder" ref="207999804"/>
+								<int key="NSvFlags">303</int>
+								<string key="NSFrame">{{20, 20}, {30, 25}}</string>
+								<reference key="NSSuperview" ref="207999804"/>
+								<bool key="IBUIOpaque">NO</bool>
+								<bool key="IBUIClipsSubviews">YES</bool>
+								<int key="IBUIContentMode">7</int>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<string key="IBUIText">Low</string>
+								<reference key="IBUITextColor" ref="902269962"/>
+								<reference key="IBUIHighlightedColor" ref="424177783"/>
+								<int key="IBUIBaselineAdjustment">1</int>
+								<float key="IBUIMinimumFontSize">10</float>
+							</object>
+							<object class="IBUILabel" id="748193659">
+								<reference key="NSNextResponder" ref="207999804"/>
+								<int key="NSvFlags">303</int>
+								<string key="NSFrame">{{260, 20}, {40, 25}}</string>
+								<reference key="NSSuperview" ref="207999804"/>
+								<bool key="IBUIOpaque">NO</bool>
+								<bool key="IBUIClipsSubviews">YES</bool>
+								<int key="IBUIContentMode">7</int>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<string key="IBUIText">High</string>
+								<reference key="IBUITextColor" ref="902269962"/>
+								<reference key="IBUIHighlightedColor" ref="424177783"/>
+								<int key="IBUIBaselineAdjustment">1</int>
+								<float key="IBUIMinimumFontSize">10</float>
+							</object>
+							<object class="IBUISlider" id="418978374">
+								<reference key="NSNextResponder" ref="207999804"/>
+								<int key="NSvFlags">303</int>
+								<string key="NSFrame">{{18, 45}, {284, 23}}</string>
+								<reference key="NSSuperview" ref="207999804"/>
+								<bool key="IBUIOpaque">NO</bool>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<int key="IBUIContentHorizontalAlignment">0</int>
+								<int key="IBUIContentVerticalAlignment">0</int>
+								<float key="IBUIValue">5</float>
+								<float key="IBUIMinValue">1</float>
+								<float key="IBUIMaxValue">10</float>
+								<bool key="IBUIContinuous">NO</bool>
+							</object>
+						</object>
+						<string key="NSFrame">{{0, 25}, {320, 182}}</string>
+						<reference key="NSSuperview" ref="191373211"/>
+						<object class="NSColor" key="IBUIBackgroundColor">
+							<int key="NSColorSpace">2</int>
+							<bytes key="NSRGB">MC4wNzg0MzEzNzUzMiAwLjIxOTYwNzg1OTggMQA</bytes>
+						</object>
+						<int key="IBUITag">4</int>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+					</object>
 					<object class="IBUIView" id="477486999">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">319</int>
@@ -550,6 +611,7 @@
 						</object>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
+						<int key="IBUITag">1</int>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
 					<object class="IBUIView" id="1072284800">
@@ -773,6 +835,7 @@
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
+						<int key="IBUITag">3</int>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
 					<object class="IBUIView" id="990065509">
@@ -803,7 +866,7 @@
 							<object class="IBUIButton" id="325735428">
 								<reference key="NSNextResponder" ref="990065509"/>
 								<int key="NSvFlags">319</int>
-								<string key="NSFrame">{{98, -5}, {122, 53}}</string>
+								<string key="NSFrame">{{99, -5}, {122, 53}}</string>
 								<reference key="NSSuperview" ref="990065509"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<int key="IBUITag">2</int>
@@ -855,21 +918,6 @@
 					<boolean value="YES" key="IBUIIsAccessibilityElement"/>
 				</object>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-			</object>
-			<object class="IBUISlider" id="1014870147">
-				<nil key="NSNextResponder"/>
-				<int key="NSvFlags">271</int>
-				<string key="NSFrame">{{19, 178}, {284, 23}}</string>
-				<object class="NSColor" key="IBUIBackgroundColor">
-					<int key="NSColorSpace">2</int>
-					<bytes key="NSRGB">MC4wNzg0MzEzNzUzMiAwLjIxOTYwNzg1OTggMQA</bytes>
-				</object>
-				<bool key="IBUIOpaque">NO</bool>
-				<bool key="IBUIMultipleTouchEnabled">YES</bool>
-				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-				<int key="IBUIContentHorizontalAlignment">0</int>
-				<int key="IBUIContentVerticalAlignment">0</int>
-				<float key="IBUIValue">0.5</float>
 			</object>
 		</object>
 		<object class="IBObjectContainer" key="IBDocument.Objects">
@@ -1281,6 +1329,31 @@
 					</object>
 					<int key="connectionID">199</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">sliderValueChanged:</string>
+						<reference key="source" ref="418978374"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">13</int>
+					</object>
+					<int key="connectionID">213</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">priorityView</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="207999804"/>
+					</object>
+					<int key="connectionID">215</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">prioritySlider</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="418978374"/>
+					</object>
+					<int key="connectionID">216</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -1302,6 +1375,7 @@
 							<reference ref="785472393"/>
 							<reference ref="1072284800"/>
 							<reference ref="990065509"/>
+							<reference ref="207999804"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -1314,11 +1388,6 @@
 					<object class="IBObjectRecord">
 						<int key="objectID">-2</int>
 						<reference key="object" ref="975951072"/>
-						<reference key="parent" ref="0"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">38</int>
-						<reference key="object" ref="1014870147"/>
 						<reference key="parent" ref="0"/>
 					</object>
 					<object class="IBObjectRecord">
@@ -1618,8 +1687,8 @@
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="906877539"/>
-							<reference ref="325735428"/>
 							<reference ref="145137324"/>
+							<reference ref="325735428"/>
 						</object>
 						<reference key="parent" ref="191373211"/>
 					</object>
@@ -1637,6 +1706,36 @@
 						<int key="objectID">196</int>
 						<reference key="object" ref="145137324"/>
 						<reference key="parent" ref="990065509"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">200</int>
+						<reference key="object" ref="207999804"/>
+						<object class="NSMutableArray" key="children">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<reference ref="418978374"/>
+							<reference ref="746067653"/>
+							<reference ref="748193659"/>
+						</object>
+						<reference key="parent" ref="191373211"/>
+						<string key="objectName">SetPriority</string>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">201</int>
+						<reference key="object" ref="418978374"/>
+						<reference key="parent" ref="207999804"/>
+						<string key="objectName">appPrioritySlider</string>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">202</int>
+						<reference key="object" ref="746067653"/>
+						<reference key="parent" ref="207999804"/>
+						<string key="objectName">Priority:Low</string>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">204</int>
+						<reference key="object" ref="748193659"/>
+						<reference key="parent" ref="207999804"/>
+						<string key="objectName">Priority:High</string>
 					</object>
 				</object>
 			</object>
@@ -1684,8 +1783,13 @@
 					<string>195.IBViewBoundsToFrameTransform</string>
 					<string>196.IBPluginDependency</string>
 					<string>196.IBViewBoundsToFrameTransform</string>
-					<string>38.IBPluginDependency</string>
-					<string>38.IBViewBoundsToFrameTransform</string>
+					<string>200.IBPluginDependency</string>
+					<string>200.IBViewBoundsToFrameTransform</string>
+					<string>201.IBPluginDependency</string>
+					<string>202.IBPluginDependency</string>
+					<string>202.IBViewBoundsToFrameTransform</string>
+					<string>204.IBPluginDependency</string>
+					<string>204.IBViewBoundsToFrameTransform</string>
 					<string>62.IBEditorWindowLastContentRect</string>
 					<string>62.IBPluginDependency</string>
 					<string>62.IBViewBoundsToFrameTransform</string>
@@ -1752,7 +1856,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>DateTimeViewController</string>
 					<string>UIResponder</string>
-					<string>{{426, 276}, {320, 480}}</string>
+					<string>{{638, 276}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>{{618, 474}, {320, 182}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -1855,7 +1959,7 @@ dCAnLycgb3B0aW9uLiAgA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAADAgAAAwkwAAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAABCxAAAwjgAAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
@@ -1863,7 +1967,16 @@ dCAnLycgb3B0aW9uLiAgA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">AUGYAABDMgAAA</bytes>
+						<bytes key="NSTransformStruct">AQAAAABByAAAA</bytes>
+					</object>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<object class="NSAffineTransform">
+						<bytes key="NSTransformStruct">AUGgAABCogAAA</bytes>
+					</object>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<object class="NSAffineTransform">
+						<bytes key="NSTransformStruct">AUMLAABCogAAA</bytes>
 					</object>
 					<string>{{342, 709}, {320, 25}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -2010,7 +2123,7 @@ dCAnLycgb3B0aW9uLiAgA</bytes>
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">199</int>
+			<int key="maxID">216</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -2033,31 +2146,45 @@ dCAnLycgb3B0aW9uLiAgA</bytes>
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>myfiles</string>
-							<string>myfilesTableViewController</string>
+							<string>bottomView</string>
+							<string>searchBar</string>
+							<string>tableViewController</string>
+							<string>topView</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>UITableView</string>
+							<string>UIView</string>
+							<string>UISearchBar</string>
 							<string>UITableViewController</string>
+							<string>UIView</string>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>myfiles</string>
-							<string>myfilesTableViewController</string>
+							<string>bottomView</string>
+							<string>searchBar</string>
+							<string>tableViewController</string>
+							<string>topView</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBToOneOutletInfo">
-								<string key="name">myfiles</string>
-								<string key="candidateClassName">UITableView</string>
+								<string key="name">bottomView</string>
+								<string key="candidateClassName">UIView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">myfilesTableViewController</string>
+								<string key="name">searchBar</string>
+								<string key="candidateClassName">UISearchBar</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">tableViewController</string>
 								<string key="candidateClassName">UITableViewController</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">topView</string>
+								<string key="candidateClassName">UIView</string>
 							</object>
 						</object>
 					</object>
@@ -2077,6 +2204,7 @@ dCAnLycgb3B0aW9uLiAgA</bytes>
 							<string>doneAction</string>
 							<string>monthAction:</string>
 							<string>navigationAction:</string>
+							<string>sliderValueChanged:</string>
 							<string>timeAction:</string>
 							<string>timeButtonAction</string>
 						</object>
@@ -2086,6 +2214,7 @@ dCAnLycgb3B0aW9uLiAgA</bytes>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
+							<string>UISlider</string>
 							<string>id</string>
 							<string>id</string>
 						</object>
@@ -2098,6 +2227,7 @@ dCAnLycgb3B0aW9uLiAgA</bytes>
 							<string>doneAction</string>
 							<string>monthAction:</string>
 							<string>navigationAction:</string>
+							<string>sliderValueChanged:</string>
 							<string>timeAction:</string>
 							<string>timeButtonAction</string>
 						</object>
@@ -2120,6 +2250,10 @@ dCAnLycgb3B0aW9uLiAgA</bytes>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
+								<string key="name">sliderValueChanged:</string>
+								<string key="candidateClassName">UISlider</string>
+							</object>
+							<object class="IBActionInfo">
 								<string key="name">timeAction:</string>
 								<string key="candidateClassName">id</string>
 							</object>
@@ -2137,6 +2271,8 @@ dCAnLycgb3B0aW9uLiAgA</bytes>
 							<string>bottomLabel</string>
 							<string>dateView</string>
 							<string>monthView</string>
+							<string>prioritySlider</string>
+							<string>priorityView</string>
 							<string>timeButton</string>
 							<string>timeView</string>
 							<string>topLabel</string>
@@ -2146,6 +2282,8 @@ dCAnLycgb3B0aW9uLiAgA</bytes>
 							<string>UIButton</string>
 							<string>UILabel</string>
 							<string>UIView</string>
+							<string>UIView</string>
+							<string>UISlider</string>
 							<string>UIView</string>
 							<string>UIButton</string>
 							<string>UIView</string>
@@ -2160,6 +2298,8 @@ dCAnLycgb3B0aW9uLiAgA</bytes>
 							<string>bottomLabel</string>
 							<string>dateView</string>
 							<string>monthView</string>
+							<string>prioritySlider</string>
+							<string>priorityView</string>
 							<string>timeButton</string>
 							<string>timeView</string>
 							<string>topLabel</string>
@@ -2180,6 +2320,14 @@ dCAnLycgb3B0aW9uLiAgA</bytes>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">monthView</string>
+								<string key="candidateClassName">UIView</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">prioritySlider</string>
+								<string key="candidateClassName">UISlider</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">priorityView</string>
 								<string key="candidateClassName">UIView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
@@ -2373,6 +2521,7 @@ dCAnLycgb3B0aW9uLiAgA</bytes>
 							<string>bottomView</string>
 							<string>tableView</string>
 							<string>tableViewController</string>
+							<string>textField</string>
 							<string>textView</string>
 							<string>topView</string>
 							<string>viewLabel</string>
@@ -2382,6 +2531,7 @@ dCAnLycgb3B0aW9uLiAgA</bytes>
 							<string>UIView</string>
 							<string>UITableView</string>
 							<string>UITableViewController</string>
+							<string>UITextField</string>
 							<string>UITextView</string>
 							<string>UIView</string>
 							<string>UILabel</string>
@@ -2394,6 +2544,7 @@ dCAnLycgb3B0aW9uLiAgA</bytes>
 							<string>bottomView</string>
 							<string>tableView</string>
 							<string>tableViewController</string>
+							<string>textField</string>
 							<string>textView</string>
 							<string>topView</string>
 							<string>viewLabel</string>
@@ -2411,6 +2562,10 @@ dCAnLycgb3B0aW9uLiAgA</bytes>
 							<object class="IBToOneOutletInfo">
 								<string key="name">tableViewController</string>
 								<string key="candidateClassName">UITableViewController</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">textField</string>
+								<string key="candidateClassName">UITextField</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">textView</string>
@@ -2689,49 +2844,14 @@ dCAnLycgb3B0aW9uLiAgA</bytes>
 					<string key="className">SaveFileViewController</string>
 					<string key="superclassName">UIViewController</string>
 					<object class="NSMutableDictionary" key="actions">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>addTag</string>
-							<string>makeFolder</string>
-							<string>nameFile</string>
-							<string>navigationAction:</string>
-						</object>
-						<object class="NSMutableArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-						</object>
+						<string key="NS.key.0">navigationAction:</string>
+						<string key="NS.object.0">id</string>
 					</object>
 					<object class="NSMutableDictionary" key="actionInfosByName">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>addTag</string>
-							<string>makeFolder</string>
-							<string>nameFile</string>
-							<string>navigationAction:</string>
-						</object>
-						<object class="NSMutableArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<object class="IBActionInfo">
-								<string key="name">addTag</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">makeFolder</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">nameFile</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">navigationAction:</string>
-								<string key="candidateClassName">id</string>
-							</object>
+						<string key="NS.key.0">navigationAction:</string>
+						<object class="IBActionInfo" key="NS.object.0">
+							<string key="name">navigationAction:</string>
+							<string key="candidateClassName">id</string>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="outlets">

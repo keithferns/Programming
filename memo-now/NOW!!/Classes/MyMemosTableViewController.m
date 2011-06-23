@@ -8,6 +8,7 @@
 
 #import "MyMemosTableViewController.h"
 #import "NOW__AppDelegate.h"
+#import "MemoCustomCell.h"
 
 @implementation MyMemosTableViewController
 
@@ -40,6 +41,7 @@
 	NSLog(@"Going to fetch Memo records now");
 		//defining table to use
 	NSEntityDescription *entity = [NSEntityDescription entityForName:@"Memo" inManagedObjectContext:managedObjectContext];
+	
 		//setting up the fetch request
 	NSFetchRequest *request	= [[NSFetchRequest alloc] init];
 	[request setEntity:entity];
@@ -49,10 +51,11 @@
 	NSArray *sortDescriptors = [NSArray arrayWithObject:sortByDate];//note: if adding other sortdescriptors, then use  method -arraywithObjects. If the fetch request must meet some conditions, then use the NSPredicate class 
 	[request setSortDescriptors:sortDescriptors];
 	[sortByDate release];
-		NSError *error;
+	
+	NSError *error;
 	NSMutableArray *mutableFetchResults = [[managedObjectContext executeFetchRequest:request error:&error] mutableCopy];
 	
-	if (!mutableFetchResults) {
+	if (!mutableFetchResults) {// ??
 	}
 		//save fetched data to an array
 	[self setMemoArray:mutableFetchResults];
@@ -111,28 +114,40 @@
 	// Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"MemoCustomCell";
 	static NSDateFormatter *dateFormatter = nil;
 	if (dateFormatter == nil) {
 		dateFormatter = [[NSDateFormatter alloc] init];
-		[dateFormatter setDateFormat:@"h:mm.ss a"];
+		[dateFormatter setDateFormat:@"EEEE, dd MMMM yyyy h:mm a"];
 	}
-    
-    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	
+	MemoCustomCell *cell = (MemoCustomCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
-    }
+		NSArray *topLevelObjects = [[NSBundle mainBundle]
+									loadNibNamed:@"MemoCustomCell"
+									owner:nil options:nil];
+		
+		for (id currentObject in topLevelObjects){
+			if([currentObject isKindOfClass:[UITableViewCell class]]){
+				cell = (MemoCustomCell *) currentObject;
+				break;
+			}
+		}
+	}
     
 	Memo *newMemo = [memoArray objectAtIndex:[indexPath row]];
 		//Memo *previousMemo = nil;
 	
 	if ([memoArray count] > ([indexPath row] + 1)) {
-			//	previousMemo = [memoArray objectAtIndex:([indexPath row] + 1)];
-	}
-	
-	[cell.detailTextLabel setText: [dateFormatter stringFromDate:[newMemo timeStamp]]];
-	[cell.textLabel setText:[NSString stringWithFormat:@"%@", [newMemo memoText]]];
-    
+		//	previousMemo = [memoArray objectAtIndex:([indexPath row] + 1)];
+		}
+	[cell.memoText setFont:[UIFont fontWithName:@"TimesNewRomanPS-BoldMT" size:12]];
+
+	[cell.memoText setText:[NSString stringWithFormat:@"%@", [newMemo memoText]]];
+	[cell.creationDate setFont:[UIFont fontWithName:@"TimesNewRomanPS-ItalicMT" size:10]];
+
+	[cell.creationDate setText: [dateFormatter stringFromDate:[newMemo timeStamp]]];
+
     return cell;
 }
 

@@ -5,7 +5,6 @@
 /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/Objects-normal/i386/MyPlanner.o
 /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/Objects-normal/i386/SaveFileViewController.o
 /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/Objects-normal/i386/AppendFileViewController.o
-/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/Objects-normal/i386/Memo.o
 /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/Objects-normal/i386/MyMemosViewController.o
 /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/Objects-normal/i386/MyMemosTableViewController.o
 /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/Objects-normal/i386/MyFoldersViewController.o
@@ -15,9 +14,14 @@
 /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/Objects-normal/i386/MyRemindersViewController.o
 /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/Objects-normal/i386/MyRemindersTableViewController.o
 /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/Objects-normal/i386/MyWallViewController.o
-/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/Objects-normal/i386/Folder.o
-/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/Objects-normal/i386/File.o
 /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/Objects-normal/i386/SaveFilesTableViewController.o
-/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/Objects-normal/i386/ToDo.o
 /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/Objects-normal/i386/AppendFileTableViewController.o
 /Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/Objects-normal/i386/FileCustomCell.o
+/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/Objects-normal/i386/MemoCustomCell.o
+/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/Objects-normal/i386/FolderCell.o
+/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/Objects-normal/i386/FileDetailCell.o
+/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/Objects-normal/i386/Memo.o
+/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/Objects-normal/i386/ToDo.o
+/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/Objects-normal/i386/Appointment.o
+/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/Objects-normal/i386/File.o
+/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/build/NOW!!.build/Release-iphonesimulator/NOW!!.build/Objects-normal/i386/Folder.o

@@ -47,6 +47,7 @@
 			editmemoTextView.text = @"";
 			[self presentModalViewController:viewController animated:YES];	
 			break;
+
 		case 3:
 			if ([editmemoTextView hasText]) {
 				[self addTimeStamp];
@@ -93,41 +94,60 @@
 - (void) addTimeStamp{
 	NSLog(@"firing addTimeStamp");
 	NSString *mytext = [NSString stringWithFormat: @"%@", editmemoTextView.text];//copy contents of editmemoTextView to mytext
-	if ([memoArray count]>0) {
-		
-	if ([mytext isEqualToString:[[memoArray objectAtIndex:0] valueForKey:@"memoText"]]) {
-			//compare the current contents of the text view to the contents saved in the memoArray and if they are the same then gets out of addTimeStamp.
-		return;
-	}
-}
-	Memo *lastMemo = [memoArray objectAtIndex:0];
-	if ([lastMemo valueForKey:@"isEditing"] == YES){//FIX:  call the right getter method (bool)validateisediting:(NSNumber *)valueRef....
-													//NOTE: to find the declarations and implementations, select the attribute in the DataModel and then right-click and choose copy declarations/implementation to clipboard.
-		[lastMemo setMemoText:mytext];
-		[lastMemo setLastEditTimeStamp:[NSDate date]];
-		[lastMemo setIsEditing:NO];
-		return;
-	}
 	
-	else {
-		
+	if ([memoArray count]>0) 
+			{
+	/*	Compare the current contents of the text view to the contents saved in the memoArray and if they are the same then gets out of addTimeStamp */
+
+				if ([mytext isEqualToString:[[memoArray objectAtIndex:0] valueForKey:@"memoText"]]) {
+					return;
+						}
+			else {
+	/*For new text input, reference the memo (Last Memo) at memoArray[0] with a temp Memo instance. Check whether Last Memo is selected for editing. If isEditing == YES, then overwrite memoText of Last Memo with the new/edited text ("mytext"), set the timestamp for last edit to current time, and finally set the isEditing flag to NO and leave addTimeStamp. */
+
+					Memo *lastMemo = [memoArray objectAtIndex:0];
+					
+			 //FIX [lastMemo valueForKey:@"isEditing"] //FIX:  call the right getter method (bool)validateisediting:(NSNumber *)valueRef....
+					NSNumber *num = [lastMemo valueForKey:@"isEditing"];					
+					if ([num intValue]){
+						[lastMemo setMemoText:mytext];
+						[lastMemo setIsEditing:NO];
+						
+						//save the changes made to the original context
+						NSError *error;
+						if(![managedObjectContext save:&error]){
+						}
+						
+						[lastMemoView setText:[[memoArray objectAtIndex:0] valueForKey:@"memoText"]];
+						[self.view endEditing:YES];
+						[self.view resignFirstResponder];//??Does this do the same as the statement above?
+						return;
+					}
+				} 
+			}
+
+	/* If there is new input that is not a result of editing the last memo, initialize a new Memo instance and add it to Memo in the ManagedObjectContext. Set the time and text current time and current text ("mytext") */
+
+	Memo *newMemo = [Memo insertNewMemo:managedObjectContext];
 	
-	Memo *newMemo = (Memo *)[NSEntityDescription insertNewObjectForEntityForName:@"Memo" inManagedObjectContext: managedObjectContext];	//Initialize a new Memo Object and Insert it into Memo table in the ManagedObjectContext
 	[newMemo setTimeStamp:[NSDate	date]];//sets the timeStamp of the new Memo
+	
 	[newMemo setMemoText:mytext];//copies the input text to the new Memo. 
 	NSLog(@"%@", mytext);
+	
 	NSError *error;
-	if(![managedObjectContext save:&error]){  //???
+	if(![managedObjectContext save:&error]){ //  statement embedded in the if condition will attempt to save the changes made to the original context
 	}
+	/* Update the memoArray and change the text displayed in the lastMemoView to show the text of the memo just added*/
 	[memoArray insertObject:newMemo atIndex:0];
 	NSLog(@"the memo at index 0 is %@", [[memoArray objectAtIndex:0] valueForKey:@"memoText"]);
-	}	
 	[lastMemoView setText:[[memoArray objectAtIndex:0] valueForKey:@"memoText"]];
-	[self.view endEditing:YES]; //this resigns first responder status for the view and all subviews.
-	[self.view resignFirstResponder];
-
 	
+	[self.view endEditing:YES]; //this resigns first responder status for the view and all subviews.
+	[self.view resignFirstResponder];//??Does this do the same as the statement above?`
 }
+
+
  - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
 	if (actionSheet	== saveActionSheet){
 		switch (buttonIndex) {
@@ -220,14 +240,14 @@
 	}
 	/* Fetch Records and Get text of last Memo*/
 	[self fetchMemoRecords];
-	int myInt = [memoArray count];
-	NSLog(@"Number of Memos in the data store: %d", myInt);
-	if (myInt>0) { //calling up the last memo and putting the text on the textview1 of the bottomView. 
+	if ([memoArray count]>0) { //calling up the last memo and putting the text on the textview1 of the bottomView. 
 		Memo *lastMemo = [memoArray objectAtIndex:0];
-		NSLog(@"trying to get the value for memoText for the last Memo");
+		
 		NSString *lastMemoText = [lastMemo valueForKey:@"memoText"];
-		NSLog(@"This is the text of the last Memo: %@", lastMemoText);
+
 		[lastMemoView setText:lastMemoText];
+		
+		[lastMemo release];
 			//FIND: should lastMemo object be released here?	
 	}
 }
@@ -255,7 +275,12 @@
 		 
 		 */
 		Memo *lastMemo = [memoArray objectAtIndex:0];
-		[lastMemo setIsEditing:NO];//changes the value of isEditing.
+		
+			//Set value of isEditing to 1
+		NSNumber *num = [NSNumber numberWithInt:1];
+		lastMemo.isEditing = num;
+		
+		NSLog(@"isEditing is now %d", [lastMemo.isEditing intValue]);
 		
 		editmemoTextView.text = [lastMemo valueForKey:@"memoText"];
 
@@ -271,11 +296,7 @@
 			[self.bottomView addSubview:lastMemoView];
 			[lastMemoView resignFirstResponder];
 			[self.view endEditing:YES];
-/* FIX: 
- 1. when a save action via addTimeStamp fires, then the new text must overwrite the old text. this can be easily achieved by copying the content of the last memo to a new memo. The old timestamp must also be copied to the new memo. Add a field for lastEditTimeStamp.
- */
-		}
-
+	}
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -312,18 +333,23 @@
 }
 @end
 
-/*	CODE DOES NOT WORK AS IS. Part of the code is an attempt to test a generic NavButton class and the rest to programmatically code the navigation buttons. Not very successful at this point. 
- saveButton = [NavButton buttonWithType:UIButtonTypeCustom];
- [saveButton addTarget:self 
- action:@selector(aMethod:)
- forControlEvents:UIControlEventTouchDown];
- saveButton.frame = CGRectMake(220, 229, 100, 10);
- [saveButton setUserInteractionEnabled:YES];
- [saveButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
- [saveButton setHighlighted:YES];
- [saveButton setTitle:@"SAVE" forState:UIControlStateNormal];
- [self.view addSubview:saveButton];
- */	
+/* 
+ //If some Array is already loaded with the results of a fetch, then it can be set to nil with the following code. This may be necessary when inserting objects. 
+	
+ if (myArray) {
+		myArray = nil
+		}
+ 
+ //Use the following code to update the data in a table after an insert
+ 
+	[tableView reloadData];
+ 
+*/ 
+ 
+
+//NOTE: to find the declarations and implementations, select the attribute in the DataModel and then right-click and choose copy declarations/implementation to clipboard.
+//NOTE: change whether the app remembers state information by editing the Info.plist file. In XCode, ctr-click to add a row and then use the drop-down menu to choose Application does not run in background. Also UIApplicationExitsOnSuspend
+
 
 
 /*..........New Memo TEXT VIEW..............//	

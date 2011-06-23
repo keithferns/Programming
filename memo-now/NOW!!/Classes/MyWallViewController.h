@@ -7,13 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MessageUI/MessageUI.h>  
 
 
-@interface MyWallViewController : UIViewController <UIActionSheetDelegate> {
+@interface MyWallViewController : UIViewController <UIActionSheetDelegate, MFMailComposeViewControllerDelegate> {
 
+	
+	
 }
 
 -(IBAction)showActionSheet:(id)sender;
 
+-(IBAction)sendMail:(id)sender;
 
 @end

@@ -1,10 +1,7 @@
-    //
 //  SaveFileViewController.m
 //  NOW!!
-//
 //  Created by Keith Fernandes on 4/17/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
-//
 
 
 
@@ -13,7 +10,7 @@
 
 @implementation SaveFileViewController
 @synthesize topView, bottomView, getFileName, getFolderName, getTag, searchBar, tableViewController;
-@synthesize folderArray, managedObjectContext;
+@synthesize folderArray, memoArray, fileArray, managedObjectContext;
 
 #pragma mark -
 #pragma mark Navigation
@@ -59,23 +56,20 @@
         NSLog(@"After managedObjectContext: %@",  managedObjectContext);
 	}
 	[self fetchFolderRecords];	
+	[self fetchMemoRecords];
+
 }
 
-
 -(void) fetchFolderRecords{NSLog(@"Going to fetch Folder records now");
-		//defining table to use
 	NSEntityDescription *aFolder = [NSEntityDescription entityForName:@"Folder" inManagedObjectContext:managedObjectContext];
-		//setting up the fetch request
 	NSFetchRequest *request	= [[NSFetchRequest alloc] init];
 	[request setEntity:aFolder];
-		//defines how to sort the records
 	NSSortDescriptor *sortByDate = [[NSSortDescriptor alloc] initWithKey:@"timeStamp" ascending:NO];
-	NSArray *sortDescriptors = [NSArray arrayWithObject:sortByDate];//note: if adding other sortdescriptors, then use method -arraywithObjects. If the fetch request must meet some conditions, then use the NSPredicate class 
+	NSArray *sortDescriptors = [NSArray arrayWithObject:sortByDate];
 	[request setSortDescriptors:sortDescriptors];
 	[sortByDate release];
 	NSError *error;
 	NSMutableArray *mutableFetchResults = [[managedObjectContext executeFetchRequest:request error:&error] mutableCopy];
-	
 	if (!mutableFetchResults) {
 			//
 		}
@@ -85,41 +79,70 @@
 }
 
 
+- (void)fetchMemoRecords{
+	NSEntityDescription *aMemo = [NSEntityDescription entityForName:@"Memo" inManagedObjectContext:managedObjectContext];
+	NSFetchRequest *request =[[NSFetchRequest alloc] init];
+	[request setEntity:aMemo];
+	NSSortDescriptor *sortByDate = [[NSSortDescriptor alloc] initWithKey:@"timeStamp" ascending:NO];
+	NSArray *sortDescriptors =[NSArray arrayWithObject:sortByDate];
+	[request setSortDescriptors:sortDescriptors];
+	[sortByDate release];
+	NSError *error;
+	NSMutableArray *mutableFetchResults = [[managedObjectContext executeFetchRequest: request error:&error] mutableCopy];
+	if (!mutableFetchResults) {
+			//
+	}
+	[self setMemoArray:mutableFetchResults];
+	[mutableFetchResults release];
+	[request release];
+}
+- (void)fetchFileRecords{
+	NSEntityDescription *aFile = [NSEntityDescription entityForName:@"File"  inManagedObjectContext:managedObjectContext];
+	NSFetchRequest *request = [[NSFetchRequest alloc] init];
+	[request setEntity:aFile];
+	NSSortDescriptor *sortByName = [[NSSortDescriptor alloc] initWithKey:@"fileName" ascending:YES];
+	NSArray *sortDescriptors = [NSArray arrayWithObject:sortByName];
+	[request setSortDescriptors:sortDescriptors];
+	[sortByName release];
+	NSError *error;
+	NSMutableArray *mutableFetchResults = [[managedObjectContext executeFetchRequest:request error:&error]mutableCopy];
+	if (!mutableFetchResults) {
+			//
+	}
+	[self setFileArray:mutableFetchResults];
+	[mutableFetchResults release];
+	[request release];
+} 
+
 - (BOOL) textFieldShouldReturn:(UITextField *)textField{
-	
 	NSString *aString = [NSString stringWithFormat:@"%@", textField.text];
-	NSLog(@"aString is set to %@", aString);
 	if ([textField tag] == 3){
-			NSLog(@"aString is set to %@", aString);
-			Folder *newFolder = (Folder *)[NSEntityDescription insertNewObjectForEntityForName:@"Folder" inManagedObjectContext: managedObjectContext];	//Initialize a new Memo Object and Insert it into Memo table in the ManagedObjectContext
-			[newFolder setTimeStamp:[NSDate	date]];//sets the timeStamp of the new Memo
-			[newFolder setFolderName:aString];//copies the input text to the new Memo. 
+/*TODO: Before Setting a new Folder Name, Search whether there is a Folder which Matches the value for aString. If yes, then put alert window asking the user to enter a new Name */		
+			Folder *newFolder = (Folder *)[NSEntityDescription insertNewObjectForEntityForName:@"Folder" inManagedObjectContext: managedObjectContext];				
+			[newFolder setTimeStamp:[NSDate	date]];
+			[newFolder setFolderName:aString];
 			NSError *error;
 			if(![managedObjectContext save:&error]){  //???
 			}
 			[folderArray insertObject:newFolder atIndex:0];
-			Folder *lastFolder = [folderArray objectAtIndex:0] ;
-			NSLog(@"The new folder is %@", [lastFolder valueForKey:@"folderName"]);
-	}
-
-	else if ([textField tag]==1){
-	Memo *newMemo = (Memo *)[NSEntityDescription insertNewObjectForEntityForName:@"Memo" inManagedObjectContext: managedObjectContext];	//Initialize a new Memo Object and Insert it into Memo table in the ManagedObjectContext
-			[newMemo setTimeStamp:[NSDate	date]];//sets the timeStamp of the new Memo
-			[newMemo setMemoText:aString];//copies the input text to the new Memo. 
-			NSError *error;
-			if(![managedObjectContext save:&error]){  //???
-			}
-
-	}
-	else if ([textField tag] ==2){
-		File *newFile = (File *)[NSEntityDescription insertNewObjectForEntityForName:@"File" inManagedObjectContext: managedObjectContext];	//Initialize a new Memo Object and Insert it into Memo table in the ManagedObjectContext
-		[newFile setTimeStamp:[NSDate	date]];//sets the timeStamp of the new Memo
-		[newFile setMemoText:aString];//copies the input text to the new Memo. 
-		NSError *error;
-		if(![managedObjectContext save:&error]){  //???
 		}
-	}
 
+	else if ([textField tag]==2){
+			//Memo *currentMemo = [memoArray objectAtIndex:0];
+			//[currentMemo setMemoTags:aString];
+		NSError *error;
+		if(![managedObjectContext save:&error]){
+			}
+		}
+	else if ([textField tag] ==1){
+		File *newFile = (File *)[NSEntityDescription insertNewObjectForEntityForName:@"File" inManagedObjectContext: managedObjectContext];
+		[newFile setFileName:aString];
+		[newFile addAppendedObject:[memoArray objectAtIndex:0]];
+		NSError *error;
+		if(![managedObjectContext save:&error]){
+			}
+		[fileArray insertObject:newFile atIndex:0];
+		}
 	[textField resignFirstResponder];
 	return YES;
 }
@@ -164,22 +187,15 @@
 	[tableViewController release];
 }
 
-
 @end
 
 /*
 	// this method is used to resign the keyboard 
-
 -(void) touchesBegan :(NSSet *) touches withEvent:(UIEvent *)event
-
 {
-	
     [textField resignFirstResponder];
-	
     [textField1 resignFirstResponder];
-	
     [super touchesBegan:touches withEvent:event ];
-	
 }
 
 */

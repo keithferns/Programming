@@ -127,6 +127,10 @@
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
+	
+	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+	
+	
 	Folder *newFolder = [folderArray objectAtIndex:[indexPath row]];
 	if ([folderArray count] > ([indexPath row] + 1)) {
 			///

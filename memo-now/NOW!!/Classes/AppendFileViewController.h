@@ -12,7 +12,7 @@
 	UIView *bottomView, *topView; 
 	UISearchBar *searchBar;
 	NSManagedObjectContext *managedObjectContext;
-	NSMutableArray *memoArray;
+	NSMutableArray *fileArray;
 }
 
 
@@ -20,14 +20,14 @@
 @property (nonatomic, retain) IBOutlet UITableViewController *tableViewController;
 
 @property(nonatomic, retain) NSManagedObjectContext *managedObjectContext;
-@property(nonatomic, retain) NSMutableArray *memoArray;
+@property(nonatomic, retain) NSMutableArray *fileArray;
 
 @property (nonatomic, retain) IBOutlet UIView *bottomView, *topView;
 @property (nonatomic, retain) IBOutlet UISearchBar *searchBar;
 
 
 - (IBAction) navigationAction:(id)sender;
--(void) fetchMemoRecords;
+-(void) fetchFileRecords;
 
 
 @end

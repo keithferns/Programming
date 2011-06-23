@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="2"/>
+			<integer value="3"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -646,10 +646,10 @@
 						<reference key="object" ref="553980440"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="460915795"/>
 							<reference ref="303988994"/>
 							<reference ref="604322496"/>
 							<reference ref="135807922"/>
+							<reference ref="460915795"/>
 						</object>
 						<reference key="parent" ref="411093208"/>
 					</object>
@@ -841,7 +841,7 @@
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABCEAAAwpwAAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAABB0AAAwqYAAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
@@ -904,31 +904,45 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>myfiles</string>
-							<string>myfilesTableViewController</string>
+							<string>bottomView</string>
+							<string>searchBar</string>
+							<string>tableViewController</string>
+							<string>topView</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>UITableView</string>
+							<string>UIView</string>
+							<string>UISearchBar</string>
 							<string>UITableViewController</string>
+							<string>UIView</string>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>myfiles</string>
-							<string>myfilesTableViewController</string>
+							<string>bottomView</string>
+							<string>searchBar</string>
+							<string>tableViewController</string>
+							<string>topView</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBToOneOutletInfo">
-								<string key="name">myfiles</string>
-								<string key="candidateClassName">UITableView</string>
+								<string key="name">bottomView</string>
+								<string key="candidateClassName">UIView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">myfilesTableViewController</string>
+								<string key="name">searchBar</string>
+								<string key="candidateClassName">UISearchBar</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">tableViewController</string>
 								<string key="candidateClassName">UITableViewController</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">topView</string>
+								<string key="candidateClassName">UIView</string>
 							</object>
 						</object>
 					</object>
@@ -1244,6 +1258,7 @@
 							<string>bottomView</string>
 							<string>tableView</string>
 							<string>tableViewController</string>
+							<string>textField</string>
 							<string>textView</string>
 							<string>topView</string>
 							<string>viewLabel</string>
@@ -1253,6 +1268,7 @@
 							<string>UIView</string>
 							<string>UITableView</string>
 							<string>UITableViewController</string>
+							<string>UITextField</string>
 							<string>UITextView</string>
 							<string>UIView</string>
 							<string>UILabel</string>
@@ -1265,6 +1281,7 @@
 							<string>bottomView</string>
 							<string>tableView</string>
 							<string>tableViewController</string>
+							<string>textField</string>
 							<string>textView</string>
 							<string>topView</string>
 							<string>viewLabel</string>
@@ -1282,6 +1299,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">tableViewController</string>
 								<string key="candidateClassName">UITableViewController</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">textField</string>
+								<string key="candidateClassName">UITextField</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">textView</string>
@@ -1560,49 +1581,14 @@
 					<string key="className">SaveFileViewController</string>
 					<string key="superclassName">UIViewController</string>
 					<object class="NSMutableDictionary" key="actions">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>addTag</string>
-							<string>makeFolder</string>
-							<string>nameFile</string>
-							<string>navigationAction:</string>
-						</object>
-						<object class="NSMutableArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-						</object>
+						<string key="NS.key.0">navigationAction:</string>
+						<string key="NS.object.0">id</string>
 					</object>
 					<object class="NSMutableDictionary" key="actionInfosByName">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>addTag</string>
-							<string>makeFolder</string>
-							<string>nameFile</string>
-							<string>navigationAction:</string>
-						</object>
-						<object class="NSMutableArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<object class="IBActionInfo">
-								<string key="name">addTag</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">makeFolder</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">nameFile</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">navigationAction:</string>
-								<string key="candidateClassName">id</string>
-							</object>
+						<string key="NS.key.0">navigationAction:</string>
+						<object class="IBActionInfo" key="NS.object.0">
+							<string key="name">navigationAction:</string>
+							<string key="candidateClassName">id</string>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="outlets">

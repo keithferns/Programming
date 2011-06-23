@@ -11,7 +11,7 @@
 
 
 @implementation FileCustomCell
-@synthesize fileName, timeStamp;
+@synthesize fileName, fileText;
 
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {

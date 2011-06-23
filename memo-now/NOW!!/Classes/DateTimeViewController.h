@@ -13,13 +13,14 @@
 	
 	UIButton *backslash, *timeButton;
 	UILabel *topLabel, *bottomLabel;
-	UIView *monthView, *dateView, *timeVIew;
-	
+	UIView *monthView, *dateView, *timeVIew, *priorityView;
+	UISlider *prioritySlider;
 }
 
 @property (nonatomic, retain) IBOutlet UILabel *topLabel, *bottomLabel;
 @property (nonatomic, retain) IBOutlet UIButton  *backslash, *timeButton;
-@property (nonatomic, retain) IBOutlet UIView *monthView, *dateView, *timeView; 
+@property (nonatomic, retain) IBOutlet UIView *monthView, *dateView, *timeView, *priorityView; 
+@property (nonatomic, retain) IBOutlet UISlider *prioritySlider;
 
 
 
@@ -32,6 +33,8 @@
 - (IBAction)timeButtonAction;
 
 - (IBAction)timeAction:(id)sender;
+
+- (IBAction)sliderValueChanged:(UISlider *)sender;
 
 - (IBAction) doneAction;
 

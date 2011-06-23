@@ -10,17 +10,16 @@
 
 
 @interface AppendFileTableViewController : UITableViewController {
-
 	NSManagedObjectContext *managedObjectContext;	
-	NSMutableArray *memoArray;
+	NSMutableArray *fileArray;
 	UITableView	*tableView;
 	UISearchBar *searchBar;
 }
 
 @property(nonatomic, retain) NSManagedObjectContext *managedObjectContext;
-@property(nonatomic, retain) NSMutableArray *memoArray;
+@property(nonatomic, retain) NSMutableArray *fileArray;
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
 @property (nonatomic, retain) IBOutlet UISearchBar *searchBar; 
 
-- (void) fetchMemoRecords; 
+- (void) fetchFileRecords; 
 @end
