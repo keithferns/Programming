@@ -28,13 +28,12 @@
 		managedObjectContext = [(NOW__AppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext]; 
         NSLog(@"After managedObjectContext: %@",  managedObjectContext);
 	}
+	
 	[super viewDidLoad];
 	[self.view addSubview:tableView];
 	self.tableView.tableHeaderView = searchBar;
 	searchBar.autocorrectionType = UITextAutocorrectionTypeNo;
 	[self fetchMemoRecords];	
-		// Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-		// self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 -(void) fetchMemoRecords{
@@ -222,7 +221,6 @@
     [super dealloc];
 	[tableView release];
 	[searchBar release];
-	
 }
 
 @end
