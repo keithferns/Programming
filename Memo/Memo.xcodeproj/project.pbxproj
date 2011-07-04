@@ -27,6 +27,8 @@
 		530E76EB13BBA1CF003B183A /* Memo.m in Sources */ = {isa = PBXBuildFile; fileRef = 530E76EA13BBA1CF003B183A /* Memo.m */; };
 		5384E0DC13BD94540032F9B0 /* StartScreenCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5384E0DB13BD94540032F9B0 /* StartScreenCustomCell.m */; };
 		5384E0E013BD94EC0032F9B0 /* StartScreenCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5384E0DF13BD94EC0032F9B0 /* StartScreenCustomCell.xib */; };
+		53E58F3B13BEA6D9001BD373 /* MemoDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53E58F3A13BEA6D9001BD373 /* MemoDetailView.xib */; };
+		53E58F4813BF75CB001BD373 /* MemoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E58F4713BF75CB001BD373 /* MemoDetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +63,9 @@
 		5384E0DA13BD94540032F9B0 /* StartScreenCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartScreenCustomCell.h; sourceTree = "<group>"; };
 		5384E0DB13BD94540032F9B0 /* StartScreenCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartScreenCustomCell.m; sourceTree = "<group>"; };
 		5384E0DF13BD94EC0032F9B0 /* StartScreenCustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StartScreenCustomCell.xib; sourceTree = "<group>"; };
+		53E58F3A13BEA6D9001BD373 /* MemoDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemoDetailView.xib; sourceTree = "<group>"; };
+		53E58F4613BF75CB001BD373 /* MemoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemoDetailViewController.h; sourceTree = "<group>"; };
+		53E58F4713BF75CB001BD373 /* MemoDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemoDetailViewController.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Memo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Memo-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -90,6 +95,7 @@
 		2860E386111B897F00E27156 /* iPhone */ = {
 			isa = PBXGroup;
 			children = (
+				53E58F5513BF7B12001BD373 /* MemoDetailView */,
 				5384E0D613BD93D20032F9B0 /* StartScreenCustomCell */,
 				530E752413B352BA003B183A /* RootViewController */,
 				2860E387111B897F00E27156 /* AppDelegate_iPhone.h */,
@@ -182,6 +188,16 @@
 			name = StartScreenCustomCell;
 			sourceTree = "<group>";
 		};
+		53E58F5513BF7B12001BD373 /* MemoDetailView */ = {
+			isa = PBXGroup;
+			children = (
+				53E58F3A13BEA6D9001BD373 /* MemoDetailView.xib */,
+				53E58F4613BF75CB001BD373 /* MemoDetailViewController.h */,
+				53E58F4713BF75CB001BD373 /* MemoDetailViewController.m */,
+			);
+			name = MemoDetailView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -236,6 +252,7 @@
 				530E752913B352EE003B183A /* RootViewController.xib in Resources */,
 				530E75B613BAEFB2003B183A /* bluebutton.png in Resources */,
 				5384E0E013BD94EC0032F9B0 /* StartScreenCustomCell.xib in Resources */,
+				53E58F3B13BEA6D9001BD373 /* MemoDetailView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,6 +274,7 @@
 				530E76DA13BB9FFC003B183A /* MemoText.m in Sources */,
 				530E76EB13BBA1CF003B183A /* Memo.m in Sources */,
 				5384E0DC13BD94540032F9B0 /* StartScreenCustomCell.m in Sources */,
+				53E58F4813BF75CB001BD373 /* MemoDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

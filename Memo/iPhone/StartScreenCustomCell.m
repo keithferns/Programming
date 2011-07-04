@@ -18,7 +18,7 @@
     
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-		[self.memoText setFont:[UIFont fontWithName:@"TimesNewRomanPSMT" size:12]];
+			//[self.memoText setFont:[UIFont fontWithName:@"TimesNewRomanPSMT" size:10]];
 
     }
     return self;

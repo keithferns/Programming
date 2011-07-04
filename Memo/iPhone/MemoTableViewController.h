@@ -11,7 +11,7 @@
 #import "MemoText.h"
 
 
-@interface MemoTableViewController : UITableViewController <NSFetchedResultsControllerDelegate> {
+@interface MemoTableViewController : UITableViewController <NSFetchedResultsControllerDelegate, UITextViewDelegate> {
 
 	NSManagedObjectContext *managedObjectContext;
 	NSFetchedResultsController *fetchedResultsController;

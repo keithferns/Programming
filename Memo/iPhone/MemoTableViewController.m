@@ -9,7 +9,7 @@
 #import "MemoTableViewController.h"
 #import "AppDelegate_Shared.h"
 #import "StartScreenCustomCell.h"
-
+#import "MemoDetailViewController.h"
 
 @implementation MemoTableViewController
 
@@ -161,27 +161,20 @@
 }
 */
 
-
-/*
-// Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source.
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }   
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
     }   
 }
-*/
 
-
-/*
 // Override to support rearranging the table view.
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
 }
-*/
 
 
 /*
@@ -197,15 +190,20 @@
 #pragma mark Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-    <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
+    MemoDetailViewController *detailViewController = [[MemoDetailViewController alloc] initWithNibName:@"MemoDetailView" bundle:[NSBundle mainBundle]];
      // ...
      // Pass the selected object to the new view controller.
-    [self.navigationController pushViewController:detailViewController animated:YES];
+
+	
+	detailViewController.selectedMemo = [fetchedResultsController objectAtIndexPath:indexPath];	
+		
+	[self presentModalViewController:detailViewController animated:YES];	
+	
+	
+	
     [detailViewController release];
-    */
 }
+
 #pragma mark -
 #pragma mark Fetched Results Notifications
 	//Copied from http://www.raywenderlich.com/999/core-data-tutorial-how-to-use-nsfetchedresultscontroller
@@ -242,7 +240,6 @@
     }
 }
 
-
 - (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type {
 	
     switch(type) {
@@ -257,12 +254,10 @@
     }
 }
 
-
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
 		// The fetch controller has sent all current change notifications, so tell the table view to process all updates.
     [self.tableView endUpdates];
 }
-
 
 #pragma mark -
 #pragma mark Memory management
@@ -279,7 +274,6 @@
 	managedObjectContext = nil;
 	fetchedResultsController = nil;
 }
-
 
 - (void)dealloc {
     [super dealloc];

@@ -44,7 +44,6 @@
 				//
 		}
 		[self.view endEditing:YES];
-
 }
 
 - (IBAction) insertNewMemo{
@@ -54,11 +53,9 @@
 		return;
 	}
 	[self addNewMemo];
-	
 	newText.text = @"";
 
 }
-
 
 - (void) textViewDidBeginEditing:(UITextView *)textView{
 		//@ Input --> Put Done button in Toolbar.
@@ -80,7 +77,6 @@
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
-
 
 - (void)dealloc {
     [super dealloc];

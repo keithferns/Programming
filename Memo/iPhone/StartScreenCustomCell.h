@@ -12,13 +12,13 @@
 @interface StartScreenCustomCell : UITableViewCell {
 
 	
-	UITextView *memoText;
+	UILabel *memoText;
 	UILabel *creationDate;
 	UILabel *memoRE;
 	
 }
 
-@property (nonatomic, retain) IBOutlet UITextView *memoText;
+@property (nonatomic, retain) IBOutlet UILabel *memoText;
 @property (nonatomic, retain) IBOutlet UILabel *creationDate, *memoRE;
 
 

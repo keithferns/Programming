@@ -248,6 +248,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -315,16 +317,13 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>31</integer>
-									<integer>29</integer>
-									<integer>28</integer>
-									<integer>23</integer>
+									<integer>37</integer>
 									<integer>1</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 267}, {278, 664}}</string>
+							<string>{{0, 0}, {278, 664}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -354,14 +353,12 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>MyMemosTableViewController.m</string>
+								<string>EnterTextViewController.h</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -369,11 +366,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>MyMemosTableViewController.m</string>
+										<string>EnterTextViewController.h</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>531C5E2013BDB1FA00584029</string>
+										<string>53F672E613C1114100C76060</string>
 										<key>history</key>
 										<array>
 											<string>53DF3FFD134E3928001FE4E4</string>
@@ -453,15 +450,15 @@
 											<string>530E766F13BB8558003B183A</string>
 											<string>530E767013BB8558003B183A</string>
 											<string>5384DF4713BD14290032F9B0</string>
-											<string>5384E0E913BD9F7C0032F9B0</string>
-											<string>5384E0EA13BD9F7C0032F9B0</string>
 											<string>5384E0ED13BD9F7C0032F9B0</string>
 											<string>531C5E1A13BDB1FA00584029</string>
 											<string>531C5E1B13BDB1FA00584029</string>
-											<string>531C5E1C13BDB1FA00584029</string>
 											<string>531C5E1D13BDB1FA00584029</string>
-											<string>531C5E1E13BDB1FA00584029</string>
-											<string>531C5E1F13BDB1FA00584029</string>
+											<string>53F672E113C1114100C76060</string>
+											<string>53F672E213C1114100C76060</string>
+											<string>53F672E313C1114100C76060</string>
+											<string>53F672E413C1114100C76060</string>
+											<string>53F672E513C1114100C76060</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -519,9 +516,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>531C5E2113BDB1FA00584029</string>
+				<string>53F672E713C1114100C76060</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>531C5E2213BDB1FA00584029</string>
+				<string>53F672E813C1114100C76060</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -642,7 +639,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>331198970.62774003</real>
+	<real>331419969.59695399</real>
 	<key>ToolbarConfigUserDefaultsMinorVersion</key>
 	<string>2</string>
 	<key>ToolbarDisplayMode</key>
@@ -740,7 +737,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>53DF3FE2134E3088001FE4E4</string>
-				<string>531C5E2313BDB1FA00584029</string>
+				<string>53F672E913C1114100C76060</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
