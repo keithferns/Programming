@@ -11,25 +11,39 @@
 #import "StartScreenCustomCell.h"
 #import "MemoDetailViewController.h"
 
+	// Name of notification
+NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSaved";
+
+#pragma mark -
+#pragma mark Private Interface
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ * Private interface definitions
+ *~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+@interface MemoTableViewController (private)
+
+- (void) managedObjectContextSaved:(NSNotification *)notification;
+
+@end
+
 @implementation MemoTableViewController
 
 @synthesize managedObjectContext, tableView;
 
-@synthesize fetchedResultsController;
+@synthesize fetchedResultsController = _fetchedResultsController;
 
 #pragma mark -
-#pragma mark Initialization
+#pragma mark Private Methods
 
-/*
-- (id)initWithStyle:(UITableViewStyle)style {
-    // Override initWithStyle: if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization.
-    }
-    return self;
+/*---------------------------------------------------------------------------
+ * Notifications of ManagedObjectContext Saved 
+ *--------------------------------------------------------------------------*/
+
+- (void) managedObjectContextSaved:(NSNotification *)notification{
+	[self.tableView reloadData];
 }
-*/
+
+	//NOTE: If there are two different managedObjectContexts for two different ViewControllers, then send a NSManagedObjectContextDidSaveNotification to -(void)mergeChangesFromContextDidSaveNotification. The latter will emit change notifications that the fetch results controller will observe.
 
 #pragma mark -
 #pragma mark View lifecycle
@@ -47,12 +61,20 @@
 	if (![[self fetchedResultsController] performFetch:&error]) {
 		NSLog(@"Did not Fetch");
 	}
+	
+	[[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(managedObjectContextSaved:) name:managedObjectContextSavedNotification object:nil];
+	
+	
  }
 
-
 - (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
+	[super viewWillAppear:animated];
+
+		// Redisplay the data.
+		//[self.tableView reloadData];
 }
+
+
 /*
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
@@ -79,8 +101,8 @@
 
 
 - (NSFetchedResultsController *) fetchedResultsController {
-	if (fetchedResultsController!=nil) {
-		return fetchedResultsController;
+	if (_fetchedResultsController!=nil) {
+		return _fetchedResultsController;
 	}
 		
 	NSFetchRequest *request = [[NSFetchRequest alloc] init];
@@ -100,31 +122,45 @@
 	[newController release];
 	[request release];
 	
-	return fetchedResultsController;
+	return _fetchedResultsController;
 }
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 		// Return the number of sections -- if there are any. For now it should return 1. 
-	return [[fetchedResultsController sections] count];
+	return [[_fetchedResultsController sections] count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section	
 
-	id <NSFetchedResultsSectionInfo> sectionInfo = [[fetchedResultsController sections] objectAtIndex:section];
+	id <NSFetchedResultsSectionInfo> sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
 	return [sectionInfo numberOfObjects];
 }
 
 - (void) configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath{
+	static NSDateFormatter *dateFormatter = nil;
+	if (dateFormatter == nil) {
+		dateFormatter = [[NSDateFormatter alloc] init];
+		[dateFormatter setDateFormat:@"EEEE, dd MMMM yyyy h:mm a"];
+	}
+	
+	StartScreenCustomCell *mycell;
+	if([cell isKindOfClass:[UITableViewCell class]]){
+	
+		mycell = (StartScreenCustomCell *) cell;
+	}
+	 Memo *aMemo = [_fetchedResultsController objectAtIndexPath:indexPath];	
+	 
+	 [mycell.creationDate setText: [dateFormatter stringFromDate:[aMemo creationDate]]];		
+	 [mycell.memoText setText:[NSString stringWithFormat:@"%@", aMemo.memoText.memoText]];
+	
 	
 }
 
 
-
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+ 
     static NSString *CellIdentifier = @"StartScreenCustomCell";
 	
 	static NSDateFormatter *dateFormatter = nil;
@@ -133,7 +169,7 @@
 		[dateFormatter setDateFormat:@"EEEE, dd MMMM yyyy h:mm a"];
 	}
 	StartScreenCustomCell *cell = (StartScreenCustomCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
+	if (cell == nil) {
 		NSArray *topLevelObjects = [[NSBundle mainBundle]
 									loadNibNamed:@"StartScreenCustomCell"
 									owner:nil options:nil];
@@ -145,12 +181,9 @@
 			}
 		}
 	}
-    
-	Memo *aMemo = [fetchedResultsController objectAtIndexPath:indexPath];	
-	
-	[cell.creationDate setText: [dateFormatter stringFromDate:[aMemo creationDate]]];		
-	[cell.memoText setText:[NSString stringWithFormat:@"%@", aMemo.memoText.memoText]];
-	
+
+	[self configureCell:cell atIndexPath:indexPath];
+	 
     return cell;
 }
 /*
@@ -195,7 +228,7 @@
      // Pass the selected object to the new view controller.
 
 	
-	detailViewController.selectedMemo = [fetchedResultsController objectAtIndexPath:indexPath];	
+	detailViewController.selectedMemo = [_fetchedResultsController objectAtIndexPath:indexPath];	
 		
 	[self presentModalViewController:detailViewController animated:YES];	
 	
@@ -203,6 +236,7 @@
 	
     [detailViewController release];
 }
+
 
 #pragma mark -
 #pragma mark Fetched Results Notifications
@@ -271,14 +305,15 @@
 - (void)viewDidUnload {
     // Relinquish ownership of anything that can be recreated in viewDidLoad or on demand.
     // For example: self.myOutlet = nil;
-	managedObjectContext = nil;
-	fetchedResultsController = nil;
-}
+	self.managedObjectContext = nil;
+	self.fetchedResultsController.delegate = nil;
+	self.fetchedResultsController = nil;}
 
 - (void)dealloc {
     [super dealloc];
-	[fetchedResultsController release];
+	[_fetchedResultsController release];
 	[tableView release];
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 

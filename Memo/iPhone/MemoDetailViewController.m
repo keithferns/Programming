@@ -7,7 +7,7 @@
 //
 
 #import "MemoDetailViewController.h"
-
+#import "MemoTableViewController.h"
 
 @implementation MemoDetailViewController
 
@@ -21,11 +21,9 @@
 	
 }
 
-
--(IBAction) saveSelectedMemo{
-	
-	[self.view endEditing:YES];
-
+- (void)textViewDidEndEditing:(UITextView *)textView{
+	[[NSNotificationCenter defaultCenter] 
+	 postNotificationName:managedObjectContextSavedNotification object:nil];
 	selectedMemo.memoText.memoText = memoTextView.text;
 	NSLog(@"After Editing the text is %@", selectedMemo.memoText.memoText);
 	
@@ -33,6 +31,12 @@
 	if(![managedObjectContext save:&error]){
 	}
 	
+}
+
+-(IBAction) saveSelectedMemo{
+	
+	[self.view endEditing:YES];
+			
 }
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -67,6 +71,7 @@
 	}	
 	[creationDateView setText: [dateFormatter stringFromDate:[selectedMemo creationDate]]];		
 	[memoTextView setText:[NSString stringWithFormat:@"%@", selectedMemo.memoText.memoText]];	
+	NSLog(@"Heh.");
 }
 
 /*

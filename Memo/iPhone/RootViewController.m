@@ -16,10 +16,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
 	[self.view addSubview:newText];
 	[self.view addSubview:tableViewController.tableView];
 	
 	//Point the new instance of managedObjectContext to the managedObjectContext for the app.
+	
 	if (managedObjectContext == nil) 
 	{ 
         managedObjectContext = [(AppDelegate_Shared *)[[UIApplication sharedApplication] delegate] managedObjectContext]; 

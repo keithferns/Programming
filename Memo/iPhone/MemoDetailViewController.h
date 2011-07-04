@@ -11,7 +11,7 @@
 #import "MemoText.h"
 #import "AppDelegate_Shared.h"
 
-@interface MemoDetailViewController : UIViewController {
+@interface MemoDetailViewController : UIViewController <UITextViewDelegate>{
 
 	UILabel *creationDateView;
 	UITextView *memoTextView;

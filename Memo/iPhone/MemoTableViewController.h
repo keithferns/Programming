@@ -14,7 +14,7 @@
 @interface MemoTableViewController : UITableViewController <NSFetchedResultsControllerDelegate, UITextViewDelegate> {
 
 	NSManagedObjectContext *managedObjectContext;
-	NSFetchedResultsController *fetchedResultsController;
+	NSFetchedResultsController *_fetchedResultsController;
 	UITableView *tableView;
 	
 }
@@ -23,6 +23,6 @@
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
 
-
+extern NSString *const managedObjectContextSavedNotification;
 
 @end
