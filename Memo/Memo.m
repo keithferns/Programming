@@ -18,7 +18,7 @@
 @dynamic isEditing;
 @dynamic appendToFile;
 @dynamic memoText;
-
+@dynamic memoRE;
 
 + (id) insertNewMemo: (NSManagedObjectContext *)context{
 	

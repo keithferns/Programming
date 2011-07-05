@@ -26,6 +26,8 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
 
 @end
 
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
 @implementation MemoTableViewController
 
 @synthesize managedObjectContext, tableView;
@@ -40,10 +42,14 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
  *--------------------------------------------------------------------------*/
 
 - (void) managedObjectContextSaved:(NSNotification *)notification{
+		// Redisplay the data.
+		//NOTE: This can also be done using the viewWillAppearMethod.
 	[self.tableView reloadData];
 }
 
 	//NOTE: If there are two different managedObjectContexts for two different ViewControllers, then send a NSManagedObjectContextDidSaveNotification to -(void)mergeChangesFromContextDidSaveNotification. The latter will emit change notifications that the fetch results controller will observe.
+
+
 
 #pragma mark -
 #pragma mark View lifecycle
@@ -51,15 +57,14 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
 - (void)viewDidLoad {
     [super viewDidLoad];
 	[self.view addSubview:tableView];
-	
-	if (managedObjectContext == nil) 
-	{ 
+		//Point the current instance of the managedObjectContext to the main managedObjectContext
+	if (managedObjectContext == nil) { 
 		managedObjectContext = [(AppDelegate_Shared *)[[UIApplication sharedApplication] delegate] managedObjectContext]; 
         NSLog(@"After managedObjectContext: %@",  managedObjectContext);
 	}
+	
 	NSError *error;
 	if (![[self fetchedResultsController] performFetch:&error]) {
-		NSLog(@"Did not Fetch");
 	}
 	
 	[[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(managedObjectContextSaved:) name:managedObjectContextSavedNotification object:nil];
@@ -69,9 +74,7 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
 
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
-
-		// Redisplay the data.
-		//[self.tableView reloadData];
+		//[self.tableView reloadData];  See managedObjectContextSaved method above.
 }
 
 
@@ -96,9 +99,9 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
 }
 
 
-#pragma mark -
-#pragma mark Table view data source
 
+#pragma mark -
+#pragma mark Fetched results controller
 
 - (NSFetchedResultsController *) fetchedResultsController {
 	if (_fetchedResultsController!=nil) {
@@ -125,6 +128,9 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
 	return _fetchedResultsController;
 }
 
+
+#pragma mark -
+#pragma mark Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 		// Return the number of sections -- if there are any. For now it should return 1. 
@@ -154,6 +160,7 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
 	 
 	 [mycell.creationDate setText: [dateFormatter stringFromDate:[aMemo creationDate]]];		
 	 [mycell.memoText setText:[NSString stringWithFormat:@"%@", aMemo.memoText.memoText]];
+	 [mycell.memoRE setText:[NSString stringWithFormat:@"%@", aMemo.memoRE]];
 	
 	
 }

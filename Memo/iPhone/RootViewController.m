@@ -37,9 +37,11 @@
 		//[newMemo setIsEditing:YES];
 		[newMemo setCreationDate:[NSDate date]];
 		newMemo.memoText = newMemoText;
+		newMemo.memoRE = @"";
 		NSLog(@"The Date of the new memo is '%@'", newMemo.creationDate);
 
 		NSLog(@"The Text of the new memo is '%@'", newMemo.memoText.memoText);
+			
 	
 		NSError *error;
 		if(![managedObjectContext save:&error]){ 

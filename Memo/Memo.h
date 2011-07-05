@@ -20,6 +20,7 @@
 @property (nonatomic, retain) NSNumber * isEditing;
 @property (nonatomic, retain) File * appendToFile;
 @property (nonatomic, retain) MemoText * memoText;
+@property (nonatomic, retain) NSString * memoRE;
 
 + (id) insertNewMemo: (NSManagedObjectContext *)context;
 

@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>NSManagedObjectModel_CurrentVersionName</key>
-	<string>Memo</string>
+	<string>Memo 2</string>
 	<key>NSManagedObjectModel_VersionHashes</key>
 	<dict>
 		<key>Memo</key>
@@ -19,6 +19,25 @@
 			<key>MemoText</key>
 			<data>
 			ByCNafkLAsNSy6ifabdPptNArFBjJ+lM3BjyO3wrUWE=
+			</data>
+		</dict>
+		<key>Memo 2</key>
+		<dict>
+			<key>Appointment</key>
+			<data>
+			XlNOabo3rGfvxUiu1VtT9gqMbT2mXgyBYN9kWOPZmJA=
+			</data>
+			<key>File</key>
+			<data>
+			aBmbTcLzGMHKjBf2z9GnRNf/OgEi4aXm0KYCQSFRHOw=
+			</data>
+			<key>Memo</key>
+			<data>
+			YLdrOHTcQocSHPdo8s0RwjvC5qs1NPX0B6+SGFp9EdM=
+			</data>
+			<key>MemoText</key>
+			<data>
+			XAA1qe0dcPYONG1bUxIKYIqFHpINA/CHB4hgqzI/TOM=
 			</data>
 		</dict>
 	</dict>

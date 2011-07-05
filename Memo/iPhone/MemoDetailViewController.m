@@ -11,7 +11,7 @@
 
 @implementation MemoDetailViewController
 
-@synthesize memoTextView, creationDateView;
+@synthesize memoTextView, creationDateView, memoREView;
 @synthesize selectedMemo;
 @synthesize managedObjectContext;
 
@@ -22,20 +22,26 @@
 }
 
 - (void)textViewDidEndEditing:(UITextView *)textView{
-	[[NSNotificationCenter defaultCenter] 
-	 postNotificationName:managedObjectContextSavedNotification object:nil];
+
+	
+}
+
+-(IBAction) saveSelectedMemo{
+
+	[self.view endEditing:YES];
+	
 	selectedMemo.memoText.memoText = memoTextView.text;
+	selectedMemo.memoRE = memoREView.text;
+	
 	NSLog(@"After Editing the text is %@", selectedMemo.memoText.memoText);
+	NSLog(@"After Naming, RE: %@", selectedMemo.memoRE);
 	
 	NSError *error;
 	if(![managedObjectContext save:&error]){
 	}
 	
-}
-
--(IBAction) saveSelectedMemo{
-	
-	[self.view endEditing:YES];
+	[[NSNotificationCenter defaultCenter] 
+	 postNotificationName:managedObjectContextSavedNotification object:nil];
 			
 }
 
@@ -71,16 +77,12 @@
 	}	
 	[creationDateView setText: [dateFormatter stringFromDate:[selectedMemo creationDate]]];		
 	[memoTextView setText:[NSString stringWithFormat:@"%@", selectedMemo.memoText.memoText]];	
-	NSLog(@"Heh.");
+	[memoREView setText:[NSString stringWithFormat:@"%@", selectedMemo.memoRE]];
 }
 
-/*
-// Override to allow orientations other than the default portrait orientation.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations.
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return YES;
 }
-*/
 
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
@@ -100,6 +102,7 @@
     [super dealloc];
 	[creationDateView release];
 	[memoTextView release];
+	[memoREView release];
 }
 
 
