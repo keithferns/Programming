@@ -30,6 +30,15 @@
 		5353623713C2C192007BEC2D /* Appointment.m in Sources */ = {isa = PBXBuildFile; fileRef = 5353623613C2C192007BEC2D /* Appointment.m */; };
 		5384E0DC13BD94540032F9B0 /* StartScreenCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5384E0DB13BD94540032F9B0 /* StartScreenCustomCell.m */; };
 		5384E0E013BD94EC0032F9B0 /* StartScreenCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5384E0DF13BD94EC0032F9B0 /* StartScreenCustomCell.xib */; };
+		53A54EEF13C94C0E004F2EC1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53A54EEE13C94C0E004F2EC1 /* QuartzCore.framework */; };
+		53ACB2A313C5ECC0003DA0E6 /* Blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 53ACB29B13C5ECC0003DA0E6 /* Blue.png */; };
+		53ACB2A413C5ECC0003DA0E6 /* Carbon.png in Resources */ = {isa = PBXBuildFile; fileRef = 53ACB29C13C5ECC0003DA0E6 /* Carbon.png */; };
+		53ACB2A513C5ECC0003DA0E6 /* Gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 53ACB29D13C5ECC0003DA0E6 /* Gray.png */; };
+		53ACB2A613C5ECC0003DA0E6 /* Green.png in Resources */ = {isa = PBXBuildFile; fileRef = 53ACB29E13C5ECC0003DA0E6 /* Green.png */; };
+		53ACB2A713C5ECC0003DA0E6 /* Orange.png in Resources */ = {isa = PBXBuildFile; fileRef = 53ACB29F13C5ECC0003DA0E6 /* Orange.png */; };
+		53ACB2A813C5ECC0003DA0E6 /* Purple.png in Resources */ = {isa = PBXBuildFile; fileRef = 53ACB2A013C5ECC0003DA0E6 /* Purple.png */; };
+		53ACB2A913C5ECC0003DA0E6 /* Red.png in Resources */ = {isa = PBXBuildFile; fileRef = 53ACB2A113C5ECC0003DA0E6 /* Red.png */; };
+		53ACB2AA13C5ECC0003DA0E6 /* Yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 53ACB2A213C5ECC0003DA0E6 /* Yellow.png */; };
 		53E58F3B13BEA6D9001BD373 /* MemoDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53E58F3A13BEA6D9001BD373 /* MemoDetailView.xib */; };
 		53E58F4813BF75CB001BD373 /* MemoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E58F4713BF75CB001BD373 /* MemoDetailViewController.m */; };
 /* End PBXBuildFile section */
@@ -72,6 +81,15 @@
 		5384E0DA13BD94540032F9B0 /* StartScreenCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartScreenCustomCell.h; sourceTree = "<group>"; };
 		5384E0DB13BD94540032F9B0 /* StartScreenCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartScreenCustomCell.m; sourceTree = "<group>"; };
 		5384E0DF13BD94EC0032F9B0 /* StartScreenCustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StartScreenCustomCell.xib; sourceTree = "<group>"; };
+		53A54EEE13C94C0E004F2EC1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		53ACB29B13C5ECC0003DA0E6 /* Blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Blue.png; sourceTree = "<group>"; };
+		53ACB29C13C5ECC0003DA0E6 /* Carbon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Carbon.png; sourceTree = "<group>"; };
+		53ACB29D13C5ECC0003DA0E6 /* Gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gray.png; sourceTree = "<group>"; };
+		53ACB29E13C5ECC0003DA0E6 /* Green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Green.png; sourceTree = "<group>"; };
+		53ACB29F13C5ECC0003DA0E6 /* Orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Orange.png; sourceTree = "<group>"; };
+		53ACB2A013C5ECC0003DA0E6 /* Purple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Purple.png; sourceTree = "<group>"; };
+		53ACB2A113C5ECC0003DA0E6 /* Red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Red.png; sourceTree = "<group>"; };
+		53ACB2A213C5ECC0003DA0E6 /* Yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Yellow.png; sourceTree = "<group>"; };
 		53E58F3A13BEA6D9001BD373 /* MemoDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemoDetailView.xib; sourceTree = "<group>"; };
 		53E58F4613BF75CB001BD373 /* MemoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemoDetailViewController.h; sourceTree = "<group>"; };
 		53E58F4713BF75CB001BD373 /* MemoDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemoDetailViewController.m; sourceTree = "<group>"; };
@@ -87,6 +105,7 @@
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
 				28EEBFDD1118E19E00187D67 /* CoreData.framework in Frameworks */,
+				53A54EEF13C94C0E004F2EC1 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,6 +170,7 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				53ACB29A13C5ECC0003DA0E6 /* Buttons_1 */,
 				32CA4F630368D1EE00C91783 /* Memo_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 			);
@@ -174,6 +194,7 @@
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
 				28EEBFDC1118E19E00187D67 /* CoreData.framework */,
+				53A54EEE13C94C0E004F2EC1 /* QuartzCore.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -208,6 +229,21 @@
 				5384E0DF13BD94EC0032F9B0 /* StartScreenCustomCell.xib */,
 			);
 			name = StartScreenCustomCell;
+			sourceTree = "<group>";
+		};
+		53ACB29A13C5ECC0003DA0E6 /* Buttons_1 */ = {
+			isa = PBXGroup;
+			children = (
+				53ACB29B13C5ECC0003DA0E6 /* Blue.png */,
+				53ACB29C13C5ECC0003DA0E6 /* Carbon.png */,
+				53ACB29D13C5ECC0003DA0E6 /* Gray.png */,
+				53ACB29E13C5ECC0003DA0E6 /* Green.png */,
+				53ACB29F13C5ECC0003DA0E6 /* Orange.png */,
+				53ACB2A013C5ECC0003DA0E6 /* Purple.png */,
+				53ACB2A113C5ECC0003DA0E6 /* Red.png */,
+				53ACB2A213C5ECC0003DA0E6 /* Yellow.png */,
+			);
+			path = Buttons_1;
 			sourceTree = "<group>";
 		};
 		53E58F5513BF7B12001BD373 /* MemoDetailView */ = {
@@ -276,6 +312,14 @@
 				5384E0E013BD94EC0032F9B0 /* StartScreenCustomCell.xib in Resources */,
 				53E58F3B13BEA6D9001BD373 /* MemoDetailView.xib in Resources */,
 				5353623213C2BFFA007BEC2D /* AppointmentsViewController.xib in Resources */,
+				53ACB2A313C5ECC0003DA0E6 /* Blue.png in Resources */,
+				53ACB2A413C5ECC0003DA0E6 /* Carbon.png in Resources */,
+				53ACB2A513C5ECC0003DA0E6 /* Gray.png in Resources */,
+				53ACB2A613C5ECC0003DA0E6 /* Green.png in Resources */,
+				53ACB2A713C5ECC0003DA0E6 /* Orange.png in Resources */,
+				53ACB2A813C5ECC0003DA0E6 /* Purple.png in Resources */,
+				53ACB2A913C5ECC0003DA0E6 /* Red.png in Resources */,
+				53ACB2AA13C5ECC0003DA0E6 /* Yellow.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,6 +354,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Keith Fernandes (EE34HPF9J4)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -317,6 +362,8 @@
 				GCC_PREFIX_HEADER = Memo_Prefix.pch;
 				INFOPLIST_FILE = "Memo-Info.plist";
 				PRODUCT_NAME = Memo;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "49DEF121-BA53-46F5-822D-8869ED043CE9";
+				SDKROOT = iphoneos4.3;
 			};
 			name = Debug;
 		};
@@ -329,6 +376,7 @@
 				GCC_PREFIX_HEADER = Memo_Prefix.pch;
 				INFOPLIST_FILE = "Memo-Info.plist";
 				PRODUCT_NAME = Memo;
+				SDKROOT = iphoneos4.3;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -342,7 +390,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
-				SDKROOT = iphoneos;
+				SDKROOT = "iOS 4.2.1";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;

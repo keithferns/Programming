@@ -21,10 +21,15 @@
 	
 }
 
-- (void)textViewDidEndEditing:(UITextView *)textView{
-
-	
+- (void) textViewDidBeginEditing:(UITextView *)textView{
+			//create new subview and initialize with the frame for the topView
+	CGRect mytestFrame = CGRectMake(0, 0, 320, 192);
+	UIView *myNewView = [[[UIView	alloc] initWithFrame:mytestFrame] autorelease];
+	[myNewView setBackgroundColor:[UIColor blueColor]];
+	[self.view addSubview:myNewView];
+	[myNewView addSubview:memoTextView];
 }
+
 
 -(IBAction) saveSelectedMemo{
 
@@ -79,6 +84,7 @@
 	[memoTextView setText:[NSString stringWithFormat:@"%@", selectedMemo.memoText.memoText]];	
 	[memoREView setText:[NSString stringWithFormat:@"%@", selectedMemo.memoRE]];
 }
+
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return YES;

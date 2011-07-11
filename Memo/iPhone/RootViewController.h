@@ -11,23 +11,29 @@
 #import "File.h"
 #import "MemoText.h"
 
-@interface RootViewController : UIViewController <UITextViewDelegate> {
+@interface RootViewController : UIViewController <UITextViewDelegate, UIActionSheetDelegate> {
 
 	NSManagedObjectContext *managedObjectContext;
 	UITextView *newText;
 	UITableViewController *tableViewController;
-	UIBarButtonItem *add_doneButton;
+	UIBarButtonItem *doneButton, *newMemoButton;
+	NSString *previousTextInput;
+	UIActionSheet *goActionSheet, *saveActionSheet;
+
 }
 
 
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain) IBOutlet UITextView *newText;
 @property (nonatomic, retain) IBOutlet UITableViewController *tableViewController;
-@property (nonatomic, retain) IBOutlet UIBarButtonItem *add_doneButton;
+@property (nonatomic, retain) IBOutlet UIBarButtonItem *doneButton, *newMemoButton;
+@property (nonatomic, retain) NSString *previousTextInput;
+@property (nonatomic, retain) UIActionSheet *goActionSheet, *saveActionSheet;
 
-- (IBAction) insertNewMemo;
 
+- (void) addNewMemo;
 
+- (IBAction) navigationAction:(id)sender;
 
 @end
 

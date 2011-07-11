@@ -21,6 +21,8 @@
 	
 }
 
+
+
 @property (nonatomic, retain) IBOutlet UILabel *creationDateView;
 @property (nonatomic, retain) IBOutlet UITextView *memoTextView;
 @property (nonatomic, retain) IBOutlet UITextField *memoREView;

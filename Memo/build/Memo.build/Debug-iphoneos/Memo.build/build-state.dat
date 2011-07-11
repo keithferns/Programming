@@ -1,0 +1,1211 @@
+TMemo
+v7
+r0
+t331945603.873299
+cCheck dependencies
+cCpResource build/Debug-iphoneos/Memo.app/ResourceRules.plist /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/ResourceRules.plist
+cProcessInfoPlistFile /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/Info.plist Memo-Info.plist
+cCompileXIB /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPad/MainWindow_iPad.xib
+cCompileXIB /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/MainWindow_iPhone.xib
+cCompileXIB /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/RootViewController.xib
+cCopyPNGFile /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/bluebutton.png bluebutton.png
+cCompileXIB /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/StartScreenCustomCell.xib
+cCompileXIB /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/MemoDetailView.xib
+cCompileXIB /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/AppointmentsViewController.xib
+cCopyPNGFile /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/Blue.png Buttons_1/Blue.png
+cCopyPNGFile /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/Carbon.png Buttons_1/Carbon.png
+cCopyPNGFile /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/Gray.png Buttons_1/Gray.png
+cCopyPNGFile /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/Green.png Buttons_1/Green.png
+cCopyPNGFile /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/Orange.png Buttons_1/Orange.png
+cCopyPNGFile /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/Purple.png Buttons_1/Purple.png
+cCopyPNGFile /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/Red.png Buttons_1/Red.png
+cCopyPNGFile /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/Yellow.png Buttons_1/Yellow.png
+cProcessPCH /var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Memo_Prefix-bxisgnkhmxbdfseyhkmpphcsvqgq/Memo_Prefix.pch.gch Memo_Prefix.pch normal armv6 objective-c com.apple.compilers.gcc.4_2
+cProcessPCH /var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Memo_Prefix-bkoqpytpvchbwwezszqbhmsjkmqf/Memo_Prefix.pch.gch Memo_Prefix.pch normal armv7 objective-c com.apple.compilers.gcc.4_2
+cDataModelVersionCompile /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/Memo.momd /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Shared/Memo.xcdatamodeld
+cCompileC build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/main.o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Shared/main.m normal armv6 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/AppDelegate_iPad.o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPad/AppDelegate_iPad.m normal armv6 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/AppDelegate_Shared.o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Shared/AppDelegate_Shared.m normal armv6 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/AppDelegate_iPhone.o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/AppDelegate_iPhone.m normal armv6 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/RootViewController.o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/RootViewController.m normal armv6 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/MemoTableViewController.o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/MemoTableViewController.m normal armv6 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/File.o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/File.m normal armv6 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/MemoText.o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/MemoText.m normal armv6 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/Memo-AB36A9F9B7564C7D.o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Memo.m normal armv6 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/StartScreenCustomCell.o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/StartScreenCustomCell.m normal armv6 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/MemoDetailViewController.o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/MemoDetailViewController.m normal armv6 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/AppointmentsViewController.o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/AppointmentsViewController.m normal armv6 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/Appointment.o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Shared/Appointment.m normal armv6 objective-c com.apple.compilers.gcc.4_2
+cLd /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/Memo normal armv6
+cCompileC build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/main.o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Shared/main.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/AppDelegate_iPad.o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPad/AppDelegate_iPad.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/AppDelegate_Shared.o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Shared/AppDelegate_Shared.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/AppDelegate_iPhone.o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/AppDelegate_iPhone.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/RootViewController.o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/RootViewController.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/MemoTableViewController.o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/MemoTableViewController.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/File.o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/File.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/MemoText.o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/MemoText.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/Memo-AB36A9F9B7564C7D.o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Memo.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/StartScreenCustomCell.o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/StartScreenCustomCell.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/MemoDetailViewController.o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/MemoDetailViewController.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/AppointmentsViewController.o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/AppointmentsViewController.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/Appointment.o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Shared/Appointment.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+cLd /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/Memo normal armv7
+cCreateUniversalBinary /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/Memo normal "armv6 armv7"
+cGenerateDSYMFile /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app.dSYM /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/Memo
+cProcessProductPackaging "/Users/Keith/Library/MobileDevice/Provisioning Profiles/49DEF121-BA53-46F5-822D-8869ED043CE9.mobileprovision" /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/embedded.mobileprovision
+cTouch /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app
+cProcessProductPackaging /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/Entitlements.plist /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo.xcent
+cCodeSign /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk
+c000000004D7401890000000000000110
+t1299448201
+s272
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/Entitlements.plist
+c000000004D4F6A4700000000000001A7
+t1297050183
+s423
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/ResourceRules.plist
+c000000004D4F6A4700000000000001E5
+t1297050183
+s485
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/CoreData.framework/CoreData
+c000000004D54D2640000000000303FF0
+t1297404516
+s3162096
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/CoreData.framework/Headers/CoreData.h
+c000000004D54D243000000000000046B
+t1297404483
+s1131
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
+c000000004D54D18C00000000003532A0
+t1297404300
+s3486368
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/Foundation.framework/Foundation
+c000000004D54D1F500000000003E22F0
+t1297404405
+s4072176
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h
+c000000004D54D1DD0000000000001466
+t1297404381
+s5222
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h
+c000000004D5A28AB0000000000000AA1
+t1297754283
+s2721
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/UIKit.framework/UIKit
+c000000004D5A292A0000000000CA2AE0
+t1297754410
+s13249248
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Buttons_1/Blue.png
+c0000000045FE29D500000000000034F6
+t1174284757
+s13558
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Buttons_1/Carbon.png
+c0000000045FE29880000000000002DCB
+t1174284680
+s11723
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Buttons_1/Gray.png
+c0000000045FE297A0000000000003702
+t1174284666
+s14082
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Buttons_1/Green.png
+c0000000045FE29310000000000003157
+t1174284593
+s12631
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Buttons_1/Orange.png
+c0000000045FE296B00000000000030B4
+t1174284651
+s12468
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Buttons_1/Purple.png
+c0000000045FE2A2B00000000000034D2
+t1174284843
+s13522
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Buttons_1/Red.png
+c0000000045FE295D0000000000002C3C
+t1174284637
+s11324
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Buttons_1/Yellow.png
+c0000000045FE294D0000000000002FAC
+t1174284621
+s12204
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/File.h
+c000000004E0B687C000000000000021F
+t1309370492
+s543
+i<CoreData/CoreData.h>
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/File.m
+c000000004E0B687C00000000000000EA
+t1309370492
+s234
+i"File.h"
+i"Memo.h"
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Memo.h
+c000000004E122F370000000000000263
+t1309814583
+s611
+i<CoreData/CoreData.h>
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Memo.m
+c000000004E122F1400000000000001F9
+t1309814548
+s505
+i"Memo.h"
+i"File.h"
+i"MemoText.h"
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/MemoText.h
+c000000004E0B68CD0000000000000150
+t1309370573
+s336
+i<CoreData/CoreData.h>
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/MemoText.m
+c000000004E0B68BC0000000000000181
+t1309370556
+s385
+i"MemoText.h"
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Memo_Prefix.pch
+c000000004E031AB100000000000000B1
+t1308826289
+s177
+i<Foundation/Foundation.h>
+i<UIKit/UIKit.h>
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Shared/AppDelegate_Shared.h
+c000000004E0B4A46000000000000039B
+t1309362758
+s923
+i<UIKit/UIKit.h>
+i<CoreData/CoreData.h>
+i"File.h"
+i"Memo.h"
+i"MemoText.h"
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Shared/AppDelegate_Shared.m
+c000000004E0B45C1000000000000175F
+t1309361601
+s5983
+i"AppDelegate_Shared.h"
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Shared/Appointment.h
+c000000004E128A1200000000000001CD
+t1309837842
+s461
+i<CoreData/CoreData.h>
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Shared/Appointment.m
+c000000004E128A12000000000000013A
+t1309837842
+s314
+i"Appointment.h"
+i"MemoText.h"
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Shared/Memo.xcdatamodeld
+c000000004E128BC600000000000000AA
+t1309838278
+s170
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Shared/main.m
+c000000004E031AB10000000000000169
+t1308826289
+s361
+i<UIKit/UIKit.h>
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/bluebutton.png
+c0000000047C8B4310000000000001128
+t1204335665
+s4392
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app
+t1310252803
+s850
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app.dSYM
+t1310251923
+s102
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/AppointmentsViewController.nib
+t1310251918
+s13176
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/Blue.png
+t1310251917
+s13389
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/Carbon.png
+t1310251917
+s12111
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/Gray.png
+t1310251917
+s13793
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/Green.png
+t1310251918
+s12766
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/Info.plist
+t1310251915
+s1247
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/MainWindow_iPad.nib
+t1310251915
+s1530
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/MainWindow_iPhone.nib
+t1310251916
+s1666
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/Memo
+t1310251923
+s161040
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/Memo.momd
+t1310251920
+s170
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/MemoDetailView.nib
+t1310251917
+s5133
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/Orange.png
+t1310251918
+s12617
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/PkgInfo
+t1310251915
+s8
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/Purple.png
+t1310251918
+s13568
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/Red.png
+t1310251918
+s11917
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/ResourceRules.plist
+t1310251915
+s485
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/RootViewController.nib
+t1310251916
+s5286
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/StartScreenCustomCell.nib
+t1310251916
+s4192
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/Yellow.png
+t1310251918
+s12408
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/bluebutton.png
+t1310251916
+s5151
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/embedded.mobileprovision
+t1310252221
+s7179
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo.xcent
+t1310251923
+s434
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/AppDelegate_Shared.o
+t1310251920
+s58720
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/AppDelegate_iPad.o
+t1310251920
+s47420
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/AppDelegate_iPhone.o
+t1310251920
+s49684
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/Appointment.o
+t1310251921
+s5580
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/AppointmentsViewController.o
+t1310251921
+s47460
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/File.o
+t1310251920
+s5400
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/Memo
+t1310251922
+s72496
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/Memo-AB36A9F9B7564C7D.o
+t1310251921
+s11924
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/Memo.LinkFileList
+c000000004E18DB8B00000000000006F9
+t1310251915
+s1785
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/MemoDetailViewController.o
+t1310251921
+s65672
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/MemoTableViewController.o
+t1310251920
+s79364
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/MemoText.o
+t1310251920
+s11744
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/RootViewController.o
+t1310251920
+s77412
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/StartScreenCustomCell.o
+t1310251921
+s41580
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/main.o
+t1310251920
+s6492
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/AppDelegate_Shared.o
+t1310251921
+s58564
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/AppDelegate_iPad.o
+t1310251921
+s47360
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/AppDelegate_iPhone.o
+t1310251921
+s49584
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/Appointment.o
+t1310251922
+s5580
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/AppointmentsViewController.o
+t1310251922
+s46948
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/File.o
+t1310251922
+s5400
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/Memo
+t1310251923
+s68852
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/Memo-AB36A9F9B7564C7D.o
+t1310251922
+s11916
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/Memo.LinkFileList
+c000000004E18DB8B00000000000006F9
+t1310251915
+s1785
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/MemoDetailViewController.o
+t1310251922
+s65408
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/MemoTableViewController.o
+t1310251922
+s78828
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/MemoText.o
+t1310251922
+s11736
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/RootViewController.o
+t1310251921
+s76596
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/StartScreenCustomCell.o
+t1310251922
+s41464
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/main.o
+t1310251921
+s6476
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPad/AppDelegate_iPad.h
+c000000004E031AB10000000000000105
+t1308826289
+s261
+i<UIKit/UIKit.h>
+i"AppDelegate_Shared.h"
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPad/AppDelegate_iPad.m
+c000000004E031AB10000000000000722
+t1308826289
+s1826
+i"AppDelegate_iPad.h"
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPad/MainWindow_iPad.xib
+c000000004E031AB1000000000000389A
+t1308826289
+s14490
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/AppDelegate_iPhone.h
+c000000004E0F672E000000000000016C
+t1309632302
+s364
+i<UIKit/UIKit.h>
+i"AppDelegate_Shared.h"
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/AppDelegate_iPhone.m
+c000000004E037EA00000000000000AE9
+t1308851872
+s2793
+i"AppDelegate_iPhone.h"
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/AppointmentsViewController.h
+c000000004E15DB650000000000000219
+t1310055269
+s537
+i<UIKit/UIKit.h>
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/AppointmentsViewController.m
+c000000004E15DF1A0000000000000900
+t1310056218
+s2304
+i"AppointmentsViewController.h"
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/AppointmentsViewController.xib
+c000000004E15DFD20000000000014AF2
+t1310056402
+s84722
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/MainWindow_iPhone.xib
+c000000004E0AB44A0000000000005893
+t1309324362
+s22675
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/MemoDetailView.xib
+c000000004E15CA8D00000000000094E3
+t1310050957
+s38115
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/MemoDetailViewController.h
+c000000004E15D40D0000000000000375
+t1310053389
+s885
+i<UIKit/UIKit.h>
+i"Memo.h"
+i"MemoText.h"
+i"AppDelegate_Shared.h"
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/MemoDetailViewController.m
+c000000004E13F4F70000000000000C57
+t1309930743
+s3159
+i"MemoDetailViewController.h"
+i"MemoTableViewController.h"
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/MemoTableViewController.h
+c000000004E11FEBF00000000000002F7
+t1309802175
+s759
+i<UIKit/UIKit.h>
+i"Memo.h"
+i"MemoText.h"
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/MemoTableViewController.m
+c000000004E12326A0000000000002BEC
+t1309815402
+s11244
+i"MemoTableViewController.h"
+i"AppDelegate_Shared.h"
+i"StartScreenCustomCell.h"
+i"MemoDetailViewController.h"
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/RootViewController.h
+c000000004E13D65D000000000000043C
+t1309922909
+s1084
+i<UIKit/UIKit.h>
+i"Memo.h"
+i"File.h"
+i"MemoText.h"
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/RootViewController.m
+c000000004E13D9230000000000001C8D
+t1309923619
+s7309
+i"RootViewController.h"
+i"AppDelegate_Shared.h"
+i"AppointmentsViewController.h"
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/RootViewController.xib
+c000000004E17B10C0000000000009BEF
+t1310175500
+s39919
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/StartScreenCustomCell.h
+c000000004E12324900000000000001B1
+t1309815369
+s433
+i<UIKit/UIKit.h>
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/StartScreenCustomCell.m
+c000000004E13F4AA0000000000000316
+t1309930666
+s790
+i"StartScreenCustomCell.h"
+
+N/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/StartScreenCustomCell.xib
+c000000004E1290CF00000000000066E6
+t1309839567
+s26342
+
+N/Users/Keith/Library/MobileDevice/Provisioning Profiles/49DEF121-BA53-46F5-822D-8869ED043CE9.mobileprovision
+c000000004E18D83E0000000000001C0B
+t1310251070
+s7179
+
+N/var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Memo_Prefix-bkoqpytpvchbwwezszqbhmsjkmqf/Memo_Prefix.pch.gch
+t1310251919
+s10647452
+
+N/var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Memo_Prefix-bxisgnkhmxbdfseyhkmpphcsvqgq/Memo_Prefix.pch.gch
+t1310251919
+s10184604
+
+NMemo-Info.plist
+c000000004E18DB8A00000000000006AD
+t1310251914
+s1709
+
+CCheck dependencies
+r0
+lSLF07#2@18"Check dependencies331945600#331945600#0(0"0(0#1#0"8625702176#0"0#
+
+CCodeSign /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app
+s331945600.889466
+e331945603.873126
+r1
+xCodeSign
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app
+o/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app: replacing existing signature
+lSLF07#2@38"CodeSign build/Debug-iphoneos/Memo.app331945600#331945603#0(114"/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app: replacing existing signature0(0#0#83"/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app8618462336#696"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    setenv _CODESIGN_ALLOCATE_ /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/codesign_allocate    /usr/bin/codesign -f -s "iPhone Developer: Keith Fernandes (EE34HPF9J4)" --resource-rules=/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/ResourceRules.plist --entitlements /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo.xcent /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app0#
+
+CCompileC build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/AppDelegate_Shared.o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Shared/AppDelegate_Shared.m normal armv6 objective-c com.apple.compilers.gcc.4_2
+s331944720.069033
+e331944720.276466
+r1
+xCompileC
+xbuild/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/AppDelegate_Shared.o
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Shared/AppDelegate_Shared.m
+xnormal
+xarmv6
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@89"Compile /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Shared/AppDelegate_Shared.m331944720#331944720#0(0"0(0#0#81"/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Shared/AppDelegate_Shared.m8618931360#1864"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-generated-files.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-own-target-headers.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-all-target-headers.hmap -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-project-headers.hmap -F/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/include -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/DerivedSources/armv6 -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/DerivedSources -include /var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Memo_Prefix-bxisgnkhmxbdfseyhkmpphcsvqgq/Memo_Prefix.pch -c /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Shared/AppDelegate_Shared.m -o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/AppDelegate_Shared.o0#
+
+CCompileC build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/AppDelegate_iPad.o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPad/AppDelegate_iPad.m normal armv6 objective-c com.apple.compilers.gcc.4_2
+s331944720.028367
+e331944720.278967
+r1
+xCompileC
+xbuild/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/AppDelegate_iPad.o
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPad/AppDelegate_iPad.m
+xnormal
+xarmv6
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@85"Compile /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPad/AppDelegate_iPad.m331944720#331944720#0(0"0(0#0#77"/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPad/AppDelegate_iPad.m8619508352#1858"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-generated-files.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-own-target-headers.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-all-target-headers.hmap -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-project-headers.hmap -F/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/include -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/DerivedSources/armv6 -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/DerivedSources -include /var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Memo_Prefix-bxisgnkhmxbdfseyhkmpphcsvqgq/Memo_Prefix.pch -c /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPad/AppDelegate_iPad.m -o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/AppDelegate_iPad.o0#
+
+CCompileC build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/AppDelegate_iPhone.o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/AppDelegate_iPhone.m normal armv6 objective-c com.apple.compilers.gcc.4_2
+s331944720.276579
+e331944720.525416
+r1
+xCompileC
+xbuild/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/AppDelegate_iPhone.o
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/AppDelegate_iPhone.m
+xnormal
+xarmv6
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@89"Compile /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/AppDelegate_iPhone.m331944720#331944720#0(0"0(0#0#81"/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/AppDelegate_iPhone.m8624184448#1864"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-generated-files.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-own-target-headers.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-all-target-headers.hmap -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-project-headers.hmap -F/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/include -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/DerivedSources/armv6 -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/DerivedSources -include /var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Memo_Prefix-bxisgnkhmxbdfseyhkmpphcsvqgq/Memo_Prefix.pch -c /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/AppDelegate_iPhone.m -o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/AppDelegate_iPhone.o0#
+
+CCompileC build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/Appointment.o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Shared/Appointment.m normal armv6 objective-c com.apple.compilers.gcc.4_2
+s331944721.257060
+e331944721.401120
+r1
+xCompileC
+xbuild/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/Appointment.o
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Shared/Appointment.m
+xnormal
+xarmv6
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@82"Compile /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Shared/Appointment.m331944721#331944721#0(0"0(0#0#74"/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Shared/Appointment.m8620898464#1850"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-generated-files.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-own-target-headers.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-all-target-headers.hmap -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-project-headers.hmap -F/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/include -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/DerivedSources/armv6 -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/DerivedSources -include /var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Memo_Prefix-bxisgnkhmxbdfseyhkmpphcsvqgq/Memo_Prefix.pch -c /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Shared/Appointment.m -o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/Appointment.o0#
+
+CCompileC build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/AppointmentsViewController.o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/AppointmentsViewController.m normal armv6 objective-c com.apple.compilers.gcc.4_2
+s331944721.137078
+e331944721.256947
+r1
+xCompileC
+xbuild/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/AppointmentsViewController.o
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/AppointmentsViewController.m
+xnormal
+xarmv6
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@97"Compile /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/AppointmentsViewController.m331944721#331944721#0(0"0(0#0#89"/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/AppointmentsViewController.m8621096768#1880"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-generated-files.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-own-target-headers.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-all-target-headers.hmap -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-project-headers.hmap -F/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/include -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/DerivedSources/armv6 -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/DerivedSources -include /var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Memo_Prefix-bxisgnkhmxbdfseyhkmpphcsvqgq/Memo_Prefix.pch -c /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/AppointmentsViewController.m -o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/AppointmentsViewController.o0#
+
+CCompileC build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/File.o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/File.m normal armv6 objective-c com.apple.compilers.gcc.4_2
+s331944720.656227
+e331944720.763538
+r1
+xCompileC
+xbuild/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/File.o
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/File.m
+xnormal
+xarmv6
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@68"Compile /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/File.m331944720#331944720#0(0"0(0#0#60"/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/File.m8619756096#1829"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-generated-files.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-own-target-headers.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-all-target-headers.hmap -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-project-headers.hmap -F/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/include -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/DerivedSources/armv6 -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/DerivedSources -include /var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Memo_Prefix-bxisgnkhmxbdfseyhkmpphcsvqgq/Memo_Prefix.pch -c /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/File.m -o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/File.o0#
+
+CCompileC build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/Memo-AB36A9F9B7564C7D.o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Memo.m normal armv6 objective-c com.apple.compilers.gcc.4_2
+s331944720.881951
+e331944721.057823
+r1
+xCompileC
+xbuild/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/Memo-AB36A9F9B7564C7D.o
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Memo.m
+xnormal
+xarmv6
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@68"Compile /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Memo.m331944720#331944721#0(0"0(0#0#60"/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Memo.m8622870624#1846"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-generated-files.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-own-target-headers.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-all-target-headers.hmap -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-project-headers.hmap -F/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/include -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/DerivedSources/armv6 -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/DerivedSources -include /var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Memo_Prefix-bxisgnkhmxbdfseyhkmpphcsvqgq/Memo_Prefix.pch -c /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Memo.m -o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/Memo-AB36A9F9B7564C7D.o0#
+
+CCompileC build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/MemoDetailViewController.o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/MemoDetailViewController.m normal armv6 objective-c com.apple.compilers.gcc.4_2
+s331944721.057925
+e331944721.324732
+r1
+xCompileC
+xbuild/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/MemoDetailViewController.o
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/MemoDetailViewController.m
+xnormal
+xarmv6
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@95"Compile /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/MemoDetailViewController.m331944721#331944721#0(0"0(0#0#87"/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/MemoDetailViewController.m8624981632#1876"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-generated-files.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-own-target-headers.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-all-target-headers.hmap -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-project-headers.hmap -F/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/include -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/DerivedSources/armv6 -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/DerivedSources -include /var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Memo_Prefix-bxisgnkhmxbdfseyhkmpphcsvqgq/Memo_Prefix.pch -c /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/MemoDetailViewController.m -o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/MemoDetailViewController.o0#
+
+CCompileC build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/MemoTableViewController.o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/MemoTableViewController.m normal armv6 objective-c com.apple.compilers.gcc.4_2
+s331944720.525521
+e331944720.949380
+r1
+xCompileC
+xbuild/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/MemoTableViewController.o
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/MemoTableViewController.m
+xnormal
+xarmv6
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@94"Compile /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/MemoTableViewController.m331944720#331944720#0(0"0(0#0#86"/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/MemoTableViewController.m8618285952#1874"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-generated-files.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-own-target-headers.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-all-target-headers.hmap -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-project-headers.hmap -F/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/include -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/DerivedSources/armv6 -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/DerivedSources -include /var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Memo_Prefix-bxisgnkhmxbdfseyhkmpphcsvqgq/Memo_Prefix.pch -c /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/MemoTableViewController.m -o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/MemoTableViewController.o0#
+
+CCompileC build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/MemoText.o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/MemoText.m normal armv6 objective-c com.apple.compilers.gcc.4_2
+s331944720.763644
+e331944720.881839
+r1
+xCompileC
+xbuild/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/MemoText.o
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/MemoText.m
+xnormal
+xarmv6
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@72"Compile /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/MemoText.m331944720#331944720#0(0"0(0#0#64"/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/MemoText.m8624848992#1837"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-generated-files.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-own-target-headers.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-all-target-headers.hmap -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-project-headers.hmap -F/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/include -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/DerivedSources/armv6 -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/DerivedSources -include /var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Memo_Prefix-bxisgnkhmxbdfseyhkmpphcsvqgq/Memo_Prefix.pch -c /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/MemoText.m -o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/MemoText.o0#
+
+CCompileC build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/RootViewController.o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/RootViewController.m normal armv6 objective-c com.apple.compilers.gcc.4_2
+s331944720.279067
+e331944720.656109
+r1
+xCompileC
+xbuild/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/RootViewController.o
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/RootViewController.m
+xnormal
+xarmv6
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@89"Compile /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/RootViewController.m331944720#331944720#0(0"0(0#0#81"/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/RootViewController.m8623686944#1864"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-generated-files.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-own-target-headers.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-all-target-headers.hmap -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-project-headers.hmap -F/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/include -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/DerivedSources/armv6 -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/DerivedSources -include /var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Memo_Prefix-bxisgnkhmxbdfseyhkmpphcsvqgq/Memo_Prefix.pch -c /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/RootViewController.m -o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/RootViewController.o0#
+
+CCompileC build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/StartScreenCustomCell.o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/StartScreenCustomCell.m normal armv6 objective-c com.apple.compilers.gcc.4_2
+s331944720.949666
+e331944721.136958
+r1
+xCompileC
+xbuild/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/StartScreenCustomCell.o
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/StartScreenCustomCell.m
+xnormal
+xarmv6
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@92"Compile /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/StartScreenCustomCell.m331944720#331944721#0(0"0(0#0#84"/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/StartScreenCustomCell.m8619713728#1870"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-generated-files.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-own-target-headers.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-all-target-headers.hmap -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-project-headers.hmap -F/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/include -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/DerivedSources/armv6 -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/DerivedSources -include /var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Memo_Prefix-bxisgnkhmxbdfseyhkmpphcsvqgq/Memo_Prefix.pch -c /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/StartScreenCustomCell.m -o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/StartScreenCustomCell.o0#
+
+CCompileC build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/main.o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Shared/main.m normal armv6 objective-c com.apple.compilers.gcc.4_2
+s331944719.852691
+e331944720.068921
+r1
+xCompileC
+xbuild/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/main.o
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Shared/main.m
+xnormal
+xarmv6
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@75"Compile /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Shared/main.m331944719#331944720#0(0"0(0#0#67"/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Shared/main.m8624136288#1836"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-generated-files.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-own-target-headers.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-all-target-headers.hmap -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-project-headers.hmap -F/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/include -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/DerivedSources/armv6 -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/DerivedSources -include /var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Memo_Prefix-bxisgnkhmxbdfseyhkmpphcsvqgq/Memo_Prefix.pch -c /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Shared/main.m -o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/main.o0#
+
+CCompileC build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/AppDelegate_Shared.o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Shared/AppDelegate_Shared.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+s331944721.549519
+e331944721.676184
+r1
+xCompileC
+xbuild/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/AppDelegate_Shared.o
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Shared/AppDelegate_Shared.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@89"Compile /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Shared/AppDelegate_Shared.m331944721#331944721#0(0"0(0#0#81"/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Shared/AppDelegate_Shared.m8619835616#1864"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-generated-files.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-own-target-headers.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-all-target-headers.hmap -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-project-headers.hmap -F/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/include -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/DerivedSources/armv7 -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/DerivedSources -include /var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Memo_Prefix-bkoqpytpvchbwwezszqbhmsjkmqf/Memo_Prefix.pch -c /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Shared/AppDelegate_Shared.m -o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/AppDelegate_Shared.o0#
+
+CCompileC build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/AppDelegate_iPad.o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPad/AppDelegate_iPad.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+s331944721.447046
+e331944721.549412
+r1
+xCompileC
+xbuild/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/AppDelegate_iPad.o
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPad/AppDelegate_iPad.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@85"Compile /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPad/AppDelegate_iPad.m331944721#331944721#0(0"0(0#0#77"/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPad/AppDelegate_iPad.m8624697024#1858"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-generated-files.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-own-target-headers.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-all-target-headers.hmap -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-project-headers.hmap -F/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/include -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/DerivedSources/armv7 -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/DerivedSources -include /var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Memo_Prefix-bkoqpytpvchbwwezszqbhmsjkmqf/Memo_Prefix.pch -c /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPad/AppDelegate_iPad.m -o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/AppDelegate_iPad.o0#
+
+CCompileC build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/AppDelegate_iPhone.o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/AppDelegate_iPhone.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+s331944721.676335
+e331944721.764470
+r1
+xCompileC
+xbuild/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/AppDelegate_iPhone.o
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/AppDelegate_iPhone.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@89"Compile /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/AppDelegate_iPhone.m331944721#331944721#0(0"0(0#0#81"/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/AppDelegate_iPhone.m8624137280#1864"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-generated-files.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-own-target-headers.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-all-target-headers.hmap -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-project-headers.hmap -F/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/include -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/DerivedSources/armv7 -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/DerivedSources -include /var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Memo_Prefix-bkoqpytpvchbwwezszqbhmsjkmqf/Memo_Prefix.pch -c /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/AppDelegate_iPhone.m -o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/AppDelegate_iPhone.o0#
+
+CCompileC build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/Appointment.o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Shared/Appointment.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+s331944722.715546
+e331944722.789996
+r1
+xCompileC
+xbuild/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/Appointment.o
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Shared/Appointment.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@82"Compile /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Shared/Appointment.m331944722#331944722#0(0"0(0#0#74"/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Shared/Appointment.m8620729216#1850"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-generated-files.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-own-target-headers.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-all-target-headers.hmap -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-project-headers.hmap -F/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/include -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/DerivedSources/armv7 -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/DerivedSources -include /var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Memo_Prefix-bkoqpytpvchbwwezszqbhmsjkmqf/Memo_Prefix.pch -c /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Shared/Appointment.m -o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/Appointment.o0#
+
+CCompileC build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/AppointmentsViewController.o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/AppointmentsViewController.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+s331944722.616042
+e331944722.715436
+r1
+xCompileC
+xbuild/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/AppointmentsViewController.o
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/AppointmentsViewController.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@97"Compile /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/AppointmentsViewController.m331944722#331944722#0(0"0(0#0#89"/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/AppointmentsViewController.m8619122720#1880"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-generated-files.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-own-target-headers.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-all-target-headers.hmap -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-project-headers.hmap -F/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/include -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/DerivedSources/armv7 -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/DerivedSources -include /var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Memo_Prefix-bkoqpytpvchbwwezszqbhmsjkmqf/Memo_Prefix.pch -c /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/AppointmentsViewController.m -o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/AppointmentsViewController.o0#
+
+CCompileC build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/File.o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/File.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+s331944722.088801
+e331944722.155884
+r1
+xCompileC
+xbuild/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/File.o
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/File.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@68"Compile /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/File.m331944722#331944722#0(0"0(0#0#60"/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/File.m8624971872#1829"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-generated-files.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-own-target-headers.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-all-target-headers.hmap -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-project-headers.hmap -F/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/include -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/DerivedSources/armv7 -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/DerivedSources -include /var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Memo_Prefix-bkoqpytpvchbwwezszqbhmsjkmqf/Memo_Prefix.pch -c /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/File.m -o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/File.o0#
+
+CCompileC build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/Memo-AB36A9F9B7564C7D.o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Memo.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+s331944722.239224
+e331944722.328404
+r1
+xCompileC
+xbuild/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/Memo-AB36A9F9B7564C7D.o
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Memo.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@68"Compile /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Memo.m331944722#331944722#0(0"0(0#0#60"/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Memo.m8619042656#1846"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-generated-files.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-own-target-headers.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-all-target-headers.hmap -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-project-headers.hmap -F/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/include -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/DerivedSources/armv7 -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/DerivedSources -include /var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Memo_Prefix-bkoqpytpvchbwwezszqbhmsjkmqf/Memo_Prefix.pch -c /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Memo.m -o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/Memo-AB36A9F9B7564C7D.o0#
+
+CCompileC build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/MemoDetailViewController.o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/MemoDetailViewController.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+s331944722.494833
+e331944722.615931
+r1
+xCompileC
+xbuild/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/MemoDetailViewController.o
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/MemoDetailViewController.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@95"Compile /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/MemoDetailViewController.m331944722#331944722#0(0"0(0#0#87"/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/MemoDetailViewController.m8624404896#1876"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-generated-files.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-own-target-headers.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-all-target-headers.hmap -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-project-headers.hmap -F/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/include -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/DerivedSources/armv7 -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/DerivedSources -include /var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Memo_Prefix-bkoqpytpvchbwwezszqbhmsjkmqf/Memo_Prefix.pch -c /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/MemoDetailViewController.m -o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/MemoDetailViewController.o0#
+
+CCompileC build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/MemoTableViewController.o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/MemoTableViewController.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+s331944721.934439
+e331944722.088695
+r1
+xCompileC
+xbuild/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/MemoTableViewController.o
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/MemoTableViewController.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@94"Compile /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/MemoTableViewController.m331944721#331944722#0(0"0(0#0#86"/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/MemoTableViewController.m8623074144#1874"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-generated-files.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-own-target-headers.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-all-target-headers.hmap -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-project-headers.hmap -F/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/include -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/DerivedSources/armv7 -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/DerivedSources -include /var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Memo_Prefix-bkoqpytpvchbwwezszqbhmsjkmqf/Memo_Prefix.pch -c /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/MemoTableViewController.m -o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/MemoTableViewController.o0#
+
+CCompileC build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/MemoText.o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/MemoText.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+s331944722.155994
+e331944722.239121
+r1
+xCompileC
+xbuild/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/MemoText.o
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/MemoText.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@72"Compile /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/MemoText.m331944722#331944722#0(0"0(0#0#64"/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/MemoText.m8624013248#1837"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-generated-files.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-own-target-headers.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-all-target-headers.hmap -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-project-headers.hmap -F/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/include -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/DerivedSources/armv7 -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/DerivedSources -include /var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Memo_Prefix-bkoqpytpvchbwwezszqbhmsjkmqf/Memo_Prefix.pch -c /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/MemoText.m -o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/MemoText.o0#
+
+CCompileC build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/RootViewController.o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/RootViewController.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+s331944721.764575
+e331944721.934334
+r1
+xCompileC
+xbuild/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/RootViewController.o
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/RootViewController.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@89"Compile /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/RootViewController.m331944721#331944721#0(0"0(0#0#81"/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/RootViewController.m8620856608#1864"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-generated-files.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-own-target-headers.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-all-target-headers.hmap -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-project-headers.hmap -F/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/include -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/DerivedSources/armv7 -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/DerivedSources -include /var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Memo_Prefix-bkoqpytpvchbwwezszqbhmsjkmqf/Memo_Prefix.pch -c /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/RootViewController.m -o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/RootViewController.o0#
+
+CCompileC build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/StartScreenCustomCell.o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/StartScreenCustomCell.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+s331944722.328516
+e331944722.494730
+r1
+xCompileC
+xbuild/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/StartScreenCustomCell.o
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/StartScreenCustomCell.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@92"Compile /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/StartScreenCustomCell.m331944722#331944722#0(0"0(0#0#84"/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/StartScreenCustomCell.m8623073824#1870"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-generated-files.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-own-target-headers.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-all-target-headers.hmap -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-project-headers.hmap -F/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/include -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/DerivedSources/armv7 -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/DerivedSources -include /var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Memo_Prefix-bkoqpytpvchbwwezszqbhmsjkmqf/Memo_Prefix.pch -c /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/StartScreenCustomCell.m -o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/StartScreenCustomCell.o0#
+
+CCompileC build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/main.o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Shared/main.m normal armv7 objective-c com.apple.compilers.gcc.4_2
+s331944721.324851
+e331944721.446922
+r1
+xCompileC
+xbuild/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/main.o
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Shared/main.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@75"Compile /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Shared/main.m331944721#331944721#0(0"0(0#0#67"/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Shared/main.m8617697408#1836"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-generated-files.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-own-target-headers.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-all-target-headers.hmap -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-project-headers.hmap -F/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/include -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/DerivedSources/armv7 -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/DerivedSources -include /var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Memo_Prefix-bkoqpytpvchbwwezszqbhmsjkmqf/Memo_Prefix.pch -c /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Shared/main.m -o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/main.o0#
+
+CCompileXIB /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPad/MainWindow_iPad.xib
+s331944715.236757
+e331944715.973100
+r1
+xCompileXIB
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPad/MainWindow_iPad.xib
+lSLF07#2@35"CompileXIB iPad/MainWindow_iPad.xib331944715#331944715#0(0"0(0#0#78"/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPad/MainWindow_iPad.xib8619756736#599"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 4.3    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/MainWindow_iPad.nib /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPad/MainWindow_iPad.xib --sdk /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk0#
+
+CCompileXIB /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/AppointmentsViewController.xib
+s331944716.725515
+e331944718.484319
+r1
+xCompileXIB
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/AppointmentsViewController.xib
+lSLF07#2@48"CompileXIB iPhone/AppointmentsViewController.xib331944716#331944718#0(0"0(0#0#91"/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/AppointmentsViewController.xib8621276768#623"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 4.3    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/AppointmentsViewController.nib /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/AppointmentsViewController.xib --sdk /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk0#
+
+CCompileXIB /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/MainWindow_iPhone.xib
+s331944715.238145
+e331944716.034121
+r1
+xCompileXIB
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/MainWindow_iPhone.xib
+lSLF07#2@39"CompileXIB iPhone/MainWindow_iPhone.xib331944715#331944716#0(0"0(0#0#82"/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/MainWindow_iPhone.xib8619636224#605"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 4.3    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/MainWindow_iPhone.nib /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/MainWindow_iPhone.xib --sdk /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk0#
+
+CCompileXIB /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/MemoDetailView.xib
+s331944716.705511
+e331944717.447674
+r1
+xCompileXIB
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/MemoDetailView.xib
+lSLF07#2@36"CompileXIB iPhone/MemoDetailView.xib331944716#331944717#0(0"0(0#0#79"/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/MemoDetailView.xib8623311072#599"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 4.3    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/MemoDetailView.nib /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/MemoDetailView.xib --sdk /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk0#
+
+CCompileXIB /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/RootViewController.xib
+s331944715.973203
+e331944716.725421
+r1
+xCompileXIB
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/RootViewController.xib
+lSLF07#2@40"CompileXIB iPhone/RootViewController.xib331944715#331944716#0(0"0(0#0#83"/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/RootViewController.xib8621032512#607"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 4.3    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/RootViewController.nib /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/RootViewController.xib --sdk /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk0#
+
+CCompileXIB /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/StartScreenCustomCell.xib
+s331944716.182724
+e331944716.705352
+r1
+xCompileXIB
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/StartScreenCustomCell.xib
+lSLF07#2@43"CompileXIB iPhone/StartScreenCustomCell.xib331944716#331944716#0(0"0(0#0#86"/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/StartScreenCustomCell.xib8610818816#613"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 4.3    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/StartScreenCustomCell.nib /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/StartScreenCustomCell.xib --sdk /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk0#
+
+CCopyPNGFile /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/Blue.png Buttons_1/Blue.png
+s331944717.447782
+e331944717.665290
+r1
+xCopyPNGFile
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/Blue.png
+xButtons_1/Blue.png
+lSLF07#2@69"CopyPNGFile build/Debug-iphoneos/Memo.app/Blue.png Buttons_1/Blue.png331944717#331944717#0(0"0(0#0#72"/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Buttons_1/Blue.png8609299552#508"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    "/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Plug-ins/iPhoneOS Build System Support.xcplugin/Contents/Resources/copypng" -compress "" /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Buttons_1/Blue.png /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/Blue.png0#
+
+CCopyPNGFile /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/Carbon.png Buttons_1/Carbon.png
+s331944717.665387
+e331944717.816303
+r1
+xCopyPNGFile
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/Carbon.png
+xButtons_1/Carbon.png
+lSLF07#2@73"CopyPNGFile build/Debug-iphoneos/Memo.app/Carbon.png Buttons_1/Carbon.png331944717#331944717#0(0"0(0#0#74"/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Buttons_1/Carbon.png8619900832#512"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    "/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Plug-ins/iPhoneOS Build System Support.xcplugin/Contents/Resources/copypng" -compress "" /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Buttons_1/Carbon.png /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/Carbon.png0#
+
+CCopyPNGFile /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/Gray.png Buttons_1/Gray.png
+s331944717.816407
+e331944717.983192
+r1
+xCopyPNGFile
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/Gray.png
+xButtons_1/Gray.png
+lSLF07#2@69"CopyPNGFile build/Debug-iphoneos/Memo.app/Gray.png Buttons_1/Gray.png331944717#331944717#0(0"0(0#0#72"/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Buttons_1/Gray.png8612157632#508"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    "/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Plug-ins/iPhoneOS Build System Support.xcplugin/Contents/Resources/copypng" -compress "" /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Buttons_1/Gray.png /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/Gray.png0#
+
+CCopyPNGFile /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/Green.png Buttons_1/Green.png
+s331944717.983289
+e331944718.139718
+r1
+xCopyPNGFile
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/Green.png
+xButtons_1/Green.png
+lSLF07#2@71"CopyPNGFile build/Debug-iphoneos/Memo.app/Green.png Buttons_1/Green.png331944717#331944718#0(0"0(0#0#73"/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Buttons_1/Green.png8623777664#510"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    "/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Plug-ins/iPhoneOS Build System Support.xcplugin/Contents/Resources/copypng" -compress "" /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Buttons_1/Green.png /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/Green.png0#
+
+CCopyPNGFile /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/Orange.png Buttons_1/Orange.png
+s331944718.139819
+e331944718.304630
+r1
+xCopyPNGFile
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/Orange.png
+xButtons_1/Orange.png
+lSLF07#2@73"CopyPNGFile build/Debug-iphoneos/Memo.app/Orange.png Buttons_1/Orange.png331944718#331944718#0(0"0(0#0#74"/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Buttons_1/Orange.png8620208352#512"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    "/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Plug-ins/iPhoneOS Build System Support.xcplugin/Contents/Resources/copypng" -compress "" /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Buttons_1/Orange.png /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/Orange.png0#
+
+CCopyPNGFile /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/Purple.png Buttons_1/Purple.png
+s331944718.304867
+e331944718.482115
+r1
+xCopyPNGFile
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/Purple.png
+xButtons_1/Purple.png
+lSLF07#2@73"CopyPNGFile build/Debug-iphoneos/Memo.app/Purple.png Buttons_1/Purple.png331944718#331944718#0(0"0(0#0#74"/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Buttons_1/Purple.png8619166688#512"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    "/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Plug-ins/iPhoneOS Build System Support.xcplugin/Contents/Resources/copypng" -compress "" /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Buttons_1/Purple.png /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/Purple.png0#
+
+CCopyPNGFile /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/Red.png Buttons_1/Red.png
+s331944718.482319
+e331944718.671283
+r1
+xCopyPNGFile
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/Red.png
+xButtons_1/Red.png
+lSLF07#2@67"CopyPNGFile build/Debug-iphoneos/Memo.app/Red.png Buttons_1/Red.png331944718#331944718#0(0"0(0#0#71"/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Buttons_1/Red.png8618047808#506"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    "/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Plug-ins/iPhoneOS Build System Support.xcplugin/Contents/Resources/copypng" -compress "" /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Buttons_1/Red.png /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/Red.png0#
+
+CCopyPNGFile /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/Yellow.png Buttons_1/Yellow.png
+s331944718.484416
+e331944718.665583
+r1
+xCopyPNGFile
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/Yellow.png
+xButtons_1/Yellow.png
+lSLF07#2@73"CopyPNGFile build/Debug-iphoneos/Memo.app/Yellow.png Buttons_1/Yellow.png331944718#331944718#0(0"0(0#0#74"/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Buttons_1/Yellow.png8612213408#512"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    "/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Plug-ins/iPhoneOS Build System Support.xcplugin/Contents/Resources/copypng" -compress "" /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Buttons_1/Yellow.png /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/Yellow.png0#
+
+CCopyPNGFile /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/bluebutton.png bluebutton.png
+s331944716.034238
+e331944716.182624
+r1
+xCopyPNGFile
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/bluebutton.png
+xbluebutton.png
+lSLF07#2@71"CopyPNGFile build/Debug-iphoneos/Memo.app/bluebutton.png bluebutton.png331944716#331944716#0(0"0(0#0#68"/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/bluebutton.png8620650784#510"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    "/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Plug-ins/iPhoneOS Build System Support.xcplugin/Contents/Resources/copypng" -compress "" /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/bluebutton.png /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/bluebutton.png0#
+
+CCpResource build/Debug-iphoneos/Memo.app/ResourceRules.plist /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/ResourceRules.plist
+s331944715.167769
+e331944715.236649
+r1
+xCpResource
+xbuild/Debug-iphoneos/Memo.app/ResourceRules.plist
+x/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/ResourceRules.plist
+lSLF07#2@94"Copy /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/ResourceRules.plist331944715#331944715#0(0"0(0#0#89"/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/ResourceRules.plist8531300039613640704#521"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -resolve-src-symlinks /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/ResourceRules.plist /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app0#
+
+CCreateUniversalBinary /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/Memo normal "armv6 armv7"
+s331944723.243460
+e331944723.285231
+r1
+xCreateUniversalBinary
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/Memo
+xnormal
+xarmv6 armv7
+lSLF07#2@77"CreateUniversalBinary build/Debug-iphoneos/Memo.app/Memo normal "armv6 armv7"331944723#331944723#0(0"0(0#0#65"/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/armv6 armv78617785024#554"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /usr/bin/lipo -create /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/Memo /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/Memo -output /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/Memo0#
+
+CDataModelVersionCompile /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/Memo.momd /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Shared/Memo.xcdatamodeld
+s331944719.851271
+e331944720.028254
+r1
+xDataModelVersionCompile
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/Memo.momd
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Shared/Memo.xcdatamodeld
+o/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Shared/Memo.xcdatamodeld/Memo 2.xcdatamodel:Appointment.memoText: warning: Appointment.memoText -- relationship does not have an inverse 
+o/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Shared/Memo.xcdatamodeld/Memo 2.xcdatamodel:Memo.memoText: warning: Memo.memoText -- relationship does not have an inverse 
+o/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Shared/Memo.xcdatamodeld/Memo.xcdatamodel:Memo.memoText: warning: Memo.memoText -- relationship does not have an inverse 
+lSLF07#2@88"DataModelVersionCompile build/Debug-iphoneos/Memo.app/Memo.momd Shared/Memo.xcdatamodeld331944719#331944720#0(546"/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Shared/Memo.xcdatamodeld/Memo 2.xcdatamodel:Appointment.memoText: warning: Appointment.memoText -- relationship does not have an inverse /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Shared/Memo.xcdatamodeld/Memo 2.xcdatamodel:Memo.memoText: warning: Memo.memoText -- relationship does not have an inverse /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Shared/Memo.xcdatamodeld/Memo.xcdatamodel:Memo.memoText: warning: Memo.memoText -- relationship does not have an inverse 3(22@62"Appointment.memoText -- relationship does not have an inverse 331944719#18446744073709551615#0#0(6@97"/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Shared/Memo.xcdatamodeld/Memo 2.xcdatamodel331531078#0#0#0#0#0"0(22@55"Memo.memoText -- relationship does not have an inverse 331944719#18446744073709551615#0#0(6@97"/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Shared/Memo.xcdatamodeld/Memo 2.xcdatamodel331531078#0#0#0#0#0"0(22@55"Memo.memoText -- relationship does not have an inverse 331944719#18446744073709551615#0#0(6@95"/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Shared/Memo.xcdatamodeld/Memo.xcdatamodel331063708#0#0#0#0#0"0(0#0#78"/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Shared/Memo.xcdatamodeld8624514912#386"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/momc /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Shared/Memo.xcdatamodeld /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/Memo.momd0#
+
+CGenerateDSYMFile /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app.dSYM /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/Memo
+s331944723.285370
+e331944723.451117
+r1
+xGenerateDSYMFile
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app.dSYM
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/Memo
+lSLF07#2@86"GenerateDSYMFile build/Debug-iphoneos/Memo.app.dSYM build/Debug-iphoneos/Memo.app/Memo331944723#331944723#0(0"0(0#0#88"/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/Memo8611621088#398"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/dsymutil /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/Memo -o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app.dSYM0#
+
+CLd /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/Memo normal armv7
+r0
+
+CLd /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/Memo normal armv6
+s331944721.401256
+e331944722.930121
+r1
+xLd
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/Memo
+xnormal
+xarmv6
+lSLF07#2@127"Link /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/Memo331944721#331944722#0(0"0(0#0#0"8614122496#936"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo    setenv IPHONEOS_DEPLOYMENT_TARGET 4.3    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -arch armv6 -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -L/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos -F/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos -filelist /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/Memo.LinkFileList -dead_strip -miphoneos-version-min=4.3 -framework Foundation -framework UIKit -framework CoreGraphics -framework CoreData -o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv6/Memo0#
+
+CLd /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/Memo normal armv7
+s331944722.790095
+e331944723.243345
+r1
+xLd
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/Memo
+xnormal
+xarmv7
+lSLF07#2@127"Link /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/Memo331944722#331944723#0(0"0(0#0#0"8615004672#936"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo    setenv IPHONEOS_DEPLOYMENT_TARGET 4.3    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -arch armv7 -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -L/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos -F/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos -filelist /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/Memo.LinkFileList -dead_strip -miphoneos-version-min=4.3 -framework Foundation -framework UIKit -framework CoreGraphics -framework CoreData -o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Objects-normal/armv7/Memo0#
+
+CProcessInfoPlistFile /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/Info.plist Memo-Info.plist
+s331944715.172768
+e331944715.180553
+r1
+xProcessInfoPlistFile
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/Info.plist
+xMemo-Info.plist
+lSLF07#2@23"Process Memo-Info.plist331944715#331944715#0(0"0(0#0#69"/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Memo-Info.plist8620239008#610"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-infoPlistUtility Memo-Info.plist -genpkginfo /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/PkgInfo -expandbuildsettings -format binary -platform iphoneos -resourcerulesfile /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/ResourceRules.plist -o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/Info.plist0#
+
+CProcessPCH /var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Memo_Prefix-bkoqpytpvchbwwezszqbhmsjkmqf/Memo_Prefix.pch.gch Memo_Prefix.pch normal armv7 objective-c com.apple.compilers.gcc.4_2
+s331944718.672620
+e331944719.709475
+r1
+xProcessPCH
+x/var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Memo_Prefix-bkoqpytpvchbwwezszqbhmsjkmqf/Memo_Prefix.pch.gch
+xMemo_Prefix.pch
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@26"Precompile Memo_Prefix.pch331944718#331944719#0(0"0(0#0#69"/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Memo_Prefix.pch8624184192#1715"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c-header -arch armv7 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-generated-files.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-own-target-headers.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-all-target-headers.hmap -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-project-headers.hmap -F/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/include -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/DerivedSources/armv7 -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/DerivedSources -c /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Memo_Prefix.pch -o /var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Memo_Prefix-bkoqpytpvchbwwezszqbhmsjkmqf/Memo_Prefix.pch.gch0#
+
+CProcessPCH /var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Memo_Prefix-bxisgnkhmxbdfseyhkmpphcsvqgq/Memo_Prefix.pch.gch Memo_Prefix.pch normal armv6 objective-c com.apple.compilers.gcc.4_2
+s331944718.671404
+e331944719.850924
+r1
+xProcessPCH
+x/var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Memo_Prefix-bxisgnkhmxbdfseyhkmpphcsvqgq/Memo_Prefix.pch.gch
+xMemo_Prefix.pch
+xnormal
+xarmv6
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@26"Precompile Memo_Prefix.pch331944718#331944719#0(0"0(0#0#69"/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Memo_Prefix.pch8624709408#1715"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c-header -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=4.3 -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-generated-files.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-own-target-headers.hmap -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-all-target-headers.hmap -iquote /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo-project-headers.hmap -F/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/include -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/DerivedSources/armv6 -I/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/DerivedSources -c /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/Memo_Prefix.pch -o /var/folders/nM/nMwfYB3SGTecbjkfEWmZZE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Memo_Prefix-bxisgnkhmxbdfseyhkmpphcsvqgq/Memo_Prefix.pch.gch0#
+
+CProcessProductPackaging "/Users/Keith/Library/MobileDevice/Provisioning Profiles/49DEF121-BA53-46F5-822D-8869ED043CE9.mobileprovision" /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/embedded.mobileprovision
+s331945021.394537
+e331945021.396691
+r1
+xProcessProductPackaging
+x/Users/Keith/Library/MobileDevice/Provisioning Profiles/49DEF121-BA53-46F5-822D-8869ED043CE9.mobileprovision
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/embedded.mobileprovision
+lSLF07#2@189"ProcessProductPackaging "/Users/Keith/Library/MobileDevice/Provisioning Profiles/49DEF121-BA53-46F5-822D-8869ED043CE9.mobileprovision" build/Debug-iphoneos/Memo.app/embedded.mobileprovision331945021#331945021#0(0"0(0#0#108"/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/embedded.mobileprovision8623546944#450"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    <com.apple.tools.product-pkg-utility> "/Users/Keith/Library/MobileDevice/Provisioning Profiles/49DEF121-BA53-46F5-822D-8869ED043CE9.mobileprovision" -o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app/embedded.mobileprovision0#
+
+CProcessProductPackaging /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/Entitlements.plist /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo.xcent
+s331944723.574687
+e331944723.679883
+r1
+xProcessProductPackaging
+x/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/Entitlements.plist
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo.xcent
+lSLF07#2@166"ProcessProductPackaging /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/Entitlements.plist build/Memo.build/Debug-iphoneos/Memo.build/Memo.xcent331944723#331944723#0(0"0(0#0#107"/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo.xcent8615636512#453"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    <com.apple.tools.product-pkg-utility> /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/Entitlements.plist -entitlements -format xml -o /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Memo.build/Debug-iphoneos/Memo.build/Memo.xcent0#
+
+CTouch /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app
+s331945021.396773
+e331945021.410943
+r1
+xTouch
+x/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app
+lSLF07#2@89"Touch /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app331945021#331945021#0(0"0(0#0#0"8611348192#291"    cd /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /usr/bin/touch -c /Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/build/Debug-iphoneos/Memo.app0#
+
