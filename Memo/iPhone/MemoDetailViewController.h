@@ -16,7 +16,7 @@
 	UILabel *creationDateView;
 	UITextView *memoTextView;
 	NSManagedObjectContext *managedObjectContext;
-	Memo *selectedMemo;
+	MemoText *selectedMemoText;
 	UITextField *memoREView;
 	
 }
@@ -25,7 +25,8 @@
 @property (nonatomic, retain) IBOutlet UILabel *creationDateView;
 @property (nonatomic, retain) IBOutlet UITextView *memoTextView;
 @property (nonatomic, retain) IBOutlet UITextField *memoREView;
-@property (nonatomic, retain) Memo *selectedMemo;
+
+@property (nonatomic, retain) MemoText *selectedMemoText;
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 
 

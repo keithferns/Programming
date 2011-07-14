@@ -14,8 +14,9 @@
 
 @dynamic creationDate;
 @dynamic appointmentTime;
-@dynamic AppointmentRE;
+@dynamic appointmentRE;
 @dynamic memoText;
+
 
 + (id) insertNewAppointment: (NSManagedObjectContext *)context{
 	

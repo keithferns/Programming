@@ -110,15 +110,19 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
 		
 	NSFetchRequest *request = [[NSFetchRequest alloc] init];
 		
-	[request setEntity:[NSEntityDescription entityForName:@"Memo" inManagedObjectContext:managedObjectContext]];
+	[request setEntity:[NSEntityDescription entityForName:@"MemoText" inManagedObjectContext:managedObjectContext]];
 		
-	NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"creationDate" ascending:NO];
-	[request setSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];
-	[sortDescriptor release];
+	NSSortDescriptor *typeDescriptor = [[NSSortDescriptor alloc] initWithKey:@"noteType" ascending:YES];
+	NSSortDescriptor *textDescriptor = [[NSSortDescriptor alloc] initWithKey:@"memoText" ascending:YES];// just here to test the sections and row calls
+	
+	[request setSortDescriptors:[NSArray arrayWithObjects:typeDescriptor,textDescriptor, nil]];
+	[typeDescriptor release];
+	[textDescriptor release];
 		
 	[request setFetchBatchSize:10];
-
-	NSFetchedResultsController *newController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:managedObjectContext sectionNameKeyPath:nil cacheName:@"Root"];
+		
+	
+	NSFetchedResultsController *newController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:managedObjectContext sectionNameKeyPath:@"noteType" cacheName:@"Root"];
 		
 	newController.delegate = self;
 	self.fetchedResultsController = newController;
@@ -137,18 +141,36 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
 	return [[_fetchedResultsController sections] count];
 }
 
+- (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+	id<NSFetchedResultsSectionInfo>  sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
+	
+	int mySection;
+	mySection = [[sectionInfo name] intValue];
+	
+	if (mySection == 0){
+		return	@"Most Recent Memo";
+	}
+	else {
+		return @"Upcoming Appointment";
+	}
+
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section	
 
-	id <NSFetchedResultsSectionInfo> sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
-	return [sectionInfo numberOfObjects];
+		//id <NSFetchedResultsSectionInfo> sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
+		//return [sectionInfo numberOfObjects];
+	return 3;
 }
 
 - (void) configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath{
 	static NSDateFormatter *dateFormatter = nil;
 	if (dateFormatter == nil) {
 		dateFormatter = [[NSDateFormatter alloc] init];
-		[dateFormatter setDateFormat:@"EEEE, dd MMMM yyyy h:mm a"];
+		[dateFormatter setDateFormat:@"dd MMMM yyyy h:mm a"];
+			//[dateFormatter setDateFormat:@"EEEE, dd MMMM yyyy h:mm a"]; //This format gives the Day of Week, followed by date and time
+
 	}
 	
 	StartScreenCustomCell *mycell;
@@ -156,11 +178,17 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
 	
 		mycell = (StartScreenCustomCell *) cell;
 	}
-	 Memo *aMemo = [_fetchedResultsController objectAtIndexPath:indexPath];	
-	 
-	 [mycell.creationDate setText: [dateFormatter stringFromDate:[aMemo creationDate]]];		
-	 [mycell.memoText setText:[NSString stringWithFormat:@"%@", aMemo.memoText.memoText]];
-	 [mycell.memoRE setText:[NSString stringWithFormat:@"%@", aMemo.memoRE]];
+	 MemoText *aNote = [_fetchedResultsController objectAtIndexPath:indexPath];	
+	if ([aNote.noteType intValue] == 0) {
+		[mycell.creationDate setText: [dateFormatter stringFromDate:[aNote.savedMemo creationDate]]];
+		[mycell.memoRE setText:[NSString stringWithFormat:@"%@", aNote.savedMemo.memoRE]];
+		} 
+	else if ([aNote.noteType intValue] == 1){
+		
+		[mycell.creationDate setText: [dateFormatter stringFromDate:[aNote.savedAppointment creationDate]]];
+			//[mycell.memoRE setText:[NSString stringWithFormat:@"%@", aNote.savedAppointment.appointmentRE]];		 
+	}
+	 [mycell.memoText setText:[NSString stringWithFormat:@"%@", aNote.memoText]];
 	
 	
 }
@@ -173,7 +201,7 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
 	static NSDateFormatter *dateFormatter = nil;
 	if (dateFormatter == nil) {
 		dateFormatter = [[NSDateFormatter alloc] init];
-		[dateFormatter setDateFormat:@"EEEE, dd MMMM yyyy h:mm a"];
+		[dateFormatter setDateFormat:@"dd MMMM yyyy h:mm a"];
 	}
 	StartScreenCustomCell *cell = (StartScreenCustomCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	if (cell == nil) {
@@ -193,6 +221,11 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
 	 
     return cell;
 }
+
+
+
+
+
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -235,7 +268,7 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
      // Pass the selected object to the new view controller.
 
 	
-	detailViewController.selectedMemo = [_fetchedResultsController objectAtIndexPath:indexPath];	
+	detailViewController.selectedMemoText = [_fetchedResultsController objectAtIndexPath:indexPath];	
 		
 	[self presentModalViewController:detailViewController animated:YES];	
 	

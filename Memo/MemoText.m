@@ -8,16 +8,21 @@
 
 #import "MemoText.h"
 
+#import "Appointment.h"
+#import "Memo.h"
 
 @implementation MemoText 
 
-@dynamic memoText;
 @dynamic noteType;
+@dynamic memoText;
+@dynamic savedAppointment;
+@dynamic savedMemo;
 
 + (id) insertNewMemoText: (NSManagedObjectContext *)context{
 	
 	return [NSEntityDescription insertNewObjectForEntityForName:@"MemoText" inManagedObjectContext:context];
 }
+
 
 
 

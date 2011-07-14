@@ -9,6 +9,7 @@
 #import "RootViewController.h"
 #import "AppDelegate_Shared.h"
 #import "AppointmentsViewController.h"
+#import "AppointmentsTableViewController.h"
 
 @implementation RootViewController
 
@@ -16,6 +17,33 @@
 @synthesize doneButton, newMemoButton;
 @synthesize previousTextInput;
 @synthesize goActionSheet, saveActionSheet;
+
+#pragma mark -
+
+#pragma mark ViewLifeCycle
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+	
+	[self.view addSubview:newText];
+	[newText becomeFirstResponder];
+	[self.view addSubview:tableViewController.tableView];
+	
+		//Point the new instance of managedObjectContext to the managedObjectContext for the app.
+	
+	if (managedObjectContext == nil) 
+	{ 
+        managedObjectContext = [(AppDelegate_Shared *)[[UIApplication sharedApplication] delegate] managedObjectContext]; 
+        NSLog(@"After managedObjectContext: %@",  managedObjectContext);
+	}
+}
+- (void) textViewDidEndEditing:(UITextView *)textView{
+		//Change the Done Button to a New button. 
+}
+
+- (void) textViewDidEnd  :(UITextView *)textView{
+}
+
 
 
 #pragma mark -
@@ -98,29 +126,21 @@
 	else if (actionSheet == goActionSheet){
 		switch (buttonIndex){
 			case 3:
-				NSLog(@"1st Button Clicked on WallAlert");
-			{AppointmentsViewController *viewController = [[[AppointmentsViewController alloc] initWithNibName:@"AppointmentsViewController" bundle:nil] autorelease];
-				[self presentModalViewController:viewController animated:YES];}
-				break;
-			case 2:
-				NSLog(@"2nd Button Clicked on WallAlert");
-			{AppointmentsViewController *viewController = [[[AppointmentsViewController alloc] initWithNibName:@"AppointmentsViewController" bundle:nil] autorelease];			
-				[self presentModalViewController:viewController animated:YES];}
-				break;
-			case 1:
-				NSLog(@"3rd Button Clicked on WallAlert");
-			{AppointmentsViewController *viewController = [[[AppointmentsViewController alloc] initWithNibName:@"AppointmentsViewController" bundle:nil] autorelease];
-				[self presentModalViewController:viewController animated:YES];}
-				break;
-			case 0:
-				NSLog(@"4th Button Clicked on WallAlert");
-			{AppointmentsViewController *viewController = [[[AppointmentsViewController alloc] initWithNibName:@"AppointmentsViewController" bundle:nil] autorelease];		
-				[self presentModalViewController:viewController animated:YES];}
-				break;
-			case 4:
 				NSLog(@"Cancel Button Clicked on wallAlert");
 			default:
 				break;
+			case 2:
+				NSLog(@"Task Button Clicked on WallAlert");
+
+				break;
+			case 1:
+				NSLog(@"Appointments Button Clicked on WallAlert");
+			{AppointmentsTableViewController *viewController = [[[AppointmentsTableViewController alloc] initWithNibName:@"AppointmentsTableViewController" bundle:nil] autorelease];			
+				[self presentModalViewController:viewController animated:YES];}
+				break;
+			case 0:
+				NSLog(@" Folder and Files Button Clicked on WallAlert");
+				break;				
 		}
 	}
 }
@@ -171,7 +191,7 @@
 	Appointment *newAppointment = [Appointment insertNewAppointment:managedObjectContext];
 	[newAppointment setCreationDate:[NSDate date]];
 	newAppointment.memoText = newMemoText;
-	newAppointment.AppointmentRE = @"";
+	newAppointment.appointmentRE = @"";
 	NSLog(@"The Date of the new appointment is '%@'", newAppointment.creationDate);
 	
 	NSLog(@"The Text of the new appointment is '%@'", newAppointment.memoText.memoText);
@@ -193,29 +213,6 @@
 }
 
 
-#pragma mark -
-
-#pragma mark ViewLifeCycle
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-
-	[self.view addSubview:newText];
-	[self.view addSubview:tableViewController.tableView];
-	
-	//Point the new instance of managedObjectContext to the managedObjectContext for the app.
-	
-	if (managedObjectContext == nil) 
-	{ 
-        managedObjectContext = [(AppDelegate_Shared *)[[UIApplication sharedApplication] delegate] managedObjectContext]; 
-        NSLog(@"After managedObjectContext: %@",  managedObjectContext);
-	}
-}
-
-
-- (void) textViewDidBeginEditing:(UITextView *)textView{
-		//@ Input --> Put Done button in Toolbar.
-}
 
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {

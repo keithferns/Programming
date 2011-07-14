@@ -27,4 +27,31 @@
 - (void)removeAppendMemo:(NSSet *)value;
 
 @end
+/* Factory methods for entities.
+ //Appointment
+ + (id) insertNewAppointment: (NSManagedObjectContext *)context;
+
+ + (id) insertNewAppointment: (NSManagedObjectContext *)context{
+ 
+ return [NSEntityDescription insertNewObjectForEntityForName:@"Appointment" inManagedObjectContext:context];
+ }
+ 
+ //MemoText
+ 
+ + (id) insertNewMemoText: (NSManagedObjectContext *)context;
+ + (id) insertNewMemoText: (NSManagedObjectContext *)context{
+ 
+ return [NSEntityDescription insertNewObjectForEntityForName:@"MemoText" inManagedObjectContext:context];
+ }
+ //Memo
+ + (id) insertNewMemo: (NSManagedObjectContext *)context;
+
+ 
+ + (id) insertNewMemo: (NSManagedObjectContext *)context{
+ 
+ return [NSEntityDescription insertNewObjectForEntityForName:@"Memo" inManagedObjectContext:context];
+ }
+ 
+ 
+ */
 

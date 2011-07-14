@@ -12,14 +12,21 @@
 @implementation MemoDetailViewController
 
 @synthesize memoTextView, creationDateView, memoREView;
-@synthesize selectedMemo;
+@synthesize selectedMemoText;
 @synthesize managedObjectContext;
+
+	//FIXME: This is only configured to show the details of a Memo and not an Appointment. The text appears correctly for Appointment selection but the date does not appear.
+	//FIXME: the appointmentTime variable of the Appointment is not being called properly. Cannot read the appointment time off the object instance. 
+	//TODO: Put the creationDate as a ivar of the MemoText. This seems logical as the memoText is the base of the rest. THEN add a general "doDate" to all the entities. Copy the value of creationDate to the doDate as default. For an appointment or Task the doDate will be eventually be the scheduled or due date. For memos, the doDate will eventually be the time the memo was last edited. 
 
 - (IBAction) backToTable{
 	
 [self dismissModalViewControllerAnimated:YES];	
-	
+		//TODO: the current "Back" button should be the Save As.. Button. We want the option to save an existing memo as an appointment or save an existing appointment as a recurring event. Use notifications to tell the RootViewController which button on the action sheet was pressed --> dismiss the current modalView --> from the RootViewController initiate the action appropriate to the notification sent up by the modal view. DO NOT import another modalView from any modal view unless it is a detailView. 
+		//TODO: the current Save button should toggle between a Done button and New Button. The Done ends editing (dimisses the keyboard and saves the memo/appointment but the current memoText is retained in the view. The New button dismisses the current text and makes the keyboard first responder. Maybe the main view should have the same setup. Opening the application starts it up in editing mode with the textView as firstResponder. The user can dismiss the keyboard at will by pressing the Done button to reveal the table. 
 }
+
+
 
 - (void) textViewDidBeginEditing:(UITextView *)textView{
 			//create new subview and initialize with the frame for the topView
@@ -35,11 +42,11 @@
 
 	[self.view endEditing:YES];
 	
-	selectedMemo.memoText.memoText = memoTextView.text;
-	selectedMemo.memoRE = memoREView.text;
+	selectedMemoText.memoText = memoTextView.text;
+	selectedMemoText.savedMemo.memoRE = memoREView.text;
 	
-	NSLog(@"After Editing the text is %@", selectedMemo.memoText.memoText);
-	NSLog(@"After Naming, RE: %@", selectedMemo.memoRE);
+	NSLog(@"After Editing the text is %@", selectedMemoText.memoText);
+	NSLog(@"After Naming, RE: %@", selectedMemoText.savedMemo.memoRE);
 	
 	NSError *error;
 	if(![managedObjectContext save:&error]){
@@ -80,9 +87,15 @@
 		dateFormatter = [[NSDateFormatter alloc] init];
 		[dateFormatter setDateFormat:@"EEEE, dd MMMM yyyy h:mm a"];
 	}	
-	[creationDateView setText: [dateFormatter stringFromDate:[selectedMemo creationDate]]];		
-	[memoTextView setText:[NSString stringWithFormat:@"%@", selectedMemo.memoText.memoText]];	
-	[memoREView setText:[NSString stringWithFormat:@"%@", selectedMemo.memoRE]];
+	if ([selectedMemoText.noteType intValue] == 0){
+		[creationDateView setText: [dateFormatter stringFromDate:[selectedMemoText.savedMemo creationDate]]];
+	}
+		else if ([selectedMemoText.noteType intValue] == 1){
+			[creationDateView setText: [dateFormatter stringFromDate:[selectedMemoText.savedAppointment creationDate]]];
+
+		}
+	[memoTextView setText:[NSString stringWithFormat:@"%@", selectedMemoText.memoText]];	
+	[memoREView setText:[NSString stringWithFormat:@"%@", selectedMemoText.savedMemo.memoRE]];
 }
 
 
