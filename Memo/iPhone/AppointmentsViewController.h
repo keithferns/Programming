@@ -7,25 +7,34 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Appointment.h"
+#import "MemoText.h"
+#import "AppDelegate_Shared.h"
 
 
 @interface AppointmentsViewController : UIViewController {
 
 	UILabel *viewLabel, *datetimeLabel;
-	UIView *bottomview, *monthView, *datetimeView;
-	BOOL swappingViews;
+	UIView *bottomview2; // *monthView, *datetimeView;
+						 //BOOL swappingViews;
+	UIDatePicker *datePicker;
+	Appointment *newAppointment;
 }
 
+@property (nonatomic, retain) Appointment *newAppointment;
 
 @property (nonatomic, retain) IBOutlet UILabel *viewLabel, *datetimeLabel;
 
-@property (nonatomic, retain) IBOutlet UIView *bottomview, *monthView, *datetimeView;
+@property (nonatomic, retain) IBOutlet UIView *bottomview2;// *monthView, *datetimeView;
 
-- (void) swapViews;
+@property (nonatomic, retain) IBOutlet UIDatePicker *datePicker;
+	//- (void) swapViews;
 
 - (IBAction) backAction;
 
-- (IBAction)monthAction:(id)sender;
+- (IBAction) setAppointmentDate;
+
+	//- (IBAction)monthAction:(id)sender;
 
 
 

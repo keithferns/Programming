@@ -12,76 +12,91 @@
 
 @implementation AppointmentsViewController
 @synthesize viewLabel, datetimeLabel;
-@synthesize bottomview, monthView, datetimeView;
+@synthesize bottomview2; //monthView, datetimeView;
+@synthesize datePicker;
+@synthesize newAppointment;
 
 - (IBAction) backAction{
-	
-	[self dismissModalViewControllerAnimated:YES];	
-	
+	[self dismissModalViewControllerAnimated:YES];		
 }
 
-#pragma mark -
-#pragma mark SetMonth
-- (IBAction)monthAction:(id)sender{
-	if (!swappingViews) {
-	[self swapViews];
-	}
-	switch ([sender tag]) {
-		case 1:
-			[datetimeLabel setText:@"January"];
-			break;
-		case 2:
-			[datetimeLabel setText:@"February"];			
-			break;
-		case 3:
-			[datetimeLabel setText:@"March"];
-			break;
-		case 4:
-			[datetimeLabel setText:@"April"];
-			break;
-		case 5:
-			[datetimeLabel setText:@"May"];
-			break;
-		case 6:
-			[datetimeLabel setText:@"June"];
-			break;
-		case 7:
-			[datetimeLabel setText:@"July"];
-			break;
-		case 8:
-			[datetimeLabel setText:@"August"];
-			break;
-		case 9:
-			[datetimeLabel setText:@"September"];
-			break;
-		case 10:
-			[datetimeLabel setText:@"October"];
-			break;
-		case 11:
-			[datetimeLabel setText:@"November"];
-			break;
-		case 12:
-			[datetimeLabel setText:@"December"];
-			break;
-		default:
-			break;
-	}
-		//TO DO: IF the user enters the date before the month, and this exceeds the number of days for the month selected, then give an error warning.
-}
+- (IBAction) setAppointmentDate{
+	
+	NSDate * appointmentTime = [datePicker date];
+	NSString * appointmentTimeString = [appointmentTime description];
+	NSLog(@"The appointment is et for %@", appointmentTimeString);
 
+	datetimeLabel.text = appointmentTimeString;
+	
+	newAppointment.appointmentTime = appointmentTime;
+	NSLog(@"The appointment is et for %@", newAppointment.appointmentTime);
+	bottomview2.hidden = YES;
+	
+}
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	[self.view addSubview:bottomview];
-	datetimeView.hidden = YES;
-	[bottomview addSubview:monthView];
-	[bottomview addSubview:datetimeView];
+	[self.view addSubview:bottomview2];
+		//swappingViews = NO;
+		//datetimeView.hidden = YES;
+		//[bottomview addSubview:monthView];
+		//[bottomview addSubview:datetimeView];
 	[viewLabel setText:@"Appointment Details"];
 	
-	swappingViews = NO;
 	
 }
+
+/*
+ #pragma mark -
+ #pragma mark SetMonth
+ - (IBAction)monthAction:(id)sender{
+ if (!swappingViews) {
+ [self swapViews];
+ }
+ switch ([sender tag]) {
+ case 1:
+ [datetimeLabel setText:@"January"];
+ break;
+ case 2:
+ [datetimeLabel setText:@"February"];			
+ break;
+ case 3:
+ [datetimeLabel setText:@"March"];
+ break;
+ case 4:
+ [datetimeLabel setText:@"April"];
+ break;
+ case 5:
+ [datetimeLabel setText:@"May"];
+ break;
+ case 6:
+ [datetimeLabel setText:@"June"];
+ break;
+ case 7:
+ [datetimeLabel setText:@"July"];
+ break;
+ case 8:
+ [datetimeLabel setText:@"August"];
+ break;
+ case 9:
+ [datetimeLabel setText:@"September"];
+ break;
+ case 10:
+ [datetimeLabel setText:@"October"];
+ break;
+ case 11:
+ [datetimeLabel setText:@"November"];
+ break;
+ case 12:
+ [datetimeLabel setText:@"December"];
+ break;
+ default:
+ break;
+ }
+ //TO DO: IF the user enters the date before the month, and this exceeds the number of days for the month selected, then give an error warning.
+ }
+ 
 
 - (void) swapViews{
 	
@@ -106,7 +121,7 @@
 {
 	swappingViews = NO;
 }
-
+*/
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return YES;
@@ -122,7 +137,10 @@
 - (void)viewDidUnload {
     [super viewDidUnload];
     // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+	datePicker = nil;
+	datePicker.minimumDate = [NSDate date];		//Now
+	datePicker.maximumDate = [NSDate dateWithTimeIntervalSinceNow:(60*60*25*365)];
+	datePicker.date = [NSDate date];
 }
 
 
@@ -130,8 +148,10 @@
     [super dealloc];
 	[viewLabel release];
 	[datetimeLabel release];
-	[monthView release];
-	[datetimeView release];
+	[bottomview2 release];
+	[datePicker release];
+		//[monthView release];
+		//[datetimeView release];
 }
 
 

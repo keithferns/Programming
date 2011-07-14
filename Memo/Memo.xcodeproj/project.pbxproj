@@ -23,11 +23,13 @@
 		530E752C13B35375003B183A /* MemoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 530E752B13B35375003B183A /* MemoTableViewController.m */; };
 		530E75B613BAEFB2003B183A /* bluebutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 530E75B513BAEFB2003B183A /* bluebutton.png */; };
 		530E76D913BB9FFC003B183A /* File.m in Sources */ = {isa = PBXBuildFile; fileRef = 530E76D413BB9FFC003B183A /* File.m */; };
-		530E76DA13BB9FFC003B183A /* MemoText.m in Sources */ = {isa = PBXBuildFile; fileRef = 530E76D613BB9FFC003B183A /* MemoText.m */; };
 		530E76EB13BBA1CF003B183A /* Memo.m in Sources */ = {isa = PBXBuildFile; fileRef = 530E76EA13BBA1CF003B183A /* Memo.m */; };
+		533E157613CEEDEC0018CA2E /* Appointment.m in Sources */ = {isa = PBXBuildFile; fileRef = 533E157313CEEDEC0018CA2E /* Appointment.m */; };
+		533E157C13CEEF0E0018CA2E /* MemoText.m in Sources */ = {isa = PBXBuildFile; fileRef = 533E157B13CEEF0E0018CA2E /* MemoText.m */; };
+		5346698013CB964800B828F3 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 5346697F13CB964800B828F3 /* Icon-72.png */; };
+		534669B413CB9D2100B828F3 /* iphone_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 534669B313CB9D2100B828F3 /* iphone_icon.png */; };
 		5353623113C2BFFA007BEC2D /* AppointmentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5353622F13C2BFFA007BEC2D /* AppointmentsViewController.m */; };
 		5353623213C2BFFA007BEC2D /* AppointmentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5353623013C2BFFA007BEC2D /* AppointmentsViewController.xib */; };
-		5353623713C2C192007BEC2D /* Appointment.m in Sources */ = {isa = PBXBuildFile; fileRef = 5353623613C2C192007BEC2D /* Appointment.m */; };
 		5384E0DC13BD94540032F9B0 /* StartScreenCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5384E0DB13BD94540032F9B0 /* StartScreenCustomCell.m */; };
 		5384E0E013BD94EC0032F9B0 /* StartScreenCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5384E0DF13BD94EC0032F9B0 /* StartScreenCustomCell.xib */; };
 		53A54EEF13C94C0E004F2EC1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53A54EEE13C94C0E004F2EC1 /* QuartzCore.framework */; };
@@ -68,16 +70,19 @@
 		530E75B513BAEFB2003B183A /* bluebutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bluebutton.png; sourceTree = "<group>"; };
 		530E76D313BB9FFC003B183A /* File.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = File.h; sourceTree = "<group>"; };
 		530E76D413BB9FFC003B183A /* File.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = File.m; sourceTree = "<group>"; };
-		530E76D513BB9FFC003B183A /* MemoText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemoText.h; sourceTree = "<group>"; };
-		530E76D613BB9FFC003B183A /* MemoText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemoText.m; sourceTree = "<group>"; };
 		530E76E913BBA1CF003B183A /* Memo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Memo.h; sourceTree = "<group>"; };
 		530E76EA13BBA1CF003B183A /* Memo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Memo.m; sourceTree = "<group>"; };
+		533E156F13CEED250018CA2E /* Memo 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Memo 3.xcdatamodel"; sourceTree = "<group>"; };
+		533E157213CEEDEC0018CA2E /* Appointment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Appointment.h; sourceTree = "<group>"; };
+		533E157313CEEDEC0018CA2E /* Appointment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Appointment.m; sourceTree = "<group>"; };
+		533E157A13CEEF0E0018CA2E /* MemoText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemoText.h; sourceTree = "<group>"; };
+		533E157B13CEEF0E0018CA2E /* MemoText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemoText.m; sourceTree = "<group>"; };
+		5346697F13CB964800B828F3 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "Buttons_1/Icon-72.png"; sourceTree = "<group>"; };
+		534669B313CB9D2100B828F3 /* iphone_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iphone_icon.png; sourceTree = "<group>"; };
 		5353618013C2604B007BEC2D /* Memo 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Memo 2.xcdatamodel"; sourceTree = "<group>"; };
 		5353622E13C2BFFA007BEC2D /* AppointmentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppointmentsViewController.h; sourceTree = "<group>"; };
 		5353622F13C2BFFA007BEC2D /* AppointmentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppointmentsViewController.m; sourceTree = "<group>"; };
 		5353623013C2BFFA007BEC2D /* AppointmentsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppointmentsViewController.xib; sourceTree = "<group>"; };
-		5353623513C2C192007BEC2D /* Appointment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Appointment.h; path = Shared/Appointment.h; sourceTree = "<group>"; };
-		5353623613C2C192007BEC2D /* Appointment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Appointment.m; path = Shared/Appointment.m; sourceTree = "<group>"; };
 		5384E0DA13BD94540032F9B0 /* StartScreenCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartScreenCustomCell.h; sourceTree = "<group>"; };
 		5384E0DB13BD94540032F9B0 /* StartScreenCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartScreenCustomCell.m; sourceTree = "<group>"; };
 		5384E0DF13BD94EC0032F9B0 /* StartScreenCustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StartScreenCustomCell.xib; sourceTree = "<group>"; };
@@ -137,14 +142,14 @@
 		28EEBF621118D79A00187D67 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				5353623513C2C192007BEC2D /* Appointment.h */,
-				5353623613C2C192007BEC2D /* Appointment.m */,
+				533E157A13CEEF0E0018CA2E /* MemoText.h */,
+				533E157B13CEEF0E0018CA2E /* MemoText.m */,
+				533E157213CEEDEC0018CA2E /* Appointment.h */,
+				533E157313CEEDEC0018CA2E /* Appointment.m */,
 				530E76E913BBA1CF003B183A /* Memo.h */,
 				530E76EA13BBA1CF003B183A /* Memo.m */,
 				530E76D313BB9FFC003B183A /* File.h */,
 				530E76D413BB9FFC003B183A /* File.m */,
-				530E76D513BB9FFC003B183A /* MemoText.h */,
-				530E76D613BB9FFC003B183A /* MemoText.m */,
 				530E75B513BAEFB2003B183A /* bluebutton.png */,
 				2819307C112F81BE00ECF9B4 /* Memo.xcdatamodeld */,
 				28EEC0491118E28000187D67 /* AppDelegate_Shared.h */,
@@ -170,6 +175,8 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				5346697F13CB964800B828F3 /* Icon-72.png */,
+				534669B313CB9D2100B828F3 /* iphone_icon.png */,
 				53ACB29A13C5ECC0003DA0E6 /* Buttons_1 */,
 				32CA4F630368D1EE00C91783 /* Memo_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
@@ -320,6 +327,8 @@
 				53ACB2A813C5ECC0003DA0E6 /* Purple.png in Resources */,
 				53ACB2A913C5ECC0003DA0E6 /* Red.png in Resources */,
 				53ACB2AA13C5ECC0003DA0E6 /* Yellow.png in Resources */,
+				5346698013CB964800B828F3 /* Icon-72.png in Resources */,
+				534669B413CB9D2100B828F3 /* iphone_icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,12 +347,12 @@
 				530E752813B352EE003B183A /* RootViewController.m in Sources */,
 				530E752C13B35375003B183A /* MemoTableViewController.m in Sources */,
 				530E76D913BB9FFC003B183A /* File.m in Sources */,
-				530E76DA13BB9FFC003B183A /* MemoText.m in Sources */,
 				530E76EB13BBA1CF003B183A /* Memo.m in Sources */,
 				5384E0DC13BD94540032F9B0 /* StartScreenCustomCell.m in Sources */,
 				53E58F4813BF75CB001BD373 /* MemoDetailViewController.m in Sources */,
 				5353623113C2BFFA007BEC2D /* AppointmentsViewController.m in Sources */,
-				5353623713C2C192007BEC2D /* Appointment.m in Sources */,
+				533E157613CEEDEC0018CA2E /* Appointment.m in Sources */,
+				533E157C13CEEF0E0018CA2E /* MemoText.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,7 +385,7 @@
 				GCC_PREFIX_HEADER = Memo_Prefix.pch;
 				INFOPLIST_FILE = "Memo-Info.plist";
 				PRODUCT_NAME = Memo;
-				SDKROOT = iphoneos4.3;
+				SDKROOT = iphoneos4.2;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -439,8 +448,9 @@
 			children = (
 				2870939E111907710040F596 /* Memo.xcdatamodel */,
 				5353618013C2604B007BEC2D /* Memo 2.xcdatamodel */,
+				533E156F13CEED250018CA2E /* Memo 3.xcdatamodel */,
 			);
-			currentVersion = 5353618013C2604B007BEC2D /* Memo 2.xcdatamodel */;
+			currentVersion = 533E156F13CEED250018CA2E /* Memo 3.xcdatamodel */;
 			name = Memo.xcdatamodeld;
 			path = Shared/Memo.xcdatamodeld;
 			sourceTree = "<group>";

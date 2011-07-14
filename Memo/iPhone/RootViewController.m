@@ -23,7 +23,7 @@
 
 -(IBAction) navigationAction:(id)sender{
 	switch ([sender tag]) {
-		case 0:
+		case 2:
 			if ([newText hasText]) {
 				[self addNewMemo];
 			}
@@ -56,11 +56,7 @@
 			 */
 			break;
 			
-		case 2:
-			if ([newText hasText]) {
-				[self addNewMemo];
-			}
-
+		case 0:
 			saveActionSheet = [[UIActionSheet alloc] 
 									initWithTitle:@"What do you want to do with this Memo?" delegate:self
 									cancelButtonTitle:@"Later" destructiveButtonTitle:nil otherButtonTitles:@"Name, Tag and Save", @"Append to Existing File", @"Appointment or Task Reminder", nil];
@@ -79,28 +75,21 @@
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
 	if (actionSheet	== saveActionSheet){
 		switch (buttonIndex) {
-			case 4:
+				
+			case 3:
 				NSLog(@"Cancel Button Clicked on saveAlert");
 				break;
-			case 3:
-				NSLog(@"1st Button Clicked on saveAlert");
-			{AppointmentsViewController *gotoView = [[[AppointmentsViewController alloc] initWithNibName:@"AppointmentsViewController" bundle:nil] autorelease];
-				[self presentModalViewController:gotoView animated:YES];}
-				break;
 			case 2:
-				NSLog(@"2nd Button Clicked on saveAlert");
-			{AppointmentsViewController *gotoView = [[[AppointmentsViewController alloc] initWithNibName:@"AppointmentsViewController" bundle:nil] autorelease];
-				[self presentModalViewController:gotoView animated:YES];}
+				NSLog(@"3nd Button Clicked on saveAlert");
+				if ([newText hasText]) {
+					[self addNewAppointment];
+				}	
 				break;
 			case 1:
-				NSLog(@"3rd Button Clicked on saveAlert");
-			{AppointmentsViewController *gotoView = [[[AppointmentsViewController alloc] initWithNibName:@"AppointmentsViewController" bundle:nil] autorelease];
-				[self presentModalViewController:gotoView animated:YES]; }
+				NSLog(@"2nd Button Clicked on saveAlert");
 				break;
 			case 0:
-				NSLog(@"4th Button Clicked on saveAlert");
-			{AppointmentsViewController *gotoView = [[[AppointmentsViewController alloc] initWithNibName:@"AppointmentsViewController" bundle:nil] autorelease];
-				[self presentModalViewController:gotoView animated:YES];}
+				NSLog(@"1st Button Clicked on saveAlert");
 				break;
 			default:
 				break;
@@ -165,6 +154,42 @@
 	previousTextInput = newTextInput;
 	[self.view endEditing:YES];
 	
+}
+
+
+- (void) addNewAppointment{
+	
+	NSString *newTextInput = [NSString stringWithFormat: @"%@", newText.text];//copy contents of textView to newTextInput
+	
+	if ([newTextInput isEqualToString:previousTextInput]) {
+		return;
+	}
+	
+	MemoText *newMemoText = [MemoText insertNewMemoText:managedObjectContext];
+	[newMemoText setMemoText:newTextInput];
+	[newMemoText setNoteType:[NSNumber numberWithInt:1]];
+	Appointment *newAppointment = [Appointment insertNewAppointment:managedObjectContext];
+	[newAppointment setCreationDate:[NSDate date]];
+	newAppointment.memoText = newMemoText;
+	newAppointment.AppointmentRE = @"";
+	NSLog(@"The Date of the new appointment is '%@'", newAppointment.creationDate);
+	
+	NSLog(@"The Text of the new appointment is '%@'", newAppointment.memoText.memoText);
+	AppointmentsViewController *appointmentViewController = [[[AppointmentsViewController alloc] initWithNibName:@"AppointmentsViewController" bundle:nil] autorelease];
+		// Pass the selected object to the new view controller.
+	
+	appointmentViewController.newAppointment = newAppointment;	
+	
+	[self presentModalViewController:appointmentViewController animated:YES];	
+
+	
+	NSError *error;
+	if(![managedObjectContext save:&error]){ 
+			//
+	}
+	previousTextInput = newTextInput;
+	[self.view endEditing:YES];
+
 }
 
 

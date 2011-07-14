@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Memo.h"
 #import "File.h"
+#import "Appointment.h"
 #import "MemoText.h"
 
 @interface RootViewController : UIViewController <UITextViewDelegate, UIActionSheetDelegate> {
@@ -32,6 +33,7 @@
 
 
 - (void) addNewMemo;
+- (void) addNewAppointment;
 
 - (IBAction) navigationAction:(id)sender;
 

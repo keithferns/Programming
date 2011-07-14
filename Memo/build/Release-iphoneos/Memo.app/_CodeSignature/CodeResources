@@ -6,7 +6,7 @@
 	<dict>
 		<key>AppointmentsViewController.nib</key>
 		<data>
-		gHDLHA5CqHUuihi1ObBOJOSYPAM=
+		qDIQNGJRFojGMHN5AiG9NiivnOY=
 		</data>
 		<key>Blue.png</key>
 		<data>
@@ -24,13 +24,25 @@
 		<data>
 		fRFkVYKzn0ErED4b3gDR/II48RY=
 		</data>
+		<key>Icon-72.png</key>
+		<data>
+		5XAghH1gTTgUO4m00Dor+pmf/8c=
+		</data>
+		<key>Icon-Small-50.png</key>
+		<data>
+		mfKnJ8o5ltUoykLYgL40Euj27RI=
+		</data>
+		<key>Icon-Small@2x.png</key>
+		<data>
+		oi5w0R4sbfRRizWtjG5KG7dk3/0=
+		</data>
 		<key>MainWindow_iPad.nib</key>
 		<data>
-		SWKWDTwn5bH/izrplKvs0Pd9xKE=
+		Jl07wC4ADLkQ4BHf7kzim5RCB1E=
 		</data>
 		<key>MainWindow_iPhone.nib</key>
 		<data>
-		LwTOFadlx0Kvm3tSuhL5ju8h/00=
+		WMlmeMFw/xdBjLIyuw625Fn3MSU=
 		</data>
 		<key>Memo.momd/Memo 2.mom</key>
 		<data>
@@ -42,7 +54,7 @@
 		</data>
 		<key>MemoDetailView.nib</key>
 		<data>
-		umcfLZcU7LbGJiT4hDdjcoKT66I=
+		GTM2pP6GyYsGWp53gjcMRVa2d8U=
 		</data>
 		<key>Orange.png</key>
 		<data>
@@ -62,11 +74,11 @@
 		</data>
 		<key>RootViewController.nib</key>
 		<data>
-		BbHGHP8ibNznbyve9HGpF6cJlk4=
+		p27LaxVmgk9+nf5ofjRnUdbLuZY=
 		</data>
 		<key>StartScreenCustomCell.nib</key>
 		<data>
-		Ws0dOQYOHKX0BDpJV+asCFyWFXM=
+		TebE+zZi4S/y0ezC9XEnhbt5/qA=
 		</data>
 		<key>Yellow.png</key>
 		<data>
@@ -79,6 +91,10 @@
 		<key>embedded.mobileprovision</key>
 		<data>
 		mQ2f9SNPknazCzkfyC1tRqyPwbk=
+		</data>
+		<key>iphone_icon.png</key>
+		<data>
+		ZvwnfnlbBY4UkcRT819TBHagoNk=
 		</data>
 	</dict>
 	<key>rules</key>
