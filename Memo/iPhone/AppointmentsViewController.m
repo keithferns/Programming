@@ -10,7 +10,6 @@
 #import <QuartzCore/QuartzCore.h>
 #import "AppDelegate_Shared.h"
 #import "NSManagedObjectContext-insert.h"
-#import "MemoTableViewController.h"
 
 @implementation AppointmentsViewController
 
@@ -69,16 +68,12 @@
     
     
     /*-- Initializing the managedObjectContext--*/
-    /*
 	if (managedObjectContext == nil) { 
 		managedObjectContext = [(AppDelegate_Shared *)[[UIApplication sharedApplication] delegate] managedObjectContext]; 
         NSLog(@"After managedObjectContext: %@",  managedObjectContext);
-    }
-     */
+        }
     
-    NSPersistentStoreCoordinator *psc = <#Get the coordinator#>;
-    NSManagedObjectContext *newContext = [[NSManagedObjectContext alloc] init];
-    [newContext setPersistentStoreCoordinator:psc];
+  
     /*--Done Initializing the managedObjectContext--*/
     
     swappingViews = NO;
@@ -245,10 +240,7 @@
 	if(![managedObjectContext save:&error]){ 
         //
 	}
-    /*--Send notification that changes saved to the MOC--*/
-    [[NSNotificationCenter defaultCenter] postNotificationName:managedObjectContextSavedNotification object:nil];
-    
-    
+       
     UIBarButtonItem *newButton = [[UIBarButtonItem alloc] initWithTitle:@"NEW" style:UIBarButtonItemStyleBordered target:self action:@selector(navigationAction:)];
     [newButton setTag:4];
     [newButton setWidth:90];

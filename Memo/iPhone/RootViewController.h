@@ -8,12 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
-
-#import "Memo.h"
-#import "File.h"
-#import "Appointment.h"
 #import "MemoText.h"
-#import "ToDo.h"
+#import "Memo.h"
+#import "Appointment.h"
 
 @interface RootViewController : UIViewController <UITextViewDelegate, UIActionSheetDelegate> {
 

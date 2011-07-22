@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MessageUI/MessageUI.h>
 #import "Memo.h"
 #import "MemoText.h"
-#import "AppDelegate_Shared.h"
-#import <MessageUI/MessageUI.h>
+#import "Appointment.h"
+
+
 
 @interface MemoDetailViewController : UIViewController <UITextViewDelegate, UIActionSheetDelegate, UITextFieldDelegate> {
 

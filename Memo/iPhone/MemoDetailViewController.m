@@ -5,7 +5,7 @@
 //  Created by Keith Fernandes on 7/2/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
-
+#import "AppDelegate_Shared.h"
 #import <QuartzCore/QuartzCore.h>
 #import "MemoDetailViewController.h"
 #import "MemoTableViewController.h"

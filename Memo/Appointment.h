@@ -12,6 +12,7 @@
 
 @interface Appointment :  NSManagedObject  
 {
+    
 }
 
 @property (nonatomic, retain) NSString * appointmentRE;

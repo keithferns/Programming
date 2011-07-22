@@ -7,10 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Memo.h"
-#import "File.h"
-#import "Appointment.h"
 #import "MemoText.h"
+#import "Appointment.h"
 
 @interface MyAppointmentsViewController : UIViewController <UITextViewDelegate, UIActionSheetDelegate> {
 

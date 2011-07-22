@@ -8,8 +8,6 @@
 
 #import "RootViewController.h"
 #import "AppDelegate_Shared.h"
-
-/*-- modalViewControllers --*/
 #import "AppointmentsViewController.h"
 #import "MyAppointmentsViewController.h"
 #import "NSManagedObjectContext-insert.h"
