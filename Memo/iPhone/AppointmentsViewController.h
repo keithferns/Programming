@@ -9,33 +9,42 @@
 #import <UIKit/UIKit.h>
 #import "Appointment.h"
 #import "MemoText.h"
-#import "AppDelegate_Shared.h"
 
 
-@interface AppointmentsViewController : UIViewController {
-
-	UILabel *viewLabel, *datetimeLabel;
-	UIView *bottomview2; // *monthView, *datetimeView;
-						 //BOOL swappingViews;
-	UIDatePicker *datePicker;
-	Appointment *newAppointment;
+@interface AppointmentsViewController : UIViewController <UIActionSheetDelegate, UITextViewDelegate, UITextFieldDelegate> {
+    
+    NSManagedObjectContext *managedObjectContext;
+    MemoText *newMemoText;
+    NSDate *appointmentDate;
+    BOOL swappingViews;
+	UIDatePicker *datePicker, *timePicker;
+    UIActionSheet *goActionSheet;
+    UITextView *textView;
+    UIToolbar *appointmentsToolbar;
+    UITextField *timeTextField, *dateTextField;    
+    //UIView *monthView, *datetimeView;
 }
 
-@property (nonatomic, retain) Appointment *newAppointment;
+@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, retain) MemoText *newMemoText;
+@property (nonatomic, retain) NSDate *appointmentDate;
+@property (nonatomic, retain) UIDatePicker *datePicker, *timePicker;
+@property (nonatomic, retain) UIActionSheet *goActionSheet;
+@property (nonatomic, retain) UIToolbar *appointmentsToolbar;
+@property (nonatomic, retain) UITextView *textView;
+@property (nonatomic, retain) UITextField *dateTextField, *timeTextField;
 
-@property (nonatomic, retain) IBOutlet UILabel *viewLabel, *datetimeLabel;
+//@property (nonatomic, retain) IBOutlet UIView *monthView, *datetimeView;
 
-@property (nonatomic, retain) IBOutlet UIView *bottomview2;// *monthView, *datetimeView;
+- (void) swapViews;
 
-@property (nonatomic, retain) IBOutlet UIDatePicker *datePicker;
-	//- (void) swapViews;
+- (void) backAction;
 
-- (IBAction) backAction;
+- (void) setAppointmentDate;
+- (void) setAppointmentTime;
 
-- (IBAction) setAppointmentDate;
+- (void) makeToolbar;
 
-	//- (IBAction)monthAction:(id)sender;
-
-
+//- (IBAction)monthAction:(id)sender;
 
 @end

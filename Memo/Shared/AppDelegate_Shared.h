@@ -11,6 +11,8 @@
 #import "File.h"
 #import "Memo.h"
 #import "MemoText.h"
+#import "Folder.h"
+#import "Appointment.h"
 
 @interface AppDelegate_Shared : NSObject <UIApplicationDelegate> {
     

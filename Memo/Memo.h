@@ -2,7 +2,7 @@
 //  Memo.h
 //  Memo
 //
-//  Created by Keith Fernandes on 6/29/11.
+//  Created by Keith Fernandes on 7/14/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
@@ -15,15 +15,12 @@
 {
 }
 
-@property (nonatomic, retain) NSDate * creationDate;
+@property (nonatomic, retain) NSString * memoRE;
 @property (nonatomic, retain) NSString * location;
+@property (nonatomic, retain) NSDate * doDate;
 @property (nonatomic, retain) NSNumber * isEditing;
 @property (nonatomic, retain) File * appendToFile;
 @property (nonatomic, retain) MemoText * memoText;
-@property (nonatomic, retain) NSString * memoRE;
-
-+ (id) insertNewMemo: (NSManagedObjectContext *)context;
-
 
 @end
 

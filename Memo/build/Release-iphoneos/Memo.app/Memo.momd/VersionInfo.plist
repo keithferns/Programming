@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>NSManagedObjectModel_CurrentVersionName</key>
-	<string>Memo 2</string>
+	<string>Memo 4</string>
 	<key>NSManagedObjectModel_VersionHashes</key>
 	<dict>
 		<key>Memo</key>
@@ -38,6 +38,52 @@
 			<key>MemoText</key>
 			<data>
 			XAA1qe0dcPYONG1bUxIKYIqFHpINA/CHB4hgqzI/TOM=
+			</data>
+		</dict>
+		<key>Memo 3</key>
+		<dict>
+			<key>Appointment</key>
+			<data>
+			bSKc4eE1WdZv2jJfx1r/4ZDQI2al9ZvBj4ubJDemgZw=
+			</data>
+			<key>File</key>
+			<data>
+			aBmbTcLzGMHKjBf2z9GnRNf/OgEi4aXm0KYCQSFRHOw=
+			</data>
+			<key>Memo</key>
+			<data>
+			dD3H5ZDrAr46tHKqE1MO4WkilX9yxDNBxXf4Q5n89U8=
+			</data>
+			<key>MemoText</key>
+			<data>
+			9zKTKjosBD348BPrNSulifL3J2drUbAsqKr8ZVlwqeE=
+			</data>
+		</dict>
+		<key>Memo 4</key>
+		<dict>
+			<key>Appointment</key>
+			<data>
+			rUYYTurH4SOc2SYA4R8UzMjcG8Cu4Y9PbltS/D416Tg=
+			</data>
+			<key>File</key>
+			<data>
+			XgPil5YuId03NKV1pq9sH14XmoNXVsuZ8NjiSZuSVUw=
+			</data>
+			<key>Folder</key>
+			<data>
+			CcVUkDLv8FG6VSIRZv/0trDqnjShtq/N5gmLKl7czdI=
+			</data>
+			<key>Memo</key>
+			<data>
+			FeMOpT3IoL18r3W4ZoKWG1FRkOWmOGoAye+I1FaEz+k=
+			</data>
+			<key>MemoText</key>
+			<data>
+			3zLsh+Nzl/jftq9F3awWuiA+C7DIIADopV0Z+eIeecE=
+			</data>
+			<key>ToDo</key>
+			<data>
+			BRhuiubBkGWMMyF11VLUyCCBpk9b5RarJlUNtaUyl9c=
 			</data>
 		</dict>
 	</dict>

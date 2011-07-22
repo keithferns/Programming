@@ -14,13 +14,10 @@
 {
 }
 
-@property (nonatomic, retain) NSDate * creationDate;
-@property (nonatomic, retain) NSDate * appointmentTime;
 @property (nonatomic, retain) NSString * appointmentRE;
+@property (nonatomic, retain) NSNumber * isRecurring;
+@property (nonatomic, retain) NSDate * doDate;
 @property (nonatomic, retain) MemoText * memoText;
-
-+ (id) insertNewAppointment: (NSManagedObjectContext *)context;
-
 
 @end
 

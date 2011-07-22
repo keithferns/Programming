@@ -9,32 +9,40 @@
 /* Begin PBXBuildFile section */
 		1D3623260D0F684500981E51 /* AppDelegate_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AppDelegate_iPad.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
-		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
-		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		2819307D112F81BE00ECF9B4 /* Memo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2819307C112F81BE00ECF9B4 /* Memo.xcdatamodeld */; };
 		2860E38A111B897F00E27156 /* AppDelegate_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 2860E388111B897F00E27156 /* AppDelegate_iPhone.m */; };
 		2860E38B111B897F00E27156 /* MainWindow_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2860E389111B897F00E27156 /* MainWindow_iPhone.xib */; };
-		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		28AD733F0D9D9553002E5188 /* MainWindow_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow_iPad.xib */; };
-		28EEBFDD1118E19E00187D67 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28EEBFDC1118E19E00187D67 /* CoreData.framework */; };
 		28EEC04B1118E28000187D67 /* AppDelegate_Shared.m in Sources */ = {isa = PBXBuildFile; fileRef = 28EEC04A1118E28000187D67 /* AppDelegate_Shared.m */; };
 		530E752813B352EE003B183A /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 530E752613B352EE003B183A /* RootViewController.m */; };
 		530E752913B352EE003B183A /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 530E752713B352EE003B183A /* RootViewController.xib */; };
 		530E752C13B35375003B183A /* MemoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 530E752B13B35375003B183A /* MemoTableViewController.m */; };
 		530E75B613BAEFB2003B183A /* bluebutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 530E75B513BAEFB2003B183A /* bluebutton.png */; };
-		530E76D913BB9FFC003B183A /* File.m in Sources */ = {isa = PBXBuildFile; fileRef = 530E76D413BB9FFC003B183A /* File.m */; };
-		530E76EB13BBA1CF003B183A /* Memo.m in Sources */ = {isa = PBXBuildFile; fileRef = 530E76EA13BBA1CF003B183A /* Memo.m */; };
-		533E15C713CEFA910018CA2E /* MemoText.m in Sources */ = {isa = PBXBuildFile; fileRef = 533E15C613CEFA910018CA2E /* MemoText.m */; };
-		533E161413CF02FC0018CA2E /* Appointment.m in Sources */ = {isa = PBXBuildFile; fileRef = 533E161313CF02FC0018CA2E /* Appointment.m */; };
-		533E167E13CF13310018CA2E /* AppointmentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 533E167C13CF13310018CA2E /* AppointmentsTableViewController.m */; };
-		533E167F13CF13310018CA2E /* AppointmentsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 533E167D13CF13310018CA2E /* AppointmentsTableViewController.xib */; };
+		533E177613CF7B280018CA2E /* Appointment.m in Sources */ = {isa = PBXBuildFile; fileRef = 533E176B13CF7B280018CA2E /* Appointment.m */; };
+		533E177713CF7B280018CA2E /* Folder.m in Sources */ = {isa = PBXBuildFile; fileRef = 533E176D13CF7B280018CA2E /* Folder.m */; };
+		533E177813CF7B280018CA2E /* File.m in Sources */ = {isa = PBXBuildFile; fileRef = 533E176F13CF7B280018CA2E /* File.m */; };
+		533E177913CF7B280018CA2E /* MemoText.m in Sources */ = {isa = PBXBuildFile; fileRef = 533E177113CF7B280018CA2E /* MemoText.m */; };
+		533E177A13CF7B280018CA2E /* ToDo.m in Sources */ = {isa = PBXBuildFile; fileRef = 533E177313CF7B280018CA2E /* ToDo.m */; };
+		533E177B13CF7B280018CA2E /* Memo.m in Sources */ = {isa = PBXBuildFile; fileRef = 533E177513CF7B280018CA2E /* Memo.m */; };
+		533E178C13CF7D920018CA2E /* NSManagedObjectContext-insert.m in Sources */ = {isa = PBXBuildFile; fileRef = 533E178B13CF7D920018CA2E /* NSManagedObjectContext-insert.m */; };
+		533E184413CFA6E50018CA2E /* CustomBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 533E184313CFA6E50018CA2E /* CustomBaseView.m */; };
+		533E184F13CFA7E00018CA2E /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 533E184D13CFA7E00018CA2E /* BaseViewController.m */; };
+		533E185013CFA7E00018CA2E /* BaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 533E184E13CFA7E00018CA2E /* BaseViewController.xib */; };
+		533E194213CFF2560018CA2E /* lined_paper_320x200.png in Resources */ = {isa = PBXBuildFile; fileRef = 533E194113CFF2560018CA2E /* lined_paper_320x200.png */; };
 		5346698013CB964800B828F3 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 5346697F13CB964800B828F3 /* Icon-72.png */; };
 		534669B413CB9D2100B828F3 /* iphone_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 534669B313CB9D2100B828F3 /* iphone_icon.png */; };
 		5353623113C2BFFA007BEC2D /* AppointmentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5353622F13C2BFFA007BEC2D /* AppointmentsViewController.m */; };
 		5353623213C2BFFA007BEC2D /* AppointmentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5353623013C2BFFA007BEC2D /* AppointmentsViewController.xib */; };
 		5384E0DC13BD94540032F9B0 /* StartScreenCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5384E0DB13BD94540032F9B0 /* StartScreenCustomCell.m */; };
 		5384E0E013BD94EC0032F9B0 /* StartScreenCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5384E0DF13BD94EC0032F9B0 /* StartScreenCustomCell.xib */; };
-		53A54EEF13C94C0E004F2EC1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53A54EEE13C94C0E004F2EC1 /* QuartzCore.framework */; };
+		5392BA5213D65ABB0090732E /* MyAppointmentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5392BA5013D65ABB0090732E /* MyAppointmentsViewController.m */; };
+		5392BA5313D65ABB0090732E /* MyAppointmentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5392BA5113D65ABB0090732E /* MyAppointmentsViewController.xib */; };
+		5392BA5613D65B970090732E /* MyAppointmentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5392BA5513D65B970090732E /* MyAppointmentsTableViewController.m */; };
+		5392BA8E13D69B0E0090732E /* FileCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5392BA8C13D69B0E0090732E /* FileCustomCell.m */; };
+		5392BA8F13D69B0E0090732E /* FileCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5392BA8D13D69B0E0090732E /* FileCustomCell.xib */; };
+		5392BABE13D6A95F0090732E /* FolderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5392BABC13D6A95F0090732E /* FolderCell.m */; };
+		5392BABF13D6A95F0090732E /* FolderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5392BABD13D6A95F0090732E /* FolderCell.xib */; };
+		5392BB0513D6CEB20090732E /* paper1.png in Resources */ = {isa = PBXBuildFile; fileRef = 5392BB0413D6CEB20090732E /* paper1.png */; };
 		53ACB2A313C5ECC0003DA0E6 /* Blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 53ACB29B13C5ECC0003DA0E6 /* Blue.png */; };
 		53ACB2A413C5ECC0003DA0E6 /* Carbon.png in Resources */ = {isa = PBXBuildFile; fileRef = 53ACB29C13C5ECC0003DA0E6 /* Carbon.png */; };
 		53ACB2A513C5ECC0003DA0E6 /* Gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 53ACB29D13C5ECC0003DA0E6 /* Gray.png */; };
@@ -45,21 +53,22 @@
 		53ACB2AA13C5ECC0003DA0E6 /* Yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 53ACB2A213C5ECC0003DA0E6 /* Yellow.png */; };
 		53E58F3B13BEA6D9001BD373 /* MemoDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53E58F3A13BEA6D9001BD373 /* MemoDetailView.xib */; };
 		53E58F4813BF75CB001BD373 /* MemoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E58F4713BF75CB001BD373 /* MemoDetailViewController.m */; };
+		53F5EAD413D4ED6100C94640 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53F5EAD313D4ED6100C94640 /* CoreData.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		53F5EAD613D4ED6100C94640 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53F5EAD513D4ED6100C94640 /* CoreGraphics.framework */; };
+		53F5EAD813D4ED6100C94640 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53F5EAD713D4ED6100C94640 /* CoreLocation.framework */; };
+		53F5EADA13D4ED6100C94640 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53F5EAD913D4ED6100C94640 /* Foundation.framework */; };
+		53F5EADC13D4ED6100C94640 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53F5EADB13D4ED6100C94640 /* QuartzCore.framework */; };
+		53F5EADE13D4ED6100C94640 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53F5EADD13D4ED6100C94640 /* UIKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* AppDelegate_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate_iPad.h; path = iPad/AppDelegate_iPad.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* AppDelegate_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate_iPad.m; path = iPad/AppDelegate_iPad.m; sourceTree = "<group>"; };
 		1D6058910D05DD3D006BFB54 /* Memo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Memo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2860E387111B897F00E27156 /* AppDelegate_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate_iPhone.h; sourceTree = "<group>"; };
 		2860E388111B897F00E27156 /* AppDelegate_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate_iPhone.m; sourceTree = "<group>"; };
 		2860E389111B897F00E27156 /* MainWindow_iPhone.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow_iPhone.xib; sourceTree = "<group>"; };
-		2870939E111907710040F596 /* Memo.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = Memo.xcdatamodel; sourceTree = "<group>"; };
-		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		28AD733E0D9D9553002E5188 /* MainWindow_iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MainWindow_iPad.xib; path = iPad/MainWindow_iPad.xib; sourceTree = "<group>"; };
-		28EEBFDC1118E19E00187D67 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		28EEC0491118E28000187D67 /* AppDelegate_Shared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate_Shared.h; path = Shared/AppDelegate_Shared.h; sourceTree = "<group>"; };
 		28EEC04A1118E28000187D67 /* AppDelegate_Shared.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate_Shared.m; path = Shared/AppDelegate_Shared.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Shared/main.m; sourceTree = "<group>"; };
@@ -69,30 +78,48 @@
 		530E752713B352EE003B183A /* RootViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
 		530E752A13B35375003B183A /* MemoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemoTableViewController.h; sourceTree = "<group>"; };
 		530E752B13B35375003B183A /* MemoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemoTableViewController.m; sourceTree = "<group>"; };
-		530E75B513BAEFB2003B183A /* bluebutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bluebutton.png; sourceTree = "<group>"; };
-		530E76D313BB9FFC003B183A /* File.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = File.h; sourceTree = "<group>"; };
-		530E76D413BB9FFC003B183A /* File.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = File.m; sourceTree = "<group>"; };
-		530E76E913BBA1CF003B183A /* Memo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Memo.h; sourceTree = "<group>"; };
-		530E76EA13BBA1CF003B183A /* Memo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Memo.m; sourceTree = "<group>"; };
-		533E156F13CEED250018CA2E /* Memo 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Memo 3.xcdatamodel"; sourceTree = "<group>"; };
-		533E15C513CEFA910018CA2E /* MemoText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemoText.h; sourceTree = "<group>"; };
-		533E15C613CEFA910018CA2E /* MemoText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemoText.m; sourceTree = "<group>"; };
-		533E161213CF02FC0018CA2E /* Appointment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Appointment.h; sourceTree = "<group>"; };
-		533E161313CF02FC0018CA2E /* Appointment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Appointment.m; sourceTree = "<group>"; };
-		533E167B13CF13310018CA2E /* AppointmentsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppointmentsTableViewController.h; sourceTree = "<group>"; };
-		533E167C13CF13310018CA2E /* AppointmentsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppointmentsTableViewController.m; sourceTree = "<group>"; };
-		533E167D13CF13310018CA2E /* AppointmentsTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppointmentsTableViewController.xib; sourceTree = "<group>"; };
+		530E75B513BAEFB2003B183A /* bluebutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bluebutton.png; path = ../bluebutton.png; sourceTree = "<group>"; };
 		533E171713CF65ED0018CA2E /* Memo 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Memo 4.xcdatamodel"; sourceTree = "<group>"; };
+		533E176A13CF7B280018CA2E /* Appointment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Appointment.h; sourceTree = "<group>"; };
+		533E176B13CF7B280018CA2E /* Appointment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Appointment.m; sourceTree = "<group>"; };
+		533E176C13CF7B280018CA2E /* Folder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Folder.h; sourceTree = "<group>"; };
+		533E176D13CF7B280018CA2E /* Folder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Folder.m; sourceTree = "<group>"; };
+		533E176E13CF7B280018CA2E /* File.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = File.h; sourceTree = "<group>"; };
+		533E176F13CF7B280018CA2E /* File.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = File.m; sourceTree = "<group>"; };
+		533E177013CF7B280018CA2E /* MemoText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemoText.h; sourceTree = "<group>"; };
+		533E177113CF7B280018CA2E /* MemoText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemoText.m; sourceTree = "<group>"; };
+		533E177213CF7B280018CA2E /* ToDo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToDo.h; sourceTree = "<group>"; };
+		533E177313CF7B280018CA2E /* ToDo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToDo.m; sourceTree = "<group>"; };
+		533E177413CF7B280018CA2E /* Memo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Memo.h; sourceTree = "<group>"; };
+		533E177513CF7B280018CA2E /* Memo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Memo.m; sourceTree = "<group>"; };
+		533E178A13CF7D920018CA2E /* NSManagedObjectContext-insert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObjectContext-insert.h"; sourceTree = "<group>"; };
+		533E178B13CF7D920018CA2E /* NSManagedObjectContext-insert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObjectContext-insert.m"; sourceTree = "<group>"; };
+		533E184213CFA6E50018CA2E /* CustomBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomBaseView.h; sourceTree = "<group>"; };
+		533E184313CFA6E50018CA2E /* CustomBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomBaseView.m; sourceTree = "<group>"; };
+		533E184C13CFA7E00018CA2E /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		533E184D13CFA7E00018CA2E /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		533E184E13CFA7E00018CA2E /* BaseViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseViewController.xib; sourceTree = "<group>"; };
+		533E194113CFF2560018CA2E /* lined_paper_320x200.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lined_paper_320x200.png; path = iPhone/lined_paper_320x200.png; sourceTree = "<group>"; };
 		5346697F13CB964800B828F3 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "Buttons_1/Icon-72.png"; sourceTree = "<group>"; };
 		534669B313CB9D2100B828F3 /* iphone_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iphone_icon.png; sourceTree = "<group>"; };
-		5353618013C2604B007BEC2D /* Memo 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Memo 2.xcdatamodel"; sourceTree = "<group>"; };
 		5353622E13C2BFFA007BEC2D /* AppointmentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppointmentsViewController.h; sourceTree = "<group>"; };
 		5353622F13C2BFFA007BEC2D /* AppointmentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppointmentsViewController.m; sourceTree = "<group>"; };
 		5353623013C2BFFA007BEC2D /* AppointmentsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppointmentsViewController.xib; sourceTree = "<group>"; };
 		5384E0DA13BD94540032F9B0 /* StartScreenCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartScreenCustomCell.h; sourceTree = "<group>"; };
 		5384E0DB13BD94540032F9B0 /* StartScreenCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartScreenCustomCell.m; sourceTree = "<group>"; };
 		5384E0DF13BD94EC0032F9B0 /* StartScreenCustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StartScreenCustomCell.xib; sourceTree = "<group>"; };
-		53A54EEE13C94C0E004F2EC1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		5392BA4F13D65ABB0090732E /* MyAppointmentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAppointmentsViewController.h; sourceTree = "<group>"; };
+		5392BA5013D65ABB0090732E /* MyAppointmentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAppointmentsViewController.m; sourceTree = "<group>"; };
+		5392BA5113D65ABB0090732E /* MyAppointmentsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyAppointmentsViewController.xib; sourceTree = "<group>"; };
+		5392BA5413D65B970090732E /* MyAppointmentsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAppointmentsTableViewController.h; sourceTree = "<group>"; };
+		5392BA5513D65B970090732E /* MyAppointmentsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAppointmentsTableViewController.m; sourceTree = "<group>"; };
+		5392BA8B13D69B0E0090732E /* FileCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileCustomCell.h; sourceTree = "<group>"; };
+		5392BA8C13D69B0E0090732E /* FileCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileCustomCell.m; sourceTree = "<group>"; };
+		5392BA8D13D69B0E0090732E /* FileCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FileCustomCell.xib; sourceTree = "<group>"; };
+		5392BABB13D6A95F0090732E /* FolderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FolderCell.h; sourceTree = "<group>"; };
+		5392BABC13D6A95F0090732E /* FolderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FolderCell.m; sourceTree = "<group>"; };
+		5392BABD13D6A95F0090732E /* FolderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FolderCell.xib; sourceTree = "<group>"; };
+		5392BB0413D6CEB20090732E /* paper1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = paper1.png; path = Buttons_1/paper1.png; sourceTree = "<group>"; };
 		53ACB29B13C5ECC0003DA0E6 /* Blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Blue.png; sourceTree = "<group>"; };
 		53ACB29C13C5ECC0003DA0E6 /* Carbon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Carbon.png; sourceTree = "<group>"; };
 		53ACB29D13C5ECC0003DA0E6 /* Gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gray.png; sourceTree = "<group>"; };
@@ -104,6 +131,12 @@
 		53E58F3A13BEA6D9001BD373 /* MemoDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemoDetailView.xib; sourceTree = "<group>"; };
 		53E58F4613BF75CB001BD373 /* MemoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemoDetailViewController.h; sourceTree = "<group>"; };
 		53E58F4713BF75CB001BD373 /* MemoDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemoDetailViewController.m; sourceTree = "<group>"; };
+		53F5EAD313D4ED6100C94640 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.2.sdk/System/Library/Frameworks/CoreData.framework; sourceTree = DEVELOPER_DIR; };
+		53F5EAD513D4ED6100C94640 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.2.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
+		53F5EAD713D4ED6100C94640 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.2.sdk/System/Library/Frameworks/CoreLocation.framework; sourceTree = DEVELOPER_DIR; };
+		53F5EAD913D4ED6100C94640 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		53F5EADB13D4ED6100C94640 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.2.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
+		53F5EADD13D4ED6100C94640 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.2.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		8D1107310486CEB800E47090 /* Memo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Memo-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -112,11 +145,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
-				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
-				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
-				28EEBFDD1118E19E00187D67 /* CoreData.framework in Frameworks */,
-				53A54EEF13C94C0E004F2EC1 /* QuartzCore.framework in Frameworks */,
+				53F5EAD413D4ED6100C94640 /* CoreData.framework in Frameworks */,
+				53F5EAD613D4ED6100C94640 /* CoreGraphics.framework in Frameworks */,
+				53F5EAD813D4ED6100C94640 /* CoreLocation.framework in Frameworks */,
+				53F5EADA13D4ED6100C94640 /* Foundation.framework in Frameworks */,
+				53F5EADC13D4ED6100C94640 /* QuartzCore.framework in Frameworks */,
+				53F5EADE13D4ED6100C94640 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,14 +168,19 @@
 		2860E386111B897F00E27156 /* iPhone */ = {
 			isa = PBXGroup;
 			children = (
-				533E167A13CF12EE0018CA2E /* AppointmentsTableViewController */,
-				53E58F5513BF7B12001BD373 /* MemoDetailView */,
+				5392BABA13D6A9420090732E /* FoldersCustomCell */,
+				5392BA8A13D69AE80090732E /* FilesCustomCell */,
+				5392BA8113D6982D0090732E /* SaveFilesViewController */,
+				53A5C60013D5359B002B4E59 /* MyAppointments */,
+				533E184513CFA7A50018CA2E /* BaseViewController */,
+				533E184013CFA6B90018CA2E /* CustomBaseView */,
 				5384E0D613BD93D20032F9B0 /* StartScreenCustomCell */,
+				53E58F5513BF7B12001BD373 /* MemoDetailView */,
 				530E752413B352BA003B183A /* RootViewController */,
+				5353623313C2C008007BEC2D /* AppointmentsViewController */,
 				2860E387111B897F00E27156 /* AppDelegate_iPhone.h */,
 				2860E388111B897F00E27156 /* AppDelegate_iPhone.m */,
 				2860E389111B897F00E27156 /* MainWindow_iPhone.xib */,
-				5353623313C2C008007BEC2D /* AppointmentsViewController */,
 			);
 			path = iPhone;
 			sourceTree = "<group>";
@@ -149,19 +188,24 @@
 		28EEBF621118D79A00187D67 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				533E161213CF02FC0018CA2E /* Appointment.h */,
-				533E161313CF02FC0018CA2E /* Appointment.m */,
-				533E15C513CEFA910018CA2E /* MemoText.h */,
-				533E15C613CEFA910018CA2E /* MemoText.m */,
-				530E76E913BBA1CF003B183A /* Memo.h */,
-				530E76EA13BBA1CF003B183A /* Memo.m */,
-				530E76D313BB9FFC003B183A /* File.h */,
-				530E76D413BB9FFC003B183A /* File.m */,
-				530E75B513BAEFB2003B183A /* bluebutton.png */,
+				533E176A13CF7B280018CA2E /* Appointment.h */,
+				533E176B13CF7B280018CA2E /* Appointment.m */,
+				533E176C13CF7B280018CA2E /* Folder.h */,
+				533E176D13CF7B280018CA2E /* Folder.m */,
+				533E176E13CF7B280018CA2E /* File.h */,
+				533E176F13CF7B280018CA2E /* File.m */,
+				533E177013CF7B280018CA2E /* MemoText.h */,
+				533E177113CF7B280018CA2E /* MemoText.m */,
+				533E177213CF7B280018CA2E /* ToDo.h */,
+				533E177313CF7B280018CA2E /* ToDo.m */,
+				533E177413CF7B280018CA2E /* Memo.h */,
+				533E177513CF7B280018CA2E /* Memo.m */,
 				2819307C112F81BE00ECF9B4 /* Memo.xcdatamodeld */,
 				28EEC0491118E28000187D67 /* AppDelegate_Shared.h */,
 				28EEC04A1118E28000187D67 /* AppDelegate_Shared.m */,
 				8D1107310486CEB800E47090 /* Memo-Info.plist */,
+				533E178A13CF7D920018CA2E /* NSManagedObjectContext-insert.h */,
+				533E178B13CF7D920018CA2E /* NSManagedObjectContext-insert.m */,
 			);
 			name = Shared;
 			sourceTree = "<group>";
@@ -182,9 +226,11 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				533E194113CFF2560018CA2E /* lined_paper_320x200.png */,
+				5392BB0413D6CEB20090732E /* paper1.png */,
 				5346697F13CB964800B828F3 /* Icon-72.png */,
 				534669B313CB9D2100B828F3 /* iphone_icon.png */,
-				53ACB29A13C5ECC0003DA0E6 /* Buttons_1 */,
+				53ACB29A13C5ECC0003DA0E6 /* Buttons1 */,
 				32CA4F630368D1EE00C91783 /* Memo_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 			);
@@ -204,11 +250,12 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
-				1D30AB110D05D00D00671497 /* Foundation.framework */,
-				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
-				28EEBFDC1118E19E00187D67 /* CoreData.framework */,
-				53A54EEE13C94C0E004F2EC1 /* QuartzCore.framework */,
+				53F5EAD313D4ED6100C94640 /* CoreData.framework */,
+				53F5EAD513D4ED6100C94640 /* CoreGraphics.framework */,
+				53F5EAD713D4ED6100C94640 /* CoreLocation.framework */,
+				53F5EAD913D4ED6100C94640 /* Foundation.framework */,
+				53F5EADB13D4ED6100C94640 /* QuartzCore.framework */,
+				53F5EADD13D4ED6100C94640 /* UIKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -225,14 +272,23 @@
 			name = RootViewController;
 			sourceTree = "<group>";
 		};
-		533E167A13CF12EE0018CA2E /* AppointmentsTableViewController */ = {
+		533E184013CFA6B90018CA2E /* CustomBaseView */ = {
 			isa = PBXGroup;
 			children = (
-				533E167B13CF13310018CA2E /* AppointmentsTableViewController.h */,
-				533E167C13CF13310018CA2E /* AppointmentsTableViewController.m */,
-				533E167D13CF13310018CA2E /* AppointmentsTableViewController.xib */,
+				533E184213CFA6E50018CA2E /* CustomBaseView.h */,
+				533E184313CFA6E50018CA2E /* CustomBaseView.m */,
 			);
-			name = AppointmentsTableViewController;
+			name = CustomBaseView;
+			sourceTree = "<group>";
+		};
+		533E184513CFA7A50018CA2E /* BaseViewController */ = {
+			isa = PBXGroup;
+			children = (
+				533E184C13CFA7E00018CA2E /* BaseViewController.h */,
+				533E184D13CFA7E00018CA2E /* BaseViewController.m */,
+				533E184E13CFA7E00018CA2E /* BaseViewController.xib */,
+			);
+			name = BaseViewController;
 			sourceTree = "<group>";
 		};
 		5353623313C2C008007BEC2D /* AppointmentsViewController */ = {
@@ -255,9 +311,49 @@
 			name = StartScreenCustomCell;
 			sourceTree = "<group>";
 		};
-		53ACB29A13C5ECC0003DA0E6 /* Buttons_1 */ = {
+		5392BA8113D6982D0090732E /* SaveFilesViewController */ = {
 			isa = PBXGroup;
 			children = (
+			);
+			name = SaveFilesViewController;
+			sourceTree = "<group>";
+		};
+		5392BA8A13D69AE80090732E /* FilesCustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				5392BA8B13D69B0E0090732E /* FileCustomCell.h */,
+				5392BA8C13D69B0E0090732E /* FileCustomCell.m */,
+				5392BA8D13D69B0E0090732E /* FileCustomCell.xib */,
+			);
+			name = FilesCustomCell;
+			sourceTree = "<group>";
+		};
+		5392BABA13D6A9420090732E /* FoldersCustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				5392BABB13D6A95F0090732E /* FolderCell.h */,
+				5392BABC13D6A95F0090732E /* FolderCell.m */,
+				5392BABD13D6A95F0090732E /* FolderCell.xib */,
+			);
+			name = FoldersCustomCell;
+			sourceTree = "<group>";
+		};
+		53A5C60013D5359B002B4E59 /* MyAppointments */ = {
+			isa = PBXGroup;
+			children = (
+				5392BA5413D65B970090732E /* MyAppointmentsTableViewController.h */,
+				5392BA5513D65B970090732E /* MyAppointmentsTableViewController.m */,
+				5392BA4F13D65ABB0090732E /* MyAppointmentsViewController.h */,
+				5392BA5013D65ABB0090732E /* MyAppointmentsViewController.m */,
+				5392BA5113D65ABB0090732E /* MyAppointmentsViewController.xib */,
+			);
+			name = MyAppointments;
+			sourceTree = "<group>";
+		};
+		53ACB29A13C5ECC0003DA0E6 /* Buttons1 */ = {
+			isa = PBXGroup;
+			children = (
+				530E75B513BAEFB2003B183A /* bluebutton.png */,
 				53ACB29B13C5ECC0003DA0E6 /* Blue.png */,
 				53ACB29C13C5ECC0003DA0E6 /* Carbon.png */,
 				53ACB29D13C5ECC0003DA0E6 /* Gray.png */,
@@ -267,6 +363,7 @@
 				53ACB2A113C5ECC0003DA0E6 /* Red.png */,
 				53ACB2A213C5ECC0003DA0E6 /* Yellow.png */,
 			);
+			name = Buttons1;
 			path = Buttons_1;
 			sourceTree = "<group>";
 		};
@@ -346,7 +443,12 @@
 				53ACB2AA13C5ECC0003DA0E6 /* Yellow.png in Resources */,
 				5346698013CB964800B828F3 /* Icon-72.png in Resources */,
 				534669B413CB9D2100B828F3 /* iphone_icon.png in Resources */,
-				533E167F13CF13310018CA2E /* AppointmentsTableViewController.xib in Resources */,
+				533E185013CFA7E00018CA2E /* BaseViewController.xib in Resources */,
+				533E194213CFF2560018CA2E /* lined_paper_320x200.png in Resources */,
+				5392BA5313D65ABB0090732E /* MyAppointmentsViewController.xib in Resources */,
+				5392BA8F13D69B0E0090732E /* FileCustomCell.xib in Resources */,
+				5392BABF13D6A95F0090732E /* FolderCell.xib in Resources */,
+				5392BB0513D6CEB20090732E /* paper1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,14 +466,22 @@
 				2860E38A111B897F00E27156 /* AppDelegate_iPhone.m in Sources */,
 				530E752813B352EE003B183A /* RootViewController.m in Sources */,
 				530E752C13B35375003B183A /* MemoTableViewController.m in Sources */,
-				530E76D913BB9FFC003B183A /* File.m in Sources */,
-				530E76EB13BBA1CF003B183A /* Memo.m in Sources */,
 				5384E0DC13BD94540032F9B0 /* StartScreenCustomCell.m in Sources */,
 				53E58F4813BF75CB001BD373 /* MemoDetailViewController.m in Sources */,
 				5353623113C2BFFA007BEC2D /* AppointmentsViewController.m in Sources */,
-				533E15C713CEFA910018CA2E /* MemoText.m in Sources */,
-				533E161413CF02FC0018CA2E /* Appointment.m in Sources */,
-				533E167E13CF13310018CA2E /* AppointmentsTableViewController.m in Sources */,
+				533E177613CF7B280018CA2E /* Appointment.m in Sources */,
+				533E177713CF7B280018CA2E /* Folder.m in Sources */,
+				533E177813CF7B280018CA2E /* File.m in Sources */,
+				533E177913CF7B280018CA2E /* MemoText.m in Sources */,
+				533E177A13CF7B280018CA2E /* ToDo.m in Sources */,
+				533E177B13CF7B280018CA2E /* Memo.m in Sources */,
+				533E178C13CF7D920018CA2E /* NSManagedObjectContext-insert.m in Sources */,
+				533E184413CFA6E50018CA2E /* CustomBaseView.m in Sources */,
+				533E184F13CFA7E00018CA2E /* BaseViewController.m in Sources */,
+				5392BA5213D65ABB0090732E /* MyAppointmentsViewController.m in Sources */,
+				5392BA5613D65B970090732E /* MyAppointmentsTableViewController.m in Sources */,
+				5392BA8E13D69B0E0090732E /* FileCustomCell.m in Sources */,
+				5392BABE13D6A95F0090732E /* FolderCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,16 +492,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Keith Fernandes (EE34HPF9J4)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Keith Fernandes (EE34HPF9J4)";
 				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_DYNAMIC_NO_PIC = YES;
+				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Memo_Prefix.pch;
 				INFOPLIST_FILE = "Memo-Info.plist";
 				PRODUCT_NAME = Memo;
+				PROVISIONING_PROFILE = "49DEF121-BA53-46F5-822D-8869ED043CE9";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "49DEF121-BA53-46F5-822D-8869ED043CE9";
 				SDKROOT = iphoneos4.3;
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Debug;
 		};
@@ -399,12 +512,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Keith Fernandes (EE34HPF9J4)";
 				COPY_PHASE_STRIP = YES;
+				GCC_DYNAMIC_NO_PIC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Memo_Prefix.pch;
 				INFOPLIST_FILE = "Memo-Info.plist";
 				PRODUCT_NAME = Memo;
-				SDKROOT = iphoneos4.2;
+				PROVISIONING_PROFILE = "49DEF121-BA53-46F5-822D-8869ED043CE9";
+				SDKROOT = iphoneos4.3;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -465,12 +581,9 @@
 		2819307C112F81BE00ECF9B4 /* Memo.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				2870939E111907710040F596 /* Memo.xcdatamodel */,
-				5353618013C2604B007BEC2D /* Memo 2.xcdatamodel */,
-				533E156F13CEED250018CA2E /* Memo 3.xcdatamodel */,
 				533E171713CF65ED0018CA2E /* Memo 4.xcdatamodel */,
 			);
-			currentVersion = 533E156F13CEED250018CA2E /* Memo 3.xcdatamodel */;
+			currentVersion = 533E171713CF65ED0018CA2E /* Memo 4.xcdatamodel */;
 			name = Memo.xcdatamodeld;
 			path = Shared/Memo.xcdatamodeld;
 			sourceTree = "<group>";

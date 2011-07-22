@@ -10,28 +10,31 @@
 #import "Memo.h"
 #import "MemoText.h"
 #import "AppDelegate_Shared.h"
+#import <MessageUI/MessageUI.h>
 
-@interface MemoDetailViewController : UIViewController <UITextViewDelegate, UITextFieldDelegate>{
+@interface MemoDetailViewController : UIViewController <UITextViewDelegate, UIActionSheetDelegate, UITextFieldDelegate> {
 
-	UILabel *creationDateView;
-	UITextView *memoTextView;
+	UITextField *dateTextField; 
 	NSManagedObjectContext *managedObjectContext;
 	MemoText *selectedMemoText;
-	UITextField *memoREView;
-	
+	UITextView *textView;
+    UIActionSheet *goActionSheet, *saveActionSheet;
+    UIToolbar *toolbar;
 }
-
-
-@property (nonatomic, retain) IBOutlet UILabel *creationDateView;
-@property (nonatomic, retain) IBOutlet UITextView *memoTextView;
-@property (nonatomic, retain) IBOutlet UITextField *memoREView;
-
 @property (nonatomic, retain) MemoText *selectedMemoText;
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, retain) UITextField *dateTextField; 
+@property (nonatomic, retain) UITextView *textView;
+@property (nonatomic, retain) UIActionSheet *goActionSheet, *saveActionSheet;
+@property (nonatomic, retain) UIToolbar *toolbar;
 
 
--(IBAction) backToTable;
 
--(IBAction) saveSelectedMemo;
+- (void) saveSelectedMemo;
+- (void) startNew;
+
+- (void) makeToolbar;
+
+- (IBAction) navigationAction:(id)sender;
 
 @end

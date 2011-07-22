@@ -7,34 +7,38 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
+
 #import "Memo.h"
 #import "File.h"
 #import "Appointment.h"
 #import "MemoText.h"
+#import "ToDo.h"
 
 @interface RootViewController : UIViewController <UITextViewDelegate, UIActionSheetDelegate> {
 
 	NSManagedObjectContext *managedObjectContext;
 	UITextView *newText;
 	UITableViewController *tableViewController;
-	UIBarButtonItem *doneButton, *newMemoButton;
-	NSString *previousTextInput;
-	UIActionSheet *goActionSheet, *saveActionSheet;
-
+    NSString *previousTextInput;
+    UIActionSheet *goActionSheet, *saveActionSheet;
+    UIToolbar *toolbar;
+    MemoText *newMemoText;
 }
 
-
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, retain) MemoText *newMemoText;
 @property (nonatomic, retain) IBOutlet UITextView *newText;
 @property (nonatomic, retain) IBOutlet UITableViewController *tableViewController;
-@property (nonatomic, retain) IBOutlet UIBarButtonItem *doneButton, *newMemoButton;
 @property (nonatomic, retain) NSString *previousTextInput;
 @property (nonatomic, retain) UIActionSheet *goActionSheet, *saveActionSheet;
+@property (nonatomic, retain) UIToolbar *toolbar;
 
-
+- (void) addNewMemoText;
 - (void) addNewMemo;
 - (void) addNewAppointment;
 
+- (void) makeToolbar;
 - (IBAction) navigationAction:(id)sender;
 
 @end

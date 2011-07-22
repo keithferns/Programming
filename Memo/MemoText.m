@@ -10,20 +10,15 @@
 
 #import "Appointment.h"
 #import "Memo.h"
+#import "ToDo.h"
 
 @implementation MemoText 
 
+@dynamic creationDate;
 @dynamic noteType;
 @dynamic memoText;
 @dynamic savedAppointment;
+@dynamic savedTask;
 @dynamic savedMemo;
-
-+ (id) insertNewMemoText: (NSManagedObjectContext *)context{
-	
-	return [NSEntityDescription insertNewObjectForEntityForName:@"MemoText" inManagedObjectContext:context];
-}
-
-
-
 
 @end

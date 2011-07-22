@@ -8,68 +8,127 @@
 
 #import "RootViewController.h"
 #import "AppDelegate_Shared.h"
+
+/*-- modalViewControllers --*/
 #import "AppointmentsViewController.h"
-#import "AppointmentsTableViewController.h"
+#import "MyAppointmentsViewController.h"
+#import "NSManagedObjectContext-insert.h"
+#import "BaseViewController.h" 
 
 @implementation RootViewController
 
 @synthesize managedObjectContext, newText, tableViewController;
-@synthesize doneButton, newMemoButton;
 @synthesize previousTextInput;
 @synthesize goActionSheet, saveActionSheet;
+@synthesize toolbar;
+@synthesize newMemoText;
 
 #pragma mark -
 
 #pragma mark ViewLifeCycle
 
+- (void)handleDidSaveNotification:(NSNotification *)notification {
+    NSLog(@"NSManagedObjectContextDidSaveNotification received");
+    [managedObjectContext mergeChangesFromContextDidSaveNotification:notification];
+}
+
+
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
-	
-	[self.view addSubview:newText];
-	[newText becomeFirstResponder];
-	[self.view addSubview:tableViewController.tableView];
-	
-		//Point the new instance of managedObjectContext to the managedObjectContext for the app.
+    [self makeToolbar];
+    
+	 [self.view addSubview:tableViewController.tableView];
+    
+     self.view.layer.backgroundColor = [UIColor groupTableViewBackgroundColor].CGColor;
+    
+     newText = [[UITextView alloc] initWithFrame:CGRectMake(10, 30, 305, 170)];
+     [newText setFont:[UIFont systemFontOfSize:18]];
+     newText.layer.backgroundColor = [UIColor groupTableViewBackgroundColor].CGColor;
+     newText.layer.cornerRadius = 7.0;
+     newText.layer.frame = CGRectInset(newText.layer.frame, 5, 10);
+     newText.layer.contents = (id) [UIImage imageNamed:@"lined_paper_320x200.png"].CGImage;
+     newText.delegate = self;
+     [self.view addSubview:newText];
+    
+   
+
+    /*--Point the new instance of managedObjectContext to the managedObjectContext for the app.--*/
 	
 	if (managedObjectContext == nil) 
 	{ 
         managedObjectContext = [(AppDelegate_Shared *)[[UIApplication sharedApplication] delegate] managedObjectContext]; 
         NSLog(@"After managedObjectContext: %@",  managedObjectContext);
 	}
+    
+    
+    [[NSNotificationCenter defaultCenter] 
+        addObserver:self 
+        selector:@selector(handleDidSaveNotification:)
+        name:NSManagedObjectContextDidSaveNotification 
+        object:nil];
+  /*  
+    [[NSNotificationCenter defaultCenter] 
+        addObserver:self 
+        selector:@selector(handleDidSaveNotification:)
+        name:NSManagedObjectContextObjectsDidChangeNotification 
+        object:nil];*/
 }
+
+
+
+
+- (void) textViewDidBeginEditing:(UITextView *)textView{
+    //[tableViewController.tableView setHidden:YES];
+        
+    /*--Add the DONE button to the textView once editing begins.--*/
+        UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(navigationAction:)];
+        [doneButton setTag:1];
+        [doneButton setWidth:90];
+        NSUInteger newButton = 0;
+        NSMutableArray *toolbarItems = [[NSMutableArray arrayWithArray:toolbar.items] retain];
+        
+        for (NSUInteger i = 0; i < [toolbarItems count]; i++) {
+            UIBarButtonItem *barButtonItem = [toolbarItems objectAtIndex:i];
+            if (barButtonItem.tag == 1){
+                return;
+            }
+            else if (barButtonItem.tag == 3) {
+                newButton = i;
+                break;
+            }
+        }
+        [toolbarItems replaceObjectAtIndex:newButton withObject:doneButton];
+        toolbar.items = toolbarItems;
+    /*--DONE button added--*/
+    
+}
+    
 - (void) textViewDidEndEditing:(UITextView *)textView{
-		//Change the Done Button to a New button. 
+    //[tableViewController.tableView reloadData];
+    //[tableViewController.tableView setHidden:NO];
 }
-
-- (void) textViewDidEnd  :(UITextView *)textView{
-}
-
-
 
 #pragma mark -
 #pragma mark Navigation
 
 -(IBAction) navigationAction:(id)sender{
 	switch ([sender tag]) {
-		case 2:
-			if ([newText hasText]) {
+        case 3:    
+            if ([newText hasText]) {
 				[self addNewMemo];
-			}
-
+            }
+            break;
+		case 2:
 			self.goActionSheet = [[UIActionSheet alloc] 
 								  initWithTitle:@"Go To" delegate:self cancelButtonTitle:@"Later"
 								  destructiveButtonTitle:nil otherButtonTitles:@"Memos, Files and Folders", @"Appointments", @"Tasks", nil];
 			
 			[goActionSheet showInView:self.view];
-			
-			[goActionSheet release];
-			
-			NSLog(@"The Go To Action was Shown");
-			break;
+            break;
 		case 1:
 			if ([newText hasText]) {
-				[self addNewMemo];
-				newText.text = @"";
+				[self addNewMemoText];
 				}
 			
 			else if (![newText hasText]) {
@@ -77,28 +136,19 @@
 				return;
 				}
 				//TODO: ADD Condition where the text in view is same as text in memoText for the last saved memo. Add Button to toggle between DONE and NEW. DONE will save the input text but retain it in view. The button will change to New. If the user taps on the newText view then the button changes back to DONE. Only if the user click on NEW, will the newText clear for new input and the table will update. Perhaps use two different managedObjectContexts here. Only NEW will merge the input text MOC with the tableView MOC. DONE will just save it to the inputView MOC. 
-			/*
-			MyMemosViewController *viewController = [[[MyMemosViewController alloc] initWithNibName:@"MyMemosViewController" bundle:nil] autorelease];
-			editmemoTextView.text = @"";
-			[self presentModalViewController:viewController animated:YES];	
-			 */
 			break;
-			
 		case 0:
 			saveActionSheet = [[UIActionSheet alloc] 
 									initWithTitle:@"What do you want to do with this Memo?" delegate:self
 									cancelButtonTitle:@"Later" destructiveButtonTitle:nil otherButtonTitles:@"Name, Tag and Save", @"Append to Existing File", @"Appointment or Task Reminder", nil];
 			
 			[saveActionSheet showInView:self.view];
-			
-			[saveActionSheet release]; 
-			
+						
 			break;
 		default:
 			break;
 	}
 }
-
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
 	if (actionSheet	== saveActionSheet){
@@ -109,6 +159,7 @@
 				break;
 			case 2:
 				NSLog(@"3nd Button Clicked on saveAlert");
+                /*--Adds a new Appointment.--*/
 				if ([newText hasText]) {
 					[self addNewAppointment];
 				}	
@@ -118,6 +169,9 @@
 				break;
 			case 0:
 				NSLog(@"1st Button Clicked on saveAlert");
+                //SaveFileViewController *viewController = [[SaveFileViewController alloc] initWithNibName:@"SaveFileViewController" bundle:nil];
+                //[self presentModalViewController:viewController animated:YES];
+                
 				break;
 			default:
 				break;
@@ -131,89 +185,28 @@
 				break;
 			case 2:
 				NSLog(@"Task Button Clicked on WallAlert");
-
+			{BaseViewController *viewController = [[[BaseViewController	alloc] initWithNibName:@"BaseViewController" bundle:nil] autorelease];	
+				[self presentModalViewController:viewController animated:YES];}
 				break;
 			case 1:
 				NSLog(@"Appointments Button Clicked on WallAlert");
-			{AppointmentsTableViewController *viewController = [[[AppointmentsTableViewController alloc] initWithNibName:@"AppointmentsTableViewController" bundle:nil] autorelease];			
+			{MyAppointmentsViewController *viewController = [[[MyAppointmentsViewController alloc] initWithNibName:@"MyAppointmentsViewController" bundle:nil] autorelease];			
 				[self presentModalViewController:viewController animated:YES];}
 				break;
 			case 0:
 				NSLog(@" Folder and Files Button Clicked on WallAlert");
+                //FilesFoldersViewController *viewController = [[[FilesFoldersViewController alloc] initWithNibName:@"FilesFoldersViewController" bundle:nil] autorelease]
+                //[self presentModalViewController:viewController animated:YES];
 				break;				
 		}
 	}
 }
 
-
-
-- (void) addNewMemo{
-	
-	NSString *newTextInput = [NSString stringWithFormat: @"%@", newText.text];//copy contents of textView to newTextInput
-	
-	if ([newTextInput isEqualToString:previousTextInput]) {
-		return;
-	}
-	
-	MemoText *newMemoText = [MemoText insertNewMemoText:managedObjectContext];
-	[newMemoText setMemoText:newTextInput];
-	
-	Memo *newMemo = [Memo insertNewMemo:managedObjectContext];
-		//[newMemo setIsEditing:YES];
-	[newMemo setCreationDate:[NSDate date]];
-	newMemo.memoText = newMemoText;
-	newMemo.memoRE = @"";
-	NSLog(@"The Date of the new memo is '%@'", newMemo.creationDate);
-	
-	NSLog(@"The Text of the new memo is '%@'", newMemo.memoText.memoText);
-	
-	NSError *error;
-	if(![managedObjectContext save:&error]){ 
-			//
-	}
-	previousTextInput = newTextInput;
-	[self.view endEditing:YES];
-	
+- (void) viewWillAppear{
+   // [tableViewController.tableView reloadData];
+   // [tableViewController.tableView setHidden:NO];
 }
-
-
-- (void) addNewAppointment{
-	
-	NSString *newTextInput = [NSString stringWithFormat: @"%@", newText.text];//copy contents of textView to newTextInput
-	
-	if ([newTextInput isEqualToString:previousTextInput]) {
-		return;
-	}
-	
-	MemoText *newMemoText = [MemoText insertNewMemoText:managedObjectContext];
-	[newMemoText setMemoText:newTextInput];
-	[newMemoText setNoteType:[NSNumber numberWithInt:1]];
-	Appointment *newAppointment = [Appointment insertNewAppointment:managedObjectContext];
-	[newAppointment setCreationDate:[NSDate date]];
-	newAppointment.memoText = newMemoText;
-	newAppointment.appointmentRE = @"";
-	NSLog(@"The Date of the new appointment is '%@'", newAppointment.creationDate);
-	
-	NSLog(@"The Text of the new appointment is '%@'", newAppointment.memoText.memoText);
-	AppointmentsViewController *appointmentViewController = [[[AppointmentsViewController alloc] initWithNibName:@"AppointmentsViewController" bundle:nil] autorelease];
-		// Pass the selected object to the new view controller.
-	
-	appointmentViewController.newAppointment = newAppointment;	
-	
-	[self presentModalViewController:appointmentViewController animated:YES];	
-
-	
-	NSError *error;
-	if(![managedObjectContext save:&error]){ 
-			//
-	}
-	previousTextInput = newTextInput;
-	[self.view endEditing:YES];
-
-}
-
-
-
+    
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return YES;
@@ -234,12 +227,141 @@
 
 - (void)dealloc {
     [super dealloc];
-	[tableViewController release];
+	//[tableViewController release];
 	[newText release];
 	[managedObjectContext release];
-	[newMemoButton release];
-	[doneButton release];
+    [goActionSheet release];
+    [saveActionSheet release];
+    [[NSNotificationCenter defaultCenter] 
+        removeObserver:self 
+        name:NSManagedObjectContextDidSaveNotification 
+        object:nil];
+    /*[[NSNotificationCenter defaultCenter]
+        removeObserver:self
+     name:NSManagedObjectContextObjectsDidChangeNotification object:nil];*/
 }
 
+
+
+
+- (void) addNewMemoText{
+	/*Called BY: Done Button and.....*/
+    [self.view endEditing:YES];
+	NSString *newTextInput = [NSString stringWithFormat: @"%@", newText.text];//copy contents of textView to newTextInput
+    
+	/*--CASE: the textView has no text --> Do nothing--*/
+    if (newText.text==@"") {
+        return;
+    }
+    /*--CASE: if the textView has text & the text is NOT the same as previous call of method --> insert a new instance of MemoText in the MOC and copy new text to this instance--*/
+    if ([newText hasText] && ![newTextInput isEqualToString:previousTextInput]) {
+        
+        newMemoText = [managedObjectContext insertNewObjectForEntityForName:@"MemoText"];
+        [newMemoText setMemoText:newTextInput];
+        [newMemoText setCreationDate:[NSDate date]];
+    }
+    /*CASE: When the user has added and saved text, then returns to editing but does not add any text ---*/
+	if ([newTextInput isEqualToString:previousTextInput]) {
+    //
+    }
+    
+    /*-- If newMemoText has been added to the MOC in some call of the present method -> Change the Done button to the new Button.--*/ 
+        UIBarButtonItem *newButton = [[UIBarButtonItem alloc] initWithTitle:@"NEW" style:UIBarButtonItemStyleBordered target:self action:@selector(navigationAction:)];
+        [newButton setTag:3];
+        [newButton setWidth:90];
+        NSUInteger myButton = 0;
+        NSMutableArray *toolbarItems = [[NSMutableArray arrayWithArray:toolbar.items] retain];
+        
+        for (NSUInteger i = 0; i < [toolbarItems count]; i++) {
+            UIBarButtonItem *barButtonItem = [toolbarItems objectAtIndex:i];
+            if (barButtonItem.tag == 1) {
+                myButton = i;
+                break;
+            }
+        }
+        [toolbarItems replaceObjectAtIndex:myButton withObject:newButton];
+        toolbar.items = toolbarItems;
+		return;
+
+	previousTextInput = newTextInput;
+    
+
+}
+
+
+- (void) addNewMemo{
+    /*CALLED BY:  New button --*/
+    Memo *newMemo = [managedObjectContext insertNewObjectForEntityForName:@"Memo"];
+    //[newMemo setIsEditing:YES];
+    newMemo.doDate = newMemoText.creationDate;
+    newMemo.memoText = newMemoText;
+    
+    NSError *error;
+	if(![managedObjectContext save:&error]){ 
+        //
+	}
+    //FIXME: CASE> if the User hits the done button but rather than hitting the new button, select a cell in the displayed table. Should newMemoText be saved as a newMemo?
+    
+    [newText setText:@""];
+}
+
+
+- (void) addNewAppointment{
+	/*CALLED BY:   SaveAs-Appointment --*/
+	NSString *newTextInput = [NSString stringWithFormat: @"%@", newText.text];//copy contents of textView to newTextInput
+	
+	if ([newTextInput isEqualToString:previousTextInput]) {
+		return;
+	}
+	if (newMemoText==nil) {
+        NSLog(@"Save As button -> Appointment.  Done Button not touched");
+        newMemoText = [managedObjectContext insertNewObjectForEntityForName:@"MemoText"];
+        [newMemoText setMemoText:newTextInput];
+        [newMemoText setNoteType:[NSNumber numberWithInt:1]];
+        [newMemoText setCreationDate:[NSDate date]];
+    }	
+	
+	AppointmentsViewController *appointmentViewController = [[[AppointmentsViewController alloc] initWithNibName:@"AppointmentsViewController" bundle:nil] autorelease];
+    // Pass the selected object to the new view controller.
+	
+	appointmentViewController.newMemoText = newMemoText;	
+    //	
+	[self presentModalViewController:appointmentViewController animated:YES];	
+    
+	
+	NSError *error;
+	if(![managedObjectContext save:&error]){ 
+        //
+	}
+	previousTextInput = newTextInput;
+	[self.view endEditing:YES];
+    
+}
+
+
+- (void) makeToolbar{
+    /*Setting up the Toolbar */
+    CGRect buttonBarFrame = CGRectMake(0, 210, 320, 40);
+    toolbar = [[[UIToolbar alloc] initWithFrame:buttonBarFrame] autorelease];
+    [toolbar setBarStyle:UIBarStyleBlackTranslucent];
+    [toolbar setTintColor:[UIColor blackColor]];
+    UIBarButtonItem *saveAsButton = [[UIBarButtonItem alloc] initWithTitle:@"SAVE AS" style:UIBarButtonItemStyleBordered target:self action:@selector(navigationAction:)];
+    [saveAsButton setTag:0];
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"DONE" style:UIBarButtonItemStyleBordered target:self action:@selector(navigationAction:)];
+    [doneButton setTag:1];
+    UIBarButtonItem *gotoButton = [[UIBarButtonItem alloc] initWithTitle:@"GO TO.." style:UIBarButtonItemStyleBordered target:self action:@selector(navigationAction:)];
+    [gotoButton setTag:2];
+    [saveAsButton setWidth:90];
+    [doneButton setWidth:90];
+    [gotoButton setWidth:90];
+    //UIButton *customView = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    //Possible to use this with the initWithCustomView method of  UIBarButtonItems
+    UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil	action:nil];
+    
+    NSArray *items = [NSArray arrayWithObjects:flexSpace, saveAsButton, flexSpace, doneButton, flexSpace, gotoButton, flexSpace,nil];
+    [toolbar setItems:items];
+    [self.view addSubview:toolbar];
+    /*--End Setting up the Toolbar */
+}
 
 @end

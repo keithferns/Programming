@@ -12,16 +12,9 @@
 
 @implementation Appointment 
 
-@dynamic creationDate;
-@dynamic appointmentTime;
 @dynamic appointmentRE;
+@dynamic isRecurring;
+@dynamic doDate;
 @dynamic memoText;
-
-
-+ (id) insertNewAppointment: (NSManagedObjectContext *)context{
-	
-	return [NSEntityDescription insertNewObjectForEntityForName:@"Appointment" inManagedObjectContext:context];
-}
-
 
 @end

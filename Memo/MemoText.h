@@ -10,18 +10,18 @@
 
 @class Appointment;
 @class Memo;
+@class ToDo;
 
 @interface MemoText :  NSManagedObject  
 {
 }
 
+@property (nonatomic, retain) NSDate * creationDate;
 @property (nonatomic, retain) NSNumber * noteType;
 @property (nonatomic, retain) NSString * memoText;
 @property (nonatomic, retain) Appointment * savedAppointment;
+@property (nonatomic, retain) ToDo * savedTask;
 @property (nonatomic, retain) Memo * savedMemo;
-
-+ (id) insertNewMemoText: (NSManagedObjectContext *)context;
-
 
 @end
 

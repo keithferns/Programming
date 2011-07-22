@@ -6,98 +6,217 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
 #import "MemoDetailViewController.h"
 #import "MemoTableViewController.h"
 
 @implementation MemoDetailViewController
 
-@synthesize memoTextView, creationDateView, memoREView;
 @synthesize selectedMemoText;
 @synthesize managedObjectContext;
+@synthesize goActionSheet, saveActionSheet;
+@synthesize toolbar;
+@synthesize textView, dateTextField;
 
-	//FIXME: This is only configured to show the details of a Memo and not an Appointment. The text appears correctly for Appointment selection but the date does not appear.
-	//FIXME: the appointmentTime variable of the Appointment is not being called properly. Cannot read the appointment time off the object instance. 
-	//TODO: Put the creationDate as a ivar of the MemoText. This seems logical as the memoText is the base of the rest. THEN add a general "doDate" to all the entities. Copy the value of creationDate to the doDate as default. For an appointment or Task the doDate will be eventually be the scheduled or due date. For memos, the doDate will eventually be the time the memo was last edited. 
+//FIXME: This is only configured to show the details of a Memo and not an Appointment. The text appears correctly for Appointment selection but the date does not appear.
+//FIXME: the appointmentTime variable of the Appointment is not being called properly. Cannot read the appointment time off the object instance. 
+//TODO: Put the creationDate as a ivar of the MemoText. This seems logical as the memoText is the base of the rest. THEN add a general "doDate" to all the entities. Copy the value of creationDate to the doDate as default. For an appointment or Task the doDate will be eventually be the scheduled or due date. For memos, the doDate will eventually be the time the memo was last edited. 
 
-- (IBAction) backToTable{
-	
-[self dismissModalViewControllerAnimated:YES];	
-		//TODO: the current "Back" button should be the Save As.. Button. We want the option to save an existing memo as an appointment or save an existing appointment as a recurring event. Use notifications to tell the RootViewController which button on the action sheet was pressed --> dismiss the current modalView --> from the RootViewController initiate the action appropriate to the notification sent up by the modal view. DO NOT import another modalView from any modal view unless it is a detailView. 
-		//TODO: the current Save button should toggle between a Done button and New Button. The Done ends editing (dimisses the keyboard and saves the memo/appointment but the current memoText is retained in the view. The New button dismisses the current text and makes the keyboard first responder. Maybe the main view should have the same setup. Opening the application starts it up in editing mode with the textView as firstResponder. The user can dismiss the keyboard at will by pressing the Done button to reveal the table. 
-}
-
-
-
-- (void) textViewDidBeginEditing:(UITextView *)textView{
-			//create new subview and initialize with the frame for the topView
-	CGRect mytestFrame = CGRectMake(0, 0, 320, 192);
-	UIView *myNewView = [[[UIView	alloc] initWithFrame:mytestFrame] autorelease];
-	[myNewView setBackgroundColor:[UIColor blueColor]];
-	[self.view addSubview:myNewView];
-	[myNewView addSubview:memoTextView];
-}
-
-
--(IBAction) saveSelectedMemo{
-
-	[self.view endEditing:YES];
-	
-	selectedMemoText.memoText = memoTextView.text;
-	selectedMemoText.savedMemo.memoRE = memoREView.text;
-	
-	NSLog(@"After Editing the text is %@", selectedMemoText.memoText);
-	NSLog(@"After Naming, RE: %@", selectedMemoText.savedMemo.memoRE);
-	
-	NSError *error;
-	if(![managedObjectContext save:&error]){
-	}
-	
-	[[NSNotificationCenter defaultCenter] 
-	 postNotificationName:managedObjectContextSavedNotification object:nil];
-			
-}
-
-// The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
-/*
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization.
-    }
-    return self;
-}
-*/
-
-/*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView {
-}
-*/
+#pragma mark ViewLifeCycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	
-	if (managedObjectContext == nil) 
-	{ 
-		managedObjectContext = [(AppDelegate_Shared *)[[UIApplication sharedApplication] delegate] managedObjectContext]; 
-        NSLog(@"After managedObjectContext: %@",  managedObjectContext);
-	}
-	static NSDateFormatter *dateFormatter = nil;
+    
+    [self makeToolbar];
+    
+    /*Setting Up the Views*/
+    self.view.layer.backgroundColor = [UIColor groupTableViewBackgroundColor].CGColor;
+    //The Text View
+    textView = [[UITextView alloc] initWithFrame:CGRectMake(10, 45, 300, 160)];
+    [self.view addSubview:textView];
+    [textView setFont:[UIFont systemFontOfSize:18]];
+    textView.layer.backgroundColor = [UIColor whiteColor].CGColor;
+    textView.layer.cornerRadius = 7.0;
+    textView.layer.frame = CGRectInset(textView.layer.frame, 5, 10);
+    textView.layer.contents = (id) [UIImage imageNamed:@"lined_paper_320x200.png"].CGImage;    
+    [textView setText:[NSString stringWithFormat:@"%@", selectedMemoText.memoText]];
+    [self.view addSubview:textView];
+	[textView becomeFirstResponder];
+    [textView setDelegate:self];
+    //The Date Label and Date Field
+    static NSDateFormatter *dateFormatter = nil;
 	if (dateFormatter == nil) {
 		dateFormatter = [[NSDateFormatter alloc] init];
-		[dateFormatter setDateFormat:@"EEEE, dd MMMM yyyy h:mm a"];
-	}	
-	if ([selectedMemoText.noteType intValue] == 0){
-		[creationDateView setText: [dateFormatter stringFromDate:[selectedMemoText.savedMemo creationDate]]];
-	}
-		else if ([selectedMemoText.noteType intValue] == 1){
-			[creationDateView setText: [dateFormatter stringFromDate:[selectedMemoText.savedAppointment creationDate]]];
+		[dateFormatter setDateFormat:@"EE, dd MMMM h:mm a"];
+        }	
+    dateTextField = [[UITextField alloc] init];
 
-		}
-	[memoTextView setText:[NSString stringWithFormat:@"%@", selectedMemoText.memoText]];	
-	[memoREView setText:[NSString stringWithFormat:@"%@", selectedMemoText.savedMemo.memoRE]];
+    [dateTextField setBorderStyle:UITextBorderStyleRoundedRect];
+    [dateTextField setFont:[UIFont systemFontOfSize:17]];
+    
+	if ([selectedMemoText.noteType intValue] == 0){
+        [dateTextField setFrame:CGRectMake(12, 20, 293, 31)];    
+		[dateTextField setPlaceholder:@"Add a tag or two"];
+        [self.view addSubview:dateTextField];
+
+    }
+    else if ([selectedMemoText.noteType intValue] == 1){
+        UILabel *dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 23, 90, 21)];
+        [dateLabel setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
+        [dateLabel setFont:[UIFont systemFontOfSize:17]];
+        [self.view addSubview:dateLabel];
+        [dateTextField setFrame:CGRectMake(105, 20, 200, 31)];
+        
+        [dateLabel setText:@"Scheduled:"];
+        [dateTextField setText: [dateFormatter stringFromDate:[selectedMemoText.savedAppointment doDate]]];
+        [self.view addSubview:dateTextField];
+    }
+    
+    /*--End Setting Up the Views--*/
+    
+    
+    /*-- Initializing the managedObjectContext--*/
+	if (managedObjectContext == nil) { 
+		managedObjectContext = [(AppDelegate_Shared *)[[UIApplication sharedApplication] delegate] managedObjectContext]; 
+        NSLog(@"After managedObjectContext: %@",  managedObjectContext);
+        }
+    /*--End Initializing the managedObjectContext--*/
 }
 
+#pragma mark -
+#pragma mark Navigation
+
+-(IBAction) navigationAction:(id)sender{
+	switch ([sender tag]) {
+        case 3:
+            [self startNew];
+            break;
+		case 2:
+			self.goActionSheet = [[UIActionSheet alloc] 
+								  initWithTitle:@"Go To" delegate:self cancelButtonTitle:@"Later"
+								  destructiveButtonTitle:nil otherButtonTitles:@"Memos, Files and Folders", @"Appointments", @"Tasks", nil];
+			
+			[goActionSheet showInView:self.view];
+			
+			NSLog(@"The Go To Action was Shown");
+			break;
+		case 1:
+		
+            [self saveSelectedMemo];
+            //TODO: ADD Condition where the text in view is same as text in memoText for the last saved memo. Add Button to toggle between DONE and NEW. DONE will save the input text but retain it in view. The button will change to New. If the user taps on the newText view then the button changes back to DONE. Only if the user click on NEW, will the newText clear for new input and the table will update. Perhaps use two different managedObjectContexts here. Only NEW will merge the input text MOC with the tableView MOC. DONE will just save it to the inputView MOC. 
+			break;
+			
+		case 0:
+			saveActionSheet = [[UIActionSheet alloc] 
+                               initWithTitle:@"What do you want to do with this Memo?" delegate:self
+                               cancelButtonTitle:@"Later" destructiveButtonTitle:nil otherButtonTitles:@"Name, Tag and Save", @"Append to Existing File", @"Appointment or Task Reminder", nil];
+			
+			[saveActionSheet showInView:self.view];
+            
+			break;
+		default:
+			break;
+	}
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+	if (actionSheet	== saveActionSheet){
+		switch (buttonIndex) {
+				
+			case 3:
+				NSLog(@"Cancel Button Clicked on saveAlert");
+				break;
+			case 2:
+				NSLog(@"3nd Button Clicked on saveAlert");
+				break;
+			case 1:
+				NSLog(@"2nd Button Clicked on saveAlert");
+				break;
+			case 0:
+				NSLog(@"1st Button Clicked on saveAlert");
+				break;
+			default:
+				break;
+		}
+	}
+	else if (actionSheet == goActionSheet){
+		switch (buttonIndex){
+			case 3:
+				NSLog(@"Cancel Button Clicked on wallAlert");
+			default:
+				break;
+			case 2:
+				NSLog(@"Task Button Clicked on WallAlert");
+                break;
+			case 1:
+				NSLog(@"Appointments Button Clicked on WallAlert");
+							break;
+			case 0:
+				NSLog(@" Folder and Files Button Clicked on WallAlert");
+				break;				
+		}
+	}
+}
+
+- (void) textViewDidBeginEditing:(UITextView *)textView {
+
+NSLog(@"Try to change New botton to Done");
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(navigationAction:)];
+    [doneButton setTag:1];
+    [doneButton setWidth:90];
+    NSUInteger newButton = 0;
+    NSMutableArray *toolbarItems = [[NSMutableArray arrayWithArray:toolbar.items] retain];
+    
+    for (NSUInteger i = 0; i < [toolbarItems count]; i++) {
+        UIBarButtonItem *barButtonItem = [toolbarItems objectAtIndex:i];
+        if (barButtonItem.tag == 1){
+            return;
+        }
+        else if (barButtonItem.tag == 3) {
+            newButton = i;
+            break;
+            }
+        }
+    
+    [toolbarItems replaceObjectAtIndex:newButton withObject:doneButton];
+    toolbar.items = toolbarItems;
+}
+
+-(void) saveSelectedMemo{
+	[self.view endEditing:YES];
+    UIBarButtonItem *newButton = [[UIBarButtonItem alloc] initWithTitle:@"NEW" style:UIBarButtonItemStyleBordered target:self action:@selector(navigationAction:)];
+    [newButton setTag:3];
+    [newButton setWidth:90];
+    NSUInteger myButton = 0;
+    NSMutableArray *toolbarItems = [[NSMutableArray arrayWithArray:toolbar.items] retain];
+    
+    for (NSUInteger i = 0; i < [toolbarItems count]; i++) {
+        UIBarButtonItem *barButtonItem = [toolbarItems objectAtIndex:i];
+        if (barButtonItem.tag == 1) {
+            myButton = i;
+            break;
+        }
+    }
+    
+    [toolbarItems replaceObjectAtIndex:myButton withObject:newButton];
+    toolbar.items = toolbarItems;
+	
+    /*--Save the edited text--*/
+	selectedMemoText.memoText = textView.text;
+		
+    /*--Save to the managedObjectContext]--*/
+	NSError *error;
+	if(![managedObjectContext save:&error]){
+	}
+}
+- (void) startNew {
+    /*--Send notification that changes saved to the MOC--*/
+	[[NSNotificationCenter defaultCenter] 
+	 postNotificationName:managedObjectContextSavedNotification object:nil];
+    
+    /*--dimiss the modalView--*/
+    [self dismissModalViewControllerAnimated:YES];
+}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return YES;
@@ -107,7 +226,6 @@
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
     
-    // Release any cached data, images, etc. that aren't in use.
 }
 
 - (void)viewDidUnload {
@@ -119,10 +237,65 @@
 
 - (void)dealloc {
     [super dealloc];
-	[creationDateView release];
-	[memoTextView release];
-	[memoREView release];
+	[textView release];
+	[dateTextField release];
+    [saveActionSheet release];
+    [goActionSheet release];
 }
 
+- (void) makeToolbar{
+    /*--Setting up the Toolbar--*/
+    CGRect buttonBarFrame = CGRectMake(0, 210, 320, 40);
+    toolbar = [[[UIToolbar alloc] initWithFrame:buttonBarFrame] autorelease];
+    [toolbar setBarStyle:UIBarStyleBlackTranslucent];
+    [toolbar setTintColor:[UIColor blackColor]];
+    
+    UIBarButtonItem *saveAsButton = [[UIBarButtonItem alloc] initWithTitle:@"SAVE AS" style:UIBarButtonItemStyleBordered target:self action:@selector(navigationAction:)];
+    [saveAsButton setTag:0];
+    [saveAsButton setWidth:90];
+    
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"DONE" style:UIBarButtonItemStyleBordered target:self action:@selector(navigationAction:)];
+    [doneButton setTag:1];
+    [doneButton setWidth:90];
+    
+    UIBarButtonItem *gotoButton = [[UIBarButtonItem alloc] initWithTitle:@"GO TO.." style:UIBarButtonItemStyleBordered target:self action:@selector(navigationAction:)];
+    [gotoButton setTag:2];
+    [gotoButton setWidth:90];
+    
+    /* UIButton *customView = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+     //Possible to use this with the initWithCustomView method of  UIBarButtonItems */
+    UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil	action:nil];
+    
+    NSArray *items = [NSArray arrayWithObjects:flexSpace, saveAsButton, flexSpace, doneButton, flexSpace, gotoButton, flexSpace,nil];
+    [toolbar setItems:items];
+    [self.view addSubview:toolbar];
+    /*--End Setting up the Toolbar--*/
+}
 
 @end
+/*
+ CGRect topViewFrame = CGRectMake(0, 0, 320, 204);
+ UIView *topView = [[[UIView	alloc] initWithFrame:topViewFrame] autorelease];
+ [self.view addSubview:topView];
+ 
+ CGRect labelFrame1 = CGRectMake(5, 10, 30, 40);
+ UILabel *reLabel = [[UILabel alloc] initWithFrame:labelFrame1];
+ [reLabel setFont:[UIFont systemFontOfSize:12]];
+ 
+ CGRect reFrame = CGRectMake(45, 15, 70, 30);
+ textFieldRE	= [[UITextField alloc] initWithFrame: reFrame];
+ [textFieldRE setBorderStyle:UITextBorderStyleRoundedRect];
+ [textFieldRE setFont:[UIFont systemFontOfSize:12]];
+ [textFieldRE setBounds:CGRectMake(45, 20, 70, 25)];
+ 
+ [reLabel setText:@"RE:"];
+ [topView addSubview:reLabel];
+ [topView addSubview:textFieldRE];
+
+ CGRect textFieldFrame = CGRectMake(20, 70, 280, 120);
+ textFieldText = [[UITextField alloc] initWithFrame:textFieldFrame];
+ [textFieldText setBackground:[UIImage imageNamed:@"lined_paper_320x200.png"]];
+ [textFieldText setDelegate:self];
+ [textFieldText drawTextInRect:textFieldFrame];
+ [topView addSubview:textFieldText];
+ */

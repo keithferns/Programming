@@ -1,0 +1,460 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		53A5C5C213D52DAA002B4E59 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53A5C5C113D52DAA002B4E59 /* UIKit.framework */; };
+		53A5C5C413D52DAA002B4E59 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53A5C5C313D52DAA002B4E59 /* Foundation.framework */; };
+		53A5C5C613D52DAA002B4E59 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53A5C5C513D52DAA002B4E59 /* CoreGraphics.framework */; };
+		53A5C5CC13D52DAA002B4E59 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 53A5C5CA13D52DAA002B4E59 /* InfoPlist.strings */; };
+		53A5C5CF13D52DAA002B4E59 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 53A5C5CE13D52DAA002B4E59 /* main.m */; };
+		53A5C5D213D52DAB002B4E59 /* myMemoAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 53A5C5D113D52DAB002B4E59 /* myMemoAppDelegate.m */; };
+		53A5C5D513D52DAB002B4E59 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53A5C5D313D52DAB002B4E59 /* MainWindow.xib */; };
+		53A5C5D813D52DAB002B4E59 /* myMemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53A5C5D713D52DAB002B4E59 /* myMemoViewController.m */; };
+		53A5C5DB13D52DAB002B4E59 /* myMemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53A5C5D913D52DAB002B4E59 /* myMemoViewController.xib */; };
+		53A5C5E213D52DAB002B4E59 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53A5C5C113D52DAA002B4E59 /* UIKit.framework */; };
+		53A5C5E313D52DAB002B4E59 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53A5C5C313D52DAA002B4E59 /* Foundation.framework */; };
+		53A5C5E413D52DAB002B4E59 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53A5C5C513D52DAA002B4E59 /* CoreGraphics.framework */; };
+		53A5C5EC13D52DAB002B4E59 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 53A5C5EA13D52DAB002B4E59 /* InfoPlist.strings */; };
+		53A5C5EF13D52DAB002B4E59 /* myMemoTests.h in Resources */ = {isa = PBXBuildFile; fileRef = 53A5C5EE13D52DAB002B4E59 /* myMemoTests.h */; };
+		53A5C5F113D52DAB002B4E59 /* myMemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 53A5C5F013D52DAB002B4E59 /* myMemoTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		53A5C5E513D52DAB002B4E59 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 53A5C5B413D52DAA002B4E59 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 53A5C5BC13D52DAA002B4E59;
+			remoteInfo = myMemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		53A5C5BD13D52DAA002B4E59 /* myMemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myMemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		53A5C5C113D52DAA002B4E59 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		53A5C5C313D52DAA002B4E59 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		53A5C5C513D52DAA002B4E59 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		53A5C5C913D52DAA002B4E59 /* myMemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "myMemo-Info.plist"; sourceTree = "<group>"; };
+		53A5C5CB13D52DAA002B4E59 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		53A5C5CD13D52DAA002B4E59 /* myMemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "myMemo-Prefix.pch"; sourceTree = "<group>"; };
+		53A5C5CE13D52DAA002B4E59 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		53A5C5D013D52DAB002B4E59 /* myMemoAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = myMemoAppDelegate.h; sourceTree = "<group>"; };
+		53A5C5D113D52DAB002B4E59 /* myMemoAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = myMemoAppDelegate.m; sourceTree = "<group>"; };
+		53A5C5D413D52DAB002B4E59 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		53A5C5D613D52DAB002B4E59 /* myMemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = myMemoViewController.h; sourceTree = "<group>"; };
+		53A5C5D713D52DAB002B4E59 /* myMemoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = myMemoViewController.m; sourceTree = "<group>"; };
+		53A5C5DA13D52DAB002B4E59 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/myMemoViewController.xib; sourceTree = "<group>"; };
+		53A5C5E113D52DAB002B4E59 /* myMemoTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = myMemoTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		53A5C5E913D52DAB002B4E59 /* myMemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "myMemoTests-Info.plist"; sourceTree = "<group>"; };
+		53A5C5EB13D52DAB002B4E59 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		53A5C5ED13D52DAB002B4E59 /* myMemoTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "myMemoTests-Prefix.pch"; sourceTree = "<group>"; };
+		53A5C5EE13D52DAB002B4E59 /* myMemoTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = myMemoTests.h; sourceTree = "<group>"; };
+		53A5C5F013D52DAB002B4E59 /* myMemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = myMemoTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		53A5C5BA13D52DAA002B4E59 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				53A5C5C213D52DAA002B4E59 /* UIKit.framework in Frameworks */,
+				53A5C5C413D52DAA002B4E59 /* Foundation.framework in Frameworks */,
+				53A5C5C613D52DAA002B4E59 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		53A5C5DD13D52DAB002B4E59 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				53A5C5E213D52DAB002B4E59 /* UIKit.framework in Frameworks */,
+				53A5C5E313D52DAB002B4E59 /* Foundation.framework in Frameworks */,
+				53A5C5E413D52DAB002B4E59 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		53A5C5B213D52DAA002B4E59 = {
+			isa = PBXGroup;
+			children = (
+				53A5C5C713D52DAA002B4E59 /* myMemo */,
+				53A5C5E713D52DAB002B4E59 /* myMemoTests */,
+				53A5C5C013D52DAA002B4E59 /* Frameworks */,
+				53A5C5BE13D52DAA002B4E59 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		53A5C5BE13D52DAA002B4E59 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				53A5C5BD13D52DAA002B4E59 /* myMemo.app */,
+				53A5C5E113D52DAB002B4E59 /* myMemoTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		53A5C5C013D52DAA002B4E59 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				53A5C5C113D52DAA002B4E59 /* UIKit.framework */,
+				53A5C5C313D52DAA002B4E59 /* Foundation.framework */,
+				53A5C5C513D52DAA002B4E59 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		53A5C5C713D52DAA002B4E59 /* myMemo */ = {
+			isa = PBXGroup;
+			children = (
+				53A5C5D013D52DAB002B4E59 /* myMemoAppDelegate.h */,
+				53A5C5D113D52DAB002B4E59 /* myMemoAppDelegate.m */,
+				53A5C5D313D52DAB002B4E59 /* MainWindow.xib */,
+				53A5C5D613D52DAB002B4E59 /* myMemoViewController.h */,
+				53A5C5D713D52DAB002B4E59 /* myMemoViewController.m */,
+				53A5C5D913D52DAB002B4E59 /* myMemoViewController.xib */,
+				53A5C5C813D52DAA002B4E59 /* Supporting Files */,
+			);
+			path = myMemo;
+			sourceTree = "<group>";
+		};
+		53A5C5C813D52DAA002B4E59 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				53A5C5C913D52DAA002B4E59 /* myMemo-Info.plist */,
+				53A5C5CA13D52DAA002B4E59 /* InfoPlist.strings */,
+				53A5C5CD13D52DAA002B4E59 /* myMemo-Prefix.pch */,
+				53A5C5CE13D52DAA002B4E59 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		53A5C5E713D52DAB002B4E59 /* myMemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				53A5C5EE13D52DAB002B4E59 /* myMemoTests.h */,
+				53A5C5F013D52DAB002B4E59 /* myMemoTests.m */,
+				53A5C5E813D52DAB002B4E59 /* Supporting Files */,
+			);
+			path = myMemoTests;
+			sourceTree = "<group>";
+		};
+		53A5C5E813D52DAB002B4E59 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				53A5C5E913D52DAB002B4E59 /* myMemoTests-Info.plist */,
+				53A5C5EA13D52DAB002B4E59 /* InfoPlist.strings */,
+				53A5C5ED13D52DAB002B4E59 /* myMemoTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		53A5C5BC13D52DAA002B4E59 /* myMemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 53A5C5F413D52DAB002B4E59 /* Build configuration list for PBXNativeTarget "myMemo" */;
+			buildPhases = (
+				53A5C5B913D52DAA002B4E59 /* Sources */,
+				53A5C5BA13D52DAA002B4E59 /* Frameworks */,
+				53A5C5BB13D52DAA002B4E59 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = myMemo;
+			productName = myMemo;
+			productReference = 53A5C5BD13D52DAA002B4E59 /* myMemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		53A5C5E013D52DAB002B4E59 /* myMemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 53A5C5F713D52DAB002B4E59 /* Build configuration list for PBXNativeTarget "myMemoTests" */;
+			buildPhases = (
+				53A5C5DC13D52DAB002B4E59 /* Sources */,
+				53A5C5DD13D52DAB002B4E59 /* Frameworks */,
+				53A5C5DE13D52DAB002B4E59 /* Resources */,
+				53A5C5DF13D52DAB002B4E59 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				53A5C5E613D52DAB002B4E59 /* PBXTargetDependency */,
+			);
+			name = myMemoTests;
+			productName = myMemoTests;
+			productReference = 53A5C5E113D52DAB002B4E59 /* myMemoTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		53A5C5B413D52DAA002B4E59 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 53A5C5B713D52DAA002B4E59 /* Build configuration list for PBXProject "myMemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 53A5C5B213D52DAA002B4E59;
+			productRefGroup = 53A5C5BE13D52DAA002B4E59 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				53A5C5BC13D52DAA002B4E59 /* myMemo */,
+				53A5C5E013D52DAB002B4E59 /* myMemoTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		53A5C5BB13D52DAA002B4E59 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				53A5C5CC13D52DAA002B4E59 /* InfoPlist.strings in Resources */,
+				53A5C5D513D52DAB002B4E59 /* MainWindow.xib in Resources */,
+				53A5C5DB13D52DAB002B4E59 /* myMemoViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		53A5C5DE13D52DAB002B4E59 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				53A5C5EC13D52DAB002B4E59 /* InfoPlist.strings in Resources */,
+				53A5C5EF13D52DAB002B4E59 /* myMemoTests.h in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		53A5C5DF13D52DAB002B4E59 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		53A5C5B913D52DAA002B4E59 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				53A5C5CF13D52DAA002B4E59 /* main.m in Sources */,
+				53A5C5D213D52DAB002B4E59 /* myMemoAppDelegate.m in Sources */,
+				53A5C5D813D52DAB002B4E59 /* myMemoViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		53A5C5DC13D52DAB002B4E59 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				53A5C5F113D52DAB002B4E59 /* myMemoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		53A5C5E613D52DAB002B4E59 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 53A5C5BC13D52DAA002B4E59 /* myMemo */;
+			targetProxy = 53A5C5E513D52DAB002B4E59 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		53A5C5CA13D52DAA002B4E59 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				53A5C5CB13D52DAA002B4E59 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		53A5C5D313D52DAB002B4E59 /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				53A5C5D413D52DAB002B4E59 /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		53A5C5D913D52DAB002B4E59 /* myMemoViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				53A5C5DA13D52DAB002B4E59 /* en */,
+			);
+			name = myMemoViewController.xib;
+			sourceTree = "<group>";
+		};
+		53A5C5EA13D52DAB002B4E59 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				53A5C5EB13D52DAB002B4E59 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		53A5C5F213D52DAB002B4E59 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		53A5C5F313D52DAB002B4E59 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		53A5C5F513D52DAB002B4E59 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "myMemo/myMemo-Prefix.pch";
+				INFOPLIST_FILE = "myMemo/myMemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		53A5C5F613D52DAB002B4E59 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "myMemo/myMemo-Prefix.pch";
+				INFOPLIST_FILE = "myMemo/myMemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		53A5C5F813D52DAB002B4E59 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/myMemo.app/myMemo";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "myMemoTests/myMemoTests-Prefix.pch";
+				INFOPLIST_FILE = "myMemoTests/myMemoTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		53A5C5F913D52DAB002B4E59 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/myMemo.app/myMemo";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "myMemoTests/myMemoTests-Prefix.pch";
+				INFOPLIST_FILE = "myMemoTests/myMemoTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		53A5C5B713D52DAA002B4E59 /* Build configuration list for PBXProject "myMemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				53A5C5F213D52DAB002B4E59 /* Debug */,
+				53A5C5F313D52DAB002B4E59 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		53A5C5F413D52DAB002B4E59 /* Build configuration list for PBXNativeTarget "myMemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				53A5C5F513D52DAB002B4E59 /* Debug */,
+				53A5C5F613D52DAB002B4E59 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		53A5C5F713D52DAB002B4E59 /* Build configuration list for PBXNativeTarget "myMemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				53A5C5F813D52DAB002B4E59 /* Debug */,
+				53A5C5F913D52DAB002B4E59 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 53A5C5B413D52DAA002B4E59 /* Project object */;
+}

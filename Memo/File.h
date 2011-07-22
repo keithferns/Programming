@@ -2,20 +2,25 @@
 //  File.h
 //  Memo
 //
-//  Created by Keith Fernandes on 6/29/11.
+//  Created by Keith Fernandes on 7/14/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
 #import <CoreData/CoreData.h>
 
+@class Folder;
 @class Memo;
 
 @interface File :  NSManagedObject  
 {
+    
 }
 
-@property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSString * fileName;
+@property (nonatomic, retain) NSString * fileKeyWord;
+@property (nonatomic, retain) NSString * fileTags;
 @property (nonatomic, retain) NSSet* appendMemo;
+@property (nonatomic, retain) Folder * savedIn;
 
 @end
 
@@ -27,31 +32,4 @@
 - (void)removeAppendMemo:(NSSet *)value;
 
 @end
-/* Factory methods for entities.
- //Appointment
- + (id) insertNewAppointment: (NSManagedObjectContext *)context;
-
- + (id) insertNewAppointment: (NSManagedObjectContext *)context{
- 
- return [NSEntityDescription insertNewObjectForEntityForName:@"Appointment" inManagedObjectContext:context];
- }
- 
- //MemoText
- 
- + (id) insertNewMemoText: (NSManagedObjectContext *)context;
- + (id) insertNewMemoText: (NSManagedObjectContext *)context{
- 
- return [NSEntityDescription insertNewObjectForEntityForName:@"MemoText" inManagedObjectContext:context];
- }
- //Memo
- + (id) insertNewMemo: (NSManagedObjectContext *)context;
-
- 
- + (id) insertNewMemo: (NSManagedObjectContext *)context{
- 
- return [NSEntityDescription insertNewObjectForEntityForName:@"Memo" inManagedObjectContext:context];
- }
- 
- 
- */
 

@@ -44,10 +44,9 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
 - (void) managedObjectContextSaved:(NSNotification *)notification{
 		// Redisplay the data.
 		//NOTE: This can also be done using the viewWillAppearMethod.
+    NSLog(@"ManagedObjectContextSavedNotificationReceived");
 	[self.tableView reloadData];
 }
-
-	//NOTE: If there are two different managedObjectContexts for two different ViewControllers, then send a NSManagedObjectContextDidSaveNotification to -(void)mergeChangesFromContextDidSaveNotification. The latter will emit change notifications that the fetch results controller will observe.
 
 
 
@@ -69,12 +68,11 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
 	
 	[[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(managedObjectContextSaved:) name:managedObjectContextSavedNotification object:nil];
 	
-	
  }
 
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
-		//[self.tableView reloadData];  See managedObjectContextSaved method above.
+    //[self.tableView reloadData];  //See managedObjectContextSaved method above.
 }
 
 
@@ -98,8 +96,6 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
     return YES;
 }
 
-
-
 #pragma mark -
 #pragma mark Fetched results controller
 
@@ -113,7 +109,7 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
 	[request setEntity:[NSEntityDescription entityForName:@"MemoText" inManagedObjectContext:managedObjectContext]];
 		
 	NSSortDescriptor *typeDescriptor = [[NSSortDescriptor alloc] initWithKey:@"noteType" ascending:YES];
-	NSSortDescriptor *textDescriptor = [[NSSortDescriptor alloc] initWithKey:@"memoText" ascending:YES];// just here to test the sections and row calls
+	NSSortDescriptor *textDescriptor = [[NSSortDescriptor alloc] initWithKey:@"creationDate" ascending:NO];// just here to test the sections and row calls
 	
 	[request setSortDescriptors:[NSArray arrayWithObjects:typeDescriptor,textDescriptor, nil]];
 	[typeDescriptor release];
@@ -161,7 +157,7 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
 
 		//id <NSFetchedResultsSectionInfo> sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
 		//return [sectionInfo numberOfObjects];
-	return 3;
+		return 1;
 }
 
 - (void) configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath{
@@ -170,27 +166,23 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
 		dateFormatter = [[NSDateFormatter alloc] init];
 		[dateFormatter setDateFormat:@"dd MMMM yyyy h:mm a"];
 			//[dateFormatter setDateFormat:@"EEEE, dd MMMM yyyy h:mm a"]; //This format gives the Day of Week, followed by date and time
-
 	}
 	
 	StartScreenCustomCell *mycell;
 	if([cell isKindOfClass:[UITableViewCell class]]){
-	
 		mycell = (StartScreenCustomCell *) cell;
-	}
+        }
 	 MemoText *aNote = [_fetchedResultsController objectAtIndexPath:indexPath];	
 	if ([aNote.noteType intValue] == 0) {
-		[mycell.creationDate setText: [dateFormatter stringFromDate:[aNote.savedMemo creationDate]]];
+		[mycell.creationDate setText: [dateFormatter stringFromDate:[aNote.savedMemo doDate]]];
 		[mycell.memoRE setText:[NSString stringWithFormat:@"%@", aNote.savedMemo.memoRE]];
 		} 
 	else if ([aNote.noteType intValue] == 1){
 		
-		[mycell.creationDate setText: [dateFormatter stringFromDate:[aNote.savedAppointment creationDate]]];
+		[mycell.creationDate setText: [dateFormatter stringFromDate:[aNote.savedAppointment doDate]]];
 			//[mycell.memoRE setText:[NSString stringWithFormat:@"%@", aNote.savedAppointment.appointmentRE]];		 
 	}
-	 [mycell.memoText setText:[NSString stringWithFormat:@"%@", aNote.memoText]];
-	
-	
+	 [mycell.memoText setText:[NSString stringWithFormat:@"%@", aNote.memoText]];	
 }
 
 
@@ -216,15 +208,9 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
 			}
 		}
 	}
-
 	[self configureCell:cell atIndexPath:indexPath];
-	 
     return cell;
 }
-
-
-
-
 
 /*
 // Override to support conditional editing of the table view.
@@ -249,7 +235,6 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
 }
 
-
 /*
 // Override to support conditional rearranging of the table view.
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -258,7 +243,6 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
 }
 */
 
-
 #pragma mark -
 #pragma mark Table view delegate
 
@@ -266,28 +250,21 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
     MemoDetailViewController *detailViewController = [[MemoDetailViewController alloc] initWithNibName:@"MemoDetailView" bundle:[NSBundle mainBundle]];
      // ...
      // Pass the selected object to the new view controller.
-
 	
 	detailViewController.selectedMemoText = [_fetchedResultsController objectAtIndexPath:indexPath];	
 		
 	[self presentModalViewController:detailViewController animated:YES];	
-	
-	
-	
     [detailViewController release];
 }
 
 
 #pragma mark -
 #pragma mark Fetched Results Notifications
-	//Copied from http://www.raywenderlich.com/999/core-data-tutorial-how-to-use-nsfetchedresultscontroller
 
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
 		// The fetch controller is about to start sending change notifications, so prepare the table view for updates.
     [self.tableView beginUpdates];
 }
-
-
 - (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
 	
     UITableView *aTableView = self.tableView;
