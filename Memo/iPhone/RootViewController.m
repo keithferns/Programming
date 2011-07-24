@@ -12,35 +12,41 @@
 #import "MyAppointmentsViewController.h"
 #import "NSManagedObjectContext-insert.h"
 #import "BaseViewController.h" 
+#import "MemoTableViewController.h"
 
 @implementation RootViewController
 
-@synthesize managedObjectContext, newText, tableViewController;
+@synthesize managedObjectContext, newText;
 @synthesize previousTextInput;
 @synthesize goActionSheet, saveActionSheet;
 @synthesize toolbar;
 @synthesize newMemoText;
+@synthesize tableViewController;
 
 #pragma mark -
 
 #pragma mark ViewLifeCycle
 
-- (void)handleDidSaveNotification:(NSNotification *)notification {
-    NSLog(@"NSManagedObjectContextDidSaveNotification received");
-    [managedObjectContext mergeChangesFromContextDidSaveNotification:notification];
-}
 
 
 - (void)viewDidLoad {
-    
     [super viewDidLoad];
+    
+    [self.view addSubview:tableViewController.tableView];
+
+    if (managedObjectContext == nil) { 
+		managedObjectContext = [(AppDelegate_Shared *)[[UIApplication sharedApplication] delegate] managedObjectContext]; 
+        NSLog(@"After managedObjectContext: %@",  managedObjectContext);
+        NSLog(@"In RootViewController");
+	}
+	
+
     [self makeToolbar];
-    
-	 [self.view addSubview:tableViewController.tableView];
-    
+    [self.view addSubview:toolbar];
+
      self.view.layer.backgroundColor = [UIColor groupTableViewBackgroundColor].CGColor;
     
-     newText = [[UITextView alloc] initWithFrame:CGRectMake(10, 30, 305, 170)];
+     newText = [[UITextView alloc] initWithFrame:CGRectMake(10, 35, 305, 170)];
      [newText setFont:[UIFont systemFontOfSize:18]];
      newText.layer.backgroundColor = [UIColor groupTableViewBackgroundColor].CGColor;
      newText.layer.cornerRadius = 7.0;
@@ -49,32 +55,25 @@
      newText.delegate = self;
      [self.view addSubview:newText];
     
-   
+    UILabel *topLabel = [[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 30)] autorelease];
+    [topLabel setText:@"My Memo"];
+    [topLabel setTextAlignment:UITextAlignmentCenter];
+    [topLabel setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
+    [self.view addSubview:topLabel];
 
-    /*--Point the new instance of managedObjectContext to the managedObjectContext for the app.--*/
-	
-	if (managedObjectContext == nil) 
-	{ 
-        managedObjectContext = [(AppDelegate_Shared *)[[UIApplication sharedApplication] delegate] managedObjectContext]; 
-        NSLog(@"After managedObjectContext: %@",  managedObjectContext);
-	}
-    
-    
-    [[NSNotificationCenter defaultCenter] 
-        addObserver:self 
-        selector:@selector(handleDidSaveNotification:)
-        name:NSManagedObjectContextDidSaveNotification 
-        object:nil];
+
+
+
   /*  
     [[NSNotificationCenter defaultCenter] 
         addObserver:self 
         selector:@selector(handleDidSaveNotification:)
         name:NSManagedObjectContextObjectsDidChangeNotification 
         object:nil];*/
+    
+    [self.view addSubview:tableViewController.tableView];
+
 }
-
-
-
 
 - (void) textViewDidBeginEditing:(UITextView *)textView{
     //[tableViewController.tableView setHidden:YES];
@@ -188,8 +187,10 @@
 				break;
 			case 1:
 				NSLog(@"Appointments Button Clicked on WallAlert");
-			{MyAppointmentsViewController *viewController = [[[MyAppointmentsViewController alloc] initWithNibName:@"MyAppointmentsViewController" bundle:nil] autorelease];			
-				[self presentModalViewController:viewController animated:YES];}
+			{MyAppointmentsViewController *viewController = [[[MyAppointmentsViewController alloc] initWithNibName:@"MyAppointmentsViewController" bundle:nil] autorelease];	
+				[self presentModalViewController:viewController animated:YES];
+                }
+                
 				break;
 			case 0:
 				NSLog(@" Folder and Files Button Clicked on WallAlert");
@@ -213,7 +214,7 @@
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-    
+    NSLog(@"Memory Warning");
     // Release any cached data, images, etc. that aren't in use.
 }
 
@@ -230,6 +231,7 @@
 	[managedObjectContext release];
     [goActionSheet release];
     [saveActionSheet release];
+    [toolbar release];
     [[NSNotificationCenter defaultCenter] 
         removeObserver:self 
         name:NSManagedObjectContextDidSaveNotification 
@@ -240,29 +242,34 @@
 }
 
 
-
-
 - (void) addNewMemoText{
 	/*Called BY: Done Button and.....*/
     [self.view endEditing:YES];
 	NSString *newTextInput = [NSString stringWithFormat: @"%@", newText.text];//copy contents of textView to newTextInput
+    NSLog(@"newTextInput = %@", newTextInput);
+
+    /*--the text is NOT the same as previous call of method --> insert a new instance of MemoText in the MOC and copy new text to this instance--
+        CASE: When the user has added and saved text, then returns to editing but does not add any text ---*/
     
-	/*--CASE: the textView has no text --> Do nothing--*/
-    if (newText.text==@"") {
-        return;
-    }
-    /*--CASE: if the textView has text & the text is NOT the same as previous call of method --> insert a new instance of MemoText in the MOC and copy new text to this instance--*/
-    if ([newText hasText] && ![newTextInput isEqualToString:previousTextInput]) {
-        
-        newMemoText = [managedObjectContext insertNewObjectForEntityForName:@"MemoText"];
-        [newMemoText setMemoText:newTextInput];
-        [newMemoText setCreationDate:[NSDate date]];
-    }
-    /*CASE: When the user has added and saved text, then returns to editing but does not add any text ---*/
-	if ([newTextInput isEqualToString:previousTextInput]) {
-    //
-    }
     
+   // NSManagedObjectContext *addingContext = [[NSManagedObjectContext alloc] init];
+	//self.managedObjectContext = addingContext;
+	
+	//[self.managedObjectContext setPersistentStoreCoordinator:[[tableViewController.fetchedResultsController managedObjectContext] persistentStoreCoordinator]];
+    
+    //[addingContext release];
+
+	if (![newTextInput isEqualToString:previousTextInput]) {
+    
+    newMemoText = [self.managedObjectContext insertNewObjectForEntityForName:@"MemoText"];
+    [newMemoText setMemoText:newTextInput];
+    [newMemoText setCreationDate:[NSDate date]]; 
+    
+    }
+    NSError *error;
+	if(![managedObjectContext save:&error]){ 
+        //
+	}
     /*-- If newMemoText has been added to the MOC in some call of the present method -> Change the Done button to the new Button.--*/ 
         UIBarButtonItem *newButton = [[UIBarButtonItem alloc] initWithTitle:@"NEW" style:UIBarButtonItemStyleBordered target:self action:@selector(navigationAction:)];
         [newButton setTag:3];
@@ -279,17 +286,16 @@
         }
         [toolbarItems replaceObjectAtIndex:myButton withObject:newButton];
         toolbar.items = toolbarItems;
-		return;
 
 	previousTextInput = newTextInput;
-    
-
+    NSLog(@"%@", previousTextInput);
+        
 }
 
 
 - (void) addNewMemo{
     /*CALLED BY:  New button --*/
-    Memo *newMemo = [managedObjectContext insertNewObjectForEntityForName:@"Memo"];
+    Memo *newMemo = [self.managedObjectContext insertNewObjectForEntityForName:@"Memo"];
     //[newMemo setIsEditing:YES];
     newMemo.doDate = newMemoText.creationDate;
     newMemo.memoText = newMemoText;
@@ -305,35 +311,34 @@
 
 
 - (void) addNewAppointment{
+	
 	/*CALLED BY:   SaveAs-Appointment --*/
+
 	NSString *newTextInput = [NSString stringWithFormat: @"%@", newText.text];//copy contents of textView to newTextInput
+    NSLog(@"newTextInput = %@", newTextInput);
 	
-	if ([newTextInput isEqualToString:previousTextInput]) {
-		return;
-	}
-	if (newMemoText==nil) {
-        NSLog(@"Save As button -> Appointment.  Done Button not touched");
-        newMemoText = [managedObjectContext insertNewObjectForEntityForName:@"MemoText"];
-        [newMemoText setMemoText:newTextInput];
-        [newMemoText setNoteType:[NSNumber numberWithInt:1]];
-        [newMemoText setCreationDate:[NSDate date]];
-    }	
+        // Pass the selected object to the new view controller.
+	AppointmentsViewController *appointmentViewController = [[AppointmentsViewController alloc] initWithNibName:@"AppointmentsViewController" bundle:nil];
 	
-	AppointmentsViewController *appointmentViewController = [[[AppointmentsViewController alloc] initWithNibName:@"AppointmentsViewController" bundle:nil] autorelease];
-    // Pass the selected object to the new view controller.
+	// Create a new managed object context for the new appointment -- set its persistent store coordinator to the same as that from the fetched results controller's context.
+	NSManagedObjectContext *addingContext = [[NSManagedObjectContext alloc] init];
+	appointmentViewController.managedObjectContext = addingContext;
+	[addingContext release];
 	
-	appointmentViewController.newMemoText = newMemoText;	
-    //	
-	[self presentModalViewController:appointmentViewController animated:YES];	
-    
-	
+	[appointmentViewController.managedObjectContext setPersistentStoreCoordinator:[[tableViewController.fetchedResultsController managedObjectContext] persistentStoreCoordinator]];
+   	
 	NSError *error;
 	if(![managedObjectContext save:&error]){ 
         //
 	}
-	previousTextInput = newTextInput;
-	[self.view endEditing:YES];
+
+	appointmentViewController.newTextInput = newTextInput;	
+	[self presentModalViewController:appointmentViewController animated:YES];	
     
+
+
+    [newText setText:@""];
+	[self.view endEditing:YES];
 }
 
 
@@ -358,7 +363,6 @@
     
     NSArray *items = [NSArray arrayWithObjects:flexSpace, saveAsButton, flexSpace, doneButton, flexSpace, gotoButton, flexSpace,nil];
     [toolbar setItems:items];
-    [self.view addSubview:toolbar];
     /*--End Setting up the Toolbar */
 }
 

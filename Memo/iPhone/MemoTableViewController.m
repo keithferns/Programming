@@ -49,17 +49,33 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
 }
 
 
-
+- (void)handleDidSaveNotification:(NSNotification *)notification {
+    NSLog(@"NSManagedObjectContextDidSaveNotification received");
+    [managedObjectContext mergeChangesFromContextDidSaveNotification:notification];
+}
 #pragma mark -
 #pragma mark View lifecycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	[self.view addSubview:tableView];
+    
+    [[NSNotificationCenter defaultCenter] 
+     addObserver:self 
+     selector:@selector(handleDidSaveNotification:)
+     name:NSManagedObjectContextDidSaveNotification 
+     object:nil];
+	
+    tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 250, 320, 210) style:UITableViewStyleGrouped];
+    [tableView setDelegate:self];
+    [tableView setDataSource:self];
+    
+    [self.view addSubview:tableView];
+    
 		//Point the current instance of the managedObjectContext to the main managedObjectContext
 	if (managedObjectContext == nil) { 
 		managedObjectContext = [(AppDelegate_Shared *)[[UIApplication sharedApplication] delegate] managedObjectContext]; 
         NSLog(@"After managedObjectContext: %@",  managedObjectContext);
+        NSLog(@"In MemoTableViewController");
 	}
 	
 	NSError *error;
@@ -155,9 +171,9 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section	
 
-		//id <NSFetchedResultsSectionInfo> sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
-		//return [sectionInfo numberOfObjects];
-		return 1;
+        id <NSFetchedResultsSectionInfo> sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
+		return [sectionInfo numberOfObjects];
+		//return 1;
 }
 
 - (void) configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath{
@@ -173,16 +189,17 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
 		mycell = (StartScreenCustomCell *) cell;
         }
 	 MemoText *aNote = [_fetchedResultsController objectAtIndexPath:indexPath];	
+    
 	if ([aNote.noteType intValue] == 0) {
+        [mycell.memoText setText:[NSString stringWithFormat:@"%@", aNote.memoText]];	
 		[mycell.creationDate setText: [dateFormatter stringFromDate:[aNote.savedMemo doDate]]];
 		[mycell.memoRE setText:[NSString stringWithFormat:@"%@", aNote.savedMemo.memoRE]];
 		} 
 	else if ([aNote.noteType intValue] == 1){
-		
+        [mycell.memoText setText:[NSString stringWithFormat:@"%@", aNote.memoText]];	
 		[mycell.creationDate setText: [dateFormatter stringFromDate:[aNote.savedAppointment doDate]]];
 			//[mycell.memoRE setText:[NSString stringWithFormat:@"%@", aNote.savedAppointment.appointmentRE]];		 
 	}
-	 [mycell.memoText setText:[NSString stringWithFormat:@"%@", aNote.memoText]];	
 }
 
 
@@ -316,6 +333,7 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
+    NSLog(@"Memory Warning");
     // Relinquish ownership any cached data, images, etc. that aren't in use.
 }
 

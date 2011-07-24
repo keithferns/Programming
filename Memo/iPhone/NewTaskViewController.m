@@ -1,25 +1,25 @@
 //
-//  AppointmentsViewController.m
+//  NewTaskViewController.m
 //  Memo
 //
-//  Created by Keith Fernandes on 7/4/11.
+//  Created by Keith Fernandes on 7/24/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "AppointmentsViewController.h"
+#import "NewTaskViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "AppDelegate_Shared.h"
 #import "NSManagedObjectContext-insert.h"
 
-@implementation AppointmentsViewController
+@implementation NewTaskViewController
 
 @synthesize managedObjectContext;
 @synthesize datePicker, timePicker;
 @synthesize newMemoText;
 @synthesize goActionSheet;
-@synthesize appointmentsToolbar;
+@synthesize taskToolbar;
 @synthesize dateTextField, timeTextField, textView, newTextInput;
-@synthesize appointmentDate;
+@synthesize taskDate;
 
 
 - (void)viewDidLoad {
@@ -27,11 +27,11 @@
     /*Setting Up the Views*/
     
     [self makeToolbar];
-    [self.view addSubview:appointmentsToolbar];
-
+    [self.view addSubview:taskToolbar];
+    
     /*--Adding the Text View */
     self.view.layer.backgroundColor = [UIColor groupTableViewBackgroundColor].CGColor;
-        /*--The Text View --*/
+    /*--The Text View --*/
     textView = [[UITextView alloc] initWithFrame:CGRectMake(10, 45, 300, 160)];
     [self.view addSubview:textView];
     [textView setFont:[UIFont systemFontOfSize:18]];
@@ -42,21 +42,21 @@
     [textView setText:[NSString stringWithFormat:@"%@", newTextInput]];
     [self.view addSubview:textView];
     [textView setDelegate:self];
-        /*--Adding the Date and Time Fields--*/
-
+    /*--Adding the Date and Time Fields--*/
+    
     dateTextField = [[UITextField alloc] init];
     [dateTextField setBorderStyle:UITextBorderStyleRoundedRect];
     [dateTextField setFont:[UIFont systemFontOfSize:15]];
     [dateTextField setFrame:CGRectMake(12, 20, 145, 31)];
-    [dateTextField setPlaceholder:@"Set Appointment Date"];
+    [dateTextField setPlaceholder:@"Set Task Date"];
     [self.view addSubview:dateTextField];
-
+    
     
     timeTextField = [[UITextField alloc] init];
     [timeTextField setBorderStyle:UITextBorderStyleRoundedRect];
     [timeTextField setFont:[UIFont systemFontOfSize:15]];
     [timeTextField setFrame:CGRectMake(160, 20, 145, 31)];
-    [timeTextField setPlaceholder:@"Set Appointment Time"];
+    [timeTextField setPlaceholder:@"Set Task Time"];
     [self.view addSubview:timeTextField];
     
     static NSDateFormatter *dateFormatter = nil;
@@ -65,30 +65,25 @@
 		[dateFormatter setDateFormat:@"EE, dd MMMM h:mm a"];
     }	
     
-    
     /*--Done Setting Up the Views--*/
     
-   
     
     /*-- Initializing the managedObjectContext--*/
 	if (managedObjectContext == nil) { 
 		managedObjectContext = [(AppDelegate_Shared *)[[UIApplication sharedApplication] delegate] managedObjectContext]; 
         NSLog(@"After managedObjectContext: %@",  managedObjectContext);
-        }
-    
-
-  
+    }
     /*--Done Initializing the managedObjectContext--*/
-
+    
     newMemoText = [managedObjectContext insertNewObjectForEntityForName:@"MemoText"];
     
     [newMemoText setMemoText:textView.text];
     [newMemoText setNoteType:[NSNumber numberWithInt:1]];
     [newMemoText setCreationDate:[NSDate date]];
     
- 
+    
     swappingViews = NO;
-
+    
     
     /*-- Add and Initialize date and time pickers --*/
     datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 245, 320, 215)];
@@ -121,16 +116,16 @@
             [self backAction];
             break;            
 		case 1:
-            [self setAppointmentDate];
+            [self setTaskDate];
 			break;
 		case 2:
 			self.goActionSheet = [[UIActionSheet alloc] 
 								  initWithTitle:@"Go To" delegate:self cancelButtonTitle:@"Later"
-								  destructiveButtonTitle:nil otherButtonTitles:@"Memos, Files and Folders", @"Appointments", @"Tasks", nil];
+								  destructiveButtonTitle:nil otherButtonTitles:@"Memos, Files and Folders", @"Task", @"Tasks", nil];
 			[goActionSheet showInView:self.view];            
 			break;
         case 3:
-            [self setAppointmentTime];
+            [self setTaskTime];
             break;
         case 4:
             [self dismissModalViewControllerAnimated:YES];
@@ -141,16 +136,16 @@
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
-		switch (buttonIndex){
-			case 3:
-			default:
-				break;
-			case 2:			
-				break;
-			case 1:			
-				break;
-			case 0:
-				break;				
+    switch (buttonIndex){
+        case 3:
+        default:
+            break;
+        case 2:			
+            break;
+        case 1:			
+            break;
+        case 0:
+            break;				
     }
 }
 
@@ -161,7 +156,7 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return YES;
- }
+}
 
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
@@ -180,15 +175,15 @@
 	[datePicker release];
     [timePicker release];
     [goActionSheet release];
-    [appointmentsToolbar release];
-    [appointmentDate release];
+    [taskToolbar release];
+    [taskDate release];
     [dateTextField release];
     [timeTextField release];
     [textView release];
-
     
-		//[monthView release];
-		//[datetimeView release];
+    
+    //[monthView release];
+    //[datetimeView release];
 }
 
 #pragma mark -
@@ -198,17 +193,17 @@
 	[self dismissModalViewControllerAnimated:YES];		
 }
 
-- (void) setAppointmentDate{
-   appointmentDate = [datePicker date]; 
-    //FIXME: Only copy the mm/dd/yyyy parts to appointment date
+- (void) setTaskDate{
+    taskDate = [datePicker date]; 
+    //FIXME: Only copy the mm/dd/yyyy parts to task date
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"EEEE dd MM"];
-	NSString * appointmentDateString = [dateFormatter stringFromDate:appointmentDate];
+	NSString * taskDateString = [dateFormatter stringFromDate:taskDate];
     
-    dateTextField.text = appointmentDateString;
-
-    //TODO: Add a fetchRequest here to get existing appointments for the date selected.  display a table with existing appointments for that date in the top View. This ideally should happen in sync with the change of datePicker to timePicker. 
-
+    dateTextField.text = taskDateString;
+    
+    //TODO: Add a fetchRequest here to get existing Task for the date selected.  display a table with existing Task for that date in the top View. This ideally should happen in sync with the change of datePicker to timePicker. 
+    
     if (!swappingViews) {
         [self swapViews];
     }
@@ -216,7 +211,7 @@
     [doneButton setTag:3];
     [doneButton setWidth:90];
     NSUInteger newButton = 0;
-    NSMutableArray *toolbarItems = [[NSMutableArray arrayWithArray:appointmentsToolbar.items] retain];
+    NSMutableArray *toolbarItems = [[NSMutableArray arrayWithArray:taskToolbar.items] retain];
     
     for (NSUInteger i = 0; i < [toolbarItems count]; i++) {
         UIBarButtonItem *barButtonItem = [toolbarItems objectAtIndex:i];
@@ -226,40 +221,40 @@
         }
     }
     [toolbarItems replaceObjectAtIndex:newButton withObject:doneButton];
-    appointmentsToolbar.items = toolbarItems;
+    taskToolbar.items = toolbarItems;
 }
 
-- (void) setAppointmentTime{
-    appointmentDate = [datePicker date];
+- (void) setTaskTime{
+    taskDate = [datePicker date];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"hh:mm a"];
-	NSString * appointmentTimeString = [dateFormatter stringFromDate:appointmentDate];
+	NSString * taskTimeString = [dateFormatter stringFromDate:taskDate];
     
-    timeTextField.text = appointmentTimeString;
+    timeTextField.text = taskTimeString;
     
-    /*-- Insert an Appointment Object into the MOC and set the doDate and memotext values to appointmentDate and newMemoText. --*/
-    Appointment *newAppointment = [managedObjectContext insertNewObjectForEntityForName:@"Appointment"];
-	newAppointment.doDate = appointmentDate;
+    /*-- Insert an Task Object into the MOC and set the doDate and memotext values to taskDate and newMemoText. --*/
+    ToDo *newTask = [managedObjectContext insertNewObjectForEntityForName:@"ToDo"];
+	newTask.doDate = taskDate;
     
     //FIXME: add: if the text in textView != newMemoText.memoText then change the value of memoText.Text to textView.text
     
-	newAppointment.memoText = newMemoText;
+	newTask.memoText = newMemoText;
     
-    NSLog(@"new appointment text = %@", newAppointment.memoText.memoText);
-    NSLog(@"new appointment due date = %@", newAppointment.doDate);
-
-
+    NSLog(@"new Task text = %@", newTask.memoText.memoText);
+    NSLog(@"new Task due date = %@", newTask.doDate);
+    
+    
     /*--Save the MOC--*/	
 	NSError *error;
 	if(![managedObjectContext save:&error]){ 
         NSLog(@"DID NOT SAVE");
 	}
-       
+    
     UIBarButtonItem *newButton = [[UIBarButtonItem alloc] initWithTitle:@"NEW" style:UIBarButtonItemStyleBordered target:self action:@selector(navigationAction:)];
     [newButton setTag:4];
     [newButton setWidth:90];
     NSUInteger newButtonIndex = 0;
-    NSMutableArray *toolbarItems = [[NSMutableArray arrayWithArray:appointmentsToolbar.items] retain];
+    NSMutableArray *toolbarItems = [[NSMutableArray arrayWithArray:taskToolbar.items] retain];
     
     for (NSUInteger i = 0; i < [toolbarItems count]; i++) {
         UIBarButtonItem *barButtonItem = [toolbarItems objectAtIndex:i];
@@ -269,8 +264,8 @@
         }
     }
     [toolbarItems replaceObjectAtIndex:newButtonIndex withObject:newButton];
-    appointmentsToolbar.items = toolbarItems;
-
+    taskToolbar.items = toolbarItems;
+    
 }
 
 - (void) swapViews {
@@ -295,9 +290,9 @@
 - (void) makeToolbar {
     /*Setting up the Toolbar */
     CGRect buttonBarFrame = CGRectMake(0, 208, 320, 37);
-    appointmentsToolbar = [[[UIToolbar alloc] initWithFrame:buttonBarFrame] autorelease];
-    [appointmentsToolbar setBarStyle:UIBarStyleBlackTranslucent];
-    [appointmentsToolbar setTintColor:[UIColor blackColor]];
+    taskToolbar = [[[UIToolbar alloc] initWithFrame:buttonBarFrame] autorelease];
+    [taskToolbar setBarStyle:UIBarStyleBlackTranslucent];
+    [taskToolbar setTintColor:[UIColor blackColor]];
     UIBarButtonItem *saveAsButton = [[UIBarButtonItem alloc] initWithTitle:@"BACK" style:UIBarButtonItemStyleBordered target:self action:@selector(navigationAction:)];
     [saveAsButton setTag:0];
     UIBarButtonItem *newButton = [[UIBarButtonItem alloc] initWithTitle:@"Time" style:UIBarButtonItemStyleBordered target:self action:@selector(navigationAction:)];
@@ -314,7 +309,7 @@
     UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil	action:nil];
     
     NSMutableArray *toolbarItems = [NSMutableArray arrayWithObjects:flexSpace, saveAsButton, flexSpace, newButton, flexSpace, gotoButton, flexSpace,nil];
-    [appointmentsToolbar setItems:toolbarItems];
+    [taskToolbar setItems:toolbarItems];
     /*--End Setting up the Toolbar */
 }
 
@@ -370,4 +365,4 @@
  }
  //TO DO: IF the user enters the date before the month, and this exceeds the number of days for the month selected, then give an error warning.
  }
-*/
+ */

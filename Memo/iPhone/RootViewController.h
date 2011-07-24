@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
+#import "MemoTableViewController.h"
 #import "MemoText.h"
 #import "Memo.h"
 #import "Appointment.h"
@@ -16,8 +17,8 @@
 
 	NSManagedObjectContext *managedObjectContext;
 	UITextView *newText;
-	UITableViewController *tableViewController;
     NSString *previousTextInput;
+    MemoTableViewController *tableViewController;
     UIActionSheet *goActionSheet, *saveActionSheet;
     UIToolbar *toolbar;
     MemoText *newMemoText;
@@ -26,10 +27,10 @@
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain) MemoText *newMemoText;
 @property (nonatomic, retain) IBOutlet UITextView *newText;
-@property (nonatomic, retain) IBOutlet UITableViewController *tableViewController;
 @property (nonatomic, retain) NSString *previousTextInput;
 @property (nonatomic, retain) UIActionSheet *goActionSheet, *saveActionSheet;
 @property (nonatomic, retain) UIToolbar *toolbar;
+@property (nonatomic, retain) MemoTableViewController *tableViewController;
 
 - (void) addNewMemoText;
 - (void) addNewMemo;
