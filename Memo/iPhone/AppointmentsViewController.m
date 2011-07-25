@@ -25,7 +25,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     /*Setting Up the Views*/
-    
+    NSLog(@"In NewTaskViewController");
+
     [self makeToolbar];
     [self.view addSubview:appointmentsToolbar];
 

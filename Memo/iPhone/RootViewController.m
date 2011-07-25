@@ -13,6 +13,7 @@
 #import "NSManagedObjectContext-insert.h"
 #import "BaseViewController.h" 
 #import "MemoTableViewController.h"
+#import "NewTaskViewController.h"
 
 @implementation RootViewController
 
@@ -137,7 +138,7 @@
 		case 0:
 			saveActionSheet = [[UIActionSheet alloc] 
 									initWithTitle:@"What do you want to do with this Memo?" delegate:self
-									cancelButtonTitle:@"Later" destructiveButtonTitle:nil otherButtonTitles:@"Name, Tag and Save", @"Append to Existing File", @"Appointment or Task Reminder", nil];
+									cancelButtonTitle:@"Later" destructiveButtonTitle:nil otherButtonTitles:@"Name, Tag and Save", @"Append to Existing File", @"Appointment", @"Task Reminder", nil];
 			
 			[saveActionSheet showInView:self.view];
 						
@@ -151,8 +152,15 @@
 	if (actionSheet	== saveActionSheet){
 		switch (buttonIndex) {
 				
-			case 3:
+			case 4:
 				NSLog(@"Cancel Button Clicked on saveAlert");
+				break;
+            case 3:   
+                NSLog(@"4nd Button Clicked on saveAlert");
+                /*--Adds a new Appointment.--*/
+				if ([newText hasText]) {
+					[self addNewTask];
+				}	
 				break;
 			case 2:
 				NSLog(@"3nd Button Clicked on saveAlert");
@@ -327,6 +335,8 @@
 	
 	[appointmentViewController.managedObjectContext setPersistentStoreCoordinator:[[tableViewController.fetchedResultsController managedObjectContext] persistentStoreCoordinator]];
    	
+    /*-Save changes to the MOC.  NOTE: no changes made in this function as it is --*/
+    
 	NSError *error;
 	if(![managedObjectContext save:&error]){ 
         //
@@ -335,8 +345,37 @@
 	appointmentViewController.newTextInput = newTextInput;	
 	[self presentModalViewController:appointmentViewController animated:YES];	
     
+    [newText setText:@""];
+	[self.view endEditing:YES];
+}
 
 
+
+- (void) addNewTask{
+    /*--CALLED BY:   SaveAs-Task --*/
+    
+	NSString *newTextInput = [NSString stringWithFormat: @"%@", newText.text];//copy contents of textView to newTextInput
+    NSLog(@"newTextInput = %@", newTextInput);
+	
+    // Initialize an instance of NewTaskViewCOntroller and Pass the text input to this view controller.
+	NewTaskViewController *taskViewController = [[NewTaskViewController alloc] initWithNibName:@"NewTaskViewController" bundle:nil];
+	
+	// Create a new managed object context for the new task -- set its persistent store coordinator to the same as that from the fetched results controller's context.
+    
+	NSManagedObjectContext *addingContext = [[NSManagedObjectContext alloc] init];
+	taskViewController.managedObjectContext = addingContext;
+	[addingContext release];
+	
+	[taskViewController.managedObjectContext setPersistentStoreCoordinator:[[tableViewController.fetchedResultsController managedObjectContext] persistentStoreCoordinator]];
+   	
+	NSError *error;
+	if(![managedObjectContext save:&error]){ 
+        //
+	}
+    
+	taskViewController.newTextInput = newTextInput;	
+	[self presentModalViewController:taskViewController animated:YES];	
+        
     [newText setText:@""];
 	[self.view endEditing:YES];
 }

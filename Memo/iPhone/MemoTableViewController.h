@@ -10,15 +10,11 @@
 #import "Memo.h"
 #import "MemoText.h"
 
-
 @interface MemoTableViewController : UITableViewController <NSFetchedResultsControllerDelegate, UITextViewDelegate> {
-
 	NSManagedObjectContext *managedObjectContext;
 	NSFetchedResultsController *_fetchedResultsController;
-	UITableView *tableView;
-	
+	UITableView *tableView;	
 }
-
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, retain) IBOutlet UITableView *tableView;

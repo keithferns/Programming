@@ -1,10 +1,7 @@
-//
 //  MemoTableViewController.m
 //  Memo
-//
 //  Created by Keith Fernandes on 6/23/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
-//
 
 #import "MemoTableViewController.h"
 #import "AppDelegate_Shared.h"
@@ -16,39 +13,30 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
 
 #pragma mark -
 #pragma mark Private Interface
-
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  * Private interface definitions
  *~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
 @interface MemoTableViewController (private)
-
 - (void) managedObjectContextSaved:(NSNotification *)notification;
-
 @end
-
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 @implementation MemoTableViewController
-
 @synthesize managedObjectContext, tableView;
-
 @synthesize fetchedResultsController = _fetchedResultsController;
 
 #pragma mark -
 #pragma mark Private Methods
-
 /*---------------------------------------------------------------------------
  * Notifications of ManagedObjectContext Saved 
  *--------------------------------------------------------------------------*/
-
 - (void) managedObjectContextSaved:(NSNotification *)notification{
 		// Redisplay the data.
 		//NOTE: This can also be done using the viewWillAppearMethod.
     NSLog(@"ManagedObjectContextSavedNotificationReceived");
 	[self.tableView reloadData];
 }
-
-
 - (void)handleDidSaveNotification:(NSNotification *)notification {
     NSLog(@"NSManagedObjectContextDidSaveNotification received");
     [managedObjectContext mergeChangesFromContextDidSaveNotification:notification];
@@ -58,40 +46,33 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [[NSNotificationCenter defaultCenter] 
-     addObserver:self 
-     selector:@selector(handleDidSaveNotification:)
-     name:NSManagedObjectContextDidSaveNotification 
-     object:nil];
-	
+            addObserver:self 
+            selector:@selector(handleDidSaveNotification:)
+            name:NSManagedObjectContextDidSaveNotification 
+            object:nil];
     tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 250, 320, 210) style:UITableViewStyleGrouped];
     [tableView setDelegate:self];
     [tableView setDataSource:self];
     
     [self.view addSubview:tableView];
     
-		//Point the current instance of the managedObjectContext to the main managedObjectContext
+    //Point current instance of the MOC to the main managedObjectContext
 	if (managedObjectContext == nil) { 
 		managedObjectContext = [(AppDelegate_Shared *)[[UIApplication sharedApplication] delegate] managedObjectContext]; 
         NSLog(@"After managedObjectContext: %@",  managedObjectContext);
         NSLog(@"In MemoTableViewController");
 	}
-	
 	NSError *error;
 	if (![[self fetchedResultsController] performFetch:&error]) {
 	}
-	
 	[[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(managedObjectContextSaved:) name:managedObjectContextSavedNotification object:nil];
-	
  }
 
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
     //[self.tableView reloadData];  //See managedObjectContextSaved method above.
 }
-
-
 /*
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
@@ -107,11 +88,9 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
     [super viewDidDisappear:animated];
 }
 */
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return YES;
 }
-
 #pragma mark -
 #pragma mark Fetched results controller
 
@@ -119,21 +98,18 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
 	if (_fetchedResultsController!=nil) {
 		return _fetchedResultsController;
 	}
-		
 	NSFetchRequest *request = [[NSFetchRequest alloc] init];
-		
-	[request setEntity:[NSEntityDescription entityForName:@"MemoText" inManagedObjectContext:managedObjectContext]];
+    [request setEntity:[NSEntityDescription entityForName:@"MemoText" inManagedObjectContext:managedObjectContext]];
 		
 	NSSortDescriptor *typeDescriptor = [[NSSortDescriptor alloc] initWithKey:@"noteType" ascending:YES];
 	NSSortDescriptor *textDescriptor = [[NSSortDescriptor alloc] initWithKey:@"creationDate" ascending:NO];// just here to test the sections and row calls
 	
 	[request setSortDescriptors:[NSArray arrayWithObjects:typeDescriptor,textDescriptor, nil]];
-	[typeDescriptor release];
-	[textDescriptor release];
+        [typeDescriptor release];
+        [textDescriptor release];
 		
 	[request setFetchBatchSize:10];
-		
-	
+
 	NSFetchedResultsController *newController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:managedObjectContext sectionNameKeyPath:@"noteType" cacheName:@"Root"];
 		
 	newController.delegate = self;
@@ -144,36 +120,32 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
 	return _fetchedResultsController;
 }
 
-
 #pragma mark -
 #pragma mark Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-		// Return the number of sections -- if there are any. For now it should return 1. 
 	return [[_fetchedResultsController sections] count];
 }
 
 - (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
 	id<NSFetchedResultsSectionInfo>  sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
-	
 	int mySection;
 	mySection = [[sectionInfo name] intValue];
-	
 	if (mySection == 0){
 		return	@"Most Recent Memo";
 	}
-	else {
-		return @"Upcoming Appointment";
+	else if (mySection == 1){
+		return @"Impending Appointment";
 	}
-
+    else {
+        return @"Approaching Task Deadline";
+    }
 }
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section	
-
-        id <NSFetchedResultsSectionInfo> sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
-		return [sectionInfo numberOfObjects];
-		//return 1;
+        // Return the number of rows in the section	
+        //id <NSFetchedResultsSectionInfo> sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
+		//return [sectionInfo numberOfObjects];
+		return 1;
 }
 
 - (void) configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath{
@@ -183,7 +155,6 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
 		[dateFormatter setDateFormat:@"dd MMMM yyyy h:mm a"];
 			//[dateFormatter setDateFormat:@"EEEE, dd MMMM yyyy h:mm a"]; //This format gives the Day of Week, followed by date and time
 	}
-	
 	StartScreenCustomCell *mycell;
 	if([cell isKindOfClass:[UITableViewCell class]]){
 		mycell = (StartScreenCustomCell *) cell;
@@ -196,17 +167,13 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
 		[mycell.memoRE setText:[NSString stringWithFormat:@"%@", aNote.savedMemo.memoRE]];
 		} 
 	else if ([aNote.noteType intValue] == 1){
-        [mycell.memoText setText:[NSString stringWithFormat:@"%@", aNote.memoText]];	
+        [mycell.memoText setText:[NSString stringWithFormat:@"%@", aNote.memoText]];
 		[mycell.creationDate setText: [dateFormatter stringFromDate:[aNote.savedAppointment doDate]]];
 			//[mycell.memoRE setText:[NSString stringWithFormat:@"%@", aNote.savedAppointment.appointmentRE]];		 
 	}
 }
-
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
- 
     static NSString *CellIdentifier = @"StartScreenCustomCell";
-	
 	static NSDateFormatter *dateFormatter = nil;
 	if (dateFormatter == nil) {
 		dateFormatter = [[NSDateFormatter alloc] init];
@@ -217,7 +184,6 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
 		NSArray *topLevelObjects = [[NSBundle mainBundle]
 									loadNibNamed:@"StartScreenCustomCell"
 									owner:nil options:nil];
-		
 		for (id currentObject in topLevelObjects){
 			if([currentObject isKindOfClass:[UITableViewCell class]]){
 				cell = (StartScreenCustomCell *) currentObject;
@@ -273,7 +239,6 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
 	[self presentModalViewController:detailViewController animated:YES];	
     [detailViewController release];
 }
-
 
 #pragma mark -
 #pragma mark Fetched Results Notifications

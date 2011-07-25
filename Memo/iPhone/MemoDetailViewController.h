@@ -30,13 +30,9 @@
 @property (nonatomic, retain) UIActionSheet *goActionSheet, *saveActionSheet;
 @property (nonatomic, retain) UIToolbar *toolbar;
 
-
-
 - (void) saveSelectedMemo;
 - (void) startNew;
-
 - (void) makeToolbar;
-
 - (IBAction) navigationAction:(id)sender;
 
 @end

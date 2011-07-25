@@ -71,7 +71,6 @@
         [dateTextField setText: [dateFormatter stringFromDate:[selectedMemoText.savedAppointment doDate]]];
         [self.view addSubview:dateTextField];
     }
-    
     /*--End Setting Up the Views--*/
     
     

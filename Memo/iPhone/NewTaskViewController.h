@@ -1,11 +1,7 @@
-//
 //  NewTaskViewController.h
 //  Memo
-//
 //  Created by Keith Fernandes on 7/24/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
-//
-
 
 #import <UIKit/UIKit.h>
 #import "ToDo.h"
@@ -40,12 +36,9 @@
 //@property (nonatomic, retain) IBOutlet UIView *monthView, *datetimeView;
 
 - (void) swapViews;
-
 - (void) backAction;
-
 - (void) setTaskDate;
 - (void) setTaskTime;
-
 - (void) makeToolbar;
 
 //- (IBAction)monthAction:(id)sender;

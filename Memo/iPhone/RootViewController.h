@@ -35,6 +35,7 @@
 - (void) addNewMemoText;
 - (void) addNewMemo;
 - (void) addNewAppointment;
+- (void) addNewTask;
 
 - (void) makeToolbar;
 - (IBAction) navigationAction:(id)sender;
