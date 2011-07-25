@@ -143,9 +143,9 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
         // Return the number of rows in the section	
-        //id <NSFetchedResultsSectionInfo> sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
-		//return [sectionInfo numberOfObjects];
-		return 1;
+        id <NSFetchedResultsSectionInfo> sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
+		return [sectionInfo numberOfObjects];
+		//return 1;
 }
 
 - (void) configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath{

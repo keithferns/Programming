@@ -14,6 +14,7 @@
 #import "BaseViewController.h" 
 #import "MemoTableViewController.h"
 #import "NewTaskViewController.h"
+#import "AddFolderViewController.h"
 
 @implementation RootViewController
 
@@ -46,7 +47,7 @@
     [self.view addSubview:toolbar];
 
      self.view.layer.backgroundColor = [UIColor groupTableViewBackgroundColor].CGColor;
-    
+    [self.view setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
      newText = [[UITextView alloc] initWithFrame:CGRectMake(10, 35, 305, 170)];
      [newText setFont:[UIFont systemFontOfSize:18]];
      newText.layer.backgroundColor = [UIColor groupTableViewBackgroundColor].CGColor;
@@ -174,8 +175,8 @@
 				break;
 			case 0:
 				NSLog(@"1st Button Clicked on saveAlert");
-                //SaveFileViewController *viewController = [[SaveFileViewController alloc] initWithNibName:@"SaveFileViewController" bundle:nil];
-                //[self presentModalViewController:viewController animated:YES];
+                AddFolderViewController *viewController = [[AddFolderViewController alloc] init];
+                [self presentModalViewController:viewController animated:YES];
                 
 				break;
 			default:
@@ -358,7 +359,7 @@
     NSLog(@"newTextInput = %@", newTextInput);
 	
     // Initialize an instance of NewTaskViewCOntroller and Pass the text input to this view controller.
-	NewTaskViewController *taskViewController = [[NewTaskViewController alloc] initWithNibName:@"NewTaskViewController" bundle:nil];
+	NewTaskViewController *taskViewController = [[NewTaskViewController alloc] initWithNibName:nil bundle:nil];
 	
 	// Create a new managed object context for the new task -- set its persistent store coordinator to the same as that from the fetched results controller's context.
     

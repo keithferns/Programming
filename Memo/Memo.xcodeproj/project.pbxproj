@@ -34,8 +34,9 @@
 		5353623113C2BFFA007BEC2D /* AppointmentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5353622F13C2BFFA007BEC2D /* AppointmentsViewController.m */; };
 		5353623213C2BFFA007BEC2D /* AppointmentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5353623013C2BFFA007BEC2D /* AppointmentsViewController.xib */; };
 		5364E6FB13DC780300ABB1C2 /* NewTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5364E6F913DC780300ABB1C2 /* NewTaskViewController.m */; };
-		5364E6FC13DC780300ABB1C2 /* NewTaskViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5364E6FA13DC780300ABB1C2 /* NewTaskViewController.xib */; };
 		5364E70013DD3D1800ABB1C2 /* AddFolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5364E6FF13DD3D1800ABB1C2 /* AddFolderViewController.m */; };
+		5364E71313DD56F300ABB1C2 /* MyTasksTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5364E71213DD56F300ABB1C2 /* MyTasksTableViewController.m */; };
+		5364E71613DD925800ABB1C2 /* MyTasksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5364E71513DD925700ABB1C2 /* MyTasksViewController.m */; };
 		5384E0DC13BD94540032F9B0 /* StartScreenCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5384E0DB13BD94540032F9B0 /* StartScreenCustomCell.m */; };
 		5384E0E013BD94EC0032F9B0 /* StartScreenCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5384E0DF13BD94EC0032F9B0 /* StartScreenCustomCell.xib */; };
 		5392BA5213D65ABB0090732E /* MyAppointmentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5392BA5013D65ABB0090732E /* MyAppointmentsViewController.m */; };
@@ -110,9 +111,12 @@
 		5353623013C2BFFA007BEC2D /* AppointmentsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppointmentsViewController.xib; sourceTree = "<group>"; };
 		5364E6F813DC780300ABB1C2 /* NewTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewTaskViewController.h; sourceTree = "<group>"; };
 		5364E6F913DC780300ABB1C2 /* NewTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewTaskViewController.m; sourceTree = "<group>"; };
-		5364E6FA13DC780300ABB1C2 /* NewTaskViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewTaskViewController.xib; sourceTree = "<group>"; };
 		5364E6FE13DD3D1800ABB1C2 /* AddFolderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFolderViewController.h; sourceTree = "<group>"; };
 		5364E6FF13DD3D1800ABB1C2 /* AddFolderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFolderViewController.m; sourceTree = "<group>"; };
+		5364E71113DD56F300ABB1C2 /* MyTasksTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTasksTableViewController.h; sourceTree = "<group>"; };
+		5364E71213DD56F300ABB1C2 /* MyTasksTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTasksTableViewController.m; sourceTree = "<group>"; };
+		5364E71413DD925700ABB1C2 /* MyTasksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTasksViewController.h; sourceTree = "<group>"; };
+		5364E71513DD925700ABB1C2 /* MyTasksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTasksViewController.m; sourceTree = "<group>"; };
 		5384E0DA13BD94540032F9B0 /* StartScreenCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartScreenCustomCell.h; sourceTree = "<group>"; };
 		5384E0DB13BD94540032F9B0 /* StartScreenCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartScreenCustomCell.m; sourceTree = "<group>"; };
 		5384E0DF13BD94EC0032F9B0 /* StartScreenCustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StartScreenCustomCell.xib; sourceTree = "<group>"; };
@@ -176,18 +180,11 @@
 		2860E386111B897F00E27156 /* iPhone */ = {
 			isa = PBXGroup;
 			children = (
+				5364E70E13DD544300ABB1C2 /* AppDelegate&Main */,
 				530E752413B352BA003B183A /* RootViewController */,
 				5364E6FD13DD390700ABB1C2 /* AddStuffViewControllers */,
-				5392BABA13D6A9420090732E /* FoldersCustomCell */,
-				5392BA8A13D69AE80090732E /* FilesCustomCell */,
-				5392BA8113D6982D0090732E /* SaveFilesViewController */,
-				53A5C60013D5359B002B4E59 /* MyAppointments */,
-				533E184513CFA7A50018CA2E /* BaseViewController */,
-				533E184013CFA6B90018CA2E /* CustomBaseView */,
-				5384E0D613BD93D20032F9B0 /* StartScreenCustomCell */,
-				2860E387111B897F00E27156 /* AppDelegate_iPhone.h */,
-				2860E388111B897F00E27156 /* AppDelegate_iPhone.m */,
-				2860E389111B897F00E27156 /* MainWindow_iPhone.xib */,
+				5364E70C13DD53BC00ABB1C2 /* SeeStuffViewController */,
+				5364E70D13DD540200ABB1C2 /* CustomViews */,
 			);
 			path = iPhone;
 			sourceTree = "<group>";
@@ -270,6 +267,7 @@
 		530E752413B352BA003B183A /* RootViewController */ = {
 			isa = PBXGroup;
 			children = (
+				53E58F5513BF7B12001BD373 /* MemoDetailView */,
 				530E752513B352EE003B183A /* RootViewController.h */,
 				530E752613B352EE003B183A /* RootViewController.m */,
 				530E752713B352EE003B183A /* RootViewController.xib */,
@@ -298,44 +296,92 @@
 			name = BaseViewController;
 			sourceTree = "<group>";
 		};
-		5353623313C2C008007BEC2D /* NewAppointmentViewController */ = {
+		5353623313C2C008007BEC2D /* AddAppointments */ = {
 			isa = PBXGroup;
 			children = (
 				5353622E13C2BFFA007BEC2D /* AppointmentsViewController.h */,
 				5353622F13C2BFFA007BEC2D /* AppointmentsViewController.m */,
 				5353623013C2BFFA007BEC2D /* AppointmentsViewController.xib */,
 			);
-			name = NewAppointmentViewController;
+			name = AddAppointments;
 			sourceTree = "<group>";
 		};
-		5364E6F713DC77A000ABB1C2 /* NewTaskViewController */ = {
+		5364E6F713DC77A000ABB1C2 /* AddTasks */ = {
 			isa = PBXGroup;
 			children = (
 				5364E6F813DC780300ABB1C2 /* NewTaskViewController.h */,
 				5364E6F913DC780300ABB1C2 /* NewTaskViewController.m */,
-				5364E6FA13DC780300ABB1C2 /* NewTaskViewController.xib */,
 			);
-			name = NewTaskViewController;
+			name = AddTasks;
 			sourceTree = "<group>";
 		};
 		5364E6FD13DD390700ABB1C2 /* AddStuffViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				53E58F5513BF7B12001BD373 /* MemoDetailView */,
-				5364E6F713DC77A000ABB1C2 /* NewTaskViewController */,
-				5353623313C2C008007BEC2D /* NewAppointmentViewController */,
-				5364E70113DD3D2900ABB1C2 /* New Group */,
+				5364E6F713DC77A000ABB1C2 /* AddTasks */,
+				5353623313C2C008007BEC2D /* AddAppointments */,
+				5364E70113DD3D2900ABB1C2 /* AddFiles&Folders */,
 			);
 			name = AddStuffViewControllers;
 			sourceTree = "<group>";
 		};
-		5364E70113DD3D2900ABB1C2 /* New Group */ = {
+		5364E70113DD3D2900ABB1C2 /* AddFiles&Folders */ = {
 			isa = PBXGroup;
 			children = (
 				5364E6FE13DD3D1800ABB1C2 /* AddFolderViewController.h */,
 				5364E6FF13DD3D1800ABB1C2 /* AddFolderViewController.m */,
 			);
-			name = "New Group";
+			name = "AddFiles&Folders";
+			sourceTree = "<group>";
+		};
+		5364E70C13DD53BC00ABB1C2 /* SeeStuffViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5364E71013DD55D100ABB1C2 /* MyFiles&Folders */,
+				5364E70F13DD555E00ABB1C2 /* MyTasks */,
+				53A5C60013D5359B002B4E59 /* MyAppointments */,
+			);
+			name = SeeStuffViewController;
+			sourceTree = "<group>";
+		};
+		5364E70D13DD540200ABB1C2 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				5384E0D613BD93D20032F9B0 /* StartScreenCustomCell */,
+				533E184013CFA6B90018CA2E /* CustomBaseView */,
+				533E184513CFA7A50018CA2E /* BaseViewController */,
+				5392BABA13D6A9420090732E /* FoldersCustomCell */,
+				5392BA8A13D69AE80090732E /* FilesCustomCell */,
+			);
+			name = CustomViews;
+			sourceTree = "<group>";
+		};
+		5364E70E13DD544300ABB1C2 /* AppDelegate&Main */ = {
+			isa = PBXGroup;
+			children = (
+				2860E387111B897F00E27156 /* AppDelegate_iPhone.h */,
+				2860E388111B897F00E27156 /* AppDelegate_iPhone.m */,
+				2860E389111B897F00E27156 /* MainWindow_iPhone.xib */,
+			);
+			name = "AppDelegate&Main";
+			sourceTree = "<group>";
+		};
+		5364E70F13DD555E00ABB1C2 /* MyTasks */ = {
+			isa = PBXGroup;
+			children = (
+				5364E71113DD56F300ABB1C2 /* MyTasksTableViewController.h */,
+				5364E71213DD56F300ABB1C2 /* MyTasksTableViewController.m */,
+				5364E71413DD925700ABB1C2 /* MyTasksViewController.h */,
+				5364E71513DD925700ABB1C2 /* MyTasksViewController.m */,
+			);
+			name = MyTasks;
+			sourceTree = "<group>";
+		};
+		5364E71013DD55D100ABB1C2 /* MyFiles&Folders */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "MyFiles&Folders";
 			sourceTree = "<group>";
 		};
 		5384E0D613BD93D20032F9B0 /* StartScreenCustomCell */ = {
@@ -346,13 +392,6 @@
 				5384E0DF13BD94EC0032F9B0 /* StartScreenCustomCell.xib */,
 			);
 			name = StartScreenCustomCell;
-			sourceTree = "<group>";
-		};
-		5392BA8113D6982D0090732E /* SaveFilesViewController */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = SaveFilesViewController;
 			sourceTree = "<group>";
 		};
 		5392BA8A13D69AE80090732E /* FilesCustomCell */ = {
@@ -486,7 +525,6 @@
 				5392BA8F13D69B0E0090732E /* FileCustomCell.xib in Resources */,
 				5392BABF13D6A95F0090732E /* FolderCell.xib in Resources */,
 				5392BB0513D6CEB20090732E /* paper1.png in Resources */,
-				5364E6FC13DC780300ABB1C2 /* NewTaskViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -522,6 +560,8 @@
 				5392BABE13D6A95F0090732E /* FolderCell.m in Sources */,
 				5364E6FB13DC780300ABB1C2 /* NewTaskViewController.m in Sources */,
 				5364E70013DD3D1800ABB1C2 /* AddFolderViewController.m in Sources */,
+				5364E71313DD56F300ABB1C2 /* MyTasksTableViewController.m in Sources */,
+				5364E71613DD925800ABB1C2 /* MyTasksViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

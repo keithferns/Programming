@@ -25,12 +25,15 @@
     [super viewDidLoad];
     /*Setting Up the Views*/
     NSLog(@"In NewTaskViewController");
+    UIView *myView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 460)];
+    [myView setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
+    myView.hidden = NO;
+    self.view = myView;
+    
     [self makeToolbar];
     [self.view addSubview:taskToolbar];
     
     /*--Adding the Text View */
-    self.view.layer.backgroundColor = [UIColor groupTableViewBackgroundColor].CGColor;
-    [self.view setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
     /*--The Text View --*/
     textView = [[UITextView alloc] initWithFrame:CGRectMake(10, 45, 300, 160)];
     [self.view addSubview:textView];

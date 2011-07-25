@@ -22,14 +22,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    /*Setting Up the Views*/
     NSLog(@"In NewTaskViewController");
-    
+
+    /*Setting Up the main view */
+    UIView *myView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 460)];
+    [myView setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
+    myView.hidden = NO;
+    self.view = myView;
+        
     [self makeToolbar];
     [self.view addSubview:appointmentsToolbar];
     
-    /*--Adding the Text View */
-    self.view.layer.backgroundColor = [UIColor groupTableViewBackgroundColor].CGColor;
     /*--The Text View --*/
     textView = [[UITextView alloc] initWithFrame:CGRectMake(10, 45, 300, 160)];
     [self.view addSubview:textView];
@@ -58,6 +61,8 @@
     [fileTextField setPlaceholder:@"File Name"];
     [self.view addSubview:fileTextField];
     
+    //TODO: add textField for Tags
+    
     /*--Done Setting Up the Views--*/
     
     
@@ -68,11 +73,11 @@
     }
     /*--Done Initializing the managedObjectContext--*/
     
-    newMemoText = [managedObjectContext insertNewObjectForEntityForName:@"MemoText"];
+    //newMemoText = [managedObjectContext insertNewObjectForEntityForName:@"MemoText"];
     
-    [newMemoText setMemoText:textView.text];
-    [newMemoText setNoteType:[NSNumber numberWithInt:1]];
-    [newMemoText setCreationDate:[NSDate date]];
+    //[newMemoText setMemoText:textView.text];
+    //[newMemoText setNoteType:[NSNumber numberWithInt:1]];
+    //[newMemoText setCreationDate:[NSDate date]];
     
     swappingViews = NO;
         
