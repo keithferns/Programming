@@ -2,20 +2,18 @@
 //  MemoText.h
 //  Memo
 //
-//  Created by Keith Fernandes on 7/14/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Created by Keith Fernandes on 7/25/11.
+//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Appointment;
-@class Memo;
-@class ToDo;
+@class Appointment, Memo, ToDo;
 
-@interface MemoText :  NSManagedObject  
-{
+@interface MemoText : NSManagedObject {
+@private
 }
-
 @property (nonatomic, retain) NSDate * creationDate;
 @property (nonatomic, retain) NSNumber * noteType;
 @property (nonatomic, retain) NSString * memoText;
@@ -24,6 +22,3 @@
 @property (nonatomic, retain) Memo * savedMemo;
 
 @end
-
-
-

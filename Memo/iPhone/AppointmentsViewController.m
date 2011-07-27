@@ -27,8 +27,7 @@
     /*Setting Up the Views*/
     NSLog(@"In NewTaskViewController");
 
-    [self makeToolbar];
-    [self.view addSubview:appointmentsToolbar];
+z    [self.view addSubview:appointmentsToolbar];
 
     /*--Adding the Text View */
     self.view.layer.backgroundColor = [UIColor groupTableViewBackgroundColor].CGColor;

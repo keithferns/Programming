@@ -163,7 +163,7 @@
 
 - (void) makeFolder{
 
-    Folder *newFolder = [managedObjectContext insertNewObjectForEntityForName:@"Folder"];    
+  //  Folder *newFolder = [managedObjectContext insertNewObjectForEntityForName:@"Folder"];    
 
     
     if (!swappingViews) {
@@ -190,7 +190,7 @@
   
         
     /*-- Insert an File Object into the MOC and set the doDate and memotext values to appointmentDate and newMemoText. --*/
-    File *newFile = [managedObjectContext insertNewObjectForEntityForName:@"File"];    
+    //File *newFile = [managedObjectContext insertNewObjectForEntityForName:@"File"];    
     
     /*--Save the MOC--*/	
 	NSError *error;

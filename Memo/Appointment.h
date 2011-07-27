@@ -2,25 +2,21 @@
 //  Appointment.h
 //  Memo
 //
-//  Created by Keith Fernandes on 7/14/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Created by Keith Fernandes on 7/25/11.
+//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
 @class MemoText;
 
-@interface Appointment :  NSManagedObject  
-{
-    
+@interface Appointment : NSManagedObject {
+@private
 }
-
 @property (nonatomic, retain) NSString * appointmentRE;
 @property (nonatomic, retain) NSNumber * isRecurring;
 @property (nonatomic, retain) NSDate * doDate;
 @property (nonatomic, retain) MemoText * memoText;
 
 @end
-
-
-
