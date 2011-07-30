@@ -93,7 +93,7 @@
     int tempF = abs(arc4random());
     NSString *tempStringF = [NSString stringWithFormat:@"Folder%d", tempF];
     
-    [newFolder setFolderName:tempString];
+    [newFolder setFolderName:tempStringF];
     newFile.savedIn = newFolder;
     
     NSError *error;
@@ -224,7 +224,6 @@
     [newButton setTag:1];
     UIBarButtonItem *gotoButton = [[UIBarButtonItem alloc] initWithTitle:@"GO TO.." style:UIBarButtonItemStyleBordered target:self action:@selector(navigationAction:)];
     [gotoButton setTag:2];
-    
     [saveAsButton setWidth:90];
     [newButton setWidth:90];
     [gotoButton setWidth:90];

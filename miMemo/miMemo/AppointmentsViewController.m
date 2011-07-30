@@ -33,7 +33,7 @@
     /*--Adding the Text View */
     self.view.layer.backgroundColor = [UIColor groupTableViewBackgroundColor].CGColor;
         /*--The Text View --*/
-    textView = [[UITextView alloc] initWithFrame:CGRectMake(10, 45, 300, 160)];
+    textView = [[UITextView alloc] initWithFrame:CGRectMake(10, 45, 300, 50)];
     [self.view addSubview:textView];
     [textView setFont:[UIFont systemFontOfSize:18]];
     textView.layer.backgroundColor = [UIColor whiteColor].CGColor;
@@ -68,18 +68,7 @@
     
     
     /*--Done Setting Up the Views--*/
-    
-   
-    
-    /*-- Initializing the managedObjectContext--*/
-	if (managedObjectContext == nil) { 
-		managedObjectContext = [(miMemoAppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext]; 
-        NSLog(@"After managedObjectContext: %@",  managedObjectContext);
-        }
-    
 
-  
-    /*--Done Initializing the managedObjectContext--*/
 
     newMemoText = [managedObjectContext insertNewObjectForEntityForName:@"MemoText"];
     

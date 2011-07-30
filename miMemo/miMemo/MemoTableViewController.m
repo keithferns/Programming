@@ -102,12 +102,21 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
 	if (_fetchedResultsController!=nil) {
 		return _fetchedResultsController;
 	}
+       
 	NSFetchRequest *request = [[NSFetchRequest alloc] init];
     [request setEntity:[NSEntityDescription entityForName:@"MemoText" inManagedObjectContext:managedObjectContext]];
 		
 	NSSortDescriptor *typeDescriptor = [[NSSortDescriptor alloc] initWithKey:@"noteType" ascending:YES];
 	NSSortDescriptor *textDescriptor = [[NSSortDescriptor alloc] initWithKey:@"creationDate" ascending:NO];// just here to test the sections and row calls
-	
+    
+    
+ //   NSDate *today = [NSDate date];
+    NSArray *checkDateArray = [NSArray arrayWithObjects:@"memotext.savedAppointment.doDate",@"memotext.saveMemo.doDate", @"memotext.saveTask.doDate", nil];
+    
+    NSPredicate *checkDate = [NSPredicate predicateWithFormat:@"'[NSDate date]' < %@" argumentArray:checkDateArray];
+                              
+    [request setPredicate:checkDate];
+
 	[request setSortDescriptors:[NSArray arrayWithObjects:typeDescriptor,textDescriptor, nil]];
         [typeDescriptor release];
         [textDescriptor release];

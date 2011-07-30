@@ -2,12 +2,13 @@
 //  Memo.m
 //  miMemo
 //
-//  Created by Keith Fernandes on 7/26/11.
+//  Created by Keith Fernandes on 7/30/11.
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
 #import "Memo.h"
 #import "File.h"
+#import "Folder.h"
 #import "MemoText.h"
 #import "Tag.h"
 
@@ -20,6 +21,7 @@
 @dynamic appendToFile;
 @dynamic memoTag;
 @dynamic memoText;
+@dynamic savedIn;
 
 
 - (void)addMemoTagObject:(Tag *)value {    
@@ -49,6 +51,7 @@
     [[self primitiveValueForKey:@"memoTag"] minusSet:value];
     [self didChangeValueForKey:@"memoTag" withSetMutation:NSKeyValueMinusSetMutation usingObjects:value];
 }
+
 
 
 
