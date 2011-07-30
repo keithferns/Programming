@@ -51,7 +51,11 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
             selector:@selector(handleDidSaveNotification:)
             name:NSManagedObjectContextDidSaveNotification 
             object:nil];
-    tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 250, 320, 210) style:UITableViewStyleGrouped];
+    tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 250, 320, 210) style:UITableViewStylePlain];
+    [tableView setSectionFooterHeight:0.0];
+    [tableView setSectionHeaderHeight:20.0];
+    [tableView setRowHeight:50.0];
+    
     [tableView setDelegate:self];
     [tableView setDataSource:self];
     
@@ -137,8 +141,11 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
 	else if (mySection == 1){
 		return @"Impending Appointment";
 	}
-    else {
+    else if (mySection == 2) {
         return @"Approaching Task Deadline";
+    }
+    else{
+        return @"No Saved Memo's";
     }
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -157,6 +164,7 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
 	StartScreenCustomCell *mycell;
 	if([cell isKindOfClass:[UITableViewCell class]]){
 		mycell = (StartScreenCustomCell *) cell;
+        [mycell setAccessoryType:UITableViewCellAccessoryDetailDisclosureButton];   
         }
 	 MemoText *aNote = [_fetchedResultsController objectAtIndexPath:indexPath];	
     

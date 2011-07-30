@@ -50,16 +50,12 @@
 							<object class="IBUILabel" id="793310987">
 								<reference key="NSNextResponder" ref="818392695"/>
 								<int key="NSvFlags">319</int>
-								<string key="NSFrame">{{0, 23}, {320, 45}}</string>
+								<string key="NSFrame">{{0, 23}, {306, 45}}</string>
 								<reference key="NSSuperview" ref="818392695"/>
 								<reference key="NSWindow"/>
-								<object class="NSColor" key="IBUIBackgroundColor" id="94863061">
-									<int key="NSColorSpace">5</int>
-									<bytes key="NSCMYK">MC4wODM5NDE2MDg2NyAwLjA0NzQ0NTI1NjI2IDAuMDE4MjQ4MTc0MzQgMC4wMzI4NDY3MTUzAA</bytes>
-									<object class="NSColorSpace" key="NSCustomColorSpace" id="1068687774">
-										<int key="NSID">3</int>
-									</object>
-									<characters key="NSComponents">0.08394160584 0.04744525547 0.01824817518 0.03284671533 1</characters>
+								<object class="NSColor" key="IBUIBackgroundColor" id="240901276">
+									<int key="NSColorSpace">3</int>
+									<bytes key="NSWhite">MQA</bytes>
 								</object>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -76,10 +72,7 @@
 									<int key="NSColorSpace">1</int>
 									<bytes key="NSRGB">MCAwIDAAA</bytes>
 								</object>
-								<object class="NSColor" key="IBUIHighlightedColor" id="240901276">
-									<int key="NSColorSpace">3</int>
-									<bytes key="NSWhite">MQA</bytes>
-								</object>
+								<reference key="IBUIHighlightedColor" ref="240901276"/>
 								<int key="IBUIBaselineAdjustment">1</int>
 								<float key="IBUIMinimumFontSize">14</float>
 								<int key="IBUINumberOfLines">2</int>
@@ -87,15 +80,10 @@
 							<object class="IBUILabel" id="651443119">
 								<reference key="NSNextResponder" ref="818392695"/>
 								<int key="NSvFlags">319</int>
-								<string key="NSFrameSize">{25, 23}</string>
+								<string key="NSFrameSize">{24, 23}</string>
 								<reference key="NSSuperview" ref="818392695"/>
 								<reference key="NSWindow"/>
-								<object class="NSColor" key="IBUIBackgroundColor">
-									<int key="NSColorSpace">5</int>
-									<bytes key="NSCMYK">MC4wODM5NDE2MDg2NyAwLjA0NzQ0NTI1NjI2IDAuMDE4MjQ4MTc0MzQgMC4wMzI4NDY3MTUzAA</bytes>
-									<reference key="NSCustomColorSpace" ref="1068687774"/>
-									<characters key="NSComponents">0.08394160584 0.04744525547 0.01824817518 0.03284671533 1</characters>
-								</object>
+								<reference key="IBUIBackgroundColor" ref="240901276"/>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
@@ -115,15 +103,10 @@
 							<object class="IBUILabel" id="610113773">
 								<reference key="NSNextResponder" ref="818392695"/>
 								<int key="NSvFlags">319</int>
-								<string key="NSFrame">{{135, 0}, {40, 23}}</string>
+								<string key="NSFrame">{{129, 0}, {38, 23}}</string>
 								<reference key="NSSuperview" ref="818392695"/>
 								<reference key="NSWindow"/>
-								<object class="NSColor" key="IBUIBackgroundColor">
-									<int key="NSColorSpace">5</int>
-									<bytes key="NSCMYK">MC4wODM5NDE2MDg2NyAwLjA0NzQ0NTI1NjI2IDAuMDE4MjQ4MTc0MzQgMC4wMzI4NDY3MTUzAA</bytes>
-									<reference key="NSCustomColorSpace" ref="1068687774"/>
-									<characters key="NSComponents">0.08394160584 0.04744525547 0.01824817518 0.03284671533 1</characters>
-								</object>
+								<reference key="IBUIBackgroundColor" ref="240901276"/>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
@@ -139,10 +122,10 @@
 							<object class="IBUILabel" id="571700720">
 								<reference key="NSNextResponder" ref="818392695"/>
 								<int key="NSvFlags">319</int>
-								<string key="NSFrame">{{25, 0}, {111, 23}}</string>
+								<string key="NSFrame">{{24, 0}, {106, 23}}</string>
 								<reference key="NSSuperview" ref="818392695"/>
 								<reference key="NSWindow"/>
-								<reference key="IBUIBackgroundColor" ref="94863061"/>
+								<reference key="IBUIBackgroundColor" ref="240901276"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
@@ -162,15 +145,10 @@
 							<object class="IBUILabel" id="522592641">
 								<reference key="NSNextResponder" ref="818392695"/>
 								<int key="NSvFlags">319</int>
-								<string key="NSFrame">{{175, 0}, {145, 23}}</string>
+								<string key="NSFrame">{{167, 0}, {138, 23}}</string>
 								<reference key="NSSuperview" ref="818392695"/>
 								<reference key="NSWindow"/>
-								<object class="NSColor" key="IBUIBackgroundColor">
-									<int key="NSColorSpace">5</int>
-									<bytes key="NSCMYK">MC4wODM5NDE2MDg2NyAwLjA0NzQ0NTI1NjI2IDAuMDE4MjQ4MTc0MzQgMC4wMzI4NDY3MTUzAA</bytes>
-									<reference key="NSCustomColorSpace" ref="1068687774"/>
-									<characters key="NSComponents">0.08394160584 0.04744525547 0.01824817518 0.03284671533 1</characters>
-								</object>
+								<reference key="IBUIBackgroundColor" ref="240901276"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
@@ -185,7 +163,7 @@
 								<int key="IBUINumberOfLines">2</int>
 							</object>
 						</object>
-						<string key="NSFrameSize">{320, 70}</string>
+						<string key="NSFrameSize">{287, 70}</string>
 						<reference key="NSSuperview" ref="137389946"/>
 						<reference key="NSWindow"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
@@ -202,14 +180,13 @@
 				<string key="NSFrameSize">{320, 70}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
-				<object class="NSColor" key="IBUIBackgroundColor">
-					<int key="NSColorSpace">3</int>
-					<bytes key="NSWhite">MAA</bytes>
-				</object>
+				<reference key="IBUIBackgroundColor" ref="240901276"/>
 				<bool key="IBUIClipsSubviews">YES</bool>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 				<int key="IBUISeparatorStyle">1</int>
+				<int key="IBUIAccessoryType">2</int>
 				<reference key="IBUIContentView" ref="818392695"/>
+				<int key="IBUILineBreakMode">5</int>
 				<object class="NSColor" key="IBUISelectedTextColor">
 					<int key="NSColorSpace">2</int>
 					<bytes key="NSRGB">MC41MDE5NjA4MTQgMC42MTk2MDc4NjU4IDEAA</bytes>
@@ -373,7 +350,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">26</int>
+			<int key="maxID">27</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">

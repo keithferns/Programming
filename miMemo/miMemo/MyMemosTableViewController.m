@@ -1,18 +1,18 @@
 //
-//  MyTasksTableViewController.m
-//  Memo
+//  MyMemosTableViewController.m
+//  miMemo
 //
-//  Created by Keith Fernandes on 7/25/11.
+//  Created by Keith Fernandes on 7/28/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "MyTasksTableViewController.h"
+#import "MyMemosTableViewController.h"
 #import "miMemoAppDelegate.h"
 #import "StartScreenCustomCell.h"
 #import "MemoDetailViewController.h"
 
 
-@implementation MyTasksTableViewController
+@implementation MyMemosTableViewController 
 
 @synthesize managedObjectContext, tableView;
 
@@ -24,7 +24,7 @@
 {
     [super viewDidLoad];
     [self.view addSubview:tableView];
-
+    
     //Point the current instance of the managedObjectContext to the main managedObjectContext
 	if (managedObjectContext == nil) { 
 		managedObjectContext = [(miMemoAppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext]; 
@@ -34,8 +34,8 @@
 	NSError *error;
 	if (![[self fetchedResultsController] performFetch:&error]) {
 	}
-	    
-
+    
+    
 }
 
 - (void)viewDidUnload
@@ -43,17 +43,12 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
-    //self.managedObjectContext = nil;
-	self.fetchedResultsController.delegate = nil;
-	self.fetchedResultsController = nil;
 }
 
 - (void)dealloc
 {
     [super dealloc];
     [tableView release];
-    [_fetchedResultsController release];
-
 }
 
 - (void)didReceiveMemoryWarning
@@ -99,19 +94,17 @@
     
 	NSFetchRequest *request = [[NSFetchRequest alloc] init];
     
-	[request setEntity:[NSEntityDescription entityForName:@"ToDo" inManagedObjectContext:managedObjectContext]];
+	[request setEntity:[NSEntityDescription entityForName:@"Memo" inManagedObjectContext:managedObjectContext]];
     
-	NSSortDescriptor *dateDescriptor = [[NSSortDescriptor alloc] initWithKey:@"doDate" ascending:YES];
-	NSSortDescriptor *timeDescriptor = [[NSSortDescriptor alloc] initWithKey:@"doDate" ascending:NO];// just here to test the sections and row calls
-	
-	[request setSortDescriptors:[NSArray arrayWithObjects:dateDescriptor,timeDescriptor, nil]];
+	NSSortDescriptor *dateDescriptor = [[NSSortDescriptor alloc] initWithKey:@"doDate" ascending:NO];
+		
+	[request setSortDescriptors:[NSArray arrayWithObjects:dateDescriptor, nil]];
 	[dateDescriptor release];
-	[timeDescriptor release];
     
 	[request setFetchBatchSize:10];
     
 	
-	NSFetchedResultsController *newController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:managedObjectContext sectionNameKeyPath:@"doDate" cacheName:@"Root"];
+	NSFetchedResultsController *newController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:managedObjectContext sectionNameKeyPath:nil cacheName:@"Root"];
     
 	newController.delegate = self;
 	self.fetchedResultsController = newController;
@@ -128,17 +121,18 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-	return [[_fetchedResultsController sections] count];
+	//return [[_fetchedResultsController sections] count];
+    return 1;
 }
 
 
 - (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-	id<NSFetchedResultsSectionInfo>  sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
+	//id<NSFetchedResultsSectionInfo>  sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
 	
-	return [sectionInfo name];
+	//return [sectionInfo name];
+    return @"My memos";
     
 }
-
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section	
@@ -148,13 +142,13 @@
     //return 1;
 }
 
+
 - (void) configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath{
 	static NSDateFormatter *dateFormatter = nil;
 	if (dateFormatter == nil) {
 		dateFormatter = [[NSDateFormatter alloc] init];
 		[dateFormatter setDateFormat:@"dd MMMM yyyy h:mm a"];
         //[dateFormatter setDateFormat:@"EEEE, dd MMMM yyyy h:mm a"]; //This format gives the Day of Week, followed by date and time
-        
 	}
 	
 	StartScreenCustomCell *mycell;
@@ -162,25 +156,17 @@
         
 		mycell = (StartScreenCustomCell *) cell;
 	}
-    ToDo *aTask = [_fetchedResultsController objectAtIndexPath:indexPath];	
+    Memo *aMemo = [_fetchedResultsController objectAtIndexPath:indexPath];	
     
-    [mycell.creationDate setText: [dateFormatter stringFromDate:[aTask doDate]]];
-	 
-    [mycell.memoText setText:[NSString stringWithFormat:@"%@", aTask.memoText.memoText]];
-	
-	
+    [mycell.creationDate setText: [dateFormatter stringFromDate:[aMemo doDate]]];
+    
+    [mycell.memoText setText:[NSString stringWithFormat:@"%@", aMemo.memoText.memoText]];
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *CellIdentifier = @"StartScreenCustomCell";
-	
-	static NSDateFormatter *dateFormatter = nil;
-	if (dateFormatter == nil) {
-		dateFormatter = [[NSDateFormatter alloc] init];
-		[dateFormatter setDateFormat:@"dd MMMM yyyy h:mm a"];
-	}
+
 	StartScreenCustomCell *cell = (StartScreenCustomCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	if (cell == nil) {
 		NSArray *topLevelObjects = [[NSBundle mainBundle]
@@ -201,43 +187,43 @@
 }
 
 /*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
+ // Override to support conditional editing of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ // Return NO if you do not want the specified item to be editable.
+ return YES;
+ }
+ */
 
 /*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
+ // Override to support editing the table view.
+ - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ if (editingStyle == UITableViewCellEditingStyleDelete) {
+ // Delete the row from the data source
+ [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+ }   
+ else if (editingStyle == UITableViewCellEditingStyleInsert) {
+ // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+ }   
+ }
+ */
 
 /*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
+ // Override to support rearranging the table view.
+ - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+ {
+ }
+ */
 
 /*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
+ // Override to support conditional rearranging of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ // Return NO if you do not want the item to be re-orderable.
+ return YES;
+ }
+ */
 
 #pragma mark - Table view delegate
 

@@ -10,11 +10,12 @@
 #import <QuartzCore/QuartzCore.h>
 #import "miMemoAppDelegate.h"
 #import "NSManagedObjectContext-insert.h"
+#import "Memo.h"
 
 @implementation AddFolderViewController
 
 @synthesize managedObjectContext;
-@synthesize newMemoText;
+@synthesize newMemoText, newFile, newFolder;
 @synthesize goActionSheet;
 @synthesize folderToolbar;
 @synthesize folderTextField, fileTextField, tagTextField, textView, newTextInput;
@@ -22,8 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"In NewTaskViewController");
-
+    NSLog(@"In AddFolderViewController");
     /*Setting Up the main view */
     UIView *myView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 460)];
     [myView setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
@@ -53,7 +53,6 @@
     [folderTextField setPlaceholder:@"Folder"];
     [self.view addSubview:folderTextField];
     
-    
     fileTextField = [[UITextField alloc] init];
     [fileTextField setBorderStyle:UITextBorderStyleRoundedRect];
     [fileTextField setFont:[UIFont systemFontOfSize:15]];
@@ -61,67 +60,48 @@
     [fileTextField setPlaceholder:@"File Name"];
     [self.view addSubview:fileTextField];
     
-    //TODO: add textField for Tags
-    
+    //TODO: add textField for Tags    
     /*--Done Setting Up the Views--*/
-    
     
     /*-- Initializing the managedObjectContext--*/
 	if (managedObjectContext == nil) { 
 		managedObjectContext = [(miMemoAppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext]; 
         NSLog(@"After managedObjectContext: %@",  managedObjectContext);
     }
+    
     /*--Done Initializing the managedObjectContext--*/
-    
-    //newMemoText = [managedObjectContext insertNewObjectForEntityForName:@"MemoText"];
-    
-    //[newMemoText setMemoText:textView.text];
-    //[newMemoText setNoteType:[NSNumber numberWithInt:1]];
-    //[newMemoText setCreationDate:[NSDate date]];
-    
-    swappingViews = NO;
-        
-    //CGRectMake(0, 245, 320, 215)];
-}
+    NSLog(@"After managedObjectContext: %@",  managedObjectContext);
 
-#pragma mark -
-#pragma mark Navigation
+    newMemoText = [managedObjectContext insertNewObjectForEntityForName:@"MemoText"];
+    [newMemoText setMemoText:newTextInput];
+    [newMemoText setCreationDate:[NSDate date]]; 
+   
+    Memo *newMemo = [managedObjectContext insertNewObjectForEntityForName:@"Memo"];
+    newMemo.memoText = newMemoText; 
+    newMemo.doDate = newMemoText.creationDate ;
 
--(IBAction) navigationAction:(id)sender{
-	switch ([sender tag]) {
-		case 0:
-            [self backAction];
-            break;            
-		case 1:
-			break;
-		case 2:
-			self.goActionSheet = [[UIActionSheet alloc] 
-								  initWithTitle:@"Go To" delegate:self cancelButtonTitle:@"Later"
-								  destructiveButtonTitle:nil otherButtonTitles:@"Memos, Files and Folders", @"Appointments", @"Tasks", nil];
-			[goActionSheet showInView:self.view];            
-			break;
-        case 3:
-            break;
-        case 4:
-            [self dismissModalViewControllerAnimated:YES];
-            break;     
-		default:
-			break;
+    //Insert a new File Object into the MOC
+    newFile = [managedObjectContext insertNewObjectForEntityForName:@"File"]; 
+    int temp = arc4random();
+    NSString *tempString = [NSString stringWithFormat:@"%d", temp];
+
+    [newFile setFileName:tempString];
+   newMemo.appendToFile = newFile;
+
+    //Insert a new Folder object into the MOC. 
+    newFolder = [managedObjectContext insertNewObjectForEntityForName:@"Folder"]; 
+    int tempF = abs(arc4random());
+    NSString *tempStringF = [NSString stringWithFormat:@"Folder%d", tempF];
+    
+    [newFolder setFolderName:tempString];
+    newFile.savedIn = newFolder;
+    
+    NSError *error;
+	if(![managedObjectContext save:&error]){ 
+        NSLog(@"DID NOT SAVE");
 	}
-}
-
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
-    switch (buttonIndex){
-        case 3:
-        default:
-            break;
-        case 2:			
-            break;
-        case 1:			
-            break;
-        case 0:
-            break;				
-    }
+    
+    swappingViews = NO;        
 }
 
 -(void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)flag
@@ -135,7 +115,7 @@
 
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
+    [super didReceiveMemoryWarning];    
     // Release any cached data, images, etc. that aren't in use.
 }
 
@@ -162,10 +142,16 @@
 }
 
 - (void) makeFolder{
-
-  //  Folder *newFolder = [managedObjectContext insertNewObjectForEntityForName:@"Folder"];    
-
-    
+    if (folderTextField.text == nil) {
+        return;
+    }
+    //newFolder = [managedObjectContext insertNewObjectForEntityForName:@"Folder"];    
+    newFolder.folderName = folderTextField.text;
+    /*--Save the MOC--*/	
+	NSError *error;
+	if(![managedObjectContext save:&error]){ 
+        NSLog(@"DID NOT SAVE");
+	}
     if (!swappingViews) {
         [self swapViews];
     }
@@ -174,7 +160,6 @@
     [doneButton setWidth:90];
     NSUInteger newButton = 0;
     NSMutableArray *toolbarItems = [[NSMutableArray arrayWithArray:appointmentsToolbar.items] retain];
-    
     for (NSUInteger i = 0; i < [toolbarItems count]; i++) {
         UIBarButtonItem *barButtonItem = [toolbarItems objectAtIndex:i];
         if (barButtonItem.tag == 1) {
@@ -187,18 +172,16 @@
 }
 
 - (void) makeFile{
-  
-        
-    /*-- Insert an File Object into the MOC and set the doDate and memotext values to appointmentDate and newMemoText. --*/
-    //File *newFile = [managedObjectContext insertNewObjectForEntityForName:@"File"];    
-    
+    if (folderTextField.text == nil) {
+        return;
+    }
+    newFile.fileName = fileTextField.text;
     /*--Save the MOC--*/	
 	NSError *error;
 	if(![managedObjectContext save:&error]){ 
-        NSLog(@"DID NOT SAVE");
+        NSLog(@"makeFile DID NOT SAVE");
 	}
-    
-    UIBarButtonItem *newButton = [[UIBarButtonItem alloc] initWithTitle:@"NEW" style:UIBarButtonItemStyleBordered target:self action:@selector(navigationAction:)];
+    UIBarButtonItem *newButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(navigationAction:)];
     [newButton setTag:4];
     [newButton setWidth:90];
     NSUInteger newButtonIndex = 0;
@@ -213,7 +196,6 @@
     }
     [toolbarItems replaceObjectAtIndex:newButtonIndex withObject:newButton];
     appointmentsToolbar.items = toolbarItems;
-    
 }
 
 - (void) swapViews {
@@ -228,6 +210,8 @@
     //set views hidden and not hidden in sequence.
 }
 
+#pragma mark -
+#pragma mark Navigation
 - (void) makeToolbar {
     /*Setting up the Toolbar */
     CGRect buttonBarFrame = CGRectMake(0, 208, 320, 37);
@@ -236,7 +220,7 @@
     [appointmentsToolbar setTintColor:[UIColor blackColor]];
     UIBarButtonItem *saveAsButton = [[UIBarButtonItem alloc] initWithTitle:@"BACK" style:UIBarButtonItemStyleBordered target:self action:@selector(navigationAction:)];
     [saveAsButton setTag:0];
-    UIBarButtonItem *newButton = [[UIBarButtonItem alloc] initWithTitle:@"Time" style:UIBarButtonItemStyleBordered target:self action:@selector(navigationAction:)];
+    UIBarButtonItem *newButton = [[UIBarButtonItem alloc] initWithTitle:@"OK" style:UIBarButtonItemStyleBordered target:self action:@selector(navigationAction:)];
     [newButton setTag:1];
     UIBarButtonItem *gotoButton = [[UIBarButtonItem alloc] initWithTitle:@"GO TO.." style:UIBarButtonItemStyleBordered target:self action:@selector(navigationAction:)];
     [gotoButton setTag:2];
@@ -252,6 +236,42 @@
     /*--End Setting up the Toolbar */
 }
 
+-(IBAction) navigationAction:(id)sender{
+	switch ([sender tag]) {
+		case 0:
+            [self backAction];
+            break;            
+		case 1:
+            [self makeFolder];
+			break;
+		case 2:
+			self.goActionSheet = [[UIActionSheet alloc] 
+								  initWithTitle:@"Go To" delegate:self cancelButtonTitle:@"Later"
+								  destructiveButtonTitle:nil otherButtonTitles:@"Memos, Files and Folders", @"Appointments", @"Tasks", nil];
+			[goActionSheet showInView:self.view];            
+			break;
+        case 3:
+            [self dismissModalViewControllerAnimated:YES];
+            break;
+        case 4:
+            break;     
+		default:
+			break;
+	}
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    switch (buttonIndex){
+        case 3:
+        default:
+            break;
+        case 2:			
+            break;
+        case 1:			
+            break;
+        case 0:
+            break;				
+    }
+}
 
 @end
-

@@ -1,10 +1,7 @@
-//
 //  RootViewController.m
 //  Memo
-//
 //  Created by Keith Fernandes on 6/23/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
-//
 
 #import "miMemoAppDelegate.h"
 #import "NSManagedObjectContext-insert.h"
@@ -18,7 +15,8 @@
 
 #import "MyAppointmentsViewController.h"
 #import "MyTasksViewController.h"
-
+#import "MyFoldersViewController.h"
+#import "MyMemosViewController.h"
 
 @implementation RootViewController
 
@@ -33,8 +31,6 @@
 
 #pragma mark ViewLifeCycle
 
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -48,8 +44,8 @@
     [self makeToolbar];
     [self.view addSubview:toolbar];
 
-     self.view.layer.backgroundColor = [UIColor groupTableViewBackgroundColor].CGColor;
-    [self.view setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
+    //self.view.layer.backgroundColor = [UIColor groupTableViewBackgroundColor].CGColor;
+    //[self.view setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
      newText = [[UITextView alloc] initWithFrame:CGRectMake(10, 35, 305, 170)];
      [newText setFont:[UIFont systemFontOfSize:18]];
      newText.layer.backgroundColor = [UIColor groupTableViewBackgroundColor].CGColor;
@@ -65,22 +61,15 @@
     [topLabel setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
     [self.view addSubview:topLabel];
 
-
-
-
-  /*  
-    [[NSNotificationCenter defaultCenter] 
+  /*    [[NSNotificationCenter defaultCenter] 
         addObserver:self 
         selector:@selector(handleDidSaveNotification:)
         name:NSManagedObjectContextObjectsDidChangeNotification 
         object:nil];*/
-    
     [self.view addSubview:tableViewController.tableView];
-
 }
 
 - (void) textViewDidBeginEditing:(UITextView *)textView{
-        
     /*--Add the DONE button to the textView once editing begins.--*/
         UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(navigationAction:)];
         [doneButton setTag:1];
@@ -100,8 +89,7 @@
         }
         [toolbarItems replaceObjectAtIndex:newButton withObject:doneButton];
         toolbar.items = toolbarItems;
-    /*--DONE button added--*/
-    
+    /*--DONE button added--*/    
 }
     
 - (void) textViewDidEndEditing:(UITextView *)textView{
@@ -120,15 +108,13 @@
 		case 2:
 			self.goActionSheet = [[UIActionSheet alloc] 
 								  initWithTitle:@"Go To" delegate:self cancelButtonTitle:@"Later"
-								  destructiveButtonTitle:nil otherButtonTitles:@"Memos, Files and Folders", @"Appointments", @"Tasks", nil];
-			
-			[goActionSheet showInView:self.view];
+								  destructiveButtonTitle:nil otherButtonTitles:@"Memos", @"Folders", @"Appointments", @"Tasks", nil];
+			[goActionSheet showFromRect:CGRectMake(20, 350, 280, 300) inView:self.view animated:YES];
             break;
 		case 1:
 			if ([newText hasText]) {
 				[self addNewMemoText];
 				}
-			
 			else if (![newText hasText]) {
 				[self.view endEditing:YES];
 				return;
@@ -138,10 +124,8 @@
 		case 0:
 			saveActionSheet = [[UIActionSheet alloc] 
 									initWithTitle:@"What do you want to do with this Memo?" delegate:self
-									cancelButtonTitle:@"Later" destructiveButtonTitle:nil otherButtonTitles:@"Name, Tag and Save", @"Append to Existing File", @"Appointment", @"Task Reminder", nil];
-			
-			[saveActionSheet showInView:self.view];
-						
+									cancelButtonTitle:@"Later" destructiveButtonTitle:nil otherButtonTitles:@"Save to a Folder", @"Append to a File", @"Appointment", @"Task Reminder", nil];
+			[saveActionSheet showFromToolbar:toolbar];						
 			break;
 		default:
 			break;
@@ -151,7 +135,6 @@
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
 	if (actionSheet	== saveActionSheet){
 		switch (buttonIndex) {
-				
 			case 4:
 				NSLog(@"Cancel Button Clicked on saveAlert");
 				break;
@@ -174,9 +157,9 @@
 				break;
 			case 0:
 				NSLog(@"1st Button Clicked on saveAlert");
-                AddFolderViewController *viewController = [[AddFolderViewController alloc] init];
-                [self presentModalViewController:viewController animated:YES];
-                
+                if ([newText hasText]) {
+					[self addNewFolder];
+				}
 				break;
 			default:
 				break;
@@ -184,27 +167,32 @@
 	}
 	else if (actionSheet == goActionSheet){
 		switch (buttonIndex){
-			case 3:
-				NSLog(@"Cancel Button Clicked on wallAlert");
+			case 4:
+				NSLog(@"Cancel Button Clicked on GoToAction");
 			default:
 				break;
-			case 2:
-				NSLog(@"Task Button Clicked on WallAlert");
+			case 3:
+				NSLog(@"Tasks Button Clicked on GoToAction");
 			{MyTasksViewController *viewController = [[[MyTasksViewController	alloc] initWithNibName:nil bundle:nil] autorelease];	
 			[self presentModalViewController:viewController animated:YES];}
 				break;
-			case 1:
-				NSLog(@"Appointments Button Clicked on WallAlert");
+			case 2:
+				NSLog(@"Appointments Button Clicked on GoToAction");
 			{MyAppointmentsViewController *viewController = [[[MyAppointmentsViewController alloc] initWithNibName:@"MyAppointmentsViewController" bundle:nil] autorelease];	
 				[self presentModalViewController:viewController animated:YES];
                 }
-                
 				break;
-			case 0:
-				NSLog(@" Folder and Files Button Clicked on WallAlert");
-                //FilesFoldersViewController *viewController = [[[FilesFoldersViewController alloc] initWithNibName:@"FilesFoldersViewController" bundle:nil] autorelease]
-                //[self presentModalViewController:viewController animated:YES];
-				break;				
+			case 1:
+				NSLog(@" Folders Button Clicked on GoToAction");
+                {MyFoldersViewController *viewController = [[[MyFoldersViewController alloc] initWithNibName:@"MyFoldersViewController" bundle:nil] autorelease];
+                    [self presentModalViewController:viewController animated:YES];}
+				break;		
+            case 0:
+				NSLog(@" Memos Button Clicked on GoToAction");
+                MyMemosViewController *viewController = [[[MyMemosViewController alloc] initWithNibName:@"MyMemosViewController" bundle:nil] autorelease];
+                [self presentModalViewController:viewController animated:YES];
+				break;	    
+        
 		}
 	}
 }
@@ -212,7 +200,6 @@
 - (void) viewWillAppear{
 }
     
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return YES;
 }
@@ -246,7 +233,6 @@
      name:NSManagedObjectContextObjectsDidChangeNotification object:nil];*/
 }
 
-
 - (void) addNewMemoText{
 	/*Called BY: Done Button and.....*/
     [self.view endEditing:YES];
@@ -255,21 +241,15 @@
 
     /*--the text is NOT the same as previous call of method --> insert a new instance of MemoText in the MOC and copy new text to this instance--
         CASE: When the user has added and saved text, then returns to editing but does not add any text ---*/
-    
-    
-   // NSManagedObjectContext *addingContext = [[NSManagedObjectContext alloc] init];
-	//self.managedObjectContext = addingContext;
-	
+    // NSManagedObjectContext *addingContext = [[NSManagedObjectContext alloc] init];
+	//self.managedObjectContext = addingContext;	
 	//[self.managedObjectContext setPersistentStoreCoordinator:[[tableViewController.fetchedResultsController managedObjectContext] persistentStoreCoordinator]];
-    
     //[addingContext release];
 
 	if (![newTextInput isEqualToString:previousTextInput]) {
-    
     newMemoText = [self.managedObjectContext insertNewObjectForEntityForName:@"MemoText"];
     [newMemoText setMemoText:newTextInput];
     [newMemoText setCreationDate:[NSDate date]]; 
-    
     }
     NSError *error;
 	if(![managedObjectContext save:&error]){ 
@@ -297,7 +277,6 @@
         
 }
 
-
 - (void) addNewMemo{
     /*CALLED BY:  New button --*/
     Memo *newMemo = [self.managedObjectContext insertNewObjectForEntityForName:@"Memo"];
@@ -314,69 +293,74 @@
     [newText setText:@""];
 }
 
-
-- (void) addNewAppointment{
-	
+- (void) addNewAppointment{	
 	/*CALLED BY:   SaveAs-Appointment --*/
-
 	NSString *newTextInput = [NSString stringWithFormat: @"%@", newText.text];//copy contents of textView to newTextInput
-    NSLog(@"newTextInput = %@", newTextInput);
-	
+    NSLog(@"newTextInput = %@", newTextInput);	
         // Pass the selected object to the new view controller.
 	AppointmentsViewController *appointmentViewController = [[AppointmentsViewController alloc] initWithNibName:@"AppointmentsViewController" bundle:nil];
-	
 	// Create a new managed object context for the new appointment -- set its persistent store coordinator to the same as that from the fetched results controller's context.
 	NSManagedObjectContext *addingContext = [[NSManagedObjectContext alloc] init];
 	appointmentViewController.managedObjectContext = addingContext;
 	[addingContext release];
-	
 	[appointmentViewController.managedObjectContext setPersistentStoreCoordinator:[[tableViewController.fetchedResultsController managedObjectContext] persistentStoreCoordinator]];
-   	
-    /*-Save changes to the MOC.  NOTE: no changes made in this function as it is --*/
-    
+    /*-Save changes to the MOC. NOTE: no changes made in this function as it is --*/
 	NSError *error;
 	if(![managedObjectContext save:&error]){ 
         //
 	}
-
 	appointmentViewController.newTextInput = newTextInput;	
 	[self presentModalViewController:appointmentViewController animated:YES];	
-    
     [newText setText:@""];
 	[self.view endEditing:YES];
 }
 
-
-
 - (void) addNewTask{
-    /*--CALLED BY:   SaveAs-Task --*/
-    
+    /*--CALLED BY:   SaveAs-Task --*/    
 	NSString *newTextInput = [NSString stringWithFormat: @"%@", newText.text];//copy contents of textView to newTextInput
-    NSLog(@"newTextInput = %@", newTextInput);
-	
-    // Initialize an instance of NewTaskViewCOntroller and Pass the text input to this view controller.
+    NSLog(@"newTextInput = %@", newTextInput);	
+    // Init NewTaskViewContrsoller & Pass the textinput to this view controller.
 	NewTaskViewController *taskViewController = [[NewTaskViewController alloc] initWithNibName:nil bundle:nil];
-	
 	// Create a new managed object context for the new task -- set its persistent store coordinator to the same as that from the fetched results controller's context.
-    
 	NSManagedObjectContext *addingContext = [[NSManagedObjectContext alloc] init];
 	taskViewController.managedObjectContext = addingContext;
 	[addingContext release];
-	
 	[taskViewController.managedObjectContext setPersistentStoreCoordinator:[[tableViewController.fetchedResultsController managedObjectContext] persistentStoreCoordinator]];
-   	
 	NSError *error;
 	if(![managedObjectContext save:&error]){ 
         //
 	}
-    
 	taskViewController.newTextInput = newTextInput;	
 	[self presentModalViewController:taskViewController animated:YES];	
-        
     [newText setText:@""];
 	[self.view endEditing:YES];
 }
 
+- (void) addNewFolder{
+    /*--CALLED BY:   SaveAs-Task --*/    
+	NSString *newTextInput = [NSString stringWithFormat: @"%@", newText.text];//copy contents of textView to newTextInput
+    NSLog(@"newTextInput = %@", newTextInput);
+    if (![newTextInput isEqualToString:previousTextInput]) 
+        
+    {
+    // Initialize an instance of NewTaskViewCOntroller and Pass the text input to this view controller.
+	AddFolderViewController *addViewController = [[AddFolderViewController alloc] initWithNibName:nil bundle:nil];
+	// Create a new managed object context for the new task -- set its persistent store coordinator to the same as that from the fetched results controller's context.
+	NSManagedObjectContext *addingContext = [[NSManagedObjectContext alloc] init];
+	addViewController.managedObjectContext = addingContext;
+	[addingContext release];	
+	[addViewController.managedObjectContext setPersistentStoreCoordinator:[[tableViewController.fetchedResultsController managedObjectContext] persistentStoreCoordinator]];
+    NSLog(@"After managedObjectContext: %@",  addViewController.managedObjectContext);
+
+        
+	addViewController.newTextInput = newTextInput;	
+    addViewController.newMemoText = newMemoText;
+	[self presentModalViewController:addViewController animated:YES];	
+    [newText setText:@""];
+	[self.view endEditing:YES];
+    
+  }
+}
 
 - (void) makeToolbar{
     /*Setting up the Toolbar */

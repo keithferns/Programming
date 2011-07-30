@@ -42,6 +42,12 @@
 		531AE56413DF20A400D9B616 /* Blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 531AE56313DF20A400D9B616 /* Blue.png */; };
 		531AE56813DF7B7700D9B616 /* MyTasksViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 531AE56713DF7B7700D9B616 /* MyTasksViewController.xib */; };
 		531AE56A13DF8C4300D9B616 /* iphone_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 531AE56913DF8C4300D9B616 /* iphone_icon.png */; };
+		53E19BD713E0D5FF004BC4E5 /* MyFoldersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E19BD513E0D5FF004BC4E5 /* MyFoldersViewController.m */; };
+		53E19BD813E0D5FF004BC4E5 /* MyFoldersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53E19BD613E0D5FF004BC4E5 /* MyFoldersViewController.xib */; };
+		53E19BDC13E0D647004BC4E5 /* MyFoldersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E19BDB13E0D647004BC4E5 /* MyFoldersTableViewController.m */; };
+		53E19BEA13E25F65004BC4E5 /* MyMemosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E19BE813E25F65004BC4E5 /* MyMemosViewController.m */; };
+		53E19BEB13E25F65004BC4E5 /* MyMemosViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53E19BE913E25F65004BC4E5 /* MyMemosViewController.xib */; };
+		53E19BEF13E26238004BC4E5 /* MyMemosTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E19BEE13E26238004BC4E5 /* MyMemosTableViewController.m */; };
 		53FAD0F113DDEA3100FB168C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53FAD0F013DDEA3100FB168C /* UIKit.framework */; };
 		53FAD0F313DDEA3100FB168C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53FAD0F213DDEA3100FB168C /* Foundation.framework */; };
 		53FAD0F513DDEA3100FB168C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53FAD0F413DDEA3100FB168C /* CoreGraphics.framework */; };
@@ -127,6 +133,16 @@
 		531AE56313DF20A400D9B616 /* Blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Blue.png; path = ../../Memo/Buttons_1/Blue.png; sourceTree = "<group>"; };
 		531AE56713DF7B7700D9B616 /* MyTasksViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyTasksViewController.xib; sourceTree = "<group>"; };
 		531AE56913DF8C4300D9B616 /* iphone_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iphone_icon.png; sourceTree = "<group>"; };
+		53E19BD413E0D5FF004BC4E5 /* MyFoldersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFoldersViewController.h; sourceTree = "<group>"; };
+		53E19BD513E0D5FF004BC4E5 /* MyFoldersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFoldersViewController.m; sourceTree = "<group>"; };
+		53E19BD613E0D5FF004BC4E5 /* MyFoldersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyFoldersViewController.xib; sourceTree = "<group>"; };
+		53E19BDA13E0D647004BC4E5 /* MyFoldersTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFoldersTableViewController.h; sourceTree = "<group>"; };
+		53E19BDB13E0D647004BC4E5 /* MyFoldersTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFoldersTableViewController.m; sourceTree = "<group>"; };
+		53E19BE713E25F65004BC4E5 /* MyMemosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMemosViewController.h; sourceTree = "<group>"; };
+		53E19BE813E25F65004BC4E5 /* MyMemosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMemosViewController.m; sourceTree = "<group>"; };
+		53E19BE913E25F65004BC4E5 /* MyMemosViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyMemosViewController.xib; sourceTree = "<group>"; };
+		53E19BED13E26238004BC4E5 /* MyMemosTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMemosTableViewController.h; sourceTree = "<group>"; };
+		53E19BEE13E26238004BC4E5 /* MyMemosTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMemosTableViewController.m; sourceTree = "<group>"; };
 		53FAD0EC13DDEA3100FB168C /* miMemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = miMemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		53FAD0F013DDEA3100FB168C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		53FAD0F213DDEA3100FB168C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -226,6 +242,8 @@
 		531AE53813DF179400D9B616 /* SeeStuffViewFolders */ = {
 			isa = PBXGroup;
 			children = (
+				53E19BE613E25F2B004BC4E5 /* MyMemo&Files */,
+				53E19BD213E0D5CA004BC4E5 /* MyFolders */,
 				531AE56613DF391E00D9B616 /* MyTasks */,
 				531AE56513DF38F600D9B616 /* MyAppointments */,
 			);
@@ -265,13 +283,61 @@
 		531AE56613DF391E00D9B616 /* MyTasks */ = {
 			isa = PBXGroup;
 			children = (
-				531AE53913DF17BE00D9B616 /* MyTasksTableViewController.h */,
-				531AE53A13DF17BE00D9B616 /* MyTasksTableViewController.m */,
+				53E19BDD13E100C0004BC4E5 /* MyTasksTableViewController */,
 				531AE53B13DF17BE00D9B616 /* MyTasksViewController.h */,
 				531AE53C13DF17BE00D9B616 /* MyTasksViewController.m */,
 				531AE56713DF7B7700D9B616 /* MyTasksViewController.xib */,
 			);
 			name = MyTasks;
+			sourceTree = "<group>";
+		};
+		53E19BD213E0D5CA004BC4E5 /* MyFolders */ = {
+			isa = PBXGroup;
+			children = (
+				53E19BD913E0D60E004BC4E5 /* MyFoldersTableViewController */,
+				53E19BD413E0D5FF004BC4E5 /* MyFoldersViewController.h */,
+				53E19BD513E0D5FF004BC4E5 /* MyFoldersViewController.m */,
+				53E19BD613E0D5FF004BC4E5 /* MyFoldersViewController.xib */,
+			);
+			name = MyFolders;
+			sourceTree = "<group>";
+		};
+		53E19BD913E0D60E004BC4E5 /* MyFoldersTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				53E19BDA13E0D647004BC4E5 /* MyFoldersTableViewController.h */,
+				53E19BDB13E0D647004BC4E5 /* MyFoldersTableViewController.m */,
+			);
+			name = MyFoldersTableViewController;
+			sourceTree = "<group>";
+		};
+		53E19BDD13E100C0004BC4E5 /* MyTasksTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				531AE53913DF17BE00D9B616 /* MyTasksTableViewController.h */,
+				531AE53A13DF17BE00D9B616 /* MyTasksTableViewController.m */,
+			);
+			name = MyTasksTableViewController;
+			sourceTree = "<group>";
+		};
+		53E19BE613E25F2B004BC4E5 /* MyMemo&Files */ = {
+			isa = PBXGroup;
+			children = (
+				53E19BEC13E261C9004BC4E5 /* MyMemosTableViewController */,
+				53E19BE713E25F65004BC4E5 /* MyMemosViewController.h */,
+				53E19BE813E25F65004BC4E5 /* MyMemosViewController.m */,
+				53E19BE913E25F65004BC4E5 /* MyMemosViewController.xib */,
+			);
+			name = "MyMemo&Files";
+			sourceTree = "<group>";
+		};
+		53E19BEC13E261C9004BC4E5 /* MyMemosTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				53E19BED13E26238004BC4E5 /* MyMemosTableViewController.h */,
+				53E19BEE13E26238004BC4E5 /* MyMemosTableViewController.m */,
+			);
+			name = MyMemosTableViewController;
 			sourceTree = "<group>";
 		};
 		53FAD0E113DDEA3100FB168C = {
@@ -466,6 +532,8 @@
 				531AE56413DF20A400D9B616 /* Blue.png in Resources */,
 				531AE56813DF7B7700D9B616 /* MyTasksViewController.xib in Resources */,
 				531AE56A13DF8C4300D9B616 /* iphone_icon.png in Resources */,
+				53E19BD813E0D5FF004BC4E5 /* MyFoldersViewController.xib in Resources */,
+				53E19BEB13E25F65004BC4E5 /* MyMemosViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -525,6 +593,10 @@
 				531AE55313DF18B700D9B616 /* FileCustomCell.m in Sources */,
 				531AE55513DF18B700D9B616 /* FolderCell.m in Sources */,
 				531AE55913DF18B700D9B616 /* StartScreenCustomCell.m in Sources */,
+				53E19BD713E0D5FF004BC4E5 /* MyFoldersViewController.m in Sources */,
+				53E19BDC13E0D647004BC4E5 /* MyFoldersTableViewController.m in Sources */,
+				53E19BEA13E25F65004BC4E5 /* MyMemosViewController.m in Sources */,
+				53E19BEF13E26238004BC4E5 /* MyMemosTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -615,6 +687,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "miMemo/miMemo-Prefix.pch";
 				INFOPLIST_FILE = "miMemo/miMemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -628,6 +701,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "miMemo/miMemo-Prefix.pch";
 				INFOPLIST_FILE = "miMemo/miMemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;

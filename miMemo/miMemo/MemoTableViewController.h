@@ -17,7 +17,7 @@
 }
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
-@property (nonatomic, retain) IBOutlet UITableView *tableView;
+@property (nonatomic, retain) UITableView *tableView;
 
 extern NSString *const managedObjectContextSavedNotification;
 

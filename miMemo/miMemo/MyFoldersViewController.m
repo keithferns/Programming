@@ -1,43 +1,65 @@
 //
-//  MyAppointmentsViewController.m
-//  Memo
+//  MyFoldersViewController.m
+//  miMemo
 //
-//  Created by Keith Fernandes on 6/23/11.
+//  Created by Keith Fernandes on 7/27/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "miMemoAppDelegate.h"
-#import "NSManagedObjectContext-insert.h"
-
+#import "MyFoldersViewController.h"
+#import "MyTasksViewController.h"
 #import "MyAppointmentsViewController.h"
-#import "AppointmentsViewController.h"
 
-@implementation MyAppointmentsViewController
+@implementation MyFoldersViewController
 
-@synthesize tableViewController;
-@synthesize goActionSheet, saveActionSheet;
 @synthesize toolbar;
+@synthesize saveActionSheet, goActionSheet;
+@synthesize tableViewController;
 
-#pragma mark -
+#pragma mark - View lifecycle
 
-#pragma mark ViewLifeCycle
-
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
+    
     [self.view addSubview:tableViewController.tableView];
     
     [self makeToolbar];
-    [self.view addSubview:toolbar];
-	
-	
+    [self.view addSubview:toolbar];    
 }
-- (void) textViewDidEndEditing:(UITextView *)textView{
-		//Change the Done Button to a New button. 
+
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    // Release any retained subviews of the main view.
+    // e.g. self.myOutlet = nil;
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    // Return YES for supported orientations
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (void)dealloc
+{
+    [super dealloc];
+    [toolbar release];
+    [saveActionSheet release];
+    [goActionSheet release];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    // Releases the view if it doesn't have a superview.
+    [super didReceiveMemoryWarning];
+    
+    // Release any cached data, images, etc that aren't in use.
 }
 
 
-#pragma mark -
-#pragma mark Navigation
+#pragma -
+#pragma Navigation Controls and Actions
 
 - (void) makeToolbar{
     /*Setting up the Toolbar */
@@ -63,15 +85,17 @@
     [doneButton release];
     [saveAsButton release];
     [gotoButton release];
+    
     /*--End Setting up the Toolbar */
 }
+
 
 -(IBAction) navigationAction:(id)sender{
 	switch ([sender tag]) {
 		case 2:
 			self.goActionSheet = [[UIActionSheet alloc] 
 								  initWithTitle:@"Go To" delegate:self cancelButtonTitle:@"Later"
-								  destructiveButtonTitle:nil otherButtonTitles:@"Memos, Files and Folders", @"Appointments", @"Tasks", nil];
+								  destructiveButtonTitle:nil otherButtonTitles:@"Memos", @"Appointments", @"Tasks", nil];
 			
 			[goActionSheet showInView:self.view];
 			
@@ -81,13 +105,13 @@
 			break;
 		case 1:
             [self dismissModalViewControllerAnimated:YES];
-
+            
 			break;
 			
 		case 0:
 			saveActionSheet = [[UIActionSheet alloc] 
-									initWithTitle:@"What do you want to do with this Memo?" delegate:self
-									cancelButtonTitle:@"Later" destructiveButtonTitle:nil otherButtonTitles:@"Name, Tag and Save", @"Append to Existing File", @"Appointment or Task Reminder", nil];
+                               initWithTitle:@"What do you want to do with this Memo?" delegate:self
+                               cancelButtonTitle:@"Later" destructiveButtonTitle:nil otherButtonTitles:@"Name, Tag and Save", @"Append to Existing File", @"Appointment or Task Reminder", nil];
 			
 			[saveActionSheet showInView:self.view];
 			
@@ -127,7 +151,7 @@
 				break;
 			case 2:
 				NSLog(@"Task Button Clicked on WallAlert");
-			
+                
 				break;
 			case 1:
 				NSLog(@"Appointments Button Clicked on WallAlert");
@@ -140,30 +164,6 @@
 		}
 	}
 }
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    return YES;
-}
-
-- (void)didReceiveMemoryWarning {
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc. that aren't in use.
-}
-
-- (void)viewDidUnload {
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-}
-
-- (void)dealloc {
-    [super dealloc];
-	[tableViewController release];
-    [saveActionSheet release];
-    [goActionSheet release];
-    [toolbar release];
-}
-
+#pragma -
 
 @end

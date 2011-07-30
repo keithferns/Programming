@@ -298,10 +298,11 @@
 
 - (void)viewDidUnload {
     // Relinquish ownership of anything that can be recreated in viewDidLoad or on demand.
-    // For example: self.myOutlet = nil;
-	self.managedObjectContext = nil;
+    // For example: self.myOutlet = nil;	
+    //self.managedObjectContext = nil;
 	self.fetchedResultsController.delegate = nil;
-	self.fetchedResultsController = nil;}
+	self.fetchedResultsController = nil;
+}
 
 - (void)dealloc {
     [super dealloc];

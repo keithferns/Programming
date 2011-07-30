@@ -15,6 +15,8 @@
 @interface AddFolderViewController : UIViewController <UIActionSheetDelegate, UITextViewDelegate, UITextFieldDelegate> {
         NSManagedObjectContext *managedObjectContext;
         MemoText *newMemoText;
+        File *newFile;
+        Folder *newFolder;
         BOOL swappingViews;
         UIActionSheet *goActionSheet;
         UITextView *textView;
@@ -24,6 +26,9 @@
     }
     @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
     @property (nonatomic, retain) MemoText *newMemoText;
+    @property (nonatomic, retain) File *newFile;
+    @property (nonatomic, retain) Folder *newFolder;
+
     @property (nonatomic, retain) UIActionSheet *goActionSheet;
     @property (nonatomic, retain) UIToolbar *folderToolbar;
     @property (nonatomic, retain) UITextView *textView;

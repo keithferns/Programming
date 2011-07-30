@@ -25,7 +25,7 @@
 
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain) MemoText *newMemoText;
-@property (nonatomic, retain) IBOutlet UITextView *newText;
+@property (nonatomic, retain) UITextView *newText;
 @property (nonatomic, retain) NSString *previousTextInput;
 @property (nonatomic, retain) UIActionSheet *goActionSheet, *saveActionSheet;
 @property (nonatomic, retain) UIToolbar *toolbar;
@@ -35,6 +35,8 @@
 - (void) addNewMemo;
 - (void) addNewAppointment;
 - (void) addNewTask;
+- (void) addNewFolder;
+
 
 - (void) makeToolbar;
 - (IBAction) navigationAction:(id)sender;
