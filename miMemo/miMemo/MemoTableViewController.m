@@ -75,7 +75,7 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
 
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
-    //[self.tableView reloadData];  //See managedObjectContextSaved method above.
+    [self.tableView reloadData];  
 }
 /*
 - (void)viewDidAppear:(BOOL)animated {
@@ -107,19 +107,17 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
     [request setEntity:[NSEntityDescription entityForName:@"MemoText" inManagedObjectContext:managedObjectContext]];
 		
 	NSSortDescriptor *typeDescriptor = [[NSSortDescriptor alloc] initWithKey:@"noteType" ascending:YES];
-	NSSortDescriptor *textDescriptor = [[NSSortDescriptor alloc] initWithKey:@"creationDate" ascending:NO];// just here to test the sections and row calls
+	NSSortDescriptor *dateDescriptor = [[NSSortDescriptor alloc] initWithKey:@"creationDate" ascending:NO];
     
-    
- //   NSDate *today = [NSDate date];
     NSArray *checkDateArray = [NSArray arrayWithObjects:@"memotext.savedAppointment.doDate",@"memotext.saveMemo.doDate", @"memotext.saveTask.doDate", nil];
     
     NSPredicate *checkDate = [NSPredicate predicateWithFormat:@"'[NSDate date]' < %@" argumentArray:checkDateArray];
                               
     [request setPredicate:checkDate];
 
-	[request setSortDescriptors:[NSArray arrayWithObjects:typeDescriptor,textDescriptor, nil]];
+	[request setSortDescriptors:[NSArray arrayWithObjects:typeDescriptor,dateDescriptor, nil]];
         [typeDescriptor release];
-        [textDescriptor release];
+        [dateDescriptor release];
 		
 	[request setFetchBatchSize:10];
 
@@ -167,7 +165,7 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
 	static NSDateFormatter *dateFormatter = nil;
 	if (dateFormatter == nil) {
 		dateFormatter = [[NSDateFormatter alloc] init];
-		[dateFormatter setDateFormat:@"dd MMMM yyyy h:mm a"];
+		[dateFormatter setDateFormat:@"EEEE, dd MMMM, h:mm a"];
 			//[dateFormatter setDateFormat:@"EEEE, dd MMMM yyyy h:mm a"]; //This format gives the Day of Week, followed by date and time
 	}
 	StartScreenCustomCell *mycell;
@@ -184,7 +182,7 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
 		} 
 	else if ([aNote.noteType intValue] == 1){
         [mycell.memoText setText:[NSString stringWithFormat:@"%@", aNote.memoText]];
-		[mycell.creationDate setText: [dateFormatter stringFromDate:[aNote.savedAppointment doDate]]];
+		[mycell.creationDate setText:aNote.savedAppointment.doDate];
 	}
     else if ([aNote.noteType intValue] ==2){
         [mycell.memoText setText:[NSString stringWithFormat:@"%@", aNote.memoText]];
@@ -198,7 +196,7 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
 	static NSDateFormatter *dateFormatter = nil;
 	if (dateFormatter == nil) {
 		dateFormatter = [[NSDateFormatter alloc] init];
-		[dateFormatter setDateFormat:@"dd MMMM yyyy h:mm a"];
+		[dateFormatter setDateFormat:@"dd MMMM yyyy  h:mm a"];
 	}
 	StartScreenCustomCell *cell = (StartScreenCustomCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	if (cell == nil) {

@@ -164,7 +164,7 @@
 	}
     ToDo *aTask = [_fetchedResultsController objectAtIndexPath:indexPath];	
     
-    [mycell.creationDate setText: [dateFormatter stringFromDate:[aTask doDate]]];
+    [mycell.creationDate setText:aTask.doDate];
 	 
     [mycell.memoText setText:[NSString stringWithFormat:@"%@", aTask.memoText.memoText]];
 	

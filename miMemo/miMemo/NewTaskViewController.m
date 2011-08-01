@@ -15,7 +15,7 @@
 
 @synthesize managedObjectContext;
 @synthesize datePicker, timePicker;
-@synthesize newMemoText;
+@synthesize newMemoText, newTask;
 @synthesize goActionSheet;
 @synthesize taskToolbar;
 @synthesize dateTextField, timeTextField, textView, newTextInput;
@@ -25,6 +25,10 @@
     [super viewDidLoad];
     /*Setting Up the Views*/
     NSLog(@"In NewTaskViewController");
+
+    newTask = [managedObjectContext insertNewObjectForEntityForName:@"ToDo"];
+
+    
     UIView *myView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 460)];
     [myView setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
     myView.hidden = NO;
@@ -54,17 +58,11 @@
     [dateTextField setPlaceholder:@"Set Task Date"];
     [self.view addSubview:dateTextField];
     
-    timeTextField = [[UITextField alloc] init];
-    [timeTextField setBorderStyle:UITextBorderStyleRoundedRect];
-    [timeTextField setFont:[UIFont systemFontOfSize:15]];
-    [timeTextField setFrame:CGRectMake(160, 20, 145, 31)];
-    [timeTextField setPlaceholder:@"Set Task Time"];
-    [self.view addSubview:timeTextField];
     
     static NSDateFormatter *dateFormatter = nil;
 	if (dateFormatter == nil) {
 		dateFormatter = [[NSDateFormatter alloc] init];
-		[dateFormatter setDateFormat:@"EE, dd MMMM h:mm a"];
+		[dateFormatter setDateFormat:@"EE, dd MMMM"];
     }	
     /*--Done Setting Up the Views--*/
     
@@ -93,12 +91,7 @@
 	datePicker.date = [NSDate date];
     datePicker.timeZone = [NSTimeZone systemTimeZone];
     datePicker.hidden = NO;
-    
-    timePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 245, 320, 215)];
-    [timePicker setDatePickerMode:UIDatePickerModeTime];
-    [self.view addSubview:timePicker];
-    //TODO: Initialize timePicker to 12:00 PM
-    timePicker.hidden = YES;
+
     
     /* Following is for version with Date/Time set with Buttons*/
     //datetimeView.hidden = YES;
@@ -124,11 +117,9 @@
 			[goActionSheet showInView:self.view];            
 			break;
         case 3:
-            [self setTaskTime];
-            break;
-        case 4:
             [self dismissModalViewControllerAnimated:YES];
-            break;     
+            break;
+    
 		default:
 			break;
 	}
@@ -193,20 +184,28 @@
 }
 
 - (void) setTaskDate{
-    taskDate = [datePicker date]; 
-    //FIXME: Only copy the mm/dd/yyyy parts to task date
+    NSDate *tempDate = [datePicker date];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"EEEE dd MM"];
-	NSString * taskDateString = [dateFormatter stringFromDate:taskDate];
+    [dateFormatter setDateFormat:@"EEEE,dd MMMM, yyyy"];
+    taskDate = [dateFormatter stringFromDate:tempDate];
+    newTask.doDate = taskDate;
+    newTask.memoText = newMemoText;
     
-    dateTextField.text = taskDateString;
+    dateTextField.text = taskDate;
+    [dateFormatter release];
+
+    NSError *error;
+	if(![managedObjectContext save:&error]){ 
+        NSLog(@"DID NOT SAVE");
+	}
+    
     
     //TODO: Add a fetchRequest here to get existing Task for the date selected.  display a table with existing Task for that date in the top View. This ideally should happen in sync with the change of datePicker to timePicker. 
     
     if (!swappingViews) {
         [self swapViews];
     }
-    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(navigationAction:)];
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"NEW" style:UIBarButtonItemStyleBordered target:self action:@selector(navigationAction:)];
     [doneButton setTag:3];
     [doneButton setWidth:90];
     NSUInteger newButton = 0;
@@ -223,50 +222,7 @@
     taskToolbar.items = toolbarItems;
 }
 
-- (void) setTaskTime{
-    taskDate = [datePicker date];
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"hh:mm a"];
-	NSString * taskTimeString = [dateFormatter stringFromDate:taskDate];
     
-    timeTextField.text = taskTimeString;
-    
-    /*-- Insert an Task Object into the MOC and set the doDate and memotext values to taskDate and newMemoText. --*/
-    ToDo *newTask = [managedObjectContext insertNewObjectForEntityForName:@"ToDo"];
-	newTask.doDate = taskDate;
-    
-    //FIXME: add: if the text in textView != newMemoText.memoText then change the value of memoText.Text to textView.text
-    
-	newTask.memoText = newMemoText;
-    
-    NSLog(@"new Task text = %@", newTask.memoText.memoText);
-    NSLog(@"new Task due date = %@", newTask.doDate);
-    
-    
-    /*--Save the MOC--*/	
-	NSError *error;
-	if(![managedObjectContext save:&error]){ 
-        NSLog(@"DID NOT SAVE");
-	}
-    
-    UIBarButtonItem *newButton = [[UIBarButtonItem alloc] initWithTitle:@"NEW" style:UIBarButtonItemStyleBordered target:self action:@selector(navigationAction:)];
-    [newButton setTag:4];
-    [newButton setWidth:90];
-    NSUInteger newButtonIndex = 0;
-    NSMutableArray *toolbarItems = [[NSMutableArray arrayWithArray:taskToolbar.items] retain];
-    
-    for (NSUInteger i = 0; i < [toolbarItems count]; i++) {
-        UIBarButtonItem *barButtonItem = [toolbarItems objectAtIndex:i];
-        if (barButtonItem.tag == 3) {
-            newButtonIndex = i;
-            break;
-        }
-    }
-    [toolbarItems replaceObjectAtIndex:newButtonIndex withObject:newButton];
-    taskToolbar.items = toolbarItems;
-    
-}
-
 - (void) swapViews {
 	
 	CATransition *transition = [CATransition animation];
@@ -278,10 +234,7 @@
 	swappingViews = YES;
 	transition.delegate = self;
 	
-	[self.view.layer addAnimation:transition forKey:nil];
-	datePicker.hidden = YES;
-    timePicker.hidden = NO;
-    
+	[self.view.layer addAnimation:transition forKey:nil];    
 	//monthView.hidden = YES;
 	//datetimeView.hidden = NO;	
 }
@@ -294,7 +247,7 @@
     [taskToolbar setTintColor:[UIColor blackColor]];
     UIBarButtonItem *saveAsButton = [[UIBarButtonItem alloc] initWithTitle:@"BACK" style:UIBarButtonItemStyleBordered target:self action:@selector(navigationAction:)];
     [saveAsButton setTag:0];
-    UIBarButtonItem *newButton = [[UIBarButtonItem alloc] initWithTitle:@"Time" style:UIBarButtonItemStyleBordered target:self action:@selector(navigationAction:)];
+    UIBarButtonItem *newButton = [[UIBarButtonItem alloc] initWithTitle:@"DONE" style:UIBarButtonItemStyleBordered target:self action:@selector(navigationAction:)];
     [newButton setTag:1];
     UIBarButtonItem *gotoButton = [[UIBarButtonItem alloc] initWithTitle:@"GO TO.." style:UIBarButtonItemStyleBordered target:self action:@selector(navigationAction:)];
     [gotoButton setTag:2];

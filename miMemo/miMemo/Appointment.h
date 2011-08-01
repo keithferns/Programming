@@ -16,7 +16,8 @@
 }
 @property (nonatomic, retain) NSString * appointmentRE;
 @property (nonatomic, retain) NSNumber * isRecurring;
-@property (nonatomic, retain) NSDate * doDate;
+@property (nonatomic, retain) NSString * doDate;
+@property (nonatomic, retain) NSString * doTime;
 @property (nonatomic, retain) MemoText * memoText;
 
 @end

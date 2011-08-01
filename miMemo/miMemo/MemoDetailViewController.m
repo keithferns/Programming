@@ -32,7 +32,7 @@
     /*Setting Up the Views*/
     self.view.layer.backgroundColor = [UIColor groupTableViewBackgroundColor].CGColor;
     //The Text View
-    textView = [[UITextView alloc] initWithFrame:CGRectMake(10, 45, 300, 160)];
+    textView = [[UITextView alloc] initWithFrame:CGRectMake(10, 80, 300, 100)];
     [self.view addSubview:textView];
     [textView setFont:[UIFont systemFontOfSize:18]];
     textView.layer.backgroundColor = [UIColor whiteColor].CGColor;
@@ -44,11 +44,7 @@
 	[textView becomeFirstResponder];
     [textView setDelegate:self];
     //The Date Label and Date Field
-    static NSDateFormatter *dateFormatter = nil;
-	if (dateFormatter == nil) {
-		dateFormatter = [[NSDateFormatter alloc] init];
-		[dateFormatter setDateFormat:@"EE, dd MMMM h:mm a"];
-        }	
+    
     dateTextField = [[UITextField alloc] init];
 
     [dateTextField setBorderStyle:UITextBorderStyleRoundedRect];
@@ -58,18 +54,34 @@
         [dateTextField setFrame:CGRectMake(12, 20, 293, 31)];    
 		[dateTextField setPlaceholder:@"Add a tag or two"];
         [self.view addSubview:dateTextField];
-
     }
     else if ([selectedMemoText.noteType intValue] == 1){
-        UILabel *dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 23, 90, 21)];
+        UILabel *dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 23, 40, 21)];
         [dateLabel setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
         [dateLabel setFont:[UIFont systemFontOfSize:17]];
         [self.view addSubview:dateLabel];
-        [dateTextField setFrame:CGRectMake(105, 20, 200, 31)];
         
-        [dateLabel setText:@"Scheduled:"];
-        [dateTextField setText: [dateFormatter stringFromDate:[selectedMemoText.savedAppointment doDate]]];
+        [dateTextField setFrame:CGRectMake(60, 20, 200, 31)];
         [self.view addSubview:dateTextField];
+
+        UILabel *timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 55, 40, 21)];
+        [timeLabel setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
+        [timeLabel setFont:[UIFont systemFontOfSize:17]];
+        [self.view addSubview:timeLabel];
+        
+        UITextField *timeTextField = [[UITextField alloc] initWithFrame: CGRectMake(60, 55, 200, 31)];
+        [timeTextField setBorderStyle:UITextBorderStyleRoundedRect];
+        [timeTextField setFont:[UIFont systemFontOfSize:17]];
+        [self.view addSubview:timeTextField];     
+        
+        
+        [dateLabel setText:@"On:"];
+        [dateTextField setText:selectedMemoText.savedAppointment.doDate];
+        [timeLabel setText:@"At:"];
+        [timeTextField setText:selectedMemoText.savedAppointment.doTime];
+        
+        
+        
     }
     /*--End Setting Up the Views--*/
     

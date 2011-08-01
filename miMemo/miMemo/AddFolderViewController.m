@@ -23,7 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"In AddFolderViewController");
+     NSLog(@"In AddFolderViewController");
     /*Setting Up the main view */
     UIView *myView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 460)];
     [myView setBackgroundColor:[UIColor groupTableViewBackgroundColor]];

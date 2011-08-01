@@ -16,19 +16,29 @@
 @synthesize managedObjectContext;
 @synthesize datePicker, timePicker;
 @synthesize newMemoText;
+@synthesize newAppointment;
 @synthesize goActionSheet;
 @synthesize appointmentsToolbar;
 @synthesize dateTextField, timeTextField, textView, newTextInput;
-@synthesize appointmentDate;
+@synthesize appointmentDate, appointmentTime;
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     /*Setting Up the Views*/
     NSLog(@"In NewTaskViewController");
+    
+    newAppointment = [managedObjectContext insertNewObjectForEntityForName:@"Appointment"];
+
+    /*Setting Up the main view */
+    UIView *myView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 460)];
+    [myView setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
+    myView.hidden = NO;
+    self.view = myView;
+    
     [self makeToolbar];
 
-   [self.view addSubview:appointmentsToolbar];
+    [self.view addSubview:appointmentsToolbar];
 
     /*--Adding the Text View */
     self.view.layer.backgroundColor = [UIColor groupTableViewBackgroundColor].CGColor;
@@ -60,12 +70,6 @@
     [timeTextField setPlaceholder:@"Set Appointment Time"];
     [self.view addSubview:timeTextField];
     
-    static NSDateFormatter *dateFormatter = nil;
-	if (dateFormatter == nil) {
-		dateFormatter = [[NSDateFormatter alloc] init];
-		[dateFormatter setDateFormat:@"EE, dd MMMM h:mm a"];
-    }	
-    
     
     /*--Done Setting Up the Views--*/
 
@@ -95,11 +99,6 @@
     [self.view addSubview:timePicker];
     //TODO: Initialize timePicker to 12:00 PM
     timePicker.hidden = YES;
-    
-    /* Following is for version with Date/Time set with Buttons*/
-    //datetimeView.hidden = YES;
-    //[bottomview addSubview:monthView];
-    //[bottomview addSubview:datetimeView];
 }
 
 #pragma mark -
@@ -189,14 +188,15 @@
 }
 
 - (void) setAppointmentDate{
-   appointmentDate = [datePicker date]; 
-    //FIXME: Only copy the mm/dd/yyyy parts to appointment date
+    NSDate *tempDate = [datePicker date];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"EEEE dd MM"];
-	NSString * appointmentDateString = [dateFormatter stringFromDate:appointmentDate];
-    
-    dateTextField.text = appointmentDateString;
+    [dateFormatter setDateFormat:@"EEEE,dd MMMM, yyyy"];
+    appointmentDate = [dateFormatter stringFromDate:tempDate];
+    newAppointment.doDate = appointmentDate;
+    newAppointment.memoText = newMemoText;
 
+    dateTextField.text = appointmentDate;
+    [dateFormatter release];
     //TODO: Add a fetchRequest here to get existing appointments for the date selected.  display a table with existing appointments for that date in the top View. This ideally should happen in sync with the change of datePicker to timePicker. 
 
     if (!swappingViews) {
@@ -220,24 +220,22 @@
 }
 
 - (void) setAppointmentTime{
-    appointmentDate = [datePicker date];
+    
+    NSDate *tempTime = [timePicker date];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"hh:mm a"];
-	NSString * appointmentTimeString = [dateFormatter stringFromDate:appointmentDate];
-    
-    timeTextField.text = appointmentTimeString;
+	appointmentTime = [dateFormatter stringFromDate:tempTime];
+    newAppointment.doTime = appointmentTime;
+    timeTextField.text = appointmentTime;
     
     /*-- Insert an Appointment Object into the MOC and set the doDate and memotext values to appointmentDate and newMemoText. --*/
-    Appointment *newAppointment = [managedObjectContext insertNewObjectForEntityForName:@"Appointment"];
-	newAppointment.doDate = appointmentDate;
+
     
     //FIXME: add: if the text in textView != newMemoText.memoText then change the value of memoText.Text to textView.text
     
-	newAppointment.memoText = newMemoText;
     
     NSLog(@"new appointment text = %@", newAppointment.memoText.memoText);
     NSLog(@"new appointment due date = %@", newAppointment.doDate);
-
 
     /*--Save the MOC--*/	
 	NSError *error;

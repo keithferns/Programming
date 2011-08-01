@@ -27,13 +27,21 @@
 @synthesize newMemoText;
 @synthesize tableViewController;
 
+//TODO: Recognize input numbers as telephone numbers  save to contacts. Obviously, an obvious thing to do, so has to be part of core functionality. 
+//TODO: Related to above. Recognize and Add input names to an appropriate place. 
+//TODO: add LOCATION entity. use as basis for creating categories and Location Folders.
+//TOTHINK: ADD PERSON entity. Key relational entity in the real world. Needs a place here. 
+
+
 #pragma mark -
 
 #pragma mark ViewLifeCycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+     NSLog(@"In RootViewController");
+
+    //Add the tableViewController
     [self.view addSubview:tableViewController.tableView];
 
     if (managedObjectContext == nil) { 
@@ -44,8 +52,9 @@
     [self makeToolbar];
     [self.view addSubview:toolbar];
 
-    //self.view.layer.backgroundColor = [UIColor groupTableViewBackgroundColor].CGColor;
-    //[self.view setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
+    self.view.layer.backgroundColor = [UIColor groupTableViewBackgroundColor].CGColor;
+    [self.view setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
+    
      newText = [[UITextView alloc] initWithFrame:CGRectMake(10, 35, 305, 170)];
      [newText setFont:[UIFont systemFontOfSize:18]];
      newText.layer.backgroundColor = [UIColor groupTableViewBackgroundColor].CGColor;
@@ -168,31 +177,28 @@
 	else if (actionSheet == goActionSheet){
 		switch (buttonIndex){
 			case 4:
-				NSLog(@"Cancel Button Clicked on GoToAction");
 			default:
 				break;
 			case 3:
-				NSLog(@"Tasks Button Clicked on GoToAction");
 			{MyTasksViewController *viewController = [[[MyTasksViewController	alloc] initWithNibName:nil bundle:nil] autorelease];	
 			[self presentModalViewController:viewController animated:YES];}
 				break;
 			case 2:
 				NSLog(@"Appointments Button Clicked on GoToAction");
-			{MyAppointmentsViewController *viewController = [[[MyAppointmentsViewController alloc] initWithNibName:@"MyAppointmentsViewController" bundle:nil] autorelease];	
+			{MyAppointmentsViewController *viewController = [[[MyAppointmentsViewController alloc] initWithNibName:nil bundle:nil] autorelease];	
 				[self presentModalViewController:viewController animated:YES];
                 }
 				break;
 			case 1:
 				NSLog(@" Folders Button Clicked on GoToAction");
-                {MyFoldersViewController *viewController = [[[MyFoldersViewController alloc] initWithNibName:@"MyFoldersViewController" bundle:nil] autorelease];
+                {MyFoldersViewController *viewController = [[[MyFoldersViewController alloc] initWithNibName:nil bundle:nil] autorelease];
                     [self presentModalViewController:viewController animated:YES];}
 				break;		
             case 0:
 				NSLog(@" Memos Button Clicked on GoToAction");
-                MyMemosViewController *viewController = [[[MyMemosViewController alloc] initWithNibName:@"MyMemosViewController" bundle:nil] autorelease];
+                MyMemosViewController *viewController = [[[MyMemosViewController alloc] initWithNibName:nil bundle:nil] autorelease];
                 [self presentModalViewController:viewController animated:YES];
 				break;	    
-        
 		}
 	}
 }
@@ -358,7 +364,6 @@
 	[self presentModalViewController:addViewController animated:YES];	
     [newText setText:@""];
 	[self.view endEditing:YES];
-    
   }
 }
 

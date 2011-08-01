@@ -2,7 +2,7 @@
 //  ToDo.m
 //  miMemo
 //
-//  Created by Keith Fernandes on 7/30/11.
+//  Created by Keith Fernandes on 8/1/11.
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
@@ -13,6 +13,7 @@
 @implementation ToDo
 @dynamic isRecurring;
 @dynamic doDate;
+@dynamic taskName;
 @dynamic memoText;
 
 

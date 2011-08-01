@@ -14,6 +14,7 @@
 @dynamic appointmentRE;
 @dynamic isRecurring;
 @dynamic doDate;
+@dynamic doTime;
 @dynamic memoText;
 
 

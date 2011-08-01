@@ -15,7 +15,8 @@
     
     NSManagedObjectContext *managedObjectContext;
     MemoText *newMemoText;
-    NSDate *appointmentDate;
+    Appointment *newAppointment;
+    NSString *appointmentDate, *appointmentTime;
     BOOL swappingViews;
 	UIDatePicker *datePicker, *timePicker;
     UIActionSheet *goActionSheet;
@@ -23,12 +24,12 @@
     UIToolbar *appointmentsToolbar;
     UITextField *timeTextField, *dateTextField;   
     NSString *newTextInput;
-    //UIView *monthView, *datetimeView;
 }
 
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain) MemoText *newMemoText;
-@property (nonatomic, retain) NSDate *appointmentDate;
+@property (nonatomic, retain) Appointment *newAppointment;
+@property (nonatomic, retain) NSString *appointmentDate, *appointmentTime;
 @property (nonatomic, retain) UIDatePicker *datePicker, *timePicker;
 @property (nonatomic, retain) UIActionSheet *goActionSheet;
 @property (nonatomic, retain) UIToolbar *appointmentsToolbar;
