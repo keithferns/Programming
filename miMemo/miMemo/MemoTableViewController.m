@@ -184,7 +184,7 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
 		} 
 	else if ([aNote.noteType intValue] == 1){
         [mycell.memoText setText:[NSString stringWithFormat:@"%@", aNote.memoText]];
-		[mycell.creationDate setText: [dateFormatter stringFromDate:[aNote.savedAppointment doDate]]];
+		[mycell.creationDate setText: aNote.savedAppointment.doDate];
 	}
     else if ([aNote.noteType intValue] ==2){
         [mycell.memoText setText:[NSString stringWithFormat:@"%@", aNote.memoText]];

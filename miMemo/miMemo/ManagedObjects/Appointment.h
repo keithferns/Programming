@@ -2,7 +2,7 @@
 //  Appointment.h
 //  miMemo
 //
-//  Created by Keith Fernandes on 7/30/11.
+//  Created by Keith Fernandes on 8/3/11.
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
@@ -16,7 +16,9 @@
 }
 @property (nonatomic, retain) NSString * appointmentRE;
 @property (nonatomic, retain) NSNumber * isRecurring;
-@property (nonatomic, retain) NSDate * doDate;
+@property (nonatomic, retain) NSString * doDate;
+@property (nonatomic, retain) NSDate * selectedDate;
+@property (nonatomic, retain) NSString * doTime;
 @property (nonatomic, retain) MemoText * memoText;
 
 @end

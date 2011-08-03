@@ -101,12 +101,12 @@
     
 	[request setEntity:[NSEntityDescription entityForName:@"ToDo" inManagedObjectContext:managedObjectContext]];
     
-	NSSortDescriptor *dateDescriptor = [[NSSortDescriptor alloc] initWithKey:@"doDate" ascending:YES];
-	NSSortDescriptor *timeDescriptor = [[NSSortDescriptor alloc] initWithKey:@"doDate" ascending:NO];// just here to test the sections and row calls
+	NSSortDescriptor *dateDescriptor = [[NSSortDescriptor alloc] initWithKey:@"doDate" ascending:NO];
+	NSSortDescriptor *textDescriptor = [[NSSortDescriptor alloc] initWithKey:@"memoText" ascending:YES];// just here to test the sections and row calls
 	
-	[request setSortDescriptors:[NSArray arrayWithObjects:dateDescriptor,timeDescriptor, nil]];
+	[request setSortDescriptors:[NSArray arrayWithObjects:dateDescriptor,textDescriptor, nil]];
 	[dateDescriptor release];
-	[timeDescriptor release];
+	[textDescriptor release];
     
 	[request setFetchBatchSize:10];
     
@@ -120,9 +120,6 @@
 	
 	return _fetchedResultsController;
 }
-
-
-
 
 #pragma mark - Table view data source
 
@@ -164,7 +161,7 @@
 	}
     ToDo *aTask = [_fetchedResultsController objectAtIndexPath:indexPath];	
     
-    [mycell.creationDate setText: [dateFormatter stringFromDate:[aTask doDate]]];
+    [mycell.creationDate setText:aTask.doDate];
 	 
     [mycell.memoText setText:[NSString stringWithFormat:@"%@", aTask.memoText.memoText]];
 	

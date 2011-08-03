@@ -68,7 +68,7 @@
         [dateTextField setFrame:CGRectMake(105, 20, 200, 31)];
         
         [dateLabel setText:@"Scheduled:"];
-        [dateTextField setText: [dateFormatter stringFromDate:[selectedMemoText.savedAppointment doDate]]];
+        [dateTextField setText:selectedMemoText.savedAppointment.doDate];
         [self.view addSubview:dateTextField];
     }
     /*--End Setting Up the Views--*/

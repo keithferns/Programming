@@ -11,15 +11,10 @@
 #import "StartScreenCustomCell.h"
 #import "MemoDetailViewController.h"
 
-
-
 @implementation MyAppointmentsTableViewController
 
 @synthesize managedObjectContext, tableView;
-
 @synthesize fetchedResultsController = _fetchedResultsController;
-
-
 
 #pragma mark -
 #pragma mark View lifecycle
@@ -27,7 +22,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	[self.view addSubview:tableView];
-    
     
 		//Point the current instance of the managedObjectContext to the main managedObjectContext
 	if (managedObjectContext == nil) { 
@@ -38,9 +32,6 @@
 	NSError *error;
 	if (![[self fetchedResultsController] performFetch:&error]) {
 	}
-	
-
-	
  }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -81,8 +72,8 @@
 		
 	[request setEntity:[NSEntityDescription entityForName:@"Appointment" inManagedObjectContext:managedObjectContext]];
 		
-	NSSortDescriptor *dateDescriptor = [[NSSortDescriptor alloc] initWithKey:@"doDate" ascending:YES];
-	NSSortDescriptor *timeDescriptor = [[NSSortDescriptor alloc] initWithKey:@"doDate" ascending:NO];// just here to test the sections and row calls
+	NSSortDescriptor *dateDescriptor = [[NSSortDescriptor alloc] initWithKey:@"selectedDate" ascending:YES];
+	NSSortDescriptor *timeDescriptor = [[NSSortDescriptor alloc] initWithKey:@"doTime" ascending:NO];
 	
 	[request setSortDescriptors:[NSArray arrayWithObjects:dateDescriptor,timeDescriptor, nil]];
 	[dateDescriptor release];
@@ -91,7 +82,7 @@
 	[request setFetchBatchSize:10];
 		
 	
-	NSFetchedResultsController *newController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:managedObjectContext sectionNameKeyPath:@"doDate" cacheName:@"Root"];
+	NSFetchedResultsController *newController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:managedObjectContext sectionNameKeyPath:@"selectedDate" cacheName:@"Root"];
 		
 	newController.delegate = self;
 	self.fetchedResultsController = newController;
@@ -126,14 +117,6 @@
 }
 
 - (void) configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath{
-	static NSDateFormatter *dateFormatter = nil;
-	if (dateFormatter == nil) {
-		dateFormatter = [[NSDateFormatter alloc] init];
-		[dateFormatter setDateFormat:@"dd MMMM yyyy h:mm a"];
-			//[dateFormatter setDateFormat:@"EEEE, dd MMMM yyyy h:mm a"]; //This format gives the Day of Week, followed by date and time
-
-	}
-	
 	StartScreenCustomCell *mycell;
 	if([cell isKindOfClass:[UITableViewCell class]]){
 	
@@ -141,7 +124,7 @@
 	}
 	 Appointment *aNote = [_fetchedResultsController objectAtIndexPath:indexPath];	
 		
-		[mycell.creationDate setText: [dateFormatter stringFromDate:[aNote doDate]]];
+		[mycell.creationDate setText: [aNote doTime]];
 			//[mycell.memoRE setText:[NSString stringWithFormat:@"%@", aNote.savedAppointment.appointmentRE]];		 
 	 [mycell.memoText setText:[NSString stringWithFormat:@"%@", aNote.memoText.memoText]];
 	
@@ -156,7 +139,7 @@
 	static NSDateFormatter *dateFormatter = nil;
 	if (dateFormatter == nil) {
 		dateFormatter = [[NSDateFormatter alloc] init];
-		[dateFormatter setDateFormat:@"dd MMMM yyyy h:mm a"];
+		[dateFormatter setDateFormat:@"EEEE dd MMMM"];
 	}
 	StartScreenCustomCell *cell = (StartScreenCustomCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	if (cell == nil) {

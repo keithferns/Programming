@@ -14,39 +14,30 @@
 @interface AppointmentsViewController : UIViewController <UIActionSheetDelegate, UITextViewDelegate, UITextFieldDelegate> {
     
     NSManagedObjectContext *managedObjectContext;
-    MemoText *newMemoText;
-    NSDate *appointmentDate;
     BOOL swappingViews;
-	UIDatePicker *datePicker, *timePicker;
+	//UIDatePicker *datePicker;
     UIActionSheet *goActionSheet;
-    UITextView *textView;
+    //UITextView *textView;
     UIToolbar *appointmentsToolbar;
-    UITextField *timeTextField, *dateTextField;   
+    //UITextField *timeTextField, *dateTextField;   
     NSString *newTextInput;
-    //UIView *monthView, *datetimeView;
 }
 
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
-@property (nonatomic, retain) MemoText *newMemoText;
-@property (nonatomic, retain) NSDate *appointmentDate;
-@property (nonatomic, retain) UIDatePicker *datePicker, *timePicker;
+@property (nonatomic, retain) IBOutlet UIDatePicker *datePicker;
 @property (nonatomic, retain) UIActionSheet *goActionSheet;
 @property (nonatomic, retain) UIToolbar *appointmentsToolbar;
 @property (nonatomic, retain) UITextView *textView;
 @property (nonatomic, retain) UITextField *dateTextField, *timeTextField;
 @property (nonatomic, retain) NSString *newTextInput;
-
-//@property (nonatomic, retain) IBOutlet UIView *monthView, *datetimeView;
-
+@property (nonatomic, retain) NSDate *selectedDate;
 - (void) swapViews;
 
 - (void) backAction;
 
 - (void) setAppointmentDate;
-- (void) setAppointmentTime;
 
 - (void) makeToolbar;
 
-//- (IBAction)monthAction:(id)sender;
 
 @end

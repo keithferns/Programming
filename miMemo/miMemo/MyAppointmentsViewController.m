@@ -31,9 +31,31 @@
 	
 	
 }
-- (void) textViewDidEndEditing:(UITextView *)textView{
-		//Change the Done Button to a New button. 
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    return YES;
 }
+
+- (void)didReceiveMemoryWarning {
+    // Releases the view if it doesn't have a superview.
+    [super didReceiveMemoryWarning];
+    NSLog(@"Memory Warning at MyAppointmentsViewController");
+    
+    // Release any cached data, images, etc. that aren't in use.
+}
+
+- (void)viewDidUnload {
+    [super viewDidUnload];
+    // Release any retained subviews of the main view.
+}
+
+- (void)dealloc {
+    [super dealloc];
+    [saveActionSheet release];
+    [goActionSheet release];
+    [toolbar release];
+}
+
 
 
 #pragma mark -
@@ -141,29 +163,6 @@
 	}
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    return YES;
-}
-
-- (void)didReceiveMemoryWarning {
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc. that aren't in use.
-}
-
-- (void)viewDidUnload {
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-}
-
-- (void)dealloc {
-    [super dealloc];
-	[tableViewController release];
-    [saveActionSheet release];
-    [goActionSheet release];
-    [toolbar release];
-}
 
 
 @end

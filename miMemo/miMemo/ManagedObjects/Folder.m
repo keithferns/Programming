@@ -2,7 +2,7 @@
 //  Folder.m
 //  miMemo
 //
-//  Created by Keith Fernandes on 7/30/11.
+//  Created by Keith Fernandes on 8/3/11.
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
@@ -13,9 +13,9 @@
 
 
 @implementation Folder
+@dynamic creationDate;
 @dynamic folderKeyWord;
 @dynamic folderName;
-@dynamic creationDate;
 @dynamic containsFile;
 @dynamic folderTag;
 @dynamic containsMemo;
