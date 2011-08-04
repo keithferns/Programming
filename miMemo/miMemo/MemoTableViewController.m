@@ -92,9 +92,12 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
     [super viewDidDisappear:animated];
 }
 */
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    return YES;
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    // Return YES for supported orientations
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+
 #pragma mark -
 #pragma mark Fetched results controller
 

@@ -11,9 +11,12 @@
 #import "MemoText.h"
 
 
-@interface AppointmentsViewController : UIViewController <UIActionSheetDelegate, UITextViewDelegate, UITextFieldDelegate> {
+@interface AppointmentsViewController : UIViewController <UIActionSheetDelegate, UITextViewDelegate, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate> {
     
-    NSManagedObjectContext *managedObjectContext;
+    NSManagedObjectContext *managedObjectContext, *managedObjectContextTV;
+	NSFetchedResultsController *_fetchedResultsController;
+//    Appointment *newAppointment;
+	UITableView *tableView;	
     BOOL swappingViews;
 	//UIDatePicker *datePicker;
     UIActionSheet *goActionSheet;
@@ -23,7 +26,10 @@
     NSString *newTextInput;
 }
 
-@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext, *managedObjectContextTV;
+@property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
+@property (nonatomic, retain) UITableView *tableView;
+//@property (nonatomic, retain) Appointment *newAppointment;
 @property (nonatomic, retain) IBOutlet UIDatePicker *datePicker;
 @property (nonatomic, retain) UIActionSheet *goActionSheet;
 @property (nonatomic, retain) UIToolbar *appointmentsToolbar;
@@ -31,6 +37,8 @@
 @property (nonatomic, retain) UITextField *dateTextField, *timeTextField;
 @property (nonatomic, retain) NSString *newTextInput;
 @property (nonatomic, retain) NSDate *selectedDate;
+@property (nonatomic, retain) UILabel *tableLabel;
+
 - (void) swapViews;
 
 - (void) backAction;
@@ -39,5 +47,11 @@
 
 - (void) makeToolbar;
 
+- (IBAction)datePickerChanged:(id)sender;
+
+- (NSFetchedResultsController *) fetchedResultsControllerWithPredicate:(NSPredicate *)aPredicate; 
 
 @end
+
+
+
