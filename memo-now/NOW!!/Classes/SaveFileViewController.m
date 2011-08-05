@@ -55,8 +55,8 @@
         managedObjectContext = [(NOW__AppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext]; 
         NSLog(@"After managedObjectContext: %@",  managedObjectContext);
 	}
-	[self fetchFolderRecords];	
-	[self fetchMemoRecords];
+	//[self fetchFolderRecords];	
+	//[self fetchMemoRecords];
 
 }
 

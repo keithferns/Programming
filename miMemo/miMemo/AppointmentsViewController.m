@@ -277,15 +277,13 @@
 	//datetimeView.hidden = NO;	
 }
 
-
-
 #pragma mark -
 #pragma mark Fetched results controller
 
 - (NSFetchedResultsController *) fetchedResultsControllerWithPredicate:(NSPredicate *)aPredicate {
 
 	NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    [request setEntity:[NSEntityDescription entityForName:@"Appointment" inManagedObjectContext:managedObjectContext]];
+    [request setEntity:[NSEntityDescription entityForName:@"Appointment" inManagedObjectContext:managedObjectContextTV]];
     [request setFetchBatchSize:10];
     
     [request setPredicate:aPredicate];
@@ -298,7 +296,7 @@
     if (aPredicate) {
         cacheName = nil;
     }
-    NSFetchedResultsController *newController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:managedObjectContext sectionNameKeyPath:nil cacheName:cacheName];
+    NSFetchedResultsController *newController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:managedObjectContextTV sectionNameKeyPath:nil cacheName:cacheName];
     
     newController.delegate = self;
     NSError *anyError = nil;
@@ -321,10 +319,8 @@
     if (![_fetchedResultsController performFetch:&error]){
         NSLog(@"Error Fetching:%@", error);
     }
-	
 	return _fetchedResultsController;
 }
-
 
 #pragma mark -
 #pragma mark Table view data source

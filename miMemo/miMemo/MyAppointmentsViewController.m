@@ -99,9 +99,7 @@
 								  destructiveButtonTitle:nil otherButtonTitles:@"Memos, Files and Folders", @"Appointments", @"Tasks", nil];
 			
 			[goActionSheet showInView:self.view];
-			
-			[goActionSheet release];
-			
+						
 			NSLog(@"The Go To Action was Shown");
 			break;
 		case 1:
@@ -116,7 +114,6 @@
 			
 			[saveActionSheet showInView:self.view];
 			
-			[saveActionSheet release]; 
 			
 			break;
 		default:

@@ -7,6 +7,11 @@
 //
 
 #import "MyFoldersViewController.h"
+#import "miMemoAppDelegate.h"
+#import "MemoDetailViewController.h"
+#import "FolderCell.h"
+
+
 #import "MyTasksViewController.h"
 #import "MyAppointmentsViewController.h"
 
@@ -14,18 +19,38 @@
 
 @synthesize toolbar;
 @synthesize saveActionSheet, goActionSheet;
-@synthesize tableViewController;
+@synthesize searchBar;
+@synthesize managedObjectContext, tableView;
+@synthesize fetchedResultsController = _fetchedResultsController;
 
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
+    [super viewDidLoad];    
+    tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 245, 320, 215) style:UITableViewStylePlain];
+    //tableView.tableHeaderView.frame.size.height 
+    [self.view addSubview:tableView];
     
-    [self.view addSubview:tableViewController.tableView];
+    searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+    [tableView setDelegate:self];
+    [tableView setDataSource:self];
+    searchBar.delegate = self;
+    
+    [self.tableView addSubview:searchBar];
+    [searchBar setShowsCancelButton:YES];
+    tableView.tableHeaderView = searchBar;
+	searchBar.autocorrectionType = UITextAutocorrectionTypeNo;
     
     [self makeToolbar];
-    [self.view addSubview:toolbar];    
+    [self.view addSubview:toolbar];  
+    if (managedObjectContext == nil) { 
+		managedObjectContext = [(miMemoAppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext]; 
+        NSLog(@"After managedObjectContext: %@",  managedObjectContext);
+	}
+	NSError *error;
+	if (![[self fetchedResultsController] performFetch:&error]) {
+	}
 }
 
 - (void)viewDidUnload
@@ -33,6 +58,8 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+    self.fetchedResultsController.delegate = nil;
+	self.fetchedResultsController = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -47,6 +74,9 @@
     [toolbar release];
     [saveActionSheet release];
     [goActionSheet release];
+    [tableView release];
+    [_fetchedResultsController release];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -58,6 +88,175 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+- (void) searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+    CGRect mytestFrame = CGRectMake(0, 0, 320, 205);
+    [tableView setFrame:mytestFrame];
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{    
+    NSString * searchString = self.searchBar.text;
+    NSLog(@"Search String is %@", searchString);
+    
+    NSPredicate *searchPredicate = [NSPredicate predicateWithFormat: @"folderName CONTAINS[c] %@", searchString];
+    
+    self.fetchedResultsController = [self fetchedResultsControllerWithPredicate:searchPredicate];
+    
+ 	NSError *error;
+	if (![[self fetchedResultsController] performFetch:&error]) {
+	}
+    [self.tableView reloadData];
+    
+}
+
+#pragma mark - Fetched Results Controller
+
+- (NSFetchedResultsController *) fetchedResultsControllerWithPredicate: (NSPredicate *) aPredicate{
+    
+	NSFetchRequest *request = [[NSFetchRequest alloc] init];
+	[request setEntity:[NSEntityDescription entityForName:@"Folder" inManagedObjectContext:managedObjectContext]];
+    [request setFetchBatchSize:10];
+    [request setPredicate:aPredicate];
+    
+	NSSortDescriptor *nameDescriptor = [[NSSortDescriptor alloc] initWithKey:@"folderName" ascending:YES];
+	[request setSortDescriptors:[NSArray arrayWithObjects:nameDescriptor, nil]];
+	[nameDescriptor release];
+    
+    NSString *cacheName = @"Root";
+    if (aPredicate) {
+        cacheName = nil;
+    }
+	NSFetchedResultsController *newController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:managedObjectContext sectionNameKeyPath:nil cacheName:cacheName];
+	newController.delegate = self;
+    NSError *anyError = nil;
+    if (![newController performFetch:&anyError]){
+        NSLog(@"Error Fetching:%@", anyError);
+    }
+	self.fetchedResultsController = newController;
+	[newController release];
+	[request release];
+	return _fetchedResultsController;
+}
+
+- (NSFetchedResultsController *) fetchedResultsController {
+    if(_fetchedResultsController != nil){
+        return _fetchedResultsController;
+    }
+    self.fetchedResultsController = [self fetchedResultsControllerWithPredicate:nil];
+    NSError *error = nil;
+    if (![_fetchedResultsController performFetch:&error]){
+        NSLog(@"Error Fetching:%@", error);
+    }	
+	return _fetchedResultsController;
+}
+
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+	//return [[_fetchedResultsController sections] count];
+    return 1;
+}
+/*
+- (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+	//id<NSFetchedResultsSectionInfo>  sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
+	
+	//return [sectionInfo name];
+    return @"My Folders";
+}
+*/
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    // Return the number of rows in the section	
+    id <NSFetchedResultsSectionInfo> sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
+    return [sectionInfo numberOfObjects];
+    //return 1;
+}
+
+
+- (void) configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath{
+	
+	FolderCell *mycell;
+	if([cell isKindOfClass:[UITableViewCell class]]){
+        
+		mycell = (FolderCell *) cell;
+	}
+    Folder *aFolder = [_fetchedResultsController objectAtIndexPath:indexPath];	
+        
+    [mycell.folderName setText:aFolder.folderName];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    static NSString *CellIdentifier = @"FolderCell";
+
+	FolderCell *cell = (FolderCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	if (cell == nil) {
+		NSArray *topLevelObjects = [[NSBundle mainBundle]
+									loadNibNamed:@"FolderCell"
+									owner:nil options:nil];
+		
+		for (id currentObject in topLevelObjects){
+			if([currentObject isKindOfClass:[UITableViewCell class]]){
+				cell = (FolderCell *) currentObject;
+				break;
+			}
+		}
+	}
+	[self configureCell:cell atIndexPath:indexPath];
+    return cell;
+}
+
+/*
+ // Override to support conditional editing of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ // Return NO if you do not want the specified item to be editable.
+ return YES;
+ }
+ */
+
+/*
+ // Override to support editing the table view.
+ - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ if (editingStyle == UITableViewCellEditingStyleDelete) {
+ // Delete the row from the data source
+ [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+ }   
+ else if (editingStyle == UITableViewCellEditingStyleInsert) {
+ // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+ }   
+ }
+ */
+
+/*
+ // Override to support rearranging the table view.
+ - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+ {
+ }
+ */
+
+/*
+ // Override to support conditional rearranging of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ // Return NO if you do not want the item to be re-orderable.
+ return YES;
+ }
+ */
+
+#pragma mark - Table view delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Navigation logic may go here. Create and push another view controller.
+    /*
+     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
+     // ...
+     // Pass the selected object to the new view controller.
+     [self.navigationController pushViewController:detailViewController animated:YES];
+     [detailViewController release];
+     */
+}
 
 #pragma -
 #pragma Navigation Controls and Actions
@@ -65,7 +264,7 @@
 - (void) makeToolbar{
     /*Setting up the Toolbar */
     CGRect buttonBarFrame = CGRectMake(0, 210, 320, 40);
-    toolbar = [[[UIToolbar alloc] initWithFrame:buttonBarFrame] autorelease];
+    toolbar = [[UIToolbar alloc] initWithFrame:buttonBarFrame];
     [toolbar setBarStyle:UIBarStyleBlackTranslucent];
     [toolbar setTintColor:[UIColor blackColor]];
     UIBarButtonItem *saveAsButton = [[UIBarButtonItem alloc] initWithTitle:@"SAVE AS" style:UIBarButtonItemStyleBordered target:self action:@selector(navigationAction:)];
@@ -90,7 +289,6 @@
     /*--End Setting up the Toolbar */
 }
 
-
 -(IBAction) navigationAction:(id)sender{
 	switch ([sender tag]) {
 		case 2:
@@ -100,7 +298,6 @@
 			
 			[goActionSheet showInView:self.view];
 			
-			[goActionSheet release];
 			
 			NSLog(@"The Go To Action was Shown");
 			break;
@@ -113,17 +310,12 @@
 			saveActionSheet = [[UIActionSheet alloc] 
                                initWithTitle:@"What do you want to do with this Memo?" delegate:self
                                cancelButtonTitle:@"Later" destructiveButtonTitle:nil otherButtonTitles:@"Name, Tag and Save", @"Append to Existing File", @"Appointment or Task Reminder", nil];
-			
-			[saveActionSheet showInView:self.view];
-			
-			[saveActionSheet release]; 
-			
+			[saveActionSheet showInView:self.view];			
 			break;
 		default:
 			break;
 	}
 }
-
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
 	if (actionSheet	== saveActionSheet){
 		switch (buttonIndex) {
@@ -152,7 +344,6 @@
 				break;
 			case 2:
 				NSLog(@"Task Button Clicked on WallAlert");
-                
 				break;
 			case 1:
 				NSLog(@"Appointments Button Clicked on WallAlert");
