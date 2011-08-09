@@ -40,9 +40,7 @@
     [super viewDidLoad];
     NSLog(@"In RootViewController");
     
-    //Add the tableViewController
-    [self.view addSubview:tableViewController.tableView];
-    
+   
     if (managedObjectContext == nil) { 
 		managedObjectContext = [(miMemoAppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext]; 
         NSLog(@"In RootViewController");
@@ -75,11 +73,14 @@
      selector:@selector(handleDidSaveNotification:)
      name:NSManagedObjectContextObjectsDidChangeNotification 
      object:nil];*/
-    [self.view addSubview:tableViewController.tableView];
+}
+
+- (void) viewDidAppear:(BOOL)animated{
+
 }
 
 - (void) textViewDidBeginEditing:(UITextView *)textView{
-    /*--Add the DONE button to the textView once editing begins.--*/
+    /*--Add the DONE button to the textView once editing begins or resumes--*/
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(navigationAction:)];
     [doneButton setTag:1];
     [doneButton setWidth:90];

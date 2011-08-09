@@ -13,8 +13,6 @@
 @interface MyAppointmentsViewController : UIViewController <UIActionSheetDelegate> {
 
 	UITableViewController *tableViewController;
-	UIActionSheet *goActionSheet, *saveActionSheet;
-    UIToolbar *toolbar;
 
 }
 

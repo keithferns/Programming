@@ -18,7 +18,6 @@
 		531AE55513DF18B700D9B616 /* FolderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 531AE54C13DF18B700D9B616 /* FolderCell.m */; };
 		531AE55613DF18B700D9B616 /* FolderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 531AE54D13DF18B700D9B616 /* FolderCell.xib */; };
 		531AE55713DF18B700D9B616 /* lined_paper_320x200.png in Resources */ = {isa = PBXBuildFile; fileRef = 531AE54E13DF18B700D9B616 /* lined_paper_320x200.png */; };
-		531AE55813DF18B700D9B616 /* Lined_Paper_Template_by_alchemsitlover21.png in Resources */ = {isa = PBXBuildFile; fileRef = 531AE54F13DF18B700D9B616 /* Lined_Paper_Template_by_alchemsitlover21.png */; };
 		531AE55913DF18B700D9B616 /* StartScreenCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 531AE55113DF18B700D9B616 /* StartScreenCustomCell.m */; };
 		531AE55A13DF18B700D9B616 /* StartScreenCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 531AE55213DF18B700D9B616 /* StartScreenCustomCell.xib */; };
 		531AE55C13DF1D0800D9B616 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 531AE55B13DF1D0800D9B616 /* QuartzCore.framework */; };
@@ -96,7 +95,6 @@
 		531AE54C13DF18B700D9B616 /* FolderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FolderCell.m; sourceTree = "<group>"; };
 		531AE54D13DF18B700D9B616 /* FolderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FolderCell.xib; sourceTree = "<group>"; };
 		531AE54E13DF18B700D9B616 /* lined_paper_320x200.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lined_paper_320x200.png; sourceTree = "<group>"; };
-		531AE54F13DF18B700D9B616 /* Lined_Paper_Template_by_alchemsitlover21.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Lined_Paper_Template_by_alchemsitlover21.png; sourceTree = "<group>"; };
 		531AE55013DF18B700D9B616 /* StartScreenCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartScreenCustomCell.h; sourceTree = "<group>"; };
 		531AE55113DF18B700D9B616 /* StartScreenCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartScreenCustomCell.m; sourceTree = "<group>"; };
 		531AE55213DF18B700D9B616 /* StartScreenCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StartScreenCustomCell.xib; sourceTree = "<group>"; };
@@ -256,14 +254,13 @@
 		531AE54713DF187400D9B616 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				531AE54E13DF18B700D9B616 /* lined_paper_320x200.png */,
 				531AE54813DF18B700D9B616 /* FileCustomCell.h */,
 				531AE54913DF18B700D9B616 /* FileCustomCell.m */,
 				531AE54A13DF18B700D9B616 /* FileCustomCell.xib */,
 				531AE54B13DF18B700D9B616 /* FolderCell.h */,
 				531AE54C13DF18B700D9B616 /* FolderCell.m */,
 				531AE54D13DF18B700D9B616 /* FolderCell.xib */,
-				531AE54E13DF18B700D9B616 /* lined_paper_320x200.png */,
-				531AE54F13DF18B700D9B616 /* Lined_Paper_Template_by_alchemsitlover21.png */,
 				531AE55013DF18B700D9B616 /* StartScreenCustomCell.h */,
 				531AE55113DF18B700D9B616 /* StartScreenCustomCell.m */,
 				531AE55213DF18B700D9B616 /* StartScreenCustomCell.xib */,
@@ -295,6 +292,15 @@
 			name = MyTasks;
 			sourceTree = "<group>";
 		};
+		53A7442413EDCF4200B2D5DB /* ApplicationDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				53FAD10113DDEA3100FB168C /* miMemoAppDelegate.h */,
+				53FAD10213DDEA3100FB168C /* miMemoAppDelegate.m */,
+			);
+			name = ApplicationDelegate;
+			sourceTree = "<group>";
+		};
 		53E19BD213E0D5CA004BC4E5 /* MyFolders */ = {
 			isa = PBXGroup;
 			children = (
@@ -320,6 +326,8 @@
 		53E62FC213E9332A000DEF2A /* ManagedObject */ = {
 			isa = PBXGroup;
 			children = (
+				531AE52613DF142E00D9B616 /* NSManagedObjectContext-insert.h */,
+				531AE52713DF142E00D9B616 /* NSManagedObjectContext-insert.m */,
 				53E62FD513E9341D000DEF2A /* ToDo.h */,
 				53E62FD613E9341D000DEF2A /* ToDo.m */,
 				53E62FD213E9341D000DEF2A /* MemoText.h */,
@@ -379,13 +387,10 @@
 				531AE52E13DF163300D9B616 /* MemoDetail */,
 				531AE52013DF113A00D9B616 /* MemoTableViewController.h */,
 				531AE52113DF113A00D9B616 /* MemoTableViewController.m */,
-				531AE52613DF142E00D9B616 /* NSManagedObjectContext-insert.h */,
-				531AE52713DF142E00D9B616 /* NSManagedObjectContext-insert.m */,
 				531AE51813DF0FB300D9B616 /* RootViewController.h */,
 				531AE51913DF0FB300D9B616 /* RootViewController.m */,
 				531AE51A13DF0FB300D9B616 /* RootViewController.xib */,
-				53FAD10113DDEA3100FB168C /* miMemoAppDelegate.h */,
-				53FAD10213DDEA3100FB168C /* miMemoAppDelegate.m */,
+				53A7442413EDCF4200B2D5DB /* ApplicationDelegate */,
 				53FAD10413DDEA3100FB168C /* MainWindow.xib */,
 				53FAD10713DDEA3100FB168C /* miMemo.xcdatamodeld */,
 				53FAD0F913DDEA3100FB168C /* Supporting Files */,
@@ -500,7 +505,6 @@
 				531AE55413DF18B700D9B616 /* FileCustomCell.xib in Resources */,
 				531AE55613DF18B700D9B616 /* FolderCell.xib in Resources */,
 				531AE55713DF18B700D9B616 /* lined_paper_320x200.png in Resources */,
-				531AE55813DF18B700D9B616 /* Lined_Paper_Template_by_alchemsitlover21.png in Resources */,
 				531AE55A13DF18B700D9B616 /* StartScreenCustomCell.xib in Resources */,
 				531AE55E13DF1EF100D9B616 /* MemoDetailView.xib in Resources */,
 				531AE56213DF206000D9B616 /* bluebutton.png in Resources */,

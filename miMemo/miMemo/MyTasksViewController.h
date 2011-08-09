@@ -13,8 +13,6 @@
 
 @interface MyTasksViewController : UIViewController <UITextViewDelegate, UIActionSheetDelegate> {
     
-	UIActionSheet *goActionSheet, *saveActionSheet;
-    UIToolbar *toolbar;
     UITableViewController *tableViewController;
 }
 

@@ -51,37 +51,46 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
             selector:@selector(handleDidSaveNotification:)
             name:NSManagedObjectContextDidSaveNotification 
             object:nil];
+    /*configure tableView, set its properties and add it to the main view.*/
+    
     tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 250, 320, 210) style:UITableViewStylePlain];
     [tableView setSectionFooterHeight:0.0];
     [tableView setSectionHeaderHeight:20.0];
     [tableView setRowHeight:50.0];
-    
     [tableView setDelegate:self];
     [tableView setDataSource:self];
-    
     [self.view addSubview:tableView];
+
     
-    //Point current instance of the MOC to the main managedObjectContext
+    /*-- Point current instance of the MOC to the main managedObjectContext --*/
 	if (managedObjectContext == nil) { 
 		managedObjectContext = [(miMemoAppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext]; 
         NSLog(@"After managedObjectContext: %@",  managedObjectContext);
         NSLog(@"In MemoTableViewController");
 	}
+    
+    /* call method to perform the fetch */
 	NSError *error;
 	if (![[self fetchedResultsController] performFetch:&error]) {
 	}
+    
+    /* NOTICATION */
+    
 	[[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(managedObjectContextSaved:) name:managedObjectContextSavedNotification object:nil];
+    
+
  }
 
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
     //[self.tableView reloadData];  //See managedObjectContextSaved method above.
 }
-/*
+
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+
 }
-*/
+
 /*
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
@@ -191,10 +200,8 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
 	}
     else if ([aNote.noteType intValue] ==2){
         [mycell.memoText setText:[NSString stringWithFormat:@"%@", aNote.memoText]];
-		[mycell.creationDate setText: [dateFormatter stringFromDate:[aNote.savedTask doDate]]];
+		[mycell.creationDate setText: aNote.savedTask.doDate];
 	}
-
-
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"StartScreenCustomCell";

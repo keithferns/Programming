@@ -1,7 +1,5 @@
-    //
 //  MemoDetailViewController.m
 //  Memo
-//
 //  Created by Keith Fernandes on 7/2/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
@@ -18,9 +16,6 @@
 @synthesize toolbar;
 @synthesize textView, dateTextField;
 
-//FIXME: This is only configured to show the details of a Memo and not an Appointment. The text appears correctly for Appointment selection but the date does not appear.
-//FIXME: the appointmentTime variable of the Appointment is not being called properly. Cannot read the appointment time off the object instance. 
-//TODO: Put the creationDate as a ivar of the MemoText. This seems logical as the memoText is the base of the rest. THEN add a general "doDate" to all the entities. Copy the value of creationDate to the doDate as default. For an appointment or Task the doDate will be eventually be the scheduled or due date. For memos, the doDate will eventually be the time the memo was last edited. 
 
 #pragma mark ViewLifeCycle
 
@@ -43,6 +38,7 @@
     [self.view addSubview:textView];
 	[textView becomeFirstResponder];
     [textView setDelegate:self];
+    
     //The Date Label and Date Field
     static NSDateFormatter *dateFormatter = nil;
 	if (dateFormatter == nil) {
@@ -70,6 +66,18 @@
         [dateLabel setText:@"Scheduled:"];
         [dateTextField setText:selectedMemoText.savedAppointment.doDate];
         [self.view addSubview:dateTextField];
+    }
+    else{
+        UILabel *dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 23, 90, 21)];
+        [dateLabel setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
+        [dateLabel setFont:[UIFont systemFontOfSize:17]];
+        [self.view addSubview:dateLabel];
+        [dateTextField setFrame:CGRectMake(105, 20, 200, 31)];
+        
+        [dateLabel setText:@"Due:"];
+        [dateTextField setText:selectedMemoText.savedTask.doDate];
+        [self.view addSubview:dateTextField];
+        
     }
     /*--End Setting Up the Views--*/
     
@@ -176,7 +184,6 @@ NSLog(@"Try to change New botton to Done");
             break;
             }
         }
-    
     [toolbarItems replaceObjectAtIndex:newButton withObject:doneButton];
     toolbar.items = toolbarItems;
 }

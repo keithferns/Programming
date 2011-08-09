@@ -11,17 +11,15 @@
 #import "Memo.h"
 #import "MemoText.h"
 #import "Appointment.h"
+#import "ToDo.h"
 
 
 
 @interface MemoDetailViewController : UIViewController <UITextViewDelegate, UIActionSheetDelegate, UITextFieldDelegate> {
 
-	UITextField *dateTextField; 
 	NSManagedObjectContext *managedObjectContext;
 	MemoText *selectedMemoText;
 	UITextView *textView;
-    UIActionSheet *goActionSheet, *saveActionSheet;
-    UIToolbar *toolbar;
 }
 @property (nonatomic, retain) MemoText *selectedMemoText;
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;

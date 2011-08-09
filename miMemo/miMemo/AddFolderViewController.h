@@ -15,7 +15,6 @@
     
         NSManagedObjectContext *managedObjectContext, *managedObjectContextTV;
         BOOL swappingViews;
-        UIActionSheet *goActionSheet;
         NSString *newTextInput;
         NSFetchedResultsController *_fetchedResultsController;
 

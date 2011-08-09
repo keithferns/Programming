@@ -12,9 +12,6 @@
 
 @interface MyFoldersViewController : UIViewController <UITextViewDelegate, UIActionSheetDelegate, NSFetchedResultsControllerDelegate, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate> {
     
-	UIActionSheet *goActionSheet, *saveActionSheet;
-    UIToolbar *toolbar;
-    UISearchBar *searchBar;
     NSManagedObjectContext *managedObjectContext;
 	NSFetchedResultsController *_fetchedResultsController;
 }

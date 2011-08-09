@@ -15,21 +15,15 @@
     
     NSManagedObjectContext *managedObjectContext, *managedObjectContextTV;
 	NSFetchedResultsController *_fetchedResultsController;
-//    Appointment *newAppointment;
 	UITableView *tableView;	
     BOOL swappingViews;
-	//UIDatePicker *datePicker;
-    UIActionSheet *goActionSheet;
-    //UITextView *textView;
     UIToolbar *appointmentsToolbar;
-    //UITextField *timeTextField, *dateTextField;   
     NSString *newTextInput;
 }
 
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext, *managedObjectContextTV;
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, retain) UITableView *tableView;
-//@property (nonatomic, retain) Appointment *newAppointment;
 @property (nonatomic, retain) IBOutlet UIDatePicker *datePicker;
 @property (nonatomic, retain) UIActionSheet *goActionSheet;
 @property (nonatomic, retain) UIToolbar *appointmentsToolbar;

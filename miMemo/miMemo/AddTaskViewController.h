@@ -15,20 +15,14 @@
 @interface AddTaskViewController : UIViewController  <UIActionSheetDelegate, UITextViewDelegate, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate> {
     
     NSManagedObjectContext *managedObjectContext, *managedObjectContextTV;
-    MemoText *newMemoText;
-    ToDo *newTask;
     NSString *taskDate;
     BOOL swappingViews;
 	//UIDatePicker *datePicker;
-    UIActionSheet *goActionSheet;
-    UITextView *textView;
     UIToolbar *taskToolbar;
-    UITextField *timeTextField, *dateTextField;   
     NSString *newTextInput;
     NSMutableArray *memoArray;
     //NSFetchedResultsController *_fetchedResultsController;
     UITableView *tableView;
-    NSDate *selectedDate;
     
     //UIView *monthView, *datetimeView;
 }

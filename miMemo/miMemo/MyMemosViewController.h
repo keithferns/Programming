@@ -12,8 +12,6 @@
     
 @interface MyMemosViewController : UIViewController <UIActionSheetDelegate> {
         
-        UIActionSheet *goActionSheet, *saveActionSheet;
-        UIToolbar *toolbar;
         UITableViewController *tableViewController;
     }
     

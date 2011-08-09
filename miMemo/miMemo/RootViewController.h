@@ -18,9 +18,6 @@
 	UITextView *newText;
     NSString *previousTextInput;
     //MemoTableViewController *tableViewController;
-    UIActionSheet *goActionSheet, *saveActionSheet;
-    UIToolbar *toolbar;
-    MemoText *newMemoText;
 }
 
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
