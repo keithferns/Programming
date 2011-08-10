@@ -8,7 +8,7 @@
 
 #import "MyFoldersViewController.h"
 #import "miMemoAppDelegate.h"
-#import "MemoDetailViewController.h"
+#import "FolderFilesViewController.h"
 #import "FolderCell.h"
 
 
@@ -24,6 +24,9 @@
 @synthesize fetchedResultsController = _fetchedResultsController;
 
 #pragma mark - View lifecycle
+
+//FIXME: Add ability to change/edit the name of a folder. 
+
 
 - (void)viewDidLoad
 {
@@ -171,7 +174,6 @@
     //return 1;
 }
 
-
 - (void) configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath{
 	
 	FolderCell *mycell;
@@ -248,14 +250,20 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
+    Folder *selectedFolder = [_fetchedResultsController objectAtIndexPath:indexPath];
+    //  Create another view controller.
+    
+    FolderFilesViewController *detailViewController = [[FolderFilesViewController alloc] initWithNibName:@"FolderFilesViewController" bundle:[NSBundle mainBundle]];
+    
+    NSLog(@"the selectedFolderis %@", selectedFolder);
+    // Pass the selected object to the new view controller.
+
+    detailViewController.folder = selectedFolder;
+    
+    //Present the new viewController
+    [self presentModalViewController:detailViewController animated:YES];
+    [detailViewController release];
+
 }
 
 #pragma -

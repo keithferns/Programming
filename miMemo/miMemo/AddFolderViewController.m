@@ -20,7 +20,7 @@
 @synthesize goActionSheet;
 @synthesize toolbar;
 @synthesize folderTextField, fileTextField, tagTextField, textView, newTextInput;
-@synthesize tableView;
+@synthesize tableView, searchBar;
 @synthesize fetchedResultsController = _fetchedResultsController;
 
 - (void)viewDidLoad {
@@ -33,6 +33,7 @@
     self.view = myView;
     */
      
+    
     [self makeToolbar];
     [self.view addSubview:toolbar];
     [tableView setDelegate:self];
@@ -61,18 +62,36 @@
     [folderTextField setPlaceholder:@"Folder"];
     [self.view addSubview:folderTextField];
     
+    
+    tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 245, 320, 215) style:UITableViewStylePlain];
+    //tableView.tableHeaderView.frame.size.height 
+    [self.view addSubview:tableView];
+    
+    searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+    [tableView setDelegate:self];
+    [tableView setDataSource:self];
+    searchBar.delegate = self;
+    
+    [self.tableView addSubview:searchBar];
+    [searchBar setShowsCancelButton:YES];
+    tableView.tableHeaderView = searchBar;
+	searchBar.autocorrectionType = UITextAutocorrectionTypeNo;
+
+    
     //TODO: add textField for Tags    
     
     /*--Done Setting Up the Views--*/
     
     /*-- Initializing the managedObjectContext--*/
+    
 	if (managedObjectContextTV == nil) { 
 		managedObjectContextTV = [(miMemoAppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext]; 
         NSLog(@"After managedObjectContext: %@",  managedObjectContextTV);
     }
-    
     /*--Done Initializing the managedObjectContext--*/
 
+    
+    
     newMemoText = [managedObjectContext insertNewObjectForEntityForName:@"MemoText"];
     [newMemoText setMemoText:newTextInput];
     [newMemoText setCreationDate:[NSDate date]]; 
@@ -92,13 +111,17 @@
      newFile.savedIn = newFolder;
      */
     
-
     
     NSError *error;
 	if(![managedObjectContext save:&error]){ 
         NSLog(@"DID NOT SAVE");
 	}
-    swappingViews = NO;        
+    swappingViews = NO;     
+    isSelected = NO;
+    NSError *fetcherror;
+	if (![[self fetchedResultsController] performFetch:&fetcherror]) {
+	}
+    
 }
 
 -(void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)flag
@@ -131,83 +154,108 @@
     [folderTextField release];
     [tagTextField release];
     [textView release];
+    [searchBar release];
 }
 
+- (void) searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+    CGRect mytestFrame = CGRectMake(15, 55, 290, 140);
+    [tableView setFrame:mytestFrame];
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{    
+    NSString * searchString = self.searchBar.text;
+    NSLog(@"Search String is %@", searchString);
+    
+    NSPredicate *searchPredicate = [NSPredicate predicateWithFormat: @"folderName CONTAINS[c] %@", searchString];
+    
+    self.fetchedResultsController = [self fetchedResultsControllerWithPredicate:searchPredicate];
+    
+ 	NSError *error;
+	if (![[self fetchedResultsController] performFetch:&error]) {
+	}
+    [self.tableView reloadData];
+    
+}
 
 #pragma mark - Fetched Results Controller
 
-- (NSFetchedResultsController *) fetchedResultsController {
-	if (_fetchedResultsController!=nil) {
-		return _fetchedResultsController;
-	}
+- (NSFetchedResultsController *) fetchedResultsControllerWithPredicate: (NSPredicate *) aPredicate{
     
 	NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    
-	[request setEntity:[NSEntityDescription entityForName:@"Folder" inManagedObjectContext:managedObjectContextTV]];
+	[request setEntity:[NSEntityDescription entityForName:@"Folder" inManagedObjectContext:managedObjectContext]];
+    [request setFetchBatchSize:10];
+    [request setPredicate:aPredicate];
     
 	NSSortDescriptor *nameDescriptor = [[NSSortDescriptor alloc] initWithKey:@"folderName" ascending:YES];
-	//NSSortDescriptor *timeDescriptor = [[NSSortDescriptor alloc] initWithKey:@"doDate" ascending:NO];// just here to test the sections and row calls
-	
 	[request setSortDescriptors:[NSArray arrayWithObjects:nameDescriptor, nil]];
 	[nameDescriptor release];
     
-	[request setFetchBatchSize:10];
-    
-	
-	NSFetchedResultsController *newController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:managedObjectContextTV sectionNameKeyPath:nil cacheName:@"Root"];
-    
+    NSString *cacheName = @"Root";
+    if (aPredicate) {
+        cacheName = nil;
+    }
+	NSFetchedResultsController *newController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:managedObjectContext sectionNameKeyPath:nil cacheName:cacheName];
 	newController.delegate = self;
+    NSError *anyError = nil;
+    if (![newController performFetch:&anyError]){
+        NSLog(@"Error Fetching:%@", anyError);
+    }
 	self.fetchedResultsController = newController;
 	[newController release];
 	[request release];
-	
 	return _fetchedResultsController;
 }
 
+- (NSFetchedResultsController *) fetchedResultsController {
+    if(_fetchedResultsController != nil){
+        return _fetchedResultsController;
+    }
+    self.fetchedResultsController = [self fetchedResultsControllerWithPredicate:nil];
+    NSError *error = nil;
+    if (![_fetchedResultsController performFetch:&error]){
+        NSLog(@"Error Fetching:%@", error);
+    }	
+	return _fetchedResultsController;
+}
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-	//return [[_fetchedResultsController sections] count];
-    return 1;
-}
-
-
-- (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-	//id<NSFetchedResultsSectionInfo>  sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
-	
-	//return [sectionInfo name];
-    return @"My Folders";
+    NSInteger count = [[_fetchedResultsController sections] count];
     
+	if (count == 0) {
+		count = 1;
+	}
+	
+    return count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section	
+    NSInteger numberOfRows = 0;
+	
+    if ([[_fetchedResultsController sections] count] > 0) {
+        id <NSFetchedResultsSectionInfo> sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
+        numberOfRows = [sectionInfo numberOfObjects];
+    }
     
-    id <NSFetchedResultsSectionInfo> sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
-    return [sectionInfo numberOfObjects];
-    //return 1;
+    return numberOfRows;
 }
 
 
 - (void) configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath{
-        
+	
 	FolderCell *mycell;
 	if([cell isKindOfClass:[UITableViewCell class]]){
-        
 		mycell = (FolderCell *) cell;
 	}
     Folder *aFolder = [_fetchedResultsController objectAtIndexPath:indexPath];	
-    
-    
-    [mycell.folderName setText:[NSString stringWithFormat:@"%@", aFolder.folderName]];
+    [mycell.folderName setText:aFolder.folderName];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *CellIdentifier = @"FolderCell";
-	
 	FolderCell *cell = (FolderCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	if (cell == nil) {
 		NSArray *topLevelObjects = [[NSBundle mainBundle]
@@ -222,61 +270,26 @@
 		}
 	}
 	[self configureCell:cell atIndexPath:indexPath];
-    
     return cell;
 }
 
-/*
- // Override to support conditional editing of the table view.
- - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the specified item to be editable.
- return YES;
- }
- */
-
-/*
- // Override to support editing the table view.
- - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
- {
- if (editingStyle == UITableViewCellEditingStyleDelete) {
- // Delete the row from the data source
- [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
- }   
- else if (editingStyle == UITableViewCellEditingStyleInsert) {
- // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
- }   
- }
- */
-
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
- {
- }
- */
-
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
 
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
+    
+    newMemoText.savedMemo.savedIn = [_fetchedResultsController objectAtIndexPath:indexPath];	
+
+    NSLog(@"%@",newMemoText.savedMemo.savedIn);
+    
+    folderTextField.text = newMemoText.savedMemo.savedIn.folderName;
+    isSelected = YES;
+    
+    NSError *error;
+	if(![managedObjectContext save:&error]){ 
+        NSLog(@"DID NOT SAVE");
+	}
 }
 
 #pragma mark -
@@ -290,7 +303,9 @@
     if (folderTextField.text == nil) {
         return;
     }
-    
+    else if (!isSelected){ 
+        
+    //FIXME: check to see if a folder with the specified name exists, if yes, put up an alert view 
     //Insert a new Folder object into the MOC. 
     newFolder = [managedObjectContext insertNewObjectForEntityForName:@"Folder"]; 
     newFolder.folderName = folderTextField.text;
@@ -299,13 +314,14 @@
         int tempF = abs(arc4random());
         NSString *tempStringF = [NSString stringWithFormat:@"Folder%d", tempF];
         [newFolder setFolderName:tempStringF];
-    }
+        }
     
     /*--Save the MOC--*/	
 	NSError *error;
 	if(![managedObjectContext save:&error]){ 
         NSLog(@"DID NOT SAVE");
-	}
+        }
+    }
     if (!swappingViews) {
         [self swapViews];
     }
@@ -323,6 +339,8 @@
     }
     [toolbarItems replaceObjectAtIndex:newButton withObject:doneButton];
     toolbar.items = toolbarItems;
+    [NSFetchedResultsController deleteCacheWithName:@"Root"];
+
 }
 /*
 - (void) makeFile{

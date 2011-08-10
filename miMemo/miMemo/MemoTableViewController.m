@@ -173,6 +173,8 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
         //id <NSFetchedResultsSectionInfo> sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
 		//return [sectionInfo numberOfObjects];
 		return 1;
+    
+    
 }
 
 - (void) configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath{

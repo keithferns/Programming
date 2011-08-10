@@ -11,12 +11,13 @@
 #import "Folder.h"
 #import "MemoText.h"
 
-@interface AddFolderViewController : UIViewController <UIActionSheetDelegate, UITextViewDelegate, UITextFieldDelegate, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate> {
+@interface AddFolderViewController : UIViewController <UIActionSheetDelegate, UITextViewDelegate,  NSFetchedResultsControllerDelegate, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate> {
     
         NSManagedObjectContext *managedObjectContext, *managedObjectContextTV;
-        BOOL swappingViews;
+        BOOL swappingViews, isSelected;
         NSString *newTextInput;
         NSFetchedResultsController *_fetchedResultsController;
+    
 
     }
     @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext, *managedObjectContextTV;
@@ -28,6 +29,8 @@
     @property (nonatomic, retain) UITextField *fileTextField, *folderTextField, *tagTextField;
     @property (nonatomic, retain) NSString *newTextInput;
     @property (nonatomic, retain) IBOutlet UITableView *tableView;
+    @property (nonatomic, retain) IBOutlet UISearchBar *searchBar;
+
     @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 
     - (void) swapViews;
@@ -35,4 +38,6 @@
     - (void) makeFolder;
     - (void) makeToolbar;
         
+    - (NSFetchedResultsController *) fetchedResultsControllerWithPredicate:(NSPredicate *)aPredicate; 
+
     @end

@@ -16,12 +16,9 @@
 @synthesize toolbar;
 @synthesize textView, dateTextField;
 
-
 #pragma mark ViewLifeCycle
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [self makeToolbar];
     
     /*Setting Up the Views*/
@@ -73,7 +70,6 @@
         [dateLabel setFont:[UIFont systemFontOfSize:17]];
         [self.view addSubview:dateLabel];
         [dateTextField setFrame:CGRectMake(105, 20, 200, 31)];
-        
         [dateLabel setText:@"Due:"];
         [dateTextField setText:selectedMemoText.savedTask.doDate];
         [self.view addSubview:dateTextField];
@@ -295,10 +291,7 @@ NSLog(@"Try to change New botton to Done");
  [textFieldRE setBorderStyle:UITextBorderStyleRoundedRect];
  [textFieldRE setFont:[UIFont systemFontOfSize:12]];
  [textFieldRE setBounds:CGRectMake(45, 20, 70, 25)];
- 
- [reLabel setText:@"RE:"];
- [topView addSubview:reLabel];
- [topView addSubview:textFieldRE];
+
 
  CGRect textFieldFrame = CGRectMake(20, 70, 280, 120);
  textFieldText = [[UITextField alloc] initWithFrame:textFieldFrame];
