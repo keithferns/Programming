@@ -116,12 +116,16 @@
     if (fileTextField.text == nil) {
         return;
     }
-    //else if (!isSelected){ 
+    else if (!isSelected){ 
     //FIXME: check to see if a folder with the specified name exists, if yes, put up an alert view 
     
     newFile = [managedObjectContext insertNewObjectForEntityForName:@"File"]; 
     newFile.fileName = fileTextField.text;
     newMemoText.savedMemo.appendToFile = newFile;
+        
+        newFile.fileText = newTextInput;
+        
+        NSLog(@"The file text is %@", newFile.fileText);
     
     if (fileTextField.text == @"") {
         int tempF = abs(arc4random());
@@ -134,7 +138,7 @@
     if(![managedObjectContext save:&error]){ 
         NSLog(@"DID NOT SAVE");
     }
-    
+    } 
     if (!swappingViews) {
         [self swapViews];
     }
@@ -295,9 +299,23 @@
 #pragma mark - Table view delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    newMemoText.savedMemo.appendToFile = [_fetchedResultsController objectAtIndexPath:indexPath];	
+    File *myFile = [_fetchedResultsController objectAtIndexPath:indexPath];
+    
+    newMemoText.savedMemo.appendToFile = myFile;
     
     NSLog(@"%@",newMemoText.savedMemo.appendToFile);
+    
+    
+    NSString *tempString = [NSString stringWithFormat:@"%@%@%@", myFile.fileText, @"\n", newMemoText.memoText];
+    
+    //tempString = [myFile.fileText stringByAppendingString:newMemoText.memoText];
+    
+    NSLog(@"The file text is %@", tempString);
+
+    myFile.fileText = tempString;
+    [tempString release];
+    
+    textView.text = myFile.fileText;
     
     fileTextField.text = newMemoText.savedMemo.appendToFile.fileName;
     isSelected = YES;

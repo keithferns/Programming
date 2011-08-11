@@ -1,10 +1,10 @@
-//
+
 //  AddFileViewController.h
 //  miMemo
 //
 //  Created by Keith Fernandes on 8/11/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
-//
+
 
 #import <UIKit/UIKit.h>
 #import "File.h"
@@ -16,7 +16,6 @@
     BOOL swappingViews, isSelected;
     NSString *newTextInput;
     NSFetchedResultsController *_fetchedResultsController;
-    
     
 }
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext, *managedObjectContextTV;

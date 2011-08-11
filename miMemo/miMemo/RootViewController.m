@@ -28,6 +28,7 @@
 @synthesize newMemoText;
 @synthesize tableViewController;
 
+//FIXME: Adding a new Memo/MemoText by directly saving it to a Folder does not result in an update in the main screen table. Any memoText that is not an appointment or a task should show as the most recent memo on the main screen.
 //TODO: Recognize input numbers as telephone numbers  save to contacts. Obviously, an obvious thing to do, so has to be part of core functionality. 
 //TODO: Related to above. Recognize and Add input names to an appropriate place. 
 //TODO: add LOCATION entity. use as basis for creating categories and Location Folders.
@@ -394,7 +395,6 @@
         [self.view endEditing:YES];
     }
 }
-
 - (void) makeToolbar{
     /*Setting up the Toolbar */
     CGRect buttonBarFrame = CGRectMake(0, 210, 320, 40);

@@ -2,7 +2,7 @@
 //  File.m
 //  miMemo
 //
-//  Created by Keith Fernandes on 8/3/11.
+//  Created by Keith Fernandes on 8/11/11.
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
@@ -16,6 +16,7 @@
 @dynamic fileName;
 @dynamic fileKeyWord;
 @dynamic lastSaveDate;
+@dynamic fileText;
 @dynamic fileTag;
 @dynamic appendMemo;
 @dynamic savedIn;

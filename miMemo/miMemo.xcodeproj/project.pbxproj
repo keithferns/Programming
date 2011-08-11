@@ -44,11 +44,11 @@
 		53A7444F13F2D9BB00B2D5DB /* TaskCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53A7444E13F2D9BB00B2D5DB /* TaskCustomCell.xib */; };
 		53A7445C13F38D8A00B2D5DB /* AddFileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53A7445A13F38D8A00B2D5DB /* AddFileViewController.m */; };
 		53A7445D13F38D8A00B2D5DB /* AddFileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53A7445B13F38D8A00B2D5DB /* AddFileViewController.xib */; };
+		53A7446013F39DEF00B2D5DB /* File.m in Sources */ = {isa = PBXBuildFile; fileRef = 53A7445F13F39DE800B2D5DB /* File.m */; };
 		53E62FBC13E93067000DEF2A /* AddTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E62FBA13E93067000DEF2A /* AddTaskViewController.m */; };
 		53E62FBD13E93067000DEF2A /* AddTaskViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53E62FBB13E93067000DEF2A /* AddTaskViewController.xib */; };
 		53E62FC113E93130000DEF2A /* AppointmentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E62FC013E93130000DEF2A /* AppointmentsViewController.m */; };
 		53E62FC513E9341C000DEF2A /* Memo.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E62FC413E9341C000DEF2A /* Memo.m */; };
-		53E62FC813E9341C000DEF2A /* File.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E62FC713E9341C000DEF2A /* File.m */; };
 		53E62FCB13E9341C000DEF2A /* Folder.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E62FCA13E9341C000DEF2A /* Folder.m */; };
 		53E62FCE13E9341C000DEF2A /* Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E62FCD13E9341C000DEF2A /* Tag.m */; };
 		53E62FD113E9341C000DEF2A /* Appointment.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E62FD013E9341C000DEF2A /* Appointment.m */; };
@@ -138,6 +138,8 @@
 		53A7445913F38D8A00B2D5DB /* AddFileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFileViewController.h; sourceTree = "<group>"; };
 		53A7445A13F38D8A00B2D5DB /* AddFileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFileViewController.m; sourceTree = "<group>"; };
 		53A7445B13F38D8A00B2D5DB /* AddFileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddFileViewController.xib; sourceTree = "<group>"; };
+		53A7445E13F39DE400B2D5DB /* File.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = File.h; path = ManagedObjects/File.h; sourceTree = "<group>"; };
+		53A7445F13F39DE800B2D5DB /* File.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = File.m; path = ManagedObjects/File.m; sourceTree = "<group>"; };
 		53E62FB913E93067000DEF2A /* AddTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTaskViewController.h; sourceTree = "<group>"; };
 		53E62FBA13E93067000DEF2A /* AddTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTaskViewController.m; sourceTree = "<group>"; };
 		53E62FBB13E93067000DEF2A /* AddTaskViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddTaskViewController.xib; sourceTree = "<group>"; };
@@ -145,8 +147,6 @@
 		53E62FC013E93130000DEF2A /* AppointmentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppointmentsViewController.m; sourceTree = "<group>"; };
 		53E62FC313E9341C000DEF2A /* Memo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Memo.h; path = ManagedObjects/Memo.h; sourceTree = "<group>"; };
 		53E62FC413E9341C000DEF2A /* Memo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Memo.m; path = ManagedObjects/Memo.m; sourceTree = "<group>"; };
-		53E62FC613E9341C000DEF2A /* File.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = File.h; path = ManagedObjects/File.h; sourceTree = "<group>"; };
-		53E62FC713E9341C000DEF2A /* File.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = File.m; path = ManagedObjects/File.m; sourceTree = "<group>"; };
 		53E62FC913E9341C000DEF2A /* Folder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Folder.h; path = ManagedObjects/Folder.h; sourceTree = "<group>"; };
 		53E62FCA13E9341C000DEF2A /* Folder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Folder.m; path = ManagedObjects/Folder.m; sourceTree = "<group>"; };
 		53E62FCC13E9341C000DEF2A /* Tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Tag.h; path = ManagedObjects/Tag.h; sourceTree = "<group>"; };
@@ -421,6 +421,8 @@
 			isa = PBXGroup;
 			children = (
 				53FAD10713DDEA3100FB168C /* miMemo.xcdatamodeld */,
+				53A7445E13F39DE400B2D5DB /* File.h */,
+				53A7445F13F39DE800B2D5DB /* File.m */,
 				531AE52613DF142E00D9B616 /* NSManagedObjectContext-insert.h */,
 				531AE52713DF142E00D9B616 /* NSManagedObjectContext-insert.m */,
 				53E62FD513E9341D000DEF2A /* ToDo.h */,
@@ -433,8 +435,6 @@
 				53E62FCD13E9341C000DEF2A /* Tag.m */,
 				53E62FC913E9341C000DEF2A /* Folder.h */,
 				53E62FCA13E9341C000DEF2A /* Folder.m */,
-				53E62FC613E9341C000DEF2A /* File.h */,
-				53E62FC713E9341C000DEF2A /* File.m */,
 				53E62FC313E9341C000DEF2A /* Memo.h */,
 				53E62FC413E9341C000DEF2A /* Memo.m */,
 			);
@@ -657,7 +657,6 @@
 				53E62FBC13E93067000DEF2A /* AddTaskViewController.m in Sources */,
 				53E62FC113E93130000DEF2A /* AppointmentsViewController.m in Sources */,
 				53E62FC513E9341C000DEF2A /* Memo.m in Sources */,
-				53E62FC813E9341C000DEF2A /* File.m in Sources */,
 				53E62FCB13E9341C000DEF2A /* Folder.m in Sources */,
 				53E62FCE13E9341C000DEF2A /* Tag.m in Sources */,
 				53E62FD113E9341C000DEF2A /* Appointment.m in Sources */,
@@ -673,6 +672,7 @@
 				53A7443213F1E5B200B2D5DB /* FolderFilesViewController.m in Sources */,
 				53A7444813F2D90700B2D5DB /* TaskCustomCell.m in Sources */,
 				53A7445C13F38D8A00B2D5DB /* AddFileViewController.m in Sources */,
+				53A7446013F39DEF00B2D5DB /* File.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
