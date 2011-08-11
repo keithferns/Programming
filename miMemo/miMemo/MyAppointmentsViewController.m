@@ -25,11 +25,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view addSubview:tableViewController.tableView];
-    
     [self makeToolbar];
     [self.view addSubview:toolbar];
-	
-	
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -37,7 +34,6 @@
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
-
 
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
@@ -58,8 +54,6 @@
     [goActionSheet release];
     [toolbar release];
 }
-
-
 
 #pragma mark -
 #pragma mark Navigation
@@ -114,7 +108,6 @@
 			
 			[saveActionSheet showInView:self.view];
 			
-			
 			break;
 		default:
 			break;
@@ -162,7 +155,5 @@
 		}
 	}
 }
-
-
 
 @end

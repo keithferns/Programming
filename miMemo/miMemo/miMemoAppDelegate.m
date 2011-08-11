@@ -1,7 +1,5 @@
-//
 //  miMemoAppDelegate.m
 //  miMemo
-//
 //  Created by Keith Fernandes on 7/25/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
@@ -22,7 +20,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
+
     RootViewController *rootViewController = [[RootViewController alloc] init];
 	rootViewController.managedObjectContext = self.managedObjectContext;
     

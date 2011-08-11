@@ -17,7 +17,6 @@
     NSManagedObjectContext *managedObjectContext, *managedObjectContextTV;
     NSString *taskDate;
     BOOL swappingViews;
-	//UIDatePicker *datePicker;
     UIToolbar *taskToolbar;
     NSString *newTextInput;
     NSMutableArray *memoArray;
@@ -45,7 +44,6 @@
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
 
 
-//@property (nonatomic, retain) IBOutlet UIView *monthView, *datetimeView;
 - (IBAction)datePickerChanged:(id)sender;
 
 - (void) swapViews;
@@ -54,6 +52,5 @@
 - (void) makeToolbar;
 - (void) fetchSelectedTasks;
 
-//- (IBAction)monthAction:(id)sender;
 
 @end

@@ -158,7 +158,7 @@
 	}
     Memo *aMemo = [_fetchedResultsController objectAtIndexPath:indexPath];	
     
-    [mycell.creationDate setText: [dateFormatter stringFromDate:[aMemo doDate]]];
+    [mycell.date setText: [dateFormatter stringFromDate:[aMemo doDate]]];
     
     [mycell.memoText setText:[NSString stringWithFormat:@"%@", aMemo.memoText.memoText]];
 }

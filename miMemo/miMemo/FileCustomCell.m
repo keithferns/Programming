@@ -34,6 +34,8 @@
 
 - (void)dealloc {
     [super dealloc];
+    [fileName release];
+    [fileText release];
 }
 
 

@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ToDo.h"
 
 @interface MyTasksTableViewController : UITableViewController  <NSFetchedResultsControllerDelegate, UITableViewDelegate, UITableViewDataSource> {
     

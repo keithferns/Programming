@@ -11,7 +11,7 @@
 
 @implementation StartScreenCustomCell
 
-@synthesize memoText, creationDate, memoRE;
+@synthesize memoText, date, dateLabel;
 
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {

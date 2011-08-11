@@ -10,7 +10,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "miMemoAppDelegate.h"
 #import "NSManagedObjectContext-insert.h"
-#import "StartScreenCustomCell.h"
+#import "TaskCustomCell.h"
 
 @implementation AddTaskViewController
 
@@ -161,7 +161,7 @@
     //defines how to sort the records
     NSDate *tempDate = [datePicker date];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"EEEE,dd MMMM, yyyy"];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
     NSString *dateString = [dateFormatter stringFromDate:tempDate];
     NSPredicate *checkDate = [NSPredicate predicateWithFormat:@"doDate == %@", dateString];
     [request setPredicate:checkDate];
@@ -281,37 +281,36 @@
         
 	}
 	
-	StartScreenCustomCell *mycell;
+	TaskCustomCell *mycell;
 	if([cell isKindOfClass:[UITableViewCell class]]){
         
-		mycell = (StartScreenCustomCell *) cell;
+		mycell = (TaskCustomCell *) cell;
 	}
     //ToDo *aTask = [_fetchedResultsController objectAtIndexPath:indexPath];	
     ToDo *aTask = [memoArray objectAtIndex:[indexPath row]];
-    [mycell.creationDate setText:aTask.doDate];
     
-    [mycell.memoText setText:[NSString stringWithFormat:@"%@", aTask.memoText.memoText]];	
+    [mycell.memoTextLabel setText:[NSString stringWithFormat:@"%@", aTask.memoText.memoText]];	
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    static NSString *CellIdentifier = @"StartScreenCustomCell";
+    static NSString *CellIdentifier = @"TaskCustomCell";
 	
 	static NSDateFormatter *dateFormatter = nil;
 	if (dateFormatter == nil) {
 		dateFormatter = [[NSDateFormatter alloc] init];
 		[dateFormatter setDateFormat:@"dd MMMM yyyy h:mm a"];
 	}
-	StartScreenCustomCell *cell = (StartScreenCustomCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	TaskCustomCell *cell = (TaskCustomCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	if (cell == nil) {
 		NSArray *topLevelObjects = [[NSBundle mainBundle]
-									loadNibNamed:@"StartScreenCustomCell"
+									loadNibNamed:@"TaskCustomCell"
 									owner:nil options:nil];
 		
 		for (id currentObject in topLevelObjects){
 			if([currentObject isKindOfClass:[UITableViewCell class]]){
-				cell = (StartScreenCustomCell *) currentObject;
+				cell = (TaskCustomCell *) currentObject;
 				break;
 			}
 		}
@@ -336,17 +335,15 @@
 - (void) setTaskDate{    
     newTask.selectedDate = [datePicker date];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"EEEE,dd MMMM, yyyy"];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
     taskDate = [dateFormatter stringFromDate:newTask.selectedDate];
-    
     
     newTask.doDate = taskDate;
     newTask.memoText = newMemoText;
     
     dateTextField.text = taskDate;
     [dateFormatter release];
-    
-    
+        
     NSError *myerror;
 	if(![managedObjectContext save:&myerror]){ 
         NSLog(@"DID NOT SAVE");
@@ -462,53 +459,3 @@
 
 @end
 
-/*
- #pragma mark -
- #pragma mark SetMonth
- - (IBAction)monthAction:(id)sender{
- if (!swappingViews) {
- [self swapViews];
- }
- switch ([sender tag]) {
- case 1:
- [datetimeLabel setText:@"January"];
- break;
- case 2:
- [datetimeLabel setText:@"February"];			
- break;
- case 3:
- [datetimeLabel setText:@"March"];
- break;
- case 4:
- [datetimeLabel setText:@"April"];
- break;
- case 5:
- [datetimeLabel setText:@"May"];
- break;
- case 6:
- [datetimeLabel setText:@"June"];
- break;
- case 7:
- [datetimeLabel setText:@"July"];
- break;
- case 8:
- [datetimeLabel setText:@"August"];
- break;
- case 9:
- [datetimeLabel setText:@"September"];
- break;
- case 10:
- [datetimeLabel setText:@"October"];
- break;
- case 11:
- [datetimeLabel setText:@"November"];
- break;
- case 12:
- [datetimeLabel setText:@"December"];
- break;
- default:
- break;
- }
- //TO DO: IF the user enters the date before the month, and this exceeds the number of days for the month selected, then give an error warning.
- }
- */

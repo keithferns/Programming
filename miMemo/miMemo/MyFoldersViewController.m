@@ -259,6 +259,7 @@
     // Pass the selected object to the new view controller.
 
     detailViewController.folder = selectedFolder;
+    detailViewController.managedObjectContext = self.managedObjectContext;
     
     //Present the new viewController
     [self presentModalViewController:detailViewController animated:YES];

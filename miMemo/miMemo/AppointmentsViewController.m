@@ -114,7 +114,7 @@
 - (IBAction)datePickerChanged:(id)sender{
     NSDate *tempDate = [datePicker date];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"EEEE,dd MMMM, yyyy"];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
     NSString *dateString = [dateFormatter stringFromDate:tempDate];
     NSPredicate *checkDate = [NSPredicate predicateWithFormat:@"doDate == %@", dateString];
     self.fetchedResultsController = [self fetchedResultsControllerWithPredicate:checkDate];
@@ -218,22 +218,15 @@
     
     Appointment *newAppointment = [managedObjectContext insertNewObjectForEntityForName:@"Appointment"];
     newAppointment.memoText = newMemoText;
-    newAppointment.selectedDate = [datePicker date];
-    
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"EEEE,dd MMMM, yyyy"];
+    newAppointment.selectedDate = [datePicker date];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
     newAppointment.doDate = [dateFormatter stringFromDate:newAppointment.selectedDate];
     dateTextField.text = newAppointment.doDate;
-    [dateFormatter release];
-
-    NSDateFormatter *timeFormatter = [[NSDateFormatter alloc] init];
-    [timeFormatter setDateFormat:@"hh:mm a"];
-	newAppointment.doTime = [timeFormatter stringFromDate:newAppointment.selectedDate];
+    [dateFormatter setDateFormat:@"hh:mm a"];
+	newAppointment.doTime = [dateFormatter stringFromDate:newAppointment.selectedDate];
     timeTextField.text = newAppointment.doTime;
-    [timeFormatter release];
-    NSLog(@"new appointment text = %@", newAppointment.memoText.memoText);
-    NSLog(@"new appointment due date = %@", newAppointment.doDate);
-    NSLog(@"new appointment due date = %@", newAppointment.doTime);
+    [dateFormatter release];
 
     /*--Save the MOC--*/	
 	NSError *error;
@@ -288,7 +281,7 @@
     
     [request setPredicate:aPredicate];
     
-	NSSortDescriptor *dateDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"selectedDate" ascending:YES] autorelease];
+	NSSortDescriptor *dateDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"doDate" ascending:YES] autorelease];
 	NSSortDescriptor *timeDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"doTime" ascending:NO]autorelease];    
     [request setSortDescriptors:[NSArray arrayWithObjects:dateDescriptor,timeDescriptor, nil]];
     
@@ -331,7 +324,15 @@
 
 - (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
 	id<NSFetchedResultsSectionInfo>  sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
-	return [sectionInfo name];
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    NSDate *aDate = [dateFormatter dateFromString:[sectionInfo name]];
+    
+    [dateFormatter setDateFormat:@"EEEE, MMMM d, yyyy"];
+    
+	return [dateFormatter stringFromDate:aDate];
+	//return [sectionInfo name];
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     id <NSFetchedResultsSectionInfo> sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
@@ -353,7 +354,7 @@
     //if ([_fetchedResultsController objectAtIndexPath:0] != nil) {
     Appointment *anAppointment = [_fetchedResultsController objectAtIndexPath:indexPath];	
     [mycell.memoText setText:[NSString stringWithFormat:@"%@", anAppointment.memoText.memoText]];
-    [mycell.creationDate setText: anAppointment.doTime];
+    [mycell.date setText: anAppointment.doTime];
     //}
 }
 

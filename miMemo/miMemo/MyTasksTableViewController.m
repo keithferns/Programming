@@ -6,11 +6,13 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
+//FIXME: Set predicate to filter out minimum date to current date. 
+
 #import "MyTasksTableViewController.h"
 #import "miMemoAppDelegate.h"
-#import "StartScreenCustomCell.h"
-#import "MemoDetailViewController.h"
-
+#import "TaskCustomCell.h"
+#import "ToDo.h"
+#import "MemoText.h"
 
 @implementation MyTasksTableViewController
 
@@ -30,12 +32,9 @@
 		managedObjectContext = [(miMemoAppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext]; 
         NSLog(@"After managedObjectContext: %@",  managedObjectContext);
 	}
-	
 	NSError *error;
 	if (![[self fetchedResultsController] performFetch:&error]) {
 	}
-	    
-
 }
 
 - (void)viewDidUnload
@@ -101,9 +100,17 @@
     
 	[request setEntity:[NSEntityDescription entityForName:@"ToDo" inManagedObjectContext:managedObjectContext]];
     
-	NSSortDescriptor *dateDescriptor = [[NSSortDescriptor alloc] initWithKey:@"doDate" ascending:NO];
+	NSSortDescriptor *dateDescriptor = [[NSSortDescriptor alloc] initWithKey:@"selectedDate" ascending:NO];
 	NSSortDescriptor *textDescriptor = [[NSSortDescriptor alloc] initWithKey:@"memoText" ascending:YES];// just here to test the sections and row calls
 	
+    /*-- set Predicate to filter all tasks and appointments for a time after NOW --*/
+    NSString *checkDateString = @"selectedDate";
+    
+    NSPredicate *checkDate = [NSPredicate predicateWithFormat:@"'[NSDate date]' < %@", checkDateString];
+    
+    [request setPredicate:checkDate];
+    
+    
 	[request setSortDescriptors:[NSArray arrayWithObjects:dateDescriptor,textDescriptor, nil]];
 	[dateDescriptor release];
 	[textDescriptor release];
@@ -146,24 +153,17 @@
 }
 
 - (void) configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath{
-	static NSDateFormatter *dateFormatter = nil;
-	if (dateFormatter == nil) {
-		dateFormatter = [[NSDateFormatter alloc] init];
-		[dateFormatter setDateFormat:@"dd MMMM yyyy h:mm a"];
-        //[dateFormatter setDateFormat:@"EEEE, dd MMMM yyyy h:mm a"]; //This format gives the Day of Week, followed by date and time
-        
-	}
+
 	
-	StartScreenCustomCell *mycell;
+	TaskCustomCell *mycell;
 	if([cell isKindOfClass:[UITableViewCell class]]){
         
-		mycell = (StartScreenCustomCell *) cell;
+		mycell = (TaskCustomCell *) cell;
 	}
     ToDo *aTask = [_fetchedResultsController objectAtIndexPath:indexPath];	
     
-    [mycell.creationDate setText:aTask.doDate];
 	 
-    [mycell.memoText setText:[NSString stringWithFormat:@"%@", aTask.memoText.memoText]];
+    [mycell.memoTextLabel setText:aTask.memoText.memoText];
 	
 	
 }
@@ -171,22 +171,17 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    static NSString *CellIdentifier = @"StartScreenCustomCell";
+    static NSString *CellIdentifier = @"TaskCustomCell";
 	
-	static NSDateFormatter *dateFormatter = nil;
-	if (dateFormatter == nil) {
-		dateFormatter = [[NSDateFormatter alloc] init];
-		[dateFormatter setDateFormat:@"dd MMMM yyyy h:mm a"];
-	}
-	StartScreenCustomCell *cell = (StartScreenCustomCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	TaskCustomCell *cell = (TaskCustomCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	if (cell == nil) {
 		NSArray *topLevelObjects = [[NSBundle mainBundle]
-									loadNibNamed:@"StartScreenCustomCell"
+									loadNibNamed:@"TaskCustomCell"
 									owner:nil options:nil];
 		
 		for (id currentObject in topLevelObjects){
 			if([currentObject isKindOfClass:[UITableViewCell class]]){
-				cell = (StartScreenCustomCell *) currentObject;
+				cell = (TaskCustomCell *) currentObject;
 				break;
 			}
 		}

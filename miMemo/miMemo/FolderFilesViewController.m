@@ -18,12 +18,13 @@
 
 
 @synthesize folder, memos;
-@synthesize tableView;
-@synthesize toolbar;
+@synthesize tableView, managedObjectContext;
+@synthesize toolbar, changeName, folderName;
 
-#define FOLDERS_SECTION 0
-#define MEMOS_SECTION 1
-#define FILES_SECTION 2
+#define MEMOS_SECTION 0
+#define FILES_SECTION 1
+//#define FOLDERS_SECTION 2
+
 
 - (void)dealloc
 {
@@ -48,10 +49,33 @@
     [self makeToolbar];
     [self.view addSubview:toolbar];
     
+    [self.view setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
     
     NSLog(@"%@", folder.containsMemo);
     
-    tableView = [[UITableView alloc] initWithFrame:CGRectMake(10, 40, 300, 150) style:UITableViewStyleGrouped];
+    folderName = [[UITextField alloc] initWithFrame:CGRectMake(10, 5, 240, 35)];
+    [folderName setEnabled:NO];
+    [folderName setTextAlignment:UITextAlignmentCenter];
+    [folderName setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
+    [folderName setTextColor:[UIColor darkGrayColor]];
+    [folderName setText:folder.folderName];
+    [folderName setMinimumFontSize:22.0];
+    [folderName setBorderStyle:UITextBorderStyleRoundedRect];
+    [folderName setContentVerticalAlignment: UIControlContentVerticalAlignmentCenter];    
+    [self.view addSubview:folderName];
+
+    changeName = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [changeName setFrame:CGRectMake(260, 5, 50, 35)];
+    UILabel *changeButtonLabel = [changeName titleLabel];
+    [changeButtonLabel setShadowColor:[UIColor blackColor]];
+    [changeButtonLabel setShadowOffset:CGSizeMake(0.0f, -1.0f)];
+    [changeName setTitle:@"EDIT" forState:UIControlStateNormal];
+    
+    [changeName addTarget:self action:@selector(changeFolderName) 
+     forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.view addSubview:changeName];
+    tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 45, 320, 165) style:UITableViewStyleGrouped];
     tableView.dataSource = self;
     //tableView.delegate = self;
     [self.view addSubview:tableView];
@@ -63,6 +87,24 @@
     
 
 }
+
+- (IBAction) changeFolderName{
+    [folderName setEnabled:YES];
+    [folderName becomeFirstResponder];
+    [changeName setTitle:@"DONE" forState:UIControlStateNormal];
+    [changeName addTarget:self action:@selector(setFolderName) 
+         forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (IBAction) setFolderName{
+    folder.folderName = folderName.text;
+    
+        NSError *myerror;
+	if(![managedObjectContext save:&myerror]){ 
+        NSLog(@"DID NOT SAVE");
+	}
+}
+
 
 - (void)viewDidUnload
 {
@@ -92,9 +134,9 @@
     NSString *title = nil;
     // Return a title or nil as appropriate for the section.
     switch (section) {
-        case FOLDERS_SECTION:
-            title = @"Folders";
-            break;
+      //  case FOLDERS_SECTION:
+      //      title = @"Folders";
+      //      break;
         case MEMOS_SECTION:
             title = @"Memos";
             break;
@@ -110,8 +152,8 @@
     NSInteger rows = 0;
     
     switch (section) {
-        case FOLDERS_SECTION:
-            
+       // case FOLDERS_SECTION:
+       //   break;     
         case MEMOS_SECTION:
             rows = [folder.containsMemo count];
             break;

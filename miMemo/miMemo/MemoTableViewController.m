@@ -77,8 +77,6 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
     /* NOTICATION */
     
 	[[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(managedObjectContextSaved:) name:managedObjectContextSavedNotification object:nil];
-    
-
  }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -122,12 +120,14 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
 	NSSortDescriptor *textDescriptor = [[NSSortDescriptor alloc] initWithKey:@"creationDate" ascending:NO];// just here to test the sections and row calls
     
     
- //   NSDate *today = [NSDate date];
-    NSArray *checkDateArray = [NSArray arrayWithObjects:@"memotext.savedAppointment.doDate",@"memotext.saveMemo.doDate", @"memotext.saveTask.doDate", nil];
+ /*-- set Predicate to filter all tasks and appointments for a time after NOW --*/
+    //NSArray *checkDateArray = [NSArray arrayWithObjects:@"memotext.savedAppointment.doDate",@"memotext.saveMemo.doDate", @"memotext.saveTask.doDate", nil];
     
-    NSPredicate *checkDate = [NSPredicate predicateWithFormat:@"'[NSDate date]' < %@" argumentArray:checkDateArray];
+    //NSPredicate *checkDate = [NSPredicate predicateWithFormat:@"'[NSDate date]' < %@" argumentArray:checkDateArray];
                               
-    [request setPredicate:checkDate];
+    //[request setPredicate:checkDate];
+    
+/* -- --*/
 
 	[request setSortDescriptors:[NSArray arrayWithObjects:typeDescriptor,textDescriptor, nil]];
         [typeDescriptor release];
@@ -193,16 +193,20 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
     
 	if ([aNote.noteType intValue] == 0) {
         [mycell.memoText setText:[NSString stringWithFormat:@"%@", aNote.memoText]];	
-		[mycell.creationDate setText: [dateFormatter stringFromDate:[aNote.savedMemo doDate]]];
-		[mycell.memoRE setText:[NSString stringWithFormat:@"%@", aNote.savedMemo.memoRE]];
+		[mycell.date setText: [dateFormatter stringFromDate:[aNote.savedMemo doDate]]];
+        [mycell.dateLabel setText:@"CREATED:"];
 		} 
 	else if ([aNote.noteType intValue] == 1){
         [mycell.memoText setText:[NSString stringWithFormat:@"%@", aNote.memoText]];
-		[mycell.creationDate setText: aNote.savedAppointment.doDate];
+		[mycell.date setText: aNote.savedAppointment.doDate];
+        [mycell.dateLabel setText:@"SCHEDULED:"];
+
 	}
     else if ([aNote.noteType intValue] ==2){
         [mycell.memoText setText:[NSString stringWithFormat:@"%@", aNote.memoText]];
-		[mycell.creationDate setText: aNote.savedTask.doDate];
+		[mycell.date setText: aNote.savedTask.doDate];
+        [mycell.dateLabel setText:@"DUE:"];
+
 	}
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

@@ -23,12 +23,11 @@
     [super viewDidLoad];
 	[self.view addSubview:tableView];
     
-		//Point the current instance of the managedObjectContext to the main managedObjectContext
+    //Point the current instance of the MOC to the main MOC
 	if (managedObjectContext == nil) { 
 		managedObjectContext = [(miMemoAppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext]; 
         NSLog(@"After managedObjectContext: %@",  managedObjectContext);
 	}
-	
 	NSError *error;
 	if (![[self fetchedResultsController] performFetch:&error]) {
 	}
@@ -38,7 +37,6 @@
 	[super viewWillAppear:animated];
     [self.tableView reloadData];  //See managedObjectContextSaved method above.
 }
-
 
 /*
 - (void)viewDidAppear:(BOOL)animated {
@@ -74,7 +72,7 @@
 		
 	[request setEntity:[NSEntityDescription entityForName:@"Appointment" inManagedObjectContext:managedObjectContext]];
 		
-	NSSortDescriptor *dateDescriptor = [[NSSortDescriptor alloc] initWithKey:@"selectedDate" ascending:YES];
+	NSSortDescriptor *dateDescriptor = [[NSSortDescriptor alloc] initWithKey:@"doDate" ascending:YES];
 	NSSortDescriptor *timeDescriptor = [[NSSortDescriptor alloc] initWithKey:@"doTime" ascending:NO];
 	
 	[request setSortDescriptors:[NSArray arrayWithObjects:dateDescriptor,timeDescriptor, nil]];
@@ -82,9 +80,8 @@
 	[timeDescriptor release];
 		
 	[request setFetchBatchSize:10];
-		
 	
-	NSFetchedResultsController *newController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:managedObjectContext sectionNameKeyPath:@"selectedDate" cacheName:@"Root"];
+	NSFetchedResultsController *newController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:managedObjectContext sectionNameKeyPath:@"doDate" cacheName:@"Root"];
 		
 	newController.delegate = self;
 	self.fetchedResultsController = newController;
@@ -93,7 +90,6 @@
 	
 	return _fetchedResultsController;
 }
-
 
 #pragma mark -
 #pragma mark Table view data source
@@ -105,9 +101,15 @@
 
 - (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
 	id<NSFetchedResultsSectionInfo>  sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
-	
-	return [sectionInfo name];
-
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    NSDate *aDate = [dateFormatter dateFromString:[sectionInfo name]];
+        
+    [dateFormatter setDateFormat:@"EEEE, MMMM d, yyyy"];
+    
+	return [dateFormatter stringFromDate:aDate];
+    //return [sectionInfo name];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -125,14 +127,10 @@
 		mycell = (StartScreenCustomCell *) cell;
 	}
 	 Appointment *aNote = [_fetchedResultsController objectAtIndexPath:indexPath];	
-		
-		[mycell.creationDate setText: [aNote doTime]];
-			//[mycell.memoRE setText:[NSString stringWithFormat:@"%@", aNote.savedAppointment.appointmentRE]];		 
-	 [mycell.memoText setText:[NSString stringWithFormat:@"%@", aNote.memoText.memoText]];
-	
-	
+        [mycell.dateLabel setText:@"Scheduled at:"];
+        [mycell.date setText: [aNote doTime]];
+        [mycell.memoText setText:[NSString stringWithFormat:@"%@", aNote.memoText.memoText]];
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
  
@@ -162,10 +160,6 @@
     return cell;
 }
 
-
-
-
-
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -189,7 +183,6 @@
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
 }
 
-
 /*
 // Override to support conditional rearranging of the table view.
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -198,34 +191,29 @@
 }
 */
 
-
 #pragma mark -
 #pragma mark Table view delegate
-
+/*
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     MemoDetailViewController *detailViewController = [[MemoDetailViewController alloc] initWithNibName:@"MemoDetailView" bundle:[NSBundle mainBundle]];
      // ...
      // Pass the selected object to the new view controller.
-
 	
 	detailViewController.selectedMemoText = [_fetchedResultsController objectAtIndexPath:indexPath];	
 		
 	[self presentModalViewController:detailViewController animated:YES];	
 	
-	
     [detailViewController release];
 }
-
-
+*/
 #pragma mark -
 #pragma mark Fetched Results Notifications
-	//Copied from http://www.raywenderlich.com/999/core-data-tutorial-how-to-use-nsfetchedresultscontroller
+
 
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
 		// The fetch controller is about to start sending change notifications, so prepare the table view for updates.
     [self.tableView beginUpdates];
 }
-
 
 - (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
 	
