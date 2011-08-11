@@ -11,14 +11,11 @@
 
 @interface FileCustomCell : UITableViewCell {
 
-	
-	UILabel *fileName;
-	UITextView *fileText;
-	
+    
 }
 
 @property (nonatomic, retain) IBOutlet UILabel *fileName;
-@property (nonatomic, retain) IBOutlet UITextView *fileText;
+@property (nonatomic, retain) IBOutlet UILabel *fileText;
 
 
 @end

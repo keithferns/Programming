@@ -12,6 +12,7 @@
 #import "AppointmentsViewController.h"
 #import "AddTaskViewController.h"
 #import "AddFolderViewController.h"
+#import "AddFileViewController.h"
 
 #import "MyAppointmentsViewController.h"
 #import "MyTasksViewController.h"
@@ -58,7 +59,7 @@
     newText.layer.backgroundColor = [UIColor groupTableViewBackgroundColor].CGColor;
     newText.layer.cornerRadius = 7.0;
     newText.layer.frame = CGRectInset(newText.layer.frame, 5, 10);
-    newText.layer.contents = (id) [UIImage imageNamed:@"lined_paper_320x200.png"].CGImage;
+    //newText.layer.contents = (id) [UIImage imageNamed:@"lined_paper_320x200.png"].CGImage;
     newText.delegate = self;
     [self.view addSubview:newText];
     
@@ -164,6 +165,9 @@
 				break;
 			case 1:
 				NSLog(@"2nd Button Clicked on saveAlert");
+				if ([newText hasText]) {
+					[self addNewFile];
+                }
 				break;
 			case 0:
 				NSLog(@"1st Button Clicked on saveAlert");
@@ -361,6 +365,27 @@
         [addViewController.managedObjectContext setPersistentStoreCoordinator:[[tableViewController.fetchedResultsController managedObjectContext] persistentStoreCoordinator]];
         NSLog(@"After managedObjectContext: %@",  addViewController.managedObjectContext);
         
+        addViewController.newTextInput = newTextInput;	
+        addViewController.newMemoText = newMemoText;
+        [self presentModalViewController:addViewController animated:YES];	
+        [newText setText:@""];
+        [self.view endEditing:YES];
+    }
+}
+- (void) addNewFile{
+    /*--CALLED BY:   SaveAs-Task --*/    
+	NSString *newTextInput = [NSString stringWithFormat: @"%@", newText.text];//copy contents of textView to newTextInput
+    NSLog(@"newTextInput = %@", newTextInput);
+    if (![newTextInput isEqualToString:previousTextInput]) 
+        {
+        // Initialize an instance of NewTaskViewCOntroller and Pass the text input to this view controller.
+        AddFileViewController *addViewController = [[AddFileViewController alloc] initWithNibName:nil bundle:nil];
+        // Create a new managed object context for the new task -- set its persistent store coordinator to the same as that from the fetched results controller's context.
+        NSManagedObjectContext *addingContext = [[NSManagedObjectContext alloc] init];
+        addViewController.managedObjectContext = addingContext;
+        [addingContext release];	
+        [addViewController.managedObjectContext setPersistentStoreCoordinator:[[tableViewController.fetchedResultsController managedObjectContext] persistentStoreCoordinator]];
+        NSLog(@"After managedObjectContext: %@",  addViewController.managedObjectContext);
         
         addViewController.newTextInput = newTextInput;	
         addViewController.newMemoText = newMemoText;

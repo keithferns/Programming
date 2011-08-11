@@ -33,7 +33,7 @@
 - (void) addNewAppointment;
 - (void) addNewTask;
 - (void) addNewFolder;
-
+- (void) addNewFile;
 
 - (void) makeToolbar;
 - (IBAction) navigationAction:(id)sender;
