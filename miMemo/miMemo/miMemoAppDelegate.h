@@ -9,7 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface miMemoAppDelegate : NSObject <UIApplicationDelegate> {
-
+    UIWindow *window;
+    NSManagedObjectContext *managedObjectContext;
+    NSManagedObjectModel *managedObjectModel;
+    NSPersistentStoreCoordinator *persistentStoreCoordinator;
+    
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;

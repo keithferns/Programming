@@ -10,13 +10,13 @@
 @implementation miMemoAppDelegate
 
 
-@synthesize window=_window;
+@synthesize window;
 
-@synthesize managedObjectContext=__managedObjectContext;
+@synthesize managedObjectContext;
 
-@synthesize managedObjectModel=__managedObjectModel;
+@synthesize managedObjectModel;
 
-@synthesize persistentStoreCoordinator=__persistentStoreCoordinator;
+@synthesize persistentStoreCoordinator;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -24,8 +24,8 @@
 
     RootViewController *rootViewController = [[RootViewController alloc] init];
 	rootViewController.managedObjectContext = self.managedObjectContext;
-    
-    [_window addSubview:[rootViewController view]];
+    [self.window setRootViewController:rootViewController];
+    [self.window addSubview:[rootViewController view]];
 
     // Override point for customization after application launch.
     [self.window makeKeyAndVisible];
@@ -70,10 +70,10 @@
 
 - (void)dealloc
 {
-    [_window release];
-    [__managedObjectContext release];
-    [__managedObjectModel release];
-    [__persistentStoreCoordinator release];
+    [window release];
+    [managedObjectContext release];
+    [managedObjectModel release];
+    [persistentStoreCoordinator release];
     [super dealloc];
 }
 
@@ -88,7 +88,6 @@
 - (void)saveContext
 {
     NSError *error = nil;
-    NSManagedObjectContext *managedObjectContext = self.managedObjectContext;
     if (managedObjectContext != nil)
     {
         if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error])
@@ -112,18 +111,18 @@
  */
 - (NSManagedObjectContext *)managedObjectContext
 {
-    if (__managedObjectContext != nil)
+    if (managedObjectContext != nil)
     {
-        return __managedObjectContext;
+        return managedObjectContext;
     }
     
     NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
     if (coordinator != nil)
     {
-        __managedObjectContext = [[NSManagedObjectContext alloc] init];
-        [__managedObjectContext setPersistentStoreCoordinator:coordinator];
+        managedObjectContext = [[NSManagedObjectContext alloc] init];
+        [managedObjectContext setPersistentStoreCoordinator:coordinator];
     }
-    return __managedObjectContext;
+    return managedObjectContext;
 }
 
 /**
@@ -132,13 +131,13 @@
  */
 - (NSManagedObjectModel *)managedObjectModel
 {
-    if (__managedObjectModel != nil)
+    if (managedObjectModel != nil)
     {
-        return __managedObjectModel;
+        return managedObjectModel;
     }
     NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"miMemo" withExtension:@"momd"];
-    __managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];    
-    return __managedObjectModel;
+    managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];    
+    return managedObjectModel;
 }
 
 /**
@@ -147,16 +146,16 @@
  */
 - (NSPersistentStoreCoordinator *)persistentStoreCoordinator
 {
-    if (__persistentStoreCoordinator != nil)
+    if (persistentStoreCoordinator != nil)
     {
-        return __persistentStoreCoordinator;
+        return persistentStoreCoordinator;
     }
     
     NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"miMemo.sqlite"];
     
     NSError *error = nil;
-    __persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-    if (![__persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error])
+    persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
+    if (![persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error])
     {
         /*
          Replace this implementation with code to handle the error appropriately.
@@ -185,7 +184,7 @@
         abort();
     }    
     
-    return __persistentStoreCoordinator;
+    return persistentStoreCoordinator;
 }
 
 #pragma mark - Application's Documents directory
