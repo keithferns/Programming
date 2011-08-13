@@ -63,6 +63,7 @@
         [dateLabel setText:@"Scheduled:"];
         [dateTextField setText:selectedMemoText.savedAppointment.doDate];
         [self.view addSubview:dateTextField];
+        [dateLabel release];
     }
     else{
         UILabel *dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 23, 90, 21)];
@@ -73,6 +74,7 @@
         [dateLabel setText:@"Due:"];
         [dateTextField setText:selectedMemoText.savedTask.doDate];
         [self.view addSubview:dateTextField];
+        [dateLabel release];
         
     }
     /*--End Setting Up the Views--*/
@@ -173,6 +175,8 @@ NSLog(@"Try to change New botton to Done");
     for (NSUInteger i = 0; i < [toolbarItems count]; i++) {
         UIBarButtonItem *barButtonItem = [toolbarItems objectAtIndex:i];
         if (barButtonItem.tag == 1){
+            [toolbarItems release];
+            [doneButton release];
             return;
         }
         else if (barButtonItem.tag == 3) {
@@ -182,6 +186,8 @@ NSLog(@"Try to change New botton to Done");
         }
     [toolbarItems replaceObjectAtIndex:newButton withObject:doneButton];
     toolbar.items = toolbarItems;
+    [toolbarItems release];
+    [doneButton release];
 }
 
 -(void) saveSelectedMemo{
@@ -202,7 +208,8 @@ NSLog(@"Try to change New botton to Done");
     
     [toolbarItems replaceObjectAtIndex:myButton withObject:newButton];
     toolbar.items = toolbarItems;
-	
+	[newButton release];
+    [toolbarItems release];
     /*--Save the edited text--*/
 	selectedMemoText.memoText = textView.text;
 		
@@ -273,6 +280,10 @@ NSLog(@"Try to change New botton to Done");
     NSArray *items = [NSArray arrayWithObjects:flexSpace, saveAsButton, flexSpace, doneButton, flexSpace, gotoButton, flexSpace,nil];
     [toolbar setItems:items];
     [self.view addSubview:toolbar];
+    [saveAsButton release];
+    [doneButton release];
+    [gotoButton release];
+    [flexSpace release];
     /*--End Setting up the Toolbar--*/
 }
 

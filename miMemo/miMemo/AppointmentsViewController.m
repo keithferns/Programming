@@ -118,6 +118,8 @@
     NSString *dateString = [dateFormatter stringFromDate:tempDate];
     NSPredicate *checkDate = [NSPredicate predicateWithFormat:@"doDate == %@", dateString];
     self.fetchedResultsController = [self fetchedResultsControllerWithPredicate:checkDate];
+    [checkDate release];
+    [dateFormatter release];
     NSError *error;
     if (![[self fetchedResultsController] performFetch:&error]) {
     }
@@ -251,6 +253,8 @@
     }
     [toolbarItems replaceObjectAtIndex:newButton withObject:doneButton];
     appointmentsToolbar.items = toolbarItems;
+    [doneButton release];
+    [toolbarItems release];
 }
 
 - (void) swapViews {
@@ -331,7 +335,9 @@
     
     [dateFormatter setDateFormat:@"EEEE, MMMM d, yyyy"];
     
-	return [dateFormatter stringFromDate:aDate];
+    NSString *myDate = [dateFormatter stringFromDate:aDate];
+    [dateFormatter release];
+	return myDate;
 	//return [sectionInfo name];
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -496,6 +502,10 @@
     
     NSMutableArray *toolbarItems = [NSMutableArray arrayWithObjects:flexSpace, saveAsButton, flexSpace, newButton, flexSpace, gotoButton, flexSpace,nil];
     [appointmentsToolbar setItems:toolbarItems];
+    [saveAsButton release];
+    [newButton release];
+    [gotoButton release];
+    [flexSpace release];
     /*--End Setting up the Toolbar */
 }
 

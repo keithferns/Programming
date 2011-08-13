@@ -92,6 +92,8 @@
     for (NSUInteger i = 0; i < [toolbarItems count]; i++) {
         UIBarButtonItem *barButtonItem = [toolbarItems objectAtIndex:i];
         if (barButtonItem.tag == 1){
+            [toolbarItems release];
+            [doneButton release];
             return;
         }
         else if (barButtonItem.tag == 3) {
@@ -101,6 +103,9 @@
     }
     [toolbarItems replaceObjectAtIndex:newButton withObject:doneButton];
     toolbar.items = toolbarItems;
+    [toolbarItems release];
+    [doneButton release];
+    
     /*--DONE button added--*/    
 }
 
@@ -285,7 +290,7 @@
     }
     [toolbarItems replaceObjectAtIndex:myButton withObject:newButton];
     toolbar.items = toolbarItems;
-    
+    [newButton release];
 	previousTextInput = newTextInput;
     NSLog(@"%@", previousTextInput);
     
@@ -416,6 +421,10 @@
     
     NSArray *items = [NSArray arrayWithObjects:flexSpace, saveAsButton, flexSpace, doneButton, flexSpace, gotoButton, flexSpace,nil];
     [toolbar setItems:items];
+    [saveAsButton release];
+    [doneButton release];
+    [gotoButton release];
+    [flexSpace release];
     /*--End Setting up the Toolbar */
 }
 

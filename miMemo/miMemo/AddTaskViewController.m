@@ -164,8 +164,7 @@
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
     NSString *dateString = [dateFormatter stringFromDate:tempDate];
     NSPredicate *checkDate = [NSPredicate predicateWithFormat:@"doDate == %@", dateString];
-    [request setPredicate:checkDate];
-        
+    [dateFormatter release];
 	NSError *error;
 	NSMutableArray *mutableFetchResults = [[managedObjectContextTV executeFetchRequest:request error:&error] mutableCopy];
 	
@@ -176,6 +175,8 @@
 	[mutableFetchResults release];
 	[request release];
     
+    [request setPredicate:checkDate];
+
     [tableLabel setText:dateString];
     if (memoArray == NULL) {
         NSString *noTask = [NSString stringWithFormat:@"No Tasks Due on %@", dateString];
@@ -183,7 +184,6 @@
         }   
     [self.tableView reloadData];   
 
-    
 }
 
 -(void) fetchSelectedTasks{
@@ -368,6 +368,7 @@
     }
     [toolbarItems replaceObjectAtIndex:newButton withObject:doneButton];
     taskToolbar.items = toolbarItems;
+    [doneButton release];
 }
 
 
@@ -415,6 +416,10 @@
     
     NSMutableArray *toolbarItems = [NSMutableArray arrayWithObjects:flexSpace, saveAsButton, flexSpace, newButton, flexSpace, gotoButton, flexSpace,nil];
     [taskToolbar setItems:toolbarItems];
+    [saveAsButton release];
+    [newButton release];
+    [gotoButton release];
+    [flexSpace release];
     /*--End Setting up the Toolbar */
 }
 

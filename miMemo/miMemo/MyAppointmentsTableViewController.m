@@ -106,9 +106,12 @@
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
     NSDate *aDate = [dateFormatter dateFromString:[sectionInfo name]];
         
-    [dateFormatter setDateFormat:@"EEEE, MMMM d, yyyy"];
     
-	return [dateFormatter stringFromDate:aDate];
+    [dateFormatter setDateFormat:@"EEEE, MMMM d, yyyy"];
+    NSString *mydate = [dateFormatter stringFromDate:aDate];
+    
+    [dateFormatter release];
+	return mydate;
     //return [sectionInfo name];
 }
 

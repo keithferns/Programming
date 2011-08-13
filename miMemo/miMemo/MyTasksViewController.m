@@ -87,9 +87,10 @@
     
     NSArray *items = [NSArray arrayWithObjects:flexSpace, saveAsButton, flexSpace, doneButton, flexSpace, gotoButton, flexSpace,nil];
     [toolbar setItems:items];
-    [doneButton release];
     [saveAsButton release];
+    [doneButton release];
     [gotoButton release];
+    [flexSpace release];
     /*--End Setting up the Toolbar */
 }
 

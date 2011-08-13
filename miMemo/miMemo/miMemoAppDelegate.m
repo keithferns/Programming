@@ -29,6 +29,7 @@
 
     // Override point for customization after application launch.
     [self.window makeKeyAndVisible];
+    [rootViewController release];
     return YES;
 }
 

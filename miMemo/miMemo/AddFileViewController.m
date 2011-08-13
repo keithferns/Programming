@@ -157,6 +157,7 @@
     }
     [toolbarItems replaceObjectAtIndex:newButton withObject:doneButton];
     toolbar.items = toolbarItems;
+    [doneButton release];
 }
 
 -(void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)flag
@@ -369,6 +370,11 @@
     
     NSMutableArray *toolbarItems = [NSMutableArray arrayWithObjects:flexSpace, saveAsButton, flexSpace, newButton, flexSpace, gotoButton, flexSpace,nil];
     [toolbar setItems:toolbarItems];
+    [saveAsButton release];
+    [newButton release];
+    [gotoButton release];
+    [flexSpace release];
+    
     /*--End Setting up the Toolbar */
 }
 

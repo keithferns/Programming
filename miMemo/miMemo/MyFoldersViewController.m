@@ -294,6 +294,7 @@
     [doneButton release];
     [saveAsButton release];
     [gotoButton release];
+    [flexSpace release];
     
     /*--End Setting up the Toolbar */
 }
