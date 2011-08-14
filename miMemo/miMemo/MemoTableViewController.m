@@ -53,10 +53,10 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
             object:nil];
     /*configure tableView, set its properties and add it to the main view.*/
     
-    tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 250, 320, 210) style:UITableViewStylePlain];
+    tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 230, 320, 195) style:UITableViewStylePlain];
     [tableView setSectionFooterHeight:0.0];
     [tableView setSectionHeaderHeight:20.0];
-    [tableView setRowHeight:50.0];
+    [tableView setRowHeight:45.0];
     [tableView setDelegate:self];
     [tableView setDataSource:self];
     [self.view addSubview:tableView];
@@ -244,7 +244,20 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
     
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source.
-        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        //NSManagedObjectContext *context = [_fetchedResultsController managedObjectContext];
+		[managedObjectContext deleteObject:[_fetchedResultsController objectAtIndexPath:indexPath]];
+        // Save the context.
+		NSError *error;
+		if (![managedObjectContext save:&error]) {
+			/*
+			 Replace this implementation with code to handle the error appropriately.
+			 
+			 abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. If it is not possible to recover from the error, display an alert panel that instructs the user to quit the application by pressing the Home button.
+			 */
+			NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+			abort();
+        }
+
     }   
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
@@ -286,26 +299,25 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
 }
 - (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
 	
-    UITableView *aTableView = self.tableView;
 	
     switch(type) {
 			
         case NSFetchedResultsChangeInsert:
-            [aTableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
             break;
 			
         case NSFetchedResultsChangeDelete:
-            [aTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+			[self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
             break;
 			
         case NSFetchedResultsChangeUpdate:
-			[self configureCell:[aTableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+			[self configureCell:[self.tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
             break;
 			
         case NSFetchedResultsChangeMove:
-            [aTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
 				// Reloading the section inserts a new row and ensures that titles are updated appropriately.
-            [aTableView reloadSections:[NSIndexSet indexSetWithIndex:newIndexPath.section] withRowAnimation:UITableViewRowAnimationFade];
+            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:newIndexPath.section] withRowAnimation:UITableViewRowAnimationFade];
             break;
     }
 }
@@ -352,7 +364,6 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
 	[tableView release];
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
-
 
 @end
 

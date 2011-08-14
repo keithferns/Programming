@@ -12,9 +12,10 @@
 		</object>
 		<object class="NSArray" key="IBDocument.IntegratedClassDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<string>IBProxyObject</string>
-			<string>IBUILabel</string>
 			<string>IBUITableViewCell</string>
+			<string>IBUIImageView</string>
+			<string>IBUILabel</string>
+			<string>IBProxyObject</string>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -50,9 +51,10 @@
 							<object class="IBUILabel" id="793310987">
 								<reference key="NSNextResponder" ref="818392695"/>
 								<int key="NSvFlags">319</int>
-								<string key="NSFrame">{{7, 0}, {270, 45}}</string>
+								<string key="NSFrame">{{50, 0}, {232, 28}}</string>
 								<reference key="NSSuperview" ref="818392695"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="610113773"/>
 								<object class="NSColor" key="IBUIBackgroundColor" id="240901276">
 									<int key="NSColorSpace">3</int>
 									<bytes key="NSWhite">MQA</bytes>
@@ -80,9 +82,10 @@
 							<object class="IBUILabel" id="610113773">
 								<reference key="NSNextResponder" ref="818392695"/>
 								<int key="NSvFlags">319</int>
-								<string key="NSFrame">{{7, 45}, {83, 25}}</string>
+								<string key="NSFrame">{{50, 28}, {69, 15}}</string>
 								<reference key="NSSuperview" ref="818392695"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="522592641"/>
 								<reference key="IBUIBackgroundColor" ref="240901276"/>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
@@ -103,9 +106,10 @@
 							<object class="IBUILabel" id="522592641">
 								<reference key="NSNextResponder" ref="818392695"/>
 								<int key="NSvFlags">319</int>
-								<string key="NSFrame">{{89, 45}, {188, 25}}</string>
+								<string key="NSFrame">{{120, 28}, {162, 15}}</string>
 								<reference key="NSSuperview" ref="818392695"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
 								<reference key="IBUIBackgroundColor" ref="240901276"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -124,10 +128,25 @@
 								<float key="IBUIMinimumFontSize">11</float>
 								<int key="IBUINumberOfLines">2</int>
 							</object>
+							<object class="IBUIImageView" id="812268786">
+								<reference key="NSNextResponder" ref="818392695"/>
+								<int key="NSvFlags">292</int>
+								<string key="NSFrame">{{3, 0}, {45, 45}}</string>
+								<reference key="NSSuperview" ref="818392695"/>
+								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="793310987"/>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<object class="NSCustomResource" key="IBUIImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">MEMO.png</string>
+								</object>
+							</object>
 						</object>
-						<string key="NSFrameSize">{287, 70}</string>
+						<string key="NSFrameSize">{287, 45}</string>
 						<reference key="NSSuperview" ref="137389946"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="812268786"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MCAwAA</bytes>
@@ -139,9 +158,10 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
 				</object>
-				<string key="NSFrameSize">{320, 70}</string>
+				<string key="NSFrameSize">{320, 45}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
+				<reference key="NSNextKeyView" ref="818392695"/>
 				<reference key="IBUIBackgroundColor" ref="240901276"/>
 				<bool key="IBUIClipsSubviews">YES</bool>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -212,6 +232,7 @@
 							<reference ref="793310987"/>
 							<reference ref="610113773"/>
 							<reference ref="522592641"/>
+							<reference ref="812268786"/>
 						</object>
 						<reference key="parent" ref="0"/>
 						<string key="objectName">StartScreenCustomCell</string>
@@ -233,6 +254,11 @@
 						<reference key="parent" ref="137389946"/>
 						<string key="objectName">creationDate</string>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">32</int>
+						<reference key="object" ref="812268786"/>
+						<reference key="parent" ref="137389946"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -251,6 +277,7 @@
 					<string>3.IBEditorWindowLastContentRect</string>
 					<string>3.IBPluginDependency</string>
 					<string>3.IBViewBoundsToFrameTransform</string>
+					<string>32.IBPluginDependency</string>
 				</object>
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -274,6 +301,7 @@
 					<object class="NSAffineTransform">
 						<bytes key="NSTransformStruct">P4AAAL+AAAAAAAAAwiAAAA</bytes>
 					</object>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="unlocalizedProperties">
@@ -288,7 +316,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">30</int>
+			<int key="maxID">32</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -354,6 +382,10 @@
 		</object>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
+		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
+			<string key="NS.key.0">MEMO.png</string>
+			<string key="NS.object.0">{46, 45}</string>
+		</object>
 		<string key="IBCocoaTouchPluginVersion">301</string>
 	</data>
 </archive>

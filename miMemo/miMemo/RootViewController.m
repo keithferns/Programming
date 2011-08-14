@@ -55,7 +55,7 @@
     self.view.layer.backgroundColor = [UIColor groupTableViewBackgroundColor].CGColor;
     [self.view setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
     
-    newText = [[UITextView alloc] initWithFrame:CGRectMake(10, 35, 305, 170)];
+    newText = [[UITextView alloc] initWithFrame:CGRectMake(10, 35, 305, 140)];
     [newText setFont:[UIFont systemFontOfSize:18]];
     newText.layer.backgroundColor = [UIColor groupTableViewBackgroundColor].CGColor;
     newText.layer.cornerRadius = 7.0;
@@ -70,6 +70,16 @@
     [topLabel setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
     [self.view addSubview:topLabel];
     
+    
+    UITabBar *tabBar = [[UITabBar alloc] initWithFrame:CGRectMake(0, 425, 320, 38)];
+    [tabBar setBackgroundColor:[UIColor darkGrayColor]];
+    UITabBarItem *search = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemSearch tag:0];
+    UITabBarItem *recent = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemRecents tag:1];
+    UITabBarItem *more = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemMore tag:2];
+    NSArray *tabBarItems = [NSArray arrayWithObjects:search, recent, more, nil];
+    [tabBar setItems:tabBarItems];
+    [self.view addSubview:tabBar];
+    
     /*    [[NSNotificationCenter defaultCenter] 
      addObserver:self 
      selector:@selector(handleDidSaveNotification:)
@@ -79,6 +89,7 @@
 
 - (void) viewDidAppear:(BOOL)animated{
 
+    
 }
 
 - (void) textViewDidBeginEditing:(UITextView *)textView{
@@ -402,7 +413,7 @@
 }
 - (void) makeToolbar{
     /*Setting up the Toolbar */
-    CGRect buttonBarFrame = CGRectMake(0, 210, 320, 40);
+    CGRect buttonBarFrame = CGRectMake(0, 190, 320, 40);
     toolbar = [[[UIToolbar alloc] initWithFrame:buttonBarFrame] autorelease];
     [toolbar setBarStyle:UIBarStyleBlackTranslucent];
     [toolbar setTintColor:[UIColor blackColor]];

@@ -199,9 +199,6 @@
     [timeTextField release];
     [textView release];
 
-    
-		//[monthView release];
-		//[datetimeView release];
 }
 
 #pragma mark -
@@ -477,7 +474,6 @@
     // The fetch controller has sent all current change notifications, so tell the table view to process all updates.
     [self.tableView endUpdates];
 }
-
 
 - (void) makeToolbar {
     /*Setting up the Toolbar */
