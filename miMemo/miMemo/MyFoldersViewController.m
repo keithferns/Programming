@@ -92,8 +92,9 @@
 }
 
 - (void) searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
-    CGRect mytestFrame = CGRectMake(0, 0, 320, 205);
-    [tableView setFrame:mytestFrame];
+    CGRect topFrame = CGRectMake(0, 0, 320, 205);
+    [self.searchBar resignFirstResponder];
+    [tableView setFrame:topFrame];
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{    
@@ -108,6 +109,12 @@
 	if (![[self fetchedResultsController] performFetch:&error]) {
 	}
     [self.tableView reloadData];
+    
+}
+
+- (void) searchBarCancelButtonClicked:(UISearchBar *)searchBar{
+    CGRect bottomFrame = CGRectMake(0, 245, 320, 215);
+    [tableView setFrame:bottomFrame];
     
 }
 

@@ -173,7 +173,6 @@
     //save fetched data to an array
 	[self setMemoArray:mutableFetchResults];
 	[mutableFetchResults release];
-	[request release];
     
     [request setPredicate:checkDate];
 

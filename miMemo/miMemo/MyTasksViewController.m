@@ -9,6 +9,10 @@
 #import "MyTasksViewController.h"
 #import "MyTasksTableViewController.h"
 
+#import "miMemoAppDelegate.h"
+#import <QuartzCore/QuartzCore.h>
+#import "MemoTableViewController.h"
+
 #import "MyAppointmentsViewController.h"
 
 @implementation MyTasksViewController
@@ -17,6 +21,11 @@
 @synthesize toolbar;
 @synthesize saveActionSheet, goActionSheet;
 @synthesize tableViewController;
+
+@synthesize managedObjectContext;
+@synthesize textView;
+@synthesize selectedMemoText;
+@synthesize dateTextField;
 
 #pragma mark - View lifecycle
 
@@ -28,6 +37,51 @@
 
     [self makeToolbar];
     [self.view addSubview:toolbar];
+    /*Setting Up the Views*/
+    self.view.layer.backgroundColor = [UIColor groupTableViewBackgroundColor].CGColor;
+    //The Text View
+    textView = [[UITextView alloc] initWithFrame:CGRectMake(10, 45, 300, 160)];
+    [self.view addSubview:textView];
+    [textView setFont:[UIFont systemFontOfSize:18]];
+    textView.layer.backgroundColor = [UIColor whiteColor].CGColor;
+    textView.layer.cornerRadius = 7.0;
+    textView.layer.frame = CGRectInset(textView.layer.frame, 5, 10);
+    textView.layer.contents = (id) [UIImage imageNamed:@"lined_paper_320x200.png"].CGImage;    
+    [textView setText:[NSString stringWithFormat:@"%@", selectedMemoText.memoText]];
+    [self.view addSubview:textView];
+	//[textView becomeFirstResponder];
+    [textView setDelegate:self];
+    
+    //The Date Label and Date Field
+    static NSDateFormatter *dateFormatter = nil;
+	if (dateFormatter == nil) {
+		dateFormatter = [[NSDateFormatter alloc] init];
+		[dateFormatter setDateFormat:@"EE, dd MMMM h:mm a"];
+    }	
+    dateTextField = [[UITextField alloc] init];
+    
+    [dateTextField setBorderStyle:UITextBorderStyleRoundedRect];
+    [dateTextField setFont:[UIFont systemFontOfSize:17]];
+
+        UILabel *dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 23, 90, 21)];
+        [dateLabel setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
+        [dateLabel setFont:[UIFont systemFontOfSize:17]];
+        [self.view addSubview:dateLabel];
+        [dateTextField setFrame:CGRectMake(105, 20, 200, 31)];
+        [dateLabel setText:@"Due:"];
+        [dateTextField setText:selectedMemoText.savedTask.doDate];
+        [self.view addSubview:dateTextField];
+        [dateLabel release];
+        
+    /*--End Setting Up the Views--*/
+    
+    
+    /*-- Initializing the managedObjectContext--*/
+	if (managedObjectContext == nil) { 
+		managedObjectContext =[(miMemoAppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext]; 
+        NSLog(@"After managedObjectContext: %@", managedObjectContext);
+    }
+    /*--End Initializing the managedObjectContext--*/
 }
 
 
@@ -61,6 +115,71 @@
     
     // Release any cached data, images, etc that aren't in use.
 }
+
+
+- (void) textViewDidBeginEditing:(UITextView *)textView {
+    
+    NSLog(@"Try to change New botton to Done");
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(navigationAction:)];
+    [doneButton setTag:1];
+    [doneButton setWidth:90];
+    NSUInteger newButton = 0;
+    NSMutableArray *toolbarItems = [[NSMutableArray arrayWithArray:toolbar.items] retain];
+    
+    for (NSUInteger i = 0; i < [toolbarItems count]; i++) {
+        UIBarButtonItem *barButtonItem = [toolbarItems objectAtIndex:i];
+        if (barButtonItem.tag == 1){
+            [toolbarItems release];
+            [doneButton release];
+            return;
+        }
+        else if (barButtonItem.tag == 3) {
+            newButton = i;
+            break;
+        }
+    }
+    [toolbarItems replaceObjectAtIndex:newButton withObject:doneButton];
+    toolbar.items = toolbarItems;
+    [toolbarItems release];
+    [doneButton release];
+}
+
+
+
+-(void) saveSelectedMemo{
+	[self.view endEditing:YES];
+    UIBarButtonItem *newButton = [[UIBarButtonItem alloc] initWithTitle:@"NEW" style:UIBarButtonItemStyleBordered target:self action:@selector(navigationAction:)];
+    [newButton setTag:3];
+    [newButton setWidth:90];
+    NSUInteger myButton = 0;
+    NSMutableArray *toolbarItems = [[NSMutableArray arrayWithArray:toolbar.items] retain];
+    for (NSUInteger i = 0; i < [toolbarItems count]; i++) {
+        UIBarButtonItem *barButtonItem = [toolbarItems objectAtIndex:i];
+        if (barButtonItem.tag == 1) {
+            myButton = i;
+            break;
+        }
+    }
+    [toolbarItems replaceObjectAtIndex:myButton withObject:newButton];
+    toolbar.items = toolbarItems;
+	[newButton release];
+    [toolbarItems release];
+    /*--Save the edited text--*/
+	selectedMemoText.memoText = textView.text;
+    
+    /*--Save to the managedObjectContext]--*/
+	NSError *error;
+	if(![managedObjectContext save:&error]){
+	}
+}
+- (void) startNew {
+    /*--Send notification that changes saved to the MOC--*/
+	[[NSNotificationCenter defaultCenter] 
+	 postNotificationName:managedObjectContextSavedNotification object:nil];
+    /*--dimiss the modalView--*/
+    [self dismissModalViewControllerAnimated:YES];
+}
+
 
 
 #pragma -

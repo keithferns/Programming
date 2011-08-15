@@ -6,7 +6,12 @@
 #import "MemoTableViewController.h"
 #import "miMemoAppDelegate.h"
 #import "StartScreenCustomCell.h"
+#import "TaskCustomCell.h"
 #import "MemoDetailViewController.h"
+
+#import "MyMemosViewController.h"
+#import "MyAppointmentsViewController.h"
+#import "MyTasksViewController.h"
 
 	// Name of notification
 NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSaved";
@@ -53,14 +58,13 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
             object:nil];
     /*configure tableView, set its properties and add it to the main view.*/
     
-    tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 230, 320, 195) style:UITableViewStylePlain];
-    [tableView setSectionFooterHeight:0.0];
-    [tableView setSectionHeaderHeight:20.0];
-    [tableView setRowHeight:45.0];
+    tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 245, 320, 180) style:UITableViewStylePlain];
+    //[tableView setSectionFooterHeight:0.0];
+    //[tableView setSectionHeaderHeight:15.0];
+    [tableView setRowHeight:60.0];
     [tableView setDelegate:self];
     [tableView setDataSource:self];
     [self.view addSubview:tableView];
-
     
     /*-- Point current instance of the MOC to the main managedObjectContext --*/
 	if (managedObjectContext == nil) { 
@@ -151,30 +155,29 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 	return [[_fetchedResultsController sections] count];
 }
-
+/*
 - (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
 	id<NSFetchedResultsSectionInfo>  sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
 	int mySection;
 	mySection = [[sectionInfo name] intValue];
 	if (mySection == 0){
-		return	@"Most Recent Memo";
+		return	@"Notes";
 	}
 	else if (mySection == 1){
-		return @"Impending Appointment";
+		return @"Appointments";
 	}
     else if (mySection == 2) {
-        return @"Approaching Task Deadline";
+        return @"Tasks";
     }
     else{
         return @"No Saved Memo's";
     }
 }
+ */
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
         //id <NSFetchedResultsSectionInfo> sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
 		//return [sectionInfo numberOfObjects];
 		return 1;
-    
-    
 }
 
 - (void) configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath{
@@ -187,7 +190,7 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
 	StartScreenCustomCell *mycell;
 	if([cell isKindOfClass:[UITableViewCell class]]){
 		mycell = (StartScreenCustomCell *) cell;
-        [mycell setAccessoryType:UITableViewCellAccessoryDetailDisclosureButton];   
+        [mycell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];   
         }
 	 MemoText *aNote = [_fetchedResultsController objectAtIndexPath:indexPath];	
     
@@ -195,27 +198,29 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
         [mycell.memoText setText:[NSString stringWithFormat:@"%@", aNote.memoText]];	
 		[mycell.date setText: [dateFormatter stringFromDate:[aNote.savedMemo doDate]]];
         [mycell.dateLabel setText:@"CREATED:"];
+        mycell.imageView.image = [UIImage imageNamed:@"MEMO.png"];
 		} 
 	else if ([aNote.noteType intValue] == 1){
         [mycell.memoText setText:[NSString stringWithFormat:@"%@", aNote.memoText]];
 		[mycell.date setText: aNote.savedAppointment.doDate];
         [mycell.dateLabel setText:@"SCHEDULED:"];
-
+        mycell.imageView.image = [UIImage imageNamed:@"Tasks Icon.png"];
 	}
     else if ([aNote.noteType intValue] ==2){
         [mycell.memoText setText:[NSString stringWithFormat:@"%@", aNote.memoText]];
 		[mycell.date setText: aNote.savedTask.doDate];
         [mycell.dateLabel setText:@"DUE:"];
+        mycell.imageView.image = [UIImage imageNamed:@"ToDo.png"];
+
 
 	}
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    // MemoText *aNote = [_fetchedResultsController objectAtIndexPath:indexPath];	
+    //if ([aNote.noteType intValue] == 0){
+        
     static NSString *CellIdentifier = @"StartScreenCustomCell";
-	static NSDateFormatter *dateFormatter = nil;
-	if (dateFormatter == nil) {
-		dateFormatter = [[NSDateFormatter alloc] init];
-		[dateFormatter setDateFormat:@"dd MMMM yyyy h:mm a"];
-	}
+
 	StartScreenCustomCell *cell = (StartScreenCustomCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	if (cell == nil) {
 		NSArray *topLevelObjects = [[NSBundle mainBundle]
@@ -225,11 +230,51 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
 			if([currentObject isKindOfClass:[UITableViewCell class]]){
 				cell = (StartScreenCustomCell *) currentObject;
 				break;
-			}
-		}
-	}
+                }
+            }
+        }
+        [self configureCell:cell atIndexPath:indexPath];
+        return cell;
+    /*}
+    else if ([aNote.noteType intValue] == 1){
+        
+        static NSString *CellIdentifier = @"TaskCustomCell";
+        
+        TaskCustomCell *cell = (TaskCustomCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cell == nil) {
+            NSArray *topLevelObjects = [[NSBundle mainBundle]
+                                        loadNibNamed:@"TaskCustomCell"
+                                        owner:nil options:nil];
+            for (id currentObject in topLevelObjects){
+                if([currentObject isKindOfClass:[UITableViewCell class]]){
+                    cell = (TaskCustomCell *) currentObject;
+                    break;
+                }
+            }
+        }
+        [self configureCell:cell atIndexPath:indexPath];
+        return cell;
+    }
+    else if ([aNote.noteType intValue] == 2){
+        
+        static NSString *CellIdentifier = @"TaskCustomCell";
+        
+        TaskCustomCell *cell = (TaskCustomCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cell == nil) {
+            NSArray *topLevelObjects = [[NSBundle mainBundle]
+                                        loadNibNamed:@"TaskCustomCell"
+                                        owner:nil options:nil];
+            for (id currentObject in topLevelObjects){
+                if([currentObject isKindOfClass:[UITableViewCell class]]){
+                    cell = (TaskCustomCell *) currentObject;
+                    break;
+                }
+            }
+        }
+    
 	[self configureCell:cell atIndexPath:indexPath];
     return cell;
+    }*/
 }
 
 /*
@@ -280,14 +325,29 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
 #pragma mark Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    MemoDetailViewController *detailViewController = [[MemoDetailViewController alloc] initWithNibName:@"MemoDetailView" bundle:[NSBundle mainBundle]];
-     // ...
-     // Pass the selected object to the new view controller.
-	
-	detailViewController.selectedMemoText = [_fetchedResultsController objectAtIndexPath:indexPath];	
-		
-	[self presentModalViewController:detailViewController animated:YES];	
-    [detailViewController release];
+    
+
+    MemoText *selectedMemoText = [_fetchedResultsController objectAtIndexPath:indexPath];	
+    if ([selectedMemoText.noteType intValue] == 0){
+        MyMemosViewController *detailViewController = [[MyMemosViewController alloc] initWithNibName:@"MyMemosViewController" bundle:[NSBundle mainBundle]];  
+        detailViewController.selectedMemoText = selectedMemoText;
+        [self presentModalViewController:detailViewController animated:YES];	
+        [detailViewController release];
+    }
+    else if ([selectedMemoText.noteType intValue] == 1) {
+        MyAppointmentsViewController *detailViewController = [[MyAppointmentsViewController alloc] initWithNibName:@"MyAppointmentsViewController" bundle:[NSBundle mainBundle]];  
+        detailViewController.selectedMemoText = selectedMemoText;
+        [self presentModalViewController:detailViewController animated:YES];	
+        [detailViewController release];
+    }
+    else if ([selectedMemoText.noteType intValue] == 2){
+        MyTasksViewController *detailViewController = [[MyTasksViewController alloc] initWithNibName:@"MyTasksViewController" bundle:[NSBundle mainBundle]];  
+        detailViewController.selectedMemoText = selectedMemoText;
+        [self presentModalViewController:detailViewController animated:YES];	
+        [detailViewController release];
+    
+    }
+        
 }
 
 #pragma mark -

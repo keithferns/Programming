@@ -118,7 +118,6 @@
     NSString *dateString = [dateFormatter stringFromDate:tempDate];
     NSPredicate *checkDate = [NSPredicate predicateWithFormat:@"doDate == %@", dateString];
     self.fetchedResultsController = [self fetchedResultsControllerWithPredicate:checkDate];
-    [checkDate release];
     [dateFormatter release];
     NSError *error;
     if (![[self fetchedResultsController] performFetch:&error]) {

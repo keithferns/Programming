@@ -197,7 +197,6 @@ NSLog(@"Try to change New botton to Done");
     [newButton setWidth:90];
     NSUInteger myButton = 0;
     NSMutableArray *toolbarItems = [[NSMutableArray arrayWithArray:toolbar.items] retain];
-    
     for (NSUInteger i = 0; i < [toolbarItems count]; i++) {
         UIBarButtonItem *barButtonItem = [toolbarItems objectAtIndex:i];
         if (barButtonItem.tag == 1) {
@@ -205,7 +204,6 @@ NSLog(@"Try to change New botton to Done");
             break;
         }
     }
-    
     [toolbarItems replaceObjectAtIndex:myButton withObject:newButton];
     toolbar.items = toolbarItems;
 	[newButton release];
@@ -222,7 +220,6 @@ NSLog(@"Try to change New botton to Done");
     /*--Send notification that changes saved to the MOC--*/
 	[[NSNotificationCenter defaultCenter] 
 	 postNotificationName:managedObjectContextSavedNotification object:nil];
-    
     /*--dimiss the modalView--*/
     [self dismissModalViewControllerAnimated:YES];
 }
@@ -236,7 +233,6 @@ NSLog(@"Try to change New botton to Done");
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-    
 }
 
 - (void)viewDidUnload {

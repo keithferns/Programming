@@ -1,10 +1,7 @@
-//
 //  MemoDetailViewController.h
 //  Memo
-//
 //  Created by Keith Fernandes on 7/2/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
-//
 
 #import <UIKit/UIKit.h>
 #import <MessageUI/MessageUI.h>
@@ -13,14 +10,13 @@
 #import "Appointment.h"
 #import "ToDo.h"
 
-
-
 @interface MemoDetailViewController : UIViewController <UITextViewDelegate, UIActionSheetDelegate, UITextFieldDelegate> {
-
+    
+    UITextView *textView;
 	NSManagedObjectContext *managedObjectContext;
 	MemoText *selectedMemoText;
-	UITextView *textView;
 }
+
 @property (nonatomic, retain) MemoText *selectedMemoText;
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain) UITextField *dateTextField; 

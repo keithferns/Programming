@@ -1,10 +1,7 @@
-//
 //  AddFileViewController.m
 //  miMemo
-//
 //  Created by Keith Fernandes on 8/11/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
-//
 
 #import "AddFileViewController.h"
 #import <QuartzCore/QuartzCore.h>
@@ -75,20 +72,18 @@
     /*--Done Setting Up the Views--*/
     
     /*-- Initializing the managedObjectContext--*/
-    
 	if (managedObjectContextTV == nil) { 
 		managedObjectContextTV = [(miMemoAppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext]; 
         NSLog(@"After managedObjectContext: %@",  managedObjectContextTV);
     }
-    /*--Done Initializing the managedObjectContext--*/
-    
+    /*--Done Initializing the managedObjectContext--*/    
     newMemoText = [managedObjectContext insertNewObjectForEntityForName:@"MemoText"];
     [newMemoText setMemoText:newTextInput];
     [newMemoText setCreationDate:[NSDate date]]; 
     
     Memo *newMemo = [managedObjectContext insertNewObjectForEntityForName:@"Memo"];
-    newMemo.memoText = newMemoText; 
-    newMemo.doDate = newMemoText.creationDate ;
+    [newMemo setMemoText:newMemoText];
+    [newMemo setDoDate:newMemoText.creationDate];
     
     /*
      //Insert a new File Object into the MOC
@@ -131,17 +126,16 @@
         int tempF = abs(arc4random());
         NSString *tempStringF = [NSString stringWithFormat:@"File%d", tempF];
         [newFile setFileName:tempStringF];
-    }
-    
+        }
     /*--Save the MOC--*/	
     NSError *error;
     if(![managedObjectContext save:&error]){ 
         NSLog(@"DID NOT SAVE");
-    }
+        }
     } 
     if (!swappingViews) {
         [self swapViews];
-    }
+        }
     /*-- Change the OK Button to the DONE button --*/
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(navigationAction:)];
     [doneButton setTag:3];
@@ -160,17 +154,13 @@
     [doneButton release];
 }
 
--(void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)flag
-{
+-(void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)flag{
 	swappingViews = NO;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation{
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
-
 
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
@@ -266,7 +256,6 @@
     return numberOfRows;
 }
 
-
 - (void) configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath{
 	
 	FileCustomCell *mycell;
@@ -333,8 +322,6 @@
 - (void) backAction{
 	[self dismissModalViewControllerAnimated:YES];		
 }
-
-
 
 - (void) swapViews {
 	CATransition *transition = [CATransition animation];

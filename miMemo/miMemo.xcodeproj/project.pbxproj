@@ -47,6 +47,8 @@
 		53A7446013F39DEF00B2D5DB /* File.m in Sources */ = {isa = PBXBuildFile; fileRef = 53A7445F13F39DE800B2D5DB /* File.m */; };
 		53DA3D1E13F73F280080417A /* MEMO_FINAL3.png in Resources */ = {isa = PBXBuildFile; fileRef = 53DA3D1D13F73F280080417A /* MEMO_FINAL3.png */; };
 		53DA3D2013F743530080417A /* MEMO.png in Resources */ = {isa = PBXBuildFile; fileRef = 53DA3D1F13F743530080417A /* MEMO.png */; };
+		53DA3D2213F780970080417A /* Tasks icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 53DA3D2113F780970080417A /* Tasks icon.png */; };
+		53DA3D4E13F787250080417A /* ToDo.png in Resources */ = {isa = PBXBuildFile; fileRef = 53DA3D4D13F787250080417A /* ToDo.png */; };
 		53E62FBC13E93067000DEF2A /* AddTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E62FBA13E93067000DEF2A /* AddTaskViewController.m */; };
 		53E62FBD13E93067000DEF2A /* AddTaskViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53E62FBB13E93067000DEF2A /* AddTaskViewController.xib */; };
 		53E62FC113E93130000DEF2A /* AppointmentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E62FC013E93130000DEF2A /* AppointmentsViewController.m */; };
@@ -144,6 +146,8 @@
 		53A7445F13F39DE800B2D5DB /* File.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = File.m; path = ManagedObjects/File.m; sourceTree = "<group>"; };
 		53DA3D1D13F73F280080417A /* MEMO_FINAL3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MEMO_FINAL3.png; sourceTree = "<group>"; };
 		53DA3D1F13F743530080417A /* MEMO.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MEMO.png; sourceTree = "<group>"; };
+		53DA3D2113F780970080417A /* Tasks icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tasks icon.png"; sourceTree = "<group>"; };
+		53DA3D4D13F787250080417A /* ToDo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ToDo.png; sourceTree = "<group>"; };
 		53E62FB913E93067000DEF2A /* AddTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTaskViewController.h; sourceTree = "<group>"; };
 		53E62FBA13E93067000DEF2A /* AddTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTaskViewController.m; sourceTree = "<group>"; };
 		53E62FBB13E93067000DEF2A /* AddTaskViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddTaskViewController.xib; sourceTree = "<group>"; };
@@ -376,6 +380,8 @@
 		53A7444C13F2D96E00B2D5DB /* TaskCustomCell */ = {
 			isa = PBXGroup;
 			children = (
+				53DA3D4D13F787250080417A /* ToDo.png */,
+				53DA3D2113F780970080417A /* Tasks icon.png */,
 				53A7444613F2D90700B2D5DB /* TaskCustomCell.h */,
 				53A7444713F2D90700B2D5DB /* TaskCustomCell.m */,
 				53A7444E13F2D9BB00B2D5DB /* TaskCustomCell.xib */,
@@ -616,6 +622,8 @@
 				53A7445D13F38D8A00B2D5DB /* AddFileViewController.xib in Resources */,
 				53DA3D1E13F73F280080417A /* MEMO_FINAL3.png in Resources */,
 				53DA3D2013F743530080417A /* MEMO.png in Resources */,
+				53DA3D2213F780970080417A /* Tasks icon.png in Resources */,
+				53DA3D4E13F787250080417A /* ToDo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -57,7 +57,7 @@
     
     newText = [[UITextView alloc] initWithFrame:CGRectMake(10, 35, 305, 140)];
     [newText setFont:[UIFont systemFontOfSize:18]];
-    newText.layer.backgroundColor = [UIColor groupTableViewBackgroundColor].CGColor;
+    //newText.layer.backgroundColor = [UIColor groupTableViewBackgroundColor].CGColor;
     newText.layer.cornerRadius = 7.0;
     newText.layer.frame = CGRectInset(newText.layer.frame, 5, 10);
     //newText.layer.contents = (id) [UIImage imageNamed:@"lined_paper_320x200.png"].CGImage;
@@ -88,7 +88,6 @@
 }
 
 - (void) viewDidAppear:(BOOL)animated{
-
     
 }
 
@@ -135,8 +134,8 @@
             break;
 		case 2:
 			self.goActionSheet = [[UIActionSheet alloc] 
-								  initWithTitle:@"Go To" delegate:self cancelButtonTitle:@"Later"
-								  destructiveButtonTitle:nil otherButtonTitles:@"Memos", @"Folders", @"Appointments", @"Tasks", nil];
+								  initWithTitle:@"Go To" delegate:self cancelButtonTitle:@"Cancel"
+								  destructiveButtonTitle:nil otherButtonTitles: @"Folders", nil];
 			[goActionSheet showFromRect:CGRectMake(20, 350, 280, 300) inView:self.view animated:YES];
             break;
 		case 1:
@@ -198,29 +197,16 @@
 	}
 	else if (actionSheet == goActionSheet){
 		switch (buttonIndex){
-			case 4:
+			case 1:
 			default:
 				break;
-			case 3:
-			{MyTasksViewController *viewController = [[[MyTasksViewController	alloc] initWithNibName:nil bundle:nil] autorelease];	
-                [self presentModalViewController:viewController animated:YES];}
-				break;
-			case 2:
-				NSLog(@"Appointments Button Clicked on GoToAction");
-			{MyAppointmentsViewController *viewController = [[[MyAppointmentsViewController alloc] initWithNibName:nil bundle:nil] autorelease];	
-				[self presentModalViewController:viewController animated:YES];
-            }
-				break;
-			case 1:
+			
+            case 0:
 				NSLog(@" Folders Button Clicked on GoToAction");
             {MyFoldersViewController *viewController = [[[MyFoldersViewController alloc] initWithNibName:nil bundle:nil] autorelease];
                 [self presentModalViewController:viewController animated:YES];}
 				break;		
-            case 0:
-				NSLog(@" Memos Button Clicked on GoToAction");
-                MyMemosViewController *viewController = [[[MyMemosViewController alloc] initWithNibName:nil bundle:nil] autorelease];
-                [self presentModalViewController:viewController animated:YES];
-				break;	    
+           
 		}
 	}
 }
@@ -373,7 +359,7 @@
     if (![newTextInput isEqualToString:previousTextInput]) 
         
     {
-        // Initialize an instance of NewTaskViewCOntroller and Pass the text input to this view controller.
+        // Initialize an instance of NewTaskViewController and Pass the text input to this view controller.
         AddFolderViewController *addViewController = [[AddFolderViewController alloc] initWithNibName:nil bundle:nil];
         // Create a new managed object context for the new task -- set its persistent store coordinator to the same as that from the fetched results controller's context.
         NSManagedObjectContext *addingContext = [[NSManagedObjectContext alloc] init];
@@ -413,10 +399,10 @@
 }
 - (void) makeToolbar{
     /*Setting up the Toolbar */
-    CGRect buttonBarFrame = CGRectMake(0, 190, 320, 40);
+    CGRect buttonBarFrame = CGRectMake(0, 205, 320, 40);
     toolbar = [[[UIToolbar alloc] initWithFrame:buttonBarFrame] autorelease];
-    [toolbar setBarStyle:UIBarStyleBlackTranslucent];
-    [toolbar setTintColor:[UIColor blackColor]];
+    [toolbar setBarStyle:UIBarStyleDefault];
+    [toolbar setTintColor:[UIColor blueColor]];
     UIBarButtonItem *saveAsButton = [[UIBarButtonItem alloc] initWithTitle:@"SAVE AS" style:UIBarButtonItemStyleBordered target:self action:@selector(navigationAction:)];
     [saveAsButton setTag:0];
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"DONE" style:UIBarButtonItemStyleBordered target:self action:@selector(navigationAction:)];

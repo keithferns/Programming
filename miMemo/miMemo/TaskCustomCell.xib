@@ -12,9 +12,10 @@
 		</object>
 		<object class="NSArray" key="IBDocument.IntegratedClassDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<string>IBProxyObject</string>
-			<string>IBUILabel</string>
 			<string>IBUITableViewCell</string>
+			<string>IBUIImageView</string>
+			<string>IBUILabel</string>
+			<string>IBProxyObject</string>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -50,7 +51,7 @@
 							<object class="IBUILabel" id="349247081">
 								<reference key="NSNextResponder" ref="1068420940"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{10, 0}, {264, 44}}</string>
+								<string key="NSFrame">{{59, 0}, {215, 44}}</string>
 								<reference key="NSSuperview" ref="1068420940"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView"/>
@@ -69,11 +70,25 @@
 								<float key="IBUIMinimumFontSize">10</float>
 								<int key="IBUINumberOfLines">2</int>
 							</object>
+							<object class="IBUIImageView" id="890489674">
+								<reference key="NSNextResponder" ref="1068420940"/>
+								<int key="NSvFlags">292</int>
+								<string key="NSFrameSize">{45, 45}</string>
+								<reference key="NSSuperview" ref="1068420940"/>
+								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="349247081"/>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<object class="NSCustomResource" key="IBUIImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">Tasks icon.png</string>
+								</object>
+							</object>
 						</object>
-						<string key="NSFrameSize">{287, 44}</string>
+						<string key="NSFrameSize">{320, 45}</string>
 						<reference key="NSSuperview" ref="407915620"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="349247081"/>
+						<reference key="NSNextKeyView" ref="890489674"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MCAwAA</bytes>
@@ -85,7 +100,7 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
 				</object>
-				<string key="NSFrameSize">{320, 44}</string>
+				<string key="NSFrameSize">{320, 45}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="1068420940"/>
@@ -95,7 +110,6 @@
 				</object>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 				<int key="IBUISeparatorStyle">1</int>
-				<int key="IBUIAccessoryType">2</int>
 				<reference key="IBUIContentView" ref="1068420940"/>
 			</object>
 		</object>
@@ -137,12 +151,18 @@
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="349247081"/>
+							<reference ref="890489674"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">4</int>
 						<reference key="object" ref="349247081"/>
+						<reference key="parent" ref="407915620"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">14</int>
+						<reference key="object" ref="890489674"/>
 						<reference key="parent" ref="407915620"/>
 					</object>
 				</object>
@@ -153,6 +173,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>-1.CustomClassName</string>
 					<string>-2.CustomClassName</string>
+					<string>14.IBPluginDependency</string>
 					<string>3.CustomClassName</string>
 					<string>3.IBPluginDependency</string>
 					<string>4.IBPluginDependency</string>
@@ -161,6 +182,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>TaskCustomCell</string>
 					<string>UIResponder</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>TaskCustomCell</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -178,7 +200,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">13</int>
+			<int key="maxID">14</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -212,6 +234,10 @@
 		</object>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
+		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
+			<string key="NS.key.0">Tasks icon.png</string>
+			<string key="NS.object.0">{43, 45}</string>
+		</object>
 		<string key="IBCocoaTouchPluginVersion">301</string>
 	</data>
 </archive>

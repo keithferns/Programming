@@ -100,7 +100,7 @@
     
 	[request setEntity:[NSEntityDescription entityForName:@"ToDo" inManagedObjectContext:managedObjectContext]];
     
-	NSSortDescriptor *dateDescriptor = [[NSSortDescriptor alloc] initWithKey:@"selectedDate" ascending:NO];
+	NSSortDescriptor *dateDescriptor = [[NSSortDescriptor alloc] initWithKey:@"selectedDate" ascending:YES];
 	NSSortDescriptor *textDescriptor = [[NSSortDescriptor alloc] initWithKey:@"memoText" ascending:YES];// just here to test the sections and row calls
 	
     /*-- set Predicate to filter all tasks and appointments for a time after NOW --*/
