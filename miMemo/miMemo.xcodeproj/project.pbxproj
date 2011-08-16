@@ -28,14 +28,10 @@
 		532B3F9B13E934CF008810B8 /* MyAppointmentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 532B3F9713E934CF008810B8 /* MyAppointmentsTableViewController.m */; };
 		532B3F9C13E934CF008810B8 /* MyAppointmentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 532B3F9913E934CF008810B8 /* MyAppointmentsViewController.m */; };
 		532B3F9D13E934CF008810B8 /* MyAppointmentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 532B3F9A13E934CF008810B8 /* MyAppointmentsViewController.xib */; };
-		532B3FA313E93512008810B8 /* MyTasksTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 532B3F9F13E93512008810B8 /* MyTasksTableViewController.m */; };
 		532B3FA413E93512008810B8 /* MyTasksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 532B3FA113E93512008810B8 /* MyTasksViewController.m */; };
-		532B3FA513E93512008810B8 /* MyTasksViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 532B3FA213E93512008810B8 /* MyTasksViewController.xib */; };
 		532B3FAC13E93545008810B8 /* MyFoldersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 532B3FA913E93545008810B8 /* MyFoldersViewController.m */; };
 		532B3FAD13E93545008810B8 /* MyFoldersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 532B3FAA13E93545008810B8 /* MyFoldersViewController.xib */; };
-		532B3FB313E93597008810B8 /* MyMemosTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 532B3FAF13E93597008810B8 /* MyMemosTableViewController.m */; };
 		532B3FB413E93597008810B8 /* MyMemosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 532B3FB113E93597008810B8 /* MyMemosViewController.m */; };
-		532B3FB513E93597008810B8 /* MyMemosViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 532B3FB213E93597008810B8 /* MyMemosViewController.xib */; };
 		532B3FB713E9A463008810B8 /* AppointmentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 532B3FB613E9A463008810B8 /* AppointmentsViewController.xib */; };
 		532B3FB913EA713A008810B8 /* AddFolderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 532B3FB813EA7139008810B8 /* AddFolderViewController.xib */; };
 		53A7443213F1E5B200B2D5DB /* FolderFilesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53A7443013F1E5B200B2D5DB /* FolderFilesViewController.m */; };
@@ -74,6 +70,18 @@
 		53FAD11B13DDEA3100FB168C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 53FAD11913DDEA3100FB168C /* InfoPlist.strings */; };
 		53FAD11E13DDEA3100FB168C /* miMemoTests.h in Resources */ = {isa = PBXBuildFile; fileRef = 53FAD11D13DDEA3100FB168C /* miMemoTests.h */; };
 		53FAD12013DDEA3100FB168C /* miMemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FAD11F13DDEA3100FB168C /* miMemoTests.m */; };
+		53FB851413FA3C5400765BFC /* MyTasksViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53FB851313FA3C5400765BFC /* MyTasksViewController.xib */; };
+		53FB851713FA3CC800765BFC /* MyMemosViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53FB851613FA3CC800765BFC /* MyMemosViewController.xib */; };
+		53FB851913FA46B200765BFC /* folder_open_go.png in Resources */ = {isa = PBXBuildFile; fileRef = 53FB851813FA46B200765BFC /* folder_open_go.png */; };
+		53FB852B13FA5D4E00765BFC /* multi_folder_badged.png in Resources */ = {isa = PBXBuildFile; fileRef = 53FB852A13FA5D4D00765BFC /* multi_folder_badged.png */; };
+		53FB852F13FA602D00765BFC /* classic_folder_documents.png in Resources */ = {isa = PBXBuildFile; fileRef = 53FB852E13FA602D00765BFC /* classic_folder_documents.png */; };
+		53FB853313FAC63600765BFC /* documents.png in Resources */ = {isa = PBXBuildFile; fileRef = 53FB853213FAC63600765BFC /* documents.png */; };
+		53FB853913FAC86B00765BFC /* note_go.png in Resources */ = {isa = PBXBuildFile; fileRef = 53FB853813FAC86B00765BFC /* note_go.png */; };
+		53FB853B13FAC8C100765BFC /* documents_folder_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 53FB853A13FAC8C100765BFC /* documents_folder_white.png */; };
+		53FB853F13FAD0C400765BFC /* folder_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 53FB853E13FAD0C300765BFC /* folder_small.png */; };
+		53FB854113FAD0DF00765BFC /* note_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 53FB854013FAD0DF00765BFC /* note_small.png */; };
+		53FB854413FAD4FF00765BFC /* documents_white_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 53FB854213FAD4FE00765BFC /* documents_white_small.png */; };
+		53FB854513FAD4FF00765BFC /* document_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 53FB854313FAD4FE00765BFC /* document_small.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,19 +126,13 @@
 		532B3F9813E934CF008810B8 /* MyAppointmentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAppointmentsViewController.h; sourceTree = "<group>"; };
 		532B3F9913E934CF008810B8 /* MyAppointmentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAppointmentsViewController.m; sourceTree = "<group>"; };
 		532B3F9A13E934CF008810B8 /* MyAppointmentsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyAppointmentsViewController.xib; sourceTree = "<group>"; };
-		532B3F9E13E93512008810B8 /* MyTasksTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTasksTableViewController.h; sourceTree = "<group>"; };
-		532B3F9F13E93512008810B8 /* MyTasksTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTasksTableViewController.m; sourceTree = "<group>"; };
 		532B3FA013E93512008810B8 /* MyTasksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTasksViewController.h; sourceTree = "<group>"; };
 		532B3FA113E93512008810B8 /* MyTasksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTasksViewController.m; sourceTree = "<group>"; };
-		532B3FA213E93512008810B8 /* MyTasksViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyTasksViewController.xib; sourceTree = "<group>"; };
 		532B3FA813E93545008810B8 /* MyFoldersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFoldersViewController.h; sourceTree = "<group>"; };
 		532B3FA913E93545008810B8 /* MyFoldersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFoldersViewController.m; sourceTree = "<group>"; };
 		532B3FAA13E93545008810B8 /* MyFoldersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyFoldersViewController.xib; sourceTree = "<group>"; };
-		532B3FAE13E93597008810B8 /* MyMemosTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMemosTableViewController.h; sourceTree = "<group>"; };
-		532B3FAF13E93597008810B8 /* MyMemosTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMemosTableViewController.m; sourceTree = "<group>"; };
 		532B3FB013E93597008810B8 /* MyMemosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMemosViewController.h; sourceTree = "<group>"; };
 		532B3FB113E93597008810B8 /* MyMemosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMemosViewController.m; sourceTree = "<group>"; };
-		532B3FB213E93597008810B8 /* MyMemosViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyMemosViewController.xib; sourceTree = "<group>"; };
 		532B3FB613E9A463008810B8 /* AppointmentsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppointmentsViewController.xib; sourceTree = "<group>"; };
 		532B3FB813EA7139008810B8 /* AddFolderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddFolderViewController.xib; sourceTree = "<group>"; };
 		53A7442F13F1E5B200B2D5DB /* FolderFilesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FolderFilesViewController.h; sourceTree = "<group>"; };
@@ -184,6 +186,18 @@
 		53FAD11C13DDEA3100FB168C /* miMemoTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "miMemoTests-Prefix.pch"; sourceTree = "<group>"; };
 		53FAD11D13DDEA3100FB168C /* miMemoTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = miMemoTests.h; sourceTree = "<group>"; };
 		53FAD11F13DDEA3100FB168C /* miMemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = miMemoTests.m; sourceTree = "<group>"; };
+		53FB851313FA3C5400765BFC /* MyTasksViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyTasksViewController.xib; sourceTree = "<group>"; };
+		53FB851613FA3CC800765BFC /* MyMemosViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyMemosViewController.xib; sourceTree = "<group>"; };
+		53FB851813FA46B200765BFC /* folder_open_go.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = folder_open_go.png; sourceTree = "<group>"; };
+		53FB852A13FA5D4D00765BFC /* multi_folder_badged.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = multi_folder_badged.png; sourceTree = "<group>"; };
+		53FB852E13FA602D00765BFC /* classic_folder_documents.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = classic_folder_documents.png; sourceTree = "<group>"; };
+		53FB853213FAC63600765BFC /* documents.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = documents.png; sourceTree = "<group>"; };
+		53FB853813FAC86B00765BFC /* note_go.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = note_go.png; sourceTree = "<group>"; };
+		53FB853A13FAC8C100765BFC /* documents_folder_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = documents_folder_white.png; sourceTree = "<group>"; };
+		53FB853E13FAD0C300765BFC /* folder_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = folder_small.png; sourceTree = "<group>"; };
+		53FB854013FAD0DF00765BFC /* note_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = note_small.png; sourceTree = "<group>"; };
+		53FB854213FAD4FE00765BFC /* documents_white_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = documents_white_small.png; sourceTree = "<group>"; };
+		53FB854313FAD4FE00765BFC /* document_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = document_small.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -279,7 +293,6 @@
 			isa = PBXGroup;
 			children = (
 				53A7444D13F2D98300B2D5DB /* AppoinmentCustomCell */,
-				531AE54E13DF18B700D9B616 /* lined_paper_320x200.png */,
 				53A7444913F2D92000B2D5DB /* FIleCustomCell */,
 				53A7444A13F2D93900B2D5DB /* FolderCustomCell */,
 				53A7444B13F2D95800B2D5DB /* StartScreenCustomCell */,
@@ -303,11 +316,9 @@
 		531AE56613DF391E00D9B616 /* MyTasks */ = {
 			isa = PBXGroup;
 			children = (
-				532B3F9E13E93512008810B8 /* MyTasksTableViewController.h */,
-				532B3F9F13E93512008810B8 /* MyTasksTableViewController.m */,
 				532B3FA013E93512008810B8 /* MyTasksViewController.h */,
 				532B3FA113E93512008810B8 /* MyTasksViewController.m */,
-				532B3FA213E93512008810B8 /* MyTasksViewController.xib */,
+				53FB851313FA3C5400765BFC /* MyTasksViewController.xib */,
 			);
 			name = MyTasks;
 			sourceTree = "<group>";
@@ -326,9 +337,9 @@
 		53A7442D13F1E57B00B2D5DB /* FolderFilesViewController */ = {
 			isa = PBXGroup;
 			children = (
+				53A7443113F1E5B200B2D5DB /* FolderFilesViewController.xib */,
 				53A7442F13F1E5B200B2D5DB /* FolderFilesViewController.h */,
 				53A7443013F1E5B200B2D5DB /* FolderFilesViewController.m */,
-				53A7443113F1E5B200B2D5DB /* FolderFilesViewController.xib */,
 			);
 			name = FolderFilesViewController;
 			sourceTree = "<group>";
@@ -420,11 +431,9 @@
 		53E19BE613E25F2B004BC4E5 /* MyMemo&Files */ = {
 			isa = PBXGroup;
 			children = (
-				532B3FAE13E93597008810B8 /* MyMemosTableViewController.h */,
-				532B3FAF13E93597008810B8 /* MyMemosTableViewController.m */,
 				532B3FB013E93597008810B8 /* MyMemosViewController.h */,
 				532B3FB113E93597008810B8 /* MyMemosViewController.m */,
-				532B3FB213E93597008810B8 /* MyMemosViewController.xib */,
+				53FB851613FA3CC800765BFC /* MyMemosViewController.xib */,
 			);
 			name = "MyMemo&Files";
 			sourceTree = "<group>";
@@ -502,6 +511,17 @@
 		53FAD0F913DDEA3100FB168C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				53FB854213FAD4FE00765BFC /* documents_white_small.png */,
+				53FB854313FAD4FE00765BFC /* document_small.png */,
+				53FB854013FAD0DF00765BFC /* note_small.png */,
+				53FB853E13FAD0C300765BFC /* folder_small.png */,
+				53FB853A13FAC8C100765BFC /* documents_folder_white.png */,
+				53FB853813FAC86B00765BFC /* note_go.png */,
+				53FB853213FAC63600765BFC /* documents.png */,
+				531AE54E13DF18B700D9B616 /* lined_paper_320x200.png */,
+				53FB851813FA46B200765BFC /* folder_open_go.png */,
+				53FB852E13FA602D00765BFC /* classic_folder_documents.png */,
+				53FB852A13FA5D4D00765BFC /* multi_folder_badged.png */,
 				531AE56913DF8C4300D9B616 /* iphone_icon.png */,
 				531AE56313DF20A400D9B616 /* Blue.png */,
 				531AE56113DF206000D9B616 /* bluebutton.png */,
@@ -612,9 +632,7 @@
 				531AE56A13DF8C4300D9B616 /* iphone_icon.png in Resources */,
 				53E62FBD13E93067000DEF2A /* AddTaskViewController.xib in Resources */,
 				532B3F9D13E934CF008810B8 /* MyAppointmentsViewController.xib in Resources */,
-				532B3FA513E93512008810B8 /* MyTasksViewController.xib in Resources */,
 				532B3FAD13E93545008810B8 /* MyFoldersViewController.xib in Resources */,
-				532B3FB513E93597008810B8 /* MyMemosViewController.xib in Resources */,
 				532B3FB713E9A463008810B8 /* AppointmentsViewController.xib in Resources */,
 				532B3FB913EA713A008810B8 /* AddFolderViewController.xib in Resources */,
 				53A7443313F1E5B200B2D5DB /* FolderFilesViewController.xib in Resources */,
@@ -624,6 +642,18 @@
 				53DA3D2013F743530080417A /* MEMO.png in Resources */,
 				53DA3D2213F780970080417A /* Tasks icon.png in Resources */,
 				53DA3D4E13F787250080417A /* ToDo.png in Resources */,
+				53FB851413FA3C5400765BFC /* MyTasksViewController.xib in Resources */,
+				53FB851713FA3CC800765BFC /* MyMemosViewController.xib in Resources */,
+				53FB851913FA46B200765BFC /* folder_open_go.png in Resources */,
+				53FB852B13FA5D4E00765BFC /* multi_folder_badged.png in Resources */,
+				53FB852F13FA602D00765BFC /* classic_folder_documents.png in Resources */,
+				53FB853313FAC63600765BFC /* documents.png in Resources */,
+				53FB853913FAC86B00765BFC /* note_go.png in Resources */,
+				53FB853B13FAC8C100765BFC /* documents_folder_white.png in Resources */,
+				53FB853F13FAD0C400765BFC /* folder_small.png in Resources */,
+				53FB854113FAD0DF00765BFC /* note_small.png in Resources */,
+				53FB854413FAD4FF00765BFC /* documents_white_small.png in Resources */,
+				53FB854513FAD4FF00765BFC /* document_small.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -680,10 +710,8 @@
 				53E62FD713E9341D000DEF2A /* ToDo.m in Sources */,
 				532B3F9B13E934CF008810B8 /* MyAppointmentsTableViewController.m in Sources */,
 				532B3F9C13E934CF008810B8 /* MyAppointmentsViewController.m in Sources */,
-				532B3FA313E93512008810B8 /* MyTasksTableViewController.m in Sources */,
 				532B3FA413E93512008810B8 /* MyTasksViewController.m in Sources */,
 				532B3FAC13E93545008810B8 /* MyFoldersViewController.m in Sources */,
-				532B3FB313E93597008810B8 /* MyMemosTableViewController.m in Sources */,
 				532B3FB413E93597008810B8 /* MyMemosViewController.m in Sources */,
 				53A7443213F1E5B200B2D5DB /* FolderFilesViewController.m in Sources */,
 				53A7444813F2D90700B2D5DB /* TaskCustomCell.m in Sources */,

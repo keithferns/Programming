@@ -58,7 +58,15 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
             object:nil];
     /*configure tableView, set its properties and add it to the main view.*/
     
-    tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 245, 320, 180) style:UITableViewStylePlain];
+    tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 205, 320, 220) style:UITableViewStylePlain];
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
+    UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, 320, 30)];
+    [headerLabel setBackgroundColor:[UIColor lightGrayColor]];
+    [headerLabel setText:@"MY STUFF"];
+    [headerLabel setTextAlignment:UITextAlignmentCenter];
+    [headerView setBackgroundColor:[UIColor blackColor]];
+    [headerView addSubview:headerLabel];
+    [tableView setTableHeaderView:headerView];
     //[tableView setSectionFooterHeight:0.0];
     //[tableView setSectionHeaderHeight:15.0];
     [tableView setRowHeight:60.0];
@@ -329,7 +337,7 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
 
     MemoText *selectedMemoText = [_fetchedResultsController objectAtIndexPath:indexPath];	
     if ([selectedMemoText.noteType intValue] == 0){
-        MyMemosViewController *detailViewController = [[MyMemosViewController alloc] initWithNibName:@"MyMemosViewController" bundle:[NSBundle mainBundle]];  
+        MyMemosViewController *detailViewController = [[MyMemosViewController alloc] initWithNibName:nil bundle:nil];  
         detailViewController.selectedMemoText = selectedMemoText;
         [self presentModalViewController:detailViewController animated:YES];	
         [detailViewController release];
@@ -341,7 +349,7 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
         [detailViewController release];
     }
     else if ([selectedMemoText.noteType intValue] == 2){
-        MyTasksViewController *detailViewController = [[MyTasksViewController alloc] initWithNibName:@"MyTasksViewController" bundle:[NSBundle mainBundle]];  
+        MyTasksViewController *detailViewController = [[MyTasksViewController alloc] initWithNibName:nil bundle:nil]; 
         detailViewController.selectedMemoText = selectedMemoText;
         [self presentModalViewController:detailViewController animated:YES];	
         [detailViewController release];

@@ -49,13 +49,12 @@
         
         NSLog(@"After managedObjectContext: %@",  managedObjectContext);
 	}
-    [self makeToolbar];
-    [self.view addSubview:toolbar];
+ 
     
     self.view.layer.backgroundColor = [UIColor groupTableViewBackgroundColor].CGColor;
     [self.view setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
     
-    newText = [[UITextView alloc] initWithFrame:CGRectMake(10, 35, 305, 140)];
+    newText = [[UITextView alloc] initWithFrame:CGRectMake(10, 35, 303, 140)];
     [newText setFont:[UIFont systemFontOfSize:18]];
     //newText.layer.backgroundColor = [UIColor groupTableViewBackgroundColor].CGColor;
     newText.layer.cornerRadius = 7.0;
@@ -71,12 +70,25 @@
     [self.view addSubview:topLabel];
     
     
-    UITabBar *tabBar = [[UITabBar alloc] initWithFrame:CGRectMake(0, 425, 320, 38)];
+    UITabBar *tabBar = [[UITabBar alloc] initWithFrame:CGRectMake(0, 425, 320, 39)];
     [tabBar setBackgroundColor:[UIColor darkGrayColor]];
-    UITabBarItem *search = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemSearch tag:0];
-    UITabBarItem *recent = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemRecents tag:1];
+    
+   // UITabBarItem *search = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemSearch tag:0];
+    UITabBarItem *folders = [[UITabBarItem alloc] init];
+    UIImage *image = [UIImage imageNamed: @"folder_small.png"];
+    [folders setImage:image];
+     [folders setTitle:@"Folders"];
+     [folders setTag:0];
+                    
+    image = [UIImage imageNamed:@"document_small.png"];
+    //UITabBarItem *documents = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemRecents tag:1];
+    UITabBarItem *documents = [[ UITabBarItem alloc]init];
+    [documents setImage:image];
+    [documents setTitle:@"Docs"];
+    [documents setTag:1];
+    
     UITabBarItem *more = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemMore tag:2];
-    NSArray *tabBarItems = [NSArray arrayWithObjects:search, recent, more, nil];
+    NSArray *tabBarItems = [NSArray arrayWithObjects:folders, documents, more, nil];
     [tabBar setItems:tabBarItems];
     [self.view addSubview:tabBar];
     
@@ -92,6 +104,9 @@
 }
 
 - (void) textViewDidBeginEditing:(UITextView *)textView{
+    [self makeToolbar];
+    [self.view addSubview:toolbar];
+    
     /*--Add the DONE button to the textView once editing begins or resumes--*/
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(navigationAction:)];
     [doneButton setTag:1];
@@ -120,6 +135,7 @@
 }
 
 - (void) textViewDidEndEditing:(UITextView *)textView{
+    [toolbar setHidden:YES];
 }
 
 #pragma mark -

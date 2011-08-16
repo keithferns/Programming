@@ -11,17 +11,20 @@
 #import "Memo.h"
 #import "MemoText.h"
     
-@interface MyMemosViewController : UIViewController <UITextViewDelegate, UIActionSheetDelegate, UITextFieldDelegate>  {
+@interface MyMemosViewController : UIViewController <UITextViewDelegate, UIActionSheetDelegate, UITextFieldDelegate, NSFetchedResultsControllerDelegate, UITableViewDelegate, UITableViewDataSource>  {
         
-        UITableViewController *tableViewController;
-        NSManagedObjectContext *managedObjectContext;
         MemoText *selectedMemoText;
         UITextView *textView;
-    }
 
-    @property (nonatomic, retain) IBOutlet UITableViewController *tableViewController;
-    @property (nonatomic, retain) MemoText *selectedMemoText;
+        NSManagedObjectContext *managedObjectContext;
+        NSFetchedResultsController *_fetchedResultsController;
+        UITableView *tableView;
+    }
+    
     @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
+    @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
+    @property (nonatomic, retain) IBOutlet UITableView *tableView;
+    @property (nonatomic, retain) MemoText *selectedMemoText;
     @property (nonatomic, retain) UITextField *dateTextField; 
     @property (nonatomic, retain) UITextView *textView;
     @property (nonatomic, retain) UIActionSheet *goActionSheet, *saveActionSheet;

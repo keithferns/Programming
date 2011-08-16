@@ -6,31 +6,29 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
+//FIXME: Set predicate to filter out minimum date to current date. 
 
 #import <UIKit/UIKit.h>
 #import "MemoText.h"
 #import "ToDo.h"
 
-@interface MyTasksViewController : UIViewController <UITextViewDelegate, UIActionSheetDelegate, UITextFieldDelegate> {
+@interface MyTasksViewController : UIViewController <UITextFieldDelegate, UITextViewDelegate, UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate, NSFetchedResultsControllerDelegate>{
     
     UITextView *textView;
     NSManagedObjectContext *managedObjectContext;    
-    UITableViewController *tableViewController;
     MemoText *selectedMemoText;
-    
-    
+    NSFetchedResultsController *_fetchedResultsController;
+	UITableView *tableView;
 }
 
-
+@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
+@property (nonatomic, retain) IBOutlet UITableView *tableView;
 @property (nonatomic, retain) UIActionSheet *goActionSheet, *saveActionSheet;
 @property (nonatomic, retain) UIToolbar *toolbar;
-
 @property (nonatomic, retain) UITextView *textView;
 @property (nonatomic, retain) UITextField *dateTextField; 
 @property (nonatomic, retain) MemoText *selectedMemoText;
-
-@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
-@property (nonatomic, retain) IBOutlet UITableViewController *tableViewController;
 
 - (void) saveSelectedMemo;
 - (void) startNew;
@@ -38,6 +36,3 @@
 - (IBAction) navigationAction:(id)sender;
 
 @end
-
-/*
- */

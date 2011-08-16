@@ -7,150 +7,151 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		53A5C5C213D52DAA002B4E59 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53A5C5C113D52DAA002B4E59 /* UIKit.framework */; };
-		53A5C5C413D52DAA002B4E59 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53A5C5C313D52DAA002B4E59 /* Foundation.framework */; };
-		53A5C5C613D52DAA002B4E59 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53A5C5C513D52DAA002B4E59 /* CoreGraphics.framework */; };
-		53A5C5CC13D52DAA002B4E59 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 53A5C5CA13D52DAA002B4E59 /* InfoPlist.strings */; };
-		53A5C5CF13D52DAA002B4E59 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 53A5C5CE13D52DAA002B4E59 /* main.m */; };
-		53A5C5D213D52DAB002B4E59 /* myMemoAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 53A5C5D113D52DAB002B4E59 /* myMemoAppDelegate.m */; };
-		53A5C5D513D52DAB002B4E59 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53A5C5D313D52DAB002B4E59 /* MainWindow.xib */; };
-		53A5C5D813D52DAB002B4E59 /* myMemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53A5C5D713D52DAB002B4E59 /* myMemoViewController.m */; };
-		53A5C5DB13D52DAB002B4E59 /* myMemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53A5C5D913D52DAB002B4E59 /* myMemoViewController.xib */; };
-		53A5C5E213D52DAB002B4E59 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53A5C5C113D52DAA002B4E59 /* UIKit.framework */; };
-		53A5C5E313D52DAB002B4E59 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53A5C5C313D52DAA002B4E59 /* Foundation.framework */; };
-		53A5C5E413D52DAB002B4E59 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53A5C5C513D52DAA002B4E59 /* CoreGraphics.framework */; };
-		53A5C5EC13D52DAB002B4E59 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 53A5C5EA13D52DAB002B4E59 /* InfoPlist.strings */; };
-		53A5C5EF13D52DAB002B4E59 /* myMemoTests.h in Resources */ = {isa = PBXBuildFile; fileRef = 53A5C5EE13D52DAB002B4E59 /* myMemoTests.h */; };
-		53A5C5F113D52DAB002B4E59 /* myMemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 53A5C5F013D52DAB002B4E59 /* myMemoTests.m */; };
+		53FB855613FAEA6F00765BFC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53FB855513FAEA6F00765BFC /* UIKit.framework */; };
+		53FB855813FAEA7000765BFC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53FB855713FAEA7000765BFC /* Foundation.framework */; };
+		53FB855A13FAEA7000765BFC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53FB855913FAEA7000765BFC /* CoreGraphics.framework */; };
+		53FB855C13FAEA7000765BFC /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53FB855B13FAEA7000765BFC /* CoreData.framework */; };
+		53FB856213FAEA7000765BFC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 53FB856013FAEA7000765BFC /* InfoPlist.strings */; };
+		53FB856513FAEA7000765BFC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FB856413FAEA7000765BFC /* main.m */; };
+		53FB856813FAEA7000765BFC /* myMemoAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FB856713FAEA7000765BFC /* myMemoAppDelegate.m */; };
+		53FB856B13FAEA7000765BFC /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53FB856913FAEA7000765BFC /* MainWindow.xib */; };
+		53FB856E13FAEA7000765BFC /* myMemo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 53FB856C13FAEA7000765BFC /* myMemo.xcdatamodeld */; };
+		53FB857513FAEA7000765BFC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53FB855513FAEA6F00765BFC /* UIKit.framework */; };
+		53FB857613FAEA7000765BFC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53FB855713FAEA7000765BFC /* Foundation.framework */; };
+		53FB857713FAEA7000765BFC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53FB855913FAEA7000765BFC /* CoreGraphics.framework */; };
+		53FB857813FAEA7000765BFC /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53FB855B13FAEA7000765BFC /* CoreData.framework */; };
+		53FB858013FAEA7000765BFC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 53FB857E13FAEA7000765BFC /* InfoPlist.strings */; };
+		53FB858313FAEA7000765BFC /* myMemoTests.h in Resources */ = {isa = PBXBuildFile; fileRef = 53FB858213FAEA7000765BFC /* myMemoTests.h */; };
+		53FB858513FAEA7000765BFC /* myMemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FB858413FAEA7000765BFC /* myMemoTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		53A5C5E513D52DAB002B4E59 /* PBXContainerItemProxy */ = {
+		53FB857913FAEA7000765BFC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 53A5C5B413D52DAA002B4E59 /* Project object */;
+			containerPortal = 53FB854813FAEA6F00765BFC /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 53A5C5BC13D52DAA002B4E59;
+			remoteGlobalIDString = 53FB855013FAEA6F00765BFC;
 			remoteInfo = myMemo;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		53A5C5BD13D52DAA002B4E59 /* myMemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myMemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		53A5C5C113D52DAA002B4E59 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		53A5C5C313D52DAA002B4E59 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		53A5C5C513D52DAA002B4E59 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		53A5C5C913D52DAA002B4E59 /* myMemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "myMemo-Info.plist"; sourceTree = "<group>"; };
-		53A5C5CB13D52DAA002B4E59 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		53A5C5CD13D52DAA002B4E59 /* myMemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "myMemo-Prefix.pch"; sourceTree = "<group>"; };
-		53A5C5CE13D52DAA002B4E59 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		53A5C5D013D52DAB002B4E59 /* myMemoAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = myMemoAppDelegate.h; sourceTree = "<group>"; };
-		53A5C5D113D52DAB002B4E59 /* myMemoAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = myMemoAppDelegate.m; sourceTree = "<group>"; };
-		53A5C5D413D52DAB002B4E59 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
-		53A5C5D613D52DAB002B4E59 /* myMemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = myMemoViewController.h; sourceTree = "<group>"; };
-		53A5C5D713D52DAB002B4E59 /* myMemoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = myMemoViewController.m; sourceTree = "<group>"; };
-		53A5C5DA13D52DAB002B4E59 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/myMemoViewController.xib; sourceTree = "<group>"; };
-		53A5C5E113D52DAB002B4E59 /* myMemoTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = myMemoTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		53A5C5E913D52DAB002B4E59 /* myMemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "myMemoTests-Info.plist"; sourceTree = "<group>"; };
-		53A5C5EB13D52DAB002B4E59 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		53A5C5ED13D52DAB002B4E59 /* myMemoTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "myMemoTests-Prefix.pch"; sourceTree = "<group>"; };
-		53A5C5EE13D52DAB002B4E59 /* myMemoTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = myMemoTests.h; sourceTree = "<group>"; };
-		53A5C5F013D52DAB002B4E59 /* myMemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = myMemoTests.m; sourceTree = "<group>"; };
+		53FB855113FAEA6F00765BFC /* myMemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myMemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		53FB855513FAEA6F00765BFC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		53FB855713FAEA7000765BFC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		53FB855913FAEA7000765BFC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		53FB855B13FAEA7000765BFC /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		53FB855F13FAEA7000765BFC /* myMemo-Info.plist */ = {isa = PBXFileReference; path = "myMemo-Info.plist"; sourceTree = "<group>"; };
+		53FB856113FAEA7000765BFC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		53FB856313FAEA7000765BFC /* myMemo-Prefix.pch */ = {isa = PBXFileReference; path = "myMemo-Prefix.pch"; sourceTree = "<group>"; };
+		53FB856413FAEA7000765BFC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		53FB856613FAEA7000765BFC /* myMemoAppDelegate.h */ = {isa = PBXFileReference; path = myMemoAppDelegate.h; sourceTree = "<group>"; };
+		53FB856713FAEA7000765BFC /* myMemoAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = myMemoAppDelegate.m; sourceTree = "<group>"; };
+		53FB856A13FAEA7000765BFC /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		53FB856D13FAEA7000765BFC /* myMemo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = myMemo.xcdatamodel; sourceTree = "<group>"; };
+		53FB857413FAEA7000765BFC /* myMemoTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = myMemoTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		53FB857D13FAEA7000765BFC /* myMemoTests-Info.plist */ = {isa = PBXFileReference; path = "myMemoTests-Info.plist"; sourceTree = "<group>"; };
+		53FB857F13FAEA7000765BFC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		53FB858113FAEA7000765BFC /* myMemoTests-Prefix.pch */ = {isa = PBXFileReference; path = "myMemoTests-Prefix.pch"; sourceTree = "<group>"; };
+		53FB858213FAEA7000765BFC /* myMemoTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = myMemoTests.h; sourceTree = "<group>"; };
+		53FB858413FAEA7000765BFC /* myMemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = myMemoTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		53A5C5BA13D52DAA002B4E59 /* Frameworks */ = {
+		53FB854E13FAEA6F00765BFC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				53A5C5C213D52DAA002B4E59 /* UIKit.framework in Frameworks */,
-				53A5C5C413D52DAA002B4E59 /* Foundation.framework in Frameworks */,
-				53A5C5C613D52DAA002B4E59 /* CoreGraphics.framework in Frameworks */,
+				53FB855613FAEA6F00765BFC /* UIKit.framework in Frameworks */,
+				53FB855813FAEA7000765BFC /* Foundation.framework in Frameworks */,
+				53FB855A13FAEA7000765BFC /* CoreGraphics.framework in Frameworks */,
+				53FB855C13FAEA7000765BFC /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		53A5C5DD13D52DAB002B4E59 /* Frameworks */ = {
+		53FB857013FAEA7000765BFC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				53A5C5E213D52DAB002B4E59 /* UIKit.framework in Frameworks */,
-				53A5C5E313D52DAB002B4E59 /* Foundation.framework in Frameworks */,
-				53A5C5E413D52DAB002B4E59 /* CoreGraphics.framework in Frameworks */,
+				53FB857513FAEA7000765BFC /* UIKit.framework in Frameworks */,
+				53FB857613FAEA7000765BFC /* Foundation.framework in Frameworks */,
+				53FB857713FAEA7000765BFC /* CoreGraphics.framework in Frameworks */,
+				53FB857813FAEA7000765BFC /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		53A5C5B213D52DAA002B4E59 = {
+		53FB854613FAEA6F00765BFC = {
 			isa = PBXGroup;
 			children = (
-				53A5C5C713D52DAA002B4E59 /* myMemo */,
-				53A5C5E713D52DAB002B4E59 /* myMemoTests */,
-				53A5C5C013D52DAA002B4E59 /* Frameworks */,
-				53A5C5BE13D52DAA002B4E59 /* Products */,
+				53FB855D13FAEA7000765BFC /* myMemo */,
+				53FB857B13FAEA7000765BFC /* myMemoTests */,
+				53FB855413FAEA6F00765BFC /* Frameworks */,
+				53FB855213FAEA6F00765BFC /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		53A5C5BE13D52DAA002B4E59 /* Products */ = {
+		53FB855213FAEA6F00765BFC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				53A5C5BD13D52DAA002B4E59 /* myMemo.app */,
-				53A5C5E113D52DAB002B4E59 /* myMemoTests.octest */,
+				53FB855113FAEA6F00765BFC /* myMemo.app */,
+				53FB857413FAEA7000765BFC /* myMemoTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		53A5C5C013D52DAA002B4E59 /* Frameworks */ = {
+		53FB855413FAEA6F00765BFC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				53A5C5C113D52DAA002B4E59 /* UIKit.framework */,
-				53A5C5C313D52DAA002B4E59 /* Foundation.framework */,
-				53A5C5C513D52DAA002B4E59 /* CoreGraphics.framework */,
+				53FB855513FAEA6F00765BFC /* UIKit.framework */,
+				53FB855713FAEA7000765BFC /* Foundation.framework */,
+				53FB855913FAEA7000765BFC /* CoreGraphics.framework */,
+				53FB855B13FAEA7000765BFC /* CoreData.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		53A5C5C713D52DAA002B4E59 /* myMemo */ = {
+		53FB855D13FAEA7000765BFC /* myMemo */ = {
 			isa = PBXGroup;
 			children = (
-				53A5C5D013D52DAB002B4E59 /* myMemoAppDelegate.h */,
-				53A5C5D113D52DAB002B4E59 /* myMemoAppDelegate.m */,
-				53A5C5D313D52DAB002B4E59 /* MainWindow.xib */,
-				53A5C5D613D52DAB002B4E59 /* myMemoViewController.h */,
-				53A5C5D713D52DAB002B4E59 /* myMemoViewController.m */,
-				53A5C5D913D52DAB002B4E59 /* myMemoViewController.xib */,
-				53A5C5C813D52DAA002B4E59 /* Supporting Files */,
+				53FB856613FAEA7000765BFC /* myMemoAppDelegate.h */,
+				53FB856713FAEA7000765BFC /* myMemoAppDelegate.m */,
+				53FB856913FAEA7000765BFC /* MainWindow.xib */,
+				53FB856C13FAEA7000765BFC /* myMemo.xcdatamodeld */,
+				53FB855E13FAEA7000765BFC /* Supporting Files */,
 			);
 			path = myMemo;
 			sourceTree = "<group>";
 		};
-		53A5C5C813D52DAA002B4E59 /* Supporting Files */ = {
+		53FB855E13FAEA7000765BFC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				53A5C5C913D52DAA002B4E59 /* myMemo-Info.plist */,
-				53A5C5CA13D52DAA002B4E59 /* InfoPlist.strings */,
-				53A5C5CD13D52DAA002B4E59 /* myMemo-Prefix.pch */,
-				53A5C5CE13D52DAA002B4E59 /* main.m */,
+				53FB855F13FAEA7000765BFC /* myMemo-Info.plist */,
+				53FB856013FAEA7000765BFC /* InfoPlist.strings */,
+				53FB856313FAEA7000765BFC /* myMemo-Prefix.pch */,
+				53FB856413FAEA7000765BFC /* main.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		53A5C5E713D52DAB002B4E59 /* myMemoTests */ = {
+		53FB857B13FAEA7000765BFC /* myMemoTests */ = {
 			isa = PBXGroup;
 			children = (
-				53A5C5EE13D52DAB002B4E59 /* myMemoTests.h */,
-				53A5C5F013D52DAB002B4E59 /* myMemoTests.m */,
-				53A5C5E813D52DAB002B4E59 /* Supporting Files */,
+				53FB858213FAEA7000765BFC /* myMemoTests.h */,
+				53FB858413FAEA7000765BFC /* myMemoTests.m */,
+				53FB857C13FAEA7000765BFC /* Supporting Files */,
 			);
 			path = myMemoTests;
 			sourceTree = "<group>";
 		};
-		53A5C5E813D52DAB002B4E59 /* Supporting Files */ = {
+		53FB857C13FAEA7000765BFC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				53A5C5E913D52DAB002B4E59 /* myMemoTests-Info.plist */,
-				53A5C5EA13D52DAB002B4E59 /* InfoPlist.strings */,
-				53A5C5ED13D52DAB002B4E59 /* myMemoTests-Prefix.pch */,
+				53FB857D13FAEA7000765BFC /* myMemoTests-Info.plist */,
+				53FB857E13FAEA7000765BFC /* InfoPlist.strings */,
+				53FB858113FAEA7000765BFC /* myMemoTests-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -158,13 +159,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		53A5C5BC13D52DAA002B4E59 /* myMemo */ = {
+		53FB855013FAEA6F00765BFC /* myMemo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 53A5C5F413D52DAB002B4E59 /* Build configuration list for PBXNativeTarget "myMemo" */;
+			buildConfigurationList = 53FB858813FAEA7000765BFC /* Build configuration list for PBXNativeTarget "myMemo" */;
 			buildPhases = (
-				53A5C5B913D52DAA002B4E59 /* Sources */,
-				53A5C5BA13D52DAA002B4E59 /* Frameworks */,
-				53A5C5BB13D52DAA002B4E59 /* Resources */,
+				53FB854D13FAEA6F00765BFC /* Sources */,
+				53FB854E13FAEA6F00765BFC /* Frameworks */,
+				53FB854F13FAEA6F00765BFC /* Resources */,
 			);
 			buildRules = (
 			);
@@ -172,75 +173,74 @@
 			);
 			name = myMemo;
 			productName = myMemo;
-			productReference = 53A5C5BD13D52DAA002B4E59 /* myMemo.app */;
+			productReference = 53FB855113FAEA6F00765BFC /* myMemo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		53A5C5E013D52DAB002B4E59 /* myMemoTests */ = {
+		53FB857313FAEA7000765BFC /* myMemoTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 53A5C5F713D52DAB002B4E59 /* Build configuration list for PBXNativeTarget "myMemoTests" */;
+			buildConfigurationList = 53FB858B13FAEA7000765BFC /* Build configuration list for PBXNativeTarget "myMemoTests" */;
 			buildPhases = (
-				53A5C5DC13D52DAB002B4E59 /* Sources */,
-				53A5C5DD13D52DAB002B4E59 /* Frameworks */,
-				53A5C5DE13D52DAB002B4E59 /* Resources */,
-				53A5C5DF13D52DAB002B4E59 /* ShellScript */,
+				53FB856F13FAEA7000765BFC /* Sources */,
+				53FB857013FAEA7000765BFC /* Frameworks */,
+				53FB857113FAEA7000765BFC /* Resources */,
+				53FB857213FAEA7000765BFC /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				53A5C5E613D52DAB002B4E59 /* PBXTargetDependency */,
+				53FB857A13FAEA7000765BFC /* PBXTargetDependency */,
 			);
 			name = myMemoTests;
 			productName = myMemoTests;
-			productReference = 53A5C5E113D52DAB002B4E59 /* myMemoTests.octest */;
+			productReference = 53FB857413FAEA7000765BFC /* myMemoTests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		53A5C5B413D52DAA002B4E59 /* Project object */ = {
+		53FB854813FAEA6F00765BFC /* Project object */ = {
 			isa = PBXProject;
-			buildConfigurationList = 53A5C5B713D52DAA002B4E59 /* Build configuration list for PBXProject "myMemo" */;
+			buildConfigurationList = 53FB854B13FAEA6F00765BFC /* Build configuration list for PBXProject "myMemo" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 53A5C5B213D52DAA002B4E59;
-			productRefGroup = 53A5C5BE13D52DAA002B4E59 /* Products */;
+			mainGroup = 53FB854613FAEA6F00765BFC;
+			productRefGroup = 53FB855213FAEA6F00765BFC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				53A5C5BC13D52DAA002B4E59 /* myMemo */,
-				53A5C5E013D52DAB002B4E59 /* myMemoTests */,
+				53FB855013FAEA6F00765BFC /* myMemo */,
+				53FB857313FAEA7000765BFC /* myMemoTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		53A5C5BB13D52DAA002B4E59 /* Resources */ = {
+		53FB854F13FAEA6F00765BFC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				53A5C5CC13D52DAA002B4E59 /* InfoPlist.strings in Resources */,
-				53A5C5D513D52DAB002B4E59 /* MainWindow.xib in Resources */,
-				53A5C5DB13D52DAB002B4E59 /* myMemoViewController.xib in Resources */,
+				53FB856213FAEA7000765BFC /* InfoPlist.strings in Resources */,
+				53FB856B13FAEA7000765BFC /* MainWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		53A5C5DE13D52DAB002B4E59 /* Resources */ = {
+		53FB857113FAEA7000765BFC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				53A5C5EC13D52DAB002B4E59 /* InfoPlist.strings in Resources */,
-				53A5C5EF13D52DAB002B4E59 /* myMemoTests.h in Resources */,
+				53FB858013FAEA7000765BFC /* InfoPlist.strings in Resources */,
+				53FB858313FAEA7000765BFC /* myMemoTests.h in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		53A5C5DF13D52DAB002B4E59 /* ShellScript */ = {
+		53FB857213FAEA7000765BFC /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -256,63 +256,55 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		53A5C5B913D52DAA002B4E59 /* Sources */ = {
+		53FB854D13FAEA6F00765BFC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				53A5C5CF13D52DAA002B4E59 /* main.m in Sources */,
-				53A5C5D213D52DAB002B4E59 /* myMemoAppDelegate.m in Sources */,
-				53A5C5D813D52DAB002B4E59 /* myMemoViewController.m in Sources */,
+				53FB856513FAEA7000765BFC /* main.m in Sources */,
+				53FB856813FAEA7000765BFC /* myMemoAppDelegate.m in Sources */,
+				53FB856E13FAEA7000765BFC /* myMemo.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		53A5C5DC13D52DAB002B4E59 /* Sources */ = {
+		53FB856F13FAEA7000765BFC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				53A5C5F113D52DAB002B4E59 /* myMemoTests.m in Sources */,
+				53FB858513FAEA7000765BFC /* myMemoTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		53A5C5E613D52DAB002B4E59 /* PBXTargetDependency */ = {
+		53FB857A13FAEA7000765BFC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 53A5C5BC13D52DAA002B4E59 /* myMemo */;
-			targetProxy = 53A5C5E513D52DAB002B4E59 /* PBXContainerItemProxy */;
+			target = 53FB855013FAEA6F00765BFC /* myMemo */;
+			targetProxy = 53FB857913FAEA7000765BFC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		53A5C5CA13D52DAA002B4E59 /* InfoPlist.strings */ = {
+		53FB856013FAEA7000765BFC /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				53A5C5CB13D52DAA002B4E59 /* en */,
+				53FB856113FAEA7000765BFC /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		53A5C5D313D52DAB002B4E59 /* MainWindow.xib */ = {
+		53FB856913FAEA7000765BFC /* MainWindow.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				53A5C5D413D52DAB002B4E59 /* en */,
+				53FB856A13FAEA7000765BFC /* en */,
 			);
 			name = MainWindow.xib;
 			sourceTree = "<group>";
 		};
-		53A5C5D913D52DAB002B4E59 /* myMemoViewController.xib */ = {
+		53FB857E13FAEA7000765BFC /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				53A5C5DA13D52DAB002B4E59 /* en */,
-			);
-			name = myMemoViewController.xib;
-			sourceTree = "<group>";
-		};
-		53A5C5EA13D52DAB002B4E59 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				53A5C5EB13D52DAB002B4E59 /* en */,
+				53FB857F13FAEA7000765BFC /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -320,7 +312,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		53A5C5F213D52DAB002B4E59 /* Debug */ = {
+		53FB858613FAEA7000765BFC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
@@ -337,7 +329,7 @@
 			};
 			name = Debug;
 		};
-		53A5C5F313D52DAB002B4E59 /* Release */ = {
+		53FB858713FAEA7000765BFC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
@@ -352,7 +344,7 @@
 			};
 			name = Release;
 		};
-		53A5C5F513D52DAB002B4E59 /* Debug */ = {
+		53FB858913FAEA7000765BFC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -361,13 +353,12 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "myMemo/myMemo-Prefix.pch";
 				INFOPLIST_FILE = "myMemo/myMemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
-		53A5C5F613D52DAB002B4E59 /* Release */ = {
+		53FB858A13FAEA7000765BFC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -375,14 +366,13 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "myMemo/myMemo-Prefix.pch";
 				INFOPLIST_FILE = "myMemo/myMemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
 		};
-		53A5C5F813D52DAB002B4E59 /* Debug */ = {
+		53FB858C13FAEA7000765BFC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -404,7 +394,7 @@
 			};
 			name = Debug;
 		};
-		53A5C5F913D52DAB002B4E59 /* Release */ = {
+		53FB858D13FAEA7000765BFC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -429,32 +419,45 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		53A5C5B713D52DAA002B4E59 /* Build configuration list for PBXProject "myMemo" */ = {
+		53FB854B13FAEA6F00765BFC /* Build configuration list for PBXProject "myMemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				53A5C5F213D52DAB002B4E59 /* Debug */,
-				53A5C5F313D52DAB002B4E59 /* Release */,
+				53FB858613FAEA7000765BFC /* Debug */,
+				53FB858713FAEA7000765BFC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		53A5C5F413D52DAB002B4E59 /* Build configuration list for PBXNativeTarget "myMemo" */ = {
+		53FB858813FAEA7000765BFC /* Build configuration list for PBXNativeTarget "myMemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				53A5C5F513D52DAB002B4E59 /* Debug */,
-				53A5C5F613D52DAB002B4E59 /* Release */,
+				53FB858913FAEA7000765BFC /* Debug */,
+				53FB858A13FAEA7000765BFC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
-		53A5C5F713D52DAB002B4E59 /* Build configuration list for PBXNativeTarget "myMemoTests" */ = {
+		53FB858B13FAEA7000765BFC /* Build configuration list for PBXNativeTarget "myMemoTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				53A5C5F813D52DAB002B4E59 /* Debug */,
-				53A5C5F913D52DAB002B4E59 /* Release */,
+				53FB858C13FAEA7000765BFC /* Debug */,
+				53FB858D13FAEA7000765BFC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		53FB856C13FAEA7000765BFC /* myMemo.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				53FB856D13FAEA7000765BFC /* myMemo.xcdatamodel */,
+			);
+			currentVersion = 53FB856D13FAEA7000765BFC /* myMemo.xcdatamodel */;
+			path = myMemo.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
-	rootObject = 53A5C5B413D52DAA002B4E59 /* Project object */;
+	rootObject = 53FB854813FAEA6F00765BFC /* Project object */;
 }

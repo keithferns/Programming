@@ -18,7 +18,6 @@
     NSManagedObjectContext *managedObjectContext;
 }
 
-
 @property (nonatomic, retain) IBOutlet UITableViewController *tableViewController;
 @property (nonatomic, retain) UIActionSheet *goActionSheet, *saveActionSheet;
 @property (nonatomic, retain) UIToolbar *toolbar;
