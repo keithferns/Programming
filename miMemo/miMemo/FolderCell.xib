@@ -50,15 +50,20 @@
 							<object class="IBUILabel" id="902799985">
 								<reference key="NSNextResponder" ref="869440562"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{0, 2}, {280, 30}}</string>
+								<string key="NSFrameSize">{322, 45}</string>
 								<reference key="NSSuperview" ref="869440562"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
+								<object class="NSColor" key="IBUIBackgroundColor">
+									<int key="NSColorSpace">1</int>
+									<bytes key="NSRGB">MC4xMDU3MjY0NDU3IDAuNDU3MDA3MjAxIDAuNjY2NjY2NjY2NwA</bytes>
+								</object>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<string key="IBUIText">Label</string>
+								<string key="IBUIText"/>
 								<object class="NSFont" key="IBUIFont">
 									<string key="NSName">Helvetica-Bold</string>
 									<double key="NSSize">17</double>
@@ -73,7 +78,7 @@
 								<float key="IBUIMinimumFontSize">10</float>
 							</object>
 						</object>
-						<string key="NSFrameSize">{300, 34}</string>
+						<string key="NSFrameSize">{300, 40}</string>
 						<reference key="NSSuperview" ref="616643564"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="902799985"/>
@@ -88,13 +93,13 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
 				</object>
-				<string key="NSFrameSize">{320, 34}</string>
+				<string key="NSFrameSize">{320, 40}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="869440562"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
-					<int key="NSColorSpace">3</int>
-					<bytes key="NSWhite">MC42NjY2NjY2NjY3AA</bytes>
+					<int key="NSColorSpace">1</int>
+					<bytes key="NSRGB">MC4xMDU3MjY0NDU3IDAuNDU3MDA3MjAxIDAuNjY2NjY2NjY2NwA</bytes>
 				</object>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 				<int key="IBUISeparatorStyle">1</int>
