@@ -12,4 +12,15 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
     #import <CoreData/CoreData.h>
+
+#import "Note.h"
+#import "Memo.h"
+#import "Appointment.h"
+#import "Task.h"
+#import "Tag.h"
+#import "Folder.h"
+#import "File.h"
+#import "Place.h"
+#import "Person.h"
+
 #endif

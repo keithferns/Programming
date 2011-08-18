@@ -7,11 +7,15 @@
 //
 
 #import "WriteNowAppDelegate.h"
+#import "MainViewController.h"
+#import "RootViewController.h"
 
 @implementation WriteNowAppDelegate
 
 
-@synthesize window=_window;
+@synthesize window;
+@synthesize tabBarController;
+
 
 @synthesize managedObjectContext=__managedObjectContext;
 
@@ -19,10 +23,48 @@
 
 @synthesize persistentStoreCoordinator=__persistentStoreCoordinator;
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
-    // Override point for customization after application launch.
-    [self.window makeKeyAndVisible];
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
+    
+    RootViewController *rootViewController = [[RootViewController alloc] initWithNibName:nil bundle:nil];
+    CGRect frame = CGRectMake(0, 20, 320, 460);
+    [rootViewController.view setFrame:frame];
+    rootViewController.managedObjectContext = self.managedObjectContext;
+    
+	tabBarController = [[UITabBarController alloc] initWithNibName:nil bundle:nil];
+    frame = CGRectMake(0, 245, 320, 215);
+    [tabBarController.view setFrame:frame];
+    	
+    // Create instances of the MainViewController for the 4 TabBar buttons
+	MainViewController *viewController1 = [[[MainViewController alloc] initWithNibName:nil bundle:nil] autorelease];
+    //viewController1.managedObjectContext = self.managedObjectContext;
+	viewController1.tabBarItem.title = @"Today";
+	
+    MainViewController *viewController2 = [[[MainViewController alloc] initWithNibName:nil bundle:nil] autorelease];
+    //viewController2.managedObjectContext = self.managedObjectContext;
+	viewController2.tabBarItem.title = @"Calendar";
+    UIImage *calendarImage = [UIImage imageNamed:@"83-calendar.png"];	
+	[viewController2.tabBarItem setImage:calendarImage];
+	
+    MainViewController *viewController3 = [[[MainViewController alloc] initWithNibName:nil bundle:nil] autorelease];
+    //viewController3.managedObjectContext = self.managedObjectContext;
+	viewController3.tabBarItem.title = @"Archive";
+    UIImage *archiveImage = [UIImage imageNamed:@"33-cabinet.png"];	
+	[viewController3.tabBarItem setImage:archiveImage];
+    
+    MainViewController *viewController4 = [[[MainViewController alloc] initWithNibName:nil bundle:nil] autorelease];
+    //viewController4.managedObjectContext = self.managedObjectContext;
+	viewController4.tabBarItem.title = @"Documents";
+    
+    MainViewController *viewController5 = [[[MainViewController alloc] initWithNibName:nil bundle:nil] autorelease];
+	viewController5.tabBarItem.title = @"Settings";
+	
+    tabBarController.viewControllers = [NSArray arrayWithObjects:viewController1, viewController2, viewController3, viewController4, viewController5, nil];	
+	// Add the tab bar controller's current view as a subview of the window
+    [window addSubview:rootViewController.view];
+    //[window addSubview:tabBarController.view];
+	[rootViewController.view addSubview:tabBarController.view];
+    // Override point for customization after application launch
+    [window makeKeyAndVisible];
     return YES;
 }
 
@@ -64,7 +106,7 @@
 
 - (void)dealloc
 {
-    [_window release];
+    [window release];
     [__managedObjectContext release];
     [__managedObjectModel release];
     [__persistentStoreCoordinator release];
@@ -117,6 +159,7 @@
         __managedObjectContext = [[NSManagedObjectContext alloc] init];
         [__managedObjectContext setPersistentStoreCoordinator:coordinator];
     }
+    NSLog(@"AppDelegate MOC:%@", __managedObjectContext);
     return __managedObjectContext;
 }
 

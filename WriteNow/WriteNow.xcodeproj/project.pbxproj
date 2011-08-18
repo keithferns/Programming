@@ -8,6 +8,72 @@
 
 /* Begin PBXBuildFile section */
 		530DA07813FAFEDB0044914D /* WriteNow.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 530DA07613FAFEDB0044914D /* WriteNow.xcdatamodeld */; };
+		5315678313FB4B630044C5A9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5315678213FB4B620044C5A9 /* QuartzCore.framework */; };
+		531567A013FB665F0044C5A9 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5315679F13FB665F0044C5A9 /* SettingsViewController.m */; };
+		531567B113FB7F7F0044C5A9 /* CurrentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 531567AF13FB7F7F0044C5A9 /* CurrentViewController.m */; };
+		531567B213FB7F7F0044C5A9 /* CurrentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 531567B013FB7F7F0044C5A9 /* CurrentViewController.xib */; };
+		531567D813FB827A0044C5A9 /* classic_folder_documents.png in Resources */ = {isa = PBXBuildFile; fileRef = 531567B713FB827A0044C5A9 /* classic_folder_documents.png */; };
+		531567DA13FB827A0044C5A9 /* document_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 531567BA13FB827A0044C5A9 /* document_small.png */; };
+		531567DB13FB827A0044C5A9 /* documents_folder_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 531567BB13FB827A0044C5A9 /* documents_folder_white.png */; };
+		531567DC13FB827A0044C5A9 /* documents_white_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 531567BC13FB827A0044C5A9 /* documents_white_small.png */; };
+		531567DD13FB827A0044C5A9 /* documents.png in Resources */ = {isa = PBXBuildFile; fileRef = 531567BD13FB827A0044C5A9 /* documents.png */; };
+		531567DE13FB827A0044C5A9 /* FileCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 531567BF13FB827A0044C5A9 /* FileCustomCell.m */; };
+		531567DF13FB827A0044C5A9 /* FileCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 531567C013FB827A0044C5A9 /* FileCustomCell.xib */; };
+		531567E013FB827A0044C5A9 /* folder_open_go.png in Resources */ = {isa = PBXBuildFile; fileRef = 531567C113FB827A0044C5A9 /* folder_open_go.png */; };
+		531567E113FB827A0044C5A9 /* folder_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 531567C213FB827A0044C5A9 /* folder_small.png */; };
+		531567E213FB827A0044C5A9 /* FolderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 531567C413FB827A0044C5A9 /* FolderCell.m */; };
+		531567E313FB827A0044C5A9 /* FolderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 531567C513FB827A0044C5A9 /* FolderCell.xib */; };
+		531567E413FB827A0044C5A9 /* lined_paper_320x200.png in Resources */ = {isa = PBXBuildFile; fileRef = 531567C613FB827A0044C5A9 /* lined_paper_320x200.png */; };
+		531567E513FB827A0044C5A9 /* MEMO_FINAL3.png in Resources */ = {isa = PBXBuildFile; fileRef = 531567C713FB827A0044C5A9 /* MEMO_FINAL3.png */; };
+		531567E613FB827A0044C5A9 /* MEMO.png in Resources */ = {isa = PBXBuildFile; fileRef = 531567C813FB827A0044C5A9 /* MEMO.png */; };
+		531567E713FB827A0044C5A9 /* multi_folder_badged.png in Resources */ = {isa = PBXBuildFile; fileRef = 531567C913FB827A0044C5A9 /* multi_folder_badged.png */; };
+		531567E813FB827A0044C5A9 /* note_go.png in Resources */ = {isa = PBXBuildFile; fileRef = 531567CA13FB827A0044C5A9 /* note_go.png */; };
+		531567E913FB827A0044C5A9 /* note_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 531567CB13FB827A0044C5A9 /* note_small.png */; };
+		531567EA13FB827A0044C5A9 /* NSManagedObjectContext-insert.m in Sources */ = {isa = PBXBuildFile; fileRef = 531567CD13FB827A0044C5A9 /* NSManagedObjectContext-insert.m */; };
+		531567EB13FB827A0044C5A9 /* StartScreenCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 531567CF13FB827A0044C5A9 /* StartScreenCustomCell.m */; };
+		531567EC13FB827A0044C5A9 /* StartScreenCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 531567D013FB827A0044C5A9 /* StartScreenCustomCell.xib */; };
+		531567ED13FB827A0044C5A9 /* TaskCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 531567D213FB827A0044C5A9 /* TaskCustomCell.m */; };
+		531567EE13FB827A0044C5A9 /* TaskCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 531567D313FB827A0044C5A9 /* TaskCustomCell.xib */; };
+		531567EF13FB827A0044C5A9 /* Tasks icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 531567D413FB827A0044C5A9 /* Tasks icon.png */; };
+		531567F013FB827A0044C5A9 /* ToDo.png in Resources */ = {isa = PBXBuildFile; fileRef = 531567D513FB827A0044C5A9 /* ToDo.png */; };
+		531567F513FB83560044C5A9 /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 531567F313FB83560044C5A9 /* CalendarViewController.m */; };
+		531567F613FB83560044C5A9 /* CalendarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 531567F413FB83560044C5A9 /* CalendarViewController.xib */; };
+		531567FA13FB83800044C5A9 /* FilesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 531567F813FB83800044C5A9 /* FilesViewController.m */; };
+		531567FB13FB83800044C5A9 /* FilesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 531567F913FB83800044C5A9 /* FilesViewController.xib */; };
+		531567FF13FB83B00044C5A9 /* FoldersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 531567FD13FB83B00044C5A9 /* FoldersViewController.m */; };
+		5315680013FB83B00044C5A9 /* FoldersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 531567FE13FB83B00044C5A9 /* FoldersViewController.xib */; };
+		5323C68513FC9EED00D4C7A4 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5323C68413FC9EED00D4C7A4 /* RootViewController.m */; };
+		532F191413FB0D9500CECBD1 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 532F191313FB0D9500CECBD1 /* MainViewController.m */; };
+		53485BF313FC4EBD001CA9EB /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = 53485BF213FC4EBD001CA9EB /* Place.m */; };
+		53485BF613FC4EBD001CA9EB /* Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = 53485BF513FC4EBD001CA9EB /* Tag.m */; };
+		53485BF913FC4EBD001CA9EB /* Folder.m in Sources */ = {isa = PBXBuildFile; fileRef = 53485BF813FC4EBD001CA9EB /* Folder.m */; };
+		53485BFC13FC4EBD001CA9EB /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 53485BFB13FC4EBD001CA9EB /* Person.m */; };
+		53485BFF13FC4EBD001CA9EB /* File.m in Sources */ = {isa = PBXBuildFile; fileRef = 53485BFE13FC4EBD001CA9EB /* File.m */; };
+		53485C0213FC4EBD001CA9EB /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 53485C0113FC4EBD001CA9EB /* Task.m */; };
+		53485C0513FC4EBD001CA9EB /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 53485C0413FC4EBD001CA9EB /* Note.m */; };
+		53485C0813FC4EBD001CA9EB /* Memo.m in Sources */ = {isa = PBXBuildFile; fileRef = 53485C0713FC4EBD001CA9EB /* Memo.m */; };
+		53485C0B13FC4EBD001CA9EB /* Appointment.m in Sources */ = {isa = PBXBuildFile; fileRef = 53485C0A13FC4EBD001CA9EB /* Appointment.m */; };
+		538ADBF913FCD615005C08CD /* note_accept.png in Resources */ = {isa = PBXBuildFile; fileRef = 538ADBF813FCD615005C08CD /* note_accept.png */; };
+		538ADBFC13FCDC2C005C08CD /* 33-cabinet.png in Resources */ = {isa = PBXBuildFile; fileRef = 538ADBFB13FCDC2B005C08CD /* 33-cabinet.png */; };
+		538ADBFE13FCDE58005C08CD /* 83-calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = 538ADBFD13FCDE58005C08CD /* 83-calendar.png */; };
+		538ADC0013FCDEA0005C08CD /* 179-notepad.png in Resources */ = {isa = PBXBuildFile; fileRef = 538ADBFF13FCDEA0005C08CD /* 179-notepad.png */; };
+		538ADC0213FCDEAB005C08CD /* 180-stickynote.png in Resources */ = {isa = PBXBuildFile; fileRef = 538ADC0113FCDEAB005C08CD /* 180-stickynote.png */; };
+		538ADC0713FCDF0A005C08CD /* 15-tags.png in Resources */ = {isa = PBXBuildFile; fileRef = 538ADC0313FCDF09005C08CD /* 15-tags.png */; };
+		538ADC0813FCDF0A005C08CD /* 14-tag.png in Resources */ = {isa = PBXBuildFile; fileRef = 538ADC0413FCDF09005C08CD /* 14-tag.png */; };
+		538ADC0913FCDF0A005C08CD /* 117-todo.png in Resources */ = {isa = PBXBuildFile; fileRef = 538ADC0513FCDF09005C08CD /* 117-todo.png */; };
+		538ADC0A13FCDF0A005C08CD /* 11-clock.png in Resources */ = {isa = PBXBuildFile; fileRef = 538ADC0613FCDF0A005C08CD /* 11-clock.png */; };
+		538ADC1213FCE072005C08CD /* add-item_whiteonblack.png in Resources */ = {isa = PBXBuildFile; fileRef = 538ADC0B13FCE06F005C08CD /* add-item_whiteonblack.png */; };
+		538ADC1313FCE072005C08CD /* calendar__whiteonblack.png in Resources */ = {isa = PBXBuildFile; fileRef = 538ADC0C13FCE06F005C08CD /* calendar__whiteonblack.png */; };
+		538ADC1413FCE072005C08CD /* delete-item_whiteonblack.png in Resources */ = {isa = PBXBuildFile; fileRef = 538ADC0D13FCE070005C08CD /* delete-item_whiteonblack.png */; };
+		538ADC1513FCE072005C08CD /* edit_whiteonblack.png in Resources */ = {isa = PBXBuildFile; fileRef = 538ADC0E13FCE070005C08CD /* edit_whiteonblack.png */; };
+		538ADC1613FCE072005C08CD /* email_whiteonblack.png in Resources */ = {isa = PBXBuildFile; fileRef = 538ADC0F13FCE071005C08CD /* email_whiteonblack.png */; };
+		538ADC1713FCE072005C08CD /* search_whiteonblack.png in Resources */ = {isa = PBXBuildFile; fileRef = 538ADC1013FCE071005C08CD /* search_whiteonblack.png */; };
+		538ADC1813FCE072005C08CD /* tag_whiteonblack.png in Resources */ = {isa = PBXBuildFile; fileRef = 538ADC1113FCE071005C08CD /* tag_whiteonblack.png */; };
+		538ADC1A13FCE0AC005C08CD /* add-item_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 538ADC1913FCE0AB005C08CD /* add-item_blue.png */; };
+		538ADC3F13FCF6FE005C08CD /* MessageEntryBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 538ADC3B13FCF6FC005C08CD /* MessageEntryBackground.png */; };
+		538ADC4013FCF6FE005C08CD /* MessageEntryBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 538ADC3C13FCF6FC005C08CD /* MessageEntryBackground@2x.png */; };
+		538ADC4113FCF6FE005C08CD /* MessageEntryInputField.png in Resources */ = {isa = PBXBuildFile; fileRef = 538ADC3D13FCF6FD005C08CD /* MessageEntryInputField.png */; };
+		538ADC4213FCF6FE005C08CD /* MessageEntryInputField@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 538ADC3E13FCF6FD005C08CD /* MessageEntryInputField@2x.png */; };
 		53FB859E13FAEC3800765BFC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53FB859D13FAEC3800765BFC /* UIKit.framework */; };
 		53FB85A013FAEC3800765BFC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53FB859F13FAEC3800765BFC /* Foundation.framework */; };
 		53FB85A213FAEC3800765BFC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53FB85A113FAEC3800765BFC /* CoreGraphics.framework */; };
@@ -39,6 +105,93 @@
 
 /* Begin PBXFileReference section */
 		530DA07713FAFEDB0044914D /* WriteNow.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WriteNow.xcdatamodel; sourceTree = "<group>"; };
+		5315678213FB4B620044C5A9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		5315679E13FB665F0044C5A9 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		5315679F13FB665F0044C5A9 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		531567AE13FB7F7F0044C5A9 /* CurrentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentViewController.h; sourceTree = "<group>"; };
+		531567AF13FB7F7F0044C5A9 /* CurrentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentViewController.m; sourceTree = "<group>"; };
+		531567B013FB7F7F0044C5A9 /* CurrentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CurrentViewController.xib; sourceTree = "<group>"; };
+		531567B713FB827A0044C5A9 /* classic_folder_documents.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = classic_folder_documents.png; path = ../../miMemo/miMemo/classic_folder_documents.png; sourceTree = "<group>"; };
+		531567BA13FB827A0044C5A9 /* document_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = document_small.png; path = ../../miMemo/miMemo/document_small.png; sourceTree = "<group>"; };
+		531567BB13FB827A0044C5A9 /* documents_folder_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = documents_folder_white.png; path = ../../miMemo/miMemo/documents_folder_white.png; sourceTree = "<group>"; };
+		531567BC13FB827A0044C5A9 /* documents_white_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = documents_white_small.png; path = ../../miMemo/miMemo/documents_white_small.png; sourceTree = "<group>"; };
+		531567BD13FB827A0044C5A9 /* documents.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = documents.png; path = ../../miMemo/miMemo/documents.png; sourceTree = "<group>"; };
+		531567BE13FB827A0044C5A9 /* FileCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileCustomCell.h; path = ../../miMemo/miMemo/FileCustomCell.h; sourceTree = "<group>"; };
+		531567BF13FB827A0044C5A9 /* FileCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileCustomCell.m; path = ../../miMemo/miMemo/FileCustomCell.m; sourceTree = "<group>"; };
+		531567C013FB827A0044C5A9 /* FileCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FileCustomCell.xib; path = ../../miMemo/miMemo/FileCustomCell.xib; sourceTree = "<group>"; };
+		531567C113FB827A0044C5A9 /* folder_open_go.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = folder_open_go.png; path = ../../miMemo/miMemo/folder_open_go.png; sourceTree = "<group>"; };
+		531567C213FB827A0044C5A9 /* folder_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = folder_small.png; path = ../../miMemo/miMemo/folder_small.png; sourceTree = "<group>"; };
+		531567C313FB827A0044C5A9 /* FolderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FolderCell.h; path = ../../miMemo/miMemo/FolderCell.h; sourceTree = "<group>"; };
+		531567C413FB827A0044C5A9 /* FolderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FolderCell.m; path = ../../miMemo/miMemo/FolderCell.m; sourceTree = "<group>"; };
+		531567C513FB827A0044C5A9 /* FolderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FolderCell.xib; path = ../../miMemo/miMemo/FolderCell.xib; sourceTree = "<group>"; };
+		531567C613FB827A0044C5A9 /* lined_paper_320x200.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lined_paper_320x200.png; path = ../../miMemo/miMemo/lined_paper_320x200.png; sourceTree = "<group>"; };
+		531567C713FB827A0044C5A9 /* MEMO_FINAL3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MEMO_FINAL3.png; path = ../../miMemo/miMemo/MEMO_FINAL3.png; sourceTree = "<group>"; };
+		531567C813FB827A0044C5A9 /* MEMO.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MEMO.png; path = ../../miMemo/miMemo/MEMO.png; sourceTree = "<group>"; };
+		531567C913FB827A0044C5A9 /* multi_folder_badged.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = multi_folder_badged.png; path = ../../miMemo/miMemo/multi_folder_badged.png; sourceTree = "<group>"; };
+		531567CA13FB827A0044C5A9 /* note_go.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = note_go.png; path = ../../miMemo/miMemo/note_go.png; sourceTree = "<group>"; };
+		531567CB13FB827A0044C5A9 /* note_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = note_small.png; path = ../../miMemo/miMemo/note_small.png; sourceTree = "<group>"; };
+		531567CC13FB827A0044C5A9 /* NSManagedObjectContext-insert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSManagedObjectContext-insert.h"; path = "../../miMemo/miMemo/NSManagedObjectContext-insert.h"; sourceTree = "<group>"; };
+		531567CD13FB827A0044C5A9 /* NSManagedObjectContext-insert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSManagedObjectContext-insert.m"; path = "../../miMemo/miMemo/NSManagedObjectContext-insert.m"; sourceTree = "<group>"; };
+		531567CE13FB827A0044C5A9 /* StartScreenCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StartScreenCustomCell.h; path = ../../miMemo/miMemo/StartScreenCustomCell.h; sourceTree = "<group>"; };
+		531567CF13FB827A0044C5A9 /* StartScreenCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StartScreenCustomCell.m; path = ../../miMemo/miMemo/StartScreenCustomCell.m; sourceTree = "<group>"; };
+		531567D013FB827A0044C5A9 /* StartScreenCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StartScreenCustomCell.xib; path = ../../miMemo/miMemo/StartScreenCustomCell.xib; sourceTree = "<group>"; };
+		531567D113FB827A0044C5A9 /* TaskCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TaskCustomCell.h; path = ../../miMemo/miMemo/TaskCustomCell.h; sourceTree = "<group>"; };
+		531567D213FB827A0044C5A9 /* TaskCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TaskCustomCell.m; path = ../../miMemo/miMemo/TaskCustomCell.m; sourceTree = "<group>"; };
+		531567D313FB827A0044C5A9 /* TaskCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TaskCustomCell.xib; path = ../../miMemo/miMemo/TaskCustomCell.xib; sourceTree = "<group>"; };
+		531567D413FB827A0044C5A9 /* Tasks icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Tasks icon.png"; path = "../../miMemo/miMemo/Tasks icon.png"; sourceTree = "<group>"; };
+		531567D513FB827A0044C5A9 /* ToDo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ToDo.png; path = ../../miMemo/miMemo/ToDo.png; sourceTree = "<group>"; };
+		531567F213FB83560044C5A9 /* CalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarViewController.h; sourceTree = "<group>"; };
+		531567F313FB83560044C5A9 /* CalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarViewController.m; sourceTree = "<group>"; };
+		531567F413FB83560044C5A9 /* CalendarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarViewController.xib; sourceTree = "<group>"; };
+		531567F713FB83800044C5A9 /* FilesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilesViewController.h; sourceTree = "<group>"; };
+		531567F813FB83800044C5A9 /* FilesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilesViewController.m; sourceTree = "<group>"; };
+		531567F913FB83800044C5A9 /* FilesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilesViewController.xib; sourceTree = "<group>"; };
+		531567FC13FB83B00044C5A9 /* FoldersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoldersViewController.h; sourceTree = "<group>"; };
+		531567FD13FB83B00044C5A9 /* FoldersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoldersViewController.m; sourceTree = "<group>"; };
+		531567FE13FB83B00044C5A9 /* FoldersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FoldersViewController.xib; sourceTree = "<group>"; };
+		5323C68313FC9EED00D4C7A4 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		5323C68413FC9EED00D4C7A4 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		532F191213FB0D9500CECBD1 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		532F191313FB0D9500CECBD1 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		53485BF113FC4EBD001CA9EB /* Place.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Place.h; sourceTree = "<group>"; };
+		53485BF213FC4EBD001CA9EB /* Place.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Place.m; sourceTree = "<group>"; };
+		53485BF413FC4EBD001CA9EB /* Tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tag.h; sourceTree = "<group>"; };
+		53485BF513FC4EBD001CA9EB /* Tag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tag.m; sourceTree = "<group>"; };
+		53485BF713FC4EBD001CA9EB /* Folder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Folder.h; sourceTree = "<group>"; };
+		53485BF813FC4EBD001CA9EB /* Folder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Folder.m; sourceTree = "<group>"; };
+		53485BFA13FC4EBD001CA9EB /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
+		53485BFB13FC4EBD001CA9EB /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
+		53485BFD13FC4EBD001CA9EB /* File.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = File.h; sourceTree = "<group>"; };
+		53485BFE13FC4EBD001CA9EB /* File.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = File.m; sourceTree = "<group>"; };
+		53485C0013FC4EBD001CA9EB /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
+		53485C0113FC4EBD001CA9EB /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
+		53485C0313FC4EBD001CA9EB /* Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Note.h; sourceTree = "<group>"; };
+		53485C0413FC4EBD001CA9EB /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note.m; sourceTree = "<group>"; };
+		53485C0613FC4EBD001CA9EB /* Memo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Memo.h; sourceTree = "<group>"; };
+		53485C0713FC4EBD001CA9EB /* Memo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Memo.m; sourceTree = "<group>"; };
+		53485C0913FC4EBD001CA9EB /* Appointment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Appointment.h; sourceTree = "<group>"; };
+		53485C0A13FC4EBD001CA9EB /* Appointment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Appointment.m; sourceTree = "<group>"; };
+		538ADBF813FCD615005C08CD /* note_accept.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = note_accept.png; path = ../../pngs/note_accept.png; sourceTree = "<group>"; };
+		538ADBFB13FCDC2B005C08CD /* 33-cabinet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "33-cabinet.png"; path = "../../glyphish-icons/icons/33-cabinet.png"; sourceTree = "<group>"; };
+		538ADBFD13FCDE58005C08CD /* 83-calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "83-calendar.png"; path = "../../glyphish-icons/icons/83-calendar.png"; sourceTree = "<group>"; };
+		538ADBFF13FCDEA0005C08CD /* 179-notepad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "179-notepad.png"; path = "../../glyphish-icons/icons/179-notepad.png"; sourceTree = "<group>"; };
+		538ADC0113FCDEAB005C08CD /* 180-stickynote.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "180-stickynote.png"; path = "../../glyphish-icons/icons/180-stickynote.png"; sourceTree = "<group>"; };
+		538ADC0313FCDF09005C08CD /* 15-tags.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "15-tags.png"; path = "../../glyphish-icons/icons/15-tags.png"; sourceTree = "<group>"; };
+		538ADC0413FCDF09005C08CD /* 14-tag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "14-tag.png"; path = "../../glyphish-icons/icons/14-tag.png"; sourceTree = "<group>"; };
+		538ADC0513FCDF09005C08CD /* 117-todo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "117-todo.png"; path = "../../glyphish-icons/icons/117-todo.png"; sourceTree = "<group>"; };
+		538ADC0613FCDF0A005C08CD /* 11-clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "11-clock.png"; path = "../../glyphish-icons/icons/11-clock.png"; sourceTree = "<group>"; };
+		538ADC0B13FCE06F005C08CD /* add-item_whiteonblack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "add-item_whiteonblack.png"; path = "../../open-source-icons/PNG/white/add-item_whiteonblack.png"; sourceTree = "<group>"; };
+		538ADC0C13FCE06F005C08CD /* calendar__whiteonblack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = calendar__whiteonblack.png; path = "../../open-source-icons/PNG/white/calendar__whiteonblack.png"; sourceTree = "<group>"; };
+		538ADC0D13FCE070005C08CD /* delete-item_whiteonblack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "delete-item_whiteonblack.png"; path = "../../open-source-icons/PNG/white/delete-item_whiteonblack.png"; sourceTree = "<group>"; };
+		538ADC0E13FCE070005C08CD /* edit_whiteonblack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = edit_whiteonblack.png; path = "../../open-source-icons/PNG/white/edit_whiteonblack.png"; sourceTree = "<group>"; };
+		538ADC0F13FCE071005C08CD /* email_whiteonblack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = email_whiteonblack.png; path = "../../open-source-icons/PNG/white/email_whiteonblack.png"; sourceTree = "<group>"; };
+		538ADC1013FCE071005C08CD /* search_whiteonblack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = search_whiteonblack.png; path = "../../open-source-icons/PNG/white/search_whiteonblack.png"; sourceTree = "<group>"; };
+		538ADC1113FCE071005C08CD /* tag_whiteonblack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tag_whiteonblack.png; path = "../../open-source-icons/PNG/white/tag_whiteonblack.png"; sourceTree = "<group>"; };
+		538ADC1913FCE0AB005C08CD /* add-item_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "add-item_blue.png"; path = "../../open-source-icons/PNG/blue/add-item_blue.png"; sourceTree = "<group>"; };
+		538ADC3B13FCF6FC005C08CD /* MessageEntryBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MessageEntryBackground.png; path = "../../../Programming2/HansPinckaers-GrowingTextView-86998d6/example/MessageEntryBackground.png"; sourceTree = "<group>"; };
+		538ADC3C13FCF6FC005C08CD /* MessageEntryBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "MessageEntryBackground@2x.png"; path = "../../../Programming2/HansPinckaers-GrowingTextView-86998d6/example/MessageEntryBackground@2x.png"; sourceTree = "<group>"; };
+		538ADC3D13FCF6FD005C08CD /* MessageEntryInputField.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MessageEntryInputField.png; path = "../../../Programming2/HansPinckaers-GrowingTextView-86998d6/example/MessageEntryInputField.png"; sourceTree = "<group>"; };
+		538ADC3E13FCF6FD005C08CD /* MessageEntryInputField@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "MessageEntryInputField@2x.png"; path = "../../../Programming2/HansPinckaers-GrowingTextView-86998d6/example/MessageEntryInputField@2x.png"; sourceTree = "<group>"; };
 		53FB859913FAEC3800765BFC /* WriteNow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WriteNow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		53FB859D13FAEC3800765BFC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		53FB859F13FAEC3800765BFC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -66,6 +219,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5315678313FB4B630044C5A9 /* QuartzCore.framework in Frameworks */,
 				53FB859E13FAEC3800765BFC /* UIKit.framework in Frameworks */,
 				53FB85A013FAEC3800765BFC /* Foundation.framework in Frameworks */,
 				53FB85A213FAEC3800765BFC /* CoreGraphics.framework in Frameworks */,
@@ -87,6 +241,164 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5315678913FB62E40044C5A9 /* TodayViewController */ = {
+			isa = PBXGroup;
+			children = (
+				531567AE13FB7F7F0044C5A9 /* CurrentViewController.h */,
+				531567AF13FB7F7F0044C5A9 /* CurrentViewController.m */,
+				531567B013FB7F7F0044C5A9 /* CurrentViewController.xib */,
+			);
+			name = TodayViewController;
+			sourceTree = "<group>";
+		};
+		5315678D13FB636C0044C5A9 /* FolderViewController */ = {
+			isa = PBXGroup;
+			children = (
+				535AD07D13FC681A00FB3CB5 /* FilesView */,
+				531567FC13FB83B00044C5A9 /* FoldersViewController.h */,
+				531567FD13FB83B00044C5A9 /* FoldersViewController.m */,
+				531567FE13FB83B00044C5A9 /* FoldersViewController.xib */,
+			);
+			name = FolderViewController;
+			sourceTree = "<group>";
+		};
+		5315679113FB63990044C5A9 /* FilesViewController */ = {
+			isa = PBXGroup;
+			children = (
+				531567F713FB83800044C5A9 /* FilesViewController.h */,
+				531567F813FB83800044C5A9 /* FilesViewController.m */,
+				531567F913FB83800044C5A9 /* FilesViewController.xib */,
+			);
+			name = FilesViewController;
+			sourceTree = "<group>";
+		};
+		5315679513FB63C20044C5A9 /* CalendarViewController */ = {
+			isa = PBXGroup;
+			children = (
+				531567F213FB83560044C5A9 /* CalendarViewController.h */,
+				531567F313FB83560044C5A9 /* CalendarViewController.m */,
+				531567F413FB83560044C5A9 /* CalendarViewController.xib */,
+			);
+			name = CalendarViewController;
+			sourceTree = "<group>";
+		};
+		5315679D13FB663E0044C5A9 /* SettingsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5315679E13FB665F0044C5A9 /* SettingsViewController.h */,
+				5315679F13FB665F0044C5A9 /* SettingsViewController.m */,
+			);
+			name = SettingsViewController;
+			sourceTree = "<group>";
+		};
+		531567B313FB81F80044C5A9 /* CustomCells */ = {
+			isa = PBXGroup;
+			children = (
+				531567BE13FB827A0044C5A9 /* FileCustomCell.h */,
+				531567BF13FB827A0044C5A9 /* FileCustomCell.m */,
+				531567C013FB827A0044C5A9 /* FileCustomCell.xib */,
+				531567C313FB827A0044C5A9 /* FolderCell.h */,
+				531567C413FB827A0044C5A9 /* FolderCell.m */,
+				531567C513FB827A0044C5A9 /* FolderCell.xib */,
+				531567CE13FB827A0044C5A9 /* StartScreenCustomCell.h */,
+				531567CF13FB827A0044C5A9 /* StartScreenCustomCell.m */,
+				531567D013FB827A0044C5A9 /* StartScreenCustomCell.xib */,
+				531567D113FB827A0044C5A9 /* TaskCustomCell.h */,
+				531567D213FB827A0044C5A9 /* TaskCustomCell.m */,
+				531567D313FB827A0044C5A9 /* TaskCustomCell.xib */,
+			);
+			name = CustomCells;
+			sourceTree = "<group>";
+		};
+		531567F113FB828B0044C5A9 /* pngs */ = {
+			isa = PBXGroup;
+			children = (
+				538ADC3B13FCF6FC005C08CD /* MessageEntryBackground.png */,
+				538ADC3C13FCF6FC005C08CD /* MessageEntryBackground@2x.png */,
+				538ADC3D13FCF6FD005C08CD /* MessageEntryInputField.png */,
+				538ADC3E13FCF6FD005C08CD /* MessageEntryInputField@2x.png */,
+				538ADC1913FCE0AB005C08CD /* add-item_blue.png */,
+				538ADC0B13FCE06F005C08CD /* add-item_whiteonblack.png */,
+				538ADC0C13FCE06F005C08CD /* calendar__whiteonblack.png */,
+				538ADC0D13FCE070005C08CD /* delete-item_whiteonblack.png */,
+				538ADC0E13FCE070005C08CD /* edit_whiteonblack.png */,
+				538ADC0F13FCE071005C08CD /* email_whiteonblack.png */,
+				538ADC1013FCE071005C08CD /* search_whiteonblack.png */,
+				538ADC1113FCE071005C08CD /* tag_whiteonblack.png */,
+				538ADBFB13FCDC2B005C08CD /* 33-cabinet.png */,
+				538ADC0313FCDF09005C08CD /* 15-tags.png */,
+				538ADC0413FCDF09005C08CD /* 14-tag.png */,
+				538ADC0513FCDF09005C08CD /* 117-todo.png */,
+				538ADC0613FCDF0A005C08CD /* 11-clock.png */,
+				538ADBFF13FCDEA0005C08CD /* 179-notepad.png */,
+				538ADBFD13FCDE58005C08CD /* 83-calendar.png */,
+				538ADC0113FCDEAB005C08CD /* 180-stickynote.png */,
+				531567B713FB827A0044C5A9 /* classic_folder_documents.png */,
+				531567C113FB827A0044C5A9 /* folder_open_go.png */,
+				531567C213FB827A0044C5A9 /* folder_small.png */,
+				538ADBF813FCD615005C08CD /* note_accept.png */,
+				531567BA13FB827A0044C5A9 /* document_small.png */,
+				531567BB13FB827A0044C5A9 /* documents_folder_white.png */,
+				531567BC13FB827A0044C5A9 /* documents_white_small.png */,
+				531567BD13FB827A0044C5A9 /* documents.png */,
+				531567C913FB827A0044C5A9 /* multi_folder_badged.png */,
+				531567CA13FB827A0044C5A9 /* note_go.png */,
+				531567CB13FB827A0044C5A9 /* note_small.png */,
+				531567C613FB827A0044C5A9 /* lined_paper_320x200.png */,
+				531567C713FB827A0044C5A9 /* MEMO_FINAL3.png */,
+				531567C813FB827A0044C5A9 /* MEMO.png */,
+				531567D413FB827A0044C5A9 /* Tasks icon.png */,
+				531567D513FB827A0044C5A9 /* ToDo.png */,
+			);
+			name = pngs;
+			sourceTree = "<group>";
+		};
+		532F191013FB0D6500CECBD1 /* MainViewController */ = {
+			isa = PBXGroup;
+			children = (
+				532F191213FB0D9500CECBD1 /* MainViewController.h */,
+				532F191313FB0D9500CECBD1 /* MainViewController.m */,
+				5323C68313FC9EED00D4C7A4 /* RootViewController.h */,
+				5323C68413FC9EED00D4C7A4 /* RootViewController.m */,
+			);
+			name = MainViewController;
+			sourceTree = "<group>";
+		};
+		535AD07D13FC681A00FB3CB5 /* FilesView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = FilesView;
+			sourceTree = "<group>";
+		};
+		536FBF4113FB12AA000B8B28 /* ManagedObjects */ = {
+			isa = PBXGroup;
+			children = (
+				531567CC13FB827A0044C5A9 /* NSManagedObjectContext-insert.h */,
+				531567CD13FB827A0044C5A9 /* NSManagedObjectContext-insert.m */,
+				530DA07613FAFEDB0044914D /* WriteNow.xcdatamodeld */,
+				53485C0913FC4EBD001CA9EB /* Appointment.h */,
+				53485C0A13FC4EBD001CA9EB /* Appointment.m */,
+				53485C0613FC4EBD001CA9EB /* Memo.h */,
+				53485C0713FC4EBD001CA9EB /* Memo.m */,
+				53485C0313FC4EBD001CA9EB /* Note.h */,
+				53485C0413FC4EBD001CA9EB /* Note.m */,
+				53485C0013FC4EBD001CA9EB /* Task.h */,
+				53485C0113FC4EBD001CA9EB /* Task.m */,
+				53485BFD13FC4EBD001CA9EB /* File.h */,
+				53485BFE13FC4EBD001CA9EB /* File.m */,
+				53485BFA13FC4EBD001CA9EB /* Person.h */,
+				53485BFB13FC4EBD001CA9EB /* Person.m */,
+				53485BF713FC4EBD001CA9EB /* Folder.h */,
+				53485BF813FC4EBD001CA9EB /* Folder.m */,
+				53485BF413FC4EBD001CA9EB /* Tag.h */,
+				53485BF513FC4EBD001CA9EB /* Tag.m */,
+				53485BF113FC4EBD001CA9EB /* Place.h */,
+				53485BF213FC4EBD001CA9EB /* Place.m */,
+			);
+			name = ManagedObjects;
+			sourceTree = "<group>";
+		};
 		53FB858E13FAEC3800765BFC = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +421,7 @@
 		53FB859C13FAEC3800765BFC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5315678213FB4B620044C5A9 /* QuartzCore.framework */,
 				53FB859D13FAEC3800765BFC /* UIKit.framework */,
 				53FB859F13FAEC3800765BFC /* Foundation.framework */,
 				53FB85A113FAEC3800765BFC /* CoreGraphics.framework */,
@@ -120,11 +433,18 @@
 		53FB85A513FAEC3800765BFC /* WriteNow */ = {
 			isa = PBXGroup;
 			children = (
+				531567B313FB81F80044C5A9 /* CustomCells */,
+				5315679D13FB663E0044C5A9 /* SettingsViewController */,
+				5315679513FB63C20044C5A9 /* CalendarViewController */,
+				5315679113FB63990044C5A9 /* FilesViewController */,
+				5315678D13FB636C0044C5A9 /* FolderViewController */,
+				5315678913FB62E40044C5A9 /* TodayViewController */,
+				532F191013FB0D6500CECBD1 /* MainViewController */,
 				53FB85AE13FAEC3800765BFC /* WriteNowAppDelegate.h */,
 				53FB85AF13FAEC3800765BFC /* WriteNowAppDelegate.m */,
 				53FB85B113FAEC3800765BFC /* MainWindow.xib */,
 				53FB85A613FAEC3800765BFC /* Supporting Files */,
-				530DA07613FAFEDB0044914D /* WriteNow.xcdatamodeld */,
+				536FBF4113FB12AA000B8B28 /* ManagedObjects */,
 			);
 			path = WriteNow;
 			sourceTree = "<group>";
@@ -132,6 +452,7 @@
 		53FB85A613FAEC3800765BFC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				531567F113FB828B0044C5A9 /* pngs */,
 				53FB85DF13FAEE9E00765BFC /* AppIcons */,
 				53FB85A713FAEC3800765BFC /* WriteNow-Info.plist */,
 				53FB85A813FAEC3800765BFC /* InfoPlist.strings */,
@@ -241,6 +562,50 @@
 				53FB85B313FAEC3800765BFC /* MainWindow.xib in Resources */,
 				53FB85DC13FAEE3600765BFC /* document-nice-114.png in Resources */,
 				53FB85DE13FAEE4100765BFC /* document-nice-57.png in Resources */,
+				531567B213FB7F7F0044C5A9 /* CurrentViewController.xib in Resources */,
+				531567D813FB827A0044C5A9 /* classic_folder_documents.png in Resources */,
+				531567DA13FB827A0044C5A9 /* document_small.png in Resources */,
+				531567DB13FB827A0044C5A9 /* documents_folder_white.png in Resources */,
+				531567DC13FB827A0044C5A9 /* documents_white_small.png in Resources */,
+				531567DD13FB827A0044C5A9 /* documents.png in Resources */,
+				531567DF13FB827A0044C5A9 /* FileCustomCell.xib in Resources */,
+				531567E013FB827A0044C5A9 /* folder_open_go.png in Resources */,
+				531567E113FB827A0044C5A9 /* folder_small.png in Resources */,
+				531567E313FB827A0044C5A9 /* FolderCell.xib in Resources */,
+				531567E413FB827A0044C5A9 /* lined_paper_320x200.png in Resources */,
+				531567E513FB827A0044C5A9 /* MEMO_FINAL3.png in Resources */,
+				531567E613FB827A0044C5A9 /* MEMO.png in Resources */,
+				531567E713FB827A0044C5A9 /* multi_folder_badged.png in Resources */,
+				531567E813FB827A0044C5A9 /* note_go.png in Resources */,
+				531567E913FB827A0044C5A9 /* note_small.png in Resources */,
+				531567EC13FB827A0044C5A9 /* StartScreenCustomCell.xib in Resources */,
+				531567EE13FB827A0044C5A9 /* TaskCustomCell.xib in Resources */,
+				531567EF13FB827A0044C5A9 /* Tasks icon.png in Resources */,
+				531567F013FB827A0044C5A9 /* ToDo.png in Resources */,
+				531567F613FB83560044C5A9 /* CalendarViewController.xib in Resources */,
+				531567FB13FB83800044C5A9 /* FilesViewController.xib in Resources */,
+				5315680013FB83B00044C5A9 /* FoldersViewController.xib in Resources */,
+				538ADBF913FCD615005C08CD /* note_accept.png in Resources */,
+				538ADBFC13FCDC2C005C08CD /* 33-cabinet.png in Resources */,
+				538ADBFE13FCDE58005C08CD /* 83-calendar.png in Resources */,
+				538ADC0013FCDEA0005C08CD /* 179-notepad.png in Resources */,
+				538ADC0213FCDEAB005C08CD /* 180-stickynote.png in Resources */,
+				538ADC0713FCDF0A005C08CD /* 15-tags.png in Resources */,
+				538ADC0813FCDF0A005C08CD /* 14-tag.png in Resources */,
+				538ADC0913FCDF0A005C08CD /* 117-todo.png in Resources */,
+				538ADC0A13FCDF0A005C08CD /* 11-clock.png in Resources */,
+				538ADC1213FCE072005C08CD /* add-item_whiteonblack.png in Resources */,
+				538ADC1313FCE072005C08CD /* calendar__whiteonblack.png in Resources */,
+				538ADC1413FCE072005C08CD /* delete-item_whiteonblack.png in Resources */,
+				538ADC1513FCE072005C08CD /* edit_whiteonblack.png in Resources */,
+				538ADC1613FCE072005C08CD /* email_whiteonblack.png in Resources */,
+				538ADC1713FCE072005C08CD /* search_whiteonblack.png in Resources */,
+				538ADC1813FCE072005C08CD /* tag_whiteonblack.png in Resources */,
+				538ADC1A13FCE0AC005C08CD /* add-item_blue.png in Resources */,
+				538ADC3F13FCF6FE005C08CD /* MessageEntryBackground.png in Resources */,
+				538ADC4013FCF6FE005C08CD /* MessageEntryBackground@2x.png in Resources */,
+				538ADC4113FCF6FE005C08CD /* MessageEntryInputField.png in Resources */,
+				538ADC4213FCF6FE005C08CD /* MessageEntryInputField@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,6 +644,27 @@
 				53FB85AD13FAEC3800765BFC /* main.m in Sources */,
 				53FB85B013FAEC3800765BFC /* WriteNowAppDelegate.m in Sources */,
 				530DA07813FAFEDB0044914D /* WriteNow.xcdatamodeld in Sources */,
+				532F191413FB0D9500CECBD1 /* MainViewController.m in Sources */,
+				531567A013FB665F0044C5A9 /* SettingsViewController.m in Sources */,
+				531567B113FB7F7F0044C5A9 /* CurrentViewController.m in Sources */,
+				531567DE13FB827A0044C5A9 /* FileCustomCell.m in Sources */,
+				531567E213FB827A0044C5A9 /* FolderCell.m in Sources */,
+				531567EA13FB827A0044C5A9 /* NSManagedObjectContext-insert.m in Sources */,
+				531567EB13FB827A0044C5A9 /* StartScreenCustomCell.m in Sources */,
+				531567ED13FB827A0044C5A9 /* TaskCustomCell.m in Sources */,
+				531567F513FB83560044C5A9 /* CalendarViewController.m in Sources */,
+				531567FA13FB83800044C5A9 /* FilesViewController.m in Sources */,
+				531567FF13FB83B00044C5A9 /* FoldersViewController.m in Sources */,
+				53485BF313FC4EBD001CA9EB /* Place.m in Sources */,
+				53485BF613FC4EBD001CA9EB /* Tag.m in Sources */,
+				53485BF913FC4EBD001CA9EB /* Folder.m in Sources */,
+				53485BFC13FC4EBD001CA9EB /* Person.m in Sources */,
+				53485BFF13FC4EBD001CA9EB /* File.m in Sources */,
+				53485C0213FC4EBD001CA9EB /* Task.m in Sources */,
+				53485C0513FC4EBD001CA9EB /* Note.m in Sources */,
+				53485C0813FC4EBD001CA9EB /* Memo.m in Sources */,
+				53485C0B13FC4EBD001CA9EB /* Appointment.m in Sources */,
+				5323C68513FC9EED00D4C7A4 /* RootViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -369,6 +755,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WriteNow/WriteNow-Prefix.pch";
 				INFOPLIST_FILE = "WriteNow/WriteNow-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -382,6 +769,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WriteNow/WriteNow-Prefix.pch";
 				INFOPLIST_FILE = "WriteNow/WriteNow-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
