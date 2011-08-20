@@ -40,7 +40,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];    
-    tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, 215) style:UITableViewStylePlain];
+    tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 200, 320, 215) style:UITableViewStylePlain];
     [self.view addSubview:tableView];
     
     searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
@@ -61,6 +61,7 @@
 	NSError *error;
 	if (![[self fetchedResultsController] performFetch:&error]) {
 	}
+    
 }
 
 - (void)viewDidUnload
@@ -91,8 +92,7 @@
 }
 
 - (void) searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
-    CGRect topFrame = CGRectMake(0, 0, 320, 205);
-    [self.searchBar resignFirstResponder];
+    CGRect topFrame = CGRectMake(0, 0, 320, 220);
     [tableView setFrame:topFrame];
     [self.searchBar setShowsCancelButton:YES animated:YES];
 }
@@ -112,7 +112,9 @@
 }
 
 - (void) searchBarCancelButtonClicked:(UISearchBar *)searchBar{
-    CGRect bottomFrame = CGRectMake(0, 162, 320, 215);
+    CGRect bottomFrame = CGRectMake(0, 200, 320, 215);
+    [self.searchBar resignFirstResponder];
+
     [tableView setFrame:bottomFrame];
 }
 

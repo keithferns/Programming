@@ -79,14 +79,11 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
     [NSFetchedResultsController deleteCacheWithName:@"Root"];
 
     [super viewDidLoad];
-    [[NSNotificationCenter defaultCenter] 
-     addObserver:self 
-     selector:@selector(handleDidSaveNotification:)
-     name:NSManagedObjectContextDidSaveNotification 
-     object:nil];
+  
+    
     /*configure tableView, set its properties and add it to the main view.*/
     
-    tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, 220) style:UITableViewStylePlain];
+    tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 200, 320, 200) style:UITableViewStylePlain];
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 30)];
     UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 2, 320, 26)];
     [headerLabel setBackgroundColor:[UIColor lightGrayColor]];
@@ -117,10 +114,18 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
     
     /* NOTICATION */
     
-	[[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(managedObjectContextSaved:) name:managedObjectContextSavedNotification object:nil];
+	[[NSNotificationCenter defaultCenter] 
+     addObserver: self 
+     selector:@selector(managedObjectContextSaved:) 
+     name:managedObjectContextSavedNotification 
+     object:nil];
     
 
-    
+    [[NSNotificationCenter defaultCenter] 
+     addObserver:self 
+     selector:@selector(handleDidSaveNotification:)
+     name:NSManagedObjectContextDidSaveNotification 
+     object:nil];
 }
 
     
@@ -247,8 +252,7 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
 	}
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    // MemoText *aNote = [_fetchedResultsController objectAtIndexPath:indexPath];	
-    //if ([aNote.noteType intValue] == 0){
+
     
     static NSString *CellIdentifier = @"StartScreenCustomCell";
     
