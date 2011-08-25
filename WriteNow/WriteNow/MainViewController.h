@@ -14,7 +14,9 @@
 	UINavigationController *navigationController;
     NSManagedObjectContext *managedObjectContext;
     UIView *containerView;
+    UITextView *textView;
 }
+
 
 @property (nonatomic, retain) UINavigationController *navigationController;
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
@@ -28,6 +30,4 @@
 - (void) addNewTask;
 - (void) makeActionSheet:(id) sender;
 
-- (void) keyboardWasShown;
-- (void) keyboardWillHide;
 @end
