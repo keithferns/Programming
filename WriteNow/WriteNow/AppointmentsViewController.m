@@ -7,35 +7,44 @@
 //
 
 #import <QuartzCore/QuartzCore.h>
+#import "WriteNowAppDelegate.h"
 
 #import "AppointmentsViewController.h"
-#import "WriteNowAppDelegate.h"
-//#import "StartScreenCustomCell.h"
 #import "AppointmentCustomCell.h"
 
 @implementation AppointmentsViewController
 
+@synthesize managedObjectContext;
+@synthesize tableViewController;
 
-@synthesize managedObjectContext, managedObjectContextTV;
 @synthesize datePicker, timePicker;
-@synthesize appointmentsToolbar;
 @synthesize dateField, timeField, textView;
-@synthesize tableView;
-@synthesize fetchedResultsController = _fetchedResultsController;
-@synthesize tableLabel;
 @synthesize newAppointment;
 @synthesize dateFormatter, timeFormatter;
 @synthesize containerView;
+@synthesize newText;
+
+@synthesize appointmentsToolbar;
+
+@synthesize selectedDate, selectedTime;
 
 - (void)dealloc {
     [super dealloc];
+    [tableViewController release];
 	[datePicker release];
-    //[appointmentsToolbar release];  //WHY CAN'T I RELEASE THIS??????  
+    [timePicker release];    
     [dateField release];
     [timeField release];
     [textView release];
     [dateFormatter release];
-    [_fetchedResultsController release];
+    [timeFormatter release];
+    [containerView release];
+    [newText release];
+
+    //[appointmentsToolbar release];  //WHY CAN'T I RELEASE THIS??????  
+
+    //[selectedDate release]; //Releasing this causes a problem. WHY?
+    //[selectedTime release]; //Releasing this causes a problem. WHY?
 }
 
 - (void)didReceiveMemoryWarning {
@@ -52,9 +61,14 @@
     [super viewDidLoad];
     /*Setting Up the Views*/
     NSLog(@"In AppointmentsViewController");
+    /*-- Initializing the managedObjectContext--*/
+    if (managedObjectContext == nil) { 
+		managedObjectContext = [(WriteNowAppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext]; 
+        NSLog(@"After managedObjectContext: %@",  managedObjectContext);
+    }
     
-    [NSFetchedResultsController deleteCacheWithName:@"Root"];
-
+    NSLog(@"Trying to Create a newAppointment");
+    
     self.dateFormatter = [[NSDateFormatter alloc] init];
 	[self.dateFormatter setDateStyle:NSDateFormatterShortStyle];
     self.timeFormatter = [[NSDateFormatter alloc]init];
@@ -69,15 +83,14 @@
     /*--setup the textView for the input text--*/
     textView = [[UITextView alloc] initWithFrame:CGRectMake(10, 35, 300, 40)];
     textView.contentInset = UIEdgeInsetsMake(0, 5, 0, 5);
-    [textView.layer setBackgroundColor:[UIColor scrollViewTexturedBackgroundColor].CGColor];
+    textView.layer.backgroundColor = [UIColor colorWithRed:219.0f/255.0f green:226.0f/255.0f blue:237.0f/255.0f alpha:1].CGColor;
     [textView.layer setBorderWidth:1.0];
     [textView.layer setBorderColor:[UIColor darkGrayColor].CGColor];
     [textView.layer setCornerRadius:10.0];
     [textView setFont:[UIFont boldSystemFontOfSize:15]];
     [textView setDelegate:self];
     [textView setAlpha:1.0];
-    
-    textView.text = newAppointment.text;
+    textView.text = newText;
     
     
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 30)];
@@ -86,7 +99,6 @@
     [label setTextAlignment:UITextAlignmentCenter];
     label.text = @"New Appointment";
     [label setFont:[UIFont fontWithName:@"Georgia-BoldItalic" size:18]];
-    
     
     /*--Adding the Date and Time Fields--*/
 
@@ -100,71 +112,52 @@
     [timeField setBorderStyle:UITextBorderStyleRoundedRect];
     //[timeField setBackgroundColor:[UIColor colorWithRed:219.0f/255.0f green:226.0f/255.0f blue:237.0f/255.0f alpha:1]];
     [timeField setPlaceholder:@"Set Time"];
-    
-    tableLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,0,300, 20)];
-    [tableLabel setBackgroundColor:[UIColor lightGrayColor]];
-    [tableLabel setTextColor:[UIColor whiteColor]];
-    [tableLabel setTextAlignment:UITextAlignmentCenter];
-    [tableLabel setText:@"All Appointments"];
-    [self.view addSubview:tableLabel];
-    tableView = [[UITableView alloc] initWithFrame:CGRectMake(10, 110, 300, 85)];
-    [tableView.layer setCornerRadius:5.0];
-    [tableView setDelegate:self];
-    [tableView setDataSource:self];
-    [tableView setTableHeaderView:tableLabel];
-    
+        
     [self.view addSubview:containerView];
     [containerView addSubview:label];
     [containerView addSubview:textView];
     [containerView addSubview:dateField];
     [containerView addSubview:timeField];    
-    [containerView addSubview:tableView];
+    //[containerView addSubview:tableView];
 
+    [containerView addSubview:tableViewController.view];    
+
+    [label release];
+    
     [self makeToolbar];
     [self.view addSubview:appointmentsToolbar];
-    
-    [datePicker setFrame:CGRectMake(0, 245, 320, 216)];
-    //[datePicker setDatePickerMode:UIDatePickerModeDateAndTime];
+    datePicker = [[UIDatePicker alloc]initWithFrame:CGRectMake(0, 245, 320, 216)];
+    [datePicker setDatePickerMode:UIDatePickerModeDate];
     [datePicker setDate:[NSDate date]];
     [datePicker setMinimumDate:[NSDate date]];
     [datePicker setMaximumDate:[NSDate dateWithTimeIntervalSinceNow:(60*60*24*365)]];
     datePicker.timeZone = [NSTimeZone systemTimeZone];
-    [datePicker setTag:0];
+    [datePicker addTarget:self action:@selector(datePickerChanged:) forControlEvents:UIControlEventValueChanged];
     [self.view addSubview:datePicker];
     datePicker.hidden = NO;
     
-    [timePicker setFrame:CGRectMake(0, 245, 320, 216)];
+    timePicker = [[UIDatePicker alloc]initWithFrame:CGRectMake(0, 245, 320, 216)];    
     [timePicker setDatePickerMode:UIDatePickerModeTime];
-    //[timePicker setDate:[NSDate date]];
-    //[timePicker setMinimumDate:[NSDate date]];
-    //[timePicker setMaximumDate:[NSDate dateWithTimeIntervalSinceNow:(60*60*24*365)]];
     timePicker.timeZone = [NSTimeZone systemTimeZone];
     [timePicker setTag:1];
+    [timePicker addTarget:self action:@selector(timePickerChanged:) forControlEvents:UIControlEventValueChanged];
     [self.view addSubview:timePicker];
     timePicker.hidden = YES;
     
-    /*-- Initializing the managedObjectContext--*/
-    if (managedObjectContextTV == nil) { 
-		managedObjectContextTV = [(WriteNowAppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext]; 
-        NSLog(@"After managedObjectContext: %@",  managedObjectContextTV);
-    }
-    /*--Done Initializing the managedObjectContext--*/
-  
-    swappingViews = NO;
+    
 
-    NSError *error;
-    if (![[self fetchedResultsController] performFetch:&error]) {
-    }
-    NSLog(@"Done Loading View"); 
+    /*--Done Initializing the managedObjectContext--*/
+    swappingViews = NO;
 }
 
 - (void)viewDidUnload {
     [super viewDidUnload];
     // Release any retained subviews of the main view.
-    self.fetchedResultsController = nil;
     self.dateFormatter = nil;
     self.datePicker = nil;
     self.timePicker = nil;
+    self.selectedDate = nil;
+    self.selectedTime = nil;
 }
 
 -(void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)flag{
@@ -189,18 +182,12 @@
         [dateComponents setHour:12];
         [dateComponents setMinute:0];
         [dateComponents setSecond:0];
-    newAppointment.doDate = [calendar dateFromComponents:dateComponents];
-    NSLog(@"Selected Date: %@", newAppointment.doDate);
-    dateField.text = [self.dateFormatter stringFromDate:newAppointment.doDate];
+    selectedDate = [calendar dateFromComponents:dateComponents];
+    NSLog(@"Selected Date: %@", selectedDate);
+    dateField.text = [self.dateFormatter stringFromDate:selectedDate];
 
-    /*--configure the search predicate to display all and only appointments for the selected date --*/
-
-    NSPredicate *checkDate = [NSPredicate predicateWithFormat:@"doDate == %@", newAppointment.doDate];
-    self.fetchedResultsController = [self fetchedResultsControllerWithPredicate:checkDate];
-    NSError *error;
-    if (![[self fetchedResultsController] performFetch:&error]) {
-        }
-    [self.tableView reloadData];
+    [[NSNotificationCenter defaultCenter] 
+	 postNotificationName:@"GetDateNotification" object:self.selectedDate];
 }
 
 - (IBAction)timePickerChanged:(id)sender{
@@ -214,19 +201,22 @@
     [timeComponents setMonth:0];
     [timeComponents setDay:0];
     
-    newAppointment.doTime = [calendar dateFromComponents:timeComponents];
-    NSLog(@"Selected Time: %@", newAppointment.doTime);
-    timeField.text = [self.timeFormatter stringFromDate:newAppointment.doTime];
+    selectedTime= [calendar dateFromComponents:timeComponents];
+    NSLog(@"Selected Time: %@", selectedTime);
+    timeField.text = [self.timeFormatter stringFromDate:selectedTime];
 }
 
 
 - (void) backAction{
+    
 	[self dismissModalViewControllerAnimated:YES];		
 }
 
 - (void) setAppointmentDate{
-    NSCalendar *calendar = [NSCalendar currentCalendar];
     
+    /*-- DATE/TIME: Get selected Date from the time Picker; put it in the date text field --*/
+
+    NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *dateComponents = [calendar components:(NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit ) fromDate:[datePicker date]];
     [dateComponents setYear:[dateComponents year]];
     [dateComponents setMonth:[dateComponents month]];
@@ -234,19 +224,19 @@
     [dateComponents setHour:12];
     [dateComponents setMinute:0];
     [dateComponents setSecond:0];
-    newAppointment.doDate = [calendar dateFromComponents:dateComponents];
-    /*--Save the MOC--*/	
-	NSError *error;
-	if(![managedObjectContext save:&error]){ 
-        NSLog(@"DID NOT SAVE");
-	}  
-
+    selectedDate = [[calendar dateFromComponents:dateComponents] retain];
+    dateField.text = [dateFormatter stringFromDate:selectedDate];
+    
     if (!swappingViews) {
         [self swapViews];
     }
-    UIBarButtonItem *timeButton = [[UIBarButtonItem alloc] initWithTitle:@"Set Time" style:UIBarButtonItemStyleBordered target:self action:@selector(setAppointmentTime)];
-    [timeButton setTag:3];
-    [timeButton setWidth:90];
+    
+    /*--TOOLBAR:BUTTON: Change Set Date to Set Time  --*/
+    //UIBarButtonItem *timeButton = [[UIBarButtonItem alloc] initWithTitle:@"Set Time" style:UIBarButtonItemStyleBordered target:self action:@selector(setAppointmentTime)];
+    UIBarButtonItem *datetimeButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"clock_24.png"]style:UIBarButtonItemStylePlain target:self action:@selector(setAppointmentTime)];
+    [datetimeButton setTitle:@"Time"];
+    [datetimeButton setTag:5];
+    [datetimeButton setWidth:50.0];
     NSUInteger newButton = 0;
     NSMutableArray *toolbarItems = [[NSMutableArray arrayWithArray:appointmentsToolbar.items] retain];
     
@@ -257,19 +247,20 @@
             break;
         }
     }
-    [toolbarItems replaceObjectAtIndex:newButton withObject:timeButton];
+    [toolbarItems replaceObjectAtIndex:newButton withObject:datetimeButton];
     appointmentsToolbar.items = toolbarItems;
-    [timeButton release];
+    [datetimeButton release];
     [toolbarItems release];
-    
+    /*-- TOOLBAR:  done --*/
+
+    /*-- DATEPICKER: hide --*/
     datePicker.hidden = YES;
     timePicker.hidden = NO;
 }
 
 - (void) setAppointmentTime{
-    
+    /*--DATE/TIME: Get selected Time from the time Picker; put it in the time text field --*/
     NSCalendar *calendar = [NSCalendar currentCalendar];
-    
     NSDateComponents *timeComponents = [calendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit ) fromDate:[timePicker date]];    
     [timeComponents setHour:[timeComponents hour]];
     [timeComponents setMinute:[timeComponents minute]];
@@ -277,24 +268,22 @@
     [timeComponents setYear:0];
     [timeComponents setMonth:0];
     [timeComponents setDay:0];
+    selectedTime = [[calendar dateFromComponents:timeComponents] retain];
+    timeField.text = [timeFormatter stringFromDate:selectedTime];
     
-    newAppointment.doTime = [calendar dateFromComponents:timeComponents];
+    /*--TOOLBAR: Change  Set Time button to Done  --*/
+    //UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(doneAction)];
     
-    /*--Save the MOC--*/	
-	NSError *error;
-	if(![managedObjectContext save:&error]){ 
-        NSLog(@"DID NOT SAVE");
-	}  
-    
-    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(doneAction)];
-    [doneButton setTag:4];
-    [doneButton setWidth:90];
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"save.png"] style:UIBarButtonItemStylePlain target:self action:@selector(doneAction)];
+    [doneButton setTitle:@"Done"];
+    [doneButton setWidth:50.0];
+    [doneButton setTag:6];
     NSUInteger newButton = 0;
     NSMutableArray *toolbarItems = [[NSMutableArray arrayWithArray:appointmentsToolbar.items] retain];
     
     for (NSUInteger i = 0; i < [toolbarItems count]; i++) {
         UIBarButtonItem *barButtonItem = [toolbarItems objectAtIndex:i];
-        if (barButtonItem.tag == 3) {
+        if (barButtonItem.tag == 5) {
             newButton = i;
             break;
         }
@@ -303,12 +292,33 @@
     appointmentsToolbar.items = toolbarItems;
     [doneButton release];
     [toolbarItems release];
+    /*-- TOOLBAR: Finished changing button --*/
+    
 }
 
 #pragma mark -
 #pragma mark Navigation
 
 - (void) doneAction{
+    NSEntityDescription *entity = [NSEntityDescription
+                                   entityForName:@"Appointment"
+                                   inManagedObjectContext:managedObjectContext];
+    newAppointment = [[Appointment alloc] initWithEntity:entity insertIntoManagedObjectContext:managedObjectContext];
+    [newAppointment setText:textView.text];
+    //Add condition for reedit = if creationDate != nil then break
+    [newAppointment setCreationDate:[NSDate date]];
+    [newAppointment setType:[NSNumber numberWithInt:1]];
+    [newAppointment setDoDate:selectedDate];
+    [newAppointment setDoTime:selectedTime];
+    
+    NSLog(@"newAppointment.text = %@", newAppointment.text);
+    NSLog(@"newAppointment.creationDate = %@", newAppointment.creationDate);
+    NSLog(@"newAppointment.type = %d", [newAppointment.type intValue]);
+    /*--Save the MOC--*/	
+	NSError *error;
+	if(![managedObjectContext save:&error]){ 
+        NSLog(@"APPOINTMENTS VIEWCONTROLLER MOC: DID NOT SAVE");
+	} 
     [self dismissModalViewControllerAnimated:YES];
 }
 
@@ -327,231 +337,50 @@
 }
 
 #pragma mark -
-#pragma mark Fetched results controller
-
-- (NSFetchedResultsController *) fetchedResultsControllerWithPredicate:(NSPredicate *)aPredicate {
-    
-	NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    [request setEntity:[NSEntityDescription entityForName:@"Appointment" inManagedObjectContext:managedObjectContextTV]];
-    [request setFetchBatchSize:10];
-    
-    [request setPredicate:aPredicate];
-    
-	NSSortDescriptor *dateDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"doDate" ascending:YES] autorelease];
-	NSSortDescriptor *timeDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"doTime" ascending:NO]autorelease];    
-    [request setSortDescriptors:[NSArray arrayWithObjects:dateDescriptor,timeDescriptor, nil]];
-    
-    NSString *cacheName = @"Root";
-    if (aPredicate) {
-        cacheName = nil;
-    }
-    NSFetchedResultsController *newController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:managedObjectContextTV sectionNameKeyPath:@"doDate" cacheName:cacheName];
-    
-    newController.delegate = self;
-    NSError *anyError = nil;
-    if (![newController performFetch:&anyError]){
-        NSLog(@"Error Fetching:%@", anyError);
-    }
-	self.fetchedResultsController = newController;
-	[newController release];
-	[request release];
-	
-	return _fetchedResultsController;
-}
-
-- (NSFetchedResultsController *) fetchedResultsController {
-    if(_fetchedResultsController != nil){
-        return _fetchedResultsController;
-    }
-    self.fetchedResultsController = [self fetchedResultsControllerWithPredicate:nil];
-    NSError *error = nil;
-    if (![_fetchedResultsController performFetch:&error]){
-        NSLog(@"Error Fetching:%@", error);
-    }
-	return _fetchedResultsController;
-}
-
-#pragma mark -
-#pragma mark Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	return [[_fetchedResultsController sections] count];
-}
-
-- (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-	id<NSFetchedResultsSectionInfo>  sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
-    NSDateFormatter *tempDateFormatter = [[NSDateFormatter alloc] init];
-    
-    [tempDateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss ZZZ"];
-    NSDate *aDate = [tempDateFormatter dateFromString:[sectionInfo name]];
-    
-    [tempDateFormatter setDateFormat:@"EEEE, MM d"];
-    
-    NSString *myDate = [tempDateFormatter stringFromDate:aDate];
-    [tempDateFormatter release];
-	return myDate;
-	//return [sectionInfo name];
-}
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    id <NSFetchedResultsSectionInfo> sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
-    return [sectionInfo numberOfObjects];
-}
-
-- (void) configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath{
-	AppointmentCustomCell *mycell;
-	if([cell isKindOfClass:[UITableViewCell class]]){
-		mycell = (AppointmentCustomCell *) cell;
-        [mycell setAccessoryType:UITableViewCellAccessoryDetailDisclosureButton];   
-        }
-//if ([_fetchedResultsController objectAtIndexPath:0] != nil) {
-    Appointment *anAppointment = [_fetchedResultsController objectAtIndexPath:indexPath];	
-    [mycell.textLabel setText:[NSString stringWithFormat:@"%@", anAppointment.text]];
-    [mycell.timeLabel setText: [timeFormatter stringFromDate:anAppointment.doTime]];
-//}
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"AppointmentCustomCell";
-    
-    AppointmentCustomCell *cell = (AppointmentCustomCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-	if (cell == nil) {
-		NSArray *topLevelObjects = [[NSBundle mainBundle]
-									loadNibNamed:@"AppointmentCustomCell"
-									owner:nil options:nil];
-		for (id currentObject in topLevelObjects){
-			if([currentObject isKindOfClass:[UITableViewCell class]]){
-				cell = (AppointmentCustomCell *) currentObject;
-				break;
-			}
-		}
-	}
-	[self configureCell:cell atIndexPath:indexPath];
-    return cell;
-}
-/*
- // Override to support conditional editing of the table view.
- - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
- // Return NO if you do not want the specified item to be editable.
- return YES;
- }
- */
-
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source.
-        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
-    }   
-}
-
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
-
-#pragma mark -
-#pragma mark Table view delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // MemoDetailViewController *detailViewController = [[MemoDetailViewController alloc] initWithNibName:@"MemoDetailView" bundle:[NSBundle mainBundle]];
-    // ...
-    // Pass the selected object to the new view controller.
-	
-	//detailViewController.selectedMemoText = [_fetchedResultsController objectAtIndexPath:indexPath];	
-	//[self presentModalViewController:detailViewController animated:YES];	
-    //[detailViewController release];
-}
-
-#pragma mark -
-#pragma mark Fetched Results Notifications
-
-- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
-    // The fetch controller is about to start sending change notifications, so prepare the table view for updates.
-    [self.tableView beginUpdates];
-}
-- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
-	
-    UITableView *aTableView = self.tableView;	
-    switch(type) {
-			
-        case NSFetchedResultsChangeInsert:
-            [aTableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-        case NSFetchedResultsChangeDelete:
-            [aTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-        case NSFetchedResultsChangeUpdate:
-			[self configureCell:[aTableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
-            break;
-			
-        case NSFetchedResultsChangeMove:
-            [aTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            // Reloading the section inserts a new row and ensures that titles are updated appropriately.
-            [aTableView reloadSections:[NSIndexSet indexSetWithIndex:newIndexPath.section] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-    }
-}
-
-- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type {
-	
-    switch(type) {
-			
-        case NSFetchedResultsChangeInsert:
-            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-			
-        case NSFetchedResultsChangeDelete:
-            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-    }
-}
-
-- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-    // The fetch controller has sent all current change notifications, so tell the table view to process all updates.
-    [self.tableView endUpdates];
-}
-
-#pragma mark -
 #pragma mark Navigation
 
 - (void) makeToolbar {
     /*Setting up the Toolbar */
-    CGRect buttonBarFrame = CGRectMake(0, 200, 320, 45);
+    CGRect buttonBarFrame = CGRectMake(0, 195, 320, 50);
     appointmentsToolbar = [[[UIToolbar alloc] initWithFrame:buttonBarFrame] autorelease];
-    [appointmentsToolbar setBarStyle:UIBarStyleBlackTranslucent];
-    [appointmentsToolbar setTintColor:[UIColor grayColor]];
-    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"BACK" style:UIBarButtonItemStyleBordered target:self action:@selector(doneAction)];
-    [backButton setTag:0];
-    UIBarButtonItem *dateButton = [[UIBarButtonItem alloc] initWithTitle:@"Set Date" style:UIBarButtonItemStyleBordered target:self action:@selector(setAppointmentDate)];
+    [appointmentsToolbar setBarStyle:UIBarStyleDefault];
+    [appointmentsToolbar setTintColor:[UIColor colorWithRed:0.34 green:0.36 blue:0.42 alpha:0.3]];
+
     
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"arrow_left_24.png"] style:UIBarButtonItemStylePlain target:self action:@selector(doneAction)];
+    [backButton setTitle:@"Back"];
+    [backButton setWidth:50.0];
+    [backButton setTag:0];    
     
-    [dateButton setTag:1];
-    UIBarButtonItem *gotoButton = [[UIBarButtonItem alloc] initWithTitle:@"GO TO.." style:UIBarButtonItemStyleBordered target:self action:@selector(doneAction)];
-    [gotoButton setTag:2];
+    UIBarButtonItem *datetimeButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"calendar_24.png"]style:UIBarButtonItemStylePlain target:self action:@selector(setAppointmentDate)];
+    [datetimeButton setTitle:@"Schedule"];
+    [datetimeButton setTag:1];
+    [datetimeButton setWidth:50.0];
     
-    [backButton setWidth:90];
-    [dateButton setWidth:90];
-    [gotoButton setWidth:90];
+    UIBarButtonItem *recurrenceButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"arrow_circle_left_24.png"] style:UIBarButtonItemStylePlain target:self action:@selector(setRecurring)];
+    [recurrenceButton setTitle:@"Repeat"];
+    [recurrenceButton setWidth:50.0];
+    [recurrenceButton setTag:3];
+    
+    UIBarButtonItem *alarmButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"alarm_24.png"] style:UIBarButtonItemStylePlain target:self action:@selector(setAlarm)];
+    [alarmButton setTitle:@"Remind"];
+    [alarmButton setWidth:50.0];
+    [alarmButton setTag:2];
+    
+    UIBarButtonItem *dismissKeyboard = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"keyboard_down.png"] style:UIBarButtonItemStylePlain target:self action:@selector(dismissKeyboard)];
+    [dismissKeyboard setWidth:50.0];
+    [dismissKeyboard setTag:4];
     
     //UIButton *customView = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     //Possible to use this with the initWithCustomView method of  UIBarButtonItems
     UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil	action:nil];
     
-    NSMutableArray *toolbarItems = [NSMutableArray arrayWithObjects:flexSpace, backButton, flexSpace, dateButton, flexSpace, gotoButton, flexSpace,nil];
+    NSMutableArray *toolbarItems = [NSMutableArray arrayWithObjects: backButton, flexSpace, datetimeButton, flexSpace,alarmButton, flexSpace, recurrenceButton,flexSpace,dismissKeyboard, nil];
     [appointmentsToolbar setItems:toolbarItems];
     [backButton release];
-    [dateButton release];
-    [gotoButton release];
+    [datetimeButton release];
+    [alarmButton release];
+    [dismissKeyboard release];
     [flexSpace release];
     /*--End Setting up the Toolbar */
 }

@@ -7,27 +7,29 @@
 //
 
 #import <UIKit/UIKit.h>
-    
-@interface TasksViewController : UIViewController  <UITextViewDelegate, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate> {
+//#import "TasksTableViewController.h"    
+@interface TasksViewController : UIViewController  <UITextViewDelegate, UITextFieldDelegate> {
         
         Task *newTask;
-        NSManagedObjectContext *managedObjectContext, *managedObjectContextTV;
-        NSFetchedResultsController *_fetchedResultsController;
-        UITableView *tableView;
+        NSManagedObjectContext *managedObjectContext;
         BOOL swappingViews;
     }
     
     @property (nonatomic, retain) Task *newTask;
-    @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext, *managedObjectContextTV;
-    @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
-    @property (nonatomic, retain) UITableView *tableView;
+    @property (nonatomic, retain) NSDate *selectedDate;
+
+    @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
+    @property (nonatomic, retain) IBOutlet UITableViewController *tableViewController;
+
+
     @property (nonatomic, retain) IBOutlet UIDatePicker *datePicker;
     @property (nonatomic, retain) UIToolbar *taskToolbar;
     @property (nonatomic, retain) UITextView *textView;
     @property (nonatomic, retain) UITextField *dateField;
-    @property (nonatomic, retain) UILabel *tableLabel;
     @property (nonatomic, retain) NSDateFormatter *dateFormatter;
     @property (nonatomic, retain) UIView *containerView;
+    @property (nonatomic, retain) NSString *newText;
+
 
     - (void) swapViews;
     - (void) setTaskDate;
@@ -36,5 +38,4 @@
     - (IBAction)datePickerChanged:(id)sender;
     - (void) doneAction;
 
-    - (NSFetchedResultsController *) fetchedResultsControllerWithPredicate:(NSPredicate *)aPredicate; 
 @end

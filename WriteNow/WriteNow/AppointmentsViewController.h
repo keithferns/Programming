@@ -9,26 +9,28 @@
 #import <UIKit/UIKit.h>
 
 
-@interface AppointmentsViewController : UIViewController <UITextViewDelegate, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate> {
+@interface AppointmentsViewController : UIViewController <UITextViewDelegate, UITextFieldDelegate> {
         
         Appointment *newAppointment;
-        NSManagedObjectContext *managedObjectContext, *managedObjectContextTV;
-        NSFetchedResultsController *_fetchedResultsController;
-        UITableView *tableView;	
+        NSManagedObjectContext *managedObjectContext;
         BOOL swappingViews;
+        NSString *newText;
         }
 
     @property (nonatomic, retain) Appointment *newAppointment;
-    @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext, *managedObjectContextTV;
-    @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
-    @property (nonatomic, retain) UITableView *tableView;
+    @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
+    @property (nonatomic, retain) IBOutlet UITableViewController *tableViewController;
+
+
+
     @property (nonatomic, retain) IBOutlet UIDatePicker *datePicker, *timePicker;
     @property (nonatomic, retain) UIToolbar *appointmentsToolbar;
     @property (nonatomic, retain) UITextView *textView;
     @property (nonatomic, retain) UITextField *dateField, *timeField;
-    @property (nonatomic, retain) UILabel *tableLabel;
     @property (nonatomic, retain) NSDateFormatter *dateFormatter, *timeFormatter;
-        @property (nonatomic, retain) UIView *containerView;
+    @property (nonatomic, retain) UIView *containerView;
+    @property (nonatomic, retain) NSDate *selectedDate, *selectedTime;
+    @property (nonatomic, retain) NSString *newText;
 
     - (void) swapViews;
     - (void) backAction;    
@@ -40,6 +42,5 @@
     - (IBAction)timePickerChanged:(id)sender;
     - (void) doneAction;
 
-    
-    - (NSFetchedResultsController *) fetchedResultsControllerWithPredicate:(NSPredicate *)aPredicate; 
+
 @end

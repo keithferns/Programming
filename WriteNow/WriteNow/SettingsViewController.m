@@ -11,8 +11,7 @@
 
 @implementation SettingsViewController
 
-- (void)dealloc
-{
+- (void)dealloc {
     [super dealloc];
 }
 
@@ -34,7 +33,7 @@
     
     self.title = @"Settings";
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:nil];
-    
+    /*
     UITableView *tempTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 200, 320, 180) style:UITableViewStylePlain];
     
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
@@ -51,7 +50,9 @@
     //[tempTableView setDelegate:self];
     //[tempTableView setDataSource:self];
     [self.view addSubview:tempTableView];
-    
+    [headerLabel release];
+    [headerView release];
+    */
 }
 
 - (void)viewDidUnload

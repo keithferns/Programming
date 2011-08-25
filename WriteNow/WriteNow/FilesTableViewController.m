@@ -4,12 +4,16 @@
 //
 //  Created by Keith Fernandes on 8/20/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
-//
 
 #import "FilesTableViewController.h"
-
+#import "FileCustomCell.h"
+#import "WriteNowAppDelegate.h"
 
 @implementation FilesTableViewController
+
+@synthesize managedObjectContext;
+@synthesize searchBar;
+@synthesize fetchedResultsController = _fetchedResultsController;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -20,9 +24,9 @@
     return self;
 }
 
-- (void)dealloc
-{
+- (void)dealloc {
     [super dealloc];
+    [searchBar release];
 }
 
 - (void)didReceiveMemoryWarning
@@ -39,11 +43,27 @@
 {
     [super viewDidLoad];
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 245, 320, 215) style:UITableViewStylePlain];
+    
+    searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+    [self.tableView setDelegate:self];
+    [self.tableView setDataSource:self];
+    searchBar.delegate = self;
+    
+    [self.tableView addSubview:searchBar];
+    
+    [searchBar setTranslucent:YES];
+    [searchBar setPlaceholder:@"Search for Folder"];
+    self.tableView.tableHeaderView = searchBar;
+    
+	searchBar.autocorrectionType = UITextAutocorrectionTypeNo;
+    if (managedObjectContext == nil) { 
+		managedObjectContext = [(WriteNowAppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext]; 
+        NSLog(@"After managedObjectContext: %@",  managedObjectContext);
+	}
+	NSError *error;
+	if (![[self fetchedResultsController] performFetch:&error]) {
+	}
 }
 
 - (void)viewDidUnload
@@ -79,87 +99,133 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+
+- (void) searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+    CGRect mytestFrame = CGRectMake(15, 55, 290, 140);
+    [self.tableView setFrame:mytestFrame];
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{    
+    NSString * searchString = self.searchBar.text;
+    NSLog(@"Search String is %@", searchString);
+    NSPredicate *searchPredicate = [NSPredicate predicateWithFormat: @"name CONTAINS[c] %@", searchString];
+    self.fetchedResultsController = [self fetchedResultsControllerWithPredicate:searchPredicate];
+ 	NSError *error;
+	if (![[self fetchedResultsController] performFetch:&error]) {
+	}
+    [self.tableView reloadData];    
+}
+
+#pragma mark - Fetched Results Controller
+
+- (NSFetchedResultsController *) fetchedResultsControllerWithPredicate: (NSPredicate *) aPredicate{
+	NSFetchRequest *request = [[NSFetchRequest alloc] init];
+	[request setEntity:[NSEntityDescription entityForName:@"File" inManagedObjectContext:managedObjectContext]];
+    [request setFetchBatchSize:10];
+    [request setPredicate:aPredicate];
+	NSSortDescriptor *nameDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
+	[request setSortDescriptors:[NSArray arrayWithObjects:nameDescriptor, nil]];
+	[nameDescriptor release];
+    NSString *cacheName = @"Root";
+    if (aPredicate) {
+        cacheName = nil;
+    }
+	NSFetchedResultsController *newController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:managedObjectContext sectionNameKeyPath:nil cacheName:cacheName];
+	newController.delegate = self;
+    NSError *anyError = nil;
+    if (![newController performFetch:&anyError]){
+        NSLog(@"Error Fetching:%@", anyError);
+    }
+	self.fetchedResultsController = newController;
+	[newController release];
+	[request release];
+	return _fetchedResultsController;
+}
+
+- (NSFetchedResultsController *) fetchedResultsController {
+    if(_fetchedResultsController != nil){
+        return _fetchedResultsController;
+    }
+    self.fetchedResultsController = [self fetchedResultsControllerWithPredicate:nil];
+    NSError *error = nil;
+    if (![_fetchedResultsController performFetch:&error]){
+        NSLog(@"Error Fetching:%@", error);
+    }	
+	return _fetchedResultsController;
+}
+
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    NSInteger count = [[_fetchedResultsController sections] count];
+	if (count == 0) {
+		count = 1;
+	}
+    return count;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    NSInteger numberOfRows = 0;
+    if ([[_fetchedResultsController sections] count] > 0) {
+        id <NSFetchedResultsSectionInfo> sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
+        numberOfRows = [sectionInfo numberOfObjects];
     }
+    return numberOfRows;
+}
+
+- (void) configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath{
+	
+	FileCustomCell *mycell;
+	if([cell isKindOfClass:[UITableViewCell class]]){
+		mycell = (FileCustomCell *) cell;
+	}
+    File *aFile = [_fetchedResultsController objectAtIndexPath:indexPath];	
+    [mycell.fileName setText:aFile.name];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    // Configure the cell...
-    
+    static NSString *CellIdentifier = @"FileCustomCell";
+	FileCustomCell *cell = (FileCustomCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	if (cell == nil) {
+		NSArray *topLevelObjects = [[NSBundle mainBundle]
+									loadNibNamed:@"FileCustomCell"
+									owner:nil options:nil];
+		
+		for (id currentObject in topLevelObjects){
+			if([currentObject isKindOfClass:[UITableViewCell class]]){
+				cell = (FileCustomCell *) currentObject;
+				break;
+			}
+		}
+	}
+	[self configureCell:cell atIndexPath:indexPath];
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
 #pragma mark - Table view delegate
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
+    //File *myFile = [_fetchedResultsController objectAtIndexPath:indexPath];
+
+    //[myFile setMemos:<#(NSSet *)#>
+    
+    //NSString *tempString = [NSString stringWithFormat:@"%@%@%@", myFile.content, @"\n", selectedMemo.text];
+
+    
+    //NSLog(@"The file text is %@", tempString);
+    
+   // myFile.content = tempString;
+    //[tempString release];
+    
+    //textView.text = myFile.content;
+    
+    //fileTextField.text = myFile.name;
+    
+    NSError *error;
+	if(![managedObjectContext save:&error]){ 
+        NSLog(@"DID NOT SAVE");
+	}
 }
 
 @end

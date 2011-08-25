@@ -66,7 +66,7 @@
     viewController4.tabBarItem.tag = 4;
     
     MainViewController *viewController5 = [[[MainViewController alloc] initWithNibName:nil bundle:nil] autorelease];
-	viewController5.tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemMore tag:5];
+	viewController5.tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemSearch tag:5];
 	
     tabBarController.viewControllers = [NSArray arrayWithObjects:viewController1, viewController2, viewController3, viewController4, viewController5, nil];	
     

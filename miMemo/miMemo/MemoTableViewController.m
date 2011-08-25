@@ -43,8 +43,10 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
 	[self.tableView reloadData];
 }
 - (void)handleDidSaveNotification:(NSNotification *)notification {
-    NSLog(@"NSManagedObjectContextDidSaveNotification received");
+    NSLog(@"NSManagedObjectContextDidSaveNotification Received");
     [managedObjectContext mergeChangesFromContextDidSaveNotification:notification];
+
+	[self.tableView reloadData];
 }
 #pragma mark -
 #pragma mark View lifecycle

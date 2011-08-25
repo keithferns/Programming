@@ -22,8 +22,8 @@
 @property (nonatomic, retain) UIToolbar *myToolBar;
 @property (nonatomic, retain) NSString *previousTextInput;
 
-- (void) addNewFolder;
-- (void) addNewMemo;
+- (void) dismissKeyboard;
+- (void) saveMemo;
 - (void) addNewAppointment;
 - (void) addNewTask;
 - (void) makeActionSheet:(id) sender;

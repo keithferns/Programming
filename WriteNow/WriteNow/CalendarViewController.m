@@ -11,6 +11,8 @@
 
 @implementation CalendarViewController
 
+@synthesize toolbar, textField, datePicker;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -38,7 +40,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    textField.inputView = datePicker;
+    textField.inputAccessoryView = toolbar;
+    
+}
+
+- (IBAction)dateChanged:(id)sender {
+    UIDatePicker *picker = (UIDatePicker *)sender;
+    
+    self.textField.text = [NSString stringWithFormat:@"%@", picker.date];
+}
+
+- (IBAction)doneEditing:(id)sender {
+    [self.textField resignFirstResponder];
 }
 
 - (void)viewDidUnload

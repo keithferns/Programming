@@ -6,24 +6,24 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "TasksViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "WriteNowAppDelegate.h"
-#import "TaskCustomCell.h"
+
+
+#import "TasksViewController.h"
 
 @implementation TasksViewController
 
-@synthesize managedObjectContext, managedObjectContextTV;
-@synthesize fetchedResultsController = _fetchedResultsController;
+@synthesize managedObjectContext;
+@synthesize newTask;
 
 @synthesize datePicker;
 @synthesize taskToolbar;
-@synthesize dateField,textView, containerView;
-@synthesize tableView;
-@synthesize tableLabel;
-@synthesize newTask;
+@synthesize dateField,textView,containerView;
 @synthesize dateFormatter;
-
+@synthesize tableViewController;
+@synthesize selectedDate;
+@synthesize newText;
 
 - (void)dealloc {
     [super dealloc];
@@ -32,7 +32,8 @@
     [dateField release];
     [textView release];
     [dateFormatter release];
-    [_fetchedResultsController release];
+    //[selectedDate release];
+    [newTask release];
 }
 
 #pragma mark - View lifecycle
@@ -42,9 +43,17 @@
     [super viewDidLoad];
     
     /*Setting Up the Views*/
-    NSLog(@"In NewTaskViewController");
-    [NSFetchedResultsController deleteCacheWithName:@"Root"];
+    NSLog(@"IN TASKS VIEWCONTROLLER");
 
+    /*-- Initializing the managedObjectContext--*/
+	if (managedObjectContext == nil) { 
+		managedObjectContext = [(WriteNowAppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext]; 
+        NSLog(@"After managedObjectContext: %@",  managedObjectContext);
+    }
+    /*--Done Initializing the managedObjectContext--*/
+    
+
+        
     self.dateFormatter = [[NSDateFormatter alloc] init];
 	[self.dateFormatter setDateStyle:NSDateFormatterShortStyle];
     
@@ -64,9 +73,8 @@
     [textView setFont:[UIFont boldSystemFontOfSize:15]];
     [textView setDelegate:self];
     [textView setAlpha:1.0];
-    
-    textView.text = newTask.text;
-    
+    textView.text = newText;
+        
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 30)];
     [label  setBackgroundColor:[UIColor clearColor]];
     [label setTextColor:[UIColor blackColor]];
@@ -74,8 +82,6 @@
     label.text = @"New Task";
     [label setFont:[UIFont fontWithName:@"Georgia-BoldItalic" size:18]];
     
-    [containerView addSubview:textView];
-    [containerView addSubview:label];
     
     /*--Adding the Date and Time Fields--*/
     
@@ -84,28 +90,16 @@
     [dateField setBorderStyle:UITextBorderStyleRoundedRect];
     //[dateField setBackgroundColor:[UIColor colorWithRed:219.0f/255.0f green:226.0f/255.0f blue:237.0f/255.0f alpha:1]];
     [dateField setPlaceholder:@"Set Date"];
-    
-    tableLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,0,300, 20)];
-    [tableLabel setBackgroundColor:[UIColor lightGrayColor]];
-    [tableLabel setTextColor:[UIColor whiteColor]];
-    [tableLabel setTextAlignment:UITextAlignmentCenter];
-    [tableLabel setText:@"All Tasks"];
-    [self.view addSubview:tableLabel];
-    tableView = [[UITableView alloc] initWithFrame:CGRectMake(10, 110, 300, 85)];
-    [tableView.layer setCornerRadius:5.0];
-    [tableView setDelegate:self];
-    [tableView setDataSource:self];
-    [tableView setTableHeaderView:tableLabel];
-    
+        
     [self.view addSubview:containerView];
     [containerView addSubview:label];
     [containerView addSubview:textView];
     [containerView addSubview:dateField];
-    [containerView addSubview:tableView];
+    [containerView addSubview:tableViewController.view];    
     
     [self makeToolbar];
     [self.view addSubview:taskToolbar];
-    
+    [label release];
     
     [datePicker setFrame:CGRectMake(0, 245, 320, 216)];
     //[datePicker setDatePickerMode:UIDatePickerModeDateAndTime];
@@ -117,27 +111,15 @@
     [self.view addSubview:datePicker];
     datePicker.hidden = NO;
     
-    /*-- Initializing the managedObjectContext--*/
-	if (managedObjectContextTV == nil) { 
-		managedObjectContextTV = [(WriteNowAppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext]; 
-        NSLog(@"After managedObjectContext: %@",  managedObjectContextTV);
-    }
-    /*--Done Initializing the managedObjectContext--*/
-        
     swappingViews = NO;
-    
-    NSError *error;
-    if (![[self fetchedResultsController] performFetch:&error]) {
-    }
-    NSLog(@"Done Loading View");
+
     
 }
-
+    
 - (void)viewDidUnload {
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 	self.datePicker = nil;
-    self.fetchedResultsController = nil;
     self.dateFormatter = nil;
 }
 
@@ -161,18 +143,13 @@
     [dateComponents setHour:0];
     [dateComponents setMinute:0];
     [dateComponents setSecond:0];
+    selectedDate = [calendar dateFromComponents:dateComponents];
+    NSLog(@"Selected Date: %@", selectedDate);
+    dateField.text = [self.dateFormatter stringFromDate:selectedDate];
     
-    newTask.doDate = [calendar dateFromComponents:dateComponents];
-    NSLog(@"Selected Date: %@", newTask.doDate);
-    dateField.text = [self.dateFormatter stringFromDate:newTask.doDate];
-    
-    /*--configure the search predicate to display all and only appointments for the selected date --*/
-    NSPredicate *checkDate = [NSPredicate predicateWithFormat:@"doDate == %@", newTask.doDate];
-    self.fetchedResultsController = [self fetchedResultsControllerWithPredicate:checkDate];
-    NSError *error;
-    if (![[self fetchedResultsController] performFetch:&error]) {
-    }
-    [self.tableView reloadData];
+    [[NSNotificationCenter defaultCenter] 
+	 postNotificationName:@"GetDateNotification" object:self.selectedDate];
+
 }
 
 - (void) setTaskDate{
@@ -186,13 +163,8 @@
     [dateComponents setMinute:0];
     [dateComponents setSecond:0];
     
-    newTask.doDate = [calendar dateFromComponents:dateComponents];
-    /*--Save the MOC--*/	
-	NSError *error;
-	if(![managedObjectContext save:&error]){ 
-        NSLog(@"DID NOT SAVE");
-	}  
-    
+    selectedDate = [[calendar dateFromComponents:dateComponents]retain];
+
     if (!swappingViews) {
         [self swapViews];
     }
@@ -219,8 +191,30 @@
 
 - (void) doneAction{
     [self dismissModalViewControllerAnimated:YES];
+    
+    NSLog(@"Trying to Create a newTask");
+    
+    NSEntityDescription *entity = [NSEntityDescription
+                                   entityForName:@"Task"
+                                   inManagedObjectContext:managedObjectContext];
+    
+    newTask = [[Task alloc] initWithEntity:entity insertIntoManagedObjectContext:managedObjectContext];
+    [newTask setText:textView.text];
+    //Add condition for reedit = if creationDate != nil then break
+    [newTask setCreationDate:[NSDate date]];
+    [newTask setType:[NSNumber numberWithInt:2]];
+    [newTask setDoDate:selectedDate];
+    
+    NSLog(@"newTask.text = %@", newTask.text);
+    NSLog(@"newTask.creationDate = %@", newTask.creationDate);
+    NSLog(@"newTask.type = %d", [newTask.type intValue]);
+    NSLog(@"newTask.doDate = %@", newTask.doDate);
+    
+    NSError *error;
+    if(![self.managedObjectContext save:&error]){ 
+        NSLog(@"MainViewController MOC: DID NOT SAVE");
+    }
 }
-
 
 - (void) swapViews {
 	
@@ -234,211 +228,7 @@
 	transition.delegate = self;
 	
 	[self.view.layer addAnimation:transition forKey:nil];    
-	//monthView.hidden = YES;
-	//datetimeView.hidden = NO;	
-}
 
-
-#pragma mark -
-#pragma mark Fetched results controller
-
-- (NSFetchedResultsController *) fetchedResultsControllerWithPredicate:(NSPredicate *)aPredicate {
-    
-	NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    [request setEntity:[NSEntityDescription entityForName:@"Task" inManagedObjectContext:managedObjectContextTV]];
-    [request setFetchBatchSize:10];
-    
-    [request setPredicate:aPredicate];
-    
-	NSSortDescriptor *dateDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"doDate" ascending:YES] autorelease];
-    [request setSortDescriptors:[NSArray arrayWithObjects:dateDescriptor, nil]];
-    
-    NSString *cacheName = @"Root";
-    if (aPredicate) {
-        cacheName = nil;
-    }
-    NSFetchedResultsController *newController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:managedObjectContextTV sectionNameKeyPath:@"doDate" cacheName:cacheName];
-    
-    newController.delegate = self;
-    NSError *anyError = nil;
-    if (![newController performFetch:&anyError]){
-        NSLog(@"Error Fetching:%@", anyError);
-    }
-	self.fetchedResultsController = newController;
-	[newController release];
-	[request release];
-	
-	return _fetchedResultsController;
-}
-
-- (NSFetchedResultsController *) fetchedResultsController {
-    if(_fetchedResultsController != nil){
-        return _fetchedResultsController;
-    }
-    self.fetchedResultsController = [self fetchedResultsControllerWithPredicate:nil];
-    NSError *error = nil;
-    if (![_fetchedResultsController performFetch:&error]){
-        NSLog(@"Error Fetching:%@", error);
-    }
-	return _fetchedResultsController;
-}
-
-#pragma mark -
-#pragma mark Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	return [[_fetchedResultsController sections] count];
-}
-
-- (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-	id<NSFetchedResultsSectionInfo>  sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
-    NSDateFormatter *tempDateFormatter = [[NSDateFormatter alloc] init];
-    
-    [tempDateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss ZZZ"];
-    NSDate *aDate = [tempDateFormatter dateFromString:[sectionInfo name]];
-    
-    [tempDateFormatter setDateFormat:@"EEEE, MM d"];
-    
-    NSString *myDate = [tempDateFormatter stringFromDate:aDate];
-    [tempDateFormatter release];
-	return myDate;
-	//return [sectionInfo name];
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    id <NSFetchedResultsSectionInfo> sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
-    return [sectionInfo numberOfObjects];
-}
-
-
-- (void) configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath{
-    
-	TaskCustomCell *mycell;
-	if([cell isKindOfClass:[UITableViewCell class]]){
-		mycell = (TaskCustomCell *) cell;
-        [mycell setAccessoryType:UITableViewCellAccessoryDetailDisclosureButton];   
-    }
-//if ([_fetchedResultsController objectAtIndexPath:0] != nil) {
-        Task *aTask = [_fetchedResultsController objectAtIndexPath:indexPath];	
-        [mycell.memoTextLabel setText:[NSString stringWithFormat:@"%@", aTask.text]];
-//}
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"TaskCustomCell";
-	TaskCustomCell *cell = (TaskCustomCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-	if (cell == nil) {
-		NSArray *topLevelObjects = [[NSBundle mainBundle]
-									loadNibNamed:@"TaskCustomCell"
-									owner:nil options:nil];
-		for (id currentObject in topLevelObjects){
-			if([currentObject isKindOfClass:[UITableViewCell class]]){
-				cell = (TaskCustomCell *) currentObject;
-				break;
-			}
-		}
-	}    
-	[self configureCell:cell atIndexPath:indexPath];
-    return cell;
-}
-
-
-/*
- // Override to support conditional editing of the table view.
- - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
- // Return NO if you do not want the specified item to be editable.
- return YES;
- }
- */
-
-
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source.
-        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
-    }   
-}
-
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
-
-#pragma mark -
-#pragma mark Table view delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // MemoDetailViewController *detailViewController = [[MemoDetailViewController alloc] initWithNibName:@"MemoDetailView" bundle:[NSBundle mainBundle]];
-    // ...
-    // Pass the selected object to the new view controller.
-	
-	//detailViewController.selectedMemoText = [_fetchedResultsController objectAtIndexPath:indexPath];	
-    
-	//[self presentModalViewController:detailViewController animated:YES];	
-    //[detailViewController release];
-}
-
-#pragma mark -
-#pragma mark Fetched Results Notifications
-
-- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
-    // The fetch controller is about to start sending change notifications, so prepare the table view for updates.
-    [self.tableView beginUpdates];
-}
-- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
-	
-    UITableView *aTableView = self.tableView;
-	
-    switch(type) {
-			
-        case NSFetchedResultsChangeInsert:
-            [aTableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-			
-        case NSFetchedResultsChangeDelete:
-            [aTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-			
-        case NSFetchedResultsChangeUpdate:
-			[self configureCell:[aTableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
-            break;
-			
-        case NSFetchedResultsChangeMove:
-            [aTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            // Reloading the section inserts a new row and ensures that titles are updated appropriately.
-            [aTableView reloadSections:[NSIndexSet indexSetWithIndex:newIndexPath.section] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-    }
-}
-
-- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type {
-	
-    switch(type) {
-			
-        case NSFetchedResultsChangeInsert:
-            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-			
-        case NSFetchedResultsChangeDelete:
-            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-    }
-}
-
-- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-    // The fetch controller has sent all current change notifications, so tell the table view to process all updates.
-    [self.tableView endUpdates];
 }
 
 #pragma mark -

@@ -9,17 +9,12 @@
 #import <UIKit/UIKit.h>
 
 
-@interface FoldersViewController : UIViewController <UITextViewDelegate, UIActionSheetDelegate, NSFetchedResultsControllerDelegate, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate> {
+@interface FoldersViewController : UIViewController <UITextViewDelegate> {
     
     NSManagedObjectContext *managedObjectContext;
-	NSFetchedResultsController *_fetchedResultsController;
 }
-@property (nonatomic, retain) IBOutlet UISearchBar *searchBar;
-@property (nonatomic, retain) IBOutlet UITableView *tableView;
+
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
-@property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 
-
-- (NSFetchedResultsController *) fetchedResultsControllerWithPredicate:(NSPredicate *)aPredicate; 
 
 @end

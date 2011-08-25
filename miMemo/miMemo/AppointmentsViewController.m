@@ -122,6 +122,7 @@
     NSError *error;
     if (![[self fetchedResultsController] performFetch:&error]) {
     }
+    
     [tableLabel setText:dateString];
     [self.tableView reloadData];
 }

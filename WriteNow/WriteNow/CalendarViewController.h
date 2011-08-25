@@ -8,9 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-
 @interface CalendarViewController : UIViewController {
-    
+    UITextField *textField;
+    UIDatePicker *datePicker;
+    UIToolbar *toolbar;
 }
+
+@property (nonatomic, retain) IBOutlet UITextField *textField;
+@property (nonatomic, retain) IBOutlet UIDatePicker *datePicker;
+@property (nonatomic, retain) IBOutlet UIToolbar *toolbar;
 
 @end

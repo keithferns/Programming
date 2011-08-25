@@ -41,7 +41,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSLog(@"In RootViewController");
-    
    
     if (managedObjectContext == nil) { 
 		managedObjectContext = [(miMemoAppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext]; 

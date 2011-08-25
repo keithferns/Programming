@@ -9,8 +9,19 @@
 #import <UIKit/UIKit.h>
 
 
-@interface FilesTableViewController : UITableViewController {
+@interface FilesTableViewController : UITableViewController <NSFetchedResultsControllerDelegate, UISearchBarDelegate>{
     
+    NSManagedObjectContext *managedObjectContext;
+    NSFetchedResultsController *_fetchedResultsController;
+
 }
+@property (nonatomic, retain) UISearchBar *searchBar;
+@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
+
+
+
+- (NSFetchedResultsController *) fetchedResultsControllerWithPredicate:(NSPredicate *)aPredicate; 
+
 
 @end

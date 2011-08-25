@@ -17,8 +17,6 @@
         BOOL swappingViews, isSelected;
         NSString *newTextInput;
         NSFetchedResultsController *_fetchedResultsController;
-    
-
     }
     @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext, *managedObjectContextTV;
     @property (nonatomic, retain) MemoText *newMemoText;

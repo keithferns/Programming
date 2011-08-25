@@ -9,8 +9,19 @@
 #import <UIKit/UIKit.h>
 
 
-@interface TasksTableViewController : UITableViewController {
+@interface TasksTableViewController : UITableViewController <NSFetchedResultsControllerDelegate>{
+ 
+    NSManagedObjectContext *managedObjectContext;
+    NSFetchedResultsController *_fetchedResultsController;
+    
     
 }
+@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
+@property (nonatomic, retain) UILabel *tableLabel;
+@property (nonatomic, retain) NSDate *selectedDate;
+
+
+- (NSFetchedResultsController *) fetchedResultsControllerWithPredicate:(NSPredicate *)aPredicate; 
 
 @end

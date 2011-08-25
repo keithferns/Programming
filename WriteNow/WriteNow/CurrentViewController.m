@@ -17,18 +17,9 @@
 #import "Task.h"
 
 
-// Name of notification
-NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSaved";
+#import "TasksTableViewController.h"
+#import "AppointmentsTableViewController.h"
 
-#pragma mark -
-#pragma mark Private Interface
-/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * Private interface definitions
- *~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-@interface CurrentViewController (private)
-- (void) managedObjectContextSaved:(NSNotification *)notification;
-@end
-/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 
 @implementation CurrentViewController
@@ -37,25 +28,7 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
 @synthesize managedObjectContext, tableView;
 @synthesize fetchedResultsController = _fetchedResultsController;
 
-#pragma mark -
-#pragma mark Private Methods
-/*---------------------------------------------------------------------------
- * Notifications of ManagedObjectContext Saved 
- *--------------------------------------------------------------------------*/
-- (void) managedObjectContextSaved:(NSNotification *)notification{
-    // Redisplay the data.
-    //NOTE: This can also be done using the viewWillAppearMethod.
-    NSLog(@"ManagedObjectContextSavedNotificationReceived");
 
-	[self.tableView reloadData];
-}
-- (void)handleDidSaveNotification:(NSNotification *)notification {
-    NSLog(@"NSManagedObjectContextDidSaveNotification received");
-
-    [managedObjectContext mergeChangesFromContextDidSaveNotification:notification];
-    [self.tableView reloadData];
-}
-///////
 
 - (void)dealloc
 {
@@ -98,8 +71,8 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
     [tableView setDelegate:self];
     [tableView setDataSource:self];
     [self.view addSubview:tableView];
-    
-    
+    [headerLabel release];
+    [headerView release];
     
     /*-- Point current instance of the MOC to the main managedObjectContext --*/
 	if (managedObjectContext == nil) { 
@@ -111,24 +84,20 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
 	NSError *error;
 	if (![[self fetchedResultsController] performFetch:&error]) {
 	}
-    
-    /* NOTICATION */
-    
-	[[NSNotificationCenter defaultCenter] 
-     addObserver: self 
-     selector:@selector(managedObjectContextSaved:) 
-     name:managedObjectContextSavedNotification 
-     object:nil];
-    
 
-    [[NSNotificationCenter defaultCenter] 
-     addObserver:self 
-     selector:@selector(handleDidSaveNotification:)
-     name:NSManagedObjectContextDidSaveNotification 
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleDidSaveNotification:) name:NSManagedObjectContextDidSaveNotification 
      object:nil];
 }
 
     
+
+- (void)handleDidSaveNotification:(NSNotification *)notification {
+    NSLog(@"NSManagedObjectContextDidSaveNotification Received By CurrentViewController");
+    
+    [managedObjectContext mergeChangesFromContextDidSaveNotification:notification];
+    [self.tableView reloadData];
+}
+
 
 - (void)viewDidUnload{
     [super viewDidUnload];
@@ -158,13 +127,11 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
 	NSSortDescriptor *textDescriptor = [[NSSortDescriptor alloc] initWithKey:@"creationDate" ascending:NO];// just here to test the sections and row calls
     
     
-    /*-- set Predicate to filter all tasks and appointments for a time after NOW --*/
+    /*FIXME:  set Predicate to filter all tasks and appointments for a time after NOW --*/
+    
     //NSArray *checkDateArray = [NSArray arrayWithObjects:@"memotext.savedAppointment.doDate",@"memotext.saveMemo.doDate", @"memotext.saveTask.doDate", nil];
-    
     //NSPredicate *checkDate = [NSPredicate predicateWithFormat:@"'[NSDate date]' < %@" argumentArray:checkDateArray];
-    
     //[request setPredicate:checkDate];
-    
     /* -- --*/
     
 	[request setSortDescriptors:[NSArray arrayWithObjects:typeDescriptor,textDescriptor, nil]];
@@ -238,7 +205,7 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
 	else if ([currentItem.type intValue] == 1){
         Appointment *appointment = [_fetchedResultsController objectAtIndexPath:indexPath];
         [mycell.memoText setText:[NSString stringWithFormat:@"%@", appointment.text]];
-		[mycell.date setText:[dateFormatter stringFromDate:appointment.creationDate]];
+		[mycell.date setText:[dateFormatter stringFromDate:appointment.doDate]];
         [mycell.dateLabel setText:@"SCHEDULED:"];
         mycell.imageView.image = [UIImage imageNamed:@"Tasks Icon.png"];
 	}
@@ -246,7 +213,7 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
     //else if ([[_fetchedResultsController objectAtIndexPath:indexPath] isKindOfClass:[Task class]]){  
         Task *task  = [_fetchedResultsController objectAtIndexPath:indexPath];
         [mycell.memoText setText:[NSString stringWithFormat:@"%@", task.text]];
-		[mycell.date setText: [dateFormatter stringFromDate:task.creationDate]];
+		[mycell.date setText: [dateFormatter stringFromDate:task.doDate]];
         [mycell.dateLabel setText:@"DUE:"];
         mycell.imageView.image = [UIImage imageNamed:@"ToDo.png"];
 	}
@@ -368,20 +335,27 @@ NSString * const managedObjectContextSavedNotification= @"ManagedObjectContextSa
         [self presentModalViewController:detailViewController animated:YES];	
         [detailViewController release];
     }
-    else if ([selectedMemoText.noteType intValue] == 1) {
-        MyAppointmentsViewController *detailViewController = [[MyAppointmentsViewController alloc] initWithNibName:@"MyAppointmentsViewController" bundle:[NSBundle mainBundle]];  
-        detailViewController.selectedMemoText = selectedMemoText;
-        [self presentModalViewController:detailViewController animated:YES];	
+    else */
+     if ([[_fetchedResultsController objectAtIndexPath:indexPath] isKindOfClass:[Appointment class]]) {
+        //Appointment *tempAppointment = [_fetchedResultsController objectAtIndexPath:indexPath];
+        AppointmentsTableViewController *detailViewController = [[AppointmentsTableViewController alloc] initWithNibName:nil bundle:nil];  
+        //detailViewController.selectedAppointment;
+         [self.navigationController pushViewController:detailViewController animated:YES]; 
+
+        //[self presentModalViewController:detailViewController animated:YES];
+         
         [detailViewController release];
     }
-    else if ([selectedMemoText.noteType intValue] == 2){
-        MyTasksViewController *detailViewController = [[MyTasksViewController alloc] initWithNibName:nil bundle:nil]; 
-        detailViewController.selectedMemoText = selectedMemoText;
-        [self presentModalViewController:detailViewController animated:YES];	
+    else if ([[_fetchedResultsController objectAtIndexPath:indexPath] isKindOfClass:[Task class]]){
+         //Task *tempTask = [_fetchedResultsController objectAtIndexPath:indexPath];
+        TasksTableViewController *detailViewController = [[TasksTableViewController alloc] initWithNibName:nil bundle:nil]; 
+        //detailViewController.selectedTask = tempTask;
+        //[self presentModalViewController:detailViewController animated:YES];	
+        [self.navigationController pushViewController:detailViewController animated:YES]; 
         [detailViewController release];
         
+        
     }
-    */
 }
 
 #pragma mark -
