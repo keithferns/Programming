@@ -52,7 +52,7 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
     [self.navigationBar setHidden:YES];
-
+      
     NSLog(@"MainViewController MOC: %@", managedObjectContext);
 
     //self.view = [[[UIView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]] autorelease];
@@ -128,11 +128,172 @@
                                         name:UIKeyboardDidShowNotification
                                         object:foldersViewController.searchBar];
     */
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                        selector:@selector(keyboardWillHide)
-                                        name:UIKeyboardWillHideNotification
-                                        object:nil];
+
+    // Observe keyboard hide and show notifications to resize the text view appropriately.
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+    
 }
+
+#pragma mark -
+#pragma mark Text view delegate methods
+
+- (BOOL)textViewShouldBeginEditing:(UITextView *)aTextView {
+    
+    /*
+     You can create the accessory view programmatically (in code), in the same nib file as the view controller's main view, or from a separate nib file. This example illustrates the latter; it means the accessory view is loaded lazily -- only if it is required.
+     */
+    
+    if (textView.inputAccessoryView == nil) {
+        //[[NSBundle mainBundle] loadNibNamed:@"AccessoryView" owner:self options:nil];
+        // Loading the AccessoryView nib file sets the accessoryView outlet.
+        
+        CGRect buttonBarFrame = CGRectMake(0, 195, 320, 50);
+        myToolBar = [[[UIToolbar alloc] initWithFrame:buttonBarFrame] autorelease];
+        [myToolBar setBarStyle:UIBarStyleDefault];
+        [myToolBar setTintColor:[UIColor colorWithRed:0.34 green:0.36 blue:0.42 alpha:0.3]];
+        
+        UIBarButtonItem *actionButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(makeActionSheet:)];
+        [actionButton setWidth:50.0];
+        [actionButton setTag:0];
+        actionButton.title = @"do";
+        
+        UIBarButtonItem *saveMemo = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"save_document.png"] style:UIBarButtonItemStylePlain target:self action:@selector(saveMemo)];
+        [saveMemo setTitle:@"Note"];
+        [saveMemo setWidth:50.0];
+        [saveMemo setTag:1];
+        
+        UIBarButtonItem *appointmentButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"clock_running.png"]style:UIBarButtonItemStylePlain target:self action:@selector(addNewAppointment)];
+        [appointmentButton setTitle:@"Appointment"];
+        [appointmentButton setTag:2];
+        [appointmentButton setWidth:50.0];
+        
+        UIBarButtonItem *taskButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"document_todo.png"] style:UIBarButtonItemStylePlain target:self action:@selector(addNewTask)];
+        [taskButton setTitle:@"To Do"];
+        [taskButton setWidth:50.0];
+        [taskButton setTag:3];
+        
+        UIBarButtonItem *dismissKeyboard = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"keyboard_down.png"] style:UIBarButtonItemStylePlain target:self action:@selector(dismissKeyboard)];
+        [taskButton setWidth:50.0];
+        [taskButton setTag:4];
+        
+        //UIBarButtonItem *folderButton = [[UIBarButtonItem alloc] initWithTitle:@"Folder" style:UIBarButtonItemStyleBordered target:self action:@selector(addNewMemo)];
+        
+        //UIBarButtonItem *folderButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(addNewFolder)];
+        //[folderButton setTitle:@"Folder"];
+        //[folderButton setTag:0];
+        //[folderButton setWidth:50.0];
+        
+        UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil	action:nil];
+        
+        NSArray *items = [NSArray arrayWithObjects:flexSpace, actionButton, flexSpace, saveMemo, flexSpace, appointmentButton, flexSpace, taskButton,flexSpace, dismissKeyboard, flexSpace, nil];
+        [myToolBar setItems:items];
+        [self.view addSubview:myToolBar];
+        
+        textView.inputAccessoryView = myToolBar;
+        [dismissKeyboard release];
+        [saveMemo release];
+        [appointmentButton release];
+        [actionButton release];
+        [taskButton release];
+        [flexSpace release];    
+
+        
+        
+        
+        textView.inputAccessoryView = myToolBar;    
+        // After setting the accessory view for the text view, we no longer need a reference to the accessory view.
+        self.myToolBar = nil;
+    }
+    
+    return YES;
+}
+
+
+- (BOOL)textViewShouldEndEditing:(UITextView *)aTextView {
+    [aTextView resignFirstResponder];
+    return YES;
+}
+
+
+#pragma mark -
+#pragma mark Responding to keyboard events
+
+- (void)keyboardWillShow:(NSNotification *)notification {
+    
+    /*
+     Reduce the size of the text view so that it's not obscured by the keyboard.
+     Animate the resize so that it's in sync with the appearance of the keyboard.
+     */
+    /*
+    NSDictionary *userInfo = [notification userInfo];
+    
+    // Get the origin of the keyboard when it's displayed.
+    NSValue* aValue = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
+    
+    // Get the top of the keyboard as the y coordinate of its origin in self's view's coordinate system. The bottom of the text view's frame should align with the top of the keyboard's final position.
+    CGRect keyboardRect = [aValue CGRectValue];
+    keyboardRect = [self.view convertRect:keyboardRect fromView:nil];
+    
+    CGFloat keyboardTop = keyboardRect.origin.y;
+    CGRect newTextViewFrame = self.view.bounds;
+    if (textView.frame.origin.y+textView.frame.size.height  > keyboardTop){
+    newTextViewFrame.size.height = keyboardTop - self.view.bounds.origin.y;
+    }
+    // Get the duration of the animation.
+    NSValue *animationDurationValue = [userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey];
+    NSTimeInterval animationDuration;
+    [animationDurationValue getValue:&animationDuration];
+    
+    // Animate the resize of the text view's frame in sync with the keyboard's appearance.
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:animationDuration];
+    
+    textView.frame = newTextViewFrame;
+    
+    [UIView commitAnimations];
+     */
+}
+
+
+- (void)keyboardWillHide:(NSNotification *)notification {
+    
+    //NSDictionary* userInfo = [notification userInfo];
+    
+    /*
+     Restore the size of the text view (fill self's view).
+     Animate the resize so that it's in sync with the disappearance of the keyboard.
+     */
+    /*
+    NSValue *animationDurationValue = [userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey];
+    NSTimeInterval animationDuration;
+    [animationDurationValue getValue:&animationDuration];
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:animationDuration];
+    
+    textView.frame = self.view.bounds;
+    
+    [UIView commitAnimations];
+    */
+}
+
+/*
+#pragma mark -
+#pragma mark Accessory view action
+
+- (IBAction)tappedMe:(id)sender {
+    
+    // When the accessory view button is tapped, add a suitable string to the text view.
+    NSMutableString *text = [textView.text mutableCopy];
+    NSRange selectedRange = textView.selectedRange;
+    
+    [text replaceCharactersInRange:selectedRange withString:@"You tapped me.\n"];
+    textView.text = text;
+    [text release];
+}
+
+*/
 
 #pragma mark - NOTIFICATIONS
 
@@ -147,10 +308,6 @@
         }
 }
 
-- (void) keyboardWillHide{
-    NSLog(@"Keyboard will Hide");
-}
-
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation{
     // Return YES for supported orientations
@@ -161,55 +318,7 @@
 
 - (void) textViewDidBeginEditing:(UITextView *)textView{    
     NSLog(@"EDITING BEGAN");
-    
-    CGRect buttonBarFrame = CGRectMake(0, 195, 320, 50);
-    myToolBar = [[[UIToolbar alloc] initWithFrame:buttonBarFrame] autorelease];
-    [myToolBar setBarStyle:UIBarStyleDefault];
-    [myToolBar setTintColor:[UIColor colorWithRed:0.34 green:0.36 blue:0.42 alpha:0.3]];
-    
-    UIBarButtonItem *actionButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(makeActionSheet:)];
-    [actionButton setWidth:50.0];
-    [actionButton setTag:0];
-    actionButton.title = @"do";
-    
-    UIBarButtonItem *saveMemo = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"save_document.png"] style:UIBarButtonItemStylePlain target:self action:@selector(saveMemo)];
-    [saveMemo setTitle:@"Note"];
-    [saveMemo setWidth:50.0];
-    [saveMemo setTag:1];
 
-    UIBarButtonItem *appointmentButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"clock_running.png"]style:UIBarButtonItemStylePlain target:self action:@selector(addNewAppointment)];
-    [appointmentButton setTitle:@"Appointment"];
-    [appointmentButton setTag:2];
-    [appointmentButton setWidth:50.0];
-
-    UIBarButtonItem *taskButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"document_todo.png"] style:UIBarButtonItemStylePlain target:self action:@selector(addNewTask)];
-    [taskButton setTitle:@"To Do"];
-    [taskButton setWidth:50.0];
-    [taskButton setTag:3];
-    
-    UIBarButtonItem *dismissKeyboard = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"keyboard_down.png"] style:UIBarButtonItemStylePlain target:self action:@selector(dismissKeyboard)];
-    [taskButton setWidth:50.0];
-    [taskButton setTag:4];
-
-    //UIBarButtonItem *folderButton = [[UIBarButtonItem alloc] initWithTitle:@"Folder" style:UIBarButtonItemStyleBordered target:self action:@selector(addNewMemo)];
-    
-    //UIBarButtonItem *folderButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(addNewFolder)];
-    //[folderButton setTitle:@"Folder"];
-    //[folderButton setTag:0];
-    //[folderButton setWidth:50.0];
-    
-    UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil	action:nil];
-    
-    NSArray *items = [NSArray arrayWithObjects:flexSpace, actionButton, flexSpace, saveMemo, flexSpace, appointmentButton, flexSpace, taskButton,flexSpace, dismissKeyboard, flexSpace, nil];
-    [myToolBar setItems:items];
-    [self.view addSubview:myToolBar];
-    
-    [dismissKeyboard release];
-    [saveMemo release];
-    [appointmentButton release];
-    [actionButton release];
-    [taskButton release];
-    [flexSpace release];    
 }
 
 - (void) makeActionSheet:(id) sender{
@@ -235,8 +344,6 @@
     }
 
 - (void) textViewDidEndEditing:(UITextView *)textView{
-    [myToolBar setHidden:YES];
-    [self.view endEditing:YES];
     [self.textView resignFirstResponder];
 }
 
@@ -249,7 +356,7 @@
     if (![textView hasText]){
         return;
     }
-    [self.view endEditing:YES];
+
     NSString *newTextInput = [NSString stringWithFormat: @"%@", textView.text];//copy contents of textView to newTextInput
     NSLog(@"newTextInput = %@", newTextInput);
     NSLog(@"Trying to Create a newMemo");
