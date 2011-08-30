@@ -18,11 +18,13 @@
 @synthesize tableViewController;
 
 @synthesize datePicker, timePicker;
-@synthesize dateField, timeField, textView;
+@synthesize dateField, timeField, recurringField, textView;
 @synthesize newAppointment;
 @synthesize dateFormatter, timeFormatter;
 @synthesize containerView;
 @synthesize newText;
+@synthesize bottomView;
+@synthesize myTableView;
 
 @synthesize appointmentsToolbar;
 
@@ -42,9 +44,6 @@
     [newText release];
 
     //[appointmentsToolbar release];  //WHY CAN'T I RELEASE THIS??????  
-
-    //[selectedDate release]; //Releasing this causes a problem. WHY?
-    //[selectedTime release]; //Releasing this causes a problem. WHY?
 }
 
 - (void)didReceiveMemoryWarning {
@@ -58,32 +57,48 @@
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad {
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(dateFieldDidEndEditing:) name:UITextFieldTextDidEndEditingNotification object:self.dateField];
+
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(timeFieldDidEndEditing:) name:UITextFieldTextDidEndEditingNotification object:self.timeField];
+
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(recurringFieldDidEndEditing:) name:UITextFieldTextDidEndEditingNotification object:self.recurringField];
+    
     [super viewDidLoad];
-    /*Setting Up the Views*/
+    
     NSLog(@"In AppointmentsViewController");
     /*-- Initializing the managedObjectContext--*/
     if (managedObjectContext == nil) { 
 		managedObjectContext = [(WriteNowAppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext]; 
         NSLog(@"After managedObjectContext: %@",  managedObjectContext);
     }
-    
+    /*--Done Initializing the managedObjectContext--*/
+
     NSLog(@"Trying to Create a newAppointment");
     
     self.dateFormatter = [[NSDateFormatter alloc] init];
 	[self.dateFormatter setDateStyle:NSDateFormatterShortStyle];
     self.timeFormatter = [[NSDateFormatter alloc]init];
 	[self.timeFormatter setTimeStyle:NSDateFormatterShortStyle];
-
-    self.view.backgroundColor = [UIColor colorWithRed:219.0f/255.0f green:226.0f/255.0f blue:237.0f/255.0f alpha:1];    
-    containerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 200)];
-    [containerView.layer setBackgroundColor:[UIColor scrollViewTexturedBackgroundColor].CGColor];
-    [containerView.layer setOpacity:0.9];
+    
+    /*Setting Up the Views*/
+    CGRect topframe = CGRectMake(0, 0, 320, 200);
+    CGRect bottomframe = CGRectMake(0, 200, 320, 260);
+    
+    bottomView = [[UIView alloc] initWithFrame:bottomframe];
+    [bottomView setBackgroundColor:[UIColor scrollViewTexturedBackgroundColor]];
+    [bottomView setAlpha:1.0];
+    
+    containerView = [[UIView alloc] initWithFrame:topframe];
+    [containerView.layer setBackgroundColor:[UIColor colorWithRed:0.2 green:0.2 blue:0.5 alpha:1].CGColor];
+    
+    //[containerView.layer setBackgroundColor:[UIColor scrollViewTexturedBackgroundColor].CGColor];
     [self.view addSubview:containerView];
     
     /*--setup the textView for the input text--*/
-    textView = [[UITextView alloc] initWithFrame:CGRectMake(10, 35, 300, 40)];
+    textView = [[UITextView alloc] initWithFrame:CGRectMake(5, 25, 310, 135)];
     textView.contentInset = UIEdgeInsetsMake(0, 5, 0, 5);
-    textView.layer.backgroundColor = [UIColor colorWithRed:219.0f/255.0f green:226.0f/255.0f blue:237.0f/255.0f alpha:1].CGColor;
+   // textView.layer.backgroundColor = [UIColor colorWithRed:219.0f/255.0f green:226.0f/255.0f blue:237.0f/255.0f alpha:1].CGColor;
     [textView.layer setBorderWidth:1.0];
     [textView.layer setBorderColor:[UIColor darkGrayColor].CGColor];
     [textView.layer setCornerRadius:10.0];
@@ -93,60 +108,74 @@
     textView.text = newText;
     
     
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 30)];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 20)];
     [label  setBackgroundColor:[UIColor clearColor]];
     [label setTextColor:[UIColor blackColor]];
     [label setTextAlignment:UITextAlignmentCenter];
     label.text = @"New Appointment";
-    [label setFont:[UIFont fontWithName:@"Georgia-BoldItalic" size:18]];
-    
+    [label setFont:[UIFont fontWithName:@"Georgia-BoldItalic" size:16]];
+
     /*--Adding the Date and Time Fields--*/
 
-    dateField = [[UITextField alloc] initWithFrame:CGRectMake(10, 80, 145, 25)];
-    
+    dateField = [[UITextField alloc] initWithFrame:CGRectMake(5, 165, 100, 25)];
     [dateField setBorderStyle:UITextBorderStyleRoundedRect];
-    //[dateField setBackgroundColor:[UIColor colorWithRed:219.0f/255.0f green:226.0f/255.0f blue:237.0f/255.0f alpha:1]];
     [dateField setPlaceholder:@"Set Date"];
+    [dateField setInputView:datePicker];
+    [dateField setTag:0];
+    [dateField setDelegate:self];
+
+   // [dateField becomeFirstResponder];
     
-    timeField = [[UITextField alloc] initWithFrame:CGRectMake(165, 80, 145, 25)];
+    timeField = [[UITextField alloc] initWithFrame:CGRectMake(110, 165, 100, 25)];
     [timeField setBorderStyle:UITextBorderStyleRoundedRect];
-    //[timeField setBackgroundColor:[UIColor colorWithRed:219.0f/255.0f green:226.0f/255.0f blue:237.0f/255.0f alpha:1]];
     [timeField setPlaceholder:@"Set Time"];
-        
+    [timeField setInputView:timePicker];
+    [timeField setDelegate:self];
+    [timeField setTag:1];
+    
+    recurringField = [[UITextField alloc] initWithFrame:CGRectMake(215, 165, 100, 25)];
+    [recurringField setBorderStyle:UITextBorderStyleRoundedRect];
+    [recurringField setPlaceholder:@"Repeat?"];
+    [recurringField setTag:2];
+    [recurringField setDelegate:self];
+
     [self.view addSubview:containerView];
     [containerView addSubview:label];
     [containerView addSubview:textView];
     [containerView addSubview:dateField];
     [containerView addSubview:timeField];    
-    //[containerView addSubview:tableView];
+    [containerView addSubview:recurringField];
 
-    [containerView addSubview:tableViewController.view];    
-
-    [label release];
-    
-    [self makeToolbar];
-    [self.view addSubview:appointmentsToolbar];
-    datePicker = [[UIDatePicker alloc]initWithFrame:CGRectMake(0, 245, 320, 216)];
-    [datePicker setDatePickerMode:UIDatePickerModeDate];
+    [self.view addSubview:bottomView];;
+    //[label release];
+ 
+    //datePicker = [[UIDatePicker alloc]initWithFrame:CGRectMake(0, 245, 320, 216)];
+    //[datePicker setDatePickerMode:UIDatePickerModeDate];
     [datePicker setDate:[NSDate date]];
     [datePicker setMinimumDate:[NSDate date]];
     [datePicker setMaximumDate:[NSDate dateWithTimeIntervalSinceNow:(60*60*24*365)]];
     datePicker.timeZone = [NSTimeZone systemTimeZone];
-    [datePicker addTarget:self action:@selector(datePickerChanged:) forControlEvents:UIControlEventValueChanged];
-    [self.view addSubview:datePicker];
-    datePicker.hidden = NO;
     
-    timePicker = [[UIDatePicker alloc]initWithFrame:CGRectMake(0, 245, 320, 216)];    
-    [timePicker setDatePickerMode:UIDatePickerModeTime];
+    //timePicker = [[UIDatePicker alloc]initWithFrame:CGRectMake(0, 245, 320, 216)];    
+    //[timePicker setDatePickerMode:UIDatePickerModeTime];
     timePicker.timeZone = [NSTimeZone systemTimeZone];
     [timePicker setTag:1];
-    [timePicker addTarget:self action:@selector(timePickerChanged:) forControlEvents:UIControlEventValueChanged];
-    [self.view addSubview:timePicker];
-    timePicker.hidden = YES;
+        
+    //tableLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y, self.tableView.frame.size.width, 20)];
+    //[tableLabel setBackgroundColor:[UIColor lightGrayColor]];
+    //[tableLabel setTextColor:[UIColor whiteColor]];
+    //[tableLabel setTextAlignment:UITextAlignmentCenter];
+    //[tableLabel setText:@"All Appointments"];
+    //[self.view addSubview:tableLabel];
     
+    [myTableView setFrame:CGRectMake(5, 5, 310, 255)];
+    [myTableView setSeparatorColor:[UIColor blackColor]];
+    [myTableView setSectionHeaderHeight:18];
+    [myTableView.layer setCornerRadius:5.0];
+    //[self.tableView setTableHeaderView:tableLabel];
+    myTableView.rowHeight = 30.0;
     
-
-    /*--Done Initializing the managedObjectContext--*/
+    [bottomView addSubview:myTableView];    
     swappingViews = NO;
 }
 
@@ -167,6 +196,109 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation{
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (BOOL) textViewShouldBeginEditing:(UITextView *)textView {
+    if (self.textView.inputAccessoryView == nil) {
+        [self makeToolbar];
+    }
+    [self.textView setInputAccessoryView:appointmentsToolbar];
+    return YES;
+    
+    }   
+
+- (BOOL) textFieldShouldBeginEditing:(UITextField *)textField{
+        if (textField.tag == 0){
+        NSLog(@"IN DATEFIELD");
+    
+        if (dateField.inputAccessoryView == nil){
+            [self makeToolbar];
+        }
+            if (self.appointmentsToolbar.tag == 1){
+                UIBarButtonItem *datetimeButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"calendar_24.png"]style:UIBarButtonItemStylePlain target:self action:@selector(setAppointmentTime)];
+                [datetimeButton setTitle:@"Set Date"];
+                [datetimeButton setTag:1];
+                [datetimeButton setWidth:50.0];
+                NSUInteger newButton = 0;
+                NSMutableArray *toolbarItems = [[NSMutableArray arrayWithArray:appointmentsToolbar.items] retain];
+                
+                for (NSUInteger i = 0; i < [toolbarItems count]; i++) {
+                    UIBarButtonItem *barButtonItem = [toolbarItems objectAtIndex:i];
+                    if (barButtonItem.tag == 5) {
+                        newButton = i;
+                        break;
+                    }
+                }
+                [toolbarItems replaceObjectAtIndex:newButton withObject:datetimeButton];
+                appointmentsToolbar.items = toolbarItems;
+                [datetimeButton release];
+                [toolbarItems release];
+                [appointmentsToolbar setTag:0];
+            }
+                NSLog(@"Setting up the dateField accessory View");
+       
+                [dateField setInputAccessoryView:appointmentsToolbar];
+                [myTableView removeFromSuperview];
+                [myTableView setFrame:CGRectMake(5, 5, 310, 155)];
+                [myTableView setBackgroundColor:[UIColor clearColor]];
+                [myTableView setAlpha:0.8];
+                [textView setAlpha:0.2];
+                [containerView addSubview:myTableView];
+            
+        }
+    
+    else if (textField.tag == 1){
+        NSLog(@"IN TIMEFIELD");
+        NSLog(@"TimeField is editing");    
+        
+        if (self.appointmentsToolbar.tag == 0){     
+            /*--TOOLBAR:BUTTON: Change Set Date to Set Time  --*/
+            //UIBarButtonItem *timeButton = [[UIBarButtonItem alloc] initWithTitle:@"Set Time" style:UIBarButtonItemStyleBordered target:self action:@selector(setAppointmentTime)];
+            UIBarButtonItem *datetimeButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"clock_24.png"]style:UIBarButtonItemStylePlain target:self action:@selector(setAppointmentTime)];
+            [datetimeButton setTitle:@"Set Time"];
+            [datetimeButton setTag:5];
+            [datetimeButton setWidth:50.0];
+            NSUInteger newButton = 0;
+            NSMutableArray *toolbarItems = [[NSMutableArray arrayWithArray:appointmentsToolbar.items] retain];
+            
+            for (NSUInteger i = 0; i < [toolbarItems count]; i++) {
+                UIBarButtonItem *barButtonItem = [toolbarItems objectAtIndex:i];
+                if (barButtonItem.tag == 1) {
+                    newButton = i;
+                    break;
+                }
+            }
+            [toolbarItems replaceObjectAtIndex:newButton withObject:datetimeButton];
+            appointmentsToolbar.items = toolbarItems;
+            [datetimeButton release];
+            [toolbarItems release];
+            [appointmentsToolbar setTag:1];
+            /*-- TOOLBAR:  done --*/
+        }    
+        [timeField setInputAccessoryView:appointmentsToolbar];
+    }
+    else if (textField.tag == 2){
+        NSLog(@"IN recurringFIELD");
+        NSLog(@"recurringField is editing");
+        [recurringField setInputAccessoryView:appointmentsToolbar];
+        [myTableView removeFromSuperview];
+        [textView setAlpha:1.0];
+
+        }
+    return YES;
+}
+
+- (void) dateFieldDidEndEditing:(NSNotification *)notification{
+    [dateField.inputView removeFromSuperview];   
+}
+
+- (void) timeFieldDidEndEditing:(NSNotification *)notification{
+    [timeField.inputView removeFromSuperview];
+}
+
+
+- (void) recurringFieldDidEndEditing:(NSNotification *)notification{
+    [recurringField.inputView removeFromSuperview];
 }
 
 #pragma mark -
@@ -207,11 +339,6 @@
 }
 
 
-- (void) backAction{
-    
-	[self dismissModalViewControllerAnimated:YES];		
-}
-
 - (void) setAppointmentDate{
     
     /*-- DATE/TIME: Get selected Date from the time Picker; put it in the date text field --*/
@@ -230,32 +357,8 @@
     if (!swappingViews) {
         [self swapViews];
     }
+    [timeField becomeFirstResponder];
     
-    /*--TOOLBAR:BUTTON: Change Set Date to Set Time  --*/
-    //UIBarButtonItem *timeButton = [[UIBarButtonItem alloc] initWithTitle:@"Set Time" style:UIBarButtonItemStyleBordered target:self action:@selector(setAppointmentTime)];
-    UIBarButtonItem *datetimeButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"clock_24.png"]style:UIBarButtonItemStylePlain target:self action:@selector(setAppointmentTime)];
-    [datetimeButton setTitle:@"Time"];
-    [datetimeButton setTag:5];
-    [datetimeButton setWidth:50.0];
-    NSUInteger newButton = 0;
-    NSMutableArray *toolbarItems = [[NSMutableArray arrayWithArray:appointmentsToolbar.items] retain];
-    
-    for (NSUInteger i = 0; i < [toolbarItems count]; i++) {
-        UIBarButtonItem *barButtonItem = [toolbarItems objectAtIndex:i];
-        if (barButtonItem.tag == 1) {
-            newButton = i;
-            break;
-        }
-    }
-    [toolbarItems replaceObjectAtIndex:newButton withObject:datetimeButton];
-    appointmentsToolbar.items = toolbarItems;
-    [datetimeButton release];
-    [toolbarItems release];
-    /*-- TOOLBAR:  done --*/
-
-    /*-- DATEPICKER: hide --*/
-    datePicker.hidden = YES;
-    timePicker.hidden = NO;
 }
 
 - (void) setAppointmentTime{
@@ -296,6 +399,13 @@
     
 }
 
+- (void) setAlarm{
+    return;
+}
+- (void) setRecurring{
+    return;
+}
+
 #pragma mark -
 #pragma mark Navigation
 
@@ -322,6 +432,20 @@
     [self dismissModalViewControllerAnimated:YES];
 }
 
+
+
+- (void) backAction{
+    
+	[self dismissModalViewControllerAnimated:YES];		
+}
+- (void) dismissKeyboard{
+    [self.view endEditing:YES];
+    [self.view resignFirstResponder];
+    [myTableView removeFromSuperview];
+    [myTableView setFrame:CGRectMake(5, 0, 310, 255)];
+    [bottomView addSubview:myTableView];
+}
+
 - (void) swapViews {
 	
 	CATransition *transition = [CATransition animation];
@@ -345,15 +469,15 @@
     appointmentsToolbar = [[[UIToolbar alloc] initWithFrame:buttonBarFrame] autorelease];
     [appointmentsToolbar setBarStyle:UIBarStyleDefault];
     [appointmentsToolbar setTintColor:[UIColor colorWithRed:0.34 green:0.36 blue:0.42 alpha:0.3]];
-
+    [appointmentsToolbar setTag:0];
     
-    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"arrow_left_24.png"] style:UIBarButtonItemStylePlain target:self action:@selector(doneAction)];
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"arrow_left_24.png"] style:UIBarButtonItemStylePlain target:self action:@selector(backAction)];
     [backButton setTitle:@"Back"];
     [backButton setWidth:50.0];
     [backButton setTag:0];    
     
     UIBarButtonItem *datetimeButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"calendar_24.png"]style:UIBarButtonItemStylePlain target:self action:@selector(setAppointmentDate)];
-    [datetimeButton setTitle:@"Schedule"];
+    [datetimeButton setTitle:@"Set Date"];
     [datetimeButton setTag:1];
     [datetimeButton setWidth:50.0];
     

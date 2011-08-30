@@ -13,15 +13,18 @@
 
 #import "CurrentViewController.h"
 #import "CalendarViewController.h"
-#import "FoldersTableViewController.h"
+#import "FoldersViewController.h"
 #import "FilesTableViewController.h"
 #import "SettingsViewController.h"
 
 #import "AppointmentsViewController.h"
 #import "TasksViewController.h"
+#import "AddFolderViewController.h"
+#import "AddEntityViewController.h"
 
 @implementation MainViewController
 
+@synthesize newMemo;
 @synthesize navigationController;
 @synthesize managedObjectContext;
 @synthesize textView, previousTextInput, myToolBar;
@@ -32,6 +35,8 @@
     [super dealloc];
     [navigationController release];
     [[NSNotificationCenter defaultCenter] removeObserver:self];    
+    [myToolBar release];
+    [newMemo release];
 }
 
 - (void)viewDidUnload{
@@ -58,15 +63,16 @@
     //self.view = [[[UIView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]] autorelease];
     self.view.backgroundColor = [UIColor colorWithRed:219.0f/255.0f green:226.0f/255.0f blue:237.0f/255.0f alpha:1];    
     containerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 200)];
-    [containerView.layer setBackgroundColor:[UIColor scrollViewTexturedBackgroundColor].CGColor];
-    [containerView.layer setOpacity:0.8];
+    //[containerView.layer setBackgroundColor:[UIColor scrollViewTexturedBackgroundColor].CGColor];
+    [containerView.layer setBackgroundColor:[UIColor colorWithRed:0.2 green:0.2 blue:0.5 alpha:1].CGColor];
+    [containerView.layer setOpacity:1.0];
     
     [self.view addSubview:containerView];
 
     /*--setup the textView for the input text--*/
-    textView = [[UITextView alloc] initWithFrame:CGRectMake(10, 35, 300,100)];
+    textView = [[UITextView alloc] initWithFrame:CGRectMake(5, 35, 310,135)];
     textView.contentInset = UIEdgeInsetsMake(0, 5, 0, 5);
-    textView.layer.backgroundColor = [UIColor colorWithRed:219.0f/255.0f green:226.0f/255.0f blue:237.0f/255.0f alpha:1].CGColor;
+    //textView.layer.backgroundColor = [UIColor colorWithRed:219.0f/255.0f green:226.0f/255.0f blue:237.0f/255.0f alpha:1].CGColor;
     textView.showsVerticalScrollIndicator = YES;
     [textView.layer setBorderWidth:1.0];
     [textView.layer setBorderColor:[UIColor darkGrayColor].CGColor];
@@ -79,7 +85,9 @@
     [label setTextColor:[UIColor blackColor]];
     [label setTextAlignment:UITextAlignmentCenter];
     label.text = @"Write Now";
-    [label setFont:[UIFont fontWithName:@"Georgia-BoldItalic" size:18]];
+    [label setFont:[UIFont fontWithName:@"Georgia-BoldItalic" size:20]];
+    [label setTextColor:[UIColor whiteColor]];
+
     
     [containerView addSubview:textView];
     [containerView addSubview:label];
@@ -102,7 +110,7 @@
     [viewController release];
     } 
     else if (self.tabBarItem.title == @"Archive") {	
-    FoldersTableViewController *viewController = [[FoldersTableViewController alloc] init];
+    FoldersViewController *viewController = [[FoldersViewController alloc] init];
     [viewController.view setFrame:bottomFrame];
     [self pushViewController:viewController animated:YES];
     [viewController release];
@@ -156,24 +164,26 @@
         UIBarButtonItem *actionButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(makeActionSheet:)];
         [actionButton setWidth:50.0];
         [actionButton setTag:0];
-        actionButton.title = @"do";
+        actionButton.title = @"Do";
         
         UIBarButtonItem *saveMemo = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"save_document.png"] style:UIBarButtonItemStylePlain target:self action:@selector(saveMemo)];
         [saveMemo setTitle:@"Note"];
         [saveMemo setWidth:50.0];
         [saveMemo setTag:1];
         
-        UIBarButtonItem *appointmentButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"clock_running.png"]style:UIBarButtonItemStylePlain target:self action:@selector(addNewAppointment)];
+        UIBarButtonItem *appointmentButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"clock_running.png"]style:UIBarButtonItemStylePlain target:self action:@selector(addEntity:)];
         [appointmentButton setTitle:@"Appointment"];
         [appointmentButton setTag:2];
         [appointmentButton setWidth:50.0];
         
-        UIBarButtonItem *taskButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"document_todo.png"] style:UIBarButtonItemStylePlain target:self action:@selector(addNewTask)];
+        UIBarButtonItem *taskButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"document_todo.png"] style:UIBarButtonItemStylePlain target:self action:@selector(addEntity:)];
         [taskButton setTitle:@"To Do"];
         [taskButton setWidth:50.0];
         [taskButton setTag:3];
         
         UIBarButtonItem *dismissKeyboard = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"keyboard_down.png"] style:UIBarButtonItemStylePlain target:self action:@selector(dismissKeyboard)];
+        [dismissKeyboard setTitle:@"Down Input"];
+
         [taskButton setWidth:50.0];
         [taskButton setTag:4];
         
@@ -188,7 +198,7 @@
         
         NSArray *items = [NSArray arrayWithObjects:flexSpace, actionButton, flexSpace, saveMemo, flexSpace, appointmentButton, flexSpace, taskButton,flexSpace, dismissKeyboard, flexSpace, nil];
         [myToolBar setItems:items];
-        [self.view addSubview:myToolBar];
+        
         
         textView.inputAccessoryView = myToolBar;
         [dismissKeyboard release];
@@ -197,13 +207,9 @@
         [actionButton release];
         [taskButton release];
         [flexSpace release];    
-
         
-        
-        
-        textView.inputAccessoryView = myToolBar;    
         // After setting the accessory view for the text view, we no longer need a reference to the accessory view.
-        self.myToolBar = nil;
+        //self.myToolBar = nil; //kjf NOTE: this line actually causes a crash.
     }
     
     return YES;
@@ -318,17 +324,16 @@
 
 - (void) textViewDidBeginEditing:(UITextView *)textView{    
     NSLog(@"EDITING BEGAN");
-
 }
 
 - (void) makeActionSheet:(id) sender{
-    //UIBarButtonItem *actionButton = sender;
+    UIBarButtonItem *actionButton = sender;
 
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"DO" delegate:self cancelButtonTitle:@"Later" destructiveButtonTitle:nil otherButtonTitles:@"Save to Folder", @"Append to File", @"Send as Email", @"Send as Message", nil];
     [actionSheet setActionSheetStyle:UIActionSheetStyleAutomatic];
-    //actionSheet.layer.backgroundColor = [UIColor blueColor].CGColor;
-    //[actionSheet showFromBarButtonItem:actionButton animated:YES];
-
+    actionSheet.layer.backgroundColor = [UIColor blueColor].CGColor;
+    [actionSheet showFromBarButtonItem:actionButton animated:YES];
+    /*
     UIView *myView = [[UIView alloc] initWithFrame:CGRectMake(50, 340, 220, 65)];
     CGRect myframe = CGRectMake(myView.frame.origin.x, myView.frame.origin.y, myView.frame.size.width, myView.frame.size.height);
     CALayer *mylayer = [[CALayer alloc] init];
@@ -338,7 +343,7 @@
     [myView.layer setMask:mylayer];
     [actionSheet showInView:myView];
     [actionSheet setAlpha:0.8];
-
+     */
     [actionSheet release];
     
     }
@@ -352,11 +357,73 @@
     //[containerView setHidden:YES];
 }
 
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+		switch (buttonIndex) {
+			case 4:
+				NSLog(@"Cancel Button Clicked on Main View action sheet");
+				break;
+            case 3:   
+                NSLog(@"4nd Button Clicked on action sheet");
+              
+				break;
+			case 2:
+				NSLog(@"3nd Button Clicked on action sheet");
+				break;
+			case 1:
+				NSLog(@"2nd Button Clicked on action sheet");
+                //[self addEntity];
+				break;
+			case 0:
+				NSLog(@"1st Button Clicked on action sheet");
+                if ([textView hasText]) {
+					[self addNewFolder];
+				}
+				break;
+			default:
+				break;
+        }
+}
+
+- (void) addNewFolder{
+   
+        AddFolderViewController *addViewController = [[AddFolderViewController alloc] initWithNibName:nil bundle:nil];
+        // Create a new managed object context for the new task -- set its persistent store coordinator to the same as that from the fetched results controller's context.
+        /*
+        NSManagedObjectContext *addingContext = [[NSManagedObjectContext alloc] init];
+        addViewController.managedObjectContext = addingContext;
+        [addingContext release];	
+        [addViewController.managedObjectContext setPersistentStoreCoordinator:[[tableViewController.fetchedResultsController managedObjectContext] persistentStoreCoordinator]];
+        NSLog(@"After managedObjectContext: %@",  addViewController.managedObjectContext);
+        */
+    if (newMemo.text == nil) {
+        if (![textView hasText]){
+            return;
+        }
+        NSLog(@"Trying to Create a newMemo");
+        NSEntityDescription *entity = [NSEntityDescription
+                                       entityForName:@"Memo"
+                                       inManagedObjectContext:managedObjectContext];
+        newMemo = [[Memo alloc] initWithEntity:entity insertIntoManagedObjectContext:managedObjectContext];
+        [newMemo setText:textView.text];
+        //Add condition for reedit = if creationDate != nil then break
+        [newMemo setCreationDate:[NSDate date]];
+        [newMemo setType:0];
+        [newMemo setEditDate:[NSDate date]];
+        }
+        addViewController.newMemo = newMemo;	
+        [self presentModalViewController:addViewController animated:YES];	
+        previousTextInput = textView.text;
+        NSLog(@"Previous Text: %@", previousTextInput);
+        [textView setText:@""];
+        [textView resignFirstResponder];
+        [addViewController release];
+        
+}
+
 - (void) saveMemo {
     if (![textView hasText]){
         return;
     }
-
     NSString *newTextInput = [NSString stringWithFormat: @"%@", textView.text];//copy contents of textView to newTextInput
     NSLog(@"newTextInput = %@", newTextInput);
     NSLog(@"Trying to Create a newMemo");
@@ -365,7 +432,7 @@
                                    entityForName:@"Memo"
                                    inManagedObjectContext:managedObjectContext];
     
-    Memo *newMemo = [[Memo alloc] initWithEntity:entity insertIntoManagedObjectContext:managedObjectContext];
+    newMemo = [[Memo alloc] initWithEntity:entity insertIntoManagedObjectContext:managedObjectContext];
     [newMemo setText:textView.text];
     //Add condition for reedit = if creationDate != nil then break
     [newMemo setCreationDate:[NSDate date]];
@@ -382,7 +449,6 @@
      [self.managedObjectContext setPersistentStoreCoordinator:[[tableViewController.fetchedResultsController managedObjectContext] persistentStoreCoordinator]];
      [addingContext release];
      --*/
-    
     NSLog(@"newMemo.text = %@", newMemo.text);
     NSLog(@"newMemo.creationDate = %@", newMemo.creationDate);
     NSLog(@"newMemo.type = %d", [newMemo.type intValue]);
@@ -392,11 +458,14 @@
     if(![self.managedObjectContext save:&error]){ 
         NSLog(@"MainViewController MOC: DID NOT SAVE");
     }
-    [newMemo release];
+    
+   // [[NSNotificationCenter defaultCenter] postNotificationName:NSManagedObjectContextDidSaveNotification object:nil];
+    
     previousTextInput = newTextInput;
     NSLog(@"Previous Text: %@", previousTextInput);
     [textView setText:@""];
-
+    [textView resignFirstResponder];
+    
 }
 
 - (void) addNewAppointment {
@@ -424,7 +493,6 @@
     previousTextInput = newTextInput;
     NSLog(@"Previous Text: %@", previousTextInput);
     [textView setText:@""];
-
 }
 
 - (void) addNewTask {
@@ -460,10 +528,24 @@
     previousTextInput = newTextInput;
     NSLog(@"Previous Text: %@", previousTextInput);
     [textView setText:@""];
+}
 
+- (void) addEntity:(id)sender {
+
+    NSLog(@"Adding Entity");
+    AddEntityViewController *viewController = [[AddEntityViewController alloc] initWithNibName:nil bundle:nil];
+    viewController.sender = [sender title];
+    viewController.newText = [textView text];
+    
+    [self presentModalViewController:viewController animated:YES];
+    [viewController release];
 }
 
 @end
+
+//[(UITabBarController *)self.parentViewController setSelectedIndex:0];
+
+
 
 /* SEGMENTED CONTROL
  NSArray * segControlItems = [NSArray arrayWithObjects:[UIImage imageNamed:@"documents_folder_white.png"], [UIImage imageNamed:@"documents_white_small.png"], [UIImage imageNamed:@"documents.png"], nil];

@@ -4,7 +4,6 @@
 //
 //  Created by Keith Fernandes on 8/21/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
-//
 
 #import "FoldersTableViewController.h"
 #import "WriteNowAppDelegate.h"
@@ -16,8 +15,7 @@
 @synthesize managedObjectContext;
 @synthesize searchBar;
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
+- (id)initWithStyle:(UITableViewStyle)style {
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
@@ -25,25 +23,20 @@
     return self;
 }
 
-- (void)dealloc
-{
+- (void)dealloc {
     [super dealloc];
     [_fetchedResultsController release];
-
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-    
     // Release any cached data, images, etc that aren't in use.
 }
 
 #pragma mark - View lifecycle
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
 
     _fetchedResultsController.delegate = self;
@@ -71,8 +64,7 @@
 	}
 }
 
-- (void)viewDidUnload
-{
+- (void)viewDidUnload {
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -80,27 +72,23 @@
 	self.fetchedResultsController = nil;
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
+- (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
+- (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
 }
 
-- (void)viewDidDisappear:(BOOL)animated
-{
+- (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation{
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
@@ -111,12 +99,10 @@
     [self.searchBar setShowsCancelButton:YES animated:YES];
 }
 
-- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{    
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {    
     NSString * searchString = self.searchBar.text;
-    NSLog(@"Search String is %@", searchString);
-    
+    NSLog(@"Search String is %@", searchString);    
     NSPredicate *searchPredicate = [NSPredicate predicateWithFormat: @"name CONTAINS[c] %@", searchString];
-    
     self.fetchedResultsController = [self fetchedResultsControllerWithPredicate:searchPredicate];
     
  	NSError *error;
@@ -125,7 +111,7 @@
     [self.tableView reloadData];
 }
 
-- (void) searchBarCancelButtonClicked:(UISearchBar *)searchBar{
+- (void) searchBarCancelButtonClicked:(UISearchBar *)searchBar {
     CGRect bottomFrame = CGRectMake(0, 200, 320, 215);
     [self.searchBar resignFirstResponder];
     
@@ -134,7 +120,7 @@
 
 #pragma mark - Fetched Results Controller
 
-- (NSFetchedResultsController *) fetchedResultsControllerWithPredicate: (NSPredicate *) aPredicate{
+- (NSFetchedResultsController *) fetchedResultsControllerWithPredicate: (NSPredicate *) aPredicate {
     
 	NSFetchRequest *request = [[NSFetchRequest alloc] init];
 	[request setEntity:[NSEntityDescription entityForName:@"Folder" inManagedObjectContext:managedObjectContext]];
@@ -175,8 +161,7 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 	//return [[_fetchedResultsController sections] count];
     return 1;
 }
@@ -195,7 +180,7 @@
     //return 1;
 }
 
-- (void) configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath{
+- (void) configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
 	
 	FolderCell *mycell;
 	if([cell isKindOfClass:[UITableViewCell class]]){

@@ -7,11 +7,17 @@
 //
 
 #import "FoldersViewController.h"
+#import "FoldersTableViewController.h"
+#import "AppointmentsTableViewController.h"
 #import "WriteNowAppDelegate.h"
+#import "ContainerView.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation FoldersViewController
 
 @synthesize managedObjectContext;
+
+@synthesize tableViewController;
 
 #pragma mark - View lifecycle
 
@@ -32,10 +38,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];    
     
+    [self.view setFrame:[[UIScreen mainScreen] applicationFrame]];
+
     if (managedObjectContext == nil) { 
 		managedObjectContext = [(WriteNowAppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext]; 
-        NSLog(@"After managedObjectContext: %@",  managedObjectContext);
+        NSLog(@"After MOC in Folders: %@",  managedObjectContext);
 	}
+    
+    [self.parentViewController.view removeFromSuperview];
+    
+    tableViewController = [[AppointmentsTableViewController alloc] init];
+    
+    ContainerView *topView = [[ContainerView alloc] initWithFrame:CGRectMake(0, 0, 320, 200)];
+    [self.view  addSubview:topView];
+    ContainerView *bottomView = [[ContainerView alloc] initWithFrame:CGRectMake(0, 200, 320, 260)];
+    [bottomView addSubview:tableViewController.tableView];
+    
 }
 
 - (void)viewDidUnload {

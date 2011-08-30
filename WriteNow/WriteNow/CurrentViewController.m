@@ -24,7 +24,6 @@
 
 @implementation CurrentViewController
 
-
 @synthesize managedObjectContext, tableView;
 @synthesize fetchedResultsController = _fetchedResultsController;
 
@@ -67,7 +66,7 @@
     //[tableView setTableHeaderView:headerView];
     //[tableView setSectionFooterHeight:0.0];
     //[tableView setSectionHeaderHeight:15.0];
-    [tableView setRowHeight:55.0];
+    [tableView setRowHeight:48.0];
     [tableView setDelegate:self];
     [tableView setDataSource:self];
     [self.view addSubview:tableView];
@@ -89,15 +88,12 @@
      object:nil];
 }
 
-    
-
 - (void)handleDidSaveNotification:(NSNotification *)notification {
     NSLog(@"NSManagedObjectContextDidSaveNotification Received By CurrentViewController");
     
     [managedObjectContext mergeChangesFromContextDidSaveNotification:notification];
     [self.tableView reloadData];
 }
-
 
 - (void)viewDidUnload{
     [super viewDidUnload];
@@ -153,10 +149,50 @@
 #pragma mark -
 #pragma mark Table view data source
 
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 	return [[_fetchedResultsController sections] count];
 }
-/*
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 20;
+}
+
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section       
+{
+    
+    id<NSFetchedResultsSectionInfo>  sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
+    int mySection;
+    mySection = [[sectionInfo name] intValue];
+    UIView* customView = [[[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 300.0, 20.00)] autorelease];
+    
+    if (mySection == 0){
+        customView.backgroundColor = [UIColor colorWithRed:0.3 green:0.7 blue:0.3 alpha:1.0];
+    }
+    else if (mySection == 1){
+        customView.backgroundColor = [UIColor colorWithRed:0.8 green:0.2 blue:0.2 alpha:1.0];    }
+    else if (mySection == 2) {
+        customView.backgroundColor = [UIColor colorWithRed:0.2 green:0.2 blue:0.7 alpha:1.0];
+    }    
+
+    UILabel * headerLabel = [[[UILabel alloc] initWithFrame:CGRectZero] autorelease];
+    headerLabel.backgroundColor = [UIColor clearColor];
+    headerLabel.opaque = NO;
+    headerLabel.textColor = [UIColor whiteColor];
+    headerLabel.font = [UIFont boldSystemFontOfSize:18];
+    headerLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
+    headerLabel.shadowColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.5];
+    headerLabel.frame = CGRectMake(11,-11, 320.0, 44.0);
+    headerLabel.textAlignment = UITextAlignmentLeft;
+    headerLabel.text = [self.tableView.dataSource tableView:self.tableView titleForHeaderInSection:section]; 
+    [customView addSubview:headerLabel];
+    
+    return customView;
+}
+
  - (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
  id<NSFetchedResultsSectionInfo>  sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
  int mySection;
@@ -168,13 +204,12 @@
  return @"Appointments";
  }
  else if (mySection == 2) {
- return @"Tasks";
+ return @"To Do";
  }
  else{
  return @"No Saved Memo's";
  }
  }
- */
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     //id <NSFetchedResultsSectionInfo> sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
     //return [sectionInfo numberOfObjects];
@@ -338,8 +373,10 @@
     else */
      if ([[_fetchedResultsController objectAtIndexPath:indexPath] isKindOfClass:[Appointment class]]) {
         //Appointment *tempAppointment = [_fetchedResultsController objectAtIndexPath:indexPath];
+
         AppointmentsTableViewController *detailViewController = [[AppointmentsTableViewController alloc] initWithNibName:nil bundle:nil];  
-        //detailViewController.selectedAppointment;
+         //detailViewController.selectedAppointment;
+
          [self.navigationController pushViewController:detailViewController animated:YES]; 
 
         //[self presentModalViewController:detailViewController animated:YES];

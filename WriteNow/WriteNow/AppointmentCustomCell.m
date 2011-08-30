@@ -18,7 +18,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
     
-        
+        [textLabel setBounds:CGRectMake(5, 0, textLabel.frame.size.width, textLabel.frame.size.height)];
     }
     return self;
 }

@@ -15,9 +15,9 @@
     NSManagedObjectContext *managedObjectContext;
     UIView *containerView;
     UITextView *textView;
+    
 }
-
-
+@property (nonatomic, retain) Memo *newMemo;
 @property (nonatomic, retain) UINavigationController *navigationController;
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain) UITextView *textView;
@@ -28,6 +28,8 @@
 - (void) saveMemo;
 - (void) addNewAppointment;
 - (void) addNewTask;
+- (void) addNewFolder;
+- (void) addEntity:(id)sender;
 - (void) makeActionSheet:(id) sender;
 
 @end

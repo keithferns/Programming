@@ -8,6 +8,7 @@
 
 #import "SettingsViewController.h"
 
+#import "ContainerView.h"
 
 @implementation SettingsViewController
 
@@ -33,6 +34,7 @@
     
     self.title = @"Settings";
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:nil];
+
     /*
     UITableView *tempTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 200, 320, 180) style:UITableViewStylePlain];
     
@@ -54,6 +56,7 @@
     [headerView release];
     */
 }
+
 
 - (void)viewDidUnload
 {

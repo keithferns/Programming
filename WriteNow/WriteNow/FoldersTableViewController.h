@@ -10,7 +10,6 @@
 
 
 @interface FoldersTableViewController : UITableViewController<NSFetchedResultsControllerDelegate, UISearchBarDelegate> {
- 
     NSFetchedResultsController *_fetchedResultsController;
 
 }

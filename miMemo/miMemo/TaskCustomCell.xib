@@ -50,9 +50,10 @@
 							<object class="IBUILabel" id="349247081">
 								<reference key="NSNextResponder" ref="1068420940"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{45, 0}, {297, 44}}</string>
+								<string key="NSFrame">{{31, 0}, {290, 30}}</string>
 								<reference key="NSSuperview" ref="1068420940"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
 								<object class="NSColor" key="IBUIBackgroundColor">
 									<int key="NSColorSpace">1</int>
 									<bytes key="NSRGB">MC4xMDU3MjY0NDU3IDAuNDU3MDA3MjAxIDAuNjY2NjY2NjY2NwA</bytes>
@@ -78,9 +79,10 @@
 								<int key="IBUINumberOfLines">2</int>
 							</object>
 						</object>
-						<string key="NSFrameSize">{287, 45}</string>
+						<string key="NSFrameSize">{287, 30}</string>
 						<reference key="NSSuperview" ref="407915620"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="349247081"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MCAwAA</bytes>
@@ -92,7 +94,7 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
 				</object>
-				<string key="NSFrameSize">{320, 45}</string>
+				<string key="NSFrameSize">{320, 30}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="1068420940"/>

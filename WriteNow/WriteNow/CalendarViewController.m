@@ -7,7 +7,7 @@
 //
 
 #import "CalendarViewController.h"
-
+#import "ContainerView.h"
 
 @implementation CalendarViewController
 
@@ -42,6 +42,10 @@
     [super viewDidLoad];
     textField.inputView = datePicker;
     textField.inputAccessoryView = toolbar;
+    
+    ContainerView *newView = [[ContainerView alloc] initWithFrame:CGRectMake(0, 200, 320, 260)];
+    [self.view addSubview:newView];
+    
     
 }
 

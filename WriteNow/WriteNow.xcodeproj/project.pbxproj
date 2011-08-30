@@ -101,6 +101,15 @@
 		538ADC4013FCF6FE005C08CD /* MessageEntryBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 538ADC3C13FCF6FC005C08CD /* MessageEntryBackground@2x.png */; };
 		538ADC4113FCF6FE005C08CD /* MessageEntryInputField.png in Resources */ = {isa = PBXBuildFile; fileRef = 538ADC3D13FCF6FD005C08CD /* MessageEntryInputField.png */; };
 		538ADC4213FCF6FE005C08CD /* MessageEntryInputField@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 538ADC3E13FCF6FD005C08CD /* MessageEntryInputField@2x.png */; };
+		53980E771407746B00833716 /* ContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 53980E761407746900833716 /* ContainerView.m */; };
+		53980E79140779A200833716 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53980E78140779A200833716 /* SettingsViewController.xib */; };
+		53980E86140786FA00833716 /* AddFolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53980E84140786FA00833716 /* AddFolderViewController.m */; };
+		53980E87140786FA00833716 /* AddFolderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53980E85140786FA00833716 /* AddFolderViewController.xib */; };
+		53980E8A1408051500833716 /* CustomTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 53980E891408051500833716 /* CustomTextView.m */; };
+		53980E9514095FF700833716 /* AddEntityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53980E9314095FF700833716 /* AddEntityViewController.m */; };
+		53980E9614095FF700833716 /* AddEntityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53980E9414095FF700833716 /* AddEntityViewController.xib */; };
+		53980E991409604500833716 /* CustomToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 53980E981409604500833716 /* CustomToolBar.m */; };
+		53980E9D1409736B00833716 /* AddEntityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53980E9C1409736B00833716 /* AddEntityTableViewController.m */; };
 		53AA948413FD7C3C001D69DC /* AppointmentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53AA948213FD7C3C001D69DC /* AppointmentsViewController.m */; };
 		53AA948513FD7C3C001D69DC /* AppointmentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53AA948313FD7C3C001D69DC /* AppointmentsViewController.xib */; };
 		53FB859E13FAEC3800765BFC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53FB859D13FAEC3800765BFC /* UIKit.framework */; };
@@ -254,6 +263,21 @@
 		538ADC3C13FCF6FC005C08CD /* MessageEntryBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "MessageEntryBackground@2x.png"; path = "../../../Programming2/HansPinckaers-GrowingTextView-86998d6/example/MessageEntryBackground@2x.png"; sourceTree = "<group>"; };
 		538ADC3D13FCF6FD005C08CD /* MessageEntryInputField.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MessageEntryInputField.png; path = "../../../Programming2/HansPinckaers-GrowingTextView-86998d6/example/MessageEntryInputField.png"; sourceTree = "<group>"; };
 		538ADC3E13FCF6FD005C08CD /* MessageEntryInputField@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "MessageEntryInputField@2x.png"; path = "../../../Programming2/HansPinckaers-GrowingTextView-86998d6/example/MessageEntryInputField@2x.png"; sourceTree = "<group>"; };
+		53980E751407746700833716 /* ContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContainerView.h; sourceTree = "<group>"; };
+		53980E761407746900833716 /* ContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContainerView.m; sourceTree = "<group>"; };
+		53980E78140779A200833716 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
+		53980E83140786FA00833716 /* AddFolderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFolderViewController.h; sourceTree = "<group>"; };
+		53980E84140786FA00833716 /* AddFolderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFolderViewController.m; sourceTree = "<group>"; };
+		53980E85140786FA00833716 /* AddFolderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddFolderViewController.xib; sourceTree = "<group>"; };
+		53980E881408051400833716 /* CustomTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextView.h; sourceTree = "<group>"; };
+		53980E891408051500833716 /* CustomTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextView.m; sourceTree = "<group>"; };
+		53980E9214095FF700833716 /* AddEntityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddEntityViewController.h; sourceTree = "<group>"; };
+		53980E9314095FF700833716 /* AddEntityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddEntityViewController.m; sourceTree = "<group>"; };
+		53980E9414095FF700833716 /* AddEntityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddEntityViewController.xib; sourceTree = "<group>"; };
+		53980E971409604500833716 /* CustomToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomToolBar.h; sourceTree = "<group>"; };
+		53980E981409604500833716 /* CustomToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomToolBar.m; sourceTree = "<group>"; };
+		53980E9B1409736B00833716 /* AddEntityTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddEntityTableViewController.h; sourceTree = "<group>"; };
+		53980E9C1409736B00833716 /* AddEntityTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddEntityTableViewController.m; sourceTree = "<group>"; };
 		53AA948113FD7C3C001D69DC /* AppointmentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppointmentsViewController.h; sourceTree = "<group>"; };
 		53AA948213FD7C3C001D69DC /* AppointmentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppointmentsViewController.m; sourceTree = "<group>"; };
 		53AA948313FD7C3C001D69DC /* AppointmentsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppointmentsViewController.xib; sourceTree = "<group>"; };
@@ -354,6 +378,7 @@
 			children = (
 				5315679E13FB665F0044C5A9 /* SettingsViewController.h */,
 				5315679F13FB665F0044C5A9 /* SettingsViewController.m */,
+				53980E78140779A200833716 /* SettingsViewController.xib */,
 			);
 			name = SettingsViewController;
 			sourceTree = "<group>";
@@ -361,6 +386,9 @@
 		531567B313FB81F80044C5A9 /* CustomCells */ = {
 			isa = PBXGroup;
 			children = (
+				53980E8B14095DD700833716 /* CustomToolBar */,
+				53980E751407746700833716 /* ContainerView.h */,
+				53980E761407746900833716 /* ContainerView.m */,
 				531567BE13FB827A0044C5A9 /* FileCustomCell.h */,
 				531567BF13FB827A0044C5A9 /* FileCustomCell.m */,
 				531567C013FB827A0044C5A9 /* FileCustomCell.xib */,
@@ -376,6 +404,8 @@
 				533D3D3513FF99220043833E /* AppointmentCustomCell.h */,
 				533D3D3613FF99220043833E /* AppointmentCustomCell.m */,
 				533D3D3813FF99470043833E /* AppointmentCustomCell.xib */,
+				53980E881408051400833716 /* CustomTextView.h */,
+				53980E891408051500833716 /* CustomTextView.m */,
 			);
 			name = CustomCells;
 			sourceTree = "<group>";
@@ -524,6 +554,45 @@
 			name = Tasks;
 			sourceTree = "<group>";
 		};
+		53980E82140786B100833716 /* AddFoldersViewController */ = {
+			isa = PBXGroup;
+			children = (
+				53980E83140786FA00833716 /* AddFolderViewController.h */,
+				53980E84140786FA00833716 /* AddFolderViewController.m */,
+				53980E85140786FA00833716 /* AddFolderViewController.xib */,
+			);
+			name = AddFoldersViewController;
+			sourceTree = "<group>";
+		};
+		53980E8B14095DD700833716 /* CustomToolBar */ = {
+			isa = PBXGroup;
+			children = (
+				53980E971409604500833716 /* CustomToolBar.h */,
+				53980E981409604500833716 /* CustomToolBar.m */,
+			);
+			name = CustomToolBar;
+			sourceTree = "<group>";
+		};
+		53980E8C14095EA800833716 /* AddEntityViewController */ = {
+			isa = PBXGroup;
+			children = (
+				53980E9A1409732800833716 /* AddEntityTableViewController */,
+				53980E9214095FF700833716 /* AddEntityViewController.h */,
+				53980E9314095FF700833716 /* AddEntityViewController.m */,
+				53980E9414095FF700833716 /* AddEntityViewController.xib */,
+			);
+			name = AddEntityViewController;
+			sourceTree = "<group>";
+		};
+		53980E9A1409732800833716 /* AddEntityTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				53980E9B1409736B00833716 /* AddEntityTableViewController.h */,
+				53980E9C1409736B00833716 /* AddEntityTableViewController.m */,
+			);
+			name = AddEntityTableViewController;
+			sourceTree = "<group>";
+		};
 		53A1E76F14049C7A00481EA4 /* TaskTableViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -596,6 +665,8 @@
 		53FB85A513FAEC3800765BFC /* WriteNow */ = {
 			isa = PBXGroup;
 			children = (
+				53980E8C14095EA800833716 /* AddEntityViewController */,
+				53980E82140786B100833716 /* AddFoldersViewController */,
 				53E979BC140476AC00B780C8 /* Application Delegate */,
 				533D3D51140089500043833E /* DetailViewController */,
 				536FBF4113FB12AA000B8B28 /* ManagedObjects */,
@@ -793,6 +864,9 @@
 				53421CD51404F81600CFF414 /* clock_24.png in Resources */,
 				53421CD71404FF4300CFF414 /* alarm_off_24.png in Resources */,
 				53421CD91405022300CFF414 /* arrow_circle_left_24.png in Resources */,
+				53980E79140779A200833716 /* SettingsViewController.xib in Resources */,
+				53980E87140786FA00833716 /* AddFolderViewController.xib in Resources */,
+				53980E9614095FF700833716 /* AddEntityViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -859,6 +933,12 @@
 				537AD84F1400C9B900259452 /* FoldersTableViewController.m in Sources */,
 				537AD85D1402D2D000259452 /* Appointment.m in Sources */,
 				537AD8601402D2D000259452 /* Task.m in Sources */,
+				53980E771407746B00833716 /* ContainerView.m in Sources */,
+				53980E86140786FA00833716 /* AddFolderViewController.m in Sources */,
+				53980E8A1408051500833716 /* CustomTextView.m in Sources */,
+				53980E9514095FF700833716 /* AddEntityViewController.m in Sources */,
+				53980E991409604500833716 /* CustomToolBar.m in Sources */,
+				53980E9D1409736B00833716 /* AddEntityTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

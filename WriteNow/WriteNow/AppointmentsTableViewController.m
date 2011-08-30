@@ -13,6 +13,7 @@
 
 @implementation AppointmentsTableViewController
 
+//@synthesize myTableView;
 @synthesize fetchedResultsController = _fetchedResultsController;
 @synthesize managedObjectContext;
 @synthesize tableLabel;
@@ -50,20 +51,6 @@
         
     [NSFetchedResultsController deleteCacheWithName:@"Root"];
     
-    tableLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y, self.tableView.frame.size.width, 20)];
-    [tableLabel setBackgroundColor:[UIColor lightGrayColor]];
-    [tableLabel setTextColor:[UIColor whiteColor]];
-    [tableLabel setTextAlignment:UITextAlignmentCenter];
-    [tableLabel setText:@"All Appointments"];
-    [self.view addSubview:tableLabel];
-    
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(10, 110, 300, 85)];
-    [self.tableView.layer setCornerRadius:5.0];
-    [self.tableView setDelegate:self];
-    [self.tableView setDataSource:self];
-    [self.tableView setTableHeaderView:tableLabel];
-    self.tableView.rowHeight = 36.0;
-
     /*-- MOC: Initialize--*/
     if (managedObjectContext == nil) { 
 		managedObjectContext = [(WriteNowAppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext]; 
@@ -82,6 +69,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleDidSaveNotification:)name:NSManagedObjectContextDidSaveNotification object:nil];
     
 }
+
 
 - (void)viewDidUnload
 {
@@ -193,6 +181,34 @@
 	return [[_fetchedResultsController sections] count];
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 22;
+}
+
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section       
+{
+    
+    UIView* customView = [[[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 300.0, 20.00)] autorelease];
+    customView.backgroundColor = [UIColor redColor];
+    
+    UILabel * headerLabel = [[[UILabel alloc] initWithFrame:CGRectZero] autorelease];
+    headerLabel.backgroundColor = [UIColor clearColor];
+    headerLabel.opaque = NO;
+    headerLabel.textColor = [UIColor whiteColor];
+    headerLabel.font = [UIFont boldSystemFontOfSize:18];
+    headerLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
+    headerLabel.shadowColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.5];
+    headerLabel.frame = CGRectMake(11,-11, 320.0, 44.0);
+    headerLabel.textAlignment = UITextAlignmentLeft;
+    headerLabel.text = [tableView.dataSource tableView:tableView titleForHeaderInSection:section]; 
+    [customView addSubview:headerLabel];
+    
+    return customView;
+}
+
+
 - (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
 	id<NSFetchedResultsSectionInfo>  sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
     NSDateFormatter *tempDateFormatter = [[NSDateFormatter alloc] init];
@@ -206,7 +222,10 @@
     [tempDateFormatter release];
 	return myDate;
 	//return [sectionInfo name];
+
 }
+
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     id <NSFetchedResultsSectionInfo> sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
     return [sectionInfo numberOfObjects];
