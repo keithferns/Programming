@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "CustomToolBar.h"
+#import "ContainerView.h"
 
 @interface AddEntityViewController : UIViewController <UITextFieldDelegate, UITextViewDelegate> {
     
@@ -16,20 +17,26 @@
     
     BOOL swappingViews;
     
+    UITextView *textView;
+    
     NSString *sender, *newText;
 }
 
 @property (nonatomic, retain) UITableViewController *tableViewController;
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 
-
 @property (nonatomic, retain) NSString *sender, *newText;
+@property (nonatomic, retain) UITextView *textView;
 @property (nonatomic, retain) UITextField *dateField, *startTimeField, *endTimeField, *recurringField;
 @property (nonatomic, retain) CustomToolBar *toolbar;
 
 @property (nonatomic, retain) NSDate *selectedDate, *selectedTime;
 @property (nonatomic, retain) IBOutlet UIDatePicker *datePicker, *timePicker;
 @property (nonatomic, retain) NSDateFormatter *dateFormatter, *timeFormatter;
+@property (nonatomic, retain) ContainerView *bottomView, *topView;
+
+
+//- (void) swapViews;
 
 - (void) backAction;    
 - (void) dismissKeyboard;

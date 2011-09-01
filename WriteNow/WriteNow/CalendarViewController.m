@@ -43,10 +43,13 @@
     textField.inputView = datePicker;
     textField.inputAccessoryView = toolbar;
     
-    ContainerView *newView = [[ContainerView alloc] initWithFrame:CGRectMake(0, 200, 320, 260)];
-    [self.view addSubview:newView];
+    ContainerView *topView = [[ContainerView alloc] initWithFrame:CGRectMake(0, 0, 320, 206)];
+    topView.label.text = @"Calendar";
     
-    
+    [self.view addSubview:topView];
+    [topView release];
+    ContainerView *bottomView = [[ContainerView alloc] initWithFrame:CGRectMake(0, 205, 320, 255)];
+    [bottomView release];
 }
 
 - (IBAction)dateChanged:(id)sender {

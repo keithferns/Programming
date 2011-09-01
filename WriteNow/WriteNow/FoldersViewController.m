@@ -7,17 +7,26 @@
 //
 
 #import "FoldersViewController.h"
+
+
 #import "FoldersTableViewController.h"
 #import "AppointmentsTableViewController.h"
 #import "WriteNowAppDelegate.h"
+
+#import "AppointmentsViewController.h"
+#import "TasksViewController.h"
+#import "AddFolderViewController.h"
+#import "AddEntityViewController.h"
 #import "ContainerView.h"
-#import <QuartzCore/QuartzCore.h>
+#import "CustomTextView.h"
+#import "CustomToolBarMainView.h"
+
 
 @implementation FoldersViewController
 
 @synthesize managedObjectContext;
 
-@synthesize tableViewController;
+@synthesize tableViewController, textView;
 
 #pragma mark - View lifecycle
 
@@ -37,7 +46,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];    
-    
     [self.view setFrame:[[UIScreen mainScreen] applicationFrame]];
 
     if (managedObjectContext == nil) { 
@@ -45,15 +53,43 @@
         NSLog(@"After MOC in Folders: %@",  managedObjectContext);
 	}
     
-    [self.parentViewController.view removeFromSuperview];
+    tableViewController = [[FoldersTableViewController alloc] init];
     
-    tableViewController = [[AppointmentsTableViewController alloc] init];
-    
-    ContainerView *topView = [[ContainerView alloc] initWithFrame:CGRectMake(0, 0, 320, 200)];
+    ContainerView *topView = [[ContainerView alloc] initWithFrame:CGRectMake(0, 0, 320, 205)];
+    [topView.label setText:@"Folders"];
     [self.view  addSubview:topView];
-    ContainerView *bottomView = [[ContainerView alloc] initWithFrame:CGRectMake(0, 200, 320, 260)];
-    [bottomView addSubview:tableViewController.tableView];
     
+     textView = [[CustomTextView alloc] initWithFrame:CGRectMake(5, 25, 310, 135)];
+    [topView addSubview:textView];
+    
+    [topView release];
+    
+    CustomToolBarMainView *toolbar = [[CustomToolBarMainView alloc] initWithFrame:CGRectMake(0, 195, 320, 40)];
+    [toolbar.actionButton setTarget:self];
+    [toolbar.actionButton setAction:@selector(makeActionSheet:)];
+    [toolbar.memoButton setTarget:self];
+    [toolbar.memoButton setAction:@selector(saveMemo)];
+    [toolbar.appointmentButton setTarget:self];
+    [toolbar.appointmentButton setAction: @selector(addEntity:)];
+    [toolbar.taskButton setTarget:self];
+    [toolbar.taskButton setAction:@selector(addEntity:)];
+    [toolbar.dismissKeyboard setTarget:self];
+    [toolbar.dismissKeyboard setAction:@selector(dismissKeyboard)];
+    textView.inputAccessoryView = toolbar;
+    
+    
+        
+    ContainerView *bottomView = [[ContainerView alloc] initWithFrame:CGRectMake(0, 205, 320, 260)];
+    [self.view addSubview:bottomView];
+    [tableViewController.tableView setFrame:CGRectMake(0, 0, 320, 260)];    
+    [tableViewController.tableView.layer setCornerRadius:10.0];
+    [tableViewController.tableView setSeparatorColor:[UIColor blackColor]];
+    [tableViewController.tableView setSectionHeaderHeight:18];
+    tableViewController.tableView.rowHeight = 30.0;
+    //[tableViewController.tableView setTableHeaderView:tableLabel];
+    [bottomView addSubview:tableViewController.tableView];
+
+    [bottomView release];
 }
 
 - (void)viewDidUnload {
@@ -80,6 +116,15 @@
 
 #pragma -
 #pragma Navigation Controls and Actions
+
+
+- (void) textViewDidEndEditing:(UITextView *)textView{
+    [self.textView resignFirstResponder];
+}
+
+- (void) dismissKeyboard{
+    [self.textView resignFirstResponder];
+}
 
 
 #pragma -

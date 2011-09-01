@@ -9,15 +9,26 @@
 #import <UIKit/UIKit.h>
 
 
-@interface CurrentViewController : UIViewController < NSFetchedResultsControllerDelegate, UITextViewDelegate,UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate> {
+@interface CurrentViewController : UIViewController <UITextViewDelegate, UIActionSheetDelegate> {
     
-        NSManagedObjectContext *managedObjectContext;
-        NSFetchedResultsController *_fetchedResultsController;
-        UITableView *tableView;	
-    }
-    @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
-    @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
-    @property (nonatomic, retain) UITableView *tableView;
-    
-    
-    @end
+    NSManagedObjectContext *managedObjectContext;
+    UITableViewController *tableViewController;
+    UITextView *textView;
+}
+
+@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, retain) UITableViewController *tableViewController;
+@property (nonatomic, retain) UITextView *textView;
+@property (nonatomic, retain) Memo *newMemo;
+@property (nonatomic, retain) NSString *previousTextInput;
+
+
+- (void) dismissKeyboard;
+- (void) saveMemo;
+- (void) addNewAppointment;
+- (void) addNewTask;
+- (void) addNewFolder;
+- (void) addEntity:(id)sender;
+- (void) makeActionSheet:(id) sender;
+
+@end

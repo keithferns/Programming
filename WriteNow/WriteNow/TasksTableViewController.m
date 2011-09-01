@@ -32,7 +32,6 @@
 - (void)dealloc{
     [super dealloc];
     [_fetchedResultsController release];
-    [selectedDate release];
     [[NSNotificationCenter defaultCenter] removeObserver:self];    
 
 
@@ -191,6 +190,33 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 	return [[_fetchedResultsController sections] count];
 }
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section       
+{
+    
+    id<NSFetchedResultsSectionInfo>  sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
+    int mySection;
+    mySection = [[sectionInfo name] intValue];
+    UIView* customView = [[[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 300.0, 20.00)] autorelease];
+    
+   
+    customView.backgroundColor = [UIColor colorWithRed:0.9 green:0.5 blue:0.2 alpha:1.0];
+    
+    UILabel * headerLabel = [[[UILabel alloc] initWithFrame:CGRectZero] autorelease];
+    headerLabel.backgroundColor = [UIColor clearColor];
+    headerLabel.opaque = NO;
+    headerLabel.textColor = [UIColor whiteColor];
+    headerLabel.font = [UIFont boldSystemFontOfSize:18];
+    headerLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
+    headerLabel.shadowColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.5];
+    headerLabel.frame = CGRectMake(11,-11, 320.0, 44.0);
+    headerLabel.textAlignment = UITextAlignmentLeft;
+    headerLabel.text = [self.tableView.dataSource tableView:self.tableView titleForHeaderInSection:section]; 
+    [customView addSubview:headerLabel];
+    
+    return customView;
+}
+
 
 - (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
 	id<NSFetchedResultsSectionInfo>  sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];

@@ -176,7 +176,6 @@
     myTableView.rowHeight = 30.0;
     
     [bottomView addSubview:myTableView];    
-    swappingViews = NO;
 }
 
 - (void)viewDidUnload {
@@ -189,9 +188,6 @@
     self.selectedTime = nil;
 }
 
--(void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)flag{
-	swappingViews = NO;
-}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation{
     // Return YES for supported orientations
@@ -353,10 +349,7 @@
     [dateComponents setSecond:0];
     selectedDate = [[calendar dateFromComponents:dateComponents] retain];
     dateField.text = [dateFormatter stringFromDate:selectedDate];
-    
-    if (!swappingViews) {
-        [self swapViews];
-    }
+
     [timeField becomeFirstResponder];
     
 }
@@ -441,72 +434,8 @@
 - (void) dismissKeyboard{
     [self.view endEditing:YES];
     [self.view resignFirstResponder];
-    [myTableView removeFromSuperview];
-    [myTableView setFrame:CGRectMake(5, 0, 310, 255)];
-    [bottomView addSubview:myTableView];
 }
 
-- (void) swapViews {
-	
-	CATransition *transition = [CATransition animation];
-	transition.duration = 1.0;
-	transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-	[transition setType:@"kCATransitionPush"];	
-	[transition setSubtype:@"kCATransitionFromRight"];
-	
-	swappingViews = YES;
-	transition.delegate = self;
-	
-	[self.view.layer addAnimation:transition forKey:nil];
-}
 
-#pragma mark -
-#pragma mark Navigation
-
-- (void) makeToolbar {
-    /*Setting up the Toolbar */
-    CGRect buttonBarFrame = CGRectMake(0, 195, 320, 50);
-    appointmentsToolbar = [[[UIToolbar alloc] initWithFrame:buttonBarFrame] autorelease];
-    [appointmentsToolbar setBarStyle:UIBarStyleDefault];
-    [appointmentsToolbar setTintColor:[UIColor colorWithRed:0.34 green:0.36 blue:0.42 alpha:0.3]];
-    [appointmentsToolbar setTag:0];
-    
-    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"arrow_left_24.png"] style:UIBarButtonItemStylePlain target:self action:@selector(backAction)];
-    [backButton setTitle:@"Back"];
-    [backButton setWidth:50.0];
-    [backButton setTag:0];    
-    
-    UIBarButtonItem *datetimeButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"calendar_24.png"]style:UIBarButtonItemStylePlain target:self action:@selector(setAppointmentDate)];
-    [datetimeButton setTitle:@"Set Date"];
-    [datetimeButton setTag:1];
-    [datetimeButton setWidth:50.0];
-    
-    UIBarButtonItem *recurrenceButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"arrow_circle_left_24.png"] style:UIBarButtonItemStylePlain target:self action:@selector(setRecurring)];
-    [recurrenceButton setTitle:@"Repeat"];
-    [recurrenceButton setWidth:50.0];
-    [recurrenceButton setTag:3];
-    
-    UIBarButtonItem *alarmButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"alarm_24.png"] style:UIBarButtonItemStylePlain target:self action:@selector(setAlarm)];
-    [alarmButton setTitle:@"Remind"];
-    [alarmButton setWidth:50.0];
-    [alarmButton setTag:2];
-    
-    UIBarButtonItem *dismissKeyboard = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"keyboard_down.png"] style:UIBarButtonItemStylePlain target:self action:@selector(dismissKeyboard)];
-    [dismissKeyboard setWidth:50.0];
-    [dismissKeyboard setTag:4];
-    
-    //UIButton *customView = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    //Possible to use this with the initWithCustomView method of  UIBarButtonItems
-    UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil	action:nil];
-    
-    NSMutableArray *toolbarItems = [NSMutableArray arrayWithObjects: backButton, flexSpace, datetimeButton, flexSpace,alarmButton, flexSpace, recurrenceButton,flexSpace,dismissKeyboard, nil];
-    [appointmentsToolbar setItems:toolbarItems];
-    [backButton release];
-    [datetimeButton release];
-    [alarmButton release];
-    [dismissKeyboard release];
-    [flexSpace release];
-    /*--End Setting up the Toolbar */
-}
 
 @end

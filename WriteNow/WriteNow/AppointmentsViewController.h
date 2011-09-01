@@ -31,7 +31,6 @@
     @property (nonatomic, retain) UIView *containerView;
     @property (nonatomic, retain) NSString *newText;
 
-    - (void) swapViews;
     - (void) backAction;    
 
     - (void) backAction;    
@@ -42,7 +41,6 @@
     - (void) setAppointmentTime;
     - (void) setAlarm;
     - (void) setRecurring;
-    - (void) makeToolbar;
 
     - (void) doneAction;
 

@@ -13,23 +13,11 @@
     
 	UINavigationController *navigationController;
     NSManagedObjectContext *managedObjectContext;
-    UIView *containerView;
-    UITextView *textView;
     
 }
-@property (nonatomic, retain) Memo *newMemo;
 @property (nonatomic, retain) UINavigationController *navigationController;
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
-@property (nonatomic, retain) UITextView *textView;
-@property (nonatomic, retain) UIToolbar *myToolBar;
-@property (nonatomic, retain) NSString *previousTextInput;
 
-- (void) dismissKeyboard;
-- (void) saveMemo;
-- (void) addNewAppointment;
-- (void) addNewTask;
-- (void) addNewFolder;
-- (void) addEntity:(id)sender;
-- (void) makeActionSheet:(id) sender;
+
 
 @end

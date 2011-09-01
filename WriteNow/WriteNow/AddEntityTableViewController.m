@@ -97,7 +97,7 @@
 }
 
 - (void)handleDidSaveNotification:(NSNotification *)notification {
-    NSLog(@"NSManagedObjectContextDidSaveNotification Received by AppointmentsTableViewController");
+    NSLog(@"NSManagedObjectContextDidSaveNotification Received by AddEntityTableViewController");
     
     [managedObjectContext mergeChangesFromContextDidSaveNotification:notification];
     
@@ -107,7 +107,7 @@
 
 - (void)getSelectedDate:(NSNotification *)notification {
     
-    NSLog(@"GET DATE NOTIFICATION RECEIVED FROM APPOINTMENTSVIEWCONTROLLER");
+    NSLog(@"GET DATE NOTIFICATION RECEIVED FROM AddEntityTableViewController");
     selectedDate = [notification object];
     
     NSLog(@"selected date = %@", selectedDate);

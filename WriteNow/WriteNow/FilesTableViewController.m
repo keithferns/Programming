@@ -53,7 +53,7 @@
     [self.tableView addSubview:searchBar];
     
     [searchBar setTranslucent:YES];
-    [searchBar setPlaceholder:@"Search for Folder"];
+    [searchBar setPlaceholder:@"Search for File"];
     self.tableView.tableHeaderView = searchBar;
     
 	searchBar.autocorrectionType = UITextAutocorrectionTypeNo;

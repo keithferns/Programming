@@ -9,31 +9,34 @@
 #import "CurrentViewController.h"
 #import "WriteNowAppDelegate.h"
 
-#import "StartScreenCustomCell.h"
-#import "TaskCustomCell.h"
 
-#import "Memo.h"
-#import "Appointment.h"
-#import "Task.h"
+#import "CustomTextView.h"
+#import "ContainerView.h"
+#import "CustomToolBarMainView.h"
 
-
-#import "TasksTableViewController.h"
-#import "AppointmentsTableViewController.h"
+#import "CurrentTableViewController.h"
+#import "AddEntityViewController.h"
+#import "AddFolderViewController.h"
+#import "AppointmentsViewController.h"
+#import "TasksViewController.h"
 
 
 
 @implementation CurrentViewController
 
-@synthesize managedObjectContext, tableView;
-@synthesize fetchedResultsController = _fetchedResultsController;
-
+@synthesize managedObjectContext;
+@synthesize tableViewController;
+@synthesize textView;
+@synthesize newMemo;
+@synthesize previousTextInput;
 
 
 - (void)dealloc
 {
     [super dealloc];
-    [_fetchedResultsController release];
-	[tableView release];
+    [textView release];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];    
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -48,59 +51,44 @@
 
 - (void)viewDidLoad
 {
-    [NSFetchedResultsController deleteCacheWithName:@"Root"];
-
     [super viewDidLoad];
-  
     
-    /*configure tableView, set its properties and add it to the main view.*/
+    previousTextInput = @"";
+      
+    ContainerView *topView = [[ContainerView alloc] initWithFrame:CGRectMake(0, 0, 320, 205)];
+    [topView.label setText:@"Write Now"];
+    [self.view  addSubview:topView];
     
-    tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 200, 320, 200) style:UITableViewStylePlain];
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 30)];
-    UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 2, 320, 26)];
-    [headerLabel setBackgroundColor:[UIColor lightGrayColor]];
-    [headerLabel setText:@"MY STUFF"];
-    [headerLabel setTextAlignment:UITextAlignmentCenter];
-    [headerView setBackgroundColor:[UIColor blackColor]];
-    [headerView addSubview:headerLabel];
-    //[tableView setTableHeaderView:headerView];
-    //[tableView setSectionFooterHeight:0.0];
-    //[tableView setSectionHeaderHeight:15.0];
-    [tableView setRowHeight:48.0];
-    [tableView setDelegate:self];
-    [tableView setDataSource:self];
-    [self.view addSubview:tableView];
-    [headerLabel release];
-    [headerView release];
+    textView = [[CustomTextView alloc] initWithFrame:CGRectMake(5, 25, 310, 135)];
+    textView.delegate = self;
+
+    [topView addSubview:textView];
+    [topView release];
+    
+    ContainerView *bottomView = [[ContainerView alloc] initWithFrame:CGRectMake(0, 205, 320, 260)];
+    [self.view addSubview:bottomView];
+    tableViewController = [[CurrentTableViewController alloc] init];
+
+    [tableViewController.tableView setFrame:CGRectMake(0, 0, 320, 260)];    
+    [tableViewController.tableView.layer setCornerRadius:10.0];
+    [tableViewController.tableView setSeparatorColor:[UIColor blackColor]];
+    [tableViewController.tableView setSectionHeaderHeight:18];
+    tableViewController.tableView.rowHeight = 48.0;
+    //[tableViewController.tableView setTableHeaderView:tableLabel];
+    [bottomView addSubview:tableViewController.tableView];
+    [bottomView release];
     
     /*-- Point current instance of the MOC to the main managedObjectContext --*/
 	if (managedObjectContext == nil) { 
 		managedObjectContext = [(WriteNowAppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext]; 
-        NSLog(@"After managedObjectContext: %@",  managedObjectContext);
-	}
-    
-    /* call method to perform the fetch */
-	NSError *error;
-	if (![[self fetchedResultsController] performFetch:&error]) {
-	}
-
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleDidSaveNotification:) name:NSManagedObjectContextDidSaveNotification 
-     object:nil];
-}
-
-- (void)handleDidSaveNotification:(NSNotification *)notification {
-    NSLog(@"NSManagedObjectContextDidSaveNotification Received By CurrentViewController");
-    
-    [managedObjectContext mergeChangesFromContextDidSaveNotification:notification];
-    [self.tableView reloadData];
+        NSLog(@"CURRENT VIEWCONTROLLER: After managedObjectContext: %@",  managedObjectContext);
+	}    
 }
 
 - (void)viewDidUnload{
     [super viewDidUnload];
     // Release any retained subviews of the main view.
-    self.managedObjectContext = nil;
-	self.fetchedResultsController.delegate = nil;
-	self.fetchedResultsController = nil;
+    [[NSNotificationCenter defaultCenter] removeObserver:self];    
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -109,341 +97,261 @@
 }
 
 #pragma mark -
-#pragma mark Fetched results controller
-
-- (NSFetchedResultsController *) fetchedResultsController {
-	if (_fetchedResultsController!=nil) {
-		return _fetchedResultsController;
-	}
-    
-	NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    [request setEntity:[NSEntityDescription entityForName:@"Note" inManagedObjectContext:managedObjectContext]];
-    
-	NSSortDescriptor *typeDescriptor = [[NSSortDescriptor alloc] initWithKey:@"type" ascending:YES];
-	NSSortDescriptor *textDescriptor = [[NSSortDescriptor alloc] initWithKey:@"creationDate" ascending:NO];// just here to test the sections and row calls
-    
-    
-    /*FIXME:  set Predicate to filter all tasks and appointments for a time after NOW --*/
-    
-    //NSArray *checkDateArray = [NSArray arrayWithObjects:@"memotext.savedAppointment.doDate",@"memotext.saveMemo.doDate", @"memotext.saveTask.doDate", nil];
-    //NSPredicate *checkDate = [NSPredicate predicateWithFormat:@"'[NSDate date]' < %@" argumentArray:checkDateArray];
-    //[request setPredicate:checkDate];
-    /* -- --*/
-    
-	[request setSortDescriptors:[NSArray arrayWithObjects:typeDescriptor,textDescriptor, nil]];
-    [typeDescriptor release];
-    [textDescriptor release];
-    
-	[request setFetchBatchSize:10];
-    
-	NSFetchedResultsController *newController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:managedObjectContext sectionNameKeyPath:@"type" cacheName:@"Root"];
-    
-	newController.delegate = self;
-	self.fetchedResultsController = newController;
-	[newController release];
-	[request release];
-	
-	return _fetchedResultsController;
-}
-
-#pragma mark -
-#pragma mark Table view data source
-
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	return [[_fetchedResultsController sections] count];
-}
-
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return 20;
-}
-
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section       
-{
-    
-    id<NSFetchedResultsSectionInfo>  sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
-    int mySection;
-    mySection = [[sectionInfo name] intValue];
-    UIView* customView = [[[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 300.0, 20.00)] autorelease];
-    
-    if (mySection == 0){
-        customView.backgroundColor = [UIColor colorWithRed:0.3 green:0.7 blue:0.3 alpha:1.0];
-    }
-    else if (mySection == 1){
-        customView.backgroundColor = [UIColor colorWithRed:0.8 green:0.2 blue:0.2 alpha:1.0];    }
-    else if (mySection == 2) {
-        customView.backgroundColor = [UIColor colorWithRed:0.2 green:0.2 blue:0.7 alpha:1.0];
-    }    
-
-    UILabel * headerLabel = [[[UILabel alloc] initWithFrame:CGRectZero] autorelease];
-    headerLabel.backgroundColor = [UIColor clearColor];
-    headerLabel.opaque = NO;
-    headerLabel.textColor = [UIColor whiteColor];
-    headerLabel.font = [UIFont boldSystemFontOfSize:18];
-    headerLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
-    headerLabel.shadowColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.5];
-    headerLabel.frame = CGRectMake(11,-11, 320.0, 44.0);
-    headerLabel.textAlignment = UITextAlignmentLeft;
-    headerLabel.text = [self.tableView.dataSource tableView:self.tableView titleForHeaderInSection:section]; 
-    [customView addSubview:headerLabel];
-    
-    return customView;
-}
-
- - (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
- id<NSFetchedResultsSectionInfo>  sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
- int mySection;
- mySection = [[sectionInfo name] intValue];
- if (mySection == 0){
- return	@"Notes";
+#pragma mark Text view delegate methods
+ - (BOOL)textViewShouldBeginEditing:(UITextView *)aTextView {
+ 
+ if (textView.inputAccessoryView == nil) {
+     //[[NSBundle mainBundle] loadNibNamed:@"AccessoryView" owner:self options:nil];
+     // Loading the AccessoryView nib file sets the accessoryView outlet.
+ 
+     CustomToolBarMainView *toolbar = [[CustomToolBarMainView alloc] initWithFrame:CGRectMake(0, 195, 320, 40)];
+     [toolbar.actionButton setTarget:self];
+     [toolbar.actionButton setAction:@selector(makeActionSheet:)];
+     [toolbar.memoButton setTarget:self];
+     [toolbar.memoButton setAction:@selector(saveMemo)];
+     [toolbar.appointmentButton setTarget:self];
+     [toolbar.appointmentButton setAction: @selector(addEntity:)];
+     [toolbar.taskButton setTarget:self];
+     [toolbar.taskButton setAction:@selector(addEntity:)];
+     [toolbar.dismissKeyboard setTarget:self];
+     [toolbar.dismissKeyboard setAction:@selector(dismissKeyboard)];
+     textView.inputAccessoryView = toolbar;
+ 
+ // After setting the accessory view for the text view, we no longer need a reference to the accessory view.
+ //self.myToolBar = nil; //kjf NOTE: this line actually causes a crash.
  }
- else if (mySection == 1){
- return @"Appointments";
- }
- else if (mySection == 2) {
- return @"To Do";
- }
- else{
- return @"No Saved Memo's";
- }
- }
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    //id <NSFetchedResultsSectionInfo> sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
-    //return [sectionInfo numberOfObjects];
-    return 1;
+ 
+ return YES;
 }
-
-- (void) configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath{
-	static NSDateFormatter *dateFormatter = nil;
-	if (dateFormatter == nil) {
-		dateFormatter = [[NSDateFormatter alloc] init];
-		[dateFormatter setDateFormat:@"dd MMMM yyyy h:mm a"];
-        //[dateFormatter setDateFormat:@"EEEE, dd MMMM yyyy h:mm a"]; //This format gives the Day of Week, followed by date and time
-	}
-	StartScreenCustomCell *mycell;
-	if([cell isKindOfClass:[UITableViewCell class]]){
-		mycell = (StartScreenCustomCell *) cell;
-        [mycell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];   
-    }
-    Note *currentItem = [_fetchedResultsController objectAtIndexPath:indexPath];	
-    
-	if ([currentItem.type intValue] == 0) {
-        Memo *memo = [_fetchedResultsController objectAtIndexPath:indexPath];
-        [mycell.memoText setText:[NSString stringWithFormat:@"%@", memo.text]];	
-		[mycell.date setText:[dateFormatter stringFromDate:memo.creationDate]];
-        [mycell.dateLabel setText:@"CREATED:"];
-        mycell.imageView.image = [UIImage imageNamed:@"MEMO.png"];
-    } 
-	else if ([currentItem.type intValue] == 1){
-        Appointment *appointment = [_fetchedResultsController objectAtIndexPath:indexPath];
-        [mycell.memoText setText:[NSString stringWithFormat:@"%@", appointment.text]];
-		[mycell.date setText:[dateFormatter stringFromDate:appointment.doDate]];
-        [mycell.dateLabel setText:@"SCHEDULED:"];
-        mycell.imageView.image = [UIImage imageNamed:@"Tasks Icon.png"];
-	}
-    else if ([currentItem.type intValue] == 2){
-    //else if ([[_fetchedResultsController objectAtIndexPath:indexPath] isKindOfClass:[Task class]]){  
-        Task *task  = [_fetchedResultsController objectAtIndexPath:indexPath];
-        [mycell.memoText setText:[NSString stringWithFormat:@"%@", task.text]];
-		[mycell.date setText: [dateFormatter stringFromDate:task.doDate]];
-        [mycell.dateLabel setText:@"DUE:"];
-        mycell.imageView.image = [UIImage imageNamed:@"ToDo.png"];
-	}
-}
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-
-    
-    static NSString *CellIdentifier = @"StartScreenCustomCell";
-    
-	StartScreenCustomCell *cell = (StartScreenCustomCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-	if (cell == nil) {
-		NSArray *topLevelObjects = [[NSBundle mainBundle]
-									loadNibNamed:@"StartScreenCustomCell"
-									owner:nil options:nil];
-		for (id currentObject in topLevelObjects){
-			if([currentObject isKindOfClass:[UITableViewCell class]]){
-				cell = (StartScreenCustomCell *) currentObject;
-				break;
-            }
-        }
-    }
-    [self configureCell:cell atIndexPath:indexPath];
-    return cell;
-    /*}
-     else if ([aNote.noteType intValue] == 1){
-     
-     static NSString *CellIdentifier = @"TaskCustomCell";
-     
-     TaskCustomCell *cell = (TaskCustomCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-     if (cell == nil) {
-     NSArray *topLevelObjects = [[NSBundle mainBundle]
-     loadNibNamed:@"TaskCustomCell"
-     owner:nil options:nil];
-     for (id currentObject in topLevelObjects){
-     if([currentObject isKindOfClass:[UITableViewCell class]]){
-     cell = (TaskCustomCell *) currentObject;
-     break;
-     }
-     }
-     }
-     [self configureCell:cell atIndexPath:indexPath];
-     return cell;
-     }
-     else if ([aNote.noteType intValue] == 2){
-     
-     static NSString *CellIdentifier = @"TaskCustomCell";
-     
-     TaskCustomCell *cell = (TaskCustomCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-     if (cell == nil) {
-     NSArray *topLevelObjects = [[NSBundle mainBundle]
-     loadNibNamed:@"TaskCustomCell"
-     owner:nil options:nil];
-     for (id currentObject in topLevelObjects){
-     if([currentObject isKindOfClass:[UITableViewCell class]]){
-     cell = (TaskCustomCell *) currentObject;
-     break;
-     }
-     }
-     }
-     
-     [self configureCell:cell atIndexPath:indexPath];
-     return cell;
-     }*/
-}
-
-/*
- // Override to support conditional editing of the table view.
- - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
- // Return NO if you do not want the specified item to be editable.
+ 
+ 
+ - (BOOL)textViewShouldEndEditing:(UITextView *)aTextView {
+ [aTextView resignFirstResponder];
  return YES;
  }
- */
 
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source.
-        //NSManagedObjectContext *context = [_fetchedResultsController managedObjectContext];
-		[managedObjectContext deleteObject:[_fetchedResultsController objectAtIndexPath:indexPath]];
-        // Save the context.
-		NSError *error;
-		if (![managedObjectContext save:&error]) {
-			/*
-			 Replace this implementation with code to handle the error appropriately.
-			 
-			 abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. If it is not possible to recover from the error, display an alert panel that instructs the user to quit the application by pressing the Home button.
-			 */
-			NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-			abort();
-        }
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
-    }   
+
+
+#pragma mark - EVENTS & ACTIONS
+
+- (void) textViewDidBeginEditing:(UITextView *)textView{    
+    NSLog(@"EDITING BEGAN");
 }
 
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+- (void) textViewDidEndEditing:(UITextView *)textView{
+    [self.textView resignFirstResponder];
 }
 
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
+- (void) dismissKeyboard{
+    [self.textView resignFirstResponder];
+}
 
-#pragma mark -
-#pragma mark Table view delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void) makeActionSheet:(id) sender{
+    UIBarButtonItem *actionButton = sender;
     
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"DO" delegate:self cancelButtonTitle:@"Later" destructiveButtonTitle:nil otherButtonTitles:@"Save to Folder", @"Append to File", @"Send as Email", @"Send as Message", nil];
+    [actionSheet setActionSheetStyle:UIActionSheetStyleAutomatic];
+    actionSheet.layer.backgroundColor = [UIColor blueColor].CGColor;
+    [actionSheet showFromBarButtonItem:actionButton animated:YES];
     /*
-    MemoText *selectedMemoText = [_fetchedResultsController objectAtIndexPath:indexPath];	
-    if ([selectedMemoText.noteType intValue] == 0){
-        MyMemosViewController *detailViewController = [[MyMemosViewController alloc] initWithNibName:nil bundle:nil];  
-        detailViewController.selectedMemoText = selectedMemoText;
-        [self presentModalViewController:detailViewController animated:YES];	
-        [detailViewController release];
-    }
-    else */
-     if ([[_fetchedResultsController objectAtIndexPath:indexPath] isKindOfClass:[Appointment class]]) {
-        //Appointment *tempAppointment = [_fetchedResultsController objectAtIndexPath:indexPath];
-
-        AppointmentsTableViewController *detailViewController = [[AppointmentsTableViewController alloc] initWithNibName:nil bundle:nil];  
-         //detailViewController.selectedAppointment;
-
-         [self.navigationController pushViewController:detailViewController animated:YES]; 
-
-        //[self presentModalViewController:detailViewController animated:YES];
-         
-        [detailViewController release];
-    }
-    else if ([[_fetchedResultsController objectAtIndexPath:indexPath] isKindOfClass:[Task class]]){
-         //Task *tempTask = [_fetchedResultsController objectAtIndexPath:indexPath];
-        TasksTableViewController *detailViewController = [[TasksTableViewController alloc] initWithNibName:nil bundle:nil]; 
-        //detailViewController.selectedTask = tempTask;
-        //[self presentModalViewController:detailViewController animated:YES];	
-        [self.navigationController pushViewController:detailViewController animated:YES]; 
-        [detailViewController release];
-        
-        
-    }
+     UIView *myView = [[UIView alloc] initWithFrame:CGRectMake(50, 340, 220, 65)];
+     CGRect myframe = CGRectMake(myView.frame.origin.x, myView.frame.origin.y, myView.frame.size.width, myView.frame.size.height);
+     CALayer *mylayer = [[CALayer alloc] init];
+     [mylayer setFrame:myframe];
+     [mylayer setCornerRadius:10.0];
+     [myView.layer addSublayer:mylayer];
+     [myView.layer setMask:mylayer];
+     [actionSheet showInView:myView];
+     [actionSheet setAlpha:0.8];
+     */
+    [actionSheet release];
+    
 }
 
-#pragma mark -
-#pragma mark Fetched Results Notifications
 
-- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
-    // The fetch controller is about to start sending change notifications, so prepare the table view for updates.
-    [self.tableView beginUpdates];
-}
-- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
-	
-	
-    switch(type) {
-			
-        case NSFetchedResultsChangeInsert:
-            [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    switch (buttonIndex) {
+        case 4:
+            NSLog(@"Cancel Button Clicked on Main View action sheet");
             break;
-			
-        case NSFetchedResultsChangeDelete:
-			[self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        case 3:   
+            NSLog(@"4nd Button Clicked on action sheet");
+            
             break;
-			
-        case NSFetchedResultsChangeUpdate:
-			[self configureCell:[self.tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+        case 2:
+            NSLog(@"3nd Button Clicked on action sheet");
             break;
-			
-        case NSFetchedResultsChangeMove:
-            [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            // Reloading the section inserts a new row and ensures that titles are updated appropriately.
-            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:newIndexPath.section] withRowAnimation:UITableViewRowAnimationFade];
+        case 1:
+            NSLog(@"2nd Button Clicked on action sheet");
+            //[self addEntity];
+            break;
+        case 0:
+            NSLog(@"1st Button Clicked on action sheet");
+            if ([textView hasText]) {
+                [self addNewFolder];
+            }
+            break;
+        default:
             break;
     }
 }
 
-- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type {
-	
-    switch(type) {
-			
-        case NSFetchedResultsChangeInsert:
-            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-			
-        case NSFetchedResultsChangeDelete:
-            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
-            break;
+- (void) addNewFolder{
+    
+    AddFolderViewController *addViewController = [[AddFolderViewController alloc] initWithNibName:nil bundle:nil];
+    // Create a new managed object context for the new task -- set its persistent store coordinator to the same as that from the fetched results controller's context.
+    /*
+     NSManagedObjectContext *addingContext = [[NSManagedObjectContext alloc] init];
+     addViewController.managedObjectContext = addingContext;
+     [addingContext release];	
+     [addViewController.managedObjectContext setPersistentStoreCoordinator:[[tableViewController.fetchedResultsController managedObjectContext] persistentStoreCoordinator]];
+     NSLog(@"After managedObjectContext: %@",  addViewController.managedObjectContext);
+     */
+    if (newMemo.text == nil) {
+        if (![textView hasText]){
+            [addViewController release];
+            return;
+        }
+        NSLog(@"Trying to Create a newMemo");
+        NSEntityDescription *entity = [NSEntityDescription
+                                       entityForName:@"Memo"
+                                       inManagedObjectContext:managedObjectContext];
+        newMemo = [[Memo alloc] initWithEntity:entity insertIntoManagedObjectContext:managedObjectContext];
+        [newMemo setText:textView.text];
+        //Add condition for reedit = if creationDate != nil then break
+        [newMemo setCreationDate:[NSDate date]];
+        [newMemo setType:0];
+        [newMemo setEditDate:[NSDate date]];
     }
+    addViewController.newMemo = newMemo;	
+    [self presentModalViewController:addViewController animated:YES];	
+    previousTextInput = textView.text;
+    NSLog(@"Previous Text: %@", previousTextInput);
+    [textView setText:@""];
+    [textView resignFirstResponder];
+    [addViewController release];
+    
 }
 
-- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-    // The fetch controller has sent all current change notifications, so tell the table view to process all updates.
-    [self.tableView endUpdates];
+- (void) saveMemo {
+    if (![textView hasText]){
+        return;
+    }
+    NSString *newTextInput = [NSString stringWithFormat: @"%@", textView.text];//copy contents of textView to newTextInput
+    NSLog(@"newTextInput = %@", newTextInput);
+    NSLog(@"Trying to Create a newMemo");
+    
+    NSEntityDescription *entity = [NSEntityDescription
+                                   entityForName:@"Memo"
+                                   inManagedObjectContext:managedObjectContext];
+    
+    newMemo = [[Memo alloc] initWithEntity:entity insertIntoManagedObjectContext:managedObjectContext];
+    [newMemo setText:textView.text];
+    //Add condition for reedit = if creationDate != nil then break
+    [newMemo setCreationDate:[NSDate date]];
+    [newMemo setType:0];
+    [newMemo setEditDate:[NSDate date]];
+    
+    /*--TODO:   SAVE(MEMO/NOTE) option. When the user has added and saved text, then returns to editing but does not add any text. 
+     // if (![newTextInput isEqualToString:previousTextInput]){
+     
+     -*/
+    /* -- 
+     NSManagedObjectContext *addingContext = [[NSManagedObjectContext alloc] init];
+     self.managedObjectContext = addingContext;	
+     [self.managedObjectContext setPersistentStoreCoordinator:[[tableViewController.fetchedResultsController managedObjectContext] persistentStoreCoordinator]];
+     [addingContext release];
+     --*/
+    NSLog(@"newMemo.text = %@", newMemo.text);
+    NSLog(@"newMemo.creationDate = %@", newMemo.creationDate);
+    NSLog(@"newMemo.type = %d", [newMemo.type intValue]);
+    NSLog(@"newMemo.editDate = %@", newMemo.editDate);
+    
+    NSError *error;
+    if(![self.managedObjectContext save:&error]){ 
+        NSLog(@"MainViewController MOC: DID NOT SAVE");
+    }
+    
+    // [[NSNotificationCenter defaultCenter] postNotificationName:NSManagedObjectContextDidSaveNotification object:nil];
+    
+    previousTextInput = newTextInput;
+    NSLog(@"Previous Text: %@", previousTextInput);
+    [textView setText:@""];
+    [textView resignFirstResponder];    
+}
+
+- (void) addNewAppointment {
+    if (![textView hasText]){
+        return;
+    }
+    [self.view endEditing:YES];
+    
+    NSString *newTextInput = [NSString stringWithFormat: @"%@", textView.text];//copy contents of textView to newTextInput
+    NSLog(@"newTextInput = %@", newTextInput);
+    /* --
+     NSManagedObjectContext *addingContext = [[NSManagedObjectContext alloc] init];
+     self.managedObjectContext = addingContext;	
+     [self.managedObjectContext setPersistentStoreCoordinator:[[tableViewController.fetchedResultsController managedObjectContext] persistentStoreCoordinator]];
+     [addingContext release];
+     --*/
+    
+    AppointmentsViewController *viewController = [[AppointmentsViewController alloc] initWithNibName:nil bundle:nil];
+    viewController.managedObjectContext = self.managedObjectContext;
+    viewController.newText = textView.text;
+    [self presentModalViewController:viewController animated:YES];
+    [viewController release];
+    [textView resignFirstResponder];
+    
+    previousTextInput = newTextInput;
+    NSLog(@"Previous Text: %@", previousTextInput);
+    [textView setText:@""];
+}
+
+- (void) addNewTask {
+    if (![textView hasText]){
+        return;
+    }
+    [self.view endEditing:YES];
+    NSString *newTextInput = [NSString stringWithFormat: @"%@", textView.text];//copy contents of textView to newTextInput
+    NSLog(@"newTextInput = %@", newTextInput);
+    // if (![newTextInput isEqualToString:previousTextInput]){
+    
+    //   }
+    /*--the text is NOT the same as previous call of method --> insert a new instance of MemoText in the MOC and copy new text to this instance--
+     CASE: When the user has added and saved text, then returns to editing but does not add any text ---*/
+    /* --
+     NSManagedObjectContext *addingContext = [[NSManagedObjectContext alloc] init];
+     self.managedObjectContext = addingContext;	
+     [self.managedObjectContext setPersistentStoreCoordinator:[[tableViewController.fetchedResultsController managedObjectContext] persistentStoreCoordinator]];
+     [addingContext release];
+     --*/
+    
+    TasksViewController *viewController = [[TasksViewController alloc] initWithNibName:nil bundle:nil];
+    viewController.managedObjectContext = self.managedObjectContext;
+    
+    viewController.newText = textView.text;
+    
+    [self presentModalViewController:viewController animated:YES];
+    
+    [viewController release];
+    
+    [textView resignFirstResponder];
+    
+    previousTextInput = newTextInput;
+    NSLog(@"Previous Text: %@", previousTextInput);
+    [textView setText:@""];
+}
+
+- (void) addEntity:(id)sender {
+    
+    NSLog(@"Adding Entity");
+    AddEntityViewController *viewController = [[AddEntityViewController alloc] initWithNibName:nil bundle:nil];
+    viewController.sender = [sender title];
+    viewController.newText = [textView text];
+    
+    [self presentModalViewController:viewController animated:YES];
+    [viewController release];
 }
 
 

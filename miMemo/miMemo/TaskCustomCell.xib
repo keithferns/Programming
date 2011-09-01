@@ -50,13 +50,12 @@
 							<object class="IBUILabel" id="349247081">
 								<reference key="NSNextResponder" ref="1068420940"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{31, 0}, {290, 30}}</string>
+								<string key="NSFrameSize">{290, 30}</string>
 								<reference key="NSSuperview" ref="1068420940"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
-								<object class="NSColor" key="IBUIBackgroundColor">
-									<int key="NSColorSpace">1</int>
-									<bytes key="NSRGB">MC4xMDU3MjY0NDU3IDAuNDU3MDA3MjAxIDAuNjY2NjY2NjY2NwA</bytes>
+								<object class="NSColor" key="IBUIBackgroundColor" id="135253827">
+									<int key="NSColorSpace">3</int>
+									<bytes key="NSWhite">MQA</bytes>
 								</object>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -98,10 +97,7 @@
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="1068420940"/>
-				<object class="NSColor" key="IBUIBackgroundColor">
-					<int key="NSColorSpace">1</int>
-					<bytes key="NSRGB">MC4xMDU3MjY0NDU3IDAuNDU3MDA3MjAxIDAuNjY2NjY2NjY2NwA</bytes>
-				</object>
+				<reference key="IBUIBackgroundColor" ref="135253827"/>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 				<int key="IBUISeparatorStyle">1</int>
 				<int key="IBUIAccessoryType">2</int>

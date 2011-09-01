@@ -10,7 +10,7 @@
 
 
 @implementation CustomToolBar
-@synthesize backButton, dismissKeyboard;
+@synthesize backButton, dismissKeyboard, datetimeButton, alarmButton, recurrenceButton;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -26,17 +26,17 @@
         [backButton setWidth:50.0];
         [backButton setTag:0];    
         
-        UIBarButtonItem *datetimeButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"calendar_24.png"]style:UIBarButtonItemStylePlain target:nil action:nil];
+         datetimeButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"calendar_24.png"]style:UIBarButtonItemStylePlain target:nil action:nil];
         [datetimeButton setTitle:@"Set Date"];
         [datetimeButton setTag:1];
         [datetimeButton setWidth:50.0];
         
-        UIBarButtonItem *recurrenceButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"arrow_circle_left_24.png"] style:UIBarButtonItemStylePlain target:self action:@selector(setRecurring)];
+        recurrenceButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"arrow_circle_left_24.png"] style:UIBarButtonItemStylePlain target:self action:@selector(setRecurring)];
         [recurrenceButton setTitle:@"Repeat"];
         [recurrenceButton setWidth:50.0];
         [recurrenceButton setTag:3];
         
-        UIBarButtonItem *alarmButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"alarm_24.png"] style:UIBarButtonItemStylePlain target:self action:@selector(setAlarm)];
+        alarmButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"alarm_24.png"] style:UIBarButtonItemStylePlain target:self action:@selector(setAlarm)];
         [alarmButton setTitle:@"Remind"];
         [alarmButton setWidth:50.0];
         [alarmButton setTag:2];

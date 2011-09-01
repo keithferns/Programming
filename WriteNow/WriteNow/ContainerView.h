@@ -10,7 +10,8 @@
 
 
 @interface ContainerView : UIView {
-    
+    UILabel *label;
 }
+@property (nonatomic, retain) UILabel *label;
 
 @end
