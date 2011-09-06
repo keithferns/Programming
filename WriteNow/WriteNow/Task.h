@@ -2,7 +2,7 @@
 //  Task.h
 //  WriteNow
 //
-//  Created by Keith Fernandes on 8/22/11.
+//  Created by Keith Fernandes on 9/5/11.
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
@@ -14,7 +14,9 @@
 @interface Task : Note {
 @private
 }
-@property (nonatomic, retain) NSNumber * isRecurring;
+@property (nonatomic, retain) NSString * recurring;
 @property (nonatomic, retain) NSDate * doDate;
+@property (nonatomic, retain) NSNumber * isRecurring;
+@property (nonatomic, retain) NSDecimalNumber * priority;
 
 @end

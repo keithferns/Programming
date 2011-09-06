@@ -28,11 +28,11 @@
 @property (nonatomic, retain) UIDatePicker *datePicker, *timePicker;
 @property (nonatomic, retain) UIPickerView *pickerView;
 @property (nonatomic, retain) CustomToolBar *toolbar;
-@property (nonatomic, retain) NSDate *selectedDate, *selectedTime;
+@property (nonatomic, retain) NSDate *selectedDate, *selectedTime, *selectedEndTime;
 @property (nonatomic, retain) NSDateFormatter *dateFormatter, *timeFormatter;
 @property (nonatomic, retain) NSArray *recurring;
 
-//- (void) swapViews;
+- (void) swapViews;
 
 - (void) backAction;    
 - (void) dismissKeyboard;
@@ -40,8 +40,11 @@
 - (IBAction)timePickerChanged:(id)sender;
 - (void) setAppointmentDate;
 - (void) setAppointmentTime;
+- (void) doneAction;
 - (void) addPlan:(UIBarButtonItem *) barButtonItem;
 - (void) changeView:(UIBarButtonItem *)barButtonItem;
+- (void) animateViews:(UIView *)view startFrom:(CGRect)fromFrame endAt:(CGRect)toFrame;
+
 
 @end
 

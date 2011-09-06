@@ -138,8 +138,8 @@
     textView = [[CustomTextView alloc] initWithFrame:CGRectMake(0, self.navigationController.navigationBar.frame.size.height, 320, 100)];
     textView.delegate = self;
     textView.inputAccessoryView = toolbar;
-    
     [self.view addSubview:textView];
+
     //TEXTFIELDS
     textField = [[CustomTextField alloc] initWithFrame:CGRectMake(135, textView.frame.origin.y+textView.frame.size.height+10, 180, 30)];
     [textField setBorderStyle:UITextBorderStyleRoundedRect];
@@ -228,7 +228,6 @@
         [saveNewFolderButton addTarget:self action:@selector(makeFolder) forControlEvents:UIControlEventTouchUpInside];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"HasToggledToFoldersViewNotification" object:nil];
         [tableViewController.tableView reloadData];
-
     }
     //[textField becomeFirstResponder];
 }

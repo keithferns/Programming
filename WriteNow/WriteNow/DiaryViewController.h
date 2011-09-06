@@ -19,7 +19,7 @@
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain) IBOutlet UITableViewController *tableViewController;
 
-@property (nonatomic, retain) UITextView *textView;
+@property (nonatomic, retain) UITextView *textView, *diaryView;
 
 
 

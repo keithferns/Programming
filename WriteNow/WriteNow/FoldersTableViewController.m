@@ -159,7 +159,10 @@
     NSError *error;
 	if (![[self fetchedResultsController] performFetch:&error]) {
 	}
+    
     [self.tableView reloadData];
+    [self.searchBar setShowsCancelButton:NO animated:YES];
+
 }
 
 #pragma mark - Fetched Results Controller

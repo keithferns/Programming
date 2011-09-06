@@ -16,7 +16,7 @@
 @implementation DiaryViewController
 
 @synthesize managedObjectContext, tableViewController;
-@synthesize textView;
+@synthesize textView, diaryView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,6 +29,8 @@
 
 - (void)dealloc {
     [super dealloc];
+    [textView release];
+    [diaryView release];
 }
 
 - (void)didReceiveMemoryWarning
@@ -44,6 +46,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
+    // Observe keyboard hide and show notifications to resize the text view appropriately.
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+    
+    
+    
     if (managedObjectContext == nil) { 
 		managedObjectContext = [(WriteNowAppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext]; 
         NSLog(@"After MOC in Folders: %@",  managedObjectContext);
@@ -58,6 +68,9 @@
     textView.delegate = self;
     
     [self.view addSubview:textView];
+    diaryView = [[CustomTextView alloc] initWithFrame:CGRectMake(0, textView.frame.origin.y+textView.frame.size.height+15, 320, 225)];
+    [diaryView setEditable:NO];
+    [self.view addSubview:diaryView];
     
     
     CustomToolBarMainView *toolbar = [[CustomToolBarMainView alloc] initWithFrame:CGRectMake(0, 195, 320, 40)];
@@ -73,15 +86,8 @@
     [toolbar.dismissKeyboard setAction:@selector(dismissKeyboard)];
     textView.inputAccessoryView = toolbar;    
     
-    tableViewController = [[DiaryTableViewController alloc] init];
-    [tableViewController.tableView setFrame:CGRectMake(0, 205, 320, 205)];    
-    //[tableViewController.tableView.layer setCornerRadius:10.0];
-    [tableViewController.tableView setSeparatorColor:[UIColor blackColor]];
-    [tableViewController.tableView setSectionHeaderHeight:18];
-    tableViewController.tableView.rowHeight = 30.0;
-    //[tableViewController.tableView setTableHeaderView:tableLabel];
-    [self.view addSubview:tableViewController.tableView];
-        
+    
+    
 }
 
 - (void)viewDidUnload
@@ -90,6 +96,65 @@
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
+
+
+#pragma mark -
+#pragma mark Responding to keyboard events
+
+- (void)keyboardWillShow:(NSNotification *)notification {
+    /* Reduce the size of the text view so that it's not obscured by the keyboard.
+     Animate the resize so that it's in sync with the appearance of the keyboard. */
+  
+    NSDictionary *userInfo = [notification userInfo];
+    NSValue* aValue = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey]; // Get the origin of the keyboard when it's displayed.
+    
+    // Get the top of the keyboard as the y coordinate of its origin in self's view's coordinate system. The top of the text view's frame should align with the top of the keyboard's final position.
+    CGRect keyboardRect = [aValue CGRectValue];
+    keyboardRect = [self.view convertRect:keyboardRect fromView:nil];
+    
+    //CGFloat keyboardTop = keyboardRect.origin.y;
+    //CGRect newTextViewFrame = self.view.bounds;
+    //if (diaryView.frame.origin.y > keyboardTop){
+    //   newTextViewFrame.origin.y = keyboardTop;
+    // }
+    
+    CGRect newTextViewFrame = keyboardRect;
+
+    // Get the duration of the animation.
+    NSValue *animationDurationValue = [userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey];
+    NSTimeInterval animationDuration;
+    [animationDurationValue getValue:&animationDuration];
+    
+    // Animate the resize of the text view's frame in sync with the keyboard's appearance.
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:animationDuration];
+    [diaryView setFrame:newTextViewFrame];
+    
+    [UIView commitAnimations];
+}
+
+
+- (void)keyboardWillHide:(NSNotification *)notification {
+    
+    NSDictionary* userInfo = [notification userInfo];
+    
+    /*Restore the size of the text view (fill self's view).
+     Animate the resize so that it's in sync with the disappearance of the keyboard.*/
+    
+    NSValue *animationDurationValue = [userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey];
+    NSTimeInterval animationDuration;
+    [animationDurationValue getValue:&animationDuration];
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:animationDuration];
+    
+      
+    diaryView.frame = CGRectMake(0, textView.frame.origin.y+textView.frame.size.height+15, 320, 225);
+    
+    [UIView commitAnimations];
+}
+
+
 
 
 

@@ -31,33 +31,40 @@
 @synthesize previousTextInput;
 
 
-- (void)dealloc
-{
+- (void)dealloc {
     [super dealloc];
     [textView release];
     [[NSNotificationCenter defaultCenter] removeObserver:self];    
 
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
     
     // Release any cached data, images, etc that aren't in use.
 }
 
+- (void)viewDidUnload{
+    [super viewDidUnload];
+    // Release any retained subviews of the main view.
+    [[NSNotificationCenter defaultCenter] removeObserver:self];    
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    // Return YES for supported orientations
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
 #pragma mark - View lifecycle
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     /*-- Point current instance of the MOC to the main managedObjectContext --*/
 	if (managedObjectContext == nil) { 
 		managedObjectContext = [(WriteNowAppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext]; 
         NSLog(@"CURRENT VIEWCONTROLLER: After managedObjectContext: %@",  managedObjectContext);
 	}    
-
     
     self.title = @"Write Now";
     [self.view setBackgroundColor:[UIColor colorWithRed:0.2 green:0.2 blue:0.5 alpha:1]];
@@ -75,20 +82,20 @@
     [tableViewController.tableView setSectionHeaderHeight:18];
     tableViewController.tableView.rowHeight = 48.0;
     //[tableViewController.tableView setTableHeaderView:tableLabel];
-    [self.view addSubview:tableViewController.tableView];
     
-   }
-
-- (void)viewDidUnload{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    [[NSNotificationCenter defaultCenter] removeObserver:self];    
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+
+- (void) viewWillAppear:(BOOL)animated{    
+    if (tableViewController.tableView.superview == nil) {
+    [self.view addSubview:tableViewController.tableView];
+    }
+    CGRect startFrame = CGRectMake(320, 205, 320, 204);
+    CGRect endFrame = CGRectMake(0, 205, 320, 204);
+    [self animateViews:tableViewController.tableView startFrom:startFrame endAt:endFrame];
+    
 }
+
 
 #pragma mark -
 #pragma mark Text view delegate methods
@@ -343,6 +350,15 @@
     
     [self presentModalViewController:viewController animated:YES];
     [viewController release];
+}
+
+- (void) animateViews:(UIView *)view startFrom:(CGRect)fromFrame endAt:(CGRect)toFrame{
+    view.frame = fromFrame;
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.4];    
+    [UIView setAnimationDelegate:self];
+    view.frame = toFrame;
+    [UIView commitAnimations];    
 }
 
 

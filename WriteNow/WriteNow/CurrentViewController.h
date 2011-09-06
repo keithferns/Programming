@@ -31,4 +31,7 @@
 - (void) addEntity:(id)sender;
 - (void) makeActionSheet:(id) sender;
 
+- (void) animateViews:(UIView *)view startFrom:(CGRect)fromFrame endAt:(CGRect)toFrame;
+
+
 @end

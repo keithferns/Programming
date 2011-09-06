@@ -39,7 +39,6 @@
 		531567F513FB83560044C5A9 /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 531567F313FB83560044C5A9 /* CalendarViewController.m */; };
 		531567F613FB83560044C5A9 /* CalendarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 531567F413FB83560044C5A9 /* CalendarViewController.xib */; };
 		531567FA13FB83800044C5A9 /* DiaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 531567F813FB83800044C5A9 /* DiaryViewController.m */; };
-		531567FB13FB83800044C5A9 /* FilesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 531567F913FB83800044C5A9 /* FilesViewController.xib */; };
 		531567FF13FB83B00044C5A9 /* FoldersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 531567FD13FB83B00044C5A9 /* FoldersViewController.m */; };
 		5315680013FB83B00044C5A9 /* FoldersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 531567FE13FB83B00044C5A9 /* FoldersViewController.xib */; };
 		5318F1F013FE0F6C00BFDCC5 /* add-item.png in Resources */ = {isa = PBXBuildFile; fileRef = 5318F1EF13FE0F6C00BFDCC5 /* add-item.png */; };
@@ -85,8 +84,6 @@
 		53485C0813FC4EBD001CA9EB /* Memo.m in Sources */ = {isa = PBXBuildFile; fileRef = 53485C0713FC4EBD001CA9EB /* Memo.m */; };
 		537AD84F1400C9B900259452 /* FoldersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 537AD84E1400C9B900259452 /* FoldersTableViewController.m */; };
 		537AD85A1402544C00259452 /* 11-clock1.png in Resources */ = {isa = PBXBuildFile; fileRef = 537AD8591402544C00259452 /* 11-clock1.png */; };
-		537AD85D1402D2D000259452 /* Appointment.m in Sources */ = {isa = PBXBuildFile; fileRef = 537AD85C1402D2D000259452 /* Appointment.m */; };
-		537AD8601402D2D000259452 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 537AD85F1402D2D000259452 /* Task.m */; };
 		537C7A5E13FCFF940086D4AE /* 11-clock.png in Resources */ = {isa = PBXBuildFile; fileRef = 537C7A5B13FCFF940086D4AE /* 11-clock.png */; };
 		537C7A5F13FCFF940086D4AE /* 15-tags.png in Resources */ = {isa = PBXBuildFile; fileRef = 537C7A5C13FCFF940086D4AE /* 15-tags.png */; };
 		537C7A6013FCFF940086D4AE /* 33-cabinet.png in Resources */ = {isa = PBXBuildFile; fileRef = 537C7A5D13FCFF940086D4AE /* 33-cabinet.png */; };
@@ -129,6 +126,9 @@
 		53A599A1141064B7001AD61F /* viewFolders_nav.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A5999F141064B0001AD61F /* viewFolders_nav.png */; };
 		53A599A314107244001AD61F /* folder_24.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A599A214107239001AD61F /* folder_24.png */; };
 		53A599A71410A135001AD61F /* CustomTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 53A599A61410A135001AD61F /* CustomTextField.m */; };
+		53F3D8081415B9BB00122880 /* Appointment.m in Sources */ = {isa = PBXBuildFile; fileRef = 53F3D8071415B9BB00122880 /* Appointment.m */; };
+		53F3D80B1415BA0800122880 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 53F3D80A1415BA0800122880 /* Task.m */; };
+		53F3D80D1415C00600122880 /* 101to101a.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 53F3D80C1415C00600122880 /* 101to101a.xcmappingmodel */; };
 		53FB859E13FAEC3800765BFC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53FB859D13FAEC3800765BFC /* UIKit.framework */; };
 		53FB85A013FAEC3800765BFC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53FB859F13FAEC3800765BFC /* Foundation.framework */; };
 		53FB85A213FAEC3800765BFC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53FB85A113FAEC3800765BFC /* CoreGraphics.framework */; };
@@ -198,9 +198,8 @@
 		531567F213FB83560044C5A9 /* CalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarViewController.h; sourceTree = "<group>"; };
 		531567F313FB83560044C5A9 /* CalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarViewController.m; sourceTree = "<group>"; };
 		531567F413FB83560044C5A9 /* CalendarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarViewController.xib; sourceTree = "<group>"; };
-		531567F713FB83800044C5A9 /* DiaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = DiaryViewController.h; sourceTree = "<group>"; };
+		531567F713FB83800044C5A9 /* DiaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiaryViewController.h; sourceTree = "<group>"; };
 		531567F813FB83800044C5A9 /* DiaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiaryViewController.m; sourceTree = "<group>"; };
-		531567F913FB83800044C5A9 /* FilesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilesViewController.xib; sourceTree = "<group>"; };
 		531567FC13FB83B00044C5A9 /* FoldersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoldersViewController.h; sourceTree = "<group>"; };
 		531567FD13FB83B00044C5A9 /* FoldersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoldersViewController.m; sourceTree = "<group>"; };
 		531567FE13FB83B00044C5A9 /* FoldersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FoldersViewController.xib; sourceTree = "<group>"; };
@@ -213,7 +212,7 @@
 		533D3D3513FF99220043833E /* AppointmentCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppointmentCustomCell.h; sourceTree = "<group>"; };
 		533D3D3613FF99220043833E /* AppointmentCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppointmentCustomCell.m; sourceTree = "<group>"; };
 		533D3D3813FF99470043833E /* AppointmentCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppointmentCustomCell.xib; sourceTree = "<group>"; };
-		533D3D42140017130043833E /* DiaryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = DiaryTableViewController.h; sourceTree = "<group>"; };
+		533D3D42140017130043833E /* DiaryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiaryTableViewController.h; sourceTree = "<group>"; };
 		533D3D43140017130043833E /* DiaryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiaryTableViewController.m; sourceTree = "<group>"; };
 		533D3D45140017EE0043833E /* TasksTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TasksTableViewController.h; sourceTree = "<group>"; };
 		533D3D46140017EE0043833E /* TasksTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TasksTableViewController.m; sourceTree = "<group>"; };
@@ -261,10 +260,6 @@
 		537AD84D1400C9B900259452 /* FoldersTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoldersTableViewController.h; sourceTree = "<group>"; };
 		537AD84E1400C9B900259452 /* FoldersTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoldersTableViewController.m; sourceTree = "<group>"; };
 		537AD8591402544C00259452 /* 11-clock1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "11-clock1.png"; sourceTree = "<group>"; };
-		537AD85B1402D2D000259452 /* Appointment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Appointment.h; sourceTree = "<group>"; };
-		537AD85C1402D2D000259452 /* Appointment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Appointment.m; sourceTree = "<group>"; };
-		537AD85E1402D2D000259452 /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
-		537AD85F1402D2D000259452 /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
 		537C7A5B13FCFF940086D4AE /* 11-clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "11-clock.png"; sourceTree = "<group>"; };
 		537C7A5C13FCFF940086D4AE /* 15-tags.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "15-tags.png"; sourceTree = "<group>"; };
 		537C7A5D13FCFF940086D4AE /* 33-cabinet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "33-cabinet.png"; sourceTree = "<group>"; };
@@ -315,6 +310,12 @@
 		53A599A214107239001AD61F /* folder_24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = folder_24.png; sourceTree = "<group>"; };
 		53A599A51410A135001AD61F /* CustomTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextField.h; sourceTree = "<group>"; };
 		53A599A61410A135001AD61F /* CustomTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextField.m; sourceTree = "<group>"; };
+		53D2B5CA1415B33400375751 /* WriteNow 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "WriteNow 2.xcdatamodel"; sourceTree = "<group>"; };
+		53F3D8061415B9BB00122880 /* Appointment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Appointment.h; sourceTree = "<group>"; };
+		53F3D8071415B9BB00122880 /* Appointment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Appointment.m; sourceTree = "<group>"; };
+		53F3D8091415BA0800122880 /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
+		53F3D80A1415BA0800122880 /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
+		53F3D80C1415C00600122880 /* 101to101a.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = 101to101a.xcmappingmodel; sourceTree = "<group>"; };
 		53FB859913FAEC3800765BFC /* WriteNow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WriteNow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		53FB859D13FAEC3800765BFC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		53FB859F13FAEC3800765BFC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -378,7 +379,7 @@
 		5315678D13FB636C0044C5A9 /* FolderViewController */ = {
 			isa = PBXGroup;
 			children = (
-				535AD07D13FC681A00FB3CB5 /* FilesView */,
+				537AD8581400EF5E00259452 /* FilesTableViewController */,
 				537AD84B1400C98F00259452 /* FoldersTableViewController */,
 				531567FC13FB83B00044C5A9 /* FoldersViewController.h */,
 				531567FD13FB83B00044C5A9 /* FoldersViewController.m */,
@@ -387,15 +388,13 @@
 			name = FolderViewController;
 			sourceTree = "<group>";
 		};
-		5315679113FB63990044C5A9 /* FilesViewController */ = {
+		5315679113FB63990044C5A9 /* DiaryViewController */ = {
 			isa = PBXGroup;
 			children = (
-				537AD8581400EF5E00259452 /* FilesTableViewController */,
 				531567F713FB83800044C5A9 /* DiaryViewController.h */,
 				531567F813FB83800044C5A9 /* DiaryViewController.m */,
-				531567F913FB83800044C5A9 /* FilesViewController.xib */,
 			);
-			name = FilesViewController;
+			name = DiaryViewController;
 			sourceTree = "<group>";
 		};
 		5315679513FB63C20044C5A9 /* CalendarViewController */ = {
@@ -404,7 +403,6 @@
 				53980E9A1409732800833716 /* AddEntityTableViewController */,
 				53E979BD140476F000B780C8 /* AppointmentTableViewController */,
 				53A1E76F14049C7A00481EA4 /* TaskTableViewController */,
-				537FBE0D13FDA0E1005E705F /* Tasks */,
 				53980E8C14095EA800833716 /* AddEntityViewController */,
 				531567F213FB83560044C5A9 /* CalendarViewController.h */,
 				531567F313FB83560044C5A9 /* CalendarViewController.m */,
@@ -528,23 +526,16 @@
 			name = DetailViewController;
 			sourceTree = "<group>";
 		};
-		535AD07D13FC681A00FB3CB5 /* FilesView */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = FilesView;
-			sourceTree = "<group>";
-		};
 		536FBF4113FB12AA000B8B28 /* ManagedObjects */ = {
 			isa = PBXGroup;
 			children = (
+				53F3D8091415BA0800122880 /* Task.h */,
+				53F3D80A1415BA0800122880 /* Task.m */,
+				53F3D8061415B9BB00122880 /* Appointment.h */,
+				53F3D8071415B9BB00122880 /* Appointment.m */,
 				531567CC13FB827A0044C5A9 /* NSManagedObjectContext-insert.h */,
 				531567CD13FB827A0044C5A9 /* NSManagedObjectContext-insert.m */,
 				530DA07613FAFEDB0044914D /* WriteNow.xcdatamodeld */,
-				537AD85E1402D2D000259452 /* Task.h */,
-				537AD85F1402D2D000259452 /* Task.m */,
-				537AD85B1402D2D000259452 /* Appointment.h */,
-				537AD85C1402D2D000259452 /* Appointment.m */,
 				53485C0613FC4EBD001CA9EB /* Memo.h */,
 				53485C0713FC4EBD001CA9EB /* Memo.m */,
 				53485C0313FC4EBD001CA9EB /* Note.h */,
@@ -559,6 +550,7 @@
 				53485BF513FC4EBD001CA9EB /* Tag.m */,
 				53485BF113FC4EBD001CA9EB /* Place.h */,
 				53485BF213FC4EBD001CA9EB /* Place.m */,
+				53F3D80C1415C00600122880 /* 101to101a.xcmappingmodel */,
 			);
 			name = ManagedObjects;
 			sourceTree = "<group>";
@@ -674,6 +666,7 @@
 		53980E9A1409732800833716 /* AddEntityTableViewController */ = {
 			isa = PBXGroup;
 			children = (
+				537FBE0D13FDA0E1005E705F /* Tasks */,
 				53980E9B1409736B00833716 /* AddEntityTableViewController.h */,
 				53980E9C1409736B00833716 /* AddEntityTableViewController.m */,
 			);
@@ -765,7 +758,7 @@
 				531567B313FB81F80044C5A9 /* CustomViews */,
 				5315679D13FB663E0044C5A9 /* SettingsViewController */,
 				5315679513FB63C20044C5A9 /* CalendarViewController */,
-				5315679113FB63990044C5A9 /* FilesViewController */,
+				5315679113FB63990044C5A9 /* DiaryViewController */,
 				5315678D13FB636C0044C5A9 /* FolderViewController */,
 				5315678913FB62E40044C5A9 /* TodayViewController */,
 				532F191013FB0D6500CECBD1 /* MainViewController */,
@@ -918,7 +911,6 @@
 				531567EF13FB827A0044C5A9 /* Tasks icon.png in Resources */,
 				531567F013FB827A0044C5A9 /* ToDo.png in Resources */,
 				531567F613FB83560044C5A9 /* CalendarViewController.xib in Resources */,
-				531567FB13FB83800044C5A9 /* FilesViewController.xib in Resources */,
 				5315680013FB83B00044C5A9 /* FoldersViewController.xib in Resources */,
 				538ADC3F13FCF6FE005C08CD /* MessageEntryBackground.png in Resources */,
 				538ADC4013FCF6FE005C08CD /* MessageEntryBackground@2x.png in Resources */,
@@ -1046,8 +1038,6 @@
 				533D3D50140061750043833E /* AppointmentsTableViewController.m in Sources */,
 				533D3D55140089B60043833E /* DetailViewController.m in Sources */,
 				537AD84F1400C9B900259452 /* FoldersTableViewController.m in Sources */,
-				537AD85D1402D2D000259452 /* Appointment.m in Sources */,
-				537AD8601402D2D000259452 /* Task.m in Sources */,
 				53980E8A1408051500833716 /* CustomTextView.m in Sources */,
 				53980E9514095FF700833716 /* AddEntityViewController.m in Sources */,
 				53980E991409604500833716 /* CustomToolBar.m in Sources */,
@@ -1055,6 +1045,9 @@
 				53A5997C140E9F1F001AD61F /* CustomToolBarMainView.m in Sources */,
 				53A59981140EA75C001AD61F /* CurrentTableViewController.m in Sources */,
 				53A599A71410A135001AD61F /* CustomTextField.m in Sources */,
+				53F3D8081415B9BB00122880 /* Appointment.m in Sources */,
+				53F3D80B1415BA0800122880 /* Task.m in Sources */,
+				53F3D80D1415C00600122880 /* 101to101a.xcmappingmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1246,6 +1239,7 @@
 		530DA07613FAFEDB0044914D /* WriteNow.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				53D2B5CA1415B33400375751 /* WriteNow 2.xcdatamodel */,
 				530DA07713FAFEDB0044914D /* WriteNow.xcdatamodel */,
 			);
 			currentVersion = 530DA07713FAFEDB0044914D /* WriteNow.xcdatamodel */;
