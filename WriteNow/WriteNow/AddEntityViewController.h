@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "CustomToolBar.h"
-#import "ContainerView.h"
 
 @interface AddEntityViewController : UIViewController <UITextFieldDelegate, UITextViewDelegate> {
     
@@ -33,8 +32,7 @@
 @property (nonatomic, retain) NSDate *selectedDate, *selectedTime;
 @property (nonatomic, retain) IBOutlet UIDatePicker *datePicker, *timePicker;
 @property (nonatomic, retain) NSDateFormatter *dateFormatter, *timeFormatter;
-@property (nonatomic, retain) ContainerView *bottomView, *topView;
-
+@property (nonatomic, retain) UIView *bottomView, *topView;
 
 //- (void) swapViews;
 

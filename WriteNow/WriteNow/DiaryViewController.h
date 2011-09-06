@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface FilesViewController : UIViewController <UITextViewDelegate> {
+@interface DiaryViewController : UIViewController <UITextViewDelegate> {
     
     NSManagedObjectContext *managedObjectContext;
     UITableViewController *tableViewController;

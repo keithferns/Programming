@@ -9,6 +9,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "AppointmentCustomCell.h"
 #import "WriteNowAppDelegate.h"
+#import "DetailViewController.h"
 
 @implementation AddEntityTableViewController
 
@@ -29,12 +30,11 @@
 
 - (void)dealloc {
     [super dealloc];
+    
     [_fetchedResultsController release];
     [tableLabel release];
-    //[selectedDate release];  //Releasing this causes a problem. WHY?
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"GetDateNotification" object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NSManagedObjectContextDidSaveNotification 
-                                                  object:nil];    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NSManagedObjectContextDidSaveNotification object:nil];    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -49,6 +49,9 @@
     [super viewDidLoad];
     NSLog(@"IN ADDENTITY TABLEVIEWCONTROLLER");
     [NSFetchedResultsController deleteCacheWithName:@"Root"];
+    
+    [self.view setFrame:CGRectMake(0, 245, 320, 215)];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 245, 320, 215) style:UITableViewStylePlain];
     
     /*-- MOC: Initialize--*/
     if (managedObjectContext == nil) { 
@@ -65,6 +68,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getSelectedDate:) name:@"GetDateNotification" object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleDidSaveNotification:)name:NSManagedObjectContextDidSaveNotification object:nil];
+    
 }
 
 - (void)viewDidUnload {
@@ -113,6 +117,7 @@
     NSLog(@"selected date = %@", selectedDate);
     
     NSPredicate *checkDate = [NSPredicate predicateWithFormat:@"doDate == %@", selectedDate];
+    
     self.fetchedResultsController = [self fetchedResultsControllerWithPredicate:checkDate];
     NSError *error;
     if (![[self fetchedResultsController] performFetch:&error]) {
@@ -175,15 +180,14 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 22;
+    return 20;
 }
 
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section       
-{
+/*
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     
-    UIView* customView = [[[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 300.0, 20.00)] autorelease];
-    customView.backgroundColor = [UIColor redColor];
+    UIView* customView = [[[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 300.0, 20.0)] autorelease];
+    customView.backgroundColor = [UIColor colorWithRed:0.8 green:0.2 blue:0.2 alpha:0.8];
     
     UILabel * headerLabel = [[[UILabel alloc] initWithFrame:CGRectZero] autorelease];
     headerLabel.backgroundColor = [UIColor clearColor];
@@ -199,9 +203,9 @@
     
     return customView;
 }
+*/
 
-
-- (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+- (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 	id<NSFetchedResultsSectionInfo>  sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
     NSDateFormatter *tempDateFormatter = [[NSDateFormatter alloc] init];
     
@@ -292,13 +296,14 @@
 #pragma mark Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // MemoDetailViewController *detailViewController = [[MemoDetailViewController alloc] initWithNibName:@"MemoDetailView" bundle:[NSBundle mainBundle]];
-    // ...
+    
+    //DetailViewController *detailViewController = [[DetailViewController alloc] initWithNibName:@"DetailViewController" bundle:[NSBundle mainBundle]];
     // Pass the selected object to the new view controller.
 	
-	//detailViewController.selectedMemoText = [_fetchedResultsController objectAtIndexPath:indexPath];	
-	//[self presentModalViewController:detailViewController animated:YES];	
+	//detailViewController.selectedFolder = [_fetchedResultsController objectAtIndexPath:indexPath];	
     //[detailViewController release];
+
+ 
 }
 
 #pragma mark -

@@ -38,7 +38,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fetchFiles:) name:@"HasToggledToFilesViewNotification" object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fetchFolders:) name:@"HasToggledToFoldersViewNotification" object:nil];
+    
+    isFolderView = YES;
+    
     _fetchedResultsController.delegate = self;
     [self.view setFrame:CGRectMake(0, 245, 320, 215)];
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 245, 320, 215) style:UITableViewStylePlain];
@@ -51,6 +57,8 @@
     [self.tableView addSubview:searchBar];
     
     [searchBar setTranslucent:YES];
+
+
     [searchBar setPlaceholder:@"Search for Folder"];
     self.tableView.tableHeaderView = searchBar;
     
@@ -63,6 +71,33 @@
 	if (![[self fetchedResultsController] performFetch:&error]) {
 	}
 }
+
+- (void)fetchFiles:(NSNotification *)notification{
+    isFolderView = NO;
+    _fetchedResultsController = nil;
+    NSLog(@"HAS TOGGLED TO FILES VIEW NOTIFICATION RECIEVED");
+    [searchBar setPlaceholder:@"Search for File"];
+    NSError *error;
+	if (![[self fetchedResultsController] performFetch:&error]) {
+	}
+    [self.tableView reloadData];
+    return;
+}
+
+- (void)fetchFolders:(NSNotification *)notification{
+    isFolderView = YES;
+    _fetchedResultsController = nil;
+    NSLog(@"HAS TOGGLED TO FOLDERS VIEW NOTIFICATION RECIEVED");
+
+    [searchBar setPlaceholder:@"Search for Folder"];
+    NSError *error;
+	if (![[self fetchedResultsController] performFetch:&error]) {
+	}
+    [self.tableView reloadData];
+
+    return;
+}
+
 
 - (void)viewDidUnload {
     [super viewDidUnload];
@@ -94,11 +129,15 @@
 }
 
 - (void) searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
-    CGRect topFrame = CGRectMake(0, 0, 320, 220);
+    CGRect topFrame = CGRectMake(0, 0, 320, 245);
     [self.tableView setFrame:topFrame];
     [self.searchBar setShowsCancelButton:YES animated:YES];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"StartedSearching_Notification" object:nil];
 }
 
+- (void) searchBarTextDidEndEditing:(UISearchBar *)searchBar{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"EndedSearching_Notification" object:nil];
+}
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {    
     NSString * searchString = self.searchBar.text;
     NSLog(@"Search String is %@", searchString);    
@@ -112,10 +151,15 @@
 }
 
 - (void) searchBarCancelButtonClicked:(UISearchBar *)searchBar {
-    CGRect bottomFrame = CGRectMake(0, 200, 320, 215);
+    CGRect bottomFrame = CGRectMake(0, 205, 320, 204);
     [self.searchBar resignFirstResponder];
-    
+    self.searchBar.text = @"";
     [self.tableView setFrame:bottomFrame];
+    self.fetchedResultsController = [self fetchedResultsControllerWithPredicate:nil];
+    NSError *error;
+	if (![[self fetchedResultsController] performFetch:&error]) {
+	}
+    [self.tableView reloadData];
 }
 
 #pragma mark - Fetched Results Controller
@@ -123,7 +167,16 @@
 - (NSFetchedResultsController *) fetchedResultsControllerWithPredicate: (NSPredicate *) aPredicate {
     
 	NSFetchRequest *request = [[NSFetchRequest alloc] init];
-	[request setEntity:[NSEntityDescription entityForName:@"Folder" inManagedObjectContext:managedObjectContext]];
+    if (isFolderView) {
+        NSLog(@"SETTING NSENTITYDESCRIPTION TO FOLDER");
+        [request setEntity:[NSEntityDescription entityForName:@"Folder" inManagedObjectContext:managedObjectContext]];
+    }
+    else if(!isFolderView){
+        NSLog(@"SETTING NSENTITYDESCRIPTION TO FILE");
+
+        [request setEntity:[NSEntityDescription entityForName:@"File" inManagedObjectContext:managedObjectContext]];
+
+    }
     [request setFetchBatchSize:10];
     [request setPredicate:aPredicate];
     
@@ -162,8 +215,11 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	//return [[_fetchedResultsController sections] count];
-    return 1;
+    NSInteger count = [[_fetchedResultsController sections] count];
+	if (count == 0) {
+		count = 1;
+	}
+    return count;
 }
 /*
  - (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
@@ -174,22 +230,31 @@
  }
  */
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section	
-    id <NSFetchedResultsSectionInfo> sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
-    return [sectionInfo numberOfObjects];
-    //return 1;
+    NSInteger numberOfRows = 0;
+    if ([[_fetchedResultsController sections] count] > 0) {
+        id <NSFetchedResultsSectionInfo> sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
+        numberOfRows = [sectionInfo numberOfObjects];
+    }
+    return numberOfRows;
 }
 
 - (void) configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
 	
 	FolderCell *mycell;
 	if([cell isKindOfClass:[UITableViewCell class]]){
-        
 		mycell = (FolderCell *) cell;
 	}
-    Folder *aFolder = [_fetchedResultsController objectAtIndexPath:indexPath];	
+    if (isFolderView) {
+        Folder *aFolder = [_fetchedResultsController objectAtIndexPath:indexPath];	
+        
+        [mycell.folderName setText:aFolder.name];
+    }
+    else if (!isFolderView){
+        File *aFile = [_fetchedResultsController objectAtIndexPath:indexPath];	
+        
+        [mycell.folderName setText:aFile.name];
+    }
     
-    [mycell.folderName setText:aFolder.name];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -256,7 +321,17 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    /*
+    
+    //KJF NOTE: POST A NOTIFICATION WITH THE SELECTED ROW AS THE OBJECT PASSED WITH THE NOTIFICATION TO THE VIEW CONTROLLER
+    
+    if ([[_fetchedResultsController objectAtIndexPath:indexPath] isKindOfClass:[Folder class]]) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"FolderSelectedInTableViewControllerNotification" object:[_fetchedResultsController objectAtIndexPath:indexPath]];
+    }
+    else if ([[_fetchedResultsController objectAtIndexPath:indexPath] isKindOfClass:[File class]]){
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"FileSelectedInTableViewControllerNotification" object:[_fetchedResultsController objectAtIndexPath:indexPath]];
+    }
+    
+    /*VIEWING
      Folder *selectedFolder = [_fetchedResultsController objectAtIndexPath:indexPath];
      //  Create another view controller.
      
@@ -271,6 +346,19 @@
      //Present the new viewController
      [self presentModalViewController:detailViewController animated:YES];
      [detailViewController release];
+     */
+    /* ADDING
+    newMemo.folder = [_fetchedResultsController objectAtIndexPath:indexPath];	
+    
+    NSLog(@"%@",newMemo.folder);
+    
+    folderTextField.text = newMemo.folder.name;
+    isSelected = YES;
+    
+    NSError *error;
+	if(![managedObjectContext save:&error]){ 
+        NSLog(@"DID NOT SAVE");
+	}
      */
 }
 @end

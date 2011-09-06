@@ -50,8 +50,10 @@
     [super viewDidLoad];
 
     [NSFetchedResultsController deleteCacheWithName:@"Root"];
+    _fetchedResultsController.delegate = self;
 
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleDidSaveNotification:) name:NSManagedObjectContextDidSaveNotification object:nil];
 
     
     /*configure tableView, set its properties and add it to the main view.*/
@@ -69,9 +71,8 @@
     [headerLabel release];
     [headerView release];
         
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleDidSaveNotification:) name:NSManagedObjectContextDidSaveNotification object:nil];
+
     
-    _fetchedResultsController.delegate = self;
     [self.view setFrame:CGRectMake(0, 245, 320, 215)];
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 245, 320, 215) style:UITableViewStylePlain];
     
@@ -86,9 +87,12 @@
 }
 
 - (void)handleDidSaveNotification:(NSNotification *)notification {
-    NSLog(@"NSManagedObjectContextDidSaveNotification Received By CurrentViewController");
+    NSLog(@"NSManagedObjectContextDidSaveNotification Received By CurrentTableViewController");
     
     [managedObjectContext mergeChangesFromContextDidSaveNotification:notification];
+    NSError *error;
+	if (![[self fetchedResultsController] performFetch:&error]) {
+	}
     [self.tableView reloadData];
 }
 
@@ -177,7 +181,7 @@
     return 20;
 }
 
-
+/*
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section       
 {
     
@@ -187,12 +191,18 @@
     UIView* customView = [[[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 300.0, 20.00)] autorelease];
     
     if (mySection == 0){
-        customView.backgroundColor = [UIColor colorWithRed:0.3 green:0.7 blue:0.7 alpha:1.0];
+       // customView.backgroundColor = [UIColor colorWithRed:0.3 green:0.7 blue:0.7 alpha:1.0];
+        customView.backgroundColor = [UIColor lightGrayColor];
     }
     else if (mySection == 1){
-        customView.backgroundColor = [UIColor colorWithRed:0.8 green:0.2 blue:0.2 alpha:1.0];    }
+        //customView.backgroundColor = [UIColor colorWithRed:0.8 green:0.2 blue:0.2 alpha:1.0]; 
+        customView.backgroundColor = [UIColor lightGrayColor];
+
+    }
     else if (mySection == 2) {
-        customView.backgroundColor = [UIColor colorWithRed:0.9 green:0.5 blue:0.2 alpha:1.0];
+        customView.backgroundColor = [UIColor lightGrayColor];
+
+        //customView.backgroundColor = [UIColor colorWithRed:0.9 green:0.5 blue:0.2 alpha:1.0];
     }    
     
     UILabel * headerLabel = [[[UILabel alloc] initWithFrame:CGRectZero] autorelease];
@@ -209,6 +219,7 @@
     
     return customView;
 }
+*/
 
 - (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
     id<NSFetchedResultsSectionInfo>  sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
@@ -419,6 +430,7 @@
     // The fetch controller is about to start sending change notifications, so prepare the table view for updates.
     [self.tableView beginUpdates];
 }
+
 - (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
 	
 	
@@ -426,20 +438,25 @@
 			
         case NSFetchedResultsChangeInsert:
             [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            NSLog(@"FetchedResultsController ChangeInsert");
             break;
-			
+
         case NSFetchedResultsChangeDelete:
 			[self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            NSLog(@"FetchedResultsController ChangeDelete");
+
             break;
-			
+
         case NSFetchedResultsChangeUpdate:
 			[self configureCell:[self.tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+            NSLog(@"FetchedResultsController ChangeUpdate");
             break;
-			
         case NSFetchedResultsChangeMove:
             [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
             // Reloading the section inserts a new row and ensures that titles are updated appropriately.
             [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:newIndexPath.section] withRowAnimation:UITableViewRowAnimationFade];
+            NSLog(@"FetchedResultsController ChangeMove");
+
             break;
     }
 }

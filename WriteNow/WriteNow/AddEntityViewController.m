@@ -11,7 +11,6 @@
 #import "AppointmentsTableViewController.h"
 #import "TasksTableViewController.h"
 
-#import "ContainerView.h"
 #import "CustomTextView.h"
 #import "CustomToolBar.h"
 
@@ -27,7 +26,7 @@
 @synthesize selectedDate, selectedTime;
 @synthesize dateFormatter, timeFormatter;
 @synthesize toolbar;
-@synthesize bottomView, topView;
+@synthesize topView, bottomView;
 
 - (void)dealloc {
     [super dealloc];
@@ -52,7 +51,12 @@
 - (void)viewDidUnload {
     [super viewDidUnload];
     // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+    datePicker = nil;
+    timePicker = nil;
+    timeFormatter = nil;
+    dateField = nil;
+    selectedDate = nil;
+    selectedTime = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -72,6 +76,12 @@
     
     /*--NOTIFICATIONS: register --*/
     
+    // [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(dateFieldDidEndEditing:) name:UITextFieldTextDidEndEditingNotification object:dateField];
+    
+    //[[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(timeFieldDidEndEditing:) name:UITextFieldTextDidEndEditingNotification object:startTimeField];
+    
+    //[[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(recurringFieldDidEndEditing:) name:UITextFieldTextDidEndEditingNotification object:endTimeField];
+    
     /* Search Bar Notification sent from FolderTable View to the Main view to accommodate the moving TableView 
      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasShown)  name:UIKeyboardDidShowNotification object:foldersViewController.searchBar];
      */
@@ -82,19 +92,17 @@
     
     /*-- VIEWS:BASE: setup and initialize --*/
     
-    topView = [[ContainerView alloc] initWithFrame:CGRectMake(0, 0, 320, 205)];
-    bottomView = [[ContainerView alloc] initWithFrame:CGRectMake(0, 205, 320, 255)];
+    topView = [[UIView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:topView];
-    [self.view addSubview:bottomView];
     
     /*--VIEWS:TOPVIEW:INPUT: setup and init the TEXTVIEW and the TEXTFIELDS --*/
     
     toolbar = [[CustomToolBar alloc] initWithFrame:CGRectMake(0, 195, 320, 40)];
-    [toolbar.backButton setTarget:self];
-    [toolbar.backButton setAction:@selector(backAction)];
+    // [toolbar.backButton setTarget:self];
+    //[toolbar.backButton setAction:@selector(backAction)];
     
-    [toolbar.datetimeButton setTarget:self];
-    [toolbar.datetimeButton setAction:@selector(setAppointmentDate)];
+   // [toolbar.datetimeButton setTarget:self];
+    //[toolbar.datetimeButton setAction:@selector(setAppointmentDate)];
     
     [toolbar.dismissKeyboard setTarget:self];
     [toolbar.dismissKeyboard setAction:@selector(dismissKeyboard)];
@@ -106,6 +114,18 @@
     [topView addSubview:textView];
     [textView setInputAccessoryView:toolbar];
 
+    //datePicker = [[UIDatePicker alloc]initWithFrame:CGRectMake(0, 245, 320, 216)];
+    //[datePicker setDatePickerMode:UIDatePickerModeDate];
+    [datePicker setDate:[NSDate date]];
+    [datePicker setMinimumDate:[NSDate date]];
+    [datePicker setMaximumDate:[NSDate dateWithTimeIntervalSinceNow:(60*60*24*365)]];
+    datePicker.timeZone = [NSTimeZone systemTimeZone];
+    
+    //timePicker = [[UIDatePicker alloc]initWithFrame:CGRectMake(0, 245, 320, 216)];    
+    //[timePicker setDatePickerMode:UIDatePickerModeTime];
+    timePicker.timeZone = [NSTimeZone systemTimeZone];
+    [timePicker setTag:1];
+    
     /*--DATEFIELD--*/
     
     dateField = [[UITextField alloc] initWithFrame:CGRectMake(5, 165, 100, 35)];
@@ -115,12 +135,13 @@
     [dateField setInputAccessoryView:toolbar];
     [dateField setTag:0];
     [dateField setDelegate:self];
+    [dateField setTextAlignment:UITextAlignmentLeft];
     // [dateField becomeFirstResponder];
     [topView addSubview:dateField];
     
     if (sender == @"Appointment") {
         tableViewController = [[AddEntityTableViewController alloc] init]; //init the tableViewController to appropriateTableView
-        topView.label.text = @"New Appointment";
+        self.title = @"New Appointment";
         
         startTimeField = [[UITextField alloc] initWithFrame:CGRectMake(110, 165, 100, 35)];
         [startTimeField setBorderStyle:UITextBorderStyleRoundedRect];
@@ -142,7 +163,7 @@
     }
     else if (sender == @"To Do") {
         tableViewController = [[TasksTableViewController alloc] init];
-        topView.label.text = @"New To Do";
+        self.title = @"New To Do";
         
         recurringField = [[UITextField alloc] initWithFrame:CGRectMake(215, 165, 100, 35)];
         [recurringField setBorderStyle:UITextBorderStyleRoundedRect];
@@ -153,15 +174,16 @@
         [recurringField setTag:2];
         [topView addSubview:recurringField];
     }
-       
-    [tableViewController.tableView setFrame:CGRectMake(0, 0, 320, 255)];    
+
     [tableViewController.tableView.layer setCornerRadius:10.0];
     [tableViewController.tableView setSeparatorColor:[UIColor blackColor]];
     [tableViewController.tableView setSectionHeaderHeight:18];
     tableViewController.tableView.rowHeight = 30.0;
     //[tableViewController.tableView setTableHeaderView:tableLabel];
-    [bottomView addSubview:tableViewController.tableView];
 
+    bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, 205, 320, 255)];
+    [self.view addSubview:bottomView];
+    [bottomView addSubview:tableViewController.view];
     
     self.dateFormatter = [[NSDateFormatter alloc] init];
 	[self.dateFormatter setDateStyle:NSDateFormatterShortStyle];

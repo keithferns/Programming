@@ -38,7 +38,7 @@
 		531567F013FB827A0044C5A9 /* ToDo.png in Resources */ = {isa = PBXBuildFile; fileRef = 531567D513FB827A0044C5A9 /* ToDo.png */; };
 		531567F513FB83560044C5A9 /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 531567F313FB83560044C5A9 /* CalendarViewController.m */; };
 		531567F613FB83560044C5A9 /* CalendarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 531567F413FB83560044C5A9 /* CalendarViewController.xib */; };
-		531567FA13FB83800044C5A9 /* FilesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 531567F813FB83800044C5A9 /* FilesViewController.m */; };
+		531567FA13FB83800044C5A9 /* DiaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 531567F813FB83800044C5A9 /* DiaryViewController.m */; };
 		531567FB13FB83800044C5A9 /* FilesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 531567F913FB83800044C5A9 /* FilesViewController.xib */; };
 		531567FF13FB83B00044C5A9 /* FoldersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 531567FD13FB83B00044C5A9 /* FoldersViewController.m */; };
 		5315680013FB83B00044C5A9 /* FoldersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 531567FE13FB83B00044C5A9 /* FoldersViewController.xib */; };
@@ -49,7 +49,7 @@
 		533D3D3413FF98320043833E /* bluebutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 533D3D3313FF98320043833E /* bluebutton.png */; };
 		533D3D3713FF99230043833E /* AppointmentCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 533D3D3613FF99220043833E /* AppointmentCustomCell.m */; };
 		533D3D3913FF99470043833E /* AppointmentCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 533D3D3813FF99470043833E /* AppointmentCustomCell.xib */; };
-		533D3D44140017130043833E /* FilesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 533D3D43140017130043833E /* FilesTableViewController.m */; };
+		533D3D44140017130043833E /* DiaryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 533D3D43140017130043833E /* DiaryTableViewController.m */; };
 		533D3D47140017EE0043833E /* TasksTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 533D3D46140017EE0043833E /* TasksTableViewController.m */; };
 		533D3D50140061750043833E /* AppointmentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 533D3D4F140061750043833E /* AppointmentsTableViewController.m */; };
 		533D3D55140089B60043833E /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 533D3D53140089B60043833E /* DetailViewController.m */; };
@@ -97,14 +97,20 @@
 		537C7A6B13FD002D0086D4AE /* 14-tag.png in Resources */ = {isa = PBXBuildFile; fileRef = 537C7A6A13FD002D0086D4AE /* 14-tag.png */; };
 		537FBE1213FDA100005E705F /* TasksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 537FBE1013FDA100005E705F /* TasksViewController.m */; };
 		537FBE1313FDA100005E705F /* TasksViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 537FBE1113FDA100005E705F /* TasksViewController.xib */; };
+		538165041410BA6700E90FD1 /* AddFolderShaded30.png in Resources */ = {isa = PBXBuildFile; fileRef = 538164FB1410BA6700E90FD1 /* AddFolderShaded30.png */; };
+		538165051410BA6700E90FD1 /* AddNoteShaded30.png in Resources */ = {isa = PBXBuildFile; fileRef = 538164FC1410BA6700E90FD1 /* AddNoteShaded30.png */; };
+		538165061410BA6700E90FD1 /* book_nav.png in Resources */ = {isa = PBXBuildFile; fileRef = 538164FD1410BA6700E90FD1 /* book_nav.png */; };
+		538165071410BA6700E90FD1 /* folder_nav.png in Resources */ = {isa = PBXBuildFile; fileRef = 538164FE1410BA6700E90FD1 /* folder_nav.png */; };
+		538165081410BA6700E90FD1 /* FolderShaded_30.png in Resources */ = {isa = PBXBuildFile; fileRef = 538164FF1410BA6700E90FD1 /* FolderShaded_30.png */; };
+		538165091410BA6700E90FD1 /* NotePad_nav.png in Resources */ = {isa = PBXBuildFile; fileRef = 538165001410BA6700E90FD1 /* NotePad_nav.png */; };
+		5381650A1410BA6700E90FD1 /* pages_nav.png in Resources */ = {isa = PBXBuildFile; fileRef = 538165011410BA6700E90FD1 /* pages_nav.png */; };
+		5381650B1410BA6700E90FD1 /* SaveToArchive_24.png in Resources */ = {isa = PBXBuildFile; fileRef = 538165021410BA6700E90FD1 /* SaveToArchive_24.png */; };
+		5381650C1410BA6700E90FD1 /* SaveToArchive30.png in Resources */ = {isa = PBXBuildFile; fileRef = 538165031410BA6700E90FD1 /* SaveToArchive30.png */; };
 		538ADC3F13FCF6FE005C08CD /* MessageEntryBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 538ADC3B13FCF6FC005C08CD /* MessageEntryBackground.png */; };
 		538ADC4013FCF6FE005C08CD /* MessageEntryBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 538ADC3C13FCF6FC005C08CD /* MessageEntryBackground@2x.png */; };
 		538ADC4113FCF6FE005C08CD /* MessageEntryInputField.png in Resources */ = {isa = PBXBuildFile; fileRef = 538ADC3D13FCF6FD005C08CD /* MessageEntryInputField.png */; };
 		538ADC4213FCF6FE005C08CD /* MessageEntryInputField@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 538ADC3E13FCF6FD005C08CD /* MessageEntryInputField@2x.png */; };
-		53980E771407746B00833716 /* ContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 53980E761407746900833716 /* ContainerView.m */; };
 		53980E79140779A200833716 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53980E78140779A200833716 /* SettingsViewController.xib */; };
-		53980E86140786FA00833716 /* AddFolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53980E84140786FA00833716 /* AddFolderViewController.m */; };
-		53980E87140786FA00833716 /* AddFolderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53980E85140786FA00833716 /* AddFolderViewController.xib */; };
 		53980E8A1408051500833716 /* CustomTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 53980E891408051500833716 /* CustomTextView.m */; };
 		53980E9514095FF700833716 /* AddEntityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53980E9314095FF700833716 /* AddEntityViewController.m */; };
 		53980E9614095FF700833716 /* AddEntityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53980E9414095FF700833716 /* AddEntityViewController.xib */; };
@@ -112,8 +118,17 @@
 		53980E9D1409736B00833716 /* AddEntityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53980E9C1409736B00833716 /* AddEntityTableViewController.m */; };
 		53A5997C140E9F1F001AD61F /* CustomToolBarMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 53A5997B140E9F1F001AD61F /* CustomToolBarMainView.m */; };
 		53A59981140EA75C001AD61F /* CurrentTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53A59980140EA75C001AD61F /* CurrentTableViewController.m */; };
-		53AA948413FD7C3C001D69DC /* AppointmentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53AA948213FD7C3C001D69DC /* AppointmentsViewController.m */; };
-		53AA948513FD7C3C001D69DC /* AppointmentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53AA948313FD7C3C001D69DC /* AppointmentsViewController.xib */; };
+		53A59983140F4707001AD61F /* book_24.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A59982140F46FF001AD61F /* book_24.png */; };
+		53A59985140FFB3A001AD61F /* remind_repeat.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A59984140FFB2F001AD61F /* remind_repeat.png */; };
+		53A5999514106078001AD61F /* calendar_nav.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A5999214106056001AD61F /* calendar_nav.png */; };
+		53A5999614106078001AD61F /* list_nav.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A599931410605F001AD61F /* list_nav.png */; };
+		53A5999714106078001AD61F /* todo_nav.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A5999414106069001AD61F /* todo_nav.png */; };
+		53A5999C14106470001AD61F /* addDoc_nav.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A5999A14106459001AD61F /* addDoc_nav.png */; };
+		53A5999D14106470001AD61F /* addFolder_nav.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A5999B14106462001AD61F /* addFolder_nav.png */; };
+		53A599A0141064B7001AD61F /* tasks_nav.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A5999E141064A9001AD61F /* tasks_nav.png */; };
+		53A599A1141064B7001AD61F /* viewFolders_nav.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A5999F141064B0001AD61F /* viewFolders_nav.png */; };
+		53A599A314107244001AD61F /* folder_24.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A599A214107239001AD61F /* folder_24.png */; };
+		53A599A71410A135001AD61F /* CustomTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 53A599A61410A135001AD61F /* CustomTextField.m */; };
 		53FB859E13FAEC3800765BFC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53FB859D13FAEC3800765BFC /* UIKit.framework */; };
 		53FB85A013FAEC3800765BFC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53FB859F13FAEC3800765BFC /* Foundation.framework */; };
 		53FB85A213FAEC3800765BFC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53FB85A113FAEC3800765BFC /* CoreGraphics.framework */; };
@@ -183,8 +198,8 @@
 		531567F213FB83560044C5A9 /* CalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarViewController.h; sourceTree = "<group>"; };
 		531567F313FB83560044C5A9 /* CalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarViewController.m; sourceTree = "<group>"; };
 		531567F413FB83560044C5A9 /* CalendarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarViewController.xib; sourceTree = "<group>"; };
-		531567F713FB83800044C5A9 /* FilesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilesViewController.h; sourceTree = "<group>"; };
-		531567F813FB83800044C5A9 /* FilesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilesViewController.m; sourceTree = "<group>"; };
+		531567F713FB83800044C5A9 /* DiaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = DiaryViewController.h; sourceTree = "<group>"; };
+		531567F813FB83800044C5A9 /* DiaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiaryViewController.m; sourceTree = "<group>"; };
 		531567F913FB83800044C5A9 /* FilesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilesViewController.xib; sourceTree = "<group>"; };
 		531567FC13FB83B00044C5A9 /* FoldersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoldersViewController.h; sourceTree = "<group>"; };
 		531567FD13FB83B00044C5A9 /* FoldersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoldersViewController.m; sourceTree = "<group>"; };
@@ -198,8 +213,8 @@
 		533D3D3513FF99220043833E /* AppointmentCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppointmentCustomCell.h; sourceTree = "<group>"; };
 		533D3D3613FF99220043833E /* AppointmentCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppointmentCustomCell.m; sourceTree = "<group>"; };
 		533D3D3813FF99470043833E /* AppointmentCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppointmentCustomCell.xib; sourceTree = "<group>"; };
-		533D3D42140017130043833E /* FilesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilesTableViewController.h; sourceTree = "<group>"; };
-		533D3D43140017130043833E /* FilesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilesTableViewController.m; sourceTree = "<group>"; };
+		533D3D42140017130043833E /* DiaryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = DiaryTableViewController.h; sourceTree = "<group>"; };
+		533D3D43140017130043833E /* DiaryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiaryTableViewController.m; sourceTree = "<group>"; };
 		533D3D45140017EE0043833E /* TasksTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TasksTableViewController.h; sourceTree = "<group>"; };
 		533D3D46140017EE0043833E /* TasksTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TasksTableViewController.m; sourceTree = "<group>"; };
 		533D3D4E140061750043833E /* AppointmentsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppointmentsTableViewController.h; sourceTree = "<group>"; };
@@ -261,16 +276,20 @@
 		537FBE0F13FDA100005E705F /* TasksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TasksViewController.h; sourceTree = "<group>"; };
 		537FBE1013FDA100005E705F /* TasksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TasksViewController.m; sourceTree = "<group>"; };
 		537FBE1113FDA100005E705F /* TasksViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TasksViewController.xib; sourceTree = "<group>"; };
+		538164FB1410BA6700E90FD1 /* AddFolderShaded30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AddFolderShaded30.png; sourceTree = "<group>"; };
+		538164FC1410BA6700E90FD1 /* AddNoteShaded30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AddNoteShaded30.png; sourceTree = "<group>"; };
+		538164FD1410BA6700E90FD1 /* book_nav.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = book_nav.png; sourceTree = "<group>"; };
+		538164FE1410BA6700E90FD1 /* folder_nav.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = folder_nav.png; sourceTree = "<group>"; };
+		538164FF1410BA6700E90FD1 /* FolderShaded_30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FolderShaded_30.png; sourceTree = "<group>"; };
+		538165001410BA6700E90FD1 /* NotePad_nav.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NotePad_nav.png; sourceTree = "<group>"; };
+		538165011410BA6700E90FD1 /* pages_nav.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pages_nav.png; sourceTree = "<group>"; };
+		538165021410BA6700E90FD1 /* SaveToArchive_24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SaveToArchive_24.png; sourceTree = "<group>"; };
+		538165031410BA6700E90FD1 /* SaveToArchive30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SaveToArchive30.png; sourceTree = "<group>"; };
 		538ADC3B13FCF6FC005C08CD /* MessageEntryBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MessageEntryBackground.png; path = "../../../Programming2/HansPinckaers-GrowingTextView-86998d6/example/MessageEntryBackground.png"; sourceTree = "<group>"; };
 		538ADC3C13FCF6FC005C08CD /* MessageEntryBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "MessageEntryBackground@2x.png"; path = "../../../Programming2/HansPinckaers-GrowingTextView-86998d6/example/MessageEntryBackground@2x.png"; sourceTree = "<group>"; };
 		538ADC3D13FCF6FD005C08CD /* MessageEntryInputField.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MessageEntryInputField.png; path = "../../../Programming2/HansPinckaers-GrowingTextView-86998d6/example/MessageEntryInputField.png"; sourceTree = "<group>"; };
 		538ADC3E13FCF6FD005C08CD /* MessageEntryInputField@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "MessageEntryInputField@2x.png"; path = "../../../Programming2/HansPinckaers-GrowingTextView-86998d6/example/MessageEntryInputField@2x.png"; sourceTree = "<group>"; };
-		53980E751407746700833716 /* ContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContainerView.h; sourceTree = "<group>"; };
-		53980E761407746900833716 /* ContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContainerView.m; sourceTree = "<group>"; };
 		53980E78140779A200833716 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
-		53980E83140786FA00833716 /* AddFolderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFolderViewController.h; sourceTree = "<group>"; };
-		53980E84140786FA00833716 /* AddFolderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFolderViewController.m; sourceTree = "<group>"; };
-		53980E85140786FA00833716 /* AddFolderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddFolderViewController.xib; sourceTree = "<group>"; };
 		53980E881408051400833716 /* CustomTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextView.h; sourceTree = "<group>"; };
 		53980E891408051500833716 /* CustomTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextView.m; sourceTree = "<group>"; };
 		53980E9214095FF700833716 /* AddEntityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddEntityViewController.h; sourceTree = "<group>"; };
@@ -284,9 +303,18 @@
 		53A5997B140E9F1F001AD61F /* CustomToolBarMainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomToolBarMainView.m; sourceTree = "<group>"; };
 		53A5997F140EA75C001AD61F /* CurrentTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentTableViewController.h; sourceTree = "<group>"; };
 		53A59980140EA75C001AD61F /* CurrentTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentTableViewController.m; sourceTree = "<group>"; };
-		53AA948113FD7C3C001D69DC /* AppointmentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppointmentsViewController.h; sourceTree = "<group>"; };
-		53AA948213FD7C3C001D69DC /* AppointmentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppointmentsViewController.m; sourceTree = "<group>"; };
-		53AA948313FD7C3C001D69DC /* AppointmentsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppointmentsViewController.xib; sourceTree = "<group>"; };
+		53A59982140F46FF001AD61F /* book_24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = book_24.png; sourceTree = "<group>"; };
+		53A59984140FFB2F001AD61F /* remind_repeat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = remind_repeat.png; sourceTree = "<group>"; };
+		53A5999214106056001AD61F /* calendar_nav.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar_nav.png; sourceTree = "<group>"; };
+		53A599931410605F001AD61F /* list_nav.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list_nav.png; sourceTree = "<group>"; };
+		53A5999414106069001AD61F /* todo_nav.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = todo_nav.png; sourceTree = "<group>"; };
+		53A5999A14106459001AD61F /* addDoc_nav.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addDoc_nav.png; sourceTree = "<group>"; };
+		53A5999B14106462001AD61F /* addFolder_nav.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addFolder_nav.png; sourceTree = "<group>"; };
+		53A5999E141064A9001AD61F /* tasks_nav.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tasks_nav.png; sourceTree = "<group>"; };
+		53A5999F141064B0001AD61F /* viewFolders_nav.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = viewFolders_nav.png; sourceTree = "<group>"; };
+		53A599A214107239001AD61F /* folder_24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = folder_24.png; sourceTree = "<group>"; };
+		53A599A51410A135001AD61F /* CustomTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextField.h; sourceTree = "<group>"; };
+		53A599A61410A135001AD61F /* CustomTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextField.m; sourceTree = "<group>"; };
 		53FB859913FAEC3800765BFC /* WriteNow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WriteNow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		53FB859D13FAEC3800765BFC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		53FB859F13FAEC3800765BFC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -363,8 +391,8 @@
 			isa = PBXGroup;
 			children = (
 				537AD8581400EF5E00259452 /* FilesTableViewController */,
-				531567F713FB83800044C5A9 /* FilesViewController.h */,
-				531567F813FB83800044C5A9 /* FilesViewController.m */,
+				531567F713FB83800044C5A9 /* DiaryViewController.h */,
+				531567F813FB83800044C5A9 /* DiaryViewController.m */,
 				531567F913FB83800044C5A9 /* FilesViewController.xib */,
 			);
 			name = FilesViewController;
@@ -373,6 +401,11 @@
 		5315679513FB63C20044C5A9 /* CalendarViewController */ = {
 			isa = PBXGroup;
 			children = (
+				53980E9A1409732800833716 /* AddEntityTableViewController */,
+				53E979BD140476F000B780C8 /* AppointmentTableViewController */,
+				53A1E76F14049C7A00481EA4 /* TaskTableViewController */,
+				537FBE0D13FDA0E1005E705F /* Tasks */,
+				53980E8C14095EA800833716 /* AddEntityViewController */,
 				531567F213FB83560044C5A9 /* CalendarViewController.h */,
 				531567F313FB83560044C5A9 /* CalendarViewController.m */,
 				531567F413FB83560044C5A9 /* CalendarViewController.xib */,
@@ -390,36 +423,33 @@
 			name = SettingsViewController;
 			sourceTree = "<group>";
 		};
-		531567B313FB81F80044C5A9 /* CustomCells */ = {
+		531567B313FB81F80044C5A9 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				5381650E1410ED0000E90FD1 /* CustomTextView */,
+				53A599A41410A106001AD61F /* CustomTextField */,
 				53980E8B14095DD700833716 /* CustomToolBar */,
-				53980E751407746700833716 /* ContainerView.h */,
-				53980E761407746900833716 /* ContainerView.m */,
-				531567BE13FB827A0044C5A9 /* FileCustomCell.h */,
-				531567BF13FB827A0044C5A9 /* FileCustomCell.m */,
-				531567C013FB827A0044C5A9 /* FileCustomCell.xib */,
-				531567C313FB827A0044C5A9 /* FolderCell.h */,
-				531567C413FB827A0044C5A9 /* FolderCell.m */,
-				531567C513FB827A0044C5A9 /* FolderCell.xib */,
-				531567CE13FB827A0044C5A9 /* StartScreenCustomCell.h */,
-				531567CF13FB827A0044C5A9 /* StartScreenCustomCell.m */,
-				531567D013FB827A0044C5A9 /* StartScreenCustomCell.xib */,
-				531567D113FB827A0044C5A9 /* TaskCustomCell.h */,
-				531567D213FB827A0044C5A9 /* TaskCustomCell.m */,
-				531567D313FB827A0044C5A9 /* TaskCustomCell.xib */,
-				533D3D3513FF99220043833E /* AppointmentCustomCell.h */,
-				533D3D3613FF99220043833E /* AppointmentCustomCell.m */,
-				533D3D3813FF99470043833E /* AppointmentCustomCell.xib */,
-				53980E881408051400833716 /* CustomTextView.h */,
-				53980E891408051500833716 /* CustomTextView.m */,
+				538165121410ED6700E90FD1 /* FileCustomCell */,
+				538165111410ED5600E90FD1 /* FolderCustomCell */,
+				538165131410ED7A00E90FD1 /* StartScreenCustomCell */,
+				538165101410ED4400E90FD1 /* TaskCustomCell */,
+				5381650F1410ED2B00E90FD1 /* AppointmentCustomCell */,
 			);
-			name = CustomCells;
+			name = CustomViews;
 			sourceTree = "<group>";
 		};
 		531567F113FB828B0044C5A9 /* pngs */ = {
 			isa = PBXGroup;
 			children = (
+				53A5999E141064A9001AD61F /* tasks_nav.png */,
+				53A5999F141064B0001AD61F /* viewFolders_nav.png */,
+				53A5999A14106459001AD61F /* addDoc_nav.png */,
+				53A5999B14106462001AD61F /* addFolder_nav.png */,
+				53A5999214106056001AD61F /* calendar_nav.png */,
+				53A599931410605F001AD61F /* list_nav.png */,
+				53A5999414106069001AD61F /* todo_nav.png */,
+				53A59984140FFB2F001AD61F /* remind_repeat.png */,
+				53A59982140F46FF001AD61F /* book_24.png */,
 				53421CD81405021C00CFF414 /* arrow_circle_left_24.png */,
 				53421CD61404FF3B00CFF414 /* alarm_off_24.png */,
 				53421CC01404DC4000CFF414 /* document_todo.png */,
@@ -460,6 +490,7 @@
 				531567B713FB827A0044C5A9 /* classic_folder_documents.png */,
 				531567C113FB827A0044C5A9 /* folder_open_go.png */,
 				531567C213FB827A0044C5A9 /* folder_small.png */,
+				53A599A214107239001AD61F /* folder_24.png */,
 				533D3D3013FEE1120043833E /* note_accept.png */,
 				5318F1EF13FE0F6C00BFDCC5 /* add-item.png */,
 				531567BA13FB827A0044C5A9 /* document_small.png */,
@@ -544,8 +575,8 @@
 		537AD8581400EF5E00259452 /* FilesTableViewController */ = {
 			isa = PBXGroup;
 			children = (
-				533D3D42140017130043833E /* FilesTableViewController.h */,
-				533D3D43140017130043833E /* FilesTableViewController.m */,
+				533D3D42140017130043833E /* DiaryTableViewController.h */,
+				533D3D43140017130043833E /* DiaryTableViewController.m */,
 			);
 			name = FilesTableViewController;
 			sourceTree = "<group>";
@@ -556,19 +587,67 @@
 				537FBE0F13FDA100005E705F /* TasksViewController.h */,
 				537FBE1013FDA100005E705F /* TasksViewController.m */,
 				537FBE1113FDA100005E705F /* TasksViewController.xib */,
-				53A1E76F14049C7A00481EA4 /* TaskTableViewController */,
 			);
 			name = Tasks;
 			sourceTree = "<group>";
 		};
-		53980E82140786B100833716 /* AddFoldersViewController */ = {
+		5381650E1410ED0000E90FD1 /* CustomTextView */ = {
 			isa = PBXGroup;
 			children = (
-				53980E83140786FA00833716 /* AddFolderViewController.h */,
-				53980E84140786FA00833716 /* AddFolderViewController.m */,
-				53980E85140786FA00833716 /* AddFolderViewController.xib */,
+				53980E881408051400833716 /* CustomTextView.h */,
+				53980E891408051500833716 /* CustomTextView.m */,
 			);
-			name = AddFoldersViewController;
+			name = CustomTextView;
+			sourceTree = "<group>";
+		};
+		5381650F1410ED2B00E90FD1 /* AppointmentCustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				533D3D3513FF99220043833E /* AppointmentCustomCell.h */,
+				533D3D3613FF99220043833E /* AppointmentCustomCell.m */,
+				533D3D3813FF99470043833E /* AppointmentCustomCell.xib */,
+			);
+			name = AppointmentCustomCell;
+			sourceTree = "<group>";
+		};
+		538165101410ED4400E90FD1 /* TaskCustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				531567D113FB827A0044C5A9 /* TaskCustomCell.h */,
+				531567D213FB827A0044C5A9 /* TaskCustomCell.m */,
+				531567D313FB827A0044C5A9 /* TaskCustomCell.xib */,
+			);
+			name = TaskCustomCell;
+			sourceTree = "<group>";
+		};
+		538165111410ED5600E90FD1 /* FolderCustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				531567C313FB827A0044C5A9 /* FolderCell.h */,
+				531567C413FB827A0044C5A9 /* FolderCell.m */,
+				531567C513FB827A0044C5A9 /* FolderCell.xib */,
+			);
+			name = FolderCustomCell;
+			sourceTree = "<group>";
+		};
+		538165121410ED6700E90FD1 /* FileCustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				531567BE13FB827A0044C5A9 /* FileCustomCell.h */,
+				531567BF13FB827A0044C5A9 /* FileCustomCell.m */,
+				531567C013FB827A0044C5A9 /* FileCustomCell.xib */,
+			);
+			name = FileCustomCell;
+			sourceTree = "<group>";
+		};
+		538165131410ED7A00E90FD1 /* StartScreenCustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				531567CE13FB827A0044C5A9 /* StartScreenCustomCell.h */,
+				531567CF13FB827A0044C5A9 /* StartScreenCustomCell.m */,
+				531567D013FB827A0044C5A9 /* StartScreenCustomCell.xib */,
+			);
+			name = StartScreenCustomCell;
 			sourceTree = "<group>";
 		};
 		53980E8B14095DD700833716 /* CustomToolBar */ = {
@@ -585,7 +664,6 @@
 		53980E8C14095EA800833716 /* AddEntityViewController */ = {
 			isa = PBXGroup;
 			children = (
-				53980E9A1409732800833716 /* AddEntityTableViewController */,
 				53980E9214095FF700833716 /* AddEntityViewController.h */,
 				53980E9314095FF700833716 /* AddEntityViewController.m */,
 				53980E9414095FF700833716 /* AddEntityViewController.xib */,
@@ -620,15 +698,13 @@
 			name = CurrentTableViewController;
 			sourceTree = "<group>";
 		};
-		53AA947F13FD7B6B001D69DC /* Appointments */ = {
+		53A599A41410A106001AD61F /* CustomTextField */ = {
 			isa = PBXGroup;
 			children = (
-				53AA948113FD7C3C001D69DC /* AppointmentsViewController.h */,
-				53AA948213FD7C3C001D69DC /* AppointmentsViewController.m */,
-				53AA948313FD7C3C001D69DC /* AppointmentsViewController.xib */,
-				53E979BD140476F000B780C8 /* AppointmentTableViewController */,
+				53A599A51410A135001AD61F /* CustomTextField.h */,
+				53A599A61410A135001AD61F /* CustomTextField.m */,
 			);
-			name = Appointments;
+			name = CustomTextField;
 			sourceTree = "<group>";
 		};
 		53E979BC140476AC00B780C8 /* Application Delegate */ = {
@@ -683,14 +759,10 @@
 		53FB85A513FAEC3800765BFC /* WriteNow */ = {
 			isa = PBXGroup;
 			children = (
-				53980E8C14095EA800833716 /* AddEntityViewController */,
-				53980E82140786B100833716 /* AddFoldersViewController */,
 				53E979BC140476AC00B780C8 /* Application Delegate */,
 				533D3D51140089500043833E /* DetailViewController */,
 				536FBF4113FB12AA000B8B28 /* ManagedObjects */,
-				531567B313FB81F80044C5A9 /* CustomCells */,
-				537FBE0D13FDA0E1005E705F /* Tasks */,
-				53AA947F13FD7B6B001D69DC /* Appointments */,
+				531567B313FB81F80044C5A9 /* CustomViews */,
 				5315679D13FB663E0044C5A9 /* SettingsViewController */,
 				5315679513FB63C20044C5A9 /* CalendarViewController */,
 				5315679113FB63990044C5A9 /* FilesViewController */,
@@ -706,6 +778,15 @@
 		53FB85A613FAEC3800765BFC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				538164FB1410BA6700E90FD1 /* AddFolderShaded30.png */,
+				538164FC1410BA6700E90FD1 /* AddNoteShaded30.png */,
+				538164FD1410BA6700E90FD1 /* book_nav.png */,
+				538164FE1410BA6700E90FD1 /* folder_nav.png */,
+				538164FF1410BA6700E90FD1 /* FolderShaded_30.png */,
+				538165001410BA6700E90FD1 /* NotePad_nav.png */,
+				538165011410BA6700E90FD1 /* pages_nav.png */,
+				538165021410BA6700E90FD1 /* SaveToArchive_24.png */,
+				538165031410BA6700E90FD1 /* SaveToArchive30.png */,
 				531567F113FB828B0044C5A9 /* pngs */,
 				53FB85DF13FAEE9E00765BFC /* AppIcons */,
 				53FB85A713FAEC3800765BFC /* WriteNow-Info.plist */,
@@ -851,7 +932,6 @@
 				537C7A6813FD000B0086D4AE /* 179-notepad.png in Resources */,
 				537C7A6913FD000B0086D4AE /* 180-stickynote.png in Resources */,
 				537C7A6B13FD002D0086D4AE /* 14-tag.png in Resources */,
-				53AA948513FD7C3C001D69DC /* AppointmentsViewController.xib in Resources */,
 				537FBE1313FDA100005E705F /* TasksViewController.xib in Resources */,
 				5318F1F013FE0F6C00BFDCC5 /* add-item.png in Resources */,
 				5318F1F213FE0FAB00BFDCC5 /* calendar.png in Resources */,
@@ -883,8 +963,26 @@
 				53421CD71404FF4300CFF414 /* alarm_off_24.png in Resources */,
 				53421CD91405022300CFF414 /* arrow_circle_left_24.png in Resources */,
 				53980E79140779A200833716 /* SettingsViewController.xib in Resources */,
-				53980E87140786FA00833716 /* AddFolderViewController.xib in Resources */,
 				53980E9614095FF700833716 /* AddEntityViewController.xib in Resources */,
+				53A59983140F4707001AD61F /* book_24.png in Resources */,
+				53A59985140FFB3A001AD61F /* remind_repeat.png in Resources */,
+				53A5999514106078001AD61F /* calendar_nav.png in Resources */,
+				53A5999614106078001AD61F /* list_nav.png in Resources */,
+				53A5999714106078001AD61F /* todo_nav.png in Resources */,
+				53A5999C14106470001AD61F /* addDoc_nav.png in Resources */,
+				53A5999D14106470001AD61F /* addFolder_nav.png in Resources */,
+				53A599A0141064B7001AD61F /* tasks_nav.png in Resources */,
+				53A599A1141064B7001AD61F /* viewFolders_nav.png in Resources */,
+				53A599A314107244001AD61F /* folder_24.png in Resources */,
+				538165041410BA6700E90FD1 /* AddFolderShaded30.png in Resources */,
+				538165051410BA6700E90FD1 /* AddNoteShaded30.png in Resources */,
+				538165061410BA6700E90FD1 /* book_nav.png in Resources */,
+				538165071410BA6700E90FD1 /* folder_nav.png in Resources */,
+				538165081410BA6700E90FD1 /* FolderShaded_30.png in Resources */,
+				538165091410BA6700E90FD1 /* NotePad_nav.png in Resources */,
+				5381650A1410BA6700E90FD1 /* pages_nav.png in Resources */,
+				5381650B1410BA6700E90FD1 /* SaveToArchive_24.png in Resources */,
+				5381650C1410BA6700E90FD1 /* SaveToArchive30.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -932,7 +1030,7 @@
 				531567EB13FB827A0044C5A9 /* StartScreenCustomCell.m in Sources */,
 				531567ED13FB827A0044C5A9 /* TaskCustomCell.m in Sources */,
 				531567F513FB83560044C5A9 /* CalendarViewController.m in Sources */,
-				531567FA13FB83800044C5A9 /* FilesViewController.m in Sources */,
+				531567FA13FB83800044C5A9 /* DiaryViewController.m in Sources */,
 				531567FF13FB83B00044C5A9 /* FoldersViewController.m in Sources */,
 				53485BF313FC4EBD001CA9EB /* Place.m in Sources */,
 				53485BF613FC4EBD001CA9EB /* Tag.m in Sources */,
@@ -941,24 +1039,22 @@
 				53485BFF13FC4EBD001CA9EB /* File.m in Sources */,
 				53485C0513FC4EBD001CA9EB /* Note.m in Sources */,
 				53485C0813FC4EBD001CA9EB /* Memo.m in Sources */,
-				53AA948413FD7C3C001D69DC /* AppointmentsViewController.m in Sources */,
 				537FBE1213FDA100005E705F /* TasksViewController.m in Sources */,
 				533D3D3713FF99230043833E /* AppointmentCustomCell.m in Sources */,
-				533D3D44140017130043833E /* FilesTableViewController.m in Sources */,
+				533D3D44140017130043833E /* DiaryTableViewController.m in Sources */,
 				533D3D47140017EE0043833E /* TasksTableViewController.m in Sources */,
 				533D3D50140061750043833E /* AppointmentsTableViewController.m in Sources */,
 				533D3D55140089B60043833E /* DetailViewController.m in Sources */,
 				537AD84F1400C9B900259452 /* FoldersTableViewController.m in Sources */,
 				537AD85D1402D2D000259452 /* Appointment.m in Sources */,
 				537AD8601402D2D000259452 /* Task.m in Sources */,
-				53980E771407746B00833716 /* ContainerView.m in Sources */,
-				53980E86140786FA00833716 /* AddFolderViewController.m in Sources */,
 				53980E8A1408051500833716 /* CustomTextView.m in Sources */,
 				53980E9514095FF700833716 /* AddEntityViewController.m in Sources */,
 				53980E991409604500833716 /* CustomToolBar.m in Sources */,
 				53980E9D1409736B00833716 /* AddEntityTableViewController.m in Sources */,
 				53A5997C140E9F1F001AD61F /* CustomToolBarMainView.m in Sources */,
 				53A59981140EA75C001AD61F /* CurrentTableViewController.m in Sources */,
+				53A599A71410A135001AD61F /* CustomTextField.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

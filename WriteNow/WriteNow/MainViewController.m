@@ -14,7 +14,7 @@
 #import "CurrentViewController.h"
 #import "CalendarViewController.h"
 #import "FoldersViewController.h"
-#import "FilesViewController.h"
+#import "DiaryViewController.h"
 #import "SettingsViewController.h"
 
 @implementation MainViewController
@@ -44,8 +44,11 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
-    [self.navigationBar setHidden:YES];
-      
+    [self.navigationBar setHidden:NO];
+    [self.navigationBar setTintColor:[UIColor colorWithRed:0.2 green:0.2 blue:0.5 alpha:1]];
+
+    [self.navigationBar setTranslucent:YES];
+    
     NSLog(@"MainViewController MOC: %@", managedObjectContext);
     
     NSLog(@"Main View Did Load: %@", self.tabBarItem.title);
@@ -65,8 +68,8 @@
     [self pushViewController:viewController animated:YES];
     [viewController release];
     } 
-    else if (self.tabBarItem.title == @"Documents") {	
-    FilesViewController  *viewController = [[FilesViewController alloc] init];
+    else if (self.tabBarItem.title == @"Diary") {	
+    DiaryViewController  *viewController = [[DiaryViewController alloc] init];
     [self pushViewController:viewController animated:YES];
     [viewController release];
     } 

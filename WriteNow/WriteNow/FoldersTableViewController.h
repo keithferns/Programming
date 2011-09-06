@@ -10,7 +10,11 @@
 
 
 @interface FoldersTableViewController : UITableViewController<NSFetchedResultsControllerDelegate, UISearchBarDelegate> {
+    
     NSFetchedResultsController *_fetchedResultsController;
+    NSManagedObjectContext *managedObjectContext;
+    UISearchBar *searchBar;
+    BOOL isFolderView;
 
 }
 

@@ -10,11 +10,11 @@
 
 
 @interface CustomToolBar : UIToolbar {
-    UIBarButtonItem *backButton, *dismissKeyboard, *datetimeButton, *recurrenceButton, *alarmButton;
+    UIBarButtonItem *firstButton, *secondButton, *thirdButton, *fourthButton, *dismissKeyboard;
 
 }
 
-@property (nonatomic, retain) UIBarButtonItem *backButton, *dismissKeyboard, *datetimeButton, *recurrenceButton, *alarmButton;
+@property (nonatomic, retain) UIBarButtonItem *firstButton, *secondButton, *thirdButton, *fourthButton, *dismissKeyboard;
   
 
 @end

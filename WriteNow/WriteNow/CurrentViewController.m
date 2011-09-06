@@ -11,14 +11,14 @@
 
 
 #import "CustomTextView.h"
-#import "ContainerView.h"
 #import "CustomToolBarMainView.h"
 
 #import "CurrentTableViewController.h"
 #import "AddEntityViewController.h"
-#import "AddFolderViewController.h"
-#import "AppointmentsViewController.h"
 #import "TasksViewController.h"
+
+#import "FoldersViewController.h"
+#import "TasksTableViewController.h"
 
 
 
@@ -52,38 +52,32 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    previousTextInput = @"";
-      
-    ContainerView *topView = [[ContainerView alloc] initWithFrame:CGRectMake(0, 0, 320, 205)];
-    [topView.label setText:@"Write Now"];
-    [self.view  addSubview:topView];
-    
-    textView = [[CustomTextView alloc] initWithFrame:CGRectMake(5, 25, 310, 135)];
-    textView.delegate = self;
-
-    [topView addSubview:textView];
-    [topView release];
-    
-    ContainerView *bottomView = [[ContainerView alloc] initWithFrame:CGRectMake(0, 205, 320, 260)];
-    [self.view addSubview:bottomView];
-    tableViewController = [[CurrentTableViewController alloc] init];
-
-    [tableViewController.tableView setFrame:CGRectMake(0, 0, 320, 260)];    
-    [tableViewController.tableView.layer setCornerRadius:10.0];
-    [tableViewController.tableView setSeparatorColor:[UIColor blackColor]];
-    [tableViewController.tableView setSectionHeaderHeight:18];
-    tableViewController.tableView.rowHeight = 48.0;
-    //[tableViewController.tableView setTableHeaderView:tableLabel];
-    [bottomView addSubview:tableViewController.tableView];
-    [bottomView release];
-    
     /*-- Point current instance of the MOC to the main managedObjectContext --*/
 	if (managedObjectContext == nil) { 
 		managedObjectContext = [(WriteNowAppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext]; 
         NSLog(@"CURRENT VIEWCONTROLLER: After managedObjectContext: %@",  managedObjectContext);
 	}    
-}
+
+    
+    self.title = @"Write Now";
+    [self.view setBackgroundColor:[UIColor colorWithRed:0.2 green:0.2 blue:0.5 alpha:1]];
+    previousTextInput = @"";
+      
+    textView = [[CustomTextView alloc] initWithFrame:CGRectMake(0, self.navigationController.navigationBar.frame.size.height, 320, 100)];
+    textView.delegate = self;
+
+    [self.view addSubview:textView];
+    
+    tableViewController = [[CurrentTableViewController alloc] init];
+    [tableViewController.tableView setFrame:CGRectMake(0, 205, 320, 205)];    
+    //[tableViewController.tableView.layer setCornerRadius:10.0];
+    [tableViewController.tableView setSeparatorColor:[UIColor blackColor]];
+    [tableViewController.tableView setSectionHeaderHeight:18];
+    tableViewController.tableView.rowHeight = 48.0;
+    //[tableViewController.tableView setTableHeaderView:tableLabel];
+    [self.view addSubview:tableViewController.tableView];
+    
+   }
 
 - (void)viewDidUnload{
     [super viewDidUnload];
@@ -130,12 +124,10 @@
  return YES;
  }
 
-
-
 #pragma mark - EVENTS & ACTIONS
 
 - (void) textViewDidBeginEditing:(UITextView *)textView{    
-    NSLog(@"EDITING BEGAN");
+   // NSLog(@"EDITING BEGAN");
 }
 
 - (void) textViewDidEndEditing:(UITextView *)textView{
@@ -199,7 +191,7 @@
 
 - (void) addNewFolder{
     
-    AddFolderViewController *addViewController = [[AddFolderViewController alloc] initWithNibName:nil bundle:nil];
+    //FoldersViewController *addViewController = [[FoldersViewController alloc] initWithNibName:nil bundle:nil];
     // Create a new managed object context for the new task -- set its persistent store coordinator to the same as that from the fetched results controller's context.
     /*
      NSManagedObjectContext *addingContext = [[NSManagedObjectContext alloc] init];
@@ -210,7 +202,7 @@
      */
     if (newMemo.text == nil) {
         if (![textView hasText]){
-            [addViewController release];
+            //[addViewController release];
             return;
         }
         NSLog(@"Trying to Create a newMemo");
@@ -224,13 +216,13 @@
         [newMemo setType:0];
         [newMemo setEditDate:[NSDate date]];
     }
-    addViewController.newMemo = newMemo;	
-    [self presentModalViewController:addViewController animated:YES];	
+    //addViewController.newMemo = newMemo;	
+    //[self presentModalViewController:addViewController animated:YES];	
     previousTextInput = textView.text;
     NSLog(@"Previous Text: %@", previousTextInput);
     [textView setText:@""];
     [textView resignFirstResponder];
-    [addViewController release];
+   // [addViewController release];
     
 }
 
@@ -296,7 +288,7 @@
      [addingContext release];
      --*/
     
-    AppointmentsViewController *viewController = [[AppointmentsViewController alloc] initWithNibName:nil bundle:nil];
+    AddEntityViewController *viewController =[[AddEntityViewController alloc] initWithNibName:nil bundle:nil];
     viewController.managedObjectContext = self.managedObjectContext;
     viewController.newText = textView.text;
     [self presentModalViewController:viewController animated:YES];
@@ -326,7 +318,6 @@
      [self.managedObjectContext setPersistentStoreCoordinator:[[tableViewController.fetchedResultsController managedObjectContext] persistentStoreCoordinator]];
      [addingContext release];
      --*/
-    
     TasksViewController *viewController = [[TasksViewController alloc] initWithNibName:nil bundle:nil];
     viewController.managedObjectContext = self.managedObjectContext;
     

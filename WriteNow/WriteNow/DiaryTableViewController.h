@@ -9,13 +9,13 @@
 #import <UIKit/UIKit.h>
 
 
-@interface FilesTableViewController : UITableViewController <NSFetchedResultsControllerDelegate, UISearchBarDelegate>{
+@interface DiaryTableViewController : UITableViewController <NSFetchedResultsControllerDelegate>{
     
     NSManagedObjectContext *managedObjectContext;
     NSFetchedResultsController *_fetchedResultsController;
 
 }
-@property (nonatomic, retain) UISearchBar *searchBar;
+//@property (nonatomic, retain) UISearchBar *searchBar;
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 

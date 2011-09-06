@@ -10,7 +10,9 @@
 
 
 @interface CurrentTableViewController : UITableViewController<NSFetchedResultsControllerDelegate, UISearchBarDelegate> {
+
     NSFetchedResultsController *_fetchedResultsController;
+    NSManagedObjectContext *managedObjectContext;
     
 }
 

@@ -6,15 +6,14 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "FilesViewController.h"
-#import "FilesTableViewController.h"
+#import "DiaryViewController.h"
+#import "DiaryTableViewController.h"
 #import "WriteNowAppDelegate.h"
-#import "ContainerView.h"
 #import "CustomToolBarMainView.h"
 #import "CustomTextView.h"
 #import <QuartzCore/QuartzCore.h>
 
-@implementation FilesViewController
+@implementation DiaryViewController
 
 @synthesize managedObjectContext, tableViewController;
 @synthesize textView;
@@ -50,13 +49,16 @@
         NSLog(@"After MOC in Folders: %@",  managedObjectContext);
 	}
     
-    tableViewController = [[FilesTableViewController alloc] init];
     
-    ContainerView *topView = [[ContainerView alloc] initWithFrame:CGRectMake(0, 0, 320, 205)];
-    [self.view  addSubview:topView];
+    [self setTitle:@"Diary"];
+    [self.view setBackgroundColor:[UIColor colorWithRed:0.2 green:0.2 blue:0.5 alpha:1]];
+    //previousTextInput = @"";
     
-    textView = [[CustomTextView alloc] initWithFrame:CGRectMake(5, 25, 310, 135)];
-    [topView addSubview:textView];
+    textView = [[CustomTextView alloc] initWithFrame:CGRectMake(0, self.navigationController.navigationBar.frame.size.height, 320, 100)];
+    textView.delegate = self;
+    
+    [self.view addSubview:textView];
+    
     
     CustomToolBarMainView *toolbar = [[CustomToolBarMainView alloc] initWithFrame:CGRectMake(0, 195, 320, 40)];
     [toolbar.actionButton setTarget:self];
@@ -71,20 +73,15 @@
     [toolbar.dismissKeyboard setAction:@selector(dismissKeyboard)];
     textView.inputAccessoryView = toolbar;    
     
-    [topView.label setText:@"Documents"];
-    [topView release];
-    
-    
-    ContainerView *bottomView = [[ContainerView alloc] initWithFrame:CGRectMake(0, 205, 320, 260)];
-    [self.view addSubview:bottomView];
-    [tableViewController.tableView setFrame:CGRectMake(0, 0, 320, 260)];    
-    [tableViewController.tableView.layer setCornerRadius:10.0];
+    tableViewController = [[DiaryTableViewController alloc] init];
+    [tableViewController.tableView setFrame:CGRectMake(0, 205, 320, 205)];    
+    //[tableViewController.tableView.layer setCornerRadius:10.0];
     [tableViewController.tableView setSeparatorColor:[UIColor blackColor]];
     [tableViewController.tableView setSectionHeaderHeight:18];
     tableViewController.tableView.rowHeight = 30.0;
     //[tableViewController.tableView setTableHeaderView:tableLabel];
-    [bottomView addSubview:tableViewController.tableView];
-    [bottomView release];
+    [self.view addSubview:tableViewController.tableView];
+        
 }
 
 - (void)viewDidUnload
@@ -93,6 +90,8 @@
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
+
+
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {

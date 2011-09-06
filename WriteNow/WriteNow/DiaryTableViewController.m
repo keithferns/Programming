@@ -5,14 +5,14 @@
 //  Created by Keith Fernandes on 8/20/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 
-#import "FilesTableViewController.h"
+#import "DiaryTableViewController.h"
 #import "FileCustomCell.h"
 #import "WriteNowAppDelegate.h"
 
-@implementation FilesTableViewController
+@implementation DiaryTableViewController
 
 @synthesize managedObjectContext;
-@synthesize searchBar;
+//@synthesize searchBar;
 @synthesize fetchedResultsController = _fetchedResultsController;
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -26,7 +26,7 @@
 
 - (void)dealloc {
     [super dealloc];
-    [searchBar release];
+   // [searchBar release];
 }
 
 - (void)didReceiveMemoryWarning
@@ -43,20 +43,18 @@
 {
     [super viewDidLoad];
 
+    [self.view setFrame:CGRectMake(0, 245, 320, 215)];
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 245, 320, 215) style:UITableViewStylePlain];
-    
+
+    /*
     searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
-    [self.tableView setDelegate:self];
-    [self.tableView setDataSource:self];
     searchBar.delegate = self;
-    
     [self.tableView addSubview:searchBar];
-    
     [searchBar setTranslucent:YES];
     [searchBar setPlaceholder:@"Search for File"];
     self.tableView.tableHeaderView = searchBar;
-    
 	searchBar.autocorrectionType = UITextAutocorrectionTypeNo;
+     */
     if (managedObjectContext == nil) { 
 		managedObjectContext = [(WriteNowAppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext]; 
         NSLog(@"After managedObjectContext: %@",  managedObjectContext);
@@ -98,7 +96,7 @@
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
-
+/*
 
 - (void) searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
     CGRect mytestFrame = CGRectMake(15, 55, 290, 140);
@@ -115,6 +113,7 @@
 	}
     [self.tableView reloadData];    
 }
+ */
 
 #pragma mark - Fetched Results Controller
 
