@@ -11,9 +11,9 @@
 
 @implementation CustomTextField
 
-- (id)initWithFrame:(CGRect)frame
+- (id)init
 {
-    self = [super initWithFrame:frame];
+    self = [super init];
     if (self) {
         
         [self setBorderStyle:UITextBorderStyleRoundedRect];
@@ -28,7 +28,6 @@
         [self setEnabled:YES];
         [self setHidden:NO];
         //[self setBounds:CGRectMake(self.frame.origin.x+2, self.frame.origin.y+2, self.frame.size.width-4,self.frame.size.height-4)];
-        
     }
     return self;
 

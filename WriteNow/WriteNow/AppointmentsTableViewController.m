@@ -181,14 +181,12 @@
 	return [[_fetchedResultsController sections] count];
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 22;
 }
 
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section       
-{
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     
     UIView* customView = [[[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 300.0, 20.00)] autorelease];
     customView.backgroundColor = [UIColor redColor];
@@ -204,10 +202,8 @@
     headerLabel.textAlignment = UITextAlignmentLeft;
     headerLabel.text = [tableView.dataSource tableView:tableView titleForHeaderInSection:section]; 
     [customView addSubview:headerLabel];
-    
     return customView;
 }
-
 
 - (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
 	id<NSFetchedResultsSectionInfo>  sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
@@ -222,9 +218,7 @@
     [tempDateFormatter release];
 	return myDate;
 	//return [sectionInfo name];
-
 }
-
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     id <NSFetchedResultsSectionInfo> sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
@@ -283,11 +277,9 @@
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
     }   
 }
-
 // Override to support rearranging the table view.
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
 }
-
 /*
  // Override to support conditional rearranging of the table view.
  - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {

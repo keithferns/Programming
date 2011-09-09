@@ -74,14 +74,14 @@
     
     
     CustomToolBarMainView *toolbar = [[CustomToolBarMainView alloc] initWithFrame:CGRectMake(0, 195, 320, 40)];
-    [toolbar.actionButton setTarget:self];
-    [toolbar.actionButton setAction:@selector(makeActionSheet:)];
-    [toolbar.memoButton setTarget:self];
-    [toolbar.memoButton setAction:@selector(saveMemo)];
-    [toolbar.appointmentButton setTarget:self];
-    [toolbar.appointmentButton setAction: @selector(addEntity:)];
-    [toolbar.taskButton setTarget:self];
-    [toolbar.taskButton setAction:@selector(addEntity:)];
+    [toolbar.firstButton setTarget:self];
+    [toolbar.firstButton setAction:@selector(makeActionSheet:)];
+    [toolbar.secondButton setTarget:self];
+    [toolbar.secondButton setAction:@selector(saveMemo)];
+    [toolbar.thirdButton setTarget:self];
+    [toolbar.thirdButton setAction: @selector(addEntity:)];
+    [toolbar.fourthButton setTarget:self];
+    [toolbar.fourthButton setAction:@selector(addEntity:)];
     [toolbar.dismissKeyboard setTarget:self];
     [toolbar.dismissKeyboard setAction:@selector(dismissKeyboard)];
     textView.inputAccessoryView = toolbar;    

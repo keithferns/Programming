@@ -241,6 +241,7 @@
         FoldersTableViewController *detailViewController = [[FoldersTableViewController alloc] init];
         detailViewController.tableView.rowHeight = 30;
         [self.navigationController pushViewController:detailViewController animated:YES];
+        [detailViewController release];
     }
     else{
         NSEntityDescription *entity = [NSEntityDescription
@@ -261,7 +262,9 @@
         }
 
         NSLog(@"NEW MEMO is saved in %@", newMemo.folder.name);
+        [newMemo release];
     }
+    
 }
 
 
@@ -287,7 +290,7 @@
         }
         
         NSLog(@"NEW MEMO is saved in %@", newMemo.file.name);
-
+    [newMemo release];
     return;
 }
 
@@ -324,6 +327,7 @@
    // if (!swappingViews) {
    //     [self swapViews];
    // }
+    [newFolder release];
 }
 - (void) makeFile{
     NSLog(@"CREATING A NEW FILE");
@@ -349,6 +353,7 @@
     // if (!swappingViews) {
     //     [self swapViews];
     // }
+    [newFile release];
 }
 
 -(void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)flag

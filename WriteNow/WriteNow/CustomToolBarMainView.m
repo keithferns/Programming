@@ -10,8 +10,7 @@
 
 
 @implementation CustomToolBarMainView
-
-@synthesize actionButton, memoButton, taskButton, appointmentButton, dismissKeyboard;
+@synthesize firstButton, secondButton, fourthButton, thirdButton, dismissKeyboard;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -21,32 +20,31 @@
         [self setBarStyle:UIBarStyleDefault];
         [self setTintColor:[UIColor colorWithRed:0.34 green:0.36 blue:0.42 alpha:0.3]];
         [self setTag:0];
-
         
-        actionButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:nil action:nil];
-        [self.actionButton setWidth:50.0];
-        [self.actionButton setTag:0];
-        self.actionButton.title = @"Do";
+        firstButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:nil action:nil];
+        [self.firstButton setWidth:50.0];
+        [self.firstButton setTag:0];
+        self.firstButton.title = @"Do";
         
-        memoButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"save_document.png"] style:UIBarButtonItemStylePlain target:nil action:nil];
-        [self.memoButton setTitle:@"Note"];
-        [self.memoButton setWidth:50.0];
-        [self.memoButton setTag:1];
+        secondButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"save_document.png"] style:UIBarButtonItemStylePlain target:nil action:nil];
+        [self.secondButton setTitle:@"Note"];
+        [self.secondButton setWidth:50.0];
+        [self.secondButton setTag:1];
         
-        appointmentButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"clock_running.png"]style:UIBarButtonItemStylePlain target:nil action:nil];
-        [self.appointmentButton setTitle:@"Appointment"];
-        [self.appointmentButton setTag:2];
-        [self.appointmentButton setWidth:50.0];
+        thirdButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"clock_running.png"]style:UIBarButtonItemStylePlain target:nil action:nil];
+        [self.thirdButton setTitle:@"Appointment"];
+        [self.thirdButton setTag:2];
+        [self.thirdButton setWidth:50.0];
         
-        taskButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"document_todo.png"] style:UIBarButtonItemStylePlain target:nil action:nil];
-        [self.taskButton setTitle:@"To Do"];
-        [self.taskButton setWidth:50.0];
-        [self.taskButton setTag:3];
+        fourthButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"document_todo.png"] style:UIBarButtonItemStylePlain target:nil action:nil];
+        [self.fourthButton setTitle:@"To Do"];
+        [self.fourthButton setWidth:50.0];
+        [self.fourthButton setTag:3];
         
         dismissKeyboard = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"keyboard_down.png"] style:UIBarButtonItemStylePlain target:nil action:nil];
         [self.dismissKeyboard setTitle:@"Down Input"];
-        [self.taskButton setWidth:50.0];
-        [self.taskButton setTag:4];
+        [self.fourthButton setWidth:50.0];
+        [self.fourthButton setTag:4];
         
         //UIBarButtonItem *folderButton = [[UIBarButtonItem alloc] initWithTitle:@"Folder" style:UIBarButtonItemStyleBordered target:self action:@selector(addNewMemo)];
         
@@ -57,7 +55,7 @@
         
         UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil	action:nil];
         
-        NSArray *items = [NSArray arrayWithObjects:flexSpace, actionButton, flexSpace, memoButton, flexSpace, appointmentButton, flexSpace, taskButton,flexSpace, dismissKeyboard, flexSpace, nil];
+        NSArray *items = [NSArray arrayWithObjects:flexSpace, firstButton, flexSpace, secondButton, flexSpace, thirdButton, flexSpace, fourthButton,flexSpace, dismissKeyboard, flexSpace, nil];
         [self setItems:items];
         
 
@@ -76,10 +74,10 @@
     [super dealloc];
     
     [dismissKeyboard release];
-    [memoButton release];
-    [appointmentButton release];
-    [actionButton release];
-    [taskButton release];
+    [secondButton release];
+    [thirdButton release];
+    [firstButton release];
+    [fourthButton release];
 }
 
 @end

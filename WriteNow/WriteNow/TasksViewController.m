@@ -288,6 +288,7 @@
     [datetimeButton release];
     [alarmButton release];
     [dismissKeyboard release];
+    [recurrenceButton release];
     [flexSpace release];
     /*--End Setting up the Toolbar */
 }

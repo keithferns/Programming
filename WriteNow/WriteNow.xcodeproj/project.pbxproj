@@ -126,6 +126,7 @@
 		53A599A1141064B7001AD61F /* viewFolders_nav.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A5999F141064B0001AD61F /* viewFolders_nav.png */; };
 		53A599A314107244001AD61F /* folder_24.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A599A214107239001AD61F /* folder_24.png */; };
 		53A599A71410A135001AD61F /* CustomTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 53A599A61410A135001AD61F /* CustomTextField.m */; };
+		53ACA96814187C06002A5946 /* Keyboard_Text.png in Resources */ = {isa = PBXBuildFile; fileRef = 53ACA96714187C06002A5946 /* Keyboard_Text.png */; };
 		53F3D8081415B9BB00122880 /* Appointment.m in Sources */ = {isa = PBXBuildFile; fileRef = 53F3D8071415B9BB00122880 /* Appointment.m */; };
 		53F3D80B1415BA0800122880 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 53F3D80A1415BA0800122880 /* Task.m */; };
 		53F3D80D1415C00600122880 /* 101to101a.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 53F3D80C1415C00600122880 /* 101to101a.xcmappingmodel */; };
@@ -310,6 +311,7 @@
 		53A599A214107239001AD61F /* folder_24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = folder_24.png; sourceTree = "<group>"; };
 		53A599A51410A135001AD61F /* CustomTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextField.h; sourceTree = "<group>"; };
 		53A599A61410A135001AD61F /* CustomTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextField.m; sourceTree = "<group>"; };
+		53ACA96714187C06002A5946 /* Keyboard_Text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Keyboard_Text.png; sourceTree = "<group>"; };
 		53D2B5CA1415B33400375751 /* WriteNow 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "WriteNow 2.xcdatamodel"; sourceTree = "<group>"; };
 		53F3D8061415B9BB00122880 /* Appointment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Appointment.h; sourceTree = "<group>"; };
 		53F3D8071415B9BB00122880 /* Appointment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Appointment.m; sourceTree = "<group>"; };
@@ -439,6 +441,16 @@
 		531567F113FB828B0044C5A9 /* pngs */ = {
 			isa = PBXGroup;
 			children = (
+				53ACA96714187C06002A5946 /* Keyboard_Text.png */,
+				538164FB1410BA6700E90FD1 /* AddFolderShaded30.png */,
+				538164FC1410BA6700E90FD1 /* AddNoteShaded30.png */,
+				538164FD1410BA6700E90FD1 /* book_nav.png */,
+				538164FE1410BA6700E90FD1 /* folder_nav.png */,
+				538164FF1410BA6700E90FD1 /* FolderShaded_30.png */,
+				538165001410BA6700E90FD1 /* NotePad_nav.png */,
+				538165011410BA6700E90FD1 /* pages_nav.png */,
+				538165021410BA6700E90FD1 /* SaveToArchive_24.png */,
+				538165031410BA6700E90FD1 /* SaveToArchive30.png */,
 				53A5999E141064A9001AD61F /* tasks_nav.png */,
 				53A5999F141064B0001AD61F /* viewFolders_nav.png */,
 				53A5999A14106459001AD61F /* addDoc_nav.png */,
@@ -757,9 +769,9 @@
 				536FBF4113FB12AA000B8B28 /* ManagedObjects */,
 				531567B313FB81F80044C5A9 /* CustomViews */,
 				5315679D13FB663E0044C5A9 /* SettingsViewController */,
-				5315679513FB63C20044C5A9 /* CalendarViewController */,
 				5315679113FB63990044C5A9 /* DiaryViewController */,
 				5315678D13FB636C0044C5A9 /* FolderViewController */,
+				5315679513FB63C20044C5A9 /* CalendarViewController */,
 				5315678913FB62E40044C5A9 /* TodayViewController */,
 				532F191013FB0D6500CECBD1 /* MainViewController */,
 				53FB85B113FAEC3800765BFC /* MainWindow.xib */,
@@ -771,15 +783,6 @@
 		53FB85A613FAEC3800765BFC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				538164FB1410BA6700E90FD1 /* AddFolderShaded30.png */,
-				538164FC1410BA6700E90FD1 /* AddNoteShaded30.png */,
-				538164FD1410BA6700E90FD1 /* book_nav.png */,
-				538164FE1410BA6700E90FD1 /* folder_nav.png */,
-				538164FF1410BA6700E90FD1 /* FolderShaded_30.png */,
-				538165001410BA6700E90FD1 /* NotePad_nav.png */,
-				538165011410BA6700E90FD1 /* pages_nav.png */,
-				538165021410BA6700E90FD1 /* SaveToArchive_24.png */,
-				538165031410BA6700E90FD1 /* SaveToArchive30.png */,
 				531567F113FB828B0044C5A9 /* pngs */,
 				53FB85DF13FAEE9E00765BFC /* AppIcons */,
 				53FB85A713FAEC3800765BFC /* WriteNow-Info.plist */,
@@ -975,6 +978,7 @@
 				5381650A1410BA6700E90FD1 /* pages_nav.png in Resources */,
 				5381650B1410BA6700E90FD1 /* SaveToArchive_24.png in Resources */,
 				5381650C1410BA6700E90FD1 /* SaveToArchive30.png in Resources */,
+				53ACA96814187C06002A5946 /* Keyboard_Text.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

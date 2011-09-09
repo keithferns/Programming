@@ -11,11 +11,11 @@
 
 @interface CustomToolBarMainView : UIToolbar {
  
-     UIBarButtonItem *actionButton, *dismissKeyboard, *memoButton, *appointmentButton, *taskButton;
+     UIBarButtonItem *firstButton, *secondButton, *thirdButton, *fourthButton, *dismissKeyboard;
     
 }
 
 
-@property (nonatomic, retain) UIBarButtonItem *actionButton, *dismissKeyboard, *memoButton, *appointmentButton, *taskButton;
+@property (nonatomic, retain) UIBarButtonItem *firstButton,  *secondButton, *thirdButton, *fourthButton, *dismissKeyboard;
 
 @end

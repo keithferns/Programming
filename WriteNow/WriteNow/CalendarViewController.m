@@ -60,6 +60,7 @@
     timePicker = nil;
     pickerView = nil;
     timeFormatter = nil;
+    dateFormatter = nil;
     dateField = nil;
     selectedDate = nil;
     selectedTime = nil;
@@ -175,7 +176,7 @@
     pickerView.showsSelectionIndicator = YES;
     
     //TEXTFIELDS
-    dateField = [[CustomTextField alloc] initWithFrame:CGRectMake(1, textView.frame.origin.y+textView.frame.size.height+15, 154, 30)];
+    dateField = [[CustomTextField alloc] init];
     [dateField setPlaceholder:@"Date:"];
     [dateField setInputView:datePicker];
     [dateField setInputAccessoryView:toolbar];

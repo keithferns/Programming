@@ -12,8 +12,7 @@
 @implementation CustomToolBar
 @synthesize firstButton, secondButton, thirdButton, fourthButton, dismissKeyboard;
 
-- (id)initWithFrame:(CGRect)frame
-{
+- (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
         NSLog(@"Creating tool bar");
