@@ -13,10 +13,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "53FB859813FAEC3800765BFC"
-               BuildableName = "WriteNow.app"
-               BlueprintName = "WriteNow"
-               ReferencedContainer = "container:WriteNow.xcodeproj">
+               BlueprintIdentifier = "53C0174C141EDD2300441D4B"
+               BuildableName = "HorizontalTables.app"
+               BlueprintName = "HorizontalTables"
+               ReferencedContainer = "container:HorizontalTables.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -31,10 +31,10 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "53FB85BB13FAEC3900765BFC"
-               BuildableName = "WriteNowTests.octest"
-               BlueprintName = "WriteNowTests"
-               ReferencedContainer = "container:WriteNow.xcodeproj">
+               BlueprintIdentifier = "53C0176F141EDD2300441D4B"
+               BuildableName = "HorizontalTablesTests.octest"
+               BlueprintName = "HorizontalTablesTests"
+               ReferencedContainer = "container:HorizontalTables.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -50,10 +50,10 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "53FB859813FAEC3800765BFC"
-            BuildableName = "WriteNow.app"
-            BlueprintName = "WriteNow"
-            ReferencedContainer = "container:WriteNow.xcodeproj">
+            BlueprintIdentifier = "53C0174C141EDD2300441D4B"
+            BuildableName = "HorizontalTables.app"
+            BlueprintName = "HorizontalTables"
+            ReferencedContainer = "container:HorizontalTables.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -69,10 +69,10 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "53FB859813FAEC3800765BFC"
-            BuildableName = "WriteNow.app"
-            BlueprintName = "WriteNow"
-            ReferencedContainer = "container:WriteNow.xcodeproj">
+            BlueprintIdentifier = "53C0174C141EDD2300441D4B"
+            BuildableName = "HorizontalTables.app"
+            BlueprintName = "HorizontalTables"
+            ReferencedContainer = "container:HorizontalTables.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

@@ -25,7 +25,7 @@
 @synthesize sender, newText, recurring;
 @synthesize datePicker, timePicker, pickerView;
 @synthesize textView;
-@synthesize dateField, startTimeField, endTimeField, recurringField;
+@synthesize leftField, startTimeField, endTimeField, rightField;
 @synthesize selectedDate, selectedTime, selectedEndTime;
 @synthesize dateFormatter, timeFormatter;
 @synthesize toolbar;
@@ -38,7 +38,7 @@
     [datePicker release];
     [timePicker release];
     [pickerView release];
-    [dateField release];
+    [leftField release];
     [startTimeField release];
     [endTimeField release];
     [dateFormatter release];
@@ -61,7 +61,7 @@
     pickerView = nil;
     timeFormatter = nil;
     dateFormatter = nil;
-    dateField = nil;
+    leftField = nil;
     selectedDate = nil;
     selectedTime = nil;
     selectedEndTime = nil;
@@ -92,11 +92,13 @@
 
     /*--NOTIFICATIONS: register --*/
     
-    // [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(dateFieldDidEndEditing:) name:UITextFieldTextDidEndEditingNotification object:dateField];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(newPlan:) name:@"ScheduleSomethingNotification" object:nil];
+    
+    // [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(leftFieldDidEndEditing:) name:UITextFieldTextDidEndEditingNotification object:leftField];
     
     //[[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(timeFieldDidEndEditing:) name:UITextFieldTextDidEndEditingNotification object:startTimeField];
     
-    //[[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(recurringFieldDidEndEditing:) name:UITextFieldTextDidEndEditingNotification object:endTimeField];
+    //[[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(rightFieldDidEndEditing:) name:UITextFieldTextDidEndEditingNotification object:endTimeField];
     
     /* Search Bar Notification sent from FolderTable View to the Main view to accommodate the moving TableView 
      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasShown)  name:UIKeyboardDidShowNotification object:foldersViewController.searchBar];
@@ -176,34 +178,39 @@
     pickerView.showsSelectionIndicator = YES;
     
     //TEXTFIELDS
-    dateField = [[CustomTextField alloc] init];
-    [dateField setPlaceholder:@"Date:"];
-    [dateField setInputView:datePicker];
-    [dateField setInputAccessoryView:toolbar];
-    [dateField setTag:0];
-    [dateField setDelegate:self];
+    leftField = [[CustomTextField alloc] init];
+    [leftField setPlaceholder:@"Date:"];
+    [leftField setInputView:datePicker];
+    [leftField setInputAccessoryView:toolbar];
+    [leftField setTag:0];
+    [leftField setDelegate:self];
     
-    startTimeField = [[CustomTextField alloc] initWithFrame:CGRectMake(dateField.frame.origin.x+dateField.frame.size.width+10, dateField.frame.origin.y, 77, dateField.frame.size.height)];
+    startTimeField = [[CustomTextField alloc] init];
+    //startTimeField = [[CustomTextField alloc] initWithFrame:CGRectMake(leftField.frame.origin.x+leftField.frame.size.width+10, leftField.frame.origin.y, 77, leftField.frame.size.height)];
     [startTimeField setPlaceholder:@"Starts"];
     [startTimeField setInputView:timePicker];
     [startTimeField setInputAccessoryView:toolbar];
     [startTimeField setDelegate:self];
     [startTimeField setTag:1];
     
-    endTimeField = [[CustomTextField alloc] initWithFrame:CGRectMake(startTimeField.frame.origin.x+startTimeField.frame.size.width, startTimeField.frame.origin.y, 77, startTimeField.frame.size.height)];
+    
+    endTimeField = [[CustomTextField alloc]init];
+    //endTimeField = [[CustomTextField alloc] initWithFrame:CGRectMake(startTimeField.frame.origin.x+startTimeField.frame.size.width, startTimeField.frame.origin.y, 77, startTimeField.frame.size.height)];
     [endTimeField setPlaceholder:@"Ends:"];
     [endTimeField setInputView:timePicker];
     [endTimeField setInputAccessoryView:toolbar];
     [endTimeField setDelegate:self];
     [endTimeField setTag:2];
     
-    recurringField = [[CustomTextField alloc] initWithFrame:CGRectMake(dateField.frame.origin.x+dateField.frame.size.width+10, dateField.frame.origin.y, 154, dateField.frame.size.height)];
-    [recurringField setPlaceholder:@"Repeats:"];
-    [recurringField setInputView:pickerView];
-    [recurringField setInputAccessoryView:toolbar];
-    [recurringField setDelegate:self];
-    [recurringField setTag:3];
-    //[self.view addSubview:recurringField];
+    
+    rightField = [[CustomTextField alloc] init];
+    //rightField = [[CustomTextField alloc] initWithFrame:CGRectMake(leftField.frame.origin.x+leftField.frame.size.width+10, leftField.frame.origin.y, 154, leftField.frame.size.height)];
+    [rightField setPlaceholder:@"Repeats:"];
+    [rightField setInputView:pickerView];
+    [rightField setInputAccessoryView:toolbar];
+    [rightField setDelegate:self];
+    [rightField setTag:3];
+    //[self.view addSubview:rightField];
     
     //TABLEVIEWCONTROLLER
     
@@ -213,23 +220,24 @@
     [tableViewController.tableView setSeparatorColor:[UIColor blackColor]];
     [tableViewController.tableView setSectionHeaderHeight:13];
     tableViewController.tableView.rowHeight = 30.0;
-    //[tableViewController.tableView setTableHeaderView:tableLabel];
+    //[tableViewController.tableView setTableHeaderView:tableLabel];    
+    
+ 
     
 }
 
-
 - (void) viewWillAppear:(BOOL)animated{    
-    if (dateField.superview == nil) {
-    [self.view addSubview:dateField];
+    if (leftField.superview == nil) {
+    [self.view addSubview:leftField];
     
     }
     
-    CGRect startFrame = CGRectMake(0.0-dateField.frame.size.width,
+    CGRect startFrame = CGRectMake(0.0-leftField.frame.size.width,
                                   textView.frame.origin.y+textView.frame.size.height+15,
-                                  dateField.frame.size.width, dateField.frame.size.height);
+                                  leftField.frame.size.width, leftField.frame.size.height);
     CGRect endFrame = CGRectMake(1, textView.frame.origin.y+textView.frame.size.height+15, 154, 30);
   
-    [self animateViews:dateField startFrom:startFrame endAt:endFrame];
+    [self animateViews:leftField startFrom:startFrame endAt:endFrame];
     
     if (tableViewController.tableView.superview == nil) {
         [self.view addSubview:tableViewController.tableView];
@@ -243,15 +251,23 @@
 
 - (void) viewWillDisappear:(BOOL)animated{
     self.title = @"Calendar";
-    [dateField removeFromSuperview];
+    [leftField removeFromSuperview];
     [startTimeField removeFromSuperview];
     [endTimeField removeFromSuperview];
-    [recurringField removeFromSuperview];
+    [rightField removeFromSuperview];
     [tableViewController.tableView removeFromSuperview];
     
     [toolbar.firstButton setImage:[UIImage imageNamed:@"11-clock.png"]];
     [toolbar.firstButton setTitle:@"Set Date"];
     [toolbar.firstButton setAction:@selector(setAppointmentDate)];
+}
+
+
+- (void)newPlan:(NSNotification *)notification { 
+    NSLog(@"GOT NEW NOTE NOTIFICATION");
+    //Note *newNote = [notification object];
+    // NSLog(@"GOT A NEW NOTE with the text %@", newNote.text);
+    //textView.text = newNote.text;
 }
 
 #pragma -
@@ -264,7 +280,7 @@
         self.navigationItem.leftBarButtonItem.tag = 1;
         [startTimeField setHidden:YES];
         [endTimeField setHidden:YES];
-        [recurringField setHidden:NO];
+        [rightField setHidden:NO];
         self.title = @"New To Do";
         tableViewController = nil;
         tableViewController = [[TasksTableViewController alloc]init];
@@ -272,12 +288,10 @@
         [tableViewController.tableView setSectionHeaderHeight:13];
         tableViewController.tableView.rowHeight = 30.0;
         //[tableViewController.tableView setTableHeaderView:tableLabel];
-        
         [self.view addSubview:tableViewController.tableView];
         CGRect startFrame = CGRectMake(-320, 205, 320, 204);
         CGRect endFrame = CGRectMake(0, 205, 320, 204);
         [self animateViews:tableViewController.tableView startFrom:startFrame endAt:endFrame];
-        
     }
     else if (barButtonItem.tag == 1){
         [self.navigationItem.leftBarButtonItem setImage:[UIImage imageNamed:@"todo_nav.png"]];
@@ -285,7 +299,7 @@
         self.navigationItem.leftBarButtonItem.tag = 0;
         [startTimeField setHidden:NO];
         [endTimeField setHidden:NO];
-        [recurringField setHidden:YES];
+        [rightField setHidden:YES];
         self.title = @"New Appointment";
         tableViewController = nil;
         tableViewController = [[AddEntityTableViewController alloc]init];
@@ -293,14 +307,12 @@
         [tableViewController.tableView setSectionHeaderHeight:13];
         tableViewController.tableView.rowHeight = 30.0;
         //[tableViewController.tableView setTableHeaderView:tableLabel];
-        
         [self.view addSubview:tableViewController.tableView];
         CGRect startFrame = CGRectMake(320, 205, 320, 204);
         CGRect endFrame = CGRectMake(0, 205, 320, 204);
         [self animateViews:tableViewController.tableView startFrom:startFrame endAt:endFrame];
     }
 }
-
 - (void) changeView:(UIBarButtonItem *)barButtonItem{
     
 }
@@ -311,7 +323,7 @@
 - (void)keyboardWillShow:(NSNotification *)notification {
     /* Reduce the size of the text view so that it's not obscured by the keyboard.
      Animate the resize so that it's in sync with the appearance of the keyboard. */
-    if ([textView isFirstResponder]|| [recurringField isFirstResponder]||[startTimeField isFirstResponder]||[endTimeField isFirstResponder]){
+    if ([textView isFirstResponder]|| [rightField isFirstResponder]||[startTimeField isFirstResponder]||[endTimeField isFirstResponder]){
         return;
     }
     
@@ -384,7 +396,7 @@
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row
       inComponent:(NSInteger)component{
 
-    recurringField.text = [recurring objectAtIndex:row];
+    rightField.text = [recurring objectAtIndex:row];
 }
 
 // tell the picker how many rows are available for a given component
@@ -423,7 +435,7 @@
     [dateComponents setSecond:0];
     selectedDate = [calendar dateFromComponents:dateComponents];
     NSLog(@"DatePicker Changed. Selected Date: %@", selectedDate);
-    dateField.text = [self.dateFormatter stringFromDate:selectedDate];
+    leftField.text = [self.dateFormatter stringFromDate:selectedDate];
     
     [[NSNotificationCenter defaultCenter] 
 	 postNotificationName:@"GetDateNotification" object:self.selectedDate];
@@ -459,18 +471,18 @@
             [self.view addSubview:startTimeField];
         }    
         CGRect startFrame = CGRectMake(320.0,textView.frame.origin.y+textView.frame.size.height+15,
-                                  77, dateField.frame.size.height);    
-        CGRect endFrame = CGRectMake(dateField.frame.origin.x+dateField.frame.size.width+10, textView.frame.origin.y+textView.frame.size.height+15, 77, dateField.frame.size.height);
+                                  77, leftField.frame.size.height);    
+        CGRect endFrame = CGRectMake(leftField.frame.origin.x+leftField.frame.size.width+10, textView.frame.origin.y+textView.frame.size.height+15, 77, leftField.frame.size.height);
         [self animateViews:startTimeField startFrom:startFrame endAt:endFrame];
     }
     else if ([tableViewController isKindOfClass:[TasksTableViewController class]]){
         if (startTimeField.superview == nil) {
-            [self.view addSubview:recurringField];
+            [self.view addSubview:rightField];
         }    
         CGRect startFrame = CGRectMake(320.0,textView.frame.origin.y+textView.frame.size.height+15,
-                                       154, dateField.frame.size.height);    
-        CGRect endFrame = CGRectMake(dateField.frame.origin.x+dateField.frame.size.width+10, textView.frame.origin.y+textView.frame.size.height+15, 154, dateField.frame.size.height);
-        [self animateViews:recurringField startFrom:startFrame endAt:endFrame];
+                                       154, leftField.frame.size.height);    
+        CGRect endFrame = CGRectMake(leftField.frame.origin.x+leftField.frame.size.width+10, textView.frame.origin.y+textView.frame.size.height+15, 154, leftField.frame.size.height);
+        [self animateViews:rightField startFrom:startFrame endAt:endFrame];
     }
 
     NSLog(@"Sender is %@", sender);
@@ -484,21 +496,21 @@
     [dateComponents setMinute:0];
     [dateComponents setSecond:0];
     selectedDate = [[calendar dateFromComponents:dateComponents] retain];
-    dateField.text = [dateFormatter stringFromDate:selectedDate];
+    leftField.text = [dateFormatter stringFromDate:selectedDate];
     
     if (sender == @"Appointment") {
-        [dateField resignFirstResponder];
+        [leftField resignFirstResponder];
         [startTimeField becomeFirstResponder];
         [toolbar.firstButton setImage:[UIImage imageNamed:@"11-clock.png"]];
         [toolbar.firstButton setAction:@selector(setAppointmentTime)];
         [toolbar.firstButton setTitle:@"Set Time"];      
         }
     else if (sender == @"To Do"){
-        [dateField resignFirstResponder];
-        [recurringField becomeFirstResponder];
-         [toolbar.firstButton setImage:[UIImage imageNamed:@"save.png"]];
-         [toolbar.firstButton setAction:@selector(doneAction)];
-         [toolbar.firstButton setTitle:@"Done"];            
+        [leftField resignFirstResponder];
+        [rightField becomeFirstResponder];
+        [toolbar.firstButton setImage:[UIImage imageNamed:@"save.png"]];
+        [toolbar.firstButton setAction:@selector(doneAction)];
+        [toolbar.firstButton setTitle:@"Done"];            
          }
         //if (!swappingViews) {
           //    [self swapViews];
@@ -512,8 +524,8 @@
         [self.view addSubview:endTimeField];
     }    
     CGRect startFrame = CGRectMake(320.0,textView.frame.origin.y+textView.frame.size.height+15,
-                                  77, dateField.frame.size.height);
-    CGRect endFrame = CGRectMake(startTimeField.frame.origin.x+startTimeField.frame.size.width, textView.frame.origin.y+textView.frame.size.height+15, 77, dateField.frame.size.height);
+                                  77, leftField.frame.size.height);
+    CGRect endFrame = CGRectMake(startTimeField.frame.origin.x+startTimeField.frame.size.width, textView.frame.origin.y+textView.frame.size.height+15, 77, leftField.frame.size.height);
     [self animateViews:endTimeField startFrom:startFrame endAt:endFrame];
     
     /*--DATE/TIME: Get selected Time from the time Picker; put it in the time text field --*/
@@ -578,7 +590,7 @@
         [newTask setCreationDate:[NSDate date]];
         [newTask setType:[NSNumber numberWithInt:1]];
         [newTask setDoDate:selectedDate];
-        [newTask setRecurring:recurringField.text];
+        [newTask setRecurring:rightField.text];
         /*--Save the MOC--*/	
         NSError *error;
         if(![managedObjectContext save:&error]){ 
@@ -588,10 +600,10 @@
     }
     [self.view endEditing:YES];
     [textView setText:@""];
-    [dateField setText:@""];
+    [leftField setText:@""];
     [startTimeField setText:@""];
     [endTimeField setText:@""];
-    [recurringField setText:@""];
+    [rightField setText:@""];
     [toolbar.firstButton setImage:[UIImage imageNamed:@"11-clock.png"]];
     [toolbar.firstButton setTitle:@"Set Date"];
     [toolbar.firstButton setAction:@selector(setAppointmentDate)];

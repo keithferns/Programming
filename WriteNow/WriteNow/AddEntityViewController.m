@@ -5,6 +5,8 @@
 //  Created by Keith Fernandes on 8/27/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 
+//TODO: Add function for searching for durations that are free within some time frame. Say you want to make a doctor's appointment, what you need to do is specify a duration, for eg. 2 hrs, between 12 noon and 6 pm, in the up coming week. The system should find and list all such durations. 
+
 #import "WriteNowAppDelegate.h"
 #import "AddEntityViewController.h"
 #import "AddEntityTableViewController.h"
@@ -16,30 +18,46 @@
 
 @implementation AddEntityViewController
 
+@synthesize navBar, titleItem, doneButton, backButton;
 @synthesize tableViewController;
 @synthesize managedObjectContext;
 
 @synthesize sender, newText;
-@synthesize datePicker, timePicker;
 @synthesize textView;
-@synthesize dateField, startTimeField, endTimeField, recurringField;
-@synthesize selectedDate, selectedTime;
-@synthesize dateFormatter, timeFormatter;
-@synthesize toolbar;
-@synthesize topView, bottomView;
+@synthesize dateToolBar;
+@synthesize recurring;
+@synthesize datePicker, timePicker, pickerView, dateFormatter, timeFormatter;
+
+@synthesize leftLabel, rightLabel, rightLabel_1, rightLabel_2;
+@synthesize midView, bottomView;
+
+#define screenRect [[UIScreen mainScreen] applicationFrame]
+#define navBarHeight 44.0
+#define toolBarRect CGRectMake(screenRect.size.width, 0, screenRect.size.width, 40)
+#define textViewHeight 100.0
+#define midViewRect CGRectMake(0, navBarHeight+textViewHeight+10, screenRect.size.width, 40)
+#define bottomViewRect CGRectMake(0, midViewRect.origin.y+midViewRect.size.height+10, screenRect.size.width, screenRect.size.height-midViewRect.origin.y-midViewRect.size.height-10)
 
 - (void)dealloc {
     [super dealloc];
     [sender release];
     [newText release];
+    [textView release];
+//    [dateToolBar release];
     [datePicker release];
     [timePicker release];
-    [dateField release];
-    [startTimeField release];
-    [endTimeField release];
+    [pickerView release];
     [dateFormatter release];
     [timeFormatter release];
+    [recurring release];
     [tableViewController release];
+    [leftLabel release];
+    [rightLabel_1 release];
+    [rightLabel_2 release];
+    [rightLabel release];
+    [midView release];
+    [bottomView release];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -53,10 +71,15 @@
     // Release any retained subviews of the main view.
     datePicker = nil;
     timePicker = nil;
+    pickerView = nil;
+    dateFormatter = nil;
     timeFormatter = nil;
-    dateField = nil;
-    selectedDate = nil;
-    selectedTime = nil;
+    leftLabel = nil;
+    rightLabel = nil;
+    rightLabel_1 = nil;
+    rightLabel_2 = nil;
+    recurring = nil;
+    textView = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -68,6 +91,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSLog(@"ADDENTITY VIEW CONTROLLER new text is %@", newText);
+
+    swappingViews = NO;     
+    isSelected = NO;
     
     if (managedObjectContext == nil){
         managedObjectContext = [(WriteNowAppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext];
@@ -75,6 +102,8 @@
     }
     
     /*--NOTIFICATIONS: register --*/
+    
+
     
     // [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(dateFieldDidEndEditing:) name:UITextFieldTextDidEndEditingNotification object:dateField];
     
@@ -90,109 +119,203 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
     
-    /*-- VIEWS:BASE: setup and initialize --*/
     
-    topView = [[UIView alloc] initWithFrame:self.view.bounds];
-    [self.view addSubview:topView];
+      [self.view setBackgroundColor:[UIColor colorWithRed:0.2 green:0.2 blue:0.5 alpha:1]];
+ 
+   navBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, screenRect.size.height, navBarHeight)];
     
-    /*--VIEWS:TOPVIEW:INPUT: setup and init the TEXTVIEW and the TEXTFIELDS --*/
-    
-    toolbar = [[CustomToolBar alloc] initWithFrame:CGRectMake(0, 195, 320, 40)];
-    // [toolbar.backButton setTarget:self];
-    //[toolbar.backButton setAction:@selector(backAction)];
-    
-   // [toolbar.datetimeButton setTarget:self];
-    //[toolbar.datetimeButton setAction:@selector(setAppointmentDate)];
-    
-    [toolbar.dismissKeyboard setTarget:self];
-    [toolbar.dismissKeyboard setAction:@selector(dismissKeyboard)];
-    
-    //TEXTVIEW
-    textView = [[CustomTextView alloc] initWithFrame:CGRectMake(5, 25, 310, 135)];
-    [textView setText:newText];
-    [textView setDelegate:self];
-    [topView addSubview:textView];
-    [textView setInputAccessoryView:toolbar];
+    [navBar setTintColor:[UIColor colorWithRed:0.2 green:0.2 blue:0.5 alpha:1]];
+    [navBar setTranslucent:YES];
+    [self.view addSubview:navBar];
 
-    //datePicker = [[UIDatePicker alloc]initWithFrame:CGRectMake(0, 245, 320, 216)];
-    //[datePicker setDatePickerMode:UIDatePickerModeDate];
+    //UINavigationItem *navTitle = [[UINavigationItem alloc] initWithTitle:@"title text"];
+    //[navBar pushNavigationItem:navTitle animated:YES];
+    //[navTitle release];
+    
+    UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(backAction)];
+    self.navigationItem.leftBarButtonItem = leftButton;
+    [leftButton release];
+    self.navigationItem.leftBarButtonItem.tag = 0;
+    [self.navigationItem.leftBarButtonItem setStyle:UIBarButtonItemStylePlain];    
+    
+    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(doneAction)];
+    self.navigationItem.leftBarButtonItem  = leftButton;
+    self.navigationItem.rightBarButtonItem.tag = 1;
+    [self.navigationItem.rightBarButtonItem setStyle:UIBarButtonItemStylePlain];  
+
+    [rightButton release];
+
+    self.navigationItem.title =  @"DO SOMETHING";
+    
+    //TEXTVIEW: setup and add to self.view
+    textView = [[CustomTextView alloc] initWithFrame:CGRectMake(0, navBarHeight, 320, textViewHeight)];
+    textView.delegate = self;    
+    textView.inputAccessoryView = dateToolBar;
+    [self.view addSubview:textView];
+    textView.text = newText;
+
+    
+    //MIDVIEW
+    midView = [[UIView alloc]initWithFrame:midViewRect];
+    [self.view addSubview:midView];
+    
+    //BOTTOMVIEW: setup and add the datePicker and dateToolBar
+    bottomView = [[UIView alloc] initWithFrame:bottomViewRect];
+    [bottomView setBackgroundColor:[UIColor blackColor]];
+    [self.view addSubview:bottomView];
+    
+    leftLabel = [[UILabel alloc] initWithFrame:CGRectMake(-154, 0, 154, 30)];
+    leftLabel.userInteractionEnabled = YES;
+    leftLabel.tag = 12;
+    [leftLabel.layer setCornerRadius:5.0];
+    leftLabel.textAlignment = UITextAlignmentCenter;    
+    [leftLabel setHighlightedTextColor:[UIColor grayColor]];
+    
+    
+    rightLabel_1 = [[UILabel alloc] initWithFrame:CGRectMake(screenRect.size.width, 0, 77, 30)];
+    rightLabel_1.userInteractionEnabled = YES;
+    rightLabel_1.tag = 13;
+    [rightLabel_1.layer setCornerRadius:5.0];
+    rightLabel_1.textAlignment = UITextAlignmentCenter;
+    [rightLabel_1 setHighlightedTextColor:[UIColor grayColor]];
+    
+    
+    rightLabel_2 = [[UILabel alloc]initWithFrame:CGRectMake(screenRect.size.width, 0, 77, 30)];
+    rightLabel_2.userInteractionEnabled = YES;
+    rightLabel_2.tag = 14;
+    [rightLabel_2.layer setCornerRadius:5.0];
+    rightLabel_2.textAlignment = UITextAlignmentCenter;
+    [rightLabel_2 setHighlightedTextColor:[UIColor grayColor]];
+    
+    
+    rightLabel = [[UILabel alloc] initWithFrame:CGRectMake(screenRect.size.width, 0, 154, 30)];
+    rightLabel.userInteractionEnabled = YES;
+    rightLabel.tag = 15;
+    [rightLabel.layer setCornerRadius:5.0];
+    rightLabel.textAlignment = UITextAlignmentCenter;
+    
+    //BOTTOMVIEW:DATETOOLBAR: setup
+    dateToolBar = [[CustomToolBar alloc] initWithFrame:toolBarRect];
+    [dateToolBar.firstButton setTarget:self];
+    [dateToolBar.firstButton setAction:@selector(setAppointmentDate)];
+    [dateToolBar.secondButton setTarget:self];
+    [dateToolBar.dismissKeyboard setTarget:self];
+    [dateToolBar.dismissKeyboard setAction:@selector(dismissKeyboard)];
+    
+   
+    datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(-screenRect.size.width, dateToolBar.frame.size.height, screenRect.size.width, bottomView.frame.size.height-dateToolBar.frame.size.height)];
+    [datePicker setDatePickerMode:UIDatePickerModeDate];
     [datePicker setDate:[NSDate date]];
     [datePicker setMinimumDate:[NSDate date]];
     [datePicker setMaximumDate:[NSDate dateWithTimeIntervalSinceNow:(60*60*24*365)]];
     datePicker.timeZone = [NSTimeZone systemTimeZone];
+    [datePicker sizeToFit];
+    [datePicker setTag:0];
+    datePicker.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
+    [datePicker addTarget:self action:@selector(datePickerChanged:) forControlEvents:UIControlEventValueChanged];
     
-    //timePicker = [[UIDatePicker alloc]initWithFrame:CGRectMake(0, 245, 320, 216)];    
-    //[timePicker setDatePickerMode:UIDatePickerModeTime];
+    dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"EEE, MMM d, yyyy"];
+    //datePicker.date = [dateFormatter dateFromString:leftLabel.text];
+    
+    timePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(screenRect.size.width, toolBarRect.size.height, screenRect.size.width, bottomView.frame.size.height-toolBarRect.size.height)];
+    [timePicker setDatePickerMode:UIDatePickerModeTime];
+    [timePicker setMinuteInterval:10];
     timePicker.timeZone = [NSTimeZone systemTimeZone];
+    [timePicker sizeToFit];
     [timePicker setTag:1];
+    timePicker.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
+    [timePicker addTarget:self action:@selector(timePickerChanged:) forControlEvents:UIControlEventValueChanged];
     
-    /*--DATEFIELD--*/
+    timeFormatter = [[NSDateFormatter alloc] init];
+    [timeFormatter setDateFormat:@"hh:mm a"];
+    //timePicker.date = [timeFormatter dateFromString:leftLabel.text]; 
     
-    dateField = [[UITextField alloc] initWithFrame:CGRectMake(5, 165, 100, 35)];
-    [dateField setBorderStyle:UITextBorderStyleRoundedRect];
-    [dateField setPlaceholder:@"Date:"];
-    [dateField setInputView:datePicker];
-    [dateField setInputAccessoryView:toolbar];
-    [dateField setTag:0];
-    [dateField setDelegate:self];
-    [dateField setTextAlignment:UITextAlignmentLeft];
-    // [dateField becomeFirstResponder];
-    [topView addSubview:dateField];
+    pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(screenRect.size.width, dateToolBar.frame.size.height, screenRect.size.width, bottomView.frame.size.height-dateToolBar.frame.size.height)];
+    [pickerView setDataSource:self];
+    [pickerView setDelegate:self];
+    pickerView.showsSelectionIndicator = YES;
+    recurring = [[NSArray alloc] initWithObjects:@"Never",@"Daily",@"Weekly", @"Fortnightly", @"Monthy", @"Annualy",nil];
     
-    if (sender == @"Appointment") {
-        tableViewController = [[AddEntityTableViewController alloc] init]; //init the tableViewController to appropriateTableView
-        self.title = @"New Appointment";
-        
-        startTimeField = [[UITextField alloc] initWithFrame:CGRectMake(110, 165, 100, 35)];
-        [startTimeField setBorderStyle:UITextBorderStyleRoundedRect];
-        [startTimeField setPlaceholder:@"From:"];
-        [startTimeField setInputView:timePicker];
-        [startTimeField setInputAccessoryView:toolbar];
-        [startTimeField setDelegate:self];
-        [startTimeField setTag:1];
-        [topView addSubview:startTimeField];
-        
-        endTimeField = [[UITextField alloc] initWithFrame:CGRectMake(215, 165, 100, 35)];
-        [endTimeField setBorderStyle:UITextBorderStyleRoundedRect];
-        [endTimeField setPlaceholder:@"To:"];
-        [endTimeField setInputView:timePicker];
-        [endTimeField setInputAccessoryView:toolbar];
-        [endTimeField setDelegate:self];
-        [endTimeField setTag:2];
-        [topView addSubview:endTimeField];
-    }
-    else if (sender == @"To Do") {
-        tableViewController = [[TasksTableViewController alloc] init];
-        self.title = @"New To Do";
-        
-        recurringField = [[UITextField alloc] initWithFrame:CGRectMake(215, 165, 100, 35)];
-        [recurringField setBorderStyle:UITextBorderStyleRoundedRect];
-        [recurringField setPlaceholder:@"Repeat:"];
-        [recurringField setInputView:timePicker];
-        [recurringField setInputAccessoryView:toolbar];
-        [recurringField setDelegate:self];
-        [recurringField setTag:2];
-        [topView addSubview:recurringField];
-    }
-
-    [tableViewController.tableView.layer setCornerRadius:10.0];
     [tableViewController.tableView setSeparatorColor:[UIColor blackColor]];
+    [tableViewController.tableView setFrame:CGRectMake(0, 0, screenRect.size.width, bottomView.frame.size.height)];  
     [tableViewController.tableView setSectionHeaderHeight:18];
     tableViewController.tableView.rowHeight = 30.0;
     //[tableViewController.tableView setTableHeaderView:tableLabel];
 
-    bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, 205, 320, 255)];
-    [self.view addSubview:bottomView];
-    [bottomView addSubview:tableViewController.view];
-    
-    self.dateFormatter = [[NSDateFormatter alloc] init];
-	[self.dateFormatter setDateStyle:NSDateFormatterShortStyle];
-    self.timeFormatter = [[NSDateFormatter alloc]init];
-	[self.timeFormatter setTimeStyle:NSDateFormatterShortStyle];
-    
-   // swappingViews = NO;
 
 }
+
+- (void) viewWillAppear:(BOOL)animated{  
+    tableViewController = nil;
+    if (sender == @"Appointment") {
+        self.title = @"New Appointment";
+        
+        [self.midView addSubview:leftLabel];
+        [leftLabel setText:@"Date:"];
+        [leftLabel setHighlighted:YES];
+
+        tableViewController = [[AddEntityTableViewController alloc]init];
+        [tableViewController.tableView setSeparatorColor:[UIColor blackColor]];
+        [tableViewController.tableView setSectionHeaderHeight:13];
+        tableViewController.tableView.rowHeight = 30.0;
+        //[tableViewController.tableView setTableHeaderView:tableLabel];
+        [bottomView addSubview:tableViewController.tableView];
+        CGRect startFrame = CGRectMake(-screenRect.size.width, 0, screenRect.size.width, bottomView.frame.size.height);
+        tableViewController.tableView.frame = startFrame;
+        
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration:0.4];
+        [UIView setAnimationDelegate:self];
+        CGRect endFrame = CGRectMake(0, 0, 320, bottomView.frame.size.height);
+        tableViewController.tableView.frame = endFrame;
+        leftLabel.frame = CGRectMake(0, 0, 154, midViewRect.size.height);
+        
+        [UIView commitAnimations];    
+    }
+    else if (sender == @"To Do") {
+        self.title = @"New To Do";
+
+        [self.midView addSubview:leftLabel];
+        [leftLabel setText:@"Date:"];
+        [leftLabel setHighlighted:YES];
+        
+        tableViewController = [[TasksTableViewController alloc]init];
+        [tableViewController.tableView setSeparatorColor:[UIColor blackColor]];
+        [tableViewController.tableView setSectionHeaderHeight:13];
+        tableViewController.tableView.rowHeight = 30.0;
+        //[tableViewController.tableView setTableHeaderView:tableLabel];
+        [self.bottomView addSubview:tableViewController.tableView];
+        CGRect startFrame = CGRectMake(-320, 0, 320, 204);
+        tableViewController.tableView.frame = startFrame;
+        
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration:0.4];
+        [UIView setAnimationDelegate:self];
+        
+        CGRect endFrame = CGRectMake(0, 0, 320, 204);
+        tableViewController.tableView.frame = endFrame;
+        
+        endFrame = leftLabel.frame;
+        endFrame.origin.x = 0;
+        leftLabel.frame = endFrame;
+        
+        [UIView commitAnimations];  
+    
+    }
+    [bottomView addSubview:tableViewController.tableView];
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:1.4];    
+    [UIView setAnimationDelegate:self];
+    tableViewController.tableView.frame = CGRectMake(0, 0, bottomView.frame.size.width, bottomView.frame.size.height);
+    
+    [UIView commitAnimations]; 
+    [self  addPickerResizeViews:datePicker removePicker:timePicker];
+
+}
+
+
+
 
 #pragma mark -
 #pragma mark Text View Delegate Methods
@@ -200,98 +323,9 @@
 - (BOOL) textViewShouldBeginEditing:(UITextView *)textView {
     if (self.textView.inputAccessoryView == nil) {
     }
-    [self.textView setInputAccessoryView:toolbar];
+    [self.textView setInputAccessoryView:dateToolBar];
     return YES;    
 }  
-
-- (BOOL) textFieldShouldBeginEditing:(UITextField *)textField{
-    if (textField.tag == 0){
-        NSLog(@"IN DATEFIELD");
-        
-        if (dateField.inputAccessoryView == nil){
-           // [self makeToolbar];
-        }
-        if (self.toolbar.tag == 1){
-            UIBarButtonItem *datetimeButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"calendar_24.png"]style:UIBarButtonItemStylePlain target:self action:@selector(setAppointmentTime)];
-            [datetimeButton setTitle:@"Set Date"];
-            [datetimeButton setTag:1];
-            [datetimeButton setWidth:50.0];
-            NSUInteger newButton = 0;
-            NSMutableArray *toolbarItems = [[NSMutableArray arrayWithArray:toolbar.items] retain];
-            
-            for (NSUInteger i = 0; i < [toolbarItems count]; i++) {
-                UIBarButtonItem *barButtonItem = [toolbarItems objectAtIndex:i];
-                if (barButtonItem.tag == 5) {
-                    newButton = i;
-                    break;
-                }
-            }
-            [toolbarItems replaceObjectAtIndex:newButton withObject:datetimeButton];
-            toolbar.items = toolbarItems;
-            [datetimeButton release];
-            [toolbarItems release];
-            [toolbar setTag:0];
-        }
-        NSLog(@"Setting up the dateField accessory View");
-        
-        [dateField setInputAccessoryView:toolbar];
-    }
-    
-    else if (textField.tag == 1){
-        NSLog(@"IN TIMEFIELD");
-        NSLog(@"TimeField is editing");    
-        
-        if (self.toolbar.tag != 1){     
-            /*--TOOLBAR:BUTTON: Change Set Date to Set Time  --*/
-            //UIBarButtonItem *timeButton = [[UIBarButtonItem alloc] initWithTitle:@"Set Time" style:UIBarButtonItemStyleBordered target:self action:@selector(setAppointmentTime)];
-            UIBarButtonItem *datetimeButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"clock_24.png"]style:UIBarButtonItemStylePlain target:self action:@selector(setAppointmentTime)];
-            [datetimeButton setTitle:@"Set Time"];
-            [datetimeButton setTag:5];
-            [datetimeButton setWidth:50.0];
-            NSUInteger newButton = 0;
-            NSMutableArray *toolbarItems = [[NSMutableArray arrayWithArray:toolbar.items] retain];
-            
-            for (NSUInteger i = 0; i < [toolbarItems count]; i++) {
-                UIBarButtonItem *barButtonItem = [toolbarItems objectAtIndex:i];
-                if (barButtonItem.tag == 1) {
-                    newButton = i;
-                    break;
-                }
-            }
-            [toolbarItems replaceObjectAtIndex:newButton withObject:datetimeButton];
-            toolbar.items = toolbarItems;
-            [datetimeButton release];
-            [toolbarItems release];
-            [toolbar setTag:1];
-            /*-- TOOLBAR:  done --*/
-        }    
-        [startTimeField setInputAccessoryView:toolbar];
-    }
-    else if (textField.tag == 2){
-        NSLog(@"IN recurringFIELD");
-        NSLog(@"recurringField is editing");
-        [recurringField setInputAccessoryView:toolbar];
-        //[tableViewController.tableView removeFromSuperview];
-        [textView setAlpha:1.0];
-    }
-    return YES;
-}
-/*
-- (void) dateFieldDidEndEditing:(NSNotification *)notification{
- //   [dateField.inputView removeFromSuperview];   
-}
-
-- (void) timeFieldDidEndEditing:(NSNotification *)notification{
-   // [startTimeField.inputView removeFromSuperview];
-}
-
-- (void) recurringFieldDidEndEditing:(NSNotification *)notification{
-    //[recurringField.inputView removeFromSuperview];
-}
- -(void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)flag{
- //swappingViews = NO;
- }
- */
 
 
 
@@ -299,6 +333,7 @@
 #pragma mark Responding to keyboard events
 
 - (void)keyboardWillShow:(NSNotification *)notification {
+
     /* Reduce the size of the text view so that it's not obscured by the keyboard.
      Animate the resize so that it's in sync with the appearance of the keyboard. */
     
@@ -322,39 +357,39 @@
     // Animate the resize of the text view's frame in sync with the keyboard's appearance.
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:animationDuration];
-    
-    [tableViewController.tableView setFrame:CGRectMake(5, 5, 310, 155)];
-    [tableViewController.tableView setBackgroundColor:[UIColor clearColor]];
-    [tableViewController.tableView setAlpha:0.8];
-    [textView setAlpha:0.2];
-    //tableViewController.tableView.frame = newTextViewFrame;
-    
+    //[self.navigationController.navigationBar setHidden:YES];
+    CGRect endFrame = bottomView.frame;
+    endFrame.origin.y  = keyboardTop;
+    bottomView.frame = endFrame;
     [UIView commitAnimations];
 }
 
 
 - (void)keyboardWillHide:(NSNotification *)notification {
     
+    if (rightLabel_1.superview == nil||rightLabel_2.superview == nil){
+        return;
+        //FIXME: the tableview should only go down once all the date/time input is done. Currently it goes away after the startTime is set
+    }
     NSDictionary* userInfo = [notification userInfo];
     
-    /*Restore the size of the text view (fill self's view).
-     Animate the resize so that it's in sync with the disappearance of the keyboard.*/
     
-     NSValue *animationDurationValue = [userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey];
-     NSTimeInterval animationDuration;
-     [animationDurationValue getValue:&animationDuration];
-     
-     [UIView beginAnimations:nil context:NULL];
-     [UIView setAnimationDuration:animationDuration];
-     
+    NSValue *animationDurationValue = [userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey];
+    NSTimeInterval animationDuration;
+    [animationDurationValue getValue:&animationDuration];
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:animationDuration];
+    
     [tableViewController.tableView setBackgroundColor:[UIColor whiteColor]];
     [tableViewController.tableView setAlpha:1.0];
     [textView setAlpha:1.0];
-
-     tableViewController.tableView.frame = self.view.bounds;
-    //tableViewController.tableView.frame = bottomView.frame;
-     
-     [UIView commitAnimations];
+    
+    tableViewController.tableView.frame = CGRectMake(0, 205, 320, 200);
+    
+    [self.navigationController.navigationBar setHidden:NO];
+    
+    [UIView commitAnimations];
 }
 
 /*
@@ -389,11 +424,9 @@
  */
 
 
-
-#pragma mark -
-#pragma mark Class Methods
-
-- (IBAction)datePickerChanged:(id)sender{
+#pragma mark - 
+#pragma mark DATE/TIME PICKER ACTIONS
+- (void)datePickerChanged:(id)sender{
     NSCalendar *calendar = [NSCalendar currentCalendar];
     
     NSDateComponents *dateComponents = [calendar components:(NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit ) fromDate:[datePicker date]];
@@ -403,15 +436,16 @@
     [dateComponents setHour:12];
     [dateComponents setMinute:0];
     [dateComponents setSecond:0];
-    selectedDate = [calendar dateFromComponents:dateComponents];
-    NSLog(@"Selected Date: %@", selectedDate);
-    dateField.text = [self.dateFormatter stringFromDate:selectedDate];
+    NSDate *selectedDate = [calendar dateFromComponents:dateComponents];
+    NSLog(@"DatePicker Changed. Selected Date: %@", selectedDate);
+    leftLabel.text = [dateFormatter stringFromDate:selectedDate];
     
     [[NSNotificationCenter defaultCenter] 
-	 postNotificationName:@"GetDateNotification" object:self.selectedDate];
+	 postNotificationName:@"GetDateNotification" object:selectedDate];
 }
 
-- (IBAction)timePickerChanged:(id)sender{
+
+- (void)timePickerChanged:(id)sender{
     NSCalendar *calendar = [NSCalendar currentCalendar];
     
     NSDateComponents *timeComponents = [calendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit ) fromDate:[timePicker date]];    
@@ -422,15 +456,229 @@
     [timeComponents setMonth:0];
     [timeComponents setDay:0];
     
-    selectedTime= [calendar dateFromComponents:timeComponents];
-    NSLog(@"Selected Time: %@", selectedTime);
-    startTimeField.text = [self.timeFormatter stringFromDate:selectedTime];
+    if ([rightLabel_1 isHighlighted]) {
+        NSDate *selectedTime= [calendar dateFromComponents:timeComponents];
+        rightLabel_1.text = [timeFormatter stringFromDate:selectedTime];
+    }
+    else if ([rightLabel_2 isHighlighted]) {
+        NSDate *selectedEndTime= [calendar dateFromComponents:timeComponents];
+        rightLabel_2.text = [self.timeFormatter stringFromDate:selectedEndTime];
+    }
 }
 
+#pragma mark -
+#pragma mark PickerView Delegate
+-(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row
+      inComponent:(NSInteger)component{
+    
+    rightLabel.text = [recurring objectAtIndex:row];
+}
+
+// tell the picker how many rows are available for a given component
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    return [recurring count];
+}
+
+// tell the picker how many components it will have
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    return 1;
+}
+
+// tell the picker the title for a given component
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    return [recurring objectAtIndex:row];
+}
+
+// tell the picker the width of each row for a given component
+- (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component {
+    int sectionWidth = 300;
+    
+    return sectionWidth;
+}
+
+
+#pragma mark -
+#pragma mark - EVENTS & ACTIONS
+
+- (void) addPickerResizeViews:(UIView *)picker1 removePicker:(UIView *)picker2 {
+    [textView resignFirstResponder];
+    //PICKER Start and End frames
+    if (picker1.superview == nil) {
+        [bottomView addSubview:picker1];
+        
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration:0.4];
+        [UIView setAnimationDelegate:self];
+        
+        if (picker2 == datePicker && ([rightLabel_1 isHighlighted]||[rightLabel_2 isHighlighted])) {
+            [UIView setAnimationDidStopSelector:@selector(removeDatePicker)];
+        }
+        else if (picker2 == timePicker && [leftLabel isHighlighted] ){
+            NSLog(@"ADDED datePicker from addPickerResizeView")
+            ;            [UIView setAnimationDidStopSelector:@selector(removeTimePicker)];
+        }
+        
+        //PICKER: move into place
+        picker1.frame = CGRectMake(0.0,
+                                   datePicker.frame.origin.y, datePicker.frame.size.width, datePicker.frame.size.height);
+        picker2.frame = CGRectMake(-320,
+                                   datePicker.frame.origin.y, datePicker.frame.size.width, datePicker.frame.size.height);
+        [UIView commitAnimations];
+        
+    }
+    if (dateToolBar.superview == nil){
+        NSLog(@"ADDING TOOLBAR FROM addPickerResizeViews method");    
+        [bottomView addSubview:dateToolBar];
+        
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration:0.4];    
+        [UIView setAnimationDelegate:self];
+   
+        
+        //TOOLBAR: move into place
+        CGRect endFrame = CGRectMake(0.0, 0.0, 320, 40);            
+        dateToolBar.frame = endFrame;
+        
+        [UIView commitAnimations];
+    }
+}
+
+-(void)touchesBegan:(NSSet*)touches withEvent:(UIEvent*)event{
+    UITouch *touch = [touches anyObject];
+    
+    if (touch.view.tag == 12) {
+        [leftLabel setHighlighted:YES];
+        [rightLabel_1 setHighlighted:NO];
+        [rightLabel_2 setHighlighted:NO];
+        [self  addPickerResizeViews:datePicker removePicker:timePicker];
+    }
+    if (touch.view.tag == 13) {
+        [rightLabel_1 setHighlighted:YES];
+        [leftLabel setHighlighted:NO];
+        [rightLabel_2 setHighlighted:NO];
+        [self addPickerResizeViews:timePicker removePicker:datePicker];
+    }
+    if (touch.view.tag == 14) {
+        [rightLabel_2 setHighlighted:YES];
+        [leftLabel setHighlighted:NO];
+        [rightLabel_1 setHighlighted:NO];
+        [self addPickerResizeViews:timePicker removePicker:datePicker];
+    }
+}
+
+- (void) dismissKeyboard{
+    //Check if textView is firstResponder. If yes, dismiss the keyboard by calling resignFirstResponder;
+    if ([textView isFirstResponder]){
+        [textView resignFirstResponder];
+    }
+    //Check if one of the pickerViews is on the screen.
+    if (datePicker.superview != nil || timePicker.superview != nil || pickerView.superview !=nil) {
+        
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration:0.4];    
+        [UIView setAnimationDelegate:self];
+        
+        if (datePicker !=nil) {
+            
+            [UIView setAnimationDidStopSelector:@selector(removeDatePicker)];  
+        }
+        else if (timePicker !=nil){
+            [UIView setAnimationDidStopSelector:@selector(removeTimePicker)];   
+        }
+        else if (pickerView !=nil){
+            [UIView setAnimationDidStopSelector:@selector(removePickerView)];   
+        }
+        datePicker.frame = CGRectMake(320,datePicker.frame.origin.y, datePicker.frame.size.width, datePicker.frame.size.height);
+        timePicker.frame = CGRectMake(320,timePicker.frame.origin.y, timePicker.frame.size.width, timePicker.frame.size.height);
+        pickerView.frame = CGRectMake(320,pickerView.frame.origin.y, pickerView.frame.size.width, pickerView.frame.size.height);
+        
+        dateToolBar.frame = CGRectMake(320, dateToolBar.frame.origin.y, dateToolBar.frame.size.width, dateToolBar.frame.size.height);    
+        
+        bottomView.frame = bottomViewRect;
+        if (textView.frame.size.height <100){
+            CGRect frame = textView.frame;
+            frame.size.height = textViewHeight;
+            textView.frame = frame;
+            frame = midView.frame;
+            frame.origin.y += 40;
+            midView.frame = frame;
+        }
+        
+        [UIView commitAnimations];
+        [self.navigationController.navigationBar setHidden:NO];
+    }
+}
+
+- (void) removeDatePicker {
+    
+    if (datePicker.superview != nil) {
+        [datePicker removeFromSuperview];
+        NSLog(@"datePicker removed from Superview");
+    }
+    if (timePicker.superview == nil && pickerView.superview == nil) {
+        [dateToolBar removeFromSuperview];
+        NSLog(@"Removed DateToolBar with removeDatePicker method");
+   }
+}    
+
+- (void) removeTimePicker {
+    if (timePicker.superview != nil) {
+        [timePicker removeFromSuperview];
+        NSLog(@"timePicker removed from Superview");
+
+    }
+   if (datePicker.superview == nil && pickerView.superview == nil) {
+        [dateToolBar removeFromSuperview];
+       NSLog(@"Removed DateToolBar with removeTimePicker method");
+
+    }
+    
+}  
+- (void) removePickerView {
+    if (pickerView.superview != nil) {
+        [pickerView removeFromSuperview];
+    }
+    if (timePicker.superview == nil && datePicker.superview == nil) {
+        [dateToolBar removeFromSuperview];
+    }    
+}  
+
 - (void) setAppointmentDate{
+    if ([tableViewController isKindOfClass:[AddEntityTableViewController class]]) {
+        
+        if (rightLabel_1.superview == nil) {
+            [midView addSubview:rightLabel_1];
+            rightLabel_1.text = @"Starts:";
+        }    
+        if (timePicker.superview == nil) {
+            [bottomView addSubview:timePicker];
+        }
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration:0.4];    
+        [UIView setAnimationDelegate:self];
+        [UIView setAnimationDidStopSelector:@selector(removeDatePicker)];        
+        
+        CGRect endFrame = CGRectMake(leftLabel.frame.origin.x+leftLabel.frame.size.width+10, 0, 77, leftLabel.frame.size.height);
+        rightLabel_1.frame = endFrame;
+        endFrame = CGRectMake(-320, dateToolBar.frame.size.height,datePicker.frame.size.width, datePicker.frame.size.height);
+        datePicker.frame = endFrame;
+        endFrame = CGRectMake(0.0, dateToolBar.frame.size.height,
+                              timePicker.frame.size.width, timePicker.frame.size.height);
+        timePicker.frame = endFrame;                      
+        [UIView commitAnimations];
+    }
+    
+    else if ([tableViewController isKindOfClass:[TasksTableViewController class]]){
+        if (rightLabel.superview == nil) {
+            [self.view addSubview:rightLabel];
+        }    
+        CGRect startFrame = CGRectMake(320.0,textView.frame.origin.y+textView.frame.size.height+15,
+                                       154, leftLabel.frame.size.height);    
+        CGRect endFrame = CGRectMake(leftLabel.frame.origin.x+leftLabel.frame.size.width+10, textView.frame.origin.y+textView.frame.size.height+15, 154, leftLabel.frame.size.height);
+        [self animateViews:rightLabel startFrom:startFrame endAt:endFrame];
+    }
     
     /*-- DATE/TIME: Get selected Date from the time Picker; put it in the date text field --*/
-    
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *dateComponents = [calendar components:(NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit ) fromDate:[datePicker date]];
     [dateComponents setYear:[dateComponents year]];
@@ -439,45 +687,40 @@
     [dateComponents setHour:12];
     [dateComponents setMinute:0];
     [dateComponents setSecond:0];
-    selectedDate = [[calendar dateFromComponents:dateComponents] retain];
-    dateField.text = [dateFormatter stringFromDate:selectedDate];
+    NSDate *selectedDate = [[calendar dateFromComponents:dateComponents] retain];
+    leftLabel.text = [dateFormatter stringFromDate:selectedDate];
+    [selectedDate release];
     
-    if (sender == @"Appointment") {
-    
-    [dateField resignFirstResponder];
-    [startTimeField becomeFirstResponder];
+    if ([tableViewController isKindOfClass:[AddEntityTableViewController class]]) {
+        [leftLabel resignFirstResponder];
+        [rightLabel_1 setHighlighted:YES];
+        [dateToolBar.firstButton setImage:[UIImage imageNamed:@"11-clock.png"]];
+        [dateToolBar.firstButton setAction:@selector(setAppointmentTime)];
+        [dateToolBar.firstButton setTitle:@"Set Time"];      
     }
-    else if (sender == @"To Do"){
-    
-    /*--TOOLBAR: Change  Set Time button to Done  --*/
-    //UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(doneAction)];
-    
-    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"save.png"] style:UIBarButtonItemStylePlain target:self action:@selector(doneAction)];
-    [doneButton setTitle:@"Done"];
-    [doneButton setWidth:50.0];
-    [doneButton setTag:6];
-    NSUInteger newButton = 0;
-    NSMutableArray *toolbarItems = [[NSMutableArray arrayWithArray:toolbar.items] retain];
-    
-    for (NSUInteger i = 0; i < [toolbarItems count]; i++) {
-        UIBarButtonItem *barButtonItem = [toolbarItems objectAtIndex:i];
-        if (barButtonItem.tag == 1) {
-            newButton = i;
-            break;
-        }
+    else if ([tableViewController isKindOfClass:[TasksTableViewController class]]){
+        [leftLabel setHighlighted:NO];
+        [rightLabel setHighlighted:YES];
+        [rightLabel setHighlightedTextColor:[UIColor greenColor]];
+        [dateToolBar.firstButton setImage:[UIImage imageNamed:@"save.png"]];
+        [dateToolBar.firstButton setAction:@selector(doneAction)];
+        [dateToolBar.firstButton setTitle:@"Done"];            
     }
-    [toolbarItems replaceObjectAtIndex:newButton withObject:doneButton];
-    toolbar.items = toolbarItems;
-    [doneButton release];
-    [toolbarItems release];
-    /*-- TOOLBAR: Finished changing button --*/
-    }
-    // if (!swappingViews) {
-    //     [self swapViews];
-    // }
+    //if (!swappingViews) {
+    //    [self swapViews];
+    //}
+    return;
+    
 }
-
 - (void) setAppointmentTime{
+    if (rightLabel_2.superview == nil) {
+        [midView addSubview:rightLabel_2];
+    }    
+    CGRect startFrame = CGRectMake(320.0,0.0, 76, midViewRect.size.height);
+    CGRect endFrame = CGRectMake(rightLabel_1.frame.origin.x+rightLabel_1.frame.size.width+2, 0, 76, midViewRect.size.height);
+    [rightLabel_2 setText:@"Ends"];
+    [self animateViews:rightLabel_2 startFrom:startFrame endAt:endFrame];
+    
     /*--DATE/TIME: Get selected Time from the time Picker; put it in the time text field --*/
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *timeComponents = [calendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit ) fromDate:[timePicker date]];    
@@ -487,38 +730,22 @@
     [timeComponents setYear:0];
     [timeComponents setMonth:0];
     [timeComponents setDay:0];
-    selectedTime = [[calendar dateFromComponents:timeComponents] retain];
-    startTimeField.text = [timeFormatter stringFromDate:selectedTime];
-    
-    /*--TOOLBAR: Change  Set Time button to Done  --*/
-    //UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(doneAction)];
-    
-    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"save.png"] style:UIBarButtonItemStylePlain target:self action:@selector(doneAction)];
-    [doneButton setTitle:@"Done"];
-    [doneButton setWidth:50.0];
-    [doneButton setTag:6];
-    NSUInteger newButton = 0;
-    NSMutableArray *toolbarItems = [[NSMutableArray arrayWithArray:toolbar.items] retain];
-    
-    for (NSUInteger i = 0; i < [toolbarItems count]; i++) {
-        UIBarButtonItem *barButtonItem = [toolbarItems objectAtIndex:i];
-        if (barButtonItem.tag == 5) {
-            newButton = i;
-            break;
-        }
-    }
-    [toolbarItems replaceObjectAtIndex:newButton withObject:doneButton];
-    toolbar.items = toolbarItems;
-    [doneButton release];
-    [toolbarItems release];
-    /*-- TOOLBAR: Finished changing button --*/
+    NSDate *selectedTime = [[calendar dateFromComponents:timeComponents] retain];
+    rightLabel_1.text = [timeFormatter stringFromDate:selectedTime];
+    [selectedTime release];
+    [rightLabel_1 setHighlighted:NO];
+    [rightLabel_2 setHighlighted:YES];
+    [rightLabel_2 setHighlightedTextColor:[UIColor grayColor]];
+    [dateToolBar.firstButton setImage:[UIImage imageNamed:@"save.png"]];
+    [dateToolBar.firstButton setAction:@selector(doneAction)];
+    [dateToolBar.firstButton setTitle:@"Done"];
     
     //if (!swappingViews) {
     //    [self swapViews];
     //}
 }
 
-- (void) setAlarm{
+- (void) setAlarm {
     return;
 }
 - (void) setRecurring {
@@ -526,9 +753,9 @@
 }
 
 
-- (void) doneAction {
-    
-    if (sender == @"Appointment") {
+- (void) doneAction {    
+    if ([tableViewController isKindOfClass:[AddEntityTableViewController class]]) {
+        
         NSEntityDescription *entity = [NSEntityDescription
                                        entityForName:@"Appointment"
                                        inManagedObjectContext:managedObjectContext];
@@ -537,17 +764,17 @@
         //Add condition for reedit = if creationDate != nil then break
         [newAppointment setCreationDate:[NSDate date]];
         [newAppointment setType:[NSNumber numberWithInt:1]];
-        [newAppointment setDoDate:selectedDate];
-        [newAppointment setDoTime:selectedTime];
+        [newAppointment setDoDate:[dateFormatter dateFromString:leftLabel.text]];
+        [newAppointment setDoTime:[timeFormatter dateFromString:rightLabel_1.text]];
+        [newAppointment setEndTime:[timeFormatter dateFromString:rightLabel_2.text]];
         /*--Save the MOC--*/	
         NSError *error;
         if(![managedObjectContext save:&error]){ 
             NSLog(@"APPOINTMENTS VIEWCONTROLLER MOC: DID NOT SAVE");
         } 
         [newAppointment release];
-    
-        }
-    else if (sender == @"To Do") {
+    }
+    else if ([tableViewController isKindOfClass:[AddEntityTableViewController class]]) {
         NSEntityDescription *entity = [NSEntityDescription
                                        entityForName:@"Task"
                                        inManagedObjectContext:managedObjectContext];
@@ -556,7 +783,8 @@
         //Add condition for reedit = if creationDate != nil then break
         [newTask setCreationDate:[NSDate date]];
         [newTask setType:[NSNumber numberWithInt:1]];
-        [newTask setDoDate:selectedDate];
+        [newTask setDoDate:[dateFormatter dateFromString:leftLabel.text]];
+        [newTask setRecurring:rightLabel.text];
         /*--Save the MOC--*/	
         NSError *error;
         if(![managedObjectContext save:&error]){ 
@@ -564,10 +792,60 @@
         } 
         [newTask release];
     }
+    [self.view endEditing:YES];
+    [textView setText:@""];
+    [leftLabel setText:@""];
+    [rightLabel setText:@""];
+    [rightLabel_1 setText:@""];
+    [rightLabel_2 setText:@""];
+    [dateToolBar.firstButton setImage:[UIImage imageNamed:@"11-clock.png"]];
+    [dateToolBar.firstButton setTitle:@"Set Date"];
+    [dateToolBar.firstButton setAction:@selector(setAppointmentDate)];
+    [dateToolBar.dismissKeyboard setAction:@selector(dismissKeyboard)];    
     
-    [self dismissModalViewControllerAnimated:YES];
-}
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.4];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDidStopSelector:@selector(removeAllAddedViews)];
+    
+    leftLabel.frame = CGRectMake(-155, 0, leftLabel.frame.size.width, midViewRect.size.height);
+    rightLabel.frame = CGRectMake(screenRect.size.width, 0, rightLabel.frame.size.width, midViewRect.size.height);
+    rightLabel_1.frame = CGRectMake(screenRect.size.width, 0, rightLabel_1.frame.size.width, midViewRect.size.height);
+    rightLabel_2.frame = CGRectMake(screenRect.size.width, 0, rightLabel_2.frame.size.width, midViewRect.size.height);
+    dateToolBar.frame = toolBarRect;
+    datePicker.frame = CGRectMake(-screenRect.size.width, datePicker.frame.origin.y, screenRect.size.width, datePicker.frame.size.height);
+    timePicker.frame = CGRectMake(-screenRect.size.width, timePicker.frame.origin.y, screenRect.size.width, timePicker.frame.size.height);
+    textView.frame = CGRectMake(0, navBarHeight, screenRect.size.width, textViewHeight);
+    midView.frame = CGRectMake(0, midViewRect.origin.y, midViewRect.size.width, midViewRect.size.height);
+    bottomView.frame = bottomViewRect;
 
+    
+    [UIView commitAnimations];
+    [self dismissModalViewControllerAnimated:YES];
+    
+}
+- (void) removeAllAddedViews{
+    [datePicker removeFromSuperview];
+    [timePicker removeFromSuperview];
+    [leftLabel removeFromSuperview];
+    [rightLabel removeFromSuperview];
+    [rightLabel_1 removeFromSuperview];
+    [rightLabel_2 removeFromSuperview];
+    [dateToolBar removeFromSuperview];
+    
+    
+}
+#pragma mark - 
+#pragma mark - ANIMATION
+
+- (void) animateViews:(UIView *)view startFrom:(CGRect)fromFrame endAt:(CGRect)toFrame{
+    view.frame = fromFrame;
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.4];    
+    [UIView setAnimationDelegate:self];
+    view.frame = toFrame;
+    [UIView commitAnimations];    
+}
 /*
 - (void) swapViews {
 	
@@ -590,11 +868,6 @@
     
 	[self dismissModalViewControllerAnimated:YES];		
 }
-- (void) dismissKeyboard{
-    [self.view endEditing:YES];
-    //[tableViewController.tableView removeFromSuperview];
-    //[tableViewController.tableView setFrame:CGRectMake(5, 205, 310, 255)];
-    //[self.view addSubview:tableViewController.tableView];
-}
+
 
 @end

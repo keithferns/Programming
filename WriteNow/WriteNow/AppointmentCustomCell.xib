@@ -86,7 +86,6 @@
 								<string key="NSFrame">{{250, 0}, {60, 30}}</string>
 								<reference key="NSSuperview" ref="18477516"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
 								<reference key="IBUIBackgroundColor" ref="555395599"/>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
@@ -133,7 +132,6 @@
 				<string key="NSFrameSize">{407, 64}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView"/>
 				<float key="IBUIAlpha">0.69999998807907104</float>
 				<bool key="IBUIUserInteractionEnabled">NO</bool>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -147,6 +145,7 @@
 				<int key="NSvFlags">292</int>
 				<string key="NSFrameSize">{320, 30}</string>
 				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">3</int>
 					<bytes key="NSWhite">MAA</bytes>
@@ -208,6 +207,7 @@
 						<int key="objectID">4</int>
 						<reference key="object" ref="800160348"/>
 						<reference key="parent" ref="0"/>
+						<string key="objectName">Image View - bluebutton.png</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">13</int>

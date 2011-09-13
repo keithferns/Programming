@@ -1,0 +1,463 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		53C01752141EDD2300441D4B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53C01751141EDD2300441D4B /* UIKit.framework */; };
+		53C01754141EDD2300441D4B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53C01753141EDD2300441D4B /* Foundation.framework */; };
+		53C01756141EDD2300441D4B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53C01755141EDD2300441D4B /* CoreGraphics.framework */; };
+		53C01758141EDD2300441D4B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53C01757141EDD2300441D4B /* CoreData.framework */; };
+		53C0175E141EDD2300441D4B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 53C0175C141EDD2300441D4B /* InfoPlist.strings */; };
+		53C01761141EDD2300441D4B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 53C01760141EDD2300441D4B /* main.m */; };
+		53C01764141EDD2300441D4B /* HorizontalTablesAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 53C01763141EDD2300441D4B /* HorizontalTablesAppDelegate.m */; };
+		53C01767141EDD2300441D4B /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53C01765141EDD2300441D4B /* MainWindow.xib */; };
+		53C0176A141EDD2300441D4B /* HorizontalTables.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 53C01768141EDD2300441D4B /* HorizontalTables.xcdatamodeld */; };
+		53C01771141EDD2300441D4B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53C01751141EDD2300441D4B /* UIKit.framework */; };
+		53C01772141EDD2300441D4B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53C01753141EDD2300441D4B /* Foundation.framework */; };
+		53C01773141EDD2300441D4B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53C01755141EDD2300441D4B /* CoreGraphics.framework */; };
+		53C01774141EDD2300441D4B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53C01757141EDD2300441D4B /* CoreData.framework */; };
+		53C0177C141EDD2300441D4B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 53C0177A141EDD2300441D4B /* InfoPlist.strings */; };
+		53C0177F141EDD2300441D4B /* HorizontalTablesTests.h in Resources */ = {isa = PBXBuildFile; fileRef = 53C0177E141EDD2300441D4B /* HorizontalTablesTests.h */; };
+		53C01781141EDD2300441D4B /* HorizontalTablesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 53C01780141EDD2300441D4B /* HorizontalTablesTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		53C01775141EDD2300441D4B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 53C01744141EDD2200441D4B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 53C0174C141EDD2300441D4B;
+			remoteInfo = HorizontalTables;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		53C0174D141EDD2300441D4B /* HorizontalTables.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HorizontalTables.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		53C01751141EDD2300441D4B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		53C01753141EDD2300441D4B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		53C01755141EDD2300441D4B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		53C01757141EDD2300441D4B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		53C0175B141EDD2300441D4B /* HorizontalTables-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HorizontalTables-Info.plist"; sourceTree = "<group>"; };
+		53C0175D141EDD2300441D4B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		53C0175F141EDD2300441D4B /* HorizontalTables-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HorizontalTables-Prefix.pch"; sourceTree = "<group>"; };
+		53C01760141EDD2300441D4B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		53C01762141EDD2300441D4B /* HorizontalTablesAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HorizontalTablesAppDelegate.h; sourceTree = "<group>"; };
+		53C01763141EDD2300441D4B /* HorizontalTablesAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HorizontalTablesAppDelegate.m; sourceTree = "<group>"; };
+		53C01766141EDD2300441D4B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		53C01769141EDD2300441D4B /* HorizontalTables.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HorizontalTables.xcdatamodel; sourceTree = "<group>"; };
+		53C01770141EDD2300441D4B /* HorizontalTablesTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HorizontalTablesTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		53C01779141EDD2300441D4B /* HorizontalTablesTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HorizontalTablesTests-Info.plist"; sourceTree = "<group>"; };
+		53C0177B141EDD2300441D4B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		53C0177D141EDD2300441D4B /* HorizontalTablesTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HorizontalTablesTests-Prefix.pch"; sourceTree = "<group>"; };
+		53C0177E141EDD2300441D4B /* HorizontalTablesTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HorizontalTablesTests.h; sourceTree = "<group>"; };
+		53C01780141EDD2300441D4B /* HorizontalTablesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HorizontalTablesTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		53C0174A141EDD2300441D4B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				53C01752141EDD2300441D4B /* UIKit.framework in Frameworks */,
+				53C01754141EDD2300441D4B /* Foundation.framework in Frameworks */,
+				53C01756141EDD2300441D4B /* CoreGraphics.framework in Frameworks */,
+				53C01758141EDD2300441D4B /* CoreData.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		53C0176C141EDD2300441D4B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				53C01771141EDD2300441D4B /* UIKit.framework in Frameworks */,
+				53C01772141EDD2300441D4B /* Foundation.framework in Frameworks */,
+				53C01773141EDD2300441D4B /* CoreGraphics.framework in Frameworks */,
+				53C01774141EDD2300441D4B /* CoreData.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		53C01742141EDD2200441D4B = {
+			isa = PBXGroup;
+			children = (
+				53C01759141EDD2300441D4B /* HorizontalTables */,
+				53C01777141EDD2300441D4B /* HorizontalTablesTests */,
+				53C01750141EDD2300441D4B /* Frameworks */,
+				53C0174E141EDD2300441D4B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		53C0174E141EDD2300441D4B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				53C0174D141EDD2300441D4B /* HorizontalTables.app */,
+				53C01770141EDD2300441D4B /* HorizontalTablesTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		53C01750141EDD2300441D4B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				53C01751141EDD2300441D4B /* UIKit.framework */,
+				53C01753141EDD2300441D4B /* Foundation.framework */,
+				53C01755141EDD2300441D4B /* CoreGraphics.framework */,
+				53C01757141EDD2300441D4B /* CoreData.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		53C01759141EDD2300441D4B /* HorizontalTables */ = {
+			isa = PBXGroup;
+			children = (
+				53C01762141EDD2300441D4B /* HorizontalTablesAppDelegate.h */,
+				53C01763141EDD2300441D4B /* HorizontalTablesAppDelegate.m */,
+				53C01765141EDD2300441D4B /* MainWindow.xib */,
+				53C01768141EDD2300441D4B /* HorizontalTables.xcdatamodeld */,
+				53C0175A141EDD2300441D4B /* Supporting Files */,
+			);
+			path = HorizontalTables;
+			sourceTree = "<group>";
+		};
+		53C0175A141EDD2300441D4B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				53C0175B141EDD2300441D4B /* HorizontalTables-Info.plist */,
+				53C0175C141EDD2300441D4B /* InfoPlist.strings */,
+				53C0175F141EDD2300441D4B /* HorizontalTables-Prefix.pch */,
+				53C01760141EDD2300441D4B /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		53C01777141EDD2300441D4B /* HorizontalTablesTests */ = {
+			isa = PBXGroup;
+			children = (
+				53C0177E141EDD2300441D4B /* HorizontalTablesTests.h */,
+				53C01780141EDD2300441D4B /* HorizontalTablesTests.m */,
+				53C01778141EDD2300441D4B /* Supporting Files */,
+			);
+			path = HorizontalTablesTests;
+			sourceTree = "<group>";
+		};
+		53C01778141EDD2300441D4B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				53C01779141EDD2300441D4B /* HorizontalTablesTests-Info.plist */,
+				53C0177A141EDD2300441D4B /* InfoPlist.strings */,
+				53C0177D141EDD2300441D4B /* HorizontalTablesTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		53C0174C141EDD2300441D4B /* HorizontalTables */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 53C01784141EDD2300441D4B /* Build configuration list for PBXNativeTarget "HorizontalTables" */;
+			buildPhases = (
+				53C01749141EDD2300441D4B /* Sources */,
+				53C0174A141EDD2300441D4B /* Frameworks */,
+				53C0174B141EDD2300441D4B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HorizontalTables;
+			productName = HorizontalTables;
+			productReference = 53C0174D141EDD2300441D4B /* HorizontalTables.app */;
+			productType = "com.apple.product-type.application";
+		};
+		53C0176F141EDD2300441D4B /* HorizontalTablesTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 53C01787141EDD2300441D4B /* Build configuration list for PBXNativeTarget "HorizontalTablesTests" */;
+			buildPhases = (
+				53C0176B141EDD2300441D4B /* Sources */,
+				53C0176C141EDD2300441D4B /* Frameworks */,
+				53C0176D141EDD2300441D4B /* Resources */,
+				53C0176E141EDD2300441D4B /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				53C01776141EDD2300441D4B /* PBXTargetDependency */,
+			);
+			name = HorizontalTablesTests;
+			productName = HorizontalTablesTests;
+			productReference = 53C01770141EDD2300441D4B /* HorizontalTablesTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		53C01744141EDD2200441D4B /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 53C01747141EDD2200441D4B /* Build configuration list for PBXProject "HorizontalTables" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 53C01742141EDD2200441D4B;
+			productRefGroup = 53C0174E141EDD2300441D4B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				53C0174C141EDD2300441D4B /* HorizontalTables */,
+				53C0176F141EDD2300441D4B /* HorizontalTablesTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		53C0174B141EDD2300441D4B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				53C0175E141EDD2300441D4B /* InfoPlist.strings in Resources */,
+				53C01767141EDD2300441D4B /* MainWindow.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		53C0176D141EDD2300441D4B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				53C0177C141EDD2300441D4B /* InfoPlist.strings in Resources */,
+				53C0177F141EDD2300441D4B /* HorizontalTablesTests.h in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		53C0176E141EDD2300441D4B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		53C01749141EDD2300441D4B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				53C01761141EDD2300441D4B /* main.m in Sources */,
+				53C01764141EDD2300441D4B /* HorizontalTablesAppDelegate.m in Sources */,
+				53C0176A141EDD2300441D4B /* HorizontalTables.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		53C0176B141EDD2300441D4B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				53C01781141EDD2300441D4B /* HorizontalTablesTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		53C01776141EDD2300441D4B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 53C0174C141EDD2300441D4B /* HorizontalTables */;
+			targetProxy = 53C01775141EDD2300441D4B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		53C0175C141EDD2300441D4B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				53C0175D141EDD2300441D4B /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		53C01765141EDD2300441D4B /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				53C01766141EDD2300441D4B /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		53C0177A141EDD2300441D4B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				53C0177B141EDD2300441D4B /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		53C01782141EDD2300441D4B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		53C01783141EDD2300441D4B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		53C01785141EDD2300441D4B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HorizontalTables/HorizontalTables-Prefix.pch";
+				INFOPLIST_FILE = "HorizontalTables/HorizontalTables-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		53C01786141EDD2300441D4B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HorizontalTables/HorizontalTables-Prefix.pch";
+				INFOPLIST_FILE = "HorizontalTables/HorizontalTables-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		53C01788141EDD2300441D4B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/HorizontalTables.app/HorizontalTables";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HorizontalTablesTests/HorizontalTablesTests-Prefix.pch";
+				INFOPLIST_FILE = "HorizontalTablesTests/HorizontalTablesTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		53C01789141EDD2300441D4B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/HorizontalTables.app/HorizontalTables";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HorizontalTablesTests/HorizontalTablesTests-Prefix.pch";
+				INFOPLIST_FILE = "HorizontalTablesTests/HorizontalTablesTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		53C01747141EDD2200441D4B /* Build configuration list for PBXProject "HorizontalTables" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				53C01782141EDD2300441D4B /* Debug */,
+				53C01783141EDD2300441D4B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		53C01784141EDD2300441D4B /* Build configuration list for PBXNativeTarget "HorizontalTables" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				53C01785141EDD2300441D4B /* Debug */,
+				53C01786141EDD2300441D4B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		53C01787141EDD2300441D4B /* Build configuration list for PBXNativeTarget "HorizontalTablesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				53C01788141EDD2300441D4B /* Debug */,
+				53C01789141EDD2300441D4B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		53C01768141EDD2300441D4B /* HorizontalTables.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				53C01769141EDD2300441D4B /* HorizontalTables.xcdatamodel */,
+			);
+			currentVersion = 53C01769141EDD2300441D4B /* HorizontalTables.xcdatamodel */;
+			path = HorizontalTables.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 53C01744141EDD2200441D4B /* Project object */;
+}

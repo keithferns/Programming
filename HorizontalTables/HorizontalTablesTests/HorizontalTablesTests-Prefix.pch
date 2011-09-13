@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'HorizontalTablesTests' target in the 'HorizontalTablesTests' project
+//
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+#endif

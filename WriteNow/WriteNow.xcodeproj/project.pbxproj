@@ -405,7 +405,6 @@
 				53980E9A1409732800833716 /* AddEntityTableViewController */,
 				53E979BD140476F000B780C8 /* AppointmentTableViewController */,
 				53A1E76F14049C7A00481EA4 /* TaskTableViewController */,
-				53980E8C14095EA800833716 /* AddEntityViewController */,
 				531567F213FB83560044C5A9 /* CalendarViewController.h */,
 				531567F313FB83560044C5A9 /* CalendarViewController.m */,
 				531567F413FB83560044C5A9 /* CalendarViewController.xib */,
@@ -668,6 +667,7 @@
 		53980E8C14095EA800833716 /* AddEntityViewController */ = {
 			isa = PBXGroup;
 			children = (
+				537FBE0D13FDA0E1005E705F /* Tasks */,
 				53980E9214095FF700833716 /* AddEntityViewController.h */,
 				53980E9314095FF700833716 /* AddEntityViewController.m */,
 				53980E9414095FF700833716 /* AddEntityViewController.xib */,
@@ -678,7 +678,6 @@
 		53980E9A1409732800833716 /* AddEntityTableViewController */ = {
 			isa = PBXGroup;
 			children = (
-				537FBE0D13FDA0E1005E705F /* Tasks */,
 				53980E9B1409736B00833716 /* AddEntityTableViewController.h */,
 				53980E9C1409736B00833716 /* AddEntityTableViewController.m */,
 			);
@@ -772,6 +771,7 @@
 				5315679113FB63990044C5A9 /* DiaryViewController */,
 				5315678D13FB636C0044C5A9 /* FolderViewController */,
 				5315679513FB63C20044C5A9 /* CalendarViewController */,
+				53980E8C14095EA800833716 /* AddEntityViewController */,
 				5315678913FB62E40044C5A9 /* TodayViewController */,
 				532F191013FB0D6500CECBD1 /* MainViewController */,
 				53FB85B113FAEC3800765BFC /* MainWindow.xib */,

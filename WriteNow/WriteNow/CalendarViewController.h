@@ -24,7 +24,7 @@
 
 @property (nonatomic, retain) NSString *sender, *newText;
 @property (nonatomic, retain) UITextView *textView;
-@property (nonatomic, retain) UITextField *dateField, *startTimeField, *endTimeField, *recurringField;
+@property (nonatomic, retain) UITextField *leftField, *startTimeField, *endTimeField, *rightField;
 @property (nonatomic, retain) UIDatePicker *datePicker, *timePicker;
 @property (nonatomic, retain) UIPickerView *pickerView;
 @property (nonatomic, retain) CustomToolBar *toolbar;
