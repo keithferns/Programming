@@ -1,0 +1,27 @@
+//
+//  Appointment.h
+//  miMemo
+//
+//  Created by Keith Fernandes on 8/3/11.
+//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
+
+@class MemoText;
+
+@interface Appointment : NSManagedObject {
+@private
+}
+@property (nonatomic, retain) NSString * appointmentRE;
+@property (nonatomic, retain) NSNumber * isRecurring;
+@property (nonatomic, retain) NSString * doDate;
+<<<<<<< HEAD:miMemo/miMemo/ManagedObjects/Appointment.h
+@property (nonatomic, retain) NSDate * selectedDate;
+=======
+>>>>>>> 748324d1efc5e10527a8328de6fefe07bf20fd2d:miMemo/miMemo/Appointment.h
+@property (nonatomic, retain) NSString * doTime;
+@property (nonatomic, retain) MemoText * memoText;
+
+@end

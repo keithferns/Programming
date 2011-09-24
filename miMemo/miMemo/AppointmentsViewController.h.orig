@@ -1,0 +1,66 @@
+//
+//  AppointmentsViewController.h
+//  Memo
+//
+//  Created by Keith Fernandes on 7/4/11.
+//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import "Appointment.h"
+#import "MemoText.h"
+
+
+@interface AppointmentsViewController : UIViewController <UIActionSheetDelegate, UITextViewDelegate, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate> {
+    
+<<<<<<< HEAD
+    NSManagedObjectContext *managedObjectContext, *managedObjectContextTV;
+	NSFetchedResultsController *_fetchedResultsController;
+	UITableView *tableView;	
+=======
+    NSManagedObjectContext *managedObjectContext;
+    MemoText *newMemoText;
+    Appointment *newAppointment;
+    NSString *appointmentDate, *appointmentTime;
+>>>>>>> 748324d1efc5e10527a8328de6fefe07bf20fd2d
+    BOOL swappingViews;
+    UIToolbar *appointmentsToolbar;
+    NSString *newTextInput;
+}
+
+<<<<<<< HEAD
+@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext, *managedObjectContextTV;
+@property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
+@property (nonatomic, retain) UITableView *tableView;
+@property (nonatomic, retain) IBOutlet UIDatePicker *datePicker;
+=======
+@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, retain) MemoText *newMemoText;
+@property (nonatomic, retain) Appointment *newAppointment;
+@property (nonatomic, retain) NSString *appointmentDate, *appointmentTime;
+@property (nonatomic, retain) UIDatePicker *datePicker, *timePicker;
+>>>>>>> 748324d1efc5e10527a8328de6fefe07bf20fd2d
+@property (nonatomic, retain) UIActionSheet *goActionSheet;
+@property (nonatomic, retain) UIToolbar *appointmentsToolbar;
+@property (nonatomic, retain) UITextView *textView;
+@property (nonatomic, retain) UITextField *dateTextField, *timeTextField;
+@property (nonatomic, retain) NSString *newTextInput;
+@property (nonatomic, retain) NSDate *selectedDate;
+@property (nonatomic, retain) UILabel *tableLabel;
+
+- (void) swapViews;
+
+- (void) backAction;
+
+- (void) setAppointmentDate;
+
+- (void) makeToolbar;
+
+- (IBAction)datePickerChanged:(id)sender;
+
+- (NSFetchedResultsController *) fetchedResultsControllerWithPredicate:(NSPredicate *)aPredicate; 
+
+@end
+
+
+

@@ -50,10 +50,17 @@
 							<object class="IBUILabel" id="793310987">
 								<reference key="NSNextResponder" ref="818392695"/>
 								<int key="NSvFlags">319</int>
+<<<<<<< HEAD
 								<string key="NSFrame">{{52, 0}, {242, 26}}</string>
 								<reference key="NSSuperview" ref="818392695"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="610113773"/>
+=======
+								<string key="NSFrame">{{10, 25}, {267, 45}}</string>
+								<reference key="NSSuperview" ref="818392695"/>
+								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
+>>>>>>> 748324d1efc5e10527a8328de6fefe07bf20fd2d
 								<object class="NSColor" key="IBUIBackgroundColor" id="240901276">
 									<int key="NSColorSpace">3</int>
 									<bytes key="NSWhite">MQA</bytes>
@@ -81,7 +88,11 @@
 							<object class="IBUILabel" id="610113773">
 								<reference key="NSNextResponder" ref="818392695"/>
 								<int key="NSvFlags">319</int>
+<<<<<<< HEAD
 								<string key="NSFrame">{{52, 26}, {72, 14}}</string>
+=======
+								<string key="NSFrame">{{10, 0}, {38, 23}}</string>
+>>>>>>> 748324d1efc5e10527a8328de6fefe07bf20fd2d
 								<reference key="NSSuperview" ref="818392695"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="522592641"/>
@@ -90,7 +101,11 @@
 								<int key="IBUIContentMode">7</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+<<<<<<< HEAD
 								<string key="IBUIText"/>
+=======
+								<string key="IBUIText">DATE:</string>
+>>>>>>> 748324d1efc5e10527a8328de6fefe07bf20fd2d
 								<object class="NSFont" key="IBUIFont">
 									<string key="NSName">Helvetica-Bold</string>
 									<double key="NSSize">10</double>
@@ -105,10 +120,17 @@
 							<object class="IBUILabel" id="522592641">
 								<reference key="NSNextResponder" ref="818392695"/>
 								<int key="NSvFlags">319</int>
+<<<<<<< HEAD
 								<string key="NSFrame">{{125, 26}, {169, 14}}</string>
 								<reference key="NSSuperview" ref="818392695"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView"/>
+=======
+								<string key="NSFrame">{{49, 0}, {228, 23}}</string>
+								<reference key="NSSuperview" ref="818392695"/>
+								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="793310987"/>
+>>>>>>> 748324d1efc5e10527a8328de6fefe07bf20fd2d
 								<reference key="IBUIBackgroundColor" ref="240901276"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -131,7 +153,11 @@
 						<string key="NSFrameSize">{300, 40}</string>
 						<reference key="NSSuperview" ref="137389946"/>
 						<reference key="NSWindow"/>
+<<<<<<< HEAD
 						<reference key="NSNextKeyView" ref="793310987"/>
+=======
+						<reference key="NSNextKeyView" ref="610113773"/>
+>>>>>>> 748324d1efc5e10527a8328de6fefe07bf20fd2d
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MCAwAA</bytes>
@@ -166,6 +192,7 @@
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
+<<<<<<< HEAD
 						<string key="label">date</string>
 						<reference key="source" ref="137389946"/>
 						<reference key="destination" ref="522592641"/>
@@ -175,6 +202,9 @@
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">dateLabel</string>
+=======
+						<string key="label">creationDate</string>
+>>>>>>> 748324d1efc5e10527a8328de6fefe07bf20fd2d
 						<reference key="source" ref="137389946"/>
 						<reference key="destination" ref="610113773"/>
 					</object>
@@ -222,12 +252,15 @@
 						<string key="objectName">StartScreenCustomCell</string>
 					</object>
 					<object class="IBObjectRecord">
+<<<<<<< HEAD
 						<int key="objectID">25</int>
 						<reference key="object" ref="793310987"/>
 						<reference key="parent" ref="137389946"/>
 						<string key="objectName">memoText</string>
 					</object>
 					<object class="IBObjectRecord">
+=======
+>>>>>>> 748324d1efc5e10527a8328de6fefe07bf20fd2d
 						<int key="objectID">10</int>
 						<reference key="object" ref="610113773"/>
 						<reference key="parent" ref="137389946"/>

@@ -12,7 +12,8 @@
     
     NSManagedObjectContext *managedObjectContext;
     MemoText *newMemoText;
-    NSDate *taskDate;
+    ToDo *newTask;
+    NSString *taskDate;
     BOOL swappingViews;
 	UIDatePicker *datePicker, *timePicker;
     UIActionSheet *goActionSheet;
@@ -25,7 +26,9 @@
 
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain) MemoText *newMemoText;
-@property (nonatomic, retain) NSDate *taskDate;
+@property (nonatomic, retain) ToDo *newTask;
+
+@property (nonatomic, retain) NSString *taskDate;
 @property (nonatomic, retain) UIDatePicker *datePicker, *timePicker;
 @property (nonatomic, retain) UIActionSheet *goActionSheet;
 @property (nonatomic, retain) UIToolbar *taskToolbar;
@@ -38,7 +41,6 @@
 - (void) swapViews;
 - (void) backAction;
 - (void) setTaskDate;
-- (void) setTaskTime;
 - (void) makeToolbar;
 
 //- (IBAction)monthAction:(id)sender;

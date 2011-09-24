@@ -28,26 +28,42 @@
 @synthesize newMemoText;
 @synthesize tableViewController;
 
+<<<<<<< HEAD
+//FIXME: Adding a new Memo/MemoText by directly saving it to a Folder does not result in an update in the main screen table. Any memoText that is not an appointment or a task should show as the most recent memo on the main screen.
+=======
+>>>>>>> 748324d1efc5e10527a8328de6fefe07bf20fd2d
 //TODO: Recognize input numbers as telephone numbers  save to contacts. Obviously, an obvious thing to do, so has to be part of core functionality. 
 //TODO: Related to above. Recognize and Add input names to an appropriate place. 
 //TODO: add LOCATION entity. use as basis for creating categories and Location Folders.
 //TOTHINK: ADD PERSON entity. Key relational entity in the real world. Needs a place here. 
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> 748324d1efc5e10527a8328de6fefe07bf20fd2d
 #pragma mark -
 
 #pragma mark ViewLifeCycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+<<<<<<< HEAD
     NSLog(@"In RootViewController");
    
+=======
+     NSLog(@"In RootViewController");
+
+    //Add the tableViewController
+    [self.view addSubview:tableViewController.tableView];
+
+>>>>>>> 748324d1efc5e10527a8328de6fefe07bf20fd2d
     if (managedObjectContext == nil) { 
 		managedObjectContext = [(miMemoAppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext]; 
         NSLog(@"In RootViewController");
         
         NSLog(@"After managedObjectContext: %@",  managedObjectContext);
 	}
+<<<<<<< HEAD
  
     
     self.view.layer.backgroundColor = [UIColor groupTableViewBackgroundColor].CGColor;
@@ -61,6 +77,22 @@
     //newText.layer.contents = (id) [UIImage imageNamed:@"lined_paper_320x200.png"].CGImage;
     newText.delegate = self;
     [self.view addSubview:newText];
+=======
+    [self makeToolbar];
+    [self.view addSubview:toolbar];
+
+    self.view.layer.backgroundColor = [UIColor groupTableViewBackgroundColor].CGColor;
+    [self.view setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
+    
+     newText = [[UITextView alloc] initWithFrame:CGRectMake(10, 35, 305, 170)];
+     [newText setFont:[UIFont systemFontOfSize:18]];
+     newText.layer.backgroundColor = [UIColor groupTableViewBackgroundColor].CGColor;
+     newText.layer.cornerRadius = 7.0;
+     newText.layer.frame = CGRectInset(newText.layer.frame, 5, 10);
+     newText.layer.contents = (id) [UIImage imageNamed:@"lined_paper_320x200.png"].CGImage;
+     newText.delegate = self;
+     [self.view addSubview:newText];
+>>>>>>> 748324d1efc5e10527a8328de6fefe07bf20fd2d
     
     UILabel *topLabel = [[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 30)] autorelease];
     [topLabel setText:@"My Memo"];
@@ -212,6 +244,7 @@
 	}
 	else if (actionSheet == goActionSheet){
 		switch (buttonIndex){
+<<<<<<< HEAD
 			case 1:
 			default:
 				break;
@@ -222,6 +255,31 @@
                 [self presentModalViewController:viewController animated:YES];}
 				break;		
            
+=======
+			case 4:
+			default:
+				break;
+			case 3:
+			{MyTasksViewController *viewController = [[[MyTasksViewController	alloc] initWithNibName:nil bundle:nil] autorelease];	
+			[self presentModalViewController:viewController animated:YES];}
+				break;
+			case 2:
+				NSLog(@"Appointments Button Clicked on GoToAction");
+			{MyAppointmentsViewController *viewController = [[[MyAppointmentsViewController alloc] initWithNibName:nil bundle:nil] autorelease];	
+				[self presentModalViewController:viewController animated:YES];
+                }
+				break;
+			case 1:
+				NSLog(@" Folders Button Clicked on GoToAction");
+                {MyFoldersViewController *viewController = [[[MyFoldersViewController alloc] initWithNibName:nil bundle:nil] autorelease];
+                    [self presentModalViewController:viewController animated:YES];}
+				break;		
+            case 0:
+				NSLog(@" Memos Button Clicked on GoToAction");
+                MyMemosViewController *viewController = [[[MyMemosViewController alloc] initWithNibName:nil bundle:nil] autorelease];
+                [self presentModalViewController:viewController animated:YES];
+				break;	    
+>>>>>>> 748324d1efc5e10527a8328de6fefe07bf20fd2d
 		}
 	}
 }
@@ -383,6 +441,7 @@
         [addViewController.managedObjectContext setPersistentStoreCoordinator:[[tableViewController.fetchedResultsController managedObjectContext] persistentStoreCoordinator]];
         NSLog(@"After managedObjectContext: %@",  addViewController.managedObjectContext);
         
+<<<<<<< HEAD
         addViewController.newTextInput = newTextInput;	
         addViewController.newMemoText = newMemoText;
         [self presentModalViewController:addViewController animated:YES];	
@@ -411,6 +470,14 @@
         [newText setText:@""];
         [self.view endEditing:YES];
     }
+=======
+	addViewController.newTextInput = newTextInput;	
+    addViewController.newMemoText = newMemoText;
+	[self presentModalViewController:addViewController animated:YES];	
+    [newText setText:@""];
+	[self.view endEditing:YES];
+  }
+>>>>>>> 748324d1efc5e10527a8328de6fefe07bf20fd2d
 }
 - (void) makeToolbar{
     /*Setting up the Toolbar */

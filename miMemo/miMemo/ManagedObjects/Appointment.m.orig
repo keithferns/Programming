@@ -1,0 +1,25 @@
+//
+//  Appointment.m
+//  miMemo
+//
+//  Created by Keith Fernandes on 8/3/11.
+//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
+//
+
+#import "Appointment.h"
+#import "MemoText.h"
+
+
+@implementation Appointment
+@dynamic appointmentRE;
+@dynamic isRecurring;
+@dynamic doDate;
+<<<<<<< HEAD:miMemo/miMemo/ManagedObjects/Appointment.m
+@dynamic selectedDate;
+=======
+>>>>>>> 748324d1efc5e10527a8328de6fefe07bf20fd2d:miMemo/miMemo/Appointment.m
+@dynamic doTime;
+@dynamic memoText;
+
+
+@end

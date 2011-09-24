@@ -1,0 +1,25 @@
+//
+//  ToDo.m
+//  miMemo
+//
+<<<<<<< HEAD:miMemo/miMemo/ManagedObjects/ToDo.m
+//  Created by Keith Fernandes on 8/3/11.
+=======
+//  Created by Keith Fernandes on 8/1/11.
+>>>>>>> 748324d1efc5e10527a8328de6fefe07bf20fd2d:miMemo/miMemo/ToDo.m
+//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
+//
+
+#import "ToDo.h"
+#import "MemoText.h"
+
+
+@implementation ToDo
+@dynamic selectedDate;
+@dynamic isRecurring;
+@dynamic doDate;
+@dynamic taskName;
+@dynamic memoText;
+
+
+@end
