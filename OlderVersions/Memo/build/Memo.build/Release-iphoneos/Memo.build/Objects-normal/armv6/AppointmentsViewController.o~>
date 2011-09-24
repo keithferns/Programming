@@ -1,0 +1,2 @@
+/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/AppointmentsViewController.m:140: warning: property 'datePicker' requires method '-datePicker' to be defined - use @synthesize, @dynamic or provide a method implementation
+/Users/Keith/Documents/Dropbox/KEITH/Programming/Memo/iPhone/AppointmentsViewController.m:140: warning: property 'datePicker' requires the method 'setDatePicker:' to be defined - use @synthesize, @dynamic or provide a method implementation

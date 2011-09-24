@@ -14,7 +14,7 @@
 
 
 #import "TasksTableViewController.h"
-#import "AppointmentsTableViewController.h"
+#import "AddEntityTableViewController.h"
 
 
 @implementation CurrentTableViewController
@@ -22,8 +22,18 @@
 @synthesize managedObjectContext;
 @synthesize fetchedResultsController = _fetchedResultsController;
 
+- (MyDataObject *) myDataObject;
+{
+	id<AppDelegateProtocol> theDelegate = (id<AppDelegateProtocol>) [UIApplication sharedApplication].delegate;
+	MyDataObject* myDataObject;
+	myDataObject = (MyDataObject*) theDelegate.myDataObject;
+	return myDataObject;
 
 
+//KVO (Key Value Observing). Do a search on "Key-Value Observing Quick Start" in the XCode help system for more info.  You would want to make objects that need to be notified of changes call observeValueForKeyPathfObject:change:context: on the data container object. Then, they will get notified automatically when the object changes.
+
+    }
+    
 - (id)initWithStyle:(UITableViewStyle)style {
     self = [super initWithStyle:style];
     if (self) {
@@ -403,7 +413,7 @@
     if ([[_fetchedResultsController objectAtIndexPath:indexPath] isKindOfClass:[Appointment class]]) {
         //Appointment *tempAppointment = [_fetchedResultsController objectAtIndexPath:indexPath];
         
-        AppointmentsTableViewController *detailViewController = [[AppointmentsTableViewController alloc] initWithNibName:nil bundle:nil];  
+        AddEntityTableViewController *detailViewController = [[AddEntityTableViewController alloc] initWithNibName:nil bundle:nil];  
         //detailViewController.selectedAppointment;
         
         [self.navigationController pushViewController:detailViewController animated:YES]; 

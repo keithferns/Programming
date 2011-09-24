@@ -1,4 +1,3 @@
-//
 //  FoldersViewController.m
 //  WriteNow
 //
@@ -8,28 +7,103 @@
 
 #import "FoldersViewController.h"
 #import "FoldersTableViewController.h"
-#import "AppointmentsTableViewController.h"
 #import "WriteNowAppDelegate.h"
 
-#import "TasksViewController.h"
 #import "AddEntityViewController.h"
 #import "CustomTextView.h"
 #import "CustomTextField.h"
 #import "CustomToolBar.h"
-
-#import "DiaryTableViewController.h"
 
 @implementation FoldersViewController
 
 @synthesize tableViewController, managedObjectContext;
 
 @synthesize sender, newText;
-@synthesize textView, textField;
-@synthesize toolbar, saveNewFolderButton;
+@synthesize textView, nameField;
+@synthesize toolBar, saveNewFolderButton;
+@synthesize navPopover;
+
+#define screenRect [[UIScreen mainScreen] applicationFrame]
+#define tabBarHeight self.tabBarController.tabBar.frame.size.height
+#define navBarHeight self.navigationController.navigationBar.frame.size.height
+#define toolBarRect CGRectMake(screenRect.size.width, 0, screenRect.size.width, 40)
+#define textViewHeight 140.0
+#define bottomViewRect CGRectMake(0, navBarHeight+160, screenRect.size.width, 260)
 
 #pragma mark - View lifecycle
 
 //FIXME: Add ability to change/edit the name of a folder. 
+- (void)makeFolderFile:(id)sender {
+	NSLog(@"Folder/File-> Button Pressed");
+    
+    if(!navPopover) {
+        //UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0,0, 120, 30)];
+        //[label setTextAlignment:UITextAlignmentCenter];
+        //[label setBackgroundColor:[UIColor clearColor]];
+        //[label setTextColor:[UIColor whiteColor]];
+        //[label setText:@"Create"];
+        
+        nameField = [[UITextField alloc] initWithFrame:CGRectMake(0, 10, 200, 30)];
+        [nameField setEnabled:YES];
+        [nameField setBorderStyle:UITextBorderStyleRoundedRect];
+        [nameField setTextAlignment:UITextAlignmentCenter];
+        [nameField setPlaceholder:@" Name"];
+        [nameField setInputAccessoryView:toolBar];        
+        [nameField setFont:[UIFont systemFontOfSize:16.0]];
+        [nameField setTag:0];
+        [nameField setDelegate:self];
+        [nameField setContentVerticalAlignment: UIControlContentVerticalAlignmentCenter];
+        
+        UIButton *folderButton = [[UIButton alloc] initWithFrame:CGRectMake(30, 60, 50, 50)];
+        
+        [folderButton setBackgroundImage:[UIImage imageNamed:@"folder_button"] forState:UIControlStateNormal];
+        [folderButton setTag:1];
+        [folderButton addTarget:self action:@selector(makeFolder) forControlEvents:UIControlEventTouchUpInside];
+        
+        UIButton *fileButton = [[UIButton alloc] initWithFrame:CGRectMake(folderButton.frame.origin.x+folderButton.frame.size.width+40, folderButton.frame.origin.y, 50, 50)];
+        
+        [fileButton setBackgroundImage:[UIImage imageNamed:@"files_button"] forState:UIControlStateNormal];
+        [fileButton setTag:1];
+        [fileButton addTarget:self action:@selector(makeFile) forControlEvents:UIControlEventTouchUpInside];
+        
+        UIViewController *viewCon = [[UIViewController alloc] init];
+        viewCon.contentSizeForViewInPopover = CGSizeMake(200, textViewHeight-10);
+        [viewCon.view addSubview:fileButton];
+        [viewCon.view addSubview:folderButton];
+        [viewCon.view addSubview:nameField];
+        //[viewCon.view addSubview:label];
+        
+        [folderButton release];
+        [fileButton release];
+        //[label release];
+        navPopover = [[WEPopoverController alloc] initWithContentViewController:viewCon];
+        [navPopover setDelegate:self];
+        [viewCon release];
+    } 
+    
+    if([navPopover isPopoverVisible]) {
+        [navPopover dismissPopoverAnimated:YES];
+        [navPopover setDelegate:nil];
+        [navPopover autorelease];
+        navPopover = nil;
+    } else {
+        //CGRect screenBounds = [UIScreen mainScreen].bounds;
+        [navPopover presentPopoverFromRect:CGRectMake(300, 0, 50, tabBarHeight-7)
+                                    inView:self.view 
+                  permittedArrowDirections:UIPopoverArrowDirectionUp
+                                  animated:YES];
+    }
+}
+
+
+- (void)popoverControllerDidDismissPopover:(WEPopoverController *)popoverController {
+    NSLog(@"Did dismiss");
+}
+
+- (BOOL)popoverControllerShouldDismissPopover:(WEPopoverController *)popoverController {
+    NSLog(@"Should dismiss");
+    return YES;
+}
 
 
 -(id)init {
@@ -47,6 +121,7 @@
     [super dealloc];
     [sender release];
     [newText release];
+    [nameField release];
     [tableViewController release];
 }
 
@@ -73,7 +148,6 @@
     
     swappingViews = NO;     
     isSelected = NO;
-    
 
     [self.view setFrame:[[UIScreen mainScreen] applicationFrame]];
 
@@ -103,27 +177,27 @@
     
     /*--NAVIGATION ITEMS --*/
     /*-Initialize the TOOLBAR-*/
-    toolbar = [[CustomToolBar alloc] initWithFrame:CGRectMake(0, 195, 320, 40)];
-    [toolbar.firstButton setTarget:self];
-    [toolbar.firstButton setAction:@selector(makeActionSheet:)];
+    toolBar = [[CustomToolBar alloc] initWithFrame:CGRectMake(0, 195, 320, 40)];
+    [toolBar.firstButton setTarget:self];
+    [toolBar.firstButton setAction:@selector(makeActionSheet:)];
     
-    [toolbar.secondButton setImage:[UIImage imageNamed:@"folder_24.png"]];
-    [toolbar.secondButton setTitle:@"Store"];
-    [toolbar.secondButton setTarget:self];
-    [toolbar.secondButton setAction:@selector(saveMemo)];
+    [toolBar.secondButton setImage:[UIImage imageNamed:@"folder_24.png"]];
+    [toolBar.secondButton setTitle:@"Store"];
+    [toolBar.secondButton setTarget:self];
+    [toolBar.secondButton setAction:@selector(saveMemo)];
     
-    [toolbar.thirdButton setImage:[UIImage imageNamed:@"save.png"]];
-    [toolbar.thirdButton setTitle:@"Save"];//NOTE: flip with new note button
-    [toolbar.thirdButton setTarget:self];
-    [toolbar.thirdButton setAction:@selector(addEntity:)];
+    [toolBar.thirdButton setImage:[UIImage imageNamed:@"save.png"]];
+    [toolBar.thirdButton setTitle:@"Save"];//NOTE: flip with new note button
+    [toolBar.thirdButton setTarget:self];
+    [toolBar.thirdButton setAction:@selector(addEntity:)];
     
-    [toolbar.fourthButton setImage:[UIImage imageNamed:@"save_document.png"]];
-    [toolbar.fourthButton setTitle:@"Append"];
-    [toolbar.fourthButton setTarget:self];
-    [toolbar.fourthButton setAction:@selector(addEntity:)];
+    [toolBar.fourthButton setImage:[UIImage imageNamed:@"save_document.png"]];
+    [toolBar.fourthButton setTitle:@"Append"];
+    [toolBar.fourthButton setTarget:self];
+    [toolBar.fourthButton setAction:@selector(addEntity:)];
     
-    [toolbar.dismissKeyboard setTarget:self];
-    [toolbar.dismissKeyboard setAction:@selector(dismissKeyboard)];
+    [toolBar.dismissKeyboard setTarget:self];
+    [toolBar.dismissKeyboard setAction:@selector(dismissKeyboard)];
  
     
     UIBarButtonItem *newDoc = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"pages_nav.png"] style:UIBarButtonItemStylePlain target:self action:@selector(addFolderFile:)];
@@ -132,14 +206,25 @@
     [self.navigationItem.leftBarButtonItem setStyle:UIBarButtonItemStylePlain];
     
     
-    /*--VIEWS:CONTROL VIEWS -*/    
-    //TEXTVIEW
+    UIBarButtonItem *makeFileFolder = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"add-item_whiteonblack.png"] style:UIBarButtonItemStylePlain target:self action:@selector(makeFolderFile:)];
+    self.navigationItem.rightBarButtonItem = makeFileFolder;
+    self.navigationItem.rightBarButtonItem.tag = 0;
+    [self.navigationItem.rightBarButtonItem setStyle:UIBarButtonItemStylePlain];
+
     
-    textView = [[CustomTextView alloc] initWithFrame:CGRectMake(0, self.navigationController.navigationBar.frame.size.height, 320, 100)];
-    textView.delegate = self;
-    textView.inputAccessoryView = toolbar;
+    
+    /*--VIEWS:CONTROL VIEWS -*/    
+
+    
+    //TEXTVIEW: setup and add to self.view
+    textView = [[CustomTextView alloc] initWithFrame:CGRectMake(5, navBarHeight+10, screenRect.size.width-10, textViewHeight)];
+    textView.delegate = self;    
+    textView.inputAccessoryView = toolBar;
+    UIImage *patternImage = [UIImage imageNamed:@"54700.png"];
+    self.textView.backgroundColor = [UIColor colorWithPatternImage:patternImage];
     [self.view addSubview:textView];
 
+/*  NOTE: THESE CONTROL ELEMENTS MOVED TO THE POPOVER VIEW
     //TEXTFIELDS
     textField = [[CustomTextField alloc] initWithFrame:CGRectMake(135, textView.frame.origin.y+textView.frame.size.height+10, 180, 30)];
     [textField setBorderStyle:UITextBorderStyleRoundedRect];
@@ -150,7 +235,7 @@
     textField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     [self.view addSubview:textField];
     [textField setPlaceholder:@"Create a new Folder"];
-    textField.inputAccessoryView = toolbar;
+    textField.inputAccessoryView = toolBar;
     
     //BUTTON
     saveNewFolderButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -161,7 +246,7 @@
     [saveNewFolderButton setTitle:@"Save To Folder" forState:UIControlStateNormal];
     [saveNewFolderButton addTarget:self action:@selector(makeFolder) forControlEvents:UIControlEventTouchUpInside];
     [self.view  addSubview:saveNewFolderButton];
-    
+  */  
     
     //TABLEVIEWCONTROLLER
     tableViewController = [[FoldersTableViewController alloc] init];
@@ -191,24 +276,26 @@
 
 - (void) dismissKeyboard{
     [self.textView resignFirstResponder];
-    [self.textField resignFirstResponder];
+    [self.nameField resignFirstResponder];
 }
 
 - (void) addFolderFile:(UIBarButtonItem *)barButtonItem {
-    if (textField == nil) {
-        textField = [[UITextField alloc] initWithFrame:CGRectMake(5, 155, 310, 30)];
-        [textField setBorderStyle:UITextBorderStyleRoundedRect];
-        [textField setInputAccessoryView:toolbar];
-        [textField setFont:[UIFont systemFontOfSize:13.0]];
-        [textField setTag:0];
-        [textField setDelegate:self];
-        [textField setTextAlignment:UITextAlignmentCenter];
-        textField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-        [self.view addSubview:textField];
-        NSLog(@"CREATING A NEW TEXTFIELD");
+
+    /*
+    if (nameField == nil) {
+        nameField = [[UITextField alloc] initWithFrame:CGRectMake(5, 155, 310, 30)];
+        [nameField setBorderStyle:UITextBorderStyleRoundedRect];
+        [nameField setInputAccessoryView:toolBar];
+        [nameField setFont:[UIFont systemFontOfSize:13.0]];
+        [nameField setTag:0];
+        [nameField setDelegate:self];
+        [nameField setTextAlignment:UITextAlignmentCenter];
+        nameField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+        [self.view addSubview:nameField];
     }
+     */
     if (self.navigationItem.leftBarButtonItem.tag == 0) {
-        [textField setPlaceholder:@"Create a new File"];
+        //[nameField setPlaceholder:@"Create a new File"];
         self.navigationItem.leftBarButtonItem.tag = 1;
         [self.navigationItem.leftBarButtonItem setImage:[UIImage imageNamed:@"folder_nav.png"]];
         self.title = @"Append To A File";
@@ -219,7 +306,7 @@
         [tableViewController.tableView reloadData];
     }
     else if (self.navigationItem.leftBarButtonItem.tag ==1){
-        [textField setPlaceholder:@"Create a new Folder"];
+        [nameField setPlaceholder:@"Create a new Folder"];
         self.navigationItem.leftBarButtonItem.tag = 0;
         [self.navigationItem.leftBarButtonItem setImage:[UIImage imageNamed:@"pages_nav.png"]];
         self.title = @"Save To A Folder";
@@ -306,7 +393,7 @@
 
 - (void) makeFolder{
     NSLog(@"CREATING A NEW FOLDER");
-    if (textField.text == nil) {
+    if (nameField.text == nil) {
         return;
     }
     //else if (!isSelected){ 
@@ -316,22 +403,23 @@
                                    inManagedObjectContext:managedObjectContext];
     Folder *newFolder = [[Folder alloc] initWithEntity:entity insertIntoManagedObjectContext:managedObjectContext]; 
     
-    newFolder.name = textField.text;
+    newFolder.name = nameField.text;
     /*--Save the MOC--*/	
     NSError *error;
     if(![managedObjectContext save:&error]){ 
         NSLog(@"DID NOT SAVE");
     }
-    textField.text = @"";
-    [textField resignFirstResponder];
+    nameField.text = @"";
+    [nameField resignFirstResponder];
    // if (!swappingViews) {
    //     [self swapViews];
    // }
+    [navPopover dismissPopoverAnimated:YES];
     [newFolder release];
 }
 - (void) makeFile{
     NSLog(@"CREATING A NEW FILE");
-    if (textField.text == nil) {
+    if (nameField.text == nil) {
         return;
     }
     //else if (!isSelected){ 
@@ -341,45 +429,23 @@
                                    inManagedObjectContext:managedObjectContext];
     File *newFile = [[File alloc] initWithEntity:entity insertIntoManagedObjectContext:managedObjectContext]; 
     
-    newFile.name = textField.text;
+    newFile.name = nameField.text;
   
     /*--Save the MOC--*/	
     NSError *error;
     if(![managedObjectContext save:&error]){ 
         NSLog(@"DID NOT SAVE");
     }
-    textField.text = @"";
-    [textField resignFirstResponder];
+    nameField.text = @"";
+    [nameField resignFirstResponder];
     // if (!swappingViews) {
     //     [self swapViews];
     // }
+    [navPopover dismissPopoverAnimated:YES];
     [newFile release];
 }
 
--(void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)flag
-{
-	//swappingViews = NO;
-}
-
-/*
-- (void) swapViews {
-	CATransition *transition = [CATransition animation];
-	transition.duration = 1.0;
-	transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-	[transition setType:@"kCATransitionPush"];	
-	[transition setSubtype:@"kCATransitionFromRight"];
-	swappingViews = YES;
-	transition.delegate = self;
-	[self.view.layer addAnimation:transition forKey:nil];
-    //set views hidden and not hidden in sequence.
-}
-*/
-
-#pragma -
-
 @end
-
-
 
 /*
  NSArray *segControlI = [NSArray arrayWithObjects:[UIImage imageNamed:@"addFolder_nav.png"], [UIImage imageNamed:@"addDoc_nav.png"], nil];

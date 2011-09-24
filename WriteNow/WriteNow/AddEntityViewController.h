@@ -9,31 +9,40 @@
 #import <UIKit/UIKit.h>
 #import "CustomToolBar.h"
 #import "CustomTextView.h"
+#import "CustomTextField.h"
+#import "WEPopoverController.h"
 
-@interface AddEntityViewController : UIViewController <UITextFieldDelegate, UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UINavigationBarDelegate> {
+@interface AddEntityViewController : UIViewController <UITextFieldDelegate, UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UINavigationBarDelegate, PopoverControllerDelegate> {
     
     UITableViewController *tableViewController;
     NSManagedObjectContext *managedObjectContext;    
-    BOOL swappingViews, isSelected;
+    
     CustomTextView *textView;
     
-    NSString *sender, *newText;
-}
+    NSString *sender;
+    
+    WEPopoverController *navPopover;
+    
+    BOOL swappingViews, isSelected;
+
+
+    }
 
 @property (nonatomic, retain) UITableViewController *tableViewController;
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
-@property (nonatomic, retain) IBOutlet UINavigationBar *navBar;
 
-@property (nonatomic, retain) NSString *sender, *newText;
+@property (nonatomic, retain) IBOutlet UINavigationBar *navBar;//
+
+@property (nonatomic, retain) NSString *sender;
 
 @property (nonatomic, retain) CustomTextView *textView;
-@property (nonatomic, retain) UILabel *leftLabel,*rightLabel, *rightLabel_1, *rightLabel_2;
+@property (nonatomic, retain) CustomTextField *leftField,*rightField, *rightField_1, *rightField_2;//
 
 @property (nonatomic, retain) CustomToolBar *dateToolBar;
 
 @property (nonatomic, retain) NSDateFormatter *dateFormatter, *timeFormatter;
-
-@property (nonatomic, retain) UIView *midView, *bottomView;
+@property (nonatomic, retain) UIView *bottomView;//
+//@property (nonatomic, retain) UIView *midView;//
 
 @property (nonatomic, retain) UIDatePicker *datePicker, *timePicker;
 
@@ -41,12 +50,20 @@
 @property (nonatomic, retain) NSArray *recurring;
 @property (nonatomic, retain) IBOutlet UIBarButtonItem *backButton, *doneButton, *titleItem;
 
+@property (nonatomic, retain) WEPopoverController *navPopover;
+
+
 //- (void) swapViews;
 
 - (void) backAction;    //cancel action
 - (void) dismissKeyboard;
 - (IBAction)datePickerChanged:(id)sender;
 - (IBAction)timePickerChanged:(id)sender;
+
+- (void) setAlarm;
+- (void) setAlarm:(id)sender;
+- (void)setDateTime:(id)sender;
+
 
 
 - (void) setAppointmentDate;

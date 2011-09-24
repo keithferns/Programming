@@ -46,7 +46,6 @@
 	[super viewDidLoad];
     [self.navigationBar setHidden:NO];
     [self.navigationBar setTintColor:[UIColor colorWithRed:0.2 green:0.2 blue:0.5 alpha:1]];
-
     [self.navigationBar setTranslucent:YES];
     
     NSLog(@"MainViewController MOC: %@", managedObjectContext);

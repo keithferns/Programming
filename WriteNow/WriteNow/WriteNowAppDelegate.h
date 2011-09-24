@@ -7,11 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppDelegateProtocol.h"
 
-@interface WriteNowAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate> {
+@class MyDataObject;
+
+
+@interface WriteNowAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate, AppDelegateProtocol> {
     
         UIWindow *window;
         UITabBarController *tabBarController;
+        MyDataObject* myDataObject;
+
     }
     
 @property (nonatomic, retain) IBOutlet UIWindow *window;
@@ -19,6 +25,9 @@
 @property (nonatomic, retain, readonly) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain, readonly) NSManagedObjectModel *managedObjectModel;
 @property (nonatomic, retain, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
+
+@property (nonatomic, retain) MyDataObject* myDataObject;
+
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;

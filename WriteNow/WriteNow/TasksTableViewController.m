@@ -20,6 +20,13 @@
 @synthesize tableLabel;
 @synthesize selectedDate;
 
+- (MyDataObject *) myDataObject {
+	id<AppDelegateProtocol> theDelegate = (id<AppDelegateProtocol>) [UIApplication sharedApplication].delegate;
+	MyDataObject* myDataObject;
+	myDataObject = (MyDataObject*) theDelegate.myDataObject;
+	return myDataObject;
+}
+
 
 - (id)initWithStyle:(UITableViewStyle)style{
     self = [super initWithStyle:style];

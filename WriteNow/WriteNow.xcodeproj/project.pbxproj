@@ -43,14 +43,40 @@
 		5315680013FB83B00044C5A9 /* FoldersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 531567FE13FB83B00044C5A9 /* FoldersViewController.xib */; };
 		5318F1F013FE0F6C00BFDCC5 /* add-item.png in Resources */ = {isa = PBXBuildFile; fileRef = 5318F1EF13FE0F6C00BFDCC5 /* add-item.png */; };
 		5318F1F213FE0FAB00BFDCC5 /* calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = 5318F1F113FE0FAB00BFDCC5 /* calendar.png */; };
+		532C02671423CF9400C51DAE /* WEPopoverContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 532C02631423CF9400C51DAE /* WEPopoverContainerView.m */; };
+		532C02681423CF9400C51DAE /* WEPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 532C02651423CF9400C51DAE /* WEPopoverController.m */; };
+		532C02741423CFDC00C51DAE /* popoverArrowDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 532C026A1423CFDC00C51DAE /* popoverArrowDown.png */; };
+		532C02751423CFDC00C51DAE /* popoverArrowDown@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 532C026B1423CFDC00C51DAE /* popoverArrowDown@2x.png */; };
+		532C02761423CFDC00C51DAE /* popoverArrowLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = 532C026C1423CFDC00C51DAE /* popoverArrowLeft.png */; };
+		532C02771423CFDC00C51DAE /* popoverArrowLeft@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 532C026D1423CFDC00C51DAE /* popoverArrowLeft@2x.png */; };
+		532C02781423CFDC00C51DAE /* popoverArrowRight.png in Resources */ = {isa = PBXBuildFile; fileRef = 532C026E1423CFDC00C51DAE /* popoverArrowRight.png */; };
+		532C02791423CFDC00C51DAE /* popoverArrowRight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 532C026F1423CFDC00C51DAE /* popoverArrowRight@2x.png */; };
+		532C027A1423CFDC00C51DAE /* popoverArrowUp.png in Resources */ = {isa = PBXBuildFile; fileRef = 532C02701423CFDC00C51DAE /* popoverArrowUp.png */; };
+		532C027B1423CFDC00C51DAE /* popoverArrowUp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 532C02711423CFDC00C51DAE /* popoverArrowUp@2x.png */; };
+		532C027C1423CFDC00C51DAE /* popoverBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 532C02721423CFDC00C51DAE /* popoverBg.png */; };
+		532C027D1423CFDC00C51DAE /* popoverBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 532C02731423CFDC00C51DAE /* popoverBg@2x.png */; };
+		532C02801423D1FC00C51DAE /* WEPopoverContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 532C027F1423D1FB00C51DAE /* WEPopoverContentViewController.m */; };
+		532C02831423D28500C51DAE /* WEPopoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 532C02821423D28500C51DAE /* WEPopoverViewController.m */; };
+		532C02851425290500C51DAE /* 54700.png in Resources */ = {isa = PBXBuildFile; fileRef = 532C0284142528CE00C51DAE /* 54700.png */; };
+		532C0287142641B600C51DAE /* appointment.png in Resources */ = {isa = PBXBuildFile; fileRef = 532C0286142641AC00C51DAE /* appointment.png */; };
+		532C02891426425A00C51DAE /* task.png in Resources */ = {isa = PBXBuildFile; fileRef = 532C02881426425100C51DAE /* task.png */; };
+		532C029114269BCD00C51DAE /* appointment_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 532C028A14269AF300C51DAE /* appointment_button.png */; };
+		532C029214269BCD00C51DAE /* book_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 532C028B14269B0600C51DAE /* book_button.png */; };
+		532C029314269BCD00C51DAE /* email_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 532C028C14269B1A00C51DAE /* email_button.png */; };
+		532C029414269BCD00C51DAE /* files_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 532C028D14269B2C00C51DAE /* files_button.png */; };
+		532C029514269BCD00C51DAE /* folder_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 532C028E14269B4100C51DAE /* folder_button.png */; };
+		532C029614269BCD00C51DAE /* message_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 532C028F14269B6200C51DAE /* message_button.png */; };
+		532C029714269BCD00C51DAE /* task_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 532C029014269B8C00C51DAE /* task_button.png */; };
+		532C0299142726C800C51DAE /* add-item_whiteonblack.png in Resources */ = {isa = PBXBuildFile; fileRef = 532C0298142726A700C51DAE /* add-item_whiteonblack.png */; };
 		532F191413FB0D9500CECBD1 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 532F191313FB0D9500CECBD1 /* MainViewController.m */; };
+		533667861427D26B00AE7C2B /* popoverBg_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 533667841427D26B00AE7C2B /* popoverBg_blue.png */; };
+		533667871427D26B00AE7C2B /* popoverBg_blue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 533667851427D26B00AE7C2B /* popoverBg_blue@2x.png */; };
 		533D3D3113FEE1120043833E /* note_accept.png in Resources */ = {isa = PBXBuildFile; fileRef = 533D3D3013FEE1120043833E /* note_accept.png */; };
 		533D3D3413FF98320043833E /* bluebutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 533D3D3313FF98320043833E /* bluebutton.png */; };
 		533D3D3713FF99230043833E /* AppointmentCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 533D3D3613FF99220043833E /* AppointmentCustomCell.m */; };
 		533D3D3913FF99470043833E /* AppointmentCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 533D3D3813FF99470043833E /* AppointmentCustomCell.xib */; };
 		533D3D44140017130043833E /* DiaryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 533D3D43140017130043833E /* DiaryTableViewController.m */; };
 		533D3D47140017EE0043833E /* TasksTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 533D3D46140017EE0043833E /* TasksTableViewController.m */; };
-		533D3D50140061750043833E /* AppointmentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 533D3D4F140061750043833E /* AppointmentsTableViewController.m */; };
 		533D3D55140089B60043833E /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 533D3D53140089B60043833E /* DetailViewController.m */; };
 		533D3D56140089B60043833E /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 533D3D54140089B60043833E /* DetailViewController.xib */; };
 		53421C9C1404C1B200CFF414 /* edit.png in Resources */ = {isa = PBXBuildFile; fileRef = 53421C9B1404C1B200CFF414 /* edit.png */; };
@@ -82,6 +108,8 @@
 		53485BFF13FC4EBD001CA9EB /* File.m in Sources */ = {isa = PBXBuildFile; fileRef = 53485BFE13FC4EBD001CA9EB /* File.m */; };
 		53485C0513FC4EBD001CA9EB /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 53485C0413FC4EBD001CA9EB /* Note.m */; };
 		53485C0813FC4EBD001CA9EB /* Memo.m in Sources */ = {isa = PBXBuildFile; fileRef = 53485C0713FC4EBD001CA9EB /* Memo.m */; };
+		5360184A141F1A9800F703A6 /* AppDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 53601849141F1A9800F703A6 /* AppDataObject.m */; };
+		5360184D141F1D1D00F703A6 /* MyDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 5360184C141F1D1C00F703A6 /* MyDataObject.m */; };
 		537AD84F1400C9B900259452 /* FoldersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 537AD84E1400C9B900259452 /* FoldersTableViewController.m */; };
 		537AD85A1402544C00259452 /* 11-clock1.png in Resources */ = {isa = PBXBuildFile; fileRef = 537AD8591402544C00259452 /* 11-clock1.png */; };
 		537C7A5E13FCFF940086D4AE /* 11-clock.png in Resources */ = {isa = PBXBuildFile; fileRef = 537C7A5B13FCFF940086D4AE /* 11-clock.png */; };
@@ -92,8 +120,6 @@
 		537C7A6813FD000B0086D4AE /* 179-notepad.png in Resources */ = {isa = PBXBuildFile; fileRef = 537C7A6613FD000B0086D4AE /* 179-notepad.png */; };
 		537C7A6913FD000B0086D4AE /* 180-stickynote.png in Resources */ = {isa = PBXBuildFile; fileRef = 537C7A6713FD000B0086D4AE /* 180-stickynote.png */; };
 		537C7A6B13FD002D0086D4AE /* 14-tag.png in Resources */ = {isa = PBXBuildFile; fileRef = 537C7A6A13FD002D0086D4AE /* 14-tag.png */; };
-		537FBE1213FDA100005E705F /* TasksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 537FBE1013FDA100005E705F /* TasksViewController.m */; };
-		537FBE1313FDA100005E705F /* TasksViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 537FBE1113FDA100005E705F /* TasksViewController.xib */; };
 		538165041410BA6700E90FD1 /* AddFolderShaded30.png in Resources */ = {isa = PBXBuildFile; fileRef = 538164FB1410BA6700E90FD1 /* AddFolderShaded30.png */; };
 		538165051410BA6700E90FD1 /* AddNoteShaded30.png in Resources */ = {isa = PBXBuildFile; fileRef = 538164FC1410BA6700E90FD1 /* AddNoteShaded30.png */; };
 		538165061410BA6700E90FD1 /* book_nav.png in Resources */ = {isa = PBXBuildFile; fileRef = 538164FD1410BA6700E90FD1 /* book_nav.png */; };
@@ -206,8 +232,40 @@
 		531567FE13FB83B00044C5A9 /* FoldersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FoldersViewController.xib; sourceTree = "<group>"; };
 		5318F1EF13FE0F6C00BFDCC5 /* add-item.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add-item.png"; sourceTree = "<group>"; };
 		5318F1F113FE0FAB00BFDCC5 /* calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar.png; sourceTree = "<group>"; };
+		532C02621423CF9400C51DAE /* WEPopoverContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEPopoverContainerView.h; sourceTree = "<group>"; };
+		532C02631423CF9400C51DAE /* WEPopoverContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEPopoverContainerView.m; sourceTree = "<group>"; };
+		532C02641423CF9400C51DAE /* WEPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEPopoverController.h; sourceTree = "<group>"; };
+		532C02651423CF9400C51DAE /* WEPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEPopoverController.m; sourceTree = "<group>"; };
+		532C02661423CF9400C51DAE /* WEPopoverParentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEPopoverParentView.h; sourceTree = "<group>"; };
+		532C026A1423CFDC00C51DAE /* popoverArrowDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popoverArrowDown.png; sourceTree = "<group>"; };
+		532C026B1423CFDC00C51DAE /* popoverArrowDown@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "popoverArrowDown@2x.png"; sourceTree = "<group>"; };
+		532C026C1423CFDC00C51DAE /* popoverArrowLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popoverArrowLeft.png; sourceTree = "<group>"; };
+		532C026D1423CFDC00C51DAE /* popoverArrowLeft@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "popoverArrowLeft@2x.png"; sourceTree = "<group>"; };
+		532C026E1423CFDC00C51DAE /* popoverArrowRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popoverArrowRight.png; sourceTree = "<group>"; };
+		532C026F1423CFDC00C51DAE /* popoverArrowRight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "popoverArrowRight@2x.png"; sourceTree = "<group>"; };
+		532C02701423CFDC00C51DAE /* popoverArrowUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popoverArrowUp.png; sourceTree = "<group>"; };
+		532C02711423CFDC00C51DAE /* popoverArrowUp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "popoverArrowUp@2x.png"; sourceTree = "<group>"; };
+		532C02721423CFDC00C51DAE /* popoverBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popoverBg.png; sourceTree = "<group>"; };
+		532C02731423CFDC00C51DAE /* popoverBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "popoverBg@2x.png"; sourceTree = "<group>"; };
+		532C027E1423D1FB00C51DAE /* WEPopoverContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEPopoverContentViewController.h; sourceTree = "<group>"; };
+		532C027F1423D1FB00C51DAE /* WEPopoverContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEPopoverContentViewController.m; sourceTree = "<group>"; };
+		532C02811423D28500C51DAE /* WEPopoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEPopoverViewController.h; sourceTree = "<group>"; };
+		532C02821423D28500C51DAE /* WEPopoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEPopoverViewController.m; sourceTree = "<group>"; };
+		532C0284142528CE00C51DAE /* 54700.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 54700.png; sourceTree = "<group>"; };
+		532C0286142641AC00C51DAE /* appointment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appointment.png; sourceTree = "<group>"; };
+		532C02881426425100C51DAE /* task.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = task.png; sourceTree = "<group>"; };
+		532C028A14269AF300C51DAE /* appointment_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appointment_button.png; sourceTree = "<group>"; };
+		532C028B14269B0600C51DAE /* book_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = book_button.png; sourceTree = "<group>"; };
+		532C028C14269B1A00C51DAE /* email_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = email_button.png; sourceTree = "<group>"; };
+		532C028D14269B2C00C51DAE /* files_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = files_button.png; sourceTree = "<group>"; };
+		532C028E14269B4100C51DAE /* folder_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = folder_button.png; sourceTree = "<group>"; };
+		532C028F14269B6200C51DAE /* message_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = message_button.png; sourceTree = "<group>"; };
+		532C029014269B8C00C51DAE /* task_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = task_button.png; sourceTree = "<group>"; };
+		532C0298142726A700C51DAE /* add-item_whiteonblack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add-item_whiteonblack.png"; sourceTree = "<group>"; };
 		532F191213FB0D9500CECBD1 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		532F191313FB0D9500CECBD1 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		533667841427D26B00AE7C2B /* popoverBg_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popoverBg_blue.png; sourceTree = "<group>"; };
+		533667851427D26B00AE7C2B /* popoverBg_blue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "popoverBg_blue@2x.png"; sourceTree = "<group>"; };
 		533D3D3013FEE1120043833E /* note_accept.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = note_accept.png; sourceTree = "<group>"; };
 		533D3D3313FF98320043833E /* bluebutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bluebutton.png; sourceTree = "<group>"; };
 		533D3D3513FF99220043833E /* AppointmentCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppointmentCustomCell.h; sourceTree = "<group>"; };
@@ -217,8 +275,6 @@
 		533D3D43140017130043833E /* DiaryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiaryTableViewController.m; sourceTree = "<group>"; };
 		533D3D45140017EE0043833E /* TasksTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TasksTableViewController.h; sourceTree = "<group>"; };
 		533D3D46140017EE0043833E /* TasksTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TasksTableViewController.m; sourceTree = "<group>"; };
-		533D3D4E140061750043833E /* AppointmentsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppointmentsTableViewController.h; sourceTree = "<group>"; };
-		533D3D4F140061750043833E /* AppointmentsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppointmentsTableViewController.m; sourceTree = "<group>"; };
 		533D3D52140089B60043833E /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		533D3D53140089B60043833E /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		533D3D54140089B60043833E /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
@@ -258,6 +314,11 @@
 		53485C0413FC4EBD001CA9EB /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note.m; sourceTree = "<group>"; };
 		53485C0613FC4EBD001CA9EB /* Memo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Memo.h; sourceTree = "<group>"; };
 		53485C0713FC4EBD001CA9EB /* Memo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Memo.m; sourceTree = "<group>"; };
+		53601844141F181700F703A6 /* AppDelegateProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegateProtocol.h; sourceTree = "<group>"; };
+		53601848141F1A9800F703A6 /* AppDataObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDataObject.h; sourceTree = "<group>"; };
+		53601849141F1A9800F703A6 /* AppDataObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDataObject.m; sourceTree = "<group>"; };
+		5360184B141F1D1C00F703A6 /* MyDataObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDataObject.h; sourceTree = "<group>"; };
+		5360184C141F1D1C00F703A6 /* MyDataObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDataObject.m; sourceTree = "<group>"; };
 		537AD84D1400C9B900259452 /* FoldersTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoldersTableViewController.h; sourceTree = "<group>"; };
 		537AD84E1400C9B900259452 /* FoldersTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoldersTableViewController.m; sourceTree = "<group>"; };
 		537AD8591402544C00259452 /* 11-clock1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "11-clock1.png"; sourceTree = "<group>"; };
@@ -269,9 +330,6 @@
 		537C7A6613FD000B0086D4AE /* 179-notepad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "179-notepad.png"; sourceTree = "<group>"; };
 		537C7A6713FD000B0086D4AE /* 180-stickynote.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "180-stickynote.png"; sourceTree = "<group>"; };
 		537C7A6A13FD002D0086D4AE /* 14-tag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "14-tag.png"; sourceTree = "<group>"; };
-		537FBE0F13FDA100005E705F /* TasksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TasksViewController.h; sourceTree = "<group>"; };
-		537FBE1013FDA100005E705F /* TasksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TasksViewController.m; sourceTree = "<group>"; };
-		537FBE1113FDA100005E705F /* TasksViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TasksViewController.xib; sourceTree = "<group>"; };
 		538164FB1410BA6700E90FD1 /* AddFolderShaded30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AddFolderShaded30.png; sourceTree = "<group>"; };
 		538164FC1410BA6700E90FD1 /* AddNoteShaded30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AddNoteShaded30.png; sourceTree = "<group>"; };
 		538164FD1410BA6700E90FD1 /* book_nav.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = book_nav.png; sourceTree = "<group>"; };
@@ -402,9 +460,6 @@
 		5315679513FB63C20044C5A9 /* CalendarViewController */ = {
 			isa = PBXGroup;
 			children = (
-				53980E9A1409732800833716 /* AddEntityTableViewController */,
-				53E979BD140476F000B780C8 /* AppointmentTableViewController */,
-				53A1E76F14049C7A00481EA4 /* TaskTableViewController */,
 				531567F213FB83560044C5A9 /* CalendarViewController.h */,
 				531567F313FB83560044C5A9 /* CalendarViewController.m */,
 				531567F413FB83560044C5A9 /* CalendarViewController.xib */,
@@ -425,6 +480,7 @@
 		531567B313FB81F80044C5A9 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				532C02601423CE7C00C51DAE /* PopOver */,
 				5381650E1410ED0000E90FD1 /* CustomTextView */,
 				53A599A41410A106001AD61F /* CustomTextField */,
 				53980E8B14095DD700833716 /* CustomToolBar */,
@@ -440,6 +496,16 @@
 		531567F113FB828B0044C5A9 /* pngs */ = {
 			isa = PBXGroup;
 			children = (
+				532C0298142726A700C51DAE /* add-item_whiteonblack.png */,
+				532C028A14269AF300C51DAE /* appointment_button.png */,
+				532C028B14269B0600C51DAE /* book_button.png */,
+				532C028C14269B1A00C51DAE /* email_button.png */,
+				532C028D14269B2C00C51DAE /* files_button.png */,
+				532C028E14269B4100C51DAE /* folder_button.png */,
+				532C028F14269B6200C51DAE /* message_button.png */,
+				532C029014269B8C00C51DAE /* task_button.png */,
+				532C02881426425100C51DAE /* task.png */,
+				532C0286142641AC00C51DAE /* appointment.png */,
 				53ACA96714187C06002A5946 /* Keyboard_Text.png */,
 				538164FB1410BA6700E90FD1 /* AddFolderShaded30.png */,
 				538164FC1410BA6700E90FD1 /* AddNoteShaded30.png */,
@@ -462,6 +528,7 @@
 				53421CD81405021C00CFF414 /* arrow_circle_left_24.png */,
 				53421CD61404FF3B00CFF414 /* alarm_off_24.png */,
 				53421CC01404DC4000CFF414 /* document_todo.png */,
+				532C0284142528CE00C51DAE /* 54700.png */,
 				53421CBA1404D8D500CFF414 /* save_document.png */,
 				53421CB81404D71A00CFF414 /* storage_24.png */,
 				53421CB61404D5F600CFF414 /* clock_running.png */,
@@ -516,6 +583,42 @@
 				531567D513FB827A0044C5A9 /* ToDo.png */,
 			);
 			name = pngs;
+			sourceTree = "<group>";
+		};
+		532C02601423CE7C00C51DAE /* PopOver */ = {
+			isa = PBXGroup;
+			children = (
+				532C02811423D28500C51DAE /* WEPopoverViewController.h */,
+				532C02821423D28500C51DAE /* WEPopoverViewController.m */,
+				532C027E1423D1FB00C51DAE /* WEPopoverContentViewController.h */,
+				532C027F1423D1FB00C51DAE /* WEPopoverContentViewController.m */,
+				532C02691423CFB900C51DAE /* popover images */,
+				532C02621423CF9400C51DAE /* WEPopoverContainerView.h */,
+				532C02631423CF9400C51DAE /* WEPopoverContainerView.m */,
+				532C02641423CF9400C51DAE /* WEPopoverController.h */,
+				532C02651423CF9400C51DAE /* WEPopoverController.m */,
+				532C02661423CF9400C51DAE /* WEPopoverParentView.h */,
+			);
+			name = PopOver;
+			sourceTree = "<group>";
+		};
+		532C02691423CFB900C51DAE /* popover images */ = {
+			isa = PBXGroup;
+			children = (
+				533667841427D26B00AE7C2B /* popoverBg_blue.png */,
+				533667851427D26B00AE7C2B /* popoverBg_blue@2x.png */,
+				532C026A1423CFDC00C51DAE /* popoverArrowDown.png */,
+				532C026B1423CFDC00C51DAE /* popoverArrowDown@2x.png */,
+				532C026C1423CFDC00C51DAE /* popoverArrowLeft.png */,
+				532C026D1423CFDC00C51DAE /* popoverArrowLeft@2x.png */,
+				532C026E1423CFDC00C51DAE /* popoverArrowRight.png */,
+				532C026F1423CFDC00C51DAE /* popoverArrowRight@2x.png */,
+				532C02701423CFDC00C51DAE /* popoverArrowUp.png */,
+				532C02711423CFDC00C51DAE /* popoverArrowUp@2x.png */,
+				532C02721423CFDC00C51DAE /* popoverBg.png */,
+				532C02731423CFDC00C51DAE /* popoverBg@2x.png */,
+			);
+			name = "popover images";
 			sourceTree = "<group>";
 		};
 		532F191013FB0D6500CECBD1 /* MainViewController */ = {
@@ -582,16 +685,6 @@
 				533D3D43140017130043833E /* DiaryTableViewController.m */,
 			);
 			name = FilesTableViewController;
-			sourceTree = "<group>";
-		};
-		537FBE0D13FDA0E1005E705F /* Tasks */ = {
-			isa = PBXGroup;
-			children = (
-				537FBE0F13FDA100005E705F /* TasksViewController.h */,
-				537FBE1013FDA100005E705F /* TasksViewController.m */,
-				537FBE1113FDA100005E705F /* TasksViewController.xib */,
-			);
-			name = Tasks;
 			sourceTree = "<group>";
 		};
 		5381650E1410ED0000E90FD1 /* CustomTextView */ = {
@@ -667,7 +760,8 @@
 		53980E8C14095EA800833716 /* AddEntityViewController */ = {
 			isa = PBXGroup;
 			children = (
-				537FBE0D13FDA0E1005E705F /* Tasks */,
+				53A1E76F14049C7A00481EA4 /* TaskTableViewController */,
+				53980E9A1409732800833716 /* AddEntityTableViewController */,
 				53980E9214095FF700833716 /* AddEntityViewController.h */,
 				53980E9314095FF700833716 /* AddEntityViewController.m */,
 				53980E9414095FF700833716 /* AddEntityViewController.xib */,
@@ -716,17 +810,13 @@
 			children = (
 				53FB85AE13FAEC3800765BFC /* WriteNowAppDelegate.h */,
 				53FB85AF13FAEC3800765BFC /* WriteNowAppDelegate.m */,
+				53601844141F181700F703A6 /* AppDelegateProtocol.h */,
+				53601848141F1A9800F703A6 /* AppDataObject.h */,
+				53601849141F1A9800F703A6 /* AppDataObject.m */,
+				5360184B141F1D1C00F703A6 /* MyDataObject.h */,
+				5360184C141F1D1C00F703A6 /* MyDataObject.m */,
 			);
 			name = "Application Delegate";
-			sourceTree = "<group>";
-		};
-		53E979BD140476F000B780C8 /* AppointmentTableViewController */ = {
-			isa = PBXGroup;
-			children = (
-				533D3D4E140061750043833E /* AppointmentsTableViewController.h */,
-				533D3D4F140061750043833E /* AppointmentsTableViewController.m */,
-			);
-			name = AppointmentTableViewController;
 			sourceTree = "<group>";
 		};
 		53FB858E13FAEC3800765BFC = {
@@ -927,7 +1017,6 @@
 				537C7A6813FD000B0086D4AE /* 179-notepad.png in Resources */,
 				537C7A6913FD000B0086D4AE /* 180-stickynote.png in Resources */,
 				537C7A6B13FD002D0086D4AE /* 14-tag.png in Resources */,
-				537FBE1313FDA100005E705F /* TasksViewController.xib in Resources */,
 				5318F1F013FE0F6C00BFDCC5 /* add-item.png in Resources */,
 				5318F1F213FE0FAB00BFDCC5 /* calendar.png in Resources */,
 				533D3D3113FEE1120043833E /* note_accept.png in Resources */,
@@ -979,6 +1068,29 @@
 				5381650B1410BA6700E90FD1 /* SaveToArchive_24.png in Resources */,
 				5381650C1410BA6700E90FD1 /* SaveToArchive30.png in Resources */,
 				53ACA96814187C06002A5946 /* Keyboard_Text.png in Resources */,
+				532C02741423CFDC00C51DAE /* popoverArrowDown.png in Resources */,
+				532C02751423CFDC00C51DAE /* popoverArrowDown@2x.png in Resources */,
+				532C02761423CFDC00C51DAE /* popoverArrowLeft.png in Resources */,
+				532C02771423CFDC00C51DAE /* popoverArrowLeft@2x.png in Resources */,
+				532C02781423CFDC00C51DAE /* popoverArrowRight.png in Resources */,
+				532C02791423CFDC00C51DAE /* popoverArrowRight@2x.png in Resources */,
+				532C027A1423CFDC00C51DAE /* popoverArrowUp.png in Resources */,
+				532C027B1423CFDC00C51DAE /* popoverArrowUp@2x.png in Resources */,
+				532C027C1423CFDC00C51DAE /* popoverBg.png in Resources */,
+				532C027D1423CFDC00C51DAE /* popoverBg@2x.png in Resources */,
+				532C02851425290500C51DAE /* 54700.png in Resources */,
+				532C0287142641B600C51DAE /* appointment.png in Resources */,
+				532C02891426425A00C51DAE /* task.png in Resources */,
+				532C029114269BCD00C51DAE /* appointment_button.png in Resources */,
+				532C029214269BCD00C51DAE /* book_button.png in Resources */,
+				532C029314269BCD00C51DAE /* email_button.png in Resources */,
+				532C029414269BCD00C51DAE /* files_button.png in Resources */,
+				532C029514269BCD00C51DAE /* folder_button.png in Resources */,
+				532C029614269BCD00C51DAE /* message_button.png in Resources */,
+				532C029714269BCD00C51DAE /* task_button.png in Resources */,
+				532C0299142726C800C51DAE /* add-item_whiteonblack.png in Resources */,
+				533667861427D26B00AE7C2B /* popoverBg_blue.png in Resources */,
+				533667871427D26B00AE7C2B /* popoverBg_blue@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1035,11 +1147,9 @@
 				53485BFF13FC4EBD001CA9EB /* File.m in Sources */,
 				53485C0513FC4EBD001CA9EB /* Note.m in Sources */,
 				53485C0813FC4EBD001CA9EB /* Memo.m in Sources */,
-				537FBE1213FDA100005E705F /* TasksViewController.m in Sources */,
 				533D3D3713FF99230043833E /* AppointmentCustomCell.m in Sources */,
 				533D3D44140017130043833E /* DiaryTableViewController.m in Sources */,
 				533D3D47140017EE0043833E /* TasksTableViewController.m in Sources */,
-				533D3D50140061750043833E /* AppointmentsTableViewController.m in Sources */,
 				533D3D55140089B60043833E /* DetailViewController.m in Sources */,
 				537AD84F1400C9B900259452 /* FoldersTableViewController.m in Sources */,
 				53980E8A1408051500833716 /* CustomTextView.m in Sources */,
@@ -1052,6 +1162,12 @@
 				53F3D8081415B9BB00122880 /* Appointment.m in Sources */,
 				53F3D80B1415BA0800122880 /* Task.m in Sources */,
 				53F3D80D1415C00600122880 /* 101to101a.xcmappingmodel in Sources */,
+				5360184A141F1A9800F703A6 /* AppDataObject.m in Sources */,
+				5360184D141F1D1D00F703A6 /* MyDataObject.m in Sources */,
+				532C02671423CF9400C51DAE /* WEPopoverContainerView.m in Sources */,
+				532C02681423CF9400C51DAE /* WEPopoverController.m in Sources */,
+				532C02801423D1FC00C51DAE /* WEPopoverContentViewController.m in Sources */,
+				532C02831423D28500C51DAE /* WEPopoverViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

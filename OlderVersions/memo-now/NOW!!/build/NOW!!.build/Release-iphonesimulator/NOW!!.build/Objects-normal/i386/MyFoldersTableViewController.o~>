@@ -1,0 +1,32 @@
+/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/MyFoldersTableViewController.m:16: warning: cannot find interface declaration for 'MyFoldersTableViewController'
+/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/MyFoldersTableViewController.m:16: error: no declaration of property 'managedObjectContext' found in the interface
+/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/MyFoldersTableViewController.m:17: error: no declaration of property 'folderArray' found in the interface
+/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/MyFoldersTableViewController.m:18: error: no declaration of property 'tableView' found in the interface
+/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/MyFoldersTableViewController.m:19: error: no declaration of property 'searchBar' found in the interface
+/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/MyFoldersTableViewController.m: In function '-[MyFoldersTableViewController viewDidLoad]':
+/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/MyFoldersTableViewController.m:42: error: 'managedObjectContext' undeclared (first use in this function)
+/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/MyFoldersTableViewController.m:42: error: (Each undeclared identifier is reported only once
+/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/MyFoldersTableViewController.m:42: error: for each function it appears in.)
+/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/MyFoldersTableViewController.m:47: error: no super class declared in @interface for 'MyFoldersTableViewController'
+/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/MyFoldersTableViewController.m:48: error: request for member 'view' in something not a structure or union
+/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/MyFoldersTableViewController.m:48: error: 'tableView' undeclared (first use in this function)
+/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/MyFoldersTableViewController.m:49: error: request for member 'tableView' in something not a structure or union
+/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/MyFoldersTableViewController.m:49: error: 'searchBar' undeclared (first use in this function)
+/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/MyFoldersTableViewController.m:51: warning: 'MyFoldersTableViewController' may not respond to '-fetchFolderRecords'
+/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/MyFoldersTableViewController.m:51: warning: (Messages without a matching method signature
+/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/MyFoldersTableViewController.m:51: warning: will be assumed to return 'id' and accept
+/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/MyFoldersTableViewController.m:51: warning: '...' as arguments.)
+/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/MyFoldersTableViewController.m: In function '-[MyFoldersTableViewController fetchFolderRecords]':
+/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/MyFoldersTableViewController.m:59: error: 'managedObjectContext' undeclared (first use in this function)
+/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/MyFoldersTableViewController.m:74: warning: 'MyFoldersTableViewController' may not respond to '-setFolderArray:'
+/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/MyFoldersTableViewController.m: In function '-[MyFoldersTableViewController tableView:numberOfRowsInSection:]':
+/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/MyFoldersTableViewController.m:114: error: 'folderArray' undeclared (first use in this function)
+/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/MyFoldersTableViewController.m: In function '-[MyFoldersTableViewController tableView:cellForRowAtIndexPath:]':
+/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/MyFoldersTableViewController.m:126: error: request for member 'tableView' in something not a structure or union
+/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/MyFoldersTableViewController.m:130: error: 'folderArray' undeclared (first use in this function)
+/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/MyFoldersTableViewController.m: In function '-[MyFoldersTableViewController didReceiveMemoryWarning]':
+/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/MyFoldersTableViewController.m:196: error: no super class declared in @interface for 'MyFoldersTableViewController'
+/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/MyFoldersTableViewController.m: In function '-[MyFoldersTableViewController dealloc]':
+/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/MyFoldersTableViewController.m:208: error: no super class declared in @interface for 'MyFoldersTableViewController'
+/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/MyFoldersTableViewController.m:211: error: 'tableView' undeclared (first use in this function)
+/Users/Keith/Documents/Dropbox/KEITH/Programming/memo-now/NOW!!/Classes/MyFoldersTableViewController.m:212: error: 'searchBar' undeclared (first use in this function)

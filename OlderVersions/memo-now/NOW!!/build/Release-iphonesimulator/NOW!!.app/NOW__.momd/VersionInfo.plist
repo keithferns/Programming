@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>NSManagedObjectModel_CurrentVersionName</key>
+	<string>NOW__</string>
+	<key>NSManagedObjectModel_VersionHashes</key>
+	<dict>
+		<key>NOW__</key>
+		<dict>
+			<key>Appointment</key>
+			<data>
+			RA44Mp3SiYrGA0NpRQlKlwYXvp4vvh7VWxvS49CHhI4=
+			</data>
+			<key>File</key>
+			<data>
+			HU6WSJWNfkxaUa0cVnCP4siWeBTz5QZ6uYVjGVvfpyE=
+			</data>
+			<key>Folder</key>
+			<data>
+			NLOisG3v40Dmmcpd+FLtkZA/cJlPC4zAve4Eu8L94W0=
+			</data>
+			<key>Memo</key>
+			<data>
+			Ht5NzIUY3bURsJWRCGqwmvwIgL78iQAZvGH/O059hJw=
+			</data>
+			<key>ToDo</key>
+			<data>
+			glhisna/omHwcPUkPnbt98CQII8JkkDnEsDqTlYmcdM=
+			</data>
+		</dict>
+		<key>NOW__ 2</key>
+		<dict>
+			<key>Appointment</key>
+			<data>
+			TBTjf3leNXa/HwTPdaT+haM2isotpxaBLpRdmKbd3Ic=
+			</data>
+			<key>File</key>
+			<data>
+			k/TsKHe30IpHBK3b6POXWskhxR8OPV+rkCkkF4qvFko=
+			</data>
+			<key>Folder</key>
+			<data>
+			gyBvSwFyQufqeqajQrqjAhlNUZl7H5DMqkoWZASThts=
+			</data>
+			<key>Memo</key>
+			<data>
+			Q/8Uz9HVbEz0Z5ELH4ZMmKvmQUgsfusOW4ApJfNla+g=
+			</data>
+			<key>Recurring</key>
+			<data>
+			rAB7n0d/7gYnlBBD3/VoPig2XCBuRdNhK1hmBwY1OZs=
+			</data>
+			<key>ToDo</key>
+			<data>
+			bD7hI5tgLTGo5zzcJufrPuFPp7z9iuqXGK1ypS0nM18=
+			</data>
+		</dict>
+	</dict>
+</dict>
+</plist>

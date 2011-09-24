@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "CustomToolBar.h"
+#import "WEPopoverController.h"
 
-@interface FoldersViewController : UIViewController <UITextViewDelegate, UITextFieldDelegate> {
+
+@interface FoldersViewController : UIViewController <UITextViewDelegate, UITextFieldDelegate, PopoverControllerDelegate> {
     
     NSManagedObjectContext *managedObjectContext;
     UITableViewController *tableViewController;
@@ -18,7 +20,8 @@
     NSString *sender, *newText;
 
     BOOL swappingViews, isSelected;
-    CustomToolBar *toolbar;
+    CustomToolBar *toolBar;
+    WEPopoverController *navPopover;
 
 }
 
@@ -28,20 +31,20 @@
 @property (nonatomic, retain) NSString *sender, *newText;
 
 @property (nonatomic, retain) UITextView *textView;
-@property (nonatomic, retain) UITextField *textField;
+@property (nonatomic, retain) UITextField *nameField;
 
-@property (nonatomic, retain) CustomToolBar *toolbar;
+@property (nonatomic, retain) CustomToolBar *toolBar;
 @property (nonatomic, retain) UIButton *saveNewFolderButton;
+@property (nonatomic, retain) WEPopoverController *navPopover;
 
 
+- (void) makeFolderFile:(id)sender;
 
 - (void) dismissKeyboard;
 - (void) makeFolder;
 - (void) makeFile;
 
 - (void) addFolderFile:(UIBarButtonItem *)barButtonItem;
-
-//- (void) swapViews;
 
 
 @end

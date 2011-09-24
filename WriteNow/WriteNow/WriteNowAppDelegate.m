@@ -8,13 +8,15 @@
 
 #import "WriteNowAppDelegate.h"
 #import "MainViewController.h"
+#import "AppDelegateProtocol.h"
+#import "MyDataObject.h"
 
 @implementation WriteNowAppDelegate
 
 
 @synthesize window;
 @synthesize tabBarController;
-
+@synthesize myDataObject;
 
 @synthesize managedObjectContext=__managedObjectContext;
 
@@ -119,12 +121,23 @@
     [self saveContext];
 }
 
+- (id) init;
+{
+	self.myDataObject = [[MyDataObject alloc] init];
+	[myDataObject release];
+	return [super init];
+}
+
+
 - (void)dealloc
 {
     [window release];
     [__managedObjectContext release];
     [__managedObjectModel release];
     [__persistentStoreCoordinator release];
+    
+    self.myDataObject = nil;
+
     [super dealloc];
 }
 

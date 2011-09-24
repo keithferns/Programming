@@ -19,6 +19,15 @@
 @synthesize tableLabel;
 @synthesize selectedDate;
 
+- (MyDataObject *) myDataObject;
+{
+	id<AppDelegateProtocol> theDelegate = (id<AppDelegateProtocol>) [UIApplication sharedApplication].delegate;
+	MyDataObject* myDataObject;
+	myDataObject = (MyDataObject*) theDelegate.myDataObject;
+	return myDataObject;
+}
+
+
 
 - (id)initWithStyle:(UITableViewStyle)style {
     self = [super initWithStyle:style];
@@ -59,7 +68,13 @@
         NSLog(@"After managedObjectContext: %@",  managedObjectContext);
     }
     /*--MOC:Done --*/
+   // NSTimeInterval *timeInterval    = 5*60*60;
     
+    NSDate *tempDate = [NSDate dateWithTimeIntervalSinceNow:-6*60*60];
+    
+    NSPredicate *checkDate = [NSPredicate predicateWithFormat:@"doDate > %@", tempDate];
+    
+    self.fetchedResultsController = [self fetchedResultsControllerWithPredicate:checkDate];
     NSError *error;
     if (![[self fetchedResultsController] performFetch:&error]) {
     }
