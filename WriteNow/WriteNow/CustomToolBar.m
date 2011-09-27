@@ -23,20 +23,20 @@
      
         //MOST USED BUTTON AT THE ENDS OF THE TOOLBAR
          firstButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"calendar_24.png"]style:UIBarButtonItemStylePlain target:nil action:nil];
-        [firstButton setTitle:@"Set Date"];
+        [firstButton setTitle:@"Schedule"];
         [firstButton setWidth:50.0];
         [firstButton setTag:1];
         
         
         //CONNNECT TO ACTION SHEET WITH REPEAT, REMIND, DEFINE. FOR each have picker wheel with limited options. DEFINE: BILL PAY, ANNUAL (Birthday, Anniversary)
-        secondButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"remind_repeat.png"] style:UIBarButtonItemStylePlain target:self action:@selector(setRecurring)];
+        secondButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"alarm_24.png"] style:UIBarButtonItemStylePlain target:self action:@selector(setRecurring)];
         [secondButton setTitle:@"Remind"];
         [secondButton setWidth:50.0];
         [secondButton setTag:2];
         
         //LEAST USED BUTTON IN CENTER BUT IS ALSO FOCAL TO PURPOSE OF SCREEN
-        thirdButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"clock_running.png"] style:UIBarButtonItemStylePlain target:nil action:nil];
-        [thirdButton setTitle:@"Appointment"];
+        thirdButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"save.png"] style:UIBarButtonItemStylePlain target:nil action:nil];
+        [thirdButton setTitle:@"Save"];
         [thirdButton setWidth:50.0];
         [thirdButton setTag:3];   
         
@@ -51,13 +51,13 @@
          
          QUESTION: IF NOT IN EDITING MODE, HOW WILL THE USER TOGGLE BETWEEN THESE OPTIONS. REMEMBER THERE IS NO TOOLBAR.
          */
-        fourthButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"12-eye"] style:UIBarButtonItemStylePlain target:self action:@selector(setAlarm)];
-        [fourthButton setTitle:@"See List"];
+        fourthButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"12-eye"] style:UIBarButtonItemStylePlain target:nil action:nil];
+        [fourthButton setTitle:@"Search"];
         [fourthButton setWidth:50.0];
         [fourthButton setTag:4];
         
         dismissKeyboard = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"keyboard_down.png"] style:UIBarButtonItemStylePlain target:nil action:nil];
-        [dismissKeyboard setTitle:@"Input Down"];
+        [dismissKeyboard setTitle:@"Dismiss"];
 
         [dismissKeyboard setWidth:50.0];
         [dismissKeyboard setTag:5];

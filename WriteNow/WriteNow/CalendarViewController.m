@@ -551,8 +551,6 @@
     }
 }
 
-
-
 #pragma mark -
 #pragma mark PickerView Delegate
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row
@@ -636,7 +634,6 @@
             [midView addSubview:rightField_1];
             [rightField_1 setInputView:timePicker];
             [rightField_1 becomeFirstResponder];
-
         }    
         [UIView beginAnimations:nil context:NULL];
         [UIView setAnimationDuration:0.4];    
@@ -658,7 +655,6 @@
             [rightField setInputView:pickerView];
             rightField.text = [recurring objectAtIndex:0];  
             [rightField becomeFirstResponder];
-
         }    
         [UIView beginAnimations:nil context:NULL];
         [UIView setAnimationDuration:0.4];    
