@@ -1,0 +1,390 @@
+//  AppointmentsTableViewController.m
+//  WriteNow
+//  Created by Keith Fernandes on 8/27/11.
+//  Copyright 2011 __MyCompanyName__. All rights reserved.
+
+#import "WriteNowAppDelegate.h"
+#import "AppointmentsTableViewController.h"
+#import "AppointmentCustomCell.h"
+#import "DetailViewController.h"
+
+@implementation AppointmentsTableViewController
+
+@synthesize fetchedResultsController = _fetchedResultsController;
+@synthesize managedObjectContext, tableLabel;
+@synthesize selectedDate;
+
+- (MyDataObject *) myDataObject;
+{
+	id<AppDelegateProtocol> theDelegate = (id<AppDelegateProtocol>) [UIApplication sharedApplication].delegate;
+	MyDataObject* myDataObject;
+	myDataObject = (MyDataObject*) theDelegate.myDataObject;
+	return myDataObject;
+}
+
+
+
+- (id)initWithStyle:(UITableViewStyle)style {
+    self = [super initWithStyle:style];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
+- (void)dealloc {
+    [super dealloc];
+    [_fetchedResultsController release];
+    [tableLabel release];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"GetDateNotification" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NSManagedObjectContextDidSaveNotification object:nil];    
+}
+
+- (void)viewDidUnload {
+    [super viewDidUnload];
+    // Release any retained subviews of the main view.
+    self.fetchedResultsController = nil;
+    self.selectedDate = nil;
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    NSLog(@"APPOINTMENTS TABLEVIEWCONTROLLER: MEMORY WARNING RECEIVED");
+}
+
+#pragma mark - View lifecycle
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    NSLog(@"IN APPOINTMENTS TABLEVIEWCONTROLLER");
+    [NSFetchedResultsController deleteCacheWithName:@"Root"];
+    
+    
+    tableLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 300, 20)];
+    [tableLabel setBackgroundColor:[UIColor lightGrayColor]];
+    [tableLabel setTextColor:[UIColor whiteColor]];
+    [tableLabel setTextAlignment:UITextAlignmentCenter];
+    [tableLabel setText:@"All Tasks"];
+    //[self.view addSubview:tableLabel];
+    //[self.tableView setTableHeaderView:tableLabel];
+
+    // Uncomment the following line to preserve selection between presentations.
+    // self.clearsSelectionOnViewWillAppear = NO;
+        
+    /*-- MOC: Initialize--*/
+    if (managedObjectContext == nil) { 
+		managedObjectContext = [(WriteNowAppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext]; 
+        NSLog(@"After managedObjectContext: %@",  managedObjectContext);
+    }    /*--MOC:Done --*/
+    
+    
+    /*--Set the predicate to show only items that are 6 hours prior to NOW--*/
+    //TODO: REFINE
+    NSDate *tempDate = [NSDate dateWithTimeIntervalSinceNow:-6*60*60];
+    NSPredicate *checkDate = [NSPredicate predicateWithFormat:@"doDate > %@", tempDate];
+    self.fetchedResultsController = [self fetchedResultsControllerWithPredicate:checkDate];
+    NSError *error;
+    if (![[self fetchedResultsController] performFetch:&error]) {
+    }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getSelectedDate:) name:@"GetDateNotification" object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleDidSaveNotification:)name:NSManagedObjectContextDidSaveNotification object:nil];
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (void)handleDidSaveNotification:(NSNotification *)notification {
+    NSLog(@"NSManagedObjectContextDidSaveNotification Received by AppointmentsTableViewController");
+    
+    [managedObjectContext mergeChangesFromContextDidSaveNotification:notification];
+	[self.tableView reloadData];
+}
+
+- (void)getSelectedDate:(NSNotification *)notification {
+    
+    NSLog(@"GET DATE NOTIFICATION RECEIVED by AppointmentsTableViewController");
+    selectedDate = [notification object];
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    
+    NSString *dateString = [dateFormatter stringFromDate:selectedDate];
+    NSDate *newDate = [dateFormatter dateFromString:dateString];
+    
+    NSPredicate *checkDate = [NSPredicate predicateWithFormat:@"doDate == %@", newDate];    
+    self.fetchedResultsController = [self fetchedResultsControllerWithPredicate:checkDate];
+    NSError *error;
+    if (![[self fetchedResultsController] performFetch:&error]) {
+    }
+    
+    [tableLabel setText:@""];
+    [self.tableView reloadData];
+}
+
+#pragma mark -
+#pragma mark Fetched results controller
+
+- (NSFetchedResultsController *) fetchedResultsControllerWithPredicate:(NSPredicate *)aPredicate {
+	NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setEntity:[NSEntityDescription entityForName:@"Appointment" inManagedObjectContext:managedObjectContext]];
+    [request setFetchBatchSize:10];
+    
+    [request setPredicate:aPredicate];
+    
+	NSSortDescriptor *dateDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"doDate" ascending:YES] autorelease];
+	NSSortDescriptor *timeDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"doTime" ascending:NO]autorelease];    
+    [request setSortDescriptors:[NSArray arrayWithObjects:dateDescriptor,timeDescriptor, nil]];
+    
+    NSString *cacheName = @"Root";
+    if (aPredicate) {
+        cacheName = nil;
+    }
+    NSFetchedResultsController *newController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:managedObjectContext sectionNameKeyPath:@"doDate" cacheName:cacheName];
+    
+    newController.delegate = self;
+    NSError *anyError = nil;
+    if (![newController performFetch:&anyError]){
+        NSLog(@"Error Fetching:%@", anyError);
+    }
+	self.fetchedResultsController = newController;
+	[newController release];
+	[request release];
+	
+	return _fetchedResultsController;
+}
+
+- (NSFetchedResultsController *) fetchedResultsController {
+    if(_fetchedResultsController != nil){
+        return _fetchedResultsController;
+    }
+    self.fetchedResultsController = [self fetchedResultsControllerWithPredicate:nil];
+    NSError *error = nil;
+    if (![_fetchedResultsController performFetch:&error]){
+        NSLog(@"Error Fetching:%@", error);
+    }
+	return _fetchedResultsController;
+}
+
+#pragma mark -
+#pragma mark Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+	return [[_fetchedResultsController sections] count];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 20;
+}
+
+/*
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    
+    UIView* customView = [[[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 300.0, 20.0)] autorelease];
+    customView.backgroundColor = [UIColor colorWithRed:0.8 green:0.2 blue:0.2 alpha:0.8];
+    
+    UILabel * headerLabel = [[[UILabel alloc] initWithFrame:CGRectZero] autorelease];
+    headerLabel.backgroundColor = [UIColor clearColor];
+    headerLabel.opaque = NO;
+    headerLabel.textColor = [UIColor whiteColor];
+    headerLabel.font = [UIFont boldSystemFontOfSize:18];
+    headerLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
+    headerLabel.shadowColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.5];
+    headerLabel.frame = CGRectMake(11,-11, 320.0, 44.0);
+    headerLabel.textAlignment = UITextAlignmentLeft;
+    headerLabel.text = [tableView.dataSource tableView:tableView titleForHeaderInSection:section]; 
+    [customView addSubview:headerLabel];
+    
+    return customView;
+}
+*/
+
+- (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+	id<NSFetchedResultsSectionInfo>  sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
+    NSDateFormatter *tempDateFormatter = [[NSDateFormatter alloc] init];
+    
+    [tempDateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss ZZZ"];
+    NSDate *aDate = [tempDateFormatter dateFromString:[sectionInfo name]];
+    
+    [tempDateFormatter setDateFormat:@"EEEE, d MMMM"];
+    
+    NSString *myDate = [tempDateFormatter stringFromDate:aDate];
+    [tempDateFormatter release];
+	return myDate;
+	//return [sectionInfo name];
+}
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    id <NSFetchedResultsSectionInfo> sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
+    return [sectionInfo numberOfObjects];
+}
+
+- (void) configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath{
+	AppointmentCustomCell *mycell;
+    NSDateFormatter * timeFormatter = [[NSDateFormatter alloc] init];
+    [timeFormatter setTimeStyle:NSDateFormatterShortStyle];
+	if([cell isKindOfClass:[UITableViewCell class]]){
+		mycell = (AppointmentCustomCell *) cell;
+        //[mycell setAccessoryType:UITableViewCellAccessoryDetailDisclosureButton];   
+    }
+    //if ([_fetchedResultsController objectAtIndexPath:0] != nil) {
+    Appointment *anAppointment = [_fetchedResultsController objectAtIndexPath:indexPath];	
+    [mycell.textLabel setText:[NSString stringWithFormat:@"%@", anAppointment.text]];
+    [mycell.timeLabel setText: [timeFormatter stringFromDate:anAppointment.doTime]];
+    //}
+    [timeFormatter release];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *CellIdentifier = @"AppointmentCustomCell";
+    
+    AppointmentCustomCell *cell = (AppointmentCustomCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	if (cell == nil) {
+		NSArray *topLevelObjects = [[NSBundle mainBundle]
+									loadNibNamed:@"AppointmentCustomCell"
+									owner:nil options:nil];
+		for (id currentObject in topLevelObjects){
+			if([currentObject isKindOfClass:[UITableViewCell class]]){
+				cell = (AppointmentCustomCell *) currentObject;
+				break;
+			}
+		}
+	}
+	[self configureCell:cell atIndexPath:indexPath];
+    return cell;
+}
+/*
+ // Override to support conditional editing of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+ // Return NO if you do not want the specified item to be editable.
+ return YES;
+ }
+ */
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        
+        // Delete the row from the data source.
+        NSManagedObjectContext *context = [_fetchedResultsController managedObjectContext];
+        [context deleteObject:[_fetchedResultsController objectAtIndexPath:indexPath]];
+        // Save the context.
+        NSError *error;
+        if (![managedObjectContext save:&error]) {
+            /*
+             Replace this implementation with code to handle the error appropriately.
+             
+             abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. If it is not possible to recover from the error, display an alert panel that instructs the user to quit the application by pressing the Home button.
+             */
+            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            abort();
+        }
+        
+    }   
+    else if (editingStyle == UITableViewCellEditingStyleInsert) {
+        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
+    } 
+}
+
+// Override to support rearranging the table view.
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+}
+
+/*
+ // Override to support conditional rearranging of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+ // Return NO if you do not want the item to be re-orderable.
+ return YES;
+ }
+ */
+
+#pragma mark -
+#pragma mark Table view delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    //DetailViewController *detailViewController = [[DetailViewController alloc] initWithNibName:@"DetailViewController" bundle:[NSBundle mainBundle]];
+    // Pass the selected object to the new view controller.
+	
+	//detailViewController.selectedFolder = [_fetchedResultsController objectAtIndexPath:indexPath];	
+    //[detailViewController release];
+
+ 
+}
+
+#pragma mark -
+#pragma mark Fetched Results Notifications
+
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
+    // The fetch controller is about to start sending change notifications, so prepare the table view for updates.
+    [self.tableView beginUpdates];
+}
+- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
+	
+   	
+    switch(type) {
+			
+        case NSFetchedResultsChangeInsert:
+            [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            NSLog(@"FetchedResultsController ChangeInsert");
+            break;
+            
+        case NSFetchedResultsChangeDelete:
+			[self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            NSLog(@"FetchedResultsController ChangeDelete");
+            
+            break;
+            
+        case NSFetchedResultsChangeUpdate:
+			[self configureCell:[self.tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+            NSLog(@"FetchedResultsController ChangeUpdate");
+            break;
+        case NSFetchedResultsChangeMove:
+            [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            // Reloading the section inserts a new row and ensures that titles are updated appropriately.
+            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:newIndexPath.section] withRowAnimation:UITableViewRowAnimationFade];
+            NSLog(@"FetchedResultsController ChangeMove");
+            
+            break;
+    }
+}
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type {
+	
+    switch(type) {
+        case NSFetchedResultsChangeInsert:
+            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+        case NSFetchedResultsChangeDelete:
+            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+    }
+}
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    // The fetch controller has sent all current change notifications, so tell the table view to process all updates.
+    [self.tableView endUpdates];
+}
+
+@end

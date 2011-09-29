@@ -9,7 +9,6 @@
 #import "FoldersTableViewController.h"
 #import "WriteNowAppDelegate.h"
 
-#import "AddEntityViewController.h"
 #import "CustomTextView.h"
 #import "CustomTextField.h"
 #import "CustomToolBar.h"

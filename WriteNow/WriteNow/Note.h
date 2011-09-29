@@ -14,11 +14,12 @@
 @interface Note : NSManagedObject {
 @private
 }
+@property (nonatomic, retain) NSString * text;
+@property (nonatomic, retain) NSNumber * type;
 @property (nonatomic, retain) NSDate * creationDate;
+
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSNumber * isEditing;
-@property (nonatomic, retain) NSNumber * type;
-@property (nonatomic, retain) NSString * text;
 @property (nonatomic, retain) Place * location;
 
 @end

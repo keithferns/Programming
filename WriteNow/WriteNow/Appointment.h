@@ -10,7 +10,6 @@
 #import <CoreData/CoreData.h>
 #import "Note.h"
 
-
 @interface Appointment : Note {
 @private
 }

@@ -11,6 +11,11 @@
 - (id)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
+        //UIImage *patternImage = [UIImage imageNamed:@"54700.png"];
+        UIImage *patternImage = [UIImage imageNamed:@"underPageBackground.png"];
+
+        self.backgroundColor = [UIColor colorWithPatternImage:patternImage];
+
         self.contentInset = UIEdgeInsetsMake(0, 5, 0, 5);
         self.showsVerticalScrollIndicator = YES;
         [self.layer setBorderWidth:1.0];

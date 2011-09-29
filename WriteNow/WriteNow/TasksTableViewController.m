@@ -1,23 +1,17 @@
-//
 //  TasksTableViewController.m
 //  WriteNow
-//
 //  Created by Keith Fernandes on 8/20/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
-//
-
-#import "TasksTableViewController.h"
-#import <QuartzCore/QuartzCore.h>
 
 #import "WriteNowAppDelegate.h"
+#import "TasksTableViewController.h"
 #import "TaskCustomCell.h"
-
+#import "DetailViewController.h"
 
 @implementation TasksTableViewController
 
-@synthesize managedObjectContext;
 @synthesize fetchedResultsController = _fetchedResultsController;
-@synthesize tableLabel;
+@synthesize managedObjectContext, tableLabel;
 @synthesize selectedDate;
 
 - (MyDataObject *) myDataObject {
@@ -39,25 +33,27 @@
 - (void)dealloc{
     [super dealloc];
     [_fetchedResultsController release];
-    [[NSNotificationCenter defaultCenter] removeObserver:self];    
-
-
+    [tableLabel release];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"GetDateNotification" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NSManagedObjectContextDidSaveNotification object:nil]; 
+}
+- (void)viewDidUnload{
+    [super viewDidUnload];
+    // Release any retained subviews of the main view.
+    self.fetchedResultsController = nil;
+    self.selectedDate = nil;
 }
 
 - (void)didReceiveMemoryWarning{
-    // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
+    NSLog(@"TASKS TABLEVIEWCONTROLLER: MEMORY WARNING RECEIVED");
 }
 
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     NSLog(@"IN TASKS TABLEVIEWCONTROLLER");
-    
     [NSFetchedResultsController deleteCacheWithName:@"Root"];
 
     tableLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 300, 20)];
@@ -66,43 +62,31 @@
     [tableLabel setTextAlignment:UITextAlignmentCenter];
     [tableLabel setText:@"All Tasks"];
     //[self.view addSubview:tableLabel];
-
-    //UITableView *myTableView = [[UITableView alloc] initWithFrame:CGRectMake(10, 110, 300, 85)];
-    //[myTableView.layer setCornerRadius:5.0];
-    //[myTableView setDelegate:self];
-    //[myTableView setDataSource:self];
-    //[myTableView setTableHeaderView:tableLabel];
-    //self.tableView = myTableView;
-    
-
-    
+    //[self.tableView setTableHeaderView:tableLabel];
+        
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
-    /*-- Initializing the managedObjectContext--*/
+    /*-- MOC: Initialize--*/
 	if (managedObjectContext == nil) { 
 		managedObjectContext = [(WriteNowAppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext]; 
         NSLog(@"After managedObjectContext: %@",  managedObjectContext);
-    }
-    
-    /*--Done Initializing the managedObjectContext--*/
+    }    /*--MOC:Done --*/
+
+    /*--Set the predicate to show only items that are 6 hours prior to NOW--*/
+    //TODO: REFINE THIS PREDICATE
+    NSDate *tempDate = [NSDate dateWithTimeIntervalSinceNow:-6*60*60];
+    NSPredicate *checkDate = [NSPredicate predicateWithFormat:@"doDate > %@", tempDate];
+    self.fetchedResultsController = [self fetchedResultsControllerWithPredicate:checkDate];
     NSError *error;
     if (![[self fetchedResultsController] performFetch:&error]) {
     }
-    NSLog(@"Done Loading View");
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getSelectedDate:) name:@"GetDateNotification" object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleDidSaveNotification:)name:NSManagedObjectContextDidSaveNotification 
      object:nil];
     
-}
-
-- (void)viewDidUnload{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    self.fetchedResultsController = nil;
-    self.selectedDate = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -122,17 +106,12 @@
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-
 - (void)handleDidSaveNotification:(NSNotification *)notification {
-    
     NSLog(@"NSManagedObjectContextDidSaveNotification Received by TasksTableViewController");
-    
     [managedObjectContext mergeChangesFromContextDidSaveNotification:notification];
-	
     [self.tableView reloadData];
 }
 
@@ -236,7 +215,7 @@
     NSDateFormatter *tempDateFormatter = [[NSDateFormatter alloc] init];
     [tempDateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss ZZZ"];
     NSDate *aDate = [tempDateFormatter dateFromString:[sectionInfo name]];    
-    [tempDateFormatter setDateFormat:@"EEEE, MM d"];
+    [tempDateFormatter setDateFormat:@"EEEE, MMM d"];
     NSString *myDate = [tempDateFormatter stringFromDate:aDate];
     [tempDateFormatter release];
 	return myDate;
@@ -289,12 +268,26 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (editingStyle == UITableViewCellEditingStyleDelete) {
+        
         // Delete the row from the data source.
-        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        NSManagedObjectContext *context = [_fetchedResultsController managedObjectContext];
+        [context deleteObject:[_fetchedResultsController objectAtIndexPath:indexPath]];
+        // Save the context.
+        NSError *error;
+        if (![managedObjectContext save:&error]) {
+            /*
+             Replace this implementation with code to handle the error appropriately.
+             
+             abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. If it is not possible to recover from the error, display an alert panel that instructs the user to quit the application by pressing the Home button.
+             */
+            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            abort();
+        }
+        
     }   
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
-    }   
+    } 
 }
 
 // Override to support rearranging the table view.
@@ -331,26 +324,29 @@
 }
 - (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
 	
-    UITableView *aTableView = self.tableView;
-	
     switch(type) {
 			
         case NSFetchedResultsChangeInsert:
-            [aTableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            NSLog(@"FetchedResultsController ChangeInsert");
             break;
-			
+            
         case NSFetchedResultsChangeDelete:
-            [aTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+			[self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            NSLog(@"FetchedResultsController ChangeDelete");
+            
             break;
-			
+            
         case NSFetchedResultsChangeUpdate:
-			[self configureCell:[aTableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+			[self configureCell:[self.tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+            NSLog(@"FetchedResultsController ChangeUpdate");
             break;
-			
         case NSFetchedResultsChangeMove:
-            [aTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
             // Reloading the section inserts a new row and ensures that titles are updated appropriately.
-            [aTableView reloadSections:[NSIndexSet indexSetWithIndex:newIndexPath.section] withRowAnimation:UITableViewRowAnimationFade];
+            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:newIndexPath.section] withRowAnimation:UITableViewRowAnimationFade];
+            NSLog(@"FetchedResultsController ChangeMove");
+            
             break;
     }
 }

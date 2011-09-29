@@ -14,7 +14,7 @@
 
 
 #import "TasksTableViewController.h"
-#import "AddEntityTableViewController.h"
+#import "AppointmentsTableViewController.h"
 
 
 @implementation CurrentTableViewController
@@ -365,8 +365,8 @@
     
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source.
-        //NSManagedObjectContext *context = [_fetchedResultsController managedObjectContext];
-		[managedObjectContext deleteObject:[_fetchedResultsController objectAtIndexPath:indexPath]];
+        NSManagedObjectContext *context = [_fetchedResultsController managedObjectContext];
+		[context deleteObject:[_fetchedResultsController objectAtIndexPath:indexPath]];
         // Save the context.
 		NSError *error;
 		if (![managedObjectContext save:&error]) {
@@ -383,6 +383,7 @@
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
     }   
 }
+
 
 // Override to support rearranging the table view.
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
@@ -413,7 +414,7 @@
     if ([[_fetchedResultsController objectAtIndexPath:indexPath] isKindOfClass:[Appointment class]]) {
         //Appointment *tempAppointment = [_fetchedResultsController objectAtIndexPath:indexPath];
         
-        AddEntityTableViewController *detailViewController = [[AddEntityTableViewController alloc] initWithNibName:nil bundle:nil];  
+        AppointmentsTableViewController *detailViewController = [[AppointmentsTableViewController alloc] initWithNibName:nil bundle:nil];  
         //detailViewController.selectedAppointment;
         
         [self.navigationController pushViewController:detailViewController animated:YES]; 

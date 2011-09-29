@@ -15,10 +15,14 @@
 {
     self = [super init];
     if (self) {
+        //UIImage *patternImage = [UIImage imageNamed:@"underPageBackground.png"];
+
         UIImage *patternImage = [UIImage imageNamed:@"54700.png"];
+
         [self setAdjustsFontSizeToFitWidth:YES];
         [self setBackgroundColor:[UIColor colorWithPatternImage:patternImage]];
         //[self setBorderStyle:UITextBorderStyleRoundedRect];
+        //[self setBackgroundColor:[UIColor clearColor]];
         [self  setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
         [self.layer setCornerRadius:5.0];
 

@@ -34,26 +34,13 @@
     self.title = @"Settings";
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:nil];
 
-    /*
-    UITableView *tempTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 200, 320, 180) style:UITableViewStylePlain];
-    
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
-    UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, 320, 30)];
-    [headerLabel setBackgroundColor:[UIColor lightGrayColor]];
-    [headerLabel setText:@"MY STUFF"];
-    [headerLabel setTextAlignment:UITextAlignmentCenter];
-    [headerView setBackgroundColor:[UIColor blackColor]];
-    [headerView addSubview:headerLabel];
-    [tempTableView setTableHeaderView:headerView];
-    //[tableView setSectionFooterHeight:0.0];
-    //[tableView setSectionHeaderHeight:15.0];
-    [tempTableView setRowHeight:40];
-    //[tempTableView setDelegate:self];
-    //[tempTableView setDataSource:self];
-    [self.view addSubview:tempTableView];
-    [headerLabel release];
-    [headerView release];
-    */
+    CGRect bgRect = CGRectMake(0, 0, 160, 180);
+    UIImage *theImage = [UIImage imageNamed:@"popoverBg.png"];
+    UIImage *bgImage = [[theImage stretchableImageWithLeftCapWidth:0 topCapHeight:0] retain];
+    [bgImage drawInRect:bgRect blendMode:kCGBlendModeNormal alpha:0.8];//KJF CHANGED ALPHA FROM 1.0
+    UIView *popoverViewForTable = [[UIView alloc] initWithFrame:CGRectMake(160, 5, 160, 180)];
+    popoverViewForTable.layer.contents = (id)bgImage.CGImage;   
+    [self.view addSubview:popoverViewForTable];
 }
 
 

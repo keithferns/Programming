@@ -12,14 +12,13 @@
 @implementation MyDataObject
 
 @synthesize myDate;
-@synthesize myNote, noteType;
+@synthesize myNote, noteType, myText;
 
-- (void)dealloc 
-{
-	//Release any properties declared as retain or copy.
+- (void)dealloc {//Release any properties declared as retain or copy.
 	self.myDate = nil;
 	self.myNote = nil;
     self.noteType = nil;
+    self.myText = nil;
 	[super dealloc];
 }
 

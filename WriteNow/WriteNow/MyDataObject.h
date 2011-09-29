@@ -10,16 +10,15 @@
 #import "AppDataObject.h"
 
 @interface MyDataObject : AppDataObject {
- 
     Note *myNote;
     NSNumber *noteType;
     NSDate *myDate;
+    NSString *myText;
 }
 
 @property (nonatomic, retain) Note *myNote;
-
+@property (nonatomic, retain) NSString *myText;
 @property (nonatomic, retain) NSDate *myDate;
-
 @property (nonatomic, retain) NSNumber *noteType;
 
 @end

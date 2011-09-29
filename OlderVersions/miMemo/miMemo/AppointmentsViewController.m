@@ -115,6 +115,7 @@
     NSDate *tempDate = [datePicker date];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    
     NSString *dateString = [dateFormatter stringFromDate:tempDate];
     NSPredicate *checkDate = [NSPredicate predicateWithFormat:@"doDate == %@", dateString];
     self.fetchedResultsController = [self fetchedResultsControllerWithPredicate:checkDate];
@@ -122,7 +123,6 @@
     NSError *error;
     if (![[self fetchedResultsController] performFetch:&error]) {
     }
-    
     [tableLabel setText:dateString];
     [self.tableView reloadData];
 }

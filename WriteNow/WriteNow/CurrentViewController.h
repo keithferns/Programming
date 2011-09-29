@@ -22,11 +22,9 @@
 
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain) UITableViewController *tableViewController;
-@property (nonatomic, retain) Note  *newNote;
 @property (nonatomic, retain) NSString *previousTextInput;
 @property (nonatomic, retain) UITextView *textView;
 @property (nonatomic, retain) CustomToolBarMainView *toolBar;
-@property (nonatomic, retain) UIView *bottomView;
 @property (nonatomic, retain) WEPopoverController *navPopover;
 
 - (void)popoverButtonPressed:(id)sender; 
@@ -34,18 +32,17 @@
 - (void)schedule:(id)sender;
 - (void)send:(id)sender;
 
-- (void) createNewNote;
-- (void) swapViews;
 - (void) dismissKeyboard;
+- (void) createNewNote;
 - (void) saveMemo;
 - (void) addNewAppointment;
 - (void) addNewTask;
 - (void) saveToFolder;
-
 - (void) saveToFile;
-- (void) addEntity:(id)sender;
-- (void) makeActionSheet:(id) sender;
-- (void) animateViews:(UIView *)view startFrom:(CGRect)fromFrame endAt:(CGRect)toFrame;
 
 
 @end
+//- (void) addEntity:(id)sender;
+//- (void) swapViews;
+//- (void) animateViews:(UIView *)view startFrom:(CGRect)fromFrame endAt:(CGRect)toFrame;
+//- (void) makeActionSheet:(id) sender;
