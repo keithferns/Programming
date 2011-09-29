@@ -7,6 +7,7 @@
 #import "AppointmentsTableViewController.h"
 #import "AppointmentCustomCell.h"
 #import "DetailViewController.h"
+#import "MyDataObject.h"
 
 @implementation AppointmentsTableViewController
 
@@ -14,14 +15,12 @@
 @synthesize managedObjectContext, tableLabel;
 @synthesize selectedDate;
 
-- (MyDataObject *) myDataObject;
-{
+- (MyDataObject *) myDataObject; {
 	id<AppDelegateProtocol> theDelegate = (id<AppDelegateProtocol>) [UIApplication sharedApplication].delegate;
 	MyDataObject* myDataObject;
 	myDataObject = (MyDataObject*) theDelegate.myDataObject;
 	return myDataObject;
 }
-
 
 
 - (id)initWithStyle:(UITableViewStyle)style {
@@ -324,13 +323,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    //DetailViewController *detailViewController = [[DetailViewController alloc] initWithNibName:@"DetailViewController" bundle:[NSBundle mainBundle]];
-    // Pass the selected object to the new view controller.
-	
-	//detailViewController.selectedFolder = [_fetchedResultsController objectAtIndexPath:indexPath];	
-    //[detailViewController release];
-
- 
+    MyDataObject *myData = [self myDataObject];
+    myData.selectedAppointment = [_fetchedResultsController objectAtIndexPath:indexPath];
+    
+    //[[NSNotificationCenter defaultCenter] postNotificationName:UITableViewSelectionDidChangeNotification object:[_fetchedResultsController objectAtIndexPath:indexPath ]];   
+    
 }
 
 #pragma mark -
@@ -349,13 +346,10 @@
             [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
             NSLog(@"FetchedResultsController ChangeInsert");
             break;
-            
         case NSFetchedResultsChangeDelete:
 			[self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            NSLog(@"FetchedResultsController ChangeDelete");
-            
+            NSLog(@"FetchedResultsController ChangeDelete");            
             break;
-            
         case NSFetchedResultsChangeUpdate:
 			[self configureCell:[self.tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
             NSLog(@"FetchedResultsController ChangeUpdate");
@@ -365,7 +359,6 @@
             // Reloading the section inserts a new row and ensures that titles are updated appropriately.
             [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:newIndexPath.section] withRowAnimation:UITableViewRowAnimationFade];
             NSLog(@"FetchedResultsController ChangeMove");
-            
             break;
     }
 }

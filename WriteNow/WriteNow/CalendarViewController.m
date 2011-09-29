@@ -5,6 +5,9 @@
 
 //TODO: Add function for searching for durations that are free within some time frame. Say you want to make a doctor's appointment, what you need to do is specify a duration, for eg. 2 hrs, between 12 noon and 6 pm, in the up coming week. The system should find and list all such durations. 
 
+//TODO: Change the tableView cell configuration when the tableView is present in the topView. the date should appear in the short form, the text should be smaller.
+
+
 #import "WriteNowAppDelegate.h"
 #import "CalendarViewController.h"
 #import "AppointmentsTableViewController.h"
@@ -33,6 +36,13 @@
 #define textViewRect CGRectMake(5, navBarHeight+10, screenRect.size.width-10, 140)
 #define bottomViewRect CGRectMake(0, textViewRect.origin.y+textViewRect.size.height+10, screenRect.size.width, screenRect.size.height-textViewRect.origin.y-textViewRect.size.height-10)
 
+- (MyDataObject *) myDataObject; {
+	id<AppDelegateProtocol> theDelegate = (id<AppDelegateProtocol>) [UIApplication sharedApplication].delegate;
+	MyDataObject* myDataObject;
+	myDataObject = (MyDataObject*) theDelegate.myDataObject;
+	return myDataObject;
+}
+
 - (void) cancelPopover:(id)button {
     if([navPopover isPopoverVisible]) {
         [navPopover dismissPopoverAnimated:YES];
@@ -44,9 +54,7 @@
         [toolBar.firstButton setImage:[UIImage imageNamed:@"calendar_24.png"]];
         [toolBar.firstButton setTitle:@"Schedule"];
         [toolBar.firstButton setAction:@selector(setDateTime:)];
-        }
-        
-        
+        }        
     }
 }
 
@@ -82,7 +90,7 @@
     //[toolBar.firstButton setImage:[UIImage imageNamed:@"11-clock.png"]];
     [toolBar.firstButton setAction:@selector(setAppointmentDate)];
     [toolBar.firstButton setTitle:@"Set Date"];   
-    
+ 
     if(!navPopover) {
         UIButton *button1 = [[UIButton alloc] initWithFrame:CGRectMake(5, 5, 40, 40)];
         //[button1 setTitle:@"Done" forState:UIControlStateNormal];
@@ -134,6 +142,8 @@
         [viewCon.view addSubview:button1];
         [viewCon.view addSubview:button2];
         [viewCon.view addSubview:leftField];
+    
+        
         [button1 release];
         [button2 release];
 
@@ -228,12 +238,7 @@
     NSLog(@"Should dismiss");
     return YES;
 }
-- (MyDataObject *) myDataObject; {
-	id<AppDelegateProtocol> theDelegate = (id<AppDelegateProtocol>) [UIApplication sharedApplication].delegate;
-	MyDataObject* myDataObject;
-	myDataObject = (MyDataObject*) theDelegate.myDataObject;
-	return myDataObject;
-}
+
 
 - (void)dealloc {
     [super dealloc];
@@ -251,6 +256,7 @@
     [rightField_1 release];
     [rightField_2 release];
     [rightField release];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UITableViewSelectionDidChangeNotification object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -272,6 +278,7 @@
     rightField_2 = nil;
     recurring = nil;
     textView = nil;
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UITableViewSelectionDidChangeNotification object:nil];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -303,6 +310,7 @@
     // Observe keyboard hide and show notifications to resize the text view appropriately.
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(displaySelectedRow:) name:UITableViewSelectionDidChangeNotification object:nil];
     ///////
     
     [self.view setBackgroundColor:[UIColor colorWithRed:0.2 green:0.2 blue:0.5 alpha:1]];
@@ -334,6 +342,7 @@
 - (void) viewWillAppear:(BOOL)animated{  
     MyDataObject *mydata = [self myDataObject];
     [textView setText:mydata.myText];
+    [textView setUserInteractionEnabled:YES];
     //[textView becomeFirstResponder];
     
     if (self.navigationController.navigationBarHidden == YES){
@@ -403,6 +412,58 @@
     [toolBar release];
 }
  
+- (void) displaySelectedRow:(NSNotification *) notification {
+    /*NOTE: USING NOTIFICATIONS WORKS JUST AS WELL.
+    if ([[notification object] isKindOfClass:[Appointment class]]) {
+    
+        NSLog(@"THE SELECTED NOTIFICATION OBJECT IS AN APPOINTMENT");
+    }
+     */
+    NSLog(@"In displaySelectedRow Method");
+    
+    MyDataObject *myData = [self myDataObject];
+    if (myData.selectedAppointment != nil && myData.selectedMemo == nil && myData.selectedTask == nil) {
+        
+        NSString *selectedDate = [dateFormatter stringFromDate:myData.selectedAppointment.doDate];
+        NSString *selectedStart = [timeFormatter stringFromDate:myData.selectedAppointment.doTime];
+        NSString *selectedEnd = [timeFormatter stringFromDate:myData.selectedAppointment.endTime];
+        //ADD Date/Time etc to textView
+        
+        self.navigationItem.title = @"Appointment";
+        NSMutableString *text = [NSMutableString stringWithFormat:@"Scheduled Date: %@\nStart At: %@. Ends At: %@ \n\n%@",selectedDate, selectedStart, selectedEnd, myData.selectedAppointment.text];
+        textView.text = text;        
+        [textView setUserInteractionEnabled:NO];
+        
+        UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editSelectedRow)];
+                                                
+        self.navigationItem.rightBarButtonItem  = rightButton;
+        [rightButton release];
+        self.navigationItem.rightBarButtonItem.tag = 1;
+        
+        //FIXME: THIS FUNCTION SEEMS TO BE CALLED TWICE 
+        return;
+    }
+}
+- (void) editSelectedRow{
+    MyDataObject *myData = [self myDataObject];
+    if (myData.selectedAppointment != nil && myData.selectedMemo == nil && myData.selectedTask == nil) {
+        
+        leftField.text = [dateFormatter stringFromDate:myData.selectedAppointment.doDate];
+        rightField_1.text = [timeFormatter stringFromDate:myData.selectedAppointment.doTime];
+        rightField_2.text = [timeFormatter stringFromDate:myData.selectedAppointment.endTime];        
+   
+        textView.text = myData.selectedAppointment.text;       
+        [textView setUserInteractionEnabled:YES];
+        
+        UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:nil];
+        
+        self.navigationItem.rightBarButtonItem  = rightButton;
+        [rightButton release];
+        self.navigationItem.rightBarButtonItem.tag = 1;
+    }
+}
+
+
 #pragma mark -
 #pragma mark Text View Delegate Methods
 
@@ -547,9 +608,7 @@
 }
 
 - (void) moveTableViewUp{
-    
-   
-        
+            
     if (tableViewController.tableView.superview == nil){
         [self.view addSubview:tableViewController.tableView];
     }
@@ -767,6 +826,7 @@
         if(![managedObjectContext save:&error]){ 
             NSLog(@"Calendar/Appointments VIEWCONTROLLER MOC: DID NOT SAVE");
         } 
+  
         [newAppointment release];
     }
     else if ([tableViewController isKindOfClass:[TasksTableViewController class]]) {
@@ -807,17 +867,14 @@
     //ADD Date/Time etc to textView
     NSMutableString *text = [NSMutableString stringWithString:textView.text];
     ///NOTE: the following snippet will replace all the text in the textview
-    [textView selectAll:self];
-    NSRange mySelectedRange = textView.selectedRange;
-
+    /*[textView selectAll:self];
+     NSRange mySelectedRange = textView.selectedRange; */
     
-    //NSRange selectedRange = NSMakeRange(0, 0);
+    NSRange mySelectedRange = NSMakeRange(0, 0);
     
-    [text replaceCharactersInRange:mySelectedRange withString:[NSString stringWithFormat:@"Scheduled for %@ \n from %@ till %@ \n %@",leftField.text, rightField_1.text, rightField_2.text, text]];
+    [text replaceCharactersInRange:mySelectedRange withString:[NSString stringWithFormat:@"Scheduled for %@ \nfrom %@ till %@ \n%@",leftField.text, rightField_1.text, rightField_2.text, text]];
     
     textView.text = text;
-    
-    //FIXME: the first word of the text is being cut off.
     [textView setUserInteractionEnabled:NO];
     
     [leftField release];

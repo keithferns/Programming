@@ -10,6 +10,10 @@
 #import "AppDataObject.h"
 
 @interface MyDataObject : AppDataObject {
+    
+    Appointment *selectedAppointment;
+    Task *selectedTask;
+    Memo *selectedMemo;
     Note *myNote;
     NSNumber *noteType;
     NSDate *myDate;
@@ -20,5 +24,8 @@
 @property (nonatomic, retain) NSString *myText;
 @property (nonatomic, retain) NSDate *myDate;
 @property (nonatomic, retain) NSNumber *noteType;
+@property (nonatomic, retain) Appointment *selectedAppointment;
+@property (nonatomic, retain) Task *selectedTask;
+@property (nonatomic, retain) Memo *selectedMemo;
 
 @end
