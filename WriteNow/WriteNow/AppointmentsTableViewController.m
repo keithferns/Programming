@@ -14,6 +14,7 @@
 @synthesize fetchedResultsController = _fetchedResultsController;
 @synthesize managedObjectContext, tableLabel;
 @synthesize selectedDate;
+@synthesize myCell;
 
 - (MyDataObject *) myDataObject; {
 	id<AppDelegateProtocol> theDelegate = (id<AppDelegateProtocol>) [UIApplication sharedApplication].delegate;
@@ -55,6 +56,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    tableIsDown = YES;
     NSLog(@"IN APPOINTMENTS TABLEVIEWCONTROLLER");
     [NSFetchedResultsController deleteCacheWithName:@"Root"];
     
@@ -89,9 +91,23 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getSelectedDate:) name:@"GetDateNotification" object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleDidSaveNotification:)name:NSManagedObjectContextDidSaveNotification object:nil];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(configureCellForTableUp) name:@"tableViewMovedUpNotification" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(configureCellForTableDown) name:@"tableViewMovedDownNotification" object:nil];
+
+    UIButton *accessoryButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+    myCell.accessoryView = accessoryButton;
+
 }
 
+- (void) configureCellForTableUp{
+    NSLog(@"Table is UP");
+    tableIsDown = NO;
+}
+
+- (void) configureCellForTableDown{
+    NSLog(@"Table is Down");
+    tableIsDown = YES;
+}
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 }
@@ -129,6 +145,7 @@
     
     NSString *dateString = [dateFormatter stringFromDate:selectedDate];
     NSDate *newDate = [dateFormatter dateFromString:dateString];
+    [dateFormatter release];
     
     NSPredicate *checkDate = [NSPredicate predicateWithFormat:@"doDate == %@", newDate];    
     self.fetchedResultsController = [self fetchedResultsControllerWithPredicate:checkDate];
@@ -151,7 +168,7 @@
     [request setPredicate:aPredicate];
     
 	NSSortDescriptor *dateDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"doDate" ascending:YES] autorelease];
-	NSSortDescriptor *timeDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"doTime" ascending:NO]autorelease];    
+	NSSortDescriptor *timeDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"doTime" ascending:YES]autorelease];    
     [request setSortDescriptors:[NSArray arrayWithObjects:dateDescriptor,timeDescriptor, nil]];
     
     NSString *cacheName = @"Root";
@@ -193,7 +210,11 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 20;
+    if (tableIsDown){
+        return 20.0;
+    }else{
+        return 15.0;
+    }
 }
 
 /*
@@ -218,15 +239,26 @@
 }
 */
 
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (tableIsDown) {
+        return 40.0;
+    }else {
+        return 30.0;
+    }
+}
+
 - (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 	id<NSFetchedResultsSectionInfo>  sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
     NSDateFormatter *tempDateFormatter = [[NSDateFormatter alloc] init];
     
     [tempDateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss ZZZ"];
     NSDate *aDate = [tempDateFormatter dateFromString:[sectionInfo name]];
-    
+    if (tableIsDown){
     [tempDateFormatter setDateFormat:@"EEEE, d MMMM"];
-    
+    }
+    else{
+        [tempDateFormatter setDateFormat:@"EEE, MMM d"];
+    }
     NSString *myDate = [tempDateFormatter stringFromDate:aDate];
     [tempDateFormatter release];
 	return myDate;
@@ -240,19 +272,29 @@
 }
 
 - (void) configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath{
-	AppointmentCustomCell *mycell;
+
     NSDateFormatter * timeFormatter = [[NSDateFormatter alloc] init];
-    [timeFormatter setTimeStyle:NSDateFormatterShortStyle];
+    //[timeFormatter setTimeStyle:NSDateFormatterShortStyle];
+    
+    [timeFormatter setDateFormat:@"hh:mm a"];
 	if([cell isKindOfClass:[UITableViewCell class]]){
-		mycell = (AppointmentCustomCell *) cell;
+		myCell = (AppointmentCustomCell *) cell;
         //[mycell setAccessoryType:UITableViewCellAccessoryDetailDisclosureButton];   
-    }
+    }   
     //if ([_fetchedResultsController objectAtIndexPath:0] != nil) {
     Appointment *anAppointment = [_fetchedResultsController objectAtIndexPath:indexPath];	
-    [mycell.textLabel setText:[NSString stringWithFormat:@"%@", anAppointment.text]];
-    [mycell.timeLabel setText: [timeFormatter stringFromDate:anAppointment.doTime]];
+    [myCell.textLabel setText:[NSString stringWithFormat:@"%@", anAppointment.text]];
+    [myCell.startTimeLabel setText: [timeFormatter stringFromDate:anAppointment.doTime]];
+    [myCell.endTimeLabel setText:[timeFormatter stringFromDate:anAppointment.endTime]];
     //}
     [timeFormatter release];
+}
+- (void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    //alternates the bgcolor of the rows
+    if (indexPath.row == 0 || indexPath.row%2 == 0) {
+        UIColor *altCellColor = [UIColor colorWithWhite:0.7 alpha:0.1];
+        cell.backgroundColor = altCellColor;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -260,15 +302,39 @@
     
     AppointmentCustomCell *cell = (AppointmentCustomCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	if (cell == nil) {
-		NSArray *topLevelObjects = [[NSBundle mainBundle]
-									loadNibNamed:@"AppointmentCustomCell"
-									owner:nil options:nil];
-		for (id currentObject in topLevelObjects){
-			if([currentObject isKindOfClass:[UITableViewCell class]]){
-				cell = (AppointmentCustomCell *) currentObject;
-				break;
-			}
-		}
+		//NSArray *topLevelObjects = [[NSBundle mainBundle]
+									//loadNibNamed:@"AppointmentCustomCell"
+									//owner:nil options:nil];
+		//for (id currentObject in topLevelObjects){
+		//	if([currentObject isKindOfClass:[UITableViewCell class]]){
+		//		cell = (AppointmentCustomCell *) currentObject;
+		//		break;
+		//	}
+		//}
+        //TODO: check if the following code is safe and efficient
+        cell = [[[AppointmentCustomCell alloc] init]autorelease];
+        if (tableIsDown) {
+            UIButton *accessoryButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+            cell.accessoryView = accessoryButton;
+        }else {
+            CGRect frame = cell.contentView.frame;
+            frame.size.width = 155.0;
+            frame.size.height = 30;
+            cell.startTimeLabel.frame = CGRectMake(0, 0, 45, 15);
+            cell.endTimeLabel.frame = CGRectMake(0, 15, 45, 15);
+            cell.textLabel.frame = CGRectMake(46, 0, 109, 30);
+            cell.endTimeLabel.textColor = [UIColor lightTextColor];
+            cell.startTimeLabel.textColor = [UIColor lightTextColor];
+            cell.textLabel.textColor = [UIColor lightTextColor];
+            cell.textLabel.numberOfLines = 3;
+            cell.textLabel.minimumFontSize = 8.0;
+            cell.textLabel.adjustsFontSizeToFitWidth = YES;
+            UIImage *image = [UIImage imageNamed:@"wallpaper.png"];
+            cell.contentView.backgroundColor = [UIColor colorWithPatternImage:image];
+            cell.userInteractionEnabled = NO;
+            [cell.textLabel.text sizeWithFont:[UIFont systemFontOfSize:10.0]];
+            cell.textLabel.lineBreakMode = UILineBreakModeCharacterWrap;
+        }
 	}
 	[self configureCell:cell atIndexPath:indexPath];
     return cell;

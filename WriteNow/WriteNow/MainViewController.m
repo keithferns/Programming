@@ -45,8 +45,13 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
     [self.navigationBar setHidden:NO];
-    [self.navigationBar setTintColor:[UIColor colorWithRed:0.2 green:0.2 blue:0.5 alpha:1]];
+    //[self.navigationBar setTintColor:[UIColor colorWithRed:0.2 green:0.2 blue:0.5 alpha:1]];
+    [self.navigationBar setBarStyle:UIBarStyleBlackTranslucent];
+    [self.navigationBar setAlpha:0.8];
     [self.navigationBar setTranslucent:YES];
+    UIImage *background = [UIImage imageNamed:@"wallpaper.png"];
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:background]];
+    
     
     NSLog(@"MainViewController MOC: %@", managedObjectContext);
     

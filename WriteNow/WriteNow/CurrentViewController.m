@@ -83,15 +83,17 @@
         NSLog(@"CURRENT VIEWCONTROLLER: After managedObjectContext: %@",  managedObjectContext);
 	}    
     self.title = @"Write Now";
-    [self.view setBackgroundColor:[UIColor colorWithRed:0.2 green:0.2 blue:0.5 alpha:1]];
+    //[self.view setBackgroundColor:[UIColor colorWithRed:0.2 green:0.2 blue:0.5 alpha:1]];
+    UIImage *background = [UIImage imageNamed:@"wallpaper.png"];
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:background]];
     
     previousTextInput = @"";
     
     //TEXTVIEW: setup and add to self.view
     textView = [[CustomTextView alloc] initWithFrame:textViewRect];
     textView.delegate = self;    
-    UIImage *patternImage = [UIImage imageNamed:@"54700.png"];
-    self.textView.backgroundColor = [UIColor colorWithPatternImage:patternImage];
+   // UIImage *patternImage = [UIImage imageNamed:@"54700.png"];
+    //self.textView.backgroundColor = [UIColor colorWithPatternImage:patternImage];
     [self.view addSubview:textView];
 }
 

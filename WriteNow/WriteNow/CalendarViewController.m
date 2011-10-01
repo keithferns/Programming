@@ -104,7 +104,7 @@
         [button2 setImage:[UIImage imageNamed:@"blue_round.png"] forState:UIControlStateNormal];
         [button2 setTag:2];
         [button2.layer setCornerRadius:10.0];
-        [button2 addTarget:self action:@selector(doneAction) forControlEvents:UIControlEventTouchUpInside];
+        [button2 addTarget:self action:@selector(saveSchedule) forControlEvents:UIControlEventTouchUpInside];
         
         leftField = [[CustomTextField alloc] init];
         [leftField setFrame:CGRectMake(0, 50, 140, 40)];
@@ -146,7 +146,26 @@
         
         [button1 release];
         [button2 release];
-
+        
+        MyDataObject *mydata = [self myDataObject];
+        if (mydata.selectedAppointment !=nil && [mydata.selectedAppointment.isEditing intValue] ==1){
+            [rightField_1 setFrame:CGRectMake(0, 95, 68, 40)];
+            [rightField_2 setFrame:CGRectMake(72, 95, 68, 40)];
+            [rightField setFrame:CGRectMake(0, 140, 140, 40)];
+            [viewCon.view addSubview:rightField_1];
+            [viewCon.view addSubview:rightField_2];
+            [viewCon.view addSubview:rightField];
+            [leftField setText:[dateFormatter stringFromDate:mydata.selectedAppointment.doDate]];
+            [rightField_1 setText:[timeFormatter stringFromDate:mydata.selectedAppointment.doTime]];
+            [rightField_2 setText:[timeFormatter stringFromDate:mydata.selectedAppointment.endTime]];
+            [rightField setText:mydata.selectedAppointment.recurring];
+        } else if (mydata.selectedTask !=nil && [mydata.selectedTask.isEditing intValue]==1){
+            [rightField setFrame:CGRectMake(0, 140, 140, 40)];
+            [viewCon.view addSubview:rightField];
+            [leftField setText:[dateFormatter stringFromDate:mydata.selectedAppointment.doDate]];
+            [rightField setText:mydata.selectedAppointment.recurring];
+        }
+                
         navPopover = [[WEPopoverController alloc] initWithContentViewController:viewCon];
         [navPopover setDelegate:self];
         [viewCon release];
@@ -313,8 +332,11 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(displaySelectedRow:) name:UITableViewSelectionDidChangeNotification object:nil];
     ///////
     
-    [self.view setBackgroundColor:[UIColor colorWithRed:0.2 green:0.2 blue:0.5 alpha:1]];
-
+    //[self.view setBackgroundColor:[UIColor colorWithRed:0.2 green:0.2 blue:0.5 alpha:1]];
+    UIImage *background = [UIImage imageNamed:@"wallpaper.png"];
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:background]];
+                           
+    
     UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(backAction)];
     self.navigationItem.leftBarButtonItem = leftButton;
     [leftButton release];
@@ -387,7 +409,7 @@
         }
         [tableViewController.tableView setSeparatorColor:[UIColor blackColor]];
         [tableViewController.tableView setSectionHeaderHeight:13];
-        tableViewController.tableView.rowHeight = 40.0;
+        //tableViewController.tableView.rowHeight = 40.0;
         //[tableViewController.tableView setTableHeaderView:tableLabel];
 
         CGRect startFrame = CGRectMake(-screenRect.size.width, bottomViewRect.origin.y, bottomViewRect.size.width, bottomViewRect.size.height);
@@ -430,7 +452,7 @@
         //ADD Date/Time etc to textView
         
         self.navigationItem.title = @"Appointment";
-        NSMutableString *text = [NSMutableString stringWithFormat:@"Scheduled Date: %@\nStart At: %@. Ends At: %@ \n\n%@",selectedDate, selectedStart, selectedEnd, myData.selectedAppointment.text];
+        NSMutableString *text = [NSMutableString stringWithFormat:@"Scheduled Date: %@\nStarts At: %@. Ends At: %@\n\n%@",selectedDate, selectedStart, selectedEnd, myData.selectedAppointment.text];
         textView.text = text;        
         [textView setUserInteractionEnabled:NO];
         
@@ -446,6 +468,7 @@
 }
 - (void) editSelectedRow{
     MyDataObject *myData = [self myDataObject];
+    [myData.selectedAppointment setIsEditing:[NSNumber numberWithInt:1]]; //TODO:Set this back to 0 somewhere.
     if (myData.selectedAppointment != nil && myData.selectedMemo == nil && myData.selectedTask == nil) {
         
         leftField.text = [dateFormatter stringFromDate:myData.selectedAppointment.doDate];
@@ -454,6 +477,7 @@
    
         textView.text = myData.selectedAppointment.text;       
         [textView setUserInteractionEnabled:YES];
+        [textView becomeFirstResponder];
         
         UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:nil];
         
@@ -608,7 +632,7 @@
 }
 
 - (void) moveTableViewUp{
-            
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"tableViewMovedUpNotification" object:nil];
     if (tableViewController.tableView.superview == nil){
         [self.view addSubview:tableViewController.tableView];
     }
@@ -631,22 +655,24 @@
     [self.navigationController.navigationBar setHidden:YES];
     [tableViewController.tableView setFrame:CGRectMake(160, 3, 155, 189)];
 
-    [tableViewController.tableView setRowHeight:25.0];
+    //[tableViewController.tableView setRowHeight:25.0];
     [tableViewController.tableView.layer setCornerRadius:5.0];
-    [tableViewController.tableView setBackgroundColor:[UIColor whiteColor]];
-    [tableViewController.tableView setAlpha:0.6];
+    //[tableViewController.tableView setBackgroundColor:[UIColor whiteColor]];
+    [tableViewController.tableView setAlpha:1];
     [UIView commitAnimations];
 }
 
 - (void) moveTableViewDown{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"tableViewMovedDownNotification" object:nil];
 
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.5];
     [UIView setAnimationDelegate:self];
     tableViewController.tableView.frame = bottomViewRect; 
-    [tableViewController.tableView setRowHeight:40.0];
+    //[tableViewController.tableView setRowHeight:40.0];
     [tableViewController.tableView.layer setCornerRadius:0.0];
     [tableViewController.tableView setBackgroundColor:[UIColor whiteColor]];
+    [tableViewController.tableView reloadData];
     [tableViewController.tableView setAlpha:1.0];
 
     [UIView commitAnimations];
@@ -697,11 +723,11 @@
         [UIView setAnimationDelegate:self];
         [rightField setFrame:CGRectMake(0, 140, 140, 40)];
         
-               [UIView commitAnimations];
+        [UIView commitAnimations];
         [leftField resignFirstResponder];
         [rightField becomeFirstResponder];
         [toolBar.firstButton setImage:[UIImage imageNamed:@"save.png"]];
-        [toolBar.firstButton setAction:@selector(doneAction)];
+        [toolBar.firstButton setAction:@selector(saveSchedule)];
         [toolBar.firstButton setTitle:@"Done"];  
                 
     }
@@ -791,7 +817,7 @@
     [rightField_2 resignFirstResponder];
     [rightField becomeFirstResponder];
     [toolBar.firstButton setImage:[UIImage imageNamed:@"arrow_circle_left_24.png"]];
-    [toolBar.firstButton setAction:@selector(doneAction)];
+    [toolBar.firstButton setAction:@selector(saveSchedule)];
     [toolBar.firstButton setTitle:@"Set Recurring"];
     
     NSCalendar *calendar = [NSCalendar currentCalendar];
@@ -806,11 +832,16 @@
     rightField_2.text = [timeFormatter stringFromDate:selectedTime];
 }
 
-- (void) doneAction {    
-    //TODO: Add the ScheduledDate StartTime, EndTime and Recurrence to the textView.     
+- (void) saveSchedule {    
+    //TODO: Add recurrance to textView
+    NSLog(@"Saving Schedule");
     [toolBar.firstButton setImage:[UIImage imageNamed:@"calendar_24.png"]];
     [toolBar.firstButton setTitle:@"Schedule"];
     [toolBar.firstButton setAction:@selector(setDateTime:)];
+    [navPopover dismissPopoverAnimated:YES];
+    [self.navigationController.navigationBar setHidden:NO];
+    [textView becomeFirstResponder];
+    
     if ([tableViewController isKindOfClass:[AppointmentsTableViewController class]]) {
         NSEntityDescription *entity = [NSEntityDescription entityForName:@"Appointment" inManagedObjectContext:managedObjectContext];
         Appointment *newAppointment = [[Appointment alloc] initWithEntity:entity insertIntoManagedObjectContext:managedObjectContext];
@@ -821,12 +852,9 @@
         [newAppointment setDoDate:[dateFormatter dateFromString:leftField.text]];
         [newAppointment setDoTime:[timeFormatter dateFromString:rightField_1.text]];
         [newAppointment setEndTime:[timeFormatter dateFromString:rightField_2.text]];
-        /*--Save the MOC--*/	
-        NSError *error;
-        if(![managedObjectContext save:&error]){ 
-            NSLog(@"Calendar/Appointments VIEWCONTROLLER MOC: DID NOT SAVE");
-        } 
-  
+        
+        MyDataObject *myData = [self myDataObject];
+        myData.selectedAppointment = newAppointment;
         [newAppointment release];
     }
     else if ([tableViewController isKindOfClass:[TasksTableViewController class]]) {
@@ -838,31 +866,69 @@
         [newTask setType:[NSNumber numberWithInt:2]];
         [newTask setDoDate:[dateFormatter dateFromString:leftField.text]];
         [newTask setRecurring:rightField.text];
-        /*--Save the MOC--*/	
-        NSError *error;
-        if(![managedObjectContext save:&error]){ 
-            NSLog(@"Calendar/Tasks VIEWCONTROLLER MOC: DID NOT SAVE");
-        } 
+        
+        MyDataObject *myData = [self myDataObject];
+        myData.selectedTask = newTask;
         [newTask release];
             
     }
+    [leftField removeFromSuperview];
+    [rightField removeFromSuperview];
+    [self.view addSubview:leftField];
+    [self.view addSubview:rightField];
+    [leftField setText:[NSString stringWithFormat:@"Scheduled for %@", leftField.text]];
+    [rightField setText:[NSString stringWithFormat:@"From %@ Till %@", rightField_1.text, rightField_2.text]];
+    [leftField setFrame:CGRectMake(-screenRect.size.width, textViewRect.origin.y, textViewRect.size.width, 30)];
+    [rightField setFrame:CGRectMake(screenRect.size.width, leftField.frame.origin.y+35, textViewRect.size.width, 30)];
 
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.4];
     [UIView setAnimationDelegate:self];
+
+    [leftField setFrame:CGRectMake(textViewRect.origin.x, textViewRect.origin.y, textViewRect.size.width, 30)];
+    [rightField setFrame:CGRectMake(textViewRect.origin.x, leftField.frame.origin.y+35, textViewRect.size.width, 30)];
     
-    toolBar.frame = toolBarRect;
-    datePicker.frame = CGRectMake(-screenRect.size.width, datePicker.frame.origin.y, screenRect.size.width, datePicker.frame.size.height);
-    timePicker.frame = CGRectMake(-screenRect.size.width, timePicker.frame.origin.y, screenRect.size.width, timePicker.frame.size.height);
-    textView.frame = textViewRect;
-    
+    CGRect frame = textViewRect;
+    frame.origin.y = rightField.frame.origin.y+rightField.frame.size.height+5;
+    frame.size.height = textViewRect.size.height - 70;
+    [textView setFrame:frame];
     [UIView commitAnimations];
-    [self moveTableViewDown];
-    [navPopover dismissPopoverAnimated:YES];
 
+    [leftField setUserInteractionEnabled:NO];
+    [rightField setUserInteractionEnabled:NO];
 
-    [self.navigationController.navigationBar setHidden:NO];
-    [self.view endEditing:YES];
+    [rightField_1 release];
+    [rightField_2 release];
+    rightField_1 = nil;
+    rightField_2 = nil;
+    navPopover = nil;
+    [navPopover release];
+    }
+
+- (void) doneAction{
+    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:nil];
+    //todo connect button to a method
+    self.navigationItem.rightBarButtonItem = rightButton;
+    [rightButton release];
+    
+    MyDataObject *myData = [self myDataObject];
+    if (myData.selectedAppointment.doDate == nil ||myData.selectedAppointment.text ==@"") {
+        return;//TODO: put up the appropriate alert views here
+    }
+    /*--Save the MOC--*/	
+    NSError *error;
+    if(![managedObjectContext save:&error]){ 
+        NSLog(@"Calendar/Appointments VIEWCONTROLLER MOC: DID NOT SAVE");
+    } 
+    
+    [leftField removeFromSuperview];
+    [rightField removeFromSuperview];
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:0.4];
+    [UIView setAnimationDelegate:self];
+    
+    [textView setFrame:textViewRect];
+    [UIView commitAnimations];
     
     //ADD Date/Time etc to textView
     NSMutableString *text = [NSMutableString stringWithString:textView.text];
@@ -872,38 +938,24 @@
     
     NSRange mySelectedRange = NSMakeRange(0, 0);
     
-    [text replaceCharactersInRange:mySelectedRange withString:[NSString stringWithFormat:@"Scheduled for %@ \nfrom %@ till %@ \n%@",leftField.text, rightField_1.text, rightField_2.text, text]];
+    [text replaceCharactersInRange:mySelectedRange withString:[NSString stringWithFormat:@"%@\n%@\n",leftField.text, rightField.text, text]];
     
     textView.text = text;
     [textView setUserInteractionEnabled:NO];
-    
+
     [leftField release];
     [rightField release];
-    [rightField_1 release];
-    [rightField_2 release];
-    rightField = nil;
     leftField = nil;
-    rightField_1 = nil;
-    rightField_2 = nil;
-    navPopover = nil;
-    [navPopover release];
-    
-    //TODO: Change the Done button on navigation bar to Edit. 
-    
-    }
-
-#pragma mark NAVIGATION
-
-- (void) backAction{
-	[self dismissModalViewControllerAnimated:YES];		
+    rightField = nil;
 }
 
 - (void) setAlarm {
     return;
 }
-- (void) setRecurring {
-    return;
-}
+
+#pragma mark NAVIGATION
+
+
 
 @end
 

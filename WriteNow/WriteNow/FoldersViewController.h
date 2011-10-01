@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CustomToolBar.h"
 #import "WEPopoverController.h"
+#import "CustomTextView.h"
 
 
 @interface FoldersViewController : UIViewController <UITextViewDelegate, UITextFieldDelegate, PopoverControllerDelegate> {
@@ -16,7 +17,7 @@
     NSManagedObjectContext *managedObjectContext;
     UITableViewController *tableViewController;
     
-    UITextView *textView;
+    CustomTextView *textView;
     NSString *sender, *newText;
 
     BOOL swappingViews, isSelected;
@@ -30,7 +31,7 @@
 
 @property (nonatomic, retain) NSString *sender, *newText;
 
-@property (nonatomic, retain) UITextView *textView;
+@property (nonatomic, retain) CustomTextView *textView;
 @property (nonatomic, retain) UITextField *nameField;
 
 @property (nonatomic, retain) CustomToolBar *toolBar;

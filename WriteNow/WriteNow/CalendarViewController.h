@@ -29,10 +29,9 @@
 @property (nonatomic, retain) NSArray *recurring;
 @property (nonatomic, retain) WEPopoverController *navPopover;
 
-- (void) backAction;    //cancel action
 - (void) dismissKeyboard;
-- (IBAction)datePickerChanged:(id)sender;
-- (IBAction)timePickerChanged:(id)sender;
+- (void)datePickerChanged:(id)sender;
+- (void)timePickerChanged:(id)sender;
 - (void) setAlarm;
 - (void) setAlarm:(id)sender;
 - (void)setDateTime:(id)sender;

@@ -30,8 +30,11 @@
     [super viewDidLoad];
     NSLog(@"In SettingsViewController");
     
+    UIImage *background = [UIImage imageNamed:@"wallpaper.png"];
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:background]];
     
     self.title = @"Settings";
+    /*
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:nil];
 
     CGRect bgRect = CGRectMake(0, 0, 160, 180);
@@ -41,6 +44,7 @@
     UIView *popoverViewForTable = [[UIView alloc] initWithFrame:CGRectMake(160, 5, 160, 180)];
     popoverViewForTable.layer.contents = (id)bgImage.CGImage;   
     [self.view addSubview:popoverViewForTable];
+     */
 }
 
 

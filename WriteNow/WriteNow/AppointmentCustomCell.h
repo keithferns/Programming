@@ -11,9 +11,10 @@
 
 @interface AppointmentCustomCell : UITableViewCell {
     
-    
+    UILabel *textLabel, *startTimeLabel, *endTimeLabel;
 }
     
-@property (nonatomic, retain) IBOutlet UILabel *textLabel, *timeLabel;
+@property (nonatomic, retain) UILabel *textLabel, *startTimeLabel, *endTimeLabel;
+
 
 @end

@@ -119,7 +119,8 @@
 
 - (void)parentViewTapped:(UITapGestureRecognizer *)theTapGesture {
      // dismiss the popover if it's visible and conforms to the delegate protocol
-    
+    //FIXME: DO NOT DISABLE IF TABLEVIEW IS TAPPED. FOR NOW DISABLING THIS OPTION
+    /*
     if(delegate && [delegate respondsToSelector:@selector(popoverControllerShouldDismissPopover:)]) {
         CGPoint tap = [theTapGesture locationInView:view];
         if(![view pointInside:tap withEvent:nil]) {
@@ -132,6 +133,7 @@
             }
         } 
     }
+     */
 }
 
 - (void)presentPopoverFromRect:(CGRect)rect 

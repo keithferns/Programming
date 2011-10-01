@@ -274,14 +274,14 @@
         [mycell.memoText setText:[NSString stringWithFormat:@"%@", memo.text]];	
 		[mycell.date setText:[dateFormatter stringFromDate:memo.creationDate]];
         [mycell.dateLabel setText:@"CREATED:"];
-        mycell.imageView.image = [UIImage imageNamed:@"MEMO.png"];
+        mycell.imageView.image = [UIImage imageNamed:@"179-notepad_22x25"];
     } 
 	else if ([currentItem.type intValue] == 1){
         Appointment *appointment = [_fetchedResultsController objectAtIndexPath:indexPath];
         [mycell.memoText setText:[NSString stringWithFormat:@"%@", appointment.text]];
 		[mycell.date setText:[dateFormatter stringFromDate:appointment.doDate]];
         [mycell.dateLabel setText:@"SCHEDULED:"];
-        mycell.imageView.image = [UIImage imageNamed:@"Tasks Icon.png"];
+        mycell.imageView.image = [UIImage imageNamed:@"clock_running_black1.png"];
 	}
     else if ([currentItem.type intValue] == 2){
         //else if ([[_fetchedResultsController objectAtIndexPath:indexPath] isKindOfClass:[Task class]]){  
@@ -289,7 +289,7 @@
         [mycell.memoText setText:[NSString stringWithFormat:@"%@", task.text]];
 		[mycell.date setText: [dateFormatter stringFromDate:task.doDate]];
         [mycell.dateLabel setText:@"DUE:"];
-        mycell.imageView.image = [UIImage imageNamed:@"ToDo.png"];
+        mycell.imageView.image = [UIImage imageNamed:@"117-todo.png"];
 	}
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

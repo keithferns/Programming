@@ -171,7 +171,9 @@
     //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(searchkeyboardWasHidden)  name:UIKeyboardDidHideNotification object:nil];
     
     /*-- VIEWS:BASE: setup and initialize --*/
-    [self.view setBackgroundColor:[UIColor colorWithRed:0.2 green:0.2 blue:0.5 alpha:1]];
+    //[self.view setBackgroundColor:[UIColor colorWithRed:0.2 green:0.2 blue:0.5 alpha:1]];
+    UIImage *background = [UIImage imageNamed:@"wallpaper.png"];
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:background]];
     //previousTextInput = @"";    
     
     /*--NAVIGATION ITEMS --*/
@@ -219,8 +221,8 @@
     textView = [[CustomTextView alloc] initWithFrame:CGRectMake(5, navBarHeight+10, screenRect.size.width-10, textViewHeight)];
     textView.delegate = self;    
     textView.inputAccessoryView = toolBar;
-    UIImage *patternImage = [UIImage imageNamed:@"54700.png"];
-    self.textView.backgroundColor = [UIColor colorWithPatternImage:patternImage];
+    //UIImage *patternImage = [UIImage imageNamed:@"54700.png"];
+    //self.textView.backgroundColor = [UIColor colorWithPatternImage:patternImage];
     [self.view addSubview:textView];
 
 /*  NOTE: THESE CONTROL ELEMENTS MOVED TO THE POPOVER VIEW
