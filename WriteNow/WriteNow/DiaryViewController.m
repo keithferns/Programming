@@ -18,6 +18,23 @@
 @synthesize managedObjectContext, tableViewController;
 @synthesize textView, diaryView;
 
+
+#define screenRect [[UIScreen mainScreen] applicationFrame]
+//CGRect screenBounds = [UIScreen mainScreen].bounds;
+#define tabBarHeight self.tabBarController.tabBar.frame.size.height
+#define navBarHeight self.navigationController.navigationBar.frame.size.height
+#define tooBarRect CGRectMake(screenRect.size.width, 0, screenRect.size.width, 40)
+#define textViewRect CGRectMake(5, navBarHeight+10, screenRect.size.width-10, 140)
+#define bottomViewRect CGRectMake(0, textViewRect.origin.y+textViewRect.size.height+10, screenRect.size.width, screenRect.size.height-textViewRect.origin.y-textViewRect.size.height-10)
+
+- (MyDataObject *) myDataObject {
+	id<AppDelegateProtocol> theDelegate = (id<AppDelegateProtocol>) [UIApplication sharedApplication].delegate;
+	MyDataObject* myDataObject;
+	myDataObject = (MyDataObject*) theDelegate.myDataObject;
+	return myDataObject;
+}
+
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -41,62 +58,73 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+
+- (void)viewDidUnload {
+    [super viewDidUnload];
+    // Release any retained subviews of the main view.
+    // e.g. self.myOutlet = nil;
+}
+
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    //[self.view setBackgroundColor:[UIColor colorWithRed:0.2 green:0.2 blue:0.5 alpha:1]];
+    UIImage *background = [UIImage imageNamed:@"wallpaper.png"];
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:background]];
     
     // Observe keyboard hide and show notifications to resize the text view appropriately.
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
-    
-    
     
     if (managedObjectContext == nil) { 
 		managedObjectContext = [(WriteNowAppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext]; 
         NSLog(@"After MOC in Folders: %@",  managedObjectContext);
 	}
     
-    
     [self setTitle:@"Diary"];
-    [self.view setBackgroundColor:[UIColor colorWithRed:0.2 green:0.2 blue:0.5 alpha:1]];
-    //previousTextInput = @"";
     
-    textView = [[CustomTextView alloc] initWithFrame:CGRectMake(0, self.navigationController.navigationBar.frame.size.height, 320, 100)];
+    textView = [[CustomTextView alloc] initWithFrame:textViewRect];
+    textView.delegate = self;
+    [self.view addSubview:textView];
+    
+    diaryView = [[CustomTextView alloc] initWithFrame:CGRectMake(bottomViewRect.origin.x, screenRect.size.height, bottomViewRect.size.width, bottomViewRect.size.height)];
     textView.delegate = self;
     
-    [self.view addSubview:textView];
-    diaryView = [[CustomTextView alloc] initWithFrame:CGRectMake(0, textView.frame.origin.y+textView.frame.size.height+15, 320, 225)];
-    [diaryView setEditable:NO];
-    [self.view addSubview:diaryView];
-    
-    
-    CustomToolBarMainView *toolbar = [[CustomToolBarMainView alloc] initWithFrame:CGRectMake(0, 195, 320, 40)];
-    [toolbar.firstButton setTarget:self];
-    [toolbar.firstButton setAction:@selector(makeActionSheet:)];
-    [toolbar.secondButton setTarget:self];
-    [toolbar.secondButton setAction:@selector(saveMemo)];
-    [toolbar.thirdButton setTarget:self];
-    [toolbar.thirdButton setAction: @selector(addEntity:)];
-    [toolbar.fourthButton setTarget:self];
-    [toolbar.fourthButton setAction:@selector(addEntity:)];
-    [toolbar.dismissKeyboard setTarget:self];
-    [toolbar.dismissKeyboard setAction:@selector(dismissKeyboard)];
-    textView.inputAccessoryView = toolbar;    
-    
-    
-    
+    CustomToolBarMainView *toolBar = [[CustomToolBarMainView alloc] initWithFrame:CGRectMake(0, 195, 320, 40)];
+    [toolBar.firstButton setTarget:self];
+    [toolBar.firstButton setAction:@selector(makeActionSheet:)];
+    [toolBar.secondButton setTarget:self];
+    [toolBar.secondButton setAction:@selector(saveMemo)];
+    [toolBar.thirdButton setTarget:self];
+    [toolBar.thirdButton setAction: @selector(addEntity:)];
+    [toolBar.fourthButton setTarget:self];
+    [toolBar.fourthButton setAction:@selector(addEntity:)];
+    [toolBar.dismissKeyboard setTarget:self];
+    [toolBar.dismissKeyboard setAction:@selector(dismissKeyboard)];
+    textView.inputAccessoryView = toolBar;    
 }
 
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+- (void) viewWillAppear:(BOOL)animated{
+    if (diaryView.superview == nil) {
+        [self.view addSubview:diaryView];
+        diaryView.layer.cornerRadius = 0.0;
+    }
+    
+    CGRect startFrame = CGRectMake(bottomViewRect.origin.x, screenRect.size.height, bottomViewRect.size.width, bottomViewRect.size.height);
+    diaryView.frame = startFrame;   
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.4];    
+    [UIView setAnimationDelegate:self];
+    diaryView.frame = bottomViewRect;
+    
+    [UIView commitAnimations]; 
 }
-
+- (void) viewWillDisappear:(BOOL)animated{
+    
+}
 
 #pragma mark -
 #pragma mark Responding to keyboard events
@@ -133,7 +161,6 @@
     [UIView commitAnimations];
 }
 
-
 - (void)keyboardWillHide:(NSNotification *)notification {
     
     NSDictionary* userInfo = [notification userInfo];
@@ -148,15 +175,10 @@
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:animationDuration];
     
-      
-    diaryView.frame = CGRectMake(0, textView.frame.origin.y+textView.frame.size.height+15, 320, 225);
+    diaryView.frame = bottomViewRect;
     
     [UIView commitAnimations];
 }
-
-
-
-
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {

@@ -135,7 +135,6 @@
 		532C027C1423CFDC00C51DAE /* popoverBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 532C02721423CFDC00C51DAE /* popoverBg.png */; };
 		532C027D1423CFDC00C51DAE /* popoverBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 532C02731423CFDC00C51DAE /* popoverBg@2x.png */; };
 		532C02801423D1FC00C51DAE /* WEPopoverContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 532C027F1423D1FB00C51DAE /* WEPopoverContentViewController.m */; };
-		532C02831423D28500C51DAE /* WEPopoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 532C02821423D28500C51DAE /* WEPopoverViewController.m */; };
 		532F191413FB0D9500CECBD1 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 532F191313FB0D9500CECBD1 /* MainViewController.m */; };
 		533667861427D26B00AE7C2B /* popoverBg_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 533667841427D26B00AE7C2B /* popoverBg_blue.png */; };
 		533667871427D26B00AE7C2B /* popoverBg_blue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 533667851427D26B00AE7C2B /* popoverBg_blue@2x.png */; };
@@ -166,6 +165,7 @@
 		53A5997C140E9F1F001AD61F /* CustomToolBarMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 53A5997B140E9F1F001AD61F /* CustomToolBarMainView.m */; };
 		53A59981140EA75C001AD61F /* CurrentTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53A59980140EA75C001AD61F /* CurrentTableViewController.m */; };
 		53A599A71410A135001AD61F /* CustomTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 53A599A61410A135001AD61F /* CustomTextField.m */; };
+		53D65F2D143AEAAB00275C4F /* SchedulePopoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D65F2C143AEAAB00275C4F /* SchedulePopoverViewController.m */; };
 		53E7897E142EBF8900DD74A9 /* FileCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E7897D142EBF8900DD74A9 /* FileCustomCell.m */; };
 		53E78980142EBFA900DD74A9 /* FileCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53E7897F142EBFA900DD74A9 /* FileCustomCell.xib */; };
 		53E7898B142EC09900DD74A9 /* TaskCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E7898A142EC09900DD74A9 /* TaskCustomCell.m */; };
@@ -345,8 +345,6 @@
 		532C02731423CFDC00C51DAE /* popoverBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "popoverBg@2x.png"; sourceTree = "<group>"; };
 		532C027E1423D1FB00C51DAE /* WEPopoverContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEPopoverContentViewController.h; sourceTree = "<group>"; };
 		532C027F1423D1FB00C51DAE /* WEPopoverContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEPopoverContentViewController.m; sourceTree = "<group>"; };
-		532C02811423D28500C51DAE /* WEPopoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEPopoverViewController.h; sourceTree = "<group>"; };
-		532C02821423D28500C51DAE /* WEPopoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEPopoverViewController.m; sourceTree = "<group>"; };
 		532F191213FB0D9500CECBD1 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		532F191313FB0D9500CECBD1 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		533667841427D26B00AE7C2B /* popoverBg_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popoverBg_blue.png; sourceTree = "<group>"; };
@@ -401,6 +399,8 @@
 		53A599A51410A135001AD61F /* CustomTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextField.h; sourceTree = "<group>"; };
 		53A599A61410A135001AD61F /* CustomTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextField.m; sourceTree = "<group>"; };
 		53D2B5CA1415B33400375751 /* WriteNow 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "WriteNow 2.xcdatamodel"; sourceTree = "<group>"; };
+		53D65F2B143AEAAB00275C4F /* SchedulePopoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchedulePopoverViewController.h; sourceTree = "<group>"; };
+		53D65F2C143AEAAB00275C4F /* SchedulePopoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchedulePopoverViewController.m; sourceTree = "<group>"; };
 		53E7897C142EBF8900DD74A9 /* FileCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileCustomCell.h; sourceTree = "<group>"; };
 		53E7897D142EBF8900DD74A9 /* FileCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileCustomCell.m; sourceTree = "<group>"; };
 		53E7897F142EBFA900DD74A9 /* FileCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FileCustomCell.xib; sourceTree = "<group>"; };
@@ -500,14 +500,14 @@
 			name = DiaryViewController;
 			sourceTree = "<group>";
 		};
-		5315679513FB63C20044C5A9 /* CalendarViewController_2 */ = {
+		5315679513FB63C20044C5A9 /* CalendarViewController_OldVersion */ = {
 			isa = PBXGroup;
 			children = (
 				531567F213FB83560044C5A9 /* CalendarViewController_2.h */,
 				531567F313FB83560044C5A9 /* CalendarViewController_2.m */,
 				531567F413FB83560044C5A9 /* CalendarViewController.xib */,
 			);
-			name = CalendarViewController_2;
+			name = CalendarViewController_OldVersion;
 			sourceTree = "<group>";
 		};
 		5315679D13FB663E0044C5A9 /* SettingsViewController */ = {
@@ -654,8 +654,6 @@
 		532C02601423CE7C00C51DAE /* PopOver */ = {
 			isa = PBXGroup;
 			children = (
-				532C02811423D28500C51DAE /* WEPopoverViewController.h */,
-				532C02821423D28500C51DAE /* WEPopoverViewController.m */,
 				532C027E1423D1FB00C51DAE /* WEPopoverContentViewController.h */,
 				532C027F1423D1FB00C51DAE /* WEPopoverContentViewController.m */,
 				532C02691423CFB900C51DAE /* popover images */,
@@ -824,6 +822,8 @@
 		53980E8C14095EA800833716 /* CalendarViewController */ = {
 			isa = PBXGroup;
 			children = (
+				53D65F2A143AEA6700275C4F /* SchedulePopoverViewController */,
+				5315679513FB63C20044C5A9 /* CalendarViewController_OldVersion */,
 				53A1E76F14049C7A00481EA4 /* TaskTableViewController */,
 				53980E9A1409732800833716 /* AppointmentsTableViewController */,
 				53980E9214095FF700833716 /* CalendarViewController.h */,
@@ -867,6 +867,15 @@
 				53A599A61410A135001AD61F /* CustomTextField.m */,
 			);
 			name = CustomTextField;
+			sourceTree = "<group>";
+		};
+		53D65F2A143AEA6700275C4F /* SchedulePopoverViewController */ = {
+			isa = PBXGroup;
+			children = (
+				53D65F2B143AEAAB00275C4F /* SchedulePopoverViewController.h */,
+				53D65F2C143AEAAB00275C4F /* SchedulePopoverViewController.m */,
+			);
+			name = SchedulePopoverViewController;
 			sourceTree = "<group>";
 		};
 		53E979BC140476AC00B780C8 /* Application Delegate */ = {
@@ -924,7 +933,6 @@
 				5315679D13FB663E0044C5A9 /* SettingsViewController */,
 				5315679113FB63990044C5A9 /* DiaryViewController */,
 				5315678D13FB636C0044C5A9 /* FolderViewController */,
-				5315679513FB63C20044C5A9 /* CalendarViewController_2 */,
 				53980E8C14095EA800833716 /* CalendarViewController */,
 				5315678913FB62E40044C5A9 /* TodayViewController */,
 				532F191013FB0D6500CECBD1 /* MainViewController */,
@@ -1248,12 +1256,12 @@
 				532C02671423CF9400C51DAE /* WEPopoverContainerView.m in Sources */,
 				532C02681423CF9400C51DAE /* WEPopoverController.m in Sources */,
 				532C02801423D1FC00C51DAE /* WEPopoverContentViewController.m in Sources */,
-				532C02831423D28500C51DAE /* WEPopoverViewController.m in Sources */,
 				53E7897E142EBF8900DD74A9 /* FileCustomCell.m in Sources */,
 				53E7898B142EC09900DD74A9 /* TaskCustomCell.m in Sources */,
 				53E7898E142EC0C200DD74A9 /* FolderCell.m in Sources */,
 				53E78991142EC0DC00DD74A9 /* StartScreenCustomCell.m in Sources */,
 				53E789C31431924B00DD74A9 /* AppointmentsTableViewController.m in Sources */,
+				53D65F2D143AEAAB00275C4F /* SchedulePopoverViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

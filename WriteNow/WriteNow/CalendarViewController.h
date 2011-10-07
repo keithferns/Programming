@@ -8,40 +8,73 @@
 #import "CustomTextView.h"
 #import "CustomTextField.h"
 #import "WEPopoverController.h"
+#import "SchedulePopoverViewController.h"
+
+typedef enum{
+    ADD_DATE_FIELD = 1,
+    ADD_START_FIELD = 2,
+    ADD_END_FIELD = 3,
+    ADD_RECUR_FIELD = 4
+}AddField;
 
 @interface CalendarViewController : UIViewController <UITextFieldDelegate, UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UINavigationBarDelegate, PopoverControllerDelegate> {
         UITableViewController *tableViewController;
-        NSManagedObjectContext *managedObjectContext;    
+        NSManagedObjectContext *managedObjectContext, *addingContext;    
         CustomTextView *textView;    
-        NSString *sender;
-        WEPopoverController *navPopover;
-        BOOL swappingViews, isSelected;
+        BOOL tableIsTop, isSelected;
+        Appointment *newAppointment;
+        Task *newTask;
+    
+        NSArray *recurring;
+    
+        AddField addField;
+
     }
 @property (nonatomic, retain) UITableViewController *tableViewController;
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
-@property (nonatomic, retain) NSString *sender;
 @property (nonatomic, retain) CustomTextView *textView;
-@property (nonatomic, retain) CustomTextField *leftField,*rightField, *rightField_1, *rightField_2;//
 @property (nonatomic, retain) CustomToolBar *toolBar;
+
+@property (nonatomic, retain) WEPopoverController *schedulerPopover, *reminderPopover;
+@property (nonatomic, retain) Appointment *newAppointment;
+@property (nonatomic, retain) Task *newTask;
 @property (nonatomic, retain) NSDateFormatter *dateFormatter, *timeFormatter;
+
 @property (nonatomic, retain) UIDatePicker *datePicker, *timePicker;
 @property (nonatomic, retain) UIPickerView *pickerView;
 @property (nonatomic, retain) NSArray *recurring;
-@property (nonatomic, retain) WEPopoverController *navPopover;
+@property (nonatomic, readwrite) AddField addField;
 
+
+- (void) addNewAppointment;
+- (void) addNewTask;
+
+- (void) setEditingView;
 - (void) dismissKeyboard;
-- (void)datePickerChanged:(id)sender;
-- (void)timePickerChanged:(id)sender;
-- (void) setAlarm;
-- (void) setAlarm:(id)sender;
-- (void)setDateTime:(id)sender;
+
+- (void) presentReminderPopover:(id)sender;
+- (void) presentSchedulerPopover:(id)sender;
+- (void) cancelPopover:(id)sender;
+
 - (void) moveTableViewUp;
 - (void) moveTableViewDown;
+
+
+-(void) addDateField;
+-(void) addStartTimeField;
+-(void) addEndTimeField;
+-(void) addRecurringField;
+- (void) setAlarm;
+
+//-(void)cancelAddingOrEditing;
+
+- (void)datePickerChanged:(id)sender;
+- (void)timePickerChanged:(id)sender;
+
 
 //- (void) addPickerResizeViews:(UIView *)picker1 removePicker:(UIView *)picker2;
 //- (void) swapViews;
 //- (void) animateViews:(UIView *)view startFrom:(CGRect)fromFrame endAt:(CGRect)toFrame;
-
 
 @end
 

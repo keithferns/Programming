@@ -12,8 +12,9 @@
 @implementation MyDataObject
 
 @synthesize myDate;
-@synthesize myNote, noteType, myText;
-@synthesize selectedMemo, selectedTask, selectedAppointment;
+@synthesize  noteType, myText, isEditing;
+@synthesize myNote, selectedMemo, selectedTask, selectedAppointment;
+
 
 - (void)dealloc {//Release any properties declared as retain or copy.
 	self.myDate = nil;
@@ -23,6 +24,7 @@
     self.selectedMemo = nil;
     self.selectedTask = nil;
     self.selectedAppointment = nil;
+    self.isEditing = nil;
 	[super dealloc];
 }
 

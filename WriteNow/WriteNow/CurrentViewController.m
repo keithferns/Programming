@@ -95,6 +95,8 @@
    // UIImage *patternImage = [UIImage imageNamed:@"54700.png"];
     //self.textView.backgroundColor = [UIColor colorWithPatternImage:patternImage];
     [self.view addSubview:textView];
+    MyDataObject *myData = [self myDataObject];
+    myData.isEditing = [NSNumber numberWithInt:0];
 }
 
 - (void) viewWillAppear:(BOOL)animated{
@@ -128,7 +130,9 @@
     tableViewController.tableView.rowHeight = 48.0;
     //[tableViewController.tableView setTableHeaderView:tableLabel];
 
-    CGRect startFrame = CGRectMake(-screenRect.size.width, bottomViewRect.origin.y, bottomViewRect.size.width, bottomViewRect.size.height);
+    //CGRect startFrame = CGRectMake(-screenRect.size.width, bottomViewRect.origin.y, bottomViewRect.size.width, bottomViewRect.size.height);
+    
+    CGRect startFrame = CGRectMake(bottomViewRect.origin.x, screenRect.size.height, bottomViewRect.size.width, bottomViewRect.size.height);
     tableViewController.tableView.frame = startFrame;   
     
     [UIView beginAnimations:nil context:NULL];
@@ -143,6 +147,7 @@
 }
 
 - (void) viewWillDisappear:(BOOL)animated{
+    [[NSNotificationCenter defaultCenter] removeObserver:nil name: UITableViewSelectionDidChangeNotification object:nil];
 
     [tableViewController.tableView removeFromSuperview];
     [navPopover setDelegate:nil];
@@ -221,14 +226,15 @@
     if (![textView hasText]){
         return;
         }
-        MyDataObject *myDataObject = [self myDataObject];
-        NSEntityDescription *entity = [NSEntityDescription entityForName:@"Note" inManagedObjectContext:managedObjectContext];
-        Note *newNote = [[Note alloc] initWithEntity:entity insertIntoManagedObjectContext:managedObjectContext];
-        [newNote setText:textView.text];
-        [newNote setCreationDate:[NSDate date]];
-        //[newNote setLocation:<#(Place *)#>];
-        myDataObject.myNote = newNote;
-        [newNote release];
+    MyDataObject *myDataObject = [self myDataObject];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Note" inManagedObjectContext:managedObjectContext];
+    Note *newNote = [[Note alloc] initWithEntity:entity insertIntoManagedObjectContext:managedObjectContext];
+    [newNote setText:textView.text];
+    [newNote setCreationDate:[NSDate date]];
+    //[newNote setLocation:<#(Place *)#>];
+    
+    myDataObject.myNote = newNote;
+    [newNote release];
     //TODO: Add condition for reedit = if creationDate != nil then break
 
     //[newNote setType:[NSNumber numberWithInt:0]];
@@ -265,9 +271,8 @@
     MyDataObject *myData = [self myDataObject];
     [myData setMyText:textView.text];
     [myData setNoteType:[NSNumber numberWithInt:1]];
-    
-    [self.tabBarController setSelectedIndex:1];
-    
+    [myData setIsEditing:[NSNumber numberWithInt:1]];
+    [self.tabBarController setSelectedIndex:1];    
     [textView setText:@""];
     [textView resignFirstResponder];
     [navPopover dismissPopoverAnimated:YES];
@@ -277,10 +282,9 @@
     MyDataObject *myData = [self myDataObject];    
     [myData setMyText:textView.text];
     [myData setNoteType:[NSNumber numberWithInt:2]];
-    
+    [myData setIsEditing:[NSNumber numberWithInt:1]];
     [self.tabBarController setSelectedIndex:1];
-    
-    [textView setText:@""];
+        [textView setText:@""];
     [textView resignFirstResponder];
     [navPopover dismissPopoverAnimated:YES];
 
@@ -368,7 +372,7 @@
         [navPopover presentPopoverFromRect:CGRectMake(90, 205, 50, 40)
                                     inView:self.view    
                   permittedArrowDirections:UIPopoverArrowDirectionDown
-                                  animated:YES];
+                                  animated:YES name:@"Save"];
     }
 }
 
@@ -426,7 +430,7 @@
         [navPopover presentPopoverFromRect:CGRectMake(145, 205, 50, 40)
                                     inView:self.view
                   permittedArrowDirections: UIPopoverArrowDirectionDown
-                                  animated:YES];
+                                  animated:YES name:@"Plan"];
     }
 }
 
@@ -493,7 +497,7 @@
         [navPopover presentPopoverFromRect:CGRectMake(205, 205, 50, 50)
                                     inView:self.view
                   permittedArrowDirections:UIPopoverArrowDirectionDown
-                                  animated:YES];
+                                  animated:YES name:@"Send"];
     }
 }
 

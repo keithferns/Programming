@@ -23,7 +23,6 @@
 	return myDataObject;
 }
 
-
 - (id)initWithStyle:(UITableViewStyle)style {
     self = [super initWithStyle:style];
     if (self) {
@@ -59,7 +58,6 @@
     tableIsDown = YES;
     NSLog(@"IN APPOINTMENTS TABLEVIEWCONTROLLER");
     [NSFetchedResultsController deleteCacheWithName:@"Root"];
-    
     
     tableLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 300, 20)];
     [tableLabel setBackgroundColor:[UIColor lightGrayColor]];
@@ -138,12 +136,16 @@
 - (void)getSelectedDate:(NSNotification *)notification {
     
     NSLog(@"GET DATE NOTIFICATION RECEIVED by AppointmentsTableViewController");
-    selectedDate = [notification object];
+      selectedDate = [notification object];
+    
+    
+    MyDataObject *myData = [self myDataObject];
+
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
     
-    NSString *dateString = [dateFormatter stringFromDate:selectedDate];
+    NSString *dateString = [dateFormatter stringFromDate:myData.myDate];
     NSDate *newDate = [dateFormatter dateFromString:dateString];
     [dateFormatter release];
     
@@ -256,7 +258,7 @@
     if (tableIsDown){
     [tempDateFormatter setDateFormat:@"EEEE, d MMMM"];
     }
-    else{
+    else {
         [tempDateFormatter setDateFormat:@"EEE, MMM d"];
     }
     NSString *myDate = [tempDateFormatter stringFromDate:aDate];
@@ -289,6 +291,7 @@
     //}
     [timeFormatter release];
 }
+
 - (void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
     //alternates the bgcolor of the rows
     if (indexPath.row == 0 || indexPath.row%2 == 0) {

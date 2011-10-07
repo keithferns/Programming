@@ -30,6 +30,16 @@
 @synthesize view;
 @synthesize containerViewProperties;
 @synthesize context;
+@synthesize name;
+
+- (void) addName:(NSString *)string{
+    name = [[NSString alloc] init];
+    name = string;
+}
+
+- (NSString *) returnName{
+    return name;
+}
 
 - (id)initWithContentViewController:(UIViewController *)viewController {
 	if ((self = [self init])) {
@@ -43,6 +53,7 @@
 	[contentViewController release];
 	[containerViewProperties release];
 	self.context = nil;
+    self.name = nil;
     
     
     if(parentView) {
@@ -139,9 +150,9 @@
 - (void)presentPopoverFromRect:(CGRect)rect 
 						inView:(UIView *)theView 
 	  permittedArrowDirections:(UIPopoverArrowDirection)arrowDirections 
-					  animated:(BOOL)animated {
+					  animated:(BOOL)animated name:(NSString *)aName {
 	
-	
+	[self addName:aName];
 	[self dismissPopoverAnimated:NO];
 	
 	CGRect displayArea = [self displayAreaForView:theView];

@@ -52,7 +52,10 @@
 }
 
 - (void)dealloc
-{
+{   
+    textLabel = nil;
+    startTimeLabel = nil;
+    endTimeLabel = nil;
     [super dealloc];
 }
 

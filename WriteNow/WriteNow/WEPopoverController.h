@@ -21,7 +21,8 @@
 @interface WEPopoverController : NSObject {
 	UIViewController *contentViewController;
 	UIView *view;
-	
+	NSString *name;
+    
 	BOOL popoverVisible;
 	UIPopoverArrowDirection popoverArrowDirection;
 	id <PopoverControllerDelegate> delegate;
@@ -36,6 +37,8 @@
 @property(nonatomic, retain) UIViewController *contentViewController;
 
 @property (nonatomic, readonly) UIView *view;
+@property (nonatomic, assign) NSString *name;
+
 @property (nonatomic, readonly, getter=isPopoverVisible) BOOL popoverVisible;
 @property (nonatomic, readonly) UIPopoverArrowDirection popoverArrowDirection;
 @property (nonatomic, assign) id <PopoverControllerDelegate> delegate;
@@ -43,15 +46,22 @@
 @property (nonatomic, retain) WEPopoverContainerViewProperties *containerViewProperties;
 @property (nonatomic, retain) id <NSObject> context;
 
+- (void) addName:(NSString *)string;
+- (NSString *) returnName;
+
 - (id)initWithContentViewController:(UIViewController *)theContentViewController;
 
 - (void)dismissPopoverAnimated:(BOOL)animated;
 
-- (void)presentPopoverFromRect:(CGRect)rect 
+/*- (void)presentPopoverFromRect:(CGRect)rect 
 						inView:(UIView *)view 
 	  permittedArrowDirections:(UIPopoverArrowDirection)arrowDirections 
 					  animated:(BOOL)animated;
-
+*/
+- (void)presentPopoverFromRect:(CGRect)rect 
+						inView:(UIView *)view 
+	  permittedArrowDirections:(UIPopoverArrowDirection)arrowDirections 
+					  animated:(BOOL)animated name:(NSString *)name;
 - (void)repositionPopoverFromRect:(CGRect)rect
 		 permittedArrowDirections:(UIPopoverArrowDirection)arrowDirections;
 

@@ -12,6 +12,7 @@
 #import "CustomTextView.h"
 #import "CustomTextField.h"
 #import "CustomToolBar.h"
+#import "MyDataObject.h"
 
 @implementation FoldersViewController
 
@@ -23,11 +24,20 @@
 @synthesize navPopover;
 
 #define screenRect [[UIScreen mainScreen] applicationFrame]
+//CGRect screenBounds = [UIScreen mainScreen].bounds;
 #define tabBarHeight self.tabBarController.tabBar.frame.size.height
 #define navBarHeight self.navigationController.navigationBar.frame.size.height
 #define toolBarRect CGRectMake(screenRect.size.width, 0, screenRect.size.width, 40)
-#define textViewHeight 140.0
-#define bottomViewRect CGRectMake(0, navBarHeight+160, screenRect.size.width, 260)
+#define textViewRect CGRectMake(5, navBarHeight+10, screenRect.size.width-10, 140)
+#define bottomViewRect CGRectMake(0, textViewRect.origin.y+textViewRect.size.height+10, screenRect.size.width, screenRect.size.height-textViewRect.origin.y-textViewRect.size.height-10)
+
+- (MyDataObject *) myDataObject {
+	id<AppDelegateProtocol> theDelegate = (id<AppDelegateProtocol>) [UIApplication sharedApplication].delegate;
+	MyDataObject* myDataObject;
+	myDataObject = (MyDataObject*) theDelegate.myDataObject;
+	return myDataObject;
+}
+
 
 #pragma mark - View lifecycle
 
@@ -66,7 +76,7 @@
         [fileButton addTarget:self action:@selector(makeFile) forControlEvents:UIControlEventTouchUpInside];
         
         UIViewController *viewCon = [[UIViewController alloc] init];
-        viewCon.contentSizeForViewInPopover = CGSizeMake(200, textViewHeight-10);
+        viewCon.contentSizeForViewInPopover = CGSizeMake(200, textViewRect.size.height-10);
         [viewCon.view addSubview:fileButton];
         [viewCon.view addSubview:folderButton];
         [viewCon.view addSubview:nameField];
@@ -90,7 +100,7 @@
         [navPopover presentPopoverFromRect:CGRectMake(300, 0, 50, tabBarHeight-7)
                                     inView:self.view 
                   permittedArrowDirections:UIPopoverArrowDirectionUp
-                                  animated:YES];
+                                  animated:YES name:@"Archive"];
     }
 }
 
@@ -214,53 +224,51 @@
 
     
     
-    /*--VIEWS:CONTROL VIEWS -*/    
 
-    
-    //TEXTVIEW: setup and add to self.view
-    textView = [[CustomTextView alloc] initWithFrame:CGRectMake(5, navBarHeight+10, screenRect.size.width-10, textViewHeight)];
-    textView.delegate = self;    
-    textView.inputAccessoryView = toolBar;
-    //UIImage *patternImage = [UIImage imageNamed:@"54700.png"];
-    //self.textView.backgroundColor = [UIColor colorWithPatternImage:patternImage];
-    [self.view addSubview:textView];
-
-/*  NOTE: THESE CONTROL ELEMENTS MOVED TO THE POPOVER VIEW
-    //TEXTFIELDS
-    textField = [[CustomTextField alloc] initWithFrame:CGRectMake(135, textView.frame.origin.y+textView.frame.size.height+10, 180, 30)];
-    [textField setBorderStyle:UITextBorderStyleRoundedRect];
-    [textField setFont:[UIFont systemFontOfSize:16.0]];
-    [textField setTag:0];
-    [textField setDelegate:self];
-    [textField setTextAlignment:UITextAlignmentCenter];
-    textField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-    [self.view addSubview:textField];
-    [textField setPlaceholder:@"Create a new Folder"];
-    textField.inputAccessoryView = toolBar;
-    
-    //BUTTON
-    saveNewFolderButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [saveNewFolderButton setBackgroundImage:[UIImage imageNamed:@"bluebutton.png"] forState:UIControlStateNormal];
-    [saveNewFolderButton setFrame:CGRectMake(5, textField.frame.origin.y, 120, 32)];
-    saveNewFolderButton.titleLabel.font = [UIFont systemFontOfSize:14];
-    [saveNewFolderButton.layer setCornerRadius:20.0];
-    [saveNewFolderButton setTitle:@"Save To Folder" forState:UIControlStateNormal];
-    [saveNewFolderButton addTarget:self action:@selector(makeFolder) forControlEvents:UIControlEventTouchUpInside];
-    [self.view  addSubview:saveNewFolderButton];
-  */  
-    
-    //TABLEVIEWCONTROLLER
-    tableViewController = [[FoldersTableViewController alloc] init];
-    [tableViewController.tableView setFrame:CGRectMake(0, 205, 320, 204)];    
-    //[tableViewController.tableView.layer setCornerRadius:10.0];
-    [tableViewController.tableView setSeparatorColor:[UIColor blackColor]];
-    tableViewController.tableView.rowHeight = 30.0;
-    //[tableViewController.tableView setTableHeaderView:tableLabel];
-    [self.view addSubview:tableViewController.tableView];  
   }
 
 - (void) viewWillAppear:(BOOL)animated{
     self.title = @"Folders";
+    if (tableViewController == nil) {
+        tableViewController = [[FoldersTableViewController alloc]init];
+    }
+    if (tableViewController.tableView.superview == nil) {
+        [self.view addSubview:tableViewController.tableView];
+        [tableViewController.tableView setSeparatorColor:[UIColor blackColor]];
+        tableViewController.tableView.rowHeight = 30.0;
+        //[tableViewController.tableView setTableHeaderView:tableLabel];
+    }
+
+    //[tableViewController.tableView setTableHeaderView:tableLabel];
+    //CGRect startFrame = CGRectMake(-screenRect.size.width, bottomViewRect.origin.y, bottomViewRect.size.width, bottomViewRect.size.height);
+    
+    CGRect startFrame = CGRectMake(bottomViewRect.origin.x, screenRect.size.height, bottomViewRect.size.width, bottomViewRect.size.height);
+    tableViewController.tableView.frame = startFrame;   
+
+    MyDataObject *mydata = [self myDataObject];
+    if ([mydata.isEditing intValue] == 1 && textView == nil){
+        //TEXTVIEW: setup and add to self.view
+        textView = [[CustomTextView alloc] initWithFrame:CGRectMake(screenRect.origin.x, textViewRect.origin.y, textViewRect.size.width, textViewRect.size.height)];
+        textView.delegate = self;    
+        textView.inputAccessoryView = toolBar;
+        [self.view addSubview:textView];
+        [textView setText:mydata.myText];
+        [textView setUserInteractionEnabled:YES];
+        [textView becomeFirstResponder];
+    }
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.4];
+    [UIView setAnimationDelegate:self];
+    if (textView.superview == nil && textView != nil) {
+        textView.frame = textViewRect;
+        tableViewController.tableView.frame = bottomViewRect;
+    }else{
+        CGRect frame = screenRect; 
+        frame.origin.y = self.navigationController.navigationBar.frame.origin.y+navBarHeight;
+        frame.size.height = screenRect.size.height-navBarHeight;
+        tableViewController.tableView.frame = frame;
+    }
+    [UIView commitAnimations];  
 }
 
 - (void) viewWillDisappear:(BOOL)animated{
@@ -447,6 +455,32 @@
 }
 
 @end
+
+/*  NOTE: THESE CONTROL ELEMENTS MOVED TO THE POPOVER VIEW
+ //TEXTFIELDS
+ textField = [[CustomTextField alloc] initWithFrame:CGRectMake(135, textView.frame.origin.y+textView.frame.size.height+10, 180, 30)];
+ [textField setBorderStyle:UITextBorderStyleRoundedRect];
+ [textField setFont:[UIFont systemFontOfSize:16.0]];
+ [textField setTag:0];
+ [textField setDelegate:self];
+ [textField setTextAlignment:UITextAlignmentCenter];
+ textField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+ [self.view addSubview:textField];
+ [textField setPlaceholder:@"Create a new Folder"];
+ textField.inputAccessoryView = toolBar;
+ 
+ //BUTTON
+ saveNewFolderButton = [UIButton buttonWithType:UIButtonTypeCustom];
+ [saveNewFolderButton setBackgroundImage:[UIImage imageNamed:@"bluebutton.png"] forState:UIControlStateNormal];
+ [saveNewFolderButton setFrame:CGRectMake(5, textField.frame.origin.y, 120, 32)];
+ saveNewFolderButton.titleLabel.font = [UIFont systemFontOfSize:14];
+ [saveNewFolderButton.layer setCornerRadius:20.0];
+ [saveNewFolderButton setTitle:@"Save To Folder" forState:UIControlStateNormal];
+ [saveNewFolderButton addTarget:self action:@selector(makeFolder) forControlEvents:UIControlEventTouchUpInside];
+ [self.view  addSubview:saveNewFolderButton];
+ */  
+
+
 
 /*
  NSArray *segControlI = [NSArray arrayWithObjects:[UIImage imageNamed:@"addFolder_nav.png"], [UIImage imageNamed:@"addDoc_nav.png"], nil];

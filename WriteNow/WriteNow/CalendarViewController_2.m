@@ -81,7 +81,7 @@
         [navPopover presentPopoverFromRect:CGRectMake(70, 200, 50, 57)
                                     inView:self.view 
                   permittedArrowDirections:UIPopoverArrowDirectionDown
-                                  animated:YES];
+                                  animated:YES name:@"Remind"];
     }
 }
 - (void)popoverControllerDidDismissPopover:(WEPopoverController *)popoverController {
