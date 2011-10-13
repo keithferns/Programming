@@ -13,4 +13,7 @@
     
 }
 
+@property (nonatomic, retain) UITableViewController *tableViewController;
+@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
+
 @end

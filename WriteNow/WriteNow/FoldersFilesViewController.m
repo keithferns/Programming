@@ -1,12 +1,12 @@
-//  FoldersViewController.m
+//  FoldersFilesViewController.m
 //  WriteNow
 //
 //  Created by Keith Fernandes on 8/17/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
-//
 
-#import "FoldersViewController.h"
+#import "FoldersFilesViewController.h"
 #import "FoldersTableViewController.h"
+#import "FilesTableViewController.h"
 #import "WriteNowAppDelegate.h"
 
 #import "CustomTextView.h"
@@ -14,7 +14,7 @@
 #import "CustomToolBar.h"
 #import "MyDataObject.h"
 
-@implementation FoldersViewController
+@implementation FoldersFilesViewController
 
 @synthesize tableViewController, managedObjectContext;
 
@@ -22,14 +22,17 @@
 @synthesize textView, nameField;
 @synthesize toolBar, saveNewFolderButton;
 @synthesize navPopover;
+@synthesize flipIndicatorButton, flipperView;
+@synthesize frontViewIsVisible;
 
 #define screenRect [[UIScreen mainScreen] applicationFrame]
-//CGRect screenBounds = [UIScreen mainScreen].bounds;
+#define statusBarRect [[UIApplication sharedApplication] statusBarFrame];
 #define tabBarHeight self.tabBarController.tabBar.frame.size.height
 #define navBarHeight self.navigationController.navigationBar.frame.size.height
 #define toolBarRect CGRectMake(screenRect.size.width, 0, screenRect.size.width, 40)
 #define textViewRect CGRectMake(5, navBarHeight+10, screenRect.size.width-10, 140)
 #define bottomViewRect CGRectMake(0, textViewRect.origin.y+textViewRect.size.height+10, screenRect.size.width, screenRect.size.height-textViewRect.origin.y-textViewRect.size.height-10)
+#define mainFrame CGRectMake(screenRect.origin.x, self.navigationController.navigationBar.frame.origin.y+navBarHeight, screenRect.size.width, screenRect.size.height-navBarHeight)
 
 - (MyDataObject *) myDataObject {
 	id<AppDelegateProtocol> theDelegate = (id<AppDelegateProtocol>) [UIApplication sharedApplication].delegate;
@@ -38,8 +41,6 @@
 	return myDataObject;
 }
 
-
-#pragma mark - View lifecycle
 
 //FIXME: Add ability to change/edit the name of a folder. 
 - (void)makeFolderFile:(id)sender {
@@ -80,6 +81,8 @@
         [viewCon.view addSubview:fileButton];
         [viewCon.view addSubview:folderButton];
         [viewCon.view addSubview:nameField];
+        [nameField becomeFirstResponder];
+
         //[viewCon.view addSubview:label];
         
         [folderButton release];
@@ -97,7 +100,7 @@
         navPopover = nil;
     } else {
         //CGRect screenBounds = [UIScreen mainScreen].bounds;
-        [navPopover presentPopoverFromRect:CGRectMake(300, 0, 50, tabBarHeight-7)
+        [navPopover presentPopoverFromRect:CGRectMake(10, 0, 50, tabBarHeight-7)
                                     inView:self.view 
                   permittedArrowDirections:UIPopoverArrowDirectionUp
                                   animated:YES name:@"Archive"];
@@ -143,7 +146,7 @@
 - (void)didReceiveMemoryWarning{
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-    NSLog(@"Memory Warning at MyFoldersViewController");
+    NSLog(@"Memory Warning at MyFoldersFilesViewController");
     // Release any cached data, images, etc that aren't in use.
 }
 
@@ -152,11 +155,11 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+#pragma mark - View lifecycle
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];    
-    
-    swappingViews = NO;     
-    isSelected = NO;
 
     [self.view setFrame:[[UIScreen mainScreen] applicationFrame]];
 
@@ -164,30 +167,30 @@
 		managedObjectContext = [(WriteNowAppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext]; 
         NSLog(@"After MOC in Folders: %@",  managedObjectContext);
 	}
+ 
+    /*-- VIEWS:BASE: setup and initialize --*/
+    //[self.view setBackgroundColor:[UIColor colorWithRed:0.2 green:0.2 blue:0.5 alpha:1]];
+    UIImage *background = [UIImage imageNamed:@"wallpaper.png"];
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:background]];
+    
+  }
+
+- (void) viewWillAppear:(BOOL)animated{
     
     /*-NOTIFICATIONS: --*/
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(searchkeyboardWasShown) name:@"StartedSearching_Notification" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(searchkeyboardWasHidden) name:@"EndedSearching_Notification" object:nil];
     
-    
     //Observe notifications sent by the TableView
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getSelectedFolder:) name:@"FolderSelectedInTableViewControllerNotification" object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getSelectedFile:) name:@"FileSelectedInTableViewControllerNotification" object:nil];
-    
-    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(searchkeyboardWasShown)  name:UIKeyboardDidShowNotification object:nil];
-    
-    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(searchkeyboardWasHidden)  name:UIKeyboardDidHideNotification object:nil];
-    
-    /*-- VIEWS:BASE: setup and initialize --*/
-    //[self.view setBackgroundColor:[UIColor colorWithRed:0.2 green:0.2 blue:0.5 alpha:1]];
-    UIImage *background = [UIImage imageNamed:@"wallpaper.png"];
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:background]];
-    //previousTextInput = @"";    
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getSelectedFolderOrFile:) name:UITableViewSelectionDidChangeNotification   object:nil];
+
     /*--NAVIGATION ITEMS --*/
-    /*-Initialize the TOOLBAR-*/
+        //Set Navigation Bar Visible
+    if (self.navigationController.navigationBarHidden == YES){
+        self.navigationController.navigationBarHidden = NO;
+    }
+        //Initialize the TOOLBAR
     toolBar = [[CustomToolBar alloc] initWithFrame:CGRectMake(0, 195, 320, 40)];
     [toolBar.firstButton setTarget:self];
     [toolBar.firstButton setAction:@selector(makeActionSheet:)];
@@ -209,50 +212,44 @@
     
     [toolBar.dismissKeyboard setTarget:self];
     [toolBar.dismissKeyboard setAction:@selector(dismissKeyboard)];
- 
     
-    UIBarButtonItem *newDoc = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"pages_nav.png"] style:UIBarButtonItemStylePlain target:self action:@selector(addFolderFile:)];
-    self.navigationItem.leftBarButtonItem = newDoc;
-    self.navigationItem.leftBarButtonItem.tag = 0;
-    [self.navigationItem.leftBarButtonItem setStyle:UIBarButtonItemStylePlain];
+    /*-ADD FLIPPER VIEW -*/
+    flipperView = [[UIView alloc] initWithFrame:mainFrame];
+    [flipperView setBackgroundColor:[UIColor lightGrayColor]];
+    [self.view   addSubview:flipperView];
     
-    
-    UIBarButtonItem *makeFileFolder = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"add-item_whiteonblack.png"] style:UIBarButtonItemStylePlain target:self action:@selector(makeFolderFile:)];
-    self.navigationItem.rightBarButtonItem = makeFileFolder;
-    self.navigationItem.rightBarButtonItem.tag = 0;
-    [self.navigationItem.rightBarButtonItem setStyle:UIBarButtonItemStylePlain];
-
-    
-    
-
-  }
-
-- (void) viewWillAppear:(BOOL)animated{
-    self.title = @"Folders";
-    if (tableViewController == nil) {
-        tableViewController = [[FoldersTableViewController alloc]init];
+    MyDataObject *myData = [self myDataObject]; //Create instance of Shared Data Object (SDO)- autoreleases.
+    if (tableViewController == nil){
+        if ([myData.saveType intValue] == 2) {//TODO: Add code here relevant to appending to a File
+        NSLog(@"Appending to File"); 
+        self.title = @"Append to File";
+            tableViewController = [[FilesTableViewController alloc] init];
+        }
+        else if ([myData.saveType intValue] == 1){//TODO: Add code here relevant to saving to Folders.
+            NSLog(@"Saving to Folder");
+            self.title = @"Save to Folder";
+            tableViewController = [[FoldersTableViewController alloc]init];
+        }
+        else {//when tab is selected, folderFiles table view. TODO: TABLEVIEW with folder sections and contents in rows.
+            self.title = @"Folders";
+            tableViewController = [[FoldersTableViewController alloc] init];
+        }
     }
     if (tableViewController.tableView.superview == nil) {
-        [self.view addSubview:tableViewController.tableView];
+        tableViewController.tableView.frame = CGRectMake(0, mainFrame.size.height, mainFrame.size.width, mainFrame.size.height);
+        [self.flipperView addSubview:tableViewController.tableView];
         [tableViewController.tableView setSeparatorColor:[UIColor blackColor]];
         tableViewController.tableView.rowHeight = 30.0;
         //[tableViewController.tableView setTableHeaderView:tableLabel];
     }
 
-    //[tableViewController.tableView setTableHeaderView:tableLabel];
-    //CGRect startFrame = CGRectMake(-screenRect.size.width, bottomViewRect.origin.y, bottomViewRect.size.width, bottomViewRect.size.height);
-    
-    CGRect startFrame = CGRectMake(bottomViewRect.origin.x, screenRect.size.height, bottomViewRect.size.width, bottomViewRect.size.height);
-    tableViewController.tableView.frame = startFrame;   
-
-    MyDataObject *mydata = [self myDataObject];
-    if ([mydata.isEditing intValue] == 1 && textView == nil){
+    if ([myData.isEditing intValue] == 1 && textView == nil){
         //TEXTVIEW: setup and add to self.view
         textView = [[CustomTextView alloc] initWithFrame:CGRectMake(screenRect.origin.x, textViewRect.origin.y, textViewRect.size.width, textViewRect.size.height)];
         textView.delegate = self;    
         textView.inputAccessoryView = toolBar;
         [self.view addSubview:textView];
-        [textView setText:mydata.myText];
+        [textView setText:myData.myText];
         [textView setUserInteractionEnabled:YES];
         [textView becomeFirstResponder];
     }
@@ -261,19 +258,120 @@
     [UIView setAnimationDelegate:self];
     if (textView.superview == nil && textView != nil) {
         textView.frame = textViewRect;
-        tableViewController.tableView.frame = bottomViewRect;
+        // tableViewController.tableView.frame = bottomViewRect;
     }else{
-        CGRect frame = screenRect; 
-        frame.origin.y = self.navigationController.navigationBar.frame.origin.y+navBarHeight;
-        frame.size.height = screenRect.size.height-navBarHeight;
-        tableViewController.tableView.frame = frame;
+        tableViewController.tableView.frame = CGRectMake(0, 0, mainFrame.size.width, mainFrame.size.height);
     }
+    
+    UIImage *menuLeftButtonImage = [UIImage imageNamed:@"add_item_white.png"];
+    UIButton *menuLeftButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [menuLeftButton setImage:menuLeftButtonImage forState:UIControlStateNormal];
+    menuLeftButton.frame = CGRectMake(0, 0, menuLeftButtonImage.size.width, menuLeftButtonImage.size.height);
+    UIBarButtonItem *menuLeftBarButton = [[UIBarButtonItem alloc] initWithCustomView:menuLeftButton];
+    self.navigationItem.leftBarButtonItem = menuLeftBarButton;
+    [menuLeftBarButton release];
+    [menuLeftButton addTarget:self action:@selector(makeFolderFile:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIImage *menuRightButtonImage = [UIImage imageNamed:@"pages_white_on_blue_bkg.png"];
+	UIButton *localFlipIndicator=[[UIButton alloc] initWithFrame:CGRectMake(0, 0, menuRightButtonImage.size.width, menuRightButtonImage.size.height)];
+    self.flipIndicatorButton=localFlipIndicator;
+	[localFlipIndicator release];
+    [flipIndicatorButton setBackgroundImage:menuRightButtonImage forState:UIControlStateNormal];	
+	UIBarButtonItem *flipButtonBarItem;
+	flipButtonBarItem=[[UIBarButtonItem alloc] initWithCustomView:flipIndicatorButton];	
+	[self.navigationItem setRightBarButtonItem:flipButtonBarItem animated:YES];
+	[flipButtonBarItem release];
+	[flipIndicatorButton addTarget:self action:@selector(toggleFolderFileView:) forControlEvents:(UIControlEventTouchDown)];
     [UIView commitAnimations];  
+    frontViewIsVisible = YES;
+    
+    NSLog(@"Subviews of the Folders main View are, %@",[self.view subviews]);
+
 }
 
 - (void) viewWillDisappear:(BOOL)animated{
     self.title = @"Archive";
+    /*-NOTIFICATIONS: --*/
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"StartedSearching_Notification" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"EndedSearching_Notification" object:nil];
+    
+    //Observe notifications sent by the TableView
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"FolderSelectedInTableViewControllerNotification" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"FileSelectedInTableViewControllerNotification" object:nil];
+    [tableViewController.tableView removeFromSuperview];
+    [tableViewController release];
+    tableViewController = nil;
+    
 }
+
+- (void)toggleFolderFileView:(id)sender {
+    // disable user interaction during the flip
+    flipperView.userInteractionEnabled = NO;
+	flipIndicatorButton.userInteractionEnabled = NO;
+    
+    // setup the animation group
+	[UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:0.75];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDidStopSelector:@selector(myTransitionDidStop:finished:context:)];
+	
+	// swap the views and transition
+    if (frontViewIsVisible==YES) {
+        self.title = @"Add To File";
+
+        [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:flipperView cache:YES];
+        [tableViewController.tableView removeFromSuperview];
+        tableViewController = nil;
+
+        tableViewController = [[FilesTableViewController alloc]init];
+
+        tableViewController.tableView.frame = CGRectMake(0, 0, mainFrame.size.width, mainFrame.size.height);
+        [self.flipperView addSubview:tableViewController.tableView];
+
+        
+    } else {
+        self.title = @"Save To Folder";
+
+        [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:flipperView cache:YES];
+        [tableViewController.tableView removeFromSuperview];
+        tableViewController = nil;
+        tableViewController = [[FoldersTableViewController alloc]init];
+        tableViewController.tableView.frame = CGRectMake(0, 0, mainFrame.size.width, mainFrame.size.height);
+        [self.flipperView addSubview:tableViewController.tableView];
+    }
+
+	[UIView commitAnimations];
+
+	[UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:0.75];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDidStopSelector:@selector(myTransitionDidStop:finished:context:)];
+    
+	if (frontViewIsVisible==YES) {
+		[UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:flipIndicatorButton cache:YES];
+		[flipIndicatorButton setBackgroundImage:[UIImage imageNamed:@"folder_white_on_blue_bkg.png"] forState:UIControlStateNormal];
+        //[[NSNotificationCenter defaultCenter] postNotificationName:@"HasToggledToFoldersViewNotification" object:nil];
+        //[self makeFolder];
+        //[tableViewController.tableView reloadData];
+	} 
+	else {
+        [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:flipIndicatorButton cache:YES];
+        [flipIndicatorButton setBackgroundImage:[UIImage imageNamed:@"pages_white_on_blue_bkg.png"] forState:UIControlStateNormal];
+        //[[NSNotificationCenter defaultCenter] postNotificationName:@"HasToggledToFilesViewNotification" object:nil];
+        //[self makeFile];
+        //[tableViewController.tableView reloadData];
+	}
+	[UIView commitAnimations];
+	frontViewIsVisible=!frontViewIsVisible;
+}
+
+- (void)myTransitionDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {
+	// re-enable user interaction when the flip is completed.
+    flipperView.userInteractionEnabled = YES;
+	flipIndicatorButton.userInteractionEnabled = YES;
+}
+
 
 #pragma -
 #pragma Navigation Controls and Actions
@@ -288,58 +386,20 @@
     [self.nameField resignFirstResponder];
 }
 
-- (void) addFolderFile:(UIBarButtonItem *)barButtonItem {
-
-    /*
-    if (nameField == nil) {
-        nameField = [[UITextField alloc] initWithFrame:CGRectMake(5, 155, 310, 30)];
-        [nameField setBorderStyle:UITextBorderStyleRoundedRect];
-        [nameField setInputAccessoryView:toolBar];
-        [nameField setFont:[UIFont systemFontOfSize:13.0]];
-        [nameField setTag:0];
-        [nameField setDelegate:self];
-        [nameField setTextAlignment:UITextAlignmentCenter];
-        nameField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-        [self.view addSubview:nameField];
-    }
-     */
-    if (self.navigationItem.leftBarButtonItem.tag == 0) {
-        //[nameField setPlaceholder:@"Create a new File"];
-        self.navigationItem.leftBarButtonItem.tag = 1;
-        [self.navigationItem.leftBarButtonItem setImage:[UIImage imageNamed:@"folder_nav.png"]];
-        self.title = @"Append To A File";
-        [saveNewFolderButton setTitle:@"Save To File" forState:UIControlStateNormal];
-        [saveNewFolderButton removeTarget:self action:@selector(makeFolder) forControlEvents:UIControlEventTouchUpInside];
-        [saveNewFolderButton addTarget:self action:@selector(makeFile) forControlEvents:UIControlEventTouchUpInside];
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"HasToggledToFilesViewNotification" object:nil];
-        [tableViewController.tableView reloadData];
-    }
-    else if (self.navigationItem.leftBarButtonItem.tag ==1){
-        [nameField setPlaceholder:@"Create a new Folder"];
-        self.navigationItem.leftBarButtonItem.tag = 0;
-        [self.navigationItem.leftBarButtonItem setImage:[UIImage imageNamed:@"pages_nav.png"]];
-        self.title = @"Save To A Folder";
-        [saveNewFolderButton setTitle:@"Save To Folder" forState:UIControlStateNormal];
-        [saveNewFolderButton removeTarget:self action:@selector(makeFile) forControlEvents:UIControlEventTouchUpInside];
-        [saveNewFolderButton addTarget:self action:@selector(makeFolder) forControlEvents:UIControlEventTouchUpInside];
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"HasToggledToFoldersViewNotification" object:nil];
-        [tableViewController.tableView reloadData];
-    }
-    //[textField becomeFirstResponder];
-}
 
 #pragma mark RESPONDING TO NOTIFICATIONS
 
-- (void) getSelectedFolder:(NSNotification *)notification{
-    Folder *selectedFolder = [notification object];
-    NSLog(@"Selected Folder Name is %@", selectedFolder.name);
-    if (![textView hasText]) {
+- (void) getSelectedFolderOrFile:(NSNotification *)notification{
+    if ([[notification object] isKindOfClass:[Folder class]]){
+        Folder *selectedFolder = [notification object];
+        NSLog(@"Selected Folder Name is %@", selectedFolder.name);
+        if (![textView hasText]) {
         FoldersTableViewController *detailViewController = [[FoldersTableViewController alloc] init];
         detailViewController.tableView.rowHeight = 30;
         [self.navigationController pushViewController:detailViewController animated:YES];
         [detailViewController release];
-    }
-    else{
+        }
+        else{
         NSEntityDescription *entity = [NSEntityDescription
                                        entityForName:@"Memo"
                                        inManagedObjectContext:managedObjectContext];
@@ -359,14 +419,13 @@
 
         NSLog(@"NEW MEMO is saved in %@", newMemo.folder.name);
         [newMemo release];
+        }
+        return;
     }
     
-}
-
-
-- (void) getSelectedFile:(NSNotification *)notification{
-    File *selectedFile = [notification object];
-    NSLog(@"Selected File Name is %@", selectedFile.name);
+    else if ([[notification object] isKindOfClass:[File class]]){
+        File *selectedFile = [notification object];
+        NSLog(@"Selected File Name is %@", selectedFile.name);
   
         NSEntityDescription *entity = [NSEntityDescription
                                        entityForName:@"Memo"
@@ -386,10 +445,10 @@
         }
         
         NSLog(@"NEW MEMO is saved in %@", newMemo.file.name);
-    [newMemo release];
-    return;
+        [newMemo release];
+        return;
+    }
 }
-
 - (void)searchkeyboardWasShown{
     [self.navigationController.navigationBar setHidden:YES];
 }

@@ -39,15 +39,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fetchFiles:) name:@"HasToggledToFilesViewNotification" object:nil];
+    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fetchFiles:) name:@"HasToggledToFilesViewNotification" object:nil];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fetchFolders:) name:@"HasToggledToFoldersViewNotification" object:nil];
+    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fetchFolders:) name:@"HasToggledToFoldersViewNotification" object:nil];
     
-    isFolderView = YES;
+    //isFolderView = YES;
     
     _fetchedResultsController.delegate = self;
-    [self.view setFrame:CGRectMake(0, 245, 320, 215)];
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 245, 320, 215) style:UITableViewStylePlain];
     
     searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
     [self.tableView setDelegate:self];
@@ -71,7 +69,7 @@
 	if (![[self fetchedResultsController] performFetch:&error]) {
 	}
 }
-
+/*
 - (void)fetchFiles:(NSNotification *)notification{
     isFolderView = NO;
     _fetchedResultsController = nil;
@@ -97,7 +95,7 @@
 
     return;
 }
-
+*/
 - (void)viewDidUnload {
     [super viewDidUnload];
     // Release any retained subviews of the main view.
@@ -128,8 +126,6 @@
 }
 
 - (void) searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
-    CGRect topFrame = CGRectMake(0, 0, 320, 245);
-    [self.tableView setFrame:topFrame];
     [self.searchBar setShowsCancelButton:YES animated:YES];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"StartedSearching_Notification" object:nil];
 }
@@ -150,10 +146,8 @@
 }
 
 - (void) searchBarCancelButtonClicked:(UISearchBar *)searchBar {
-    CGRect bottomFrame = CGRectMake(0, 205, 320, 204);
     [self.searchBar resignFirstResponder];
     self.searchBar.text = @"";
-    [self.tableView setFrame:bottomFrame];
     self.fetchedResultsController = [self fetchedResultsControllerWithPredicate:nil];
     NSError *error;
 	if (![[self fetchedResultsController] performFetch:&error]) {
@@ -169,16 +163,16 @@
 - (NSFetchedResultsController *) fetchedResultsControllerWithPredicate: (NSPredicate *) aPredicate {
     
 	NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    if (isFolderView) {
-        NSLog(@"SETTING NSENTITYDESCRIPTION TO FOLDER");
-        [request setEntity:[NSEntityDescription entityForName:@"Folder" inManagedObjectContext:managedObjectContext]];
-    }
-    else if(!isFolderView){
-        NSLog(@"SETTING NSENTITYDESCRIPTION TO FILE");
+    //if (isFolderView) {
+    //    NSLog(@"SETTING NSENTITYDESCRIPTION TO FOLDER");
+    [request setEntity:[NSEntityDescription entityForName:@"Folder" inManagedObjectContext:managedObjectContext]];
+    //}
+    //else if(!isFolderView){
+    //    NSLog(@"SETTING NSENTITYDESCRIPTION TO FILE");
 
-        [request setEntity:[NSEntityDescription entityForName:@"File" inManagedObjectContext:managedObjectContext]];
+    //    [request setEntity:[NSEntityDescription entityForName:@"File" inManagedObjectContext:managedObjectContext]];
 
-    }
+    //}
     [request setFetchBatchSize:10];
     [request setPredicate:aPredicate];
     
@@ -246,16 +240,16 @@
 	if([cell isKindOfClass:[UITableViewCell class]]){
 		mycell = (FolderCell *) cell;
 	}
-    if (isFolderView) {
+    //if (isFolderView) {
         Folder *aFolder = [_fetchedResultsController objectAtIndexPath:indexPath];	
         
         [mycell.folderName setText:aFolder.name];
-    }
-    else if (!isFolderView){
-        File *aFile = [_fetchedResultsController objectAtIndexPath:indexPath];	
+    //}
+    //else if (!isFolderView){
+    //    File *aFile = [_fetchedResultsController objectAtIndexPath:indexPath];	
         
-        [mycell.folderName setText:aFile.name];
-    }
+    //    [mycell.folderName setText:aFile.name];
+    //}
     
 }
 
@@ -289,26 +283,37 @@
  }
  */
 
-/*
- // Override to support editing the table view.
- - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
- {
- if (editingStyle == UITableViewCellEditingStyleDelete) {
- // Delete the row from the data source
- [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
- }   
- else if (editingStyle == UITableViewCellEditingStyleInsert) {
- // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
- }   
- }
- */
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        
+        // Delete the row from the data source.
+        NSManagedObjectContext *context = [_fetchedResultsController managedObjectContext];
+        [context deleteObject:[_fetchedResultsController objectAtIndexPath:indexPath]];
+        // Save the context.
+        NSError *error;
+        if (![managedObjectContext save:&error]) {
+            /*
+             Replace this implementation with code to handle the error appropriately.
+             
+             abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. If it is not possible to recover from the error, display an alert panel that instructs the user to quit the application by pressing the Home button.
+             */
+            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            abort();
+        }
+        
+    }   
+    else if (editingStyle == UITableViewCellEditingStyleInsert) {
+        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
+    } 
+}
 
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
- {
- }
- */
+
+
+// Override to support rearranging the table view.
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+}
+
 
 /*
  // Override to support conditional rearranging of the table view.
@@ -319,19 +324,65 @@
  }
  */
 
+
+#pragma mark -
+#pragma mark Fetched Results Notifications
+
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
+    // The fetch controller is about to start sending change notifications, so prepare the table view for updates.
+    [self.tableView beginUpdates];
+}
+- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
+	
+   	
+    switch(type) {
+			
+        case NSFetchedResultsChangeInsert:
+            [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            NSLog(@"FetchedResultsController ChangeInsert");
+            break;
+        case NSFetchedResultsChangeDelete:
+			[self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            NSLog(@"FetchedResultsController ChangeDelete");            
+            break;
+        case NSFetchedResultsChangeUpdate:
+			[self configureCell:[self.tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+            NSLog(@"FetchedResultsController ChangeUpdate");
+            break;
+        case NSFetchedResultsChangeMove:
+            [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            // Reloading the section inserts a new row and ensures that titles are updated appropriately.
+            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:newIndexPath.section] withRowAnimation:UITableViewRowAnimationFade];
+            NSLog(@"FetchedResultsController ChangeMove");
+            break;
+    }
+}
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type {
+	
+    switch(type) {
+        case NSFetchedResultsChangeInsert:
+            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+        case NSFetchedResultsChangeDelete:
+            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+    }
+}
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    // The fetch controller has sent all current change notifications, so tell the table view to process all updates.
+    [self.tableView endUpdates];
+}
+
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    //KJF NOTE: POST A NOTIFICATION WITH THE SELECTED ROW AS THE OBJECT PASSED WITH THE NOTIFICATION TO THE VIEW CONTROLLER
-    
-    if ([[_fetchedResultsController objectAtIndexPath:indexPath] isKindOfClass:[Folder class]]) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"FolderSelectedInTableViewControllerNotification" object:[_fetchedResultsController objectAtIndexPath:indexPath]];
-    }
-    else if ([[_fetchedResultsController objectAtIndexPath:indexPath] isKindOfClass:[File class]]){
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"FileSelectedInTableViewControllerNotification" object:[_fetchedResultsController objectAtIndexPath:indexPath]];
-    }
+ 
+  [[NSNotificationCenter defaultCenter] postNotificationName:UITableViewSelectionDidChangeNotification object:[_fetchedResultsController objectAtIndexPath:indexPath]];
+
     
     /*VIEWING
      Folder *selectedFolder = [_fetchedResultsController objectAtIndexPath:indexPath];

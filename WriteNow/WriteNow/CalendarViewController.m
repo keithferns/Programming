@@ -12,6 +12,7 @@
 #import "CalendarViewController.h"
 #import "AppointmentsTableViewController.h"
 #import "TasksTableViewController.h"
+#import "CalendarTableViewController.h"
 
 
 #import "CustomTextView.h"
@@ -31,6 +32,9 @@
 @synthesize datePicker, timePicker;
 @synthesize newAppointment, newTask;
 @synthesize addField;
+@synthesize flipIndicatorButton;
+@synthesize frontViewIsVisible;
+@synthesize calendarView, flipperImageForDateNavigationItem, flipperView;
 
 - (MyDataObject *) myDataObject; {
 	id<AppDelegateProtocol> theDelegate = (id<AppDelegateProtocol>) [UIApplication sharedApplication].delegate;
@@ -39,38 +43,266 @@
 	return myDataObject;
 }
 
+//static int calendarShadowOffset = (int)-20;
 #define screenRect [[UIScreen mainScreen] applicationFrame]
 #define statusBarRect [[UIApplication sharedApplication] statusBarFrame];
 #define tabBarHeight self.tabBarController.tabBar.frame.size.height
 #define navBarHeight self.navigationController.navigationBar.frame.size.height
 #define toolBarRect CGRectMake(screenRect.size.width, 0, screenRect.size.width, 40)
-#define textViewRect CGRectMake(5, navBarHeight+10, screenRect.size.width-10, 140)
+#define textViewRect CGRectMake(5, navBarHeight+5, screenRect.size.width, 140)
 #define bottomViewRect CGRectMake(0, textViewRect.origin.y+textViewRect.size.height+10, screenRect.size.width, screenRect.size.height-textViewRect.origin.y-textViewRect.size.height-10)
 #define mainFrame CGRectMake(screenRect.origin.x, self.navigationController.navigationBar.frame.origin.y+navBarHeight, screenRect.size.width, screenRect.size.height-navBarHeight)
+
+- (void)dealloc {
+    [super dealloc];
+    [textView release];
+    //    [toolBar release];
+    [dateFormatter release];
+    [timeFormatter release];
+    [tableViewController release];
+    [datePicker release];
+    [timePicker release];
+    [pickerView release];
+    [recurring release];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UITableViewSelectionDidChangeNotification object:nil];
+}
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];    
+    NSLog(@"CALENDAR VIEWCONTROLLER: MEMORY WARNING");
+}
+- (void)viewDidUnload {
+    [super viewDidUnload];
+    // Release any retained subviews of the main view.
+    dateFormatter = nil;
+    timeFormatter = nil;
+    textView = nil;    
+    datePicker = nil;
+    timePicker = nil;
+    pickerView = nil;
+    recurring = nil;
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UITableViewSelectionDidChangeNotification object:nil];
+}
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    // Return YES for supported orientations
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+#pragma mark - View lifecycle
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    //FIXME: IS THIS MOC NEEDED?
+    
+    if (managedObjectContext == nil){
+        managedObjectContext = [(WriteNowAppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext];
+        NSLog(@"ADDENTITYVIEWCONTROLLER After managedObjectContext: %@",  managedObjectContext);        
+    } 
+    
+    //[self.view setBackgroundColor:[UIColor colorWithRed:0.2 green:0.2 blue:0.5 alpha:1]];
+    UIImage *background = [UIImage imageNamed:@"wallpaper.png"];
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:background]];
+    self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;    
+    addField = 1;
+    textView = nil;
+    
+}
+
+- (void) viewWillAppear:(BOOL)animated{  
+    NSLog(@"SUBVIEWS OF MAIN VIEW ON LOADING ARE:%@", [self.view subviews]);
+    
+    /*--NOTIFICATIONS: register --*/
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(displaySelectedRow:) name:UITableViewSelectionDidChangeNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+    /*--NAVIGATION ITEMS --*/
+    //Set Navigation Bar Visible
+    if (self.navigationController.navigationBarHidden == YES){
+        self.navigationController.navigationBarHidden = NO;
+    }
+    //Initialize the TOOLBAR
+    toolBar = [[CustomToolBar alloc] initWithFrame:toolBarRect];
+    [toolBar.firstButton setTarget:self];
+    [toolBar.firstButton setAction:@selector(presentSchedulerPopover:)];
+    [toolBar.firstButton setTag:1];
+    [toolBar.secondButton setTarget:self];
+    [toolBar.secondButton setAction:@selector(presentReminderPopover:)];
+    [toolBar.dismissKeyboard setTarget:self];
+    [toolBar.dismissKeyboard setAction:@selector(dismissKeyboard)];  
+    
+    datePicker = [[UIDatePicker alloc] initWithFrame:CGRectZero];
+    [datePicker setDatePickerMode:UIDatePickerModeDate];
+    [datePicker setDate:[NSDate date]];
+    [datePicker setMinimumDate:[NSDate date]];
+    [datePicker setMaximumDate:[NSDate dateWithTimeIntervalSinceNow:(60*60*24*365)]];
+    datePicker.timeZone = [NSTimeZone systemTimeZone];
+    [datePicker sizeToFit];
+    datePicker.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
+    [datePicker addTarget:self action:@selector(datePickerChanged:) forControlEvents:UIControlEventValueChanged];  
+    
+    timePicker = [[UIDatePicker alloc] initWithFrame:CGRectZero];
+    [timePicker setDatePickerMode:UIDatePickerModeTime];
+    [timePicker setMinuteInterval:10];
+    timePicker.timeZone = [NSTimeZone systemTimeZone];
+    [timePicker sizeToFit];
+    timePicker.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
+    [timePicker addTarget:self action:@selector(timePickerChanged:) forControlEvents:UIControlEventValueChanged];
+    //timePicker.date = [timeFormatter dateFromString:@"12:00 PM"]; 
+    
+    pickerView = [[UIPickerView alloc] initWithFrame:CGRectZero];
+    [pickerView setDataSource:self];
+    [pickerView setDelegate:self];
+    pickerView.showsSelectionIndicator = YES;
+    recurring = [[NSArray alloc] initWithObjects:@"Never",@"Daily",@"Weekly", @"Fortnightly", @"Monthy", @"Annualy",nil];
+    
+    dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"EEE, MMM d, yyyy"];    
+    timeFormatter = [[NSDateFormatter alloc] init];
+    [timeFormatter setDateFormat:@"h:mm a"];
+    
+    /*-ADD FLIPPER VIEW -*/
+    flipperView = [[UIView alloc] initWithFrame:mainFrame];
+    [flipperView setBackgroundColor:[UIColor lightGrayColor]];
+    [self.view   addSubview:flipperView];
+    
+    MyDataObject *myData = [self myDataObject]; //Create instance of Shared Data Object (SDO)- autoreleases.
+    if ([myData.noteType intValue] == 1) {//TODO: Add code here relevant to creating Appointments.
+        NSLog(@"SETTING NEW APPOINTMENT");
+        [self addNewAppointment];
+        if (tableViewController == nil) {
+            tableViewController = [[AppointmentsTableViewController alloc] init];
+        }
+    }
+    else if ([myData.noteType intValue] == 2){//TODO: Add code here relevant to creating Tasks.
+        NSLog(@"SETTING NEW TASK");
+        [self addNewTask];
+        if (self.tableViewController == nil){
+            tableViewController = [[TasksTableViewController alloc]init];
+        }
+    }
+    else {//when tab is selected, tableview/calendar is shown full screen - table view has both tasks and appointments for each date
+        //TODO: TABLEVIEW CONTROLLER WITH BOTH TASKS AND APPOINTMENTS/CALENDER VIEW
+        tableViewController = [[AppointmentsTableViewController alloc] init];
+    }
+    if (calendarView.superview==nil) {
+        NSLog(@"Adding calendarView");
+        calendarView = 	[[TKCalendarMonthView alloc] init];        
+        calendarView.delegate = self;
+        calendarView.dataSource = self;
+        calendarView.frame = CGRectMake(0, mainFrame.size.height, mainFrame.size.width, mainFrame.size.height);
+        
+        //calendarView.frame = CGRectMake(0, screenRect.size.height, calendarView.frame.size.width, calendarView.frame.size.height);
+        //calendarView.frame = CGRectMake(0, -calendarView.frame.size.height+calendarShadowOffset, calendarView.frame.size.width, calendarView.frame.size.height);
+        // Ensure this is the last "addSubview" because the calendar must be the top most view layer	
+        [self.flipperView addSubview:calendarView];
+        [calendarView reload];
+        
+        //[self.flipperView addSubview:tableViewController.tableView];
+        tableViewController.tableView.frame = CGRectMake(0, 0, mainFrame.size.width, mainFrame.size.height);
+        [tableViewController.tableView setSeparatorColor:[UIColor blackColor]];
+        [tableViewController.tableView setSectionHeaderHeight:13];
+        tableViewController.tableView.rowHeight = 40.0;
+        //[tableViewController.tableView setTableHeaderView:tableLabel]
+    }
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.4];
+    [UIView setAnimationDelegate:self];
+    calendarView.frame = CGRectMake(0, 0, mainFrame.size.width, mainFrame.size.height);
+    
+    UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithTitle:@"New" style:UIBarButtonItemStyleBordered target:self action:@selector(addItem:)]; //right button - add NEW item - persists as long as cal/tv is full screen
+    self.navigationItem.leftBarButtonItem  = leftButton;
+    [leftButton release];
+    self.navigationItem.leftBarButtonItem.tag = 1;
+    [self.navigationItem.leftBarButtonItem setStyle:UIBarButtonItemStylePlain];  
+    
+    //UIImage *menuButtonImage = [self flipperImageForDateNavigationItem];
+    UIImage *menuButtonImage = [UIImage imageNamed:@"list_white_on_blue_bkg.png"];
+    UIButton *localFlipIndicator=[[UIButton alloc] initWithFrame:CGRectMake(0, 0, menuButtonImage.size.width, menuButtonImage.size.height)];
+	//UIButton *localFlipIndicator=[[UIButton alloc] initWithFrame:CGRectMake(0,0,30,30)];
+    self.flipIndicatorButton=localFlipIndicator;
+	[localFlipIndicator release];
+    [flipIndicatorButton setBackgroundImage:menuButtonImage forState:UIControlStateNormal];	
+    [flipIndicatorButton.layer setCornerRadius:4.0];
+	UIBarButtonItem *flipButtonBarItem;
+	flipButtonBarItem=[[UIBarButtonItem alloc] initWithCustomView:flipIndicatorButton];	
+	[self.navigationItem setRightBarButtonItem:flipButtonBarItem animated:YES];
+	[flipButtonBarItem release];
+	[flipIndicatorButton addTarget:self action:@selector(toggleCalendar) forControlEvents:(UIControlEventTouchDown)];
+    
+    [UIView commitAnimations];
+    
+    NSLog(@"SUBVIEWS OF MAIN VIEW ON LOADING ARE:%@", [self.view subviews]);
+    frontViewIsVisible = YES;
+}
+/*
+ UIImage *buttonImageNormal = [UIImage imageNamed:@"action-normal.png"];
+ UIImage *stretchableButtonImageNormal = [buttonImageNormal stretchableImageWithLeftCapWidth:12 topCapHeight:0];
+ [playButton setBackgroundImage:stretchableButtonImageNormal forState:UIControlStateNormal];
+ 
+ UIImage *buttonImagePressed = [UIImage imageNamed:@"action-pressed.png"];
+ UIImage *stretchableButtonImagePressed = [buttonImagePressed stretchableImageWithLeftCapWidth:12 topCapHeight:0];
+ [playButton setBackgroundImage:stretchableButtonImagePressed forState:UIControlStateHighlighted];
+ */
+- (void) viewWillDisappear:(BOOL)animated{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name: UITableViewSelectionDidChangeNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+    
+    self.title = @"Calendar"; // reset the tabBarItem and navigationBar titles to Calendar
+    [schedulerPopover setDelegate:nil];
+    [schedulerPopover autorelease];
+    schedulerPopover = nil;
+    [tableViewController.tableView removeFromSuperview];
+    [tableViewController release];
+    tableViewController = nil;
+    [toolBar release];
+    MyDataObject *myData = [self myDataObject];
+    if (![textView hasText] || ![textView isUserInteractionEnabled]) {
+        [textView removeFromSuperview];
+        [textView release];
+        textView = nil;
+        myData.noteType = [NSNumber numberWithInt:0];
+        myData.isEditing = [NSNumber numberWithInt:0];
+        self.navigationItem.rightBarButtonItem = nil;
+        self.navigationItem.leftBarButtonItem = nil;
+    }
+    
+    [datePicker release];
+    [timePicker release];
+    [pickerView release];
+    datePicker = nil;
+    timePicker = nil;
+    pickerView = nil;
+    [flipIndicatorButton release];
+    flipIndicatorButton = nil;
+    [dateFormatter release];
+    [timeFormatter release];
+    dateFormatter = nil;
+    timeFormatter = nil;
+    [flipperView removeFromSuperview];
+    [flipperView release];
+    flipperView = nil;
+    [calendarView removeFromSuperview];
+    [calendarView release];
+    calendarView = nil;
+    NSLog(@"SUBVIEWS OF MAIN VIEW ON LOADING ARE:%@", [self.view subviews]);
+    
+}
+
 
 
 #pragma mark -- 
 #pragma mark - Scheduler ACTIONS
 
 - (void)presentSchedulerPopover:(id)sender {//CREATE THE POPOVER AND ADD TO THE VIEW
-    /*KJF for reference only
-    if (self.popoverController) {
-		[self.popoverController dismissPopoverAnimated:YES];
-		self.popoverController = nil;
-		
-	} else {
-		UIViewController *contentViewController = [[WEPopoverContentViewController alloc] initWithStyle:UITableViewStylePlain];
-		
-		self.popoverController = [[[WEPopoverController alloc] initWithContentViewController:contentViewController] autorelease];
-		[self.popoverController presentPopoverFromRect:button.frame 
-												inView:self.view 
-							  permittedArrowDirections:UIPopoverArrowDirectionDown
-											  animated:YES];
-		[contentViewController release];
-		[button setTitle:@"Hide Popover" forState:UIControlStateNormal];
-	}
-     */	
-
+    [tableViewController.tableView removeFromSuperview];
+	[textView removeFromSuperview];
+    [self.view addSubview:textView];
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.4];
+    [UIView setAnimationDelegate:self];    
+    NSLog(@"Changing the textframe");
+    textView.frame = CGRectMake(5, textViewRect.origin.y, textViewRect.size.width-10, textViewRect.size.height);
+    [UIView commitAnimations];
+    NSLog(@"SUBVIEW OF MAIN VIEW = %@", [self.view subviews]);
     if ([textView isFirstResponder]) {
         [textView resignFirstResponder];
     }
@@ -81,7 +313,7 @@
     if (self.navigationController.navigationBarHidden == NO){
         self.navigationController.navigationBarHidden = YES;
     }
-    [self moveTableViewUp];// move tableView to screen right
+    //[self moveTableViewUp];// move tableView to screen right
 
     if(!schedulerPopover) {
         
@@ -113,13 +345,19 @@
         [schedulerPopover addName:@"Scheduler"];
         SchedulePopoverViewController *viewCon = [[SchedulePopoverViewController alloc]init];
         [viewCon.button1 addTarget:self action:@selector(cancelPopover:) forControlEvents:UIControlEventTouchUpInside];
-        viewCon.contentSizeForViewInPopover = CGSizeMake(140, 180);
+        
+        //viewCon.tableViewController = [[UITableViewController alloc] init];
+        //viewCon.tableViewController = self.tableViewController;
+        
+        //[viewCon.view addSubview:tableViewController.tableView];
+        //tableViewController.tableView.frame = CGRectMake(145, 120, 160, 200);
+        viewCon.contentSizeForViewInPopover = CGSizeMake(300, 180);
         schedulerPopover = [[WEPopoverController alloc] initWithContentViewController:viewCon];
         [schedulerPopover setDelegate:self];
         [viewCon release];
         }
     
-    [schedulerPopover presentPopoverFromRect:CGRectMake(15, 205, 50, 57)
+    [schedulerPopover presentPopoverFromRect:CGRectMake(15, 205, 0, 57)
                                     inView:self.view 
                   permittedArrowDirections:UIPopoverArrowDirectionDown
                                   animated:YES name:@"Scheduler"];
@@ -328,8 +566,6 @@
     int sectionWidth = 300;    
     return sectionWidth;
 }
-
-
 - (void) cancelPopover:(id)sender {
     NSLog(@"CANCELLING POPOVER");
     if (self.navigationController.navigationBarHidden == YES) {
@@ -355,7 +591,6 @@
             [toolBar.firstButton setTag:1];
     }        
 }
-
 - (void) showSchedule {    
     
        //TODO: Add recurrance to textView
@@ -390,11 +625,10 @@
     
     [dateField setUserInteractionEnabled:NO];
     [timeField setUserInteractionEnabled:NO];
-    
-    [schedulerPopover release];
-    schedulerPopover = nil;
+   
+    [dateField release];
+    [timeField release];
 }
-
 //Create Popover to set Alarms
 - (void)presentReminderPopover:(id)sender {
     //TODO: VIEW - ADD PICKER VIEW FOR REMINDERS.
@@ -427,7 +661,6 @@
         [button2 setTag:2];
         [button2.layer setCornerRadius:10.0];
         [button2 addTarget:self.parentViewController action:@selector(setAlarm) forControlEvents:UIControlEventTouchUpInside];
-
         
         CustomTextField *alarm1 = [[CustomTextField alloc] init];
         [alarm1 setFrame:CGRectMake(0, 50, 140, 40)];
@@ -450,7 +683,6 @@
         [alarm3 setInputAccessoryView:toolBar];
         [alarm3 setPlaceholder:@"Alarm 3"];
         
-            
         UIViewController *viewCon = [[UIViewController alloc] init];
         viewCon.contentSizeForViewInPopover = CGSizeMake(140, 180);
         [viewCon.view addSubview:button1];
@@ -463,6 +695,9 @@
 
         [button1 release];
         [button2 release];
+        [alarm1 release];
+        [alarm2 release];
+        [alarm3 release];
         reminderPopover = [[WEPopoverController alloc] initWithContentViewController:viewCon];
         [reminderPopover setDelegate:self];
         [viewCon release];
@@ -475,7 +710,6 @@
         [reminderPopover setDelegate:nil];
         [reminderPopover autorelease];
         reminderPopover = nil;
-       
     } else {
         [reminderPopover presentPopoverFromRect:CGRectMake(70, 205, 50, 57)
                                     inView:self.view 
@@ -483,193 +717,198 @@
                                   animated:YES name:@"ReminderPopover"];
     }
 }
-
 - (void)popoverControllerDidDismissPopover:(WEPopoverController *)popoverController {
     NSLog(@"Did dismiss");
 }
-
 - (BOOL)popoverControllerShouldDismissPopover:(WEPopoverController *)popoverController {
     NSLog(@"Should dismiss");
     return YES;
 }
 
-- (void)dealloc {
-    [super dealloc];
-    [textView release];
-//    [toolBar release];
-    [dateFormatter release];
-    [timeFormatter release];
-    [tableViewController release];
-    //[datePicker release];
-    //[timePicker release];
-    [pickerView release];
-    [recurring release];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UITableViewSelectionDidChangeNotification object:nil];
+- (UIImage *)flipperImageForDateNavigationItem {
+	// returns a 30 x 30 image to display the flipper button in the navigation bar
+	CGSize itemSize=CGSizeMake(30.0,30.0);
+	UIGraphicsBeginImageContext(itemSize);
+	UIImage *backgroundImage = [UIImage imageNamed:[NSString stringWithFormat:@"calendar_bkg_on_blue_bkg.png"]];
+	CGRect calendarRectangle = CGRectMake(0,0, itemSize.width, itemSize.height);
+	[backgroundImage drawInRect:calendarRectangle];
+        // draw the element name
+	[[UIColor whiteColor] set];
+        // draw the date 
+    NSDateFormatter *imageDateFormatter = [[NSDateFormatter alloc] init];
+    [imageDateFormatter setDateFormat:@"d"];
+    UIFont *font = [UIFont boldSystemFontOfSize:8];
+	//CGPoint point = CGPointMake(1,1);
+    CGSize stringSize = [[imageDateFormatter stringFromDate:[NSDate date]] sizeWithFont:font];
+    CGPoint point = CGPointMake((calendarRectangle.size.width-stringSize.width)/2+5,18);    
+	[[imageDateFormatter stringFromDate:[NSDate date]] drawAtPoint:point withFont:font];
+        // draw the month    
+    [imageDateFormatter setDateFormat:@"MMM"];
+	font = [UIFont systemFontOfSize:10];
+    stringSize = [[imageDateFormatter stringFromDate:[NSDate date]] sizeWithFont:font];
+    point = CGPointMake((calendarRectangle.size.width-stringSize.width)/2,10);
+    NSLog(@"date is %@",[imageDateFormatter stringFromDate:[NSDate date]]);
+	[[imageDateFormatter stringFromDate:[NSDate date]] drawAtPoint:point withFont:font];
+	UIImage *theImage=UIGraphicsGetImageFromCurrentImageContext();
+	UIGraphicsEndImageContext();
+	return theImage;
+    [imageDateFormatter release];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];    
-    NSLog(@"ADDENTITYVIEWCONTROLLER: MEMORY WARNING");
+- (void)toggleCalendar {
+    
+    // disable user interaction during the flip
+    flipperView.userInteractionEnabled = NO;
+	flipIndicatorButton.userInteractionEnabled = NO;
+
+    // setup the animation group
+	[UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:0.75];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDidStopSelector:@selector(myTransitionDidStop:finished:context:)];
+	
+	// swap the views and transition
+    if (frontViewIsVisible==YES) {
+        [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:flipperView cache:YES];
+        [calendarView removeFromSuperview];
+        [self.flipperView addSubview:tableViewController.tableView];
+
+    } else {
+        [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:flipperView cache:YES];
+        [tableViewController.tableView removeFromSuperview];
+        [self.flipperView addSubview:calendarView];
+    }
+	[UIView commitAnimations];
+    
+	[UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:0.75];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDidStopSelector:@selector(myTransitionDidStop:finished:context:)];
+
+	if (frontViewIsVisible==YES) {
+		[UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:flipIndicatorButton cache:YES];
+        [flipIndicatorButton setBackgroundImage:self.flipperImageForDateNavigationItem forState:UIControlStateNormal];
+
+	} 
+	else {
+        UIImage *image = [UIImage imageNamed:@"list_white_on_blue_bkg.png"];
+		[UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:flipIndicatorButton cache:YES];
+		[flipIndicatorButton setBackgroundImage:image forState:UIControlStateNormal];
+
+	}
+	[UIView commitAnimations];
+    frontViewIsVisible=!frontViewIsVisible;
+    /*
+	// If calendar is off the screen, show it, else hide it (both with animations)
+	//if (calendarView.frame.origin.y == -calendarView.frame.size.height+calendarShadowOffset) {
+	if (calendarView.frame.origin.y == screenRect.size.height) {
+        NSLog(@"Showing Calendar: %.1f = %.1f", calendarView.frame.origin.y, screenRect.size.height);
+		[UIView beginAnimations:nil context:NULL];
+		[UIView setAnimationDuration:0.5];
+		calendarView.frame = CGRectMake(0, self.navigationController.navigationBar.frame.origin.y+navBarHeight, calendarView.frame.size.width, calendarView.frame.size.height);
+		[UIView commitAnimations];
+	} else {
+        NSLog(@"Hiding Calendar: %.1f = %.1f", calendarView.frame.origin.y, screenRect.size.height);
+		[UIView beginAnimations:nil context:NULL];
+		[UIView setAnimationDuration:0.5];
+		//calendarView.frame = CGRectMake(0, -calendarView.frame.size.height+calendarShadowOffset, calendarView.frame.size.width, calendarView.frame.size.height);	
+        calendarView.frame = CGRectMake(0, screenRect.size.height, calendarView.frame.size.width, calendarView.frame.size.height);
+		[UIView commitAnimations];
+	}	
+     */
 }
 
-- (void)viewDidUnload {
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    dateFormatter = nil;
-    timeFormatter = nil;
-    textView = nil;    
-    //datePicker = nil;
-    //timePicker = nil;
-    pickerView = nil;
-    recurring = nil;
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UITableViewSelectionDidChangeNotification object:nil];
+- (void)myTransitionDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {
+	// re-enable user interaction when the flip is completed.
+	flipIndicatorButton.userInteractionEnabled = YES;
+    flipperView.userInteractionEnabled = YES;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+#pragma mark -
+#pragma mark TKCalendarMonthViewDelegate methods
+
+- (void)calendarMonthView:(TKCalendarMonthView *)monthView didSelectDate:(NSDate *)d {
+	NSLog(@"calendarMonthView didSelectDate");
 }
 
-#pragma mark - View lifecycle
+- (void)calendarMonthView:(TKCalendarMonthView *)monthView monthDidChange:(NSDate *)d {
+	NSLog(@"calendarMonthView monthDidChange");	
+}
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    addField = 1;
-    textView = nil;
-    if (managedObjectContext == nil){
-        managedObjectContext = [(WriteNowAppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext];
-        NSLog(@"ADDENTITYVIEWCONTROLLER After managedObjectContext: %@",  managedObjectContext);        
-    }
+#pragma mark -
+#pragma mark TKCalendarMonthViewDataSource methods
 
-    datePicker = [[UIDatePicker alloc] initWithFrame:CGRectZero];
-    [datePicker setDatePickerMode:UIDatePickerModeDate];
-    [datePicker setDate:[NSDate date]];
-    [datePicker setMinimumDate:[NSDate date]];
-    [datePicker setMaximumDate:[NSDate dateWithTimeIntervalSinceNow:(60*60*24*365)]];
-    datePicker.timeZone = [NSTimeZone systemTimeZone];
-    [datePicker sizeToFit];
-    datePicker.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
-    [datePicker addTarget:self action:@selector(datePickerChanged:) forControlEvents:UIControlEventValueChanged];  
-    
-    timePicker = [[UIDatePicker alloc] initWithFrame:CGRectZero];
-    [timePicker setDatePickerMode:UIDatePickerModeTime];
-    [timePicker setMinuteInterval:10];
-    timePicker.timeZone = [NSTimeZone systemTimeZone];
-    [timePicker sizeToFit];
-    timePicker.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
-    [timePicker addTarget:self action:@selector(timePickerChanged:) forControlEvents:UIControlEventValueChanged];
-     //timePicker.date = [timeFormatter dateFromString:@"12:00 PM"]; 
-
-    pickerView = [[UIPickerView alloc] initWithFrame:CGRectZero];
-    [pickerView setDataSource:self];
-    [pickerView setDelegate:self];
-    pickerView.showsSelectionIndicator = YES;
-    recurring = [[NSArray alloc] initWithObjects:@"Never",@"Daily",@"Weekly", @"Fortnightly", @"Monthy", @"Annualy",nil];
-    
-    //[self.view setBackgroundColor:[UIColor colorWithRed:0.2 green:0.2 blue:0.5 alpha:1]];
-    UIImage *background = [UIImage imageNamed:@"wallpaper.png"];
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:background]];
-                     
-    dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"EEE, MMM d, yyyy"];    
-    timeFormatter = [[NSDateFormatter alloc] init];
-    [timeFormatter setDateFormat:@"h:mm a"];
-    }
-
-- (void) viewWillAppear:(BOOL)animated{  
-    /*--NOTIFICATIONS: register --*/
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(displaySelectedRow:) name:UITableViewSelectionDidChangeNotification object:nil];
-
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
-
-    
-    if (self.navigationController.navigationBarHidden == YES){
-        self.navigationController.navigationBarHidden = NO;
-        }
-    //toolBar: setup
-    toolBar = [[CustomToolBar alloc] initWithFrame:toolBarRect];
-    [toolBar.firstButton setTarget:self];
-    [toolBar.firstButton setAction:@selector(presentSchedulerPopover:)];
-    [toolBar.firstButton setTag:1];
-    [toolBar.secondButton setTarget:self];
-    [toolBar.secondButton setAction:@selector(presentReminderPopover:)];
-    [toolBar.dismissKeyboard setTarget:self];
-    [toolBar.dismissKeyboard setAction:@selector(dismissKeyboard)];  
-    
-    MyDataObject *myData = [self myDataObject]; //Create instance of Shared Data Object (SDO)- autoreleases.
-    if ([myData.noteType intValue] == 1) {//TODO: Add code here relevant to creating Appointments.
-        NSLog(@"SETTING NEW APPOINTMENT");
-        [self addNewAppointment];
-        if (tableViewController == nil) {
-        tableViewController = [[AppointmentsTableViewController alloc] init];
-        }
-    }
-    else if ([myData.noteType intValue] == 2){//TODO: Add code here relevant to creating Tasks.
-        NSLog(@"SETTING NEW TASK");
-        [self addNewTask];
-        if (self.tableViewController == nil){
-        tableViewController = [[TasksTableViewController alloc]init];
-        }
-    }
-    else {//when tab is selected, tableview/calendar is shown full screen - table view has both tasks and appointments for each date
-            //TODO: TABLEVIEW CONTROLLER WITH BOTH TASKS AND APPOINTMENTS/CALENDER VIEW
-        tableViewController = [[AppointmentsTableViewController alloc] init];
-            }
-    if (tableViewController.tableView.superview==nil) {
-        [self.view addSubview:tableViewController.tableView];
-        [tableViewController.tableView setSeparatorColor:[UIColor blackColor]];
-        [tableViewController.tableView setSectionHeaderHeight:13];
-        tableViewController.tableView.rowHeight = 40.0;
-        //[tableViewController.tableView setTableHeaderView:tableLabel]
-    }
-        [UIView beginAnimations:nil context:NULL];
-        [UIView setAnimationDuration:0.4];
-        [UIView setAnimationDelegate:self];
-        
-        tableViewController.tableView.frame = mainFrame;
-        UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithTitle:@"New" style:UIBarButtonItemStyleBordered target:self action:@selector(addItem:)]; //right button - add NEW item - persists as long as cal/tv is full screen
-        self.navigationItem.leftBarButtonItem  = leftButton;
-        [leftButton release];
-        self.navigationItem.leftBarButtonItem.tag = 1;
-        [self.navigationItem.leftBarButtonItem setStyle:UIBarButtonItemStylePlain];  
-        
-        [UIView commitAnimations];
-  
-    NSLog(@"SUBVIEW OF MAIN VIEW ON LOADING ARE:%@", [self.view subviews]);
+- (NSArray*)calendarMonthView:(TKCalendarMonthView *)monthView marksFromDate:(NSDate *)startDate toDate:(NSDate *)lastDate {	
+	NSLog(@"calendarMonthView marksFromDate toDate");	
+	NSLog(@"Make sure to update 'data' variable to pull from CoreData, website, User Defaults, or some other source.");
+	// When testing initially you will have to update the dates in this array so they are visible at the
+	// time frame you are testing the code.
+	NSArray *data = [NSArray arrayWithObjects:
+					 @"2011-09-01 00:00:00 +0000", @"2011-09-09 00:00:00 +0000", @"2011-09-22 00:00:00 +0000",
+					 @"2011-09-10 00:00:00 +0000", @"2011-09-11 00:00:00 +0000", @"2011-09-12 00:00:00 +0000",
+					 @"2011-09-15 00:00:00 +0000", @"2011-09-28 00:00:00 +0000", @"2011-09-04 00:00:00 +0000",					 
+					 @"2011-09-16 00:00:00 +0000", @"2011-09-18 00:00:00 +0000", @"2011-09-19 00:00:00 +0000",					 
+					 @"2011-09-23 00:00:00 +0000", @"2011-09-24 00:00:00 +0000", @"2011-09-25 00:00:00 +0000",					 					 
+					 @"2011-10-01 00:00:00 +0000", @"2011-08-01 00:00:00 +0000", @"2011-04-01 00:00:00 +0000",
+					 @"2011-05-01 00:00:00 +0000", @"2011-08-01 00:00:00 +0000", @"2011-07-01 00:00:00 +0000",
+					 @"2011-08-01 00:00:00 +0000", @"2011-09-01 00:00:00 +0000", @"2011-10-01 00:00:00 +0000",
+					 @"2011-11-01 00:00:00 +0000", @"2011-12-01 00:00:00 +0000", nil]; 
+	
+	
+	// Initialise empty marks array, this will be populated with TRUE/FALSE in order for each day a marker should be placed on.
+	NSMutableArray *marks = [NSMutableArray array];
+	
+	// Initialise calendar to current type and set the timezone to never have daylight saving
+	NSCalendar *cal = [NSCalendar currentCalendar];
+	[cal setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+	
+	// Construct DateComponents based on startDate so the iterating date can be created.
+	// Its massively important to do this assigning via the NSCalendar and NSDateComponents because of daylight saving has been removed 
+	// with the timezone that was set above. If you just used "startDate" directly (ie, NSDate *date = startDate;) as the first 
+	// iterating date then times would go up and down based on daylight savings.
+	NSDateComponents *comp = [cal components:(NSMonthCalendarUnit | NSMinuteCalendarUnit | NSYearCalendarUnit | 
+											  NSDayCalendarUnit | NSWeekdayCalendarUnit | NSHourCalendarUnit | NSSecondCalendarUnit) 
+									fromDate:startDate];
+	NSDate *d = [cal dateFromComponents:comp];
+	
+	// Init offset components to increment days in the loop by one each time
+	NSDateComponents *offsetComponents = [[NSDateComponents alloc] init];
+	[offsetComponents setDay:1];	
+	
+	
+	// for each date between start date and end date check if they exist in the data array
+	while (YES) {
+		// Is the date beyond the last date? If so, exit the loop.
+		// NSOrderedDescending = the left value is greater than the right
+		if ([d compare:lastDate] == NSOrderedDescending) {
+			break;
+		}
+		
+		// If the date is in the data array, add it to the marks array, else don't
+		if ([data containsObject:[d description]]) {
+			[marks addObject:[NSNumber numberWithBool:YES]];
+		} else {
+			[marks addObject:[NSNumber numberWithBool:NO]];
+		}
+		
+		// Increment day using offset components (ie, 1 day in this instance)
+		d = [cal dateByAddingComponents:offsetComponents toDate:d options:0];
+	}
+	
+	[offsetComponents release];
+	
+	return [NSArray arrayWithArray:marks];
 }
 
     
-- (void) viewWillDisappear:(BOOL)animated{
-    [[NSNotificationCenter defaultCenter] removeObserver:self name: UITableViewSelectionDidChangeNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
 
-    self.title = @"Calendar"; // reset the tabBarItem and navigationBar titles to Calendar
-    [schedulerPopover setDelegate:nil];
-    [schedulerPopover autorelease];
-    schedulerPopover = nil;
-    [tableViewController.tableView removeFromSuperview];
-    [tableViewController release];
-    tableViewController = nil;
-        [toolBar release];
-    MyDataObject *myData = [self myDataObject];
-    if (![textView hasText] || ![textView isUserInteractionEnabled]) {
-        [textView removeFromSuperview];
-        [textView release];
-        textView = nil;
-        myData.noteType = [NSNumber numberWithInt:0];
-        myData.isEditing = [NSNumber numberWithInt:0];
-        self.navigationItem.rightBarButtonItem = nil;
-        self.navigationItem.leftBarButtonItem = nil;
-    }
- }
 
 - (void)addItem:(id)sender {
 	NSLog(@"Bookmarks Button Pressed");
     
     if(!schedulerPopover) {
         
+    
         UIButton *button1 = [[UIButton alloc] initWithFrame:CGRectMake(10, 5, 54, 54)];
         [button1 setImage:[UIImage imageNamed:@"task_button.png"] forState:UIControlStateNormal];
         [button1 setTag:1];
@@ -750,7 +989,6 @@
     [newTask setCreationDate:[NSDate date]];
     [newTask setType:[NSNumber numberWithInt:1]];
     
-    //tableViewController = [[TasksTableViewController alloc]init];
     [self setEditingView];
     [self cancelPopover:nil];
 }
@@ -787,8 +1025,8 @@
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.4];
     [UIView setAnimationDelegate:self];
-    textView.frame = textViewRect;
-    tableViewController.tableView.frame = bottomViewRect;
+   // textView.frame = textViewRect;
+   // tableViewController.tableView.frame = bottomViewRect;
     
     [UIView commitAnimations];
 }
@@ -823,13 +1061,21 @@
         NSMutableString *text = [NSMutableString stringWithFormat:@"Scheduled Date: %@\n\n%@",selectedDate, myData.selectedAppointment.text];
         textView.text = text;      
         }
-        //Add EDIT button to the navigation Bar. 
-        UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editSelectedRow)];
-        self.navigationItem.rightBarButtonItem  = rightButton;
-        [rightButton release];
-        self.navigationItem.rightBarButtonItem.tag = 1;
-        [self.navigationItem.rightBarButtonItem setStyle:UIBarButtonItemStylePlain]; 
+
+    
+        UIImage *menuButtonImage = [UIImage imageNamed:@"edit_light.png"];
+        UIImage *menuButtonImageHighlighted = [UIImage imageNamed:@"edit.png"];
+        UIButton *menuButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [menuButton setImage:menuButtonImage forState:UIControlStateNormal];
+        [menuButton setImage:menuButtonImageHighlighted forState:UIControlStateHighlighted];	
+        menuButton.frame = CGRectMake(0, 0, menuButtonImage.size.width, menuButtonImage.size.height);
+        UIBarButtonItem *menuBarButton = [[UIBarButtonItem alloc] initWithCustomView:menuButton];
+        [menuButton addTarget:self action:@selector(editSelectedRow) forControlEvents:UIControlEventTouchUpInside];
+        self.navigationItem.rightBarButtonItem = menuBarButton;
+        [menuBarButton release];
+
     NSLog(@"In displaySelectedRow Method");
+    
     return;
 }
 
@@ -856,7 +1102,6 @@
     [tableViewController.tableView setAllowsSelection:NO];
 }
 
-
 #pragma mark -
 #pragma mark Text View Delegate Methods
 
@@ -872,20 +1117,18 @@
 #pragma mark Responding to keyboard events
 
 - (void)keyboardWillShow:(NSNotification *)notification {
-    /* Reduce the size of the text view so that it's not obscured by the keyboard.
-     Animate the resize so that it's in sync with the appearance of the keyboard. */
+    NSLog(@"CalendarViewController: Keyboard will show notification received.");
     NSDictionary *userInfo = [notification userInfo];
     NSValue* aValue = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey]; // Get the origin of the keyboard when it's displayed.
     
     // Get the top of the keyboard as the y coordinate of its origin in self's view's coordinate system. The bottom of the text view's frame should align with the top of the keyboard's final position.
+    
     CGRect keyboardRect = [aValue CGRectValue];
     keyboardRect = [self.view convertRect:keyboardRect fromView:nil];
-    
-    CGFloat keyboardTop = keyboardRect.origin.y;
-    CGRect newTextViewFrame = self.view.bounds;
-    if (textView.frame.origin.y+textView.frame.size.height  > keyboardTop){
-        newTextViewFrame.size.height = keyboardTop - self.view.bounds.origin.y;
-    }
+        CGFloat keyboardTop = keyboardRect.origin.y;
+        CGRect flipperFrame = flipperView.frame;
+    if (flipperFrame.origin.y < keyboardTop){
+        NSLog(@"Trying to move the flipperView");
     // Get the duration of the animation.
     NSValue *animationDurationValue = [userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey];
     NSTimeInterval animationDuration;
@@ -895,25 +1138,42 @@
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:animationDuration];
     //[self.navigationController.navigationBar setHidden:YES];
-    CGRect endFrame = bottomViewRect;
-    endFrame.origin.y  = keyboardTop;
-    [UIView commitAnimations];
+        textView.frame = textViewRect;
+        flipperFrame.origin.y  = keyboardTop;
+        flipperView.frame = flipperFrame;
+        [UIView commitAnimations];
+    }
+    
 }
 
 - (void)keyboardWillHide:(NSNotification *)notification {
     NSDictionary* userInfo = [notification userInfo];    
     NSValue *animationDurationValue = [userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey];
     NSTimeInterval animationDuration;
+    CGRect textViewFrame = textView.frame;
+    CGRect flipperFrame = flipperView.frame;
+    
     [animationDurationValue getValue:&animationDuration];
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:animationDuration];
+    if (textView.superview != nil) {
+        //resize textView to allow more of the calendar to display
+        textViewFrame.size.height -= 85;
+        flipperFrame.origin.y = textViewFrame.origin.y + textViewFrame.size.height;
+        }
+    else {
+        flipperFrame.origin.y = mainFrame.origin.y;
+    }
+    textView.frame = textViewFrame;
+    flipperView.frame = flipperFrame;
+    
     [textView setAlpha:1.0];
     [UIView commitAnimations];
     if (schedulerPopover.view.superview == nil){
         [self.navigationController.navigationBar setHidden:NO];
     }
     //set condition - if table is up then move table down.
-    [self moveTableViewDown];
+    //[self moveTableViewDown];
 }
 
 #pragma mark -
@@ -921,17 +1181,17 @@
 
 - (void) dismissKeyboard{
     [self.view endEditing:YES];
-    [self moveTableViewDown];
     [schedulerPopover dismissPopoverAnimated:YES];
     [self.navigationController.navigationBar setHidden:NO];
 }
 
 - (void) moveTableViewUp{
+    /*
     [[NSNotificationCenter defaultCenter] postNotificationName:@"tableViewMovedUpNotification" object:nil];
     [tableViewController.tableView removeFromSuperview];
-    if (tableViewController.tableView.superview == nil){
-        [self.view addSubview:tableViewController.tableView];
-    }
+    //if (tableViewController.tableView.superview == nil){
+      //  [self.view addSubview:tableViewController.tableView];
+    //}
     //UIView *topRight = [[UIView alloc] initWithFrame:CGRectMake(160, 5, 156, 189)];
     //[topRight setBackgroundColor:[UIColor blackColor]];
     //[topRight.layer setCornerRadius:5.0];
@@ -939,33 +1199,36 @@
     //[tableViewController.tableView removeFromSuperview];
     //[topRight addSubview:tableViewController.tableView];
     
-    tableViewController.tableView.frame = CGRectZero;
-    CGRect frame = bottomViewRect;
-    frame.origin.x = 160.0;
-    frame.size.width = 155.0;
-    tableViewController.tableView.frame = self.view.frame; 
+    //tableViewController.tableView.frame = CGRectZero;
+    //CGRect frame = bottomViewRect;
+    //frame.origin.x = 160.0;
+    //frame.size.width = 155.0;
+    //tableViewController.tableView.frame = self.view.frame; 
     
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:0.5];
-    [UIView setAnimationDelegate:self];
+    //[UIView beginAnimations:nil context:NULL];
+    //[UIView setAnimationDuration:0.5];
+    //[UIView setAnimationDelegate:self];
 
-    [self.navigationController.navigationBar setHidden:YES];
+    //[self.navigationController.navigationBar setHidden:YES];
     [tableViewController.tableView setFrame:CGRectMake(160, 3, 155, 189)];
 
     //[tableViewController.tableView setRowHeight:25.0];
-    [tableViewController.tableView.layer setCornerRadius:5.0];
+    //[tableViewController.tableView.layer setCornerRadius:5.0];
     //[tableViewController.tableView setBackgroundColor:[UIColor whiteColor]];
-    [tableViewController.tableView setAlpha:1];
-    [UIView commitAnimations];
+    //[tableViewController.tableView setAlpha:1];
+    //[UIView commitAnimations];
+     */
+    return;
 }
 
 - (void) moveTableViewDown{
+    /*
     [[NSNotificationCenter defaultCenter] postNotificationName:@"tableViewMovedDownNotification" object:nil];
 
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.5];
     [UIView setAnimationDelegate:self];
-    tableViewController.tableView.frame = bottomViewRect; 
+    //tableViewController.tableView.frame = bottomViewRect; 
     //[tableViewController.tableView setRowHeight:40.0];
     [tableViewController.tableView.layer setCornerRadius:0.0];
     [tableViewController.tableView setBackgroundColor:[UIColor whiteColor]];
@@ -973,7 +1236,13 @@
     [tableViewController.tableView setAlpha:1.0];
 
     [UIView commitAnimations];
+     */
+    return;
 }
+/*
+- (UIImage *)flipperImageForAtomicElementNavigationItem {
+*/
+
 
 - (void) doneAction{
     if (newAppointment.doDate == nil || newAppointment.text == @""){
@@ -985,10 +1254,17 @@
     
     MyDataObject *myData = [self myDataObject];
 
-    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:nil];
-    //todo connect button to a method
-    self.navigationItem.rightBarButtonItem = rightButton;
-    [rightButton release];
+    UIImage *menuButtonImage = [UIImage imageNamed:@"edit_light.png"];
+    UIImage *menuButtonImageHighlighted = [UIImage imageNamed:@"edit.png"];
+    UIButton *menuButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [menuButton setImage:menuButtonImage forState:UIControlStateNormal];
+    [menuButton setImage:menuButtonImageHighlighted forState:UIControlStateHighlighted];	
+    menuButton.frame = CGRectMake(0, 0, menuButtonImage.size.width, menuButtonImage.size.height);
+    UIBarButtonItem *menuBarButton = [[UIBarButtonItem alloc] initWithCustomView:menuButton];
+    [menuButton addTarget:self action:@selector(editSelectedRow) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.rightBarButtonItem = menuBarButton;
+    [menuBarButton release];
+    
     if ([myData.noteType intValue]==1) {
         newAppointment.text = textView.text;
         NSString *selectedDate = [dateFormatter stringFromDate:newAppointment.doDate];
@@ -1053,6 +1329,7 @@
     tableViewController.tableView.frame = mainFrame;
     
     //right button - add new item - persists as long as cal/tv is full screen
+    
     UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithTitle:@"New" style:UIBarButtonItemStyleBordered target:self action:@selector(addItem:)];
     self.navigationItem.leftBarButtonItem  = leftButton;
     [leftButton release];

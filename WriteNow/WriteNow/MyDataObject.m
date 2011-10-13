@@ -12,7 +12,7 @@
 @implementation MyDataObject
 
 @synthesize myDate;
-@synthesize  noteType, myText, isEditing;
+@synthesize  noteType, myText, isEditing, saveType;
 @synthesize myNote, selectedMemo, selectedTask, selectedAppointment;
 
 
@@ -25,6 +25,7 @@
     self.selectedTask = nil;
     self.selectedAppointment = nil;
     self.isEditing = nil;
+    self.saveType = nil;
 	[super dealloc];
 }
 

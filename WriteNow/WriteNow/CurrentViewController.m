@@ -9,14 +9,8 @@
 #import "CurrentViewController.h"
 #import "WriteNowAppDelegate.h"
 
-#import "CustomTextView.h"
 #import "CustomToolBarMainView.h"
-
 #import "CurrentTableViewController.h"
-
-#import "CalendarViewController.h"
-#import "FoldersViewController.h"
-
 #import "MyDataObject.h"
 #import "AppDelegateProtocol.h"
 
@@ -25,7 +19,6 @@
 @synthesize managedObjectContext;
 @synthesize tableViewController;
 @synthesize textView;
-@synthesize previousTextInput;
 @synthesize toolBar;
 @synthesize navPopover;
 
@@ -34,7 +27,7 @@
 #define tabBarHeight self.tabBarController.tabBar.frame.size.height
 #define navBarHeight self.navigationController.navigationBar.frame.size.height
 #define toolBarRect CGRectMake(screenRect.size.width, 0, screenRect.size.width, 40)
-#define textViewRect CGRectMake(5, navBarHeight+10, screenRect.size.width-10, 140)
+#define textViewRect CGRectMake(5, navBarHeight+5, screenRect.size.width-10, 140)
 #define bottomViewRect CGRectMake(0, textViewRect.origin.y+textViewRect.size.height+10, screenRect.size.width, screenRect.size.height-textViewRect.origin.y-textViewRect.size.height-10)
 
 - (MyDataObject *) myDataObject {
@@ -46,7 +39,7 @@
 
 - (void)dealloc {
     [super dealloc];
-    [textView release];
+    [self.textView release];
     [tableViewController release];
     [managedObjectContext release];
     [toolBar release];
@@ -55,11 +48,14 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    NSLog(@"CURRENTVIEWCONTROLLER: MEMORY WARNING");
+    NSLog(@"CURRENT VIEWCONTROLLER: MEMORY WARNING");
 }
 
 - (void)viewDidUnload{
     [super viewDidUnload];
+    self.textView = nil;
+    tableViewController =nil;
+    toolBar = nil;
     // Release any retained subviews of the main view.
     [[NSNotificationCenter defaultCenter] removeObserver:self];   
 }
@@ -72,6 +68,8 @@
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad {
+    self.title = @"Write Now";
+
     [super viewDidLoad];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
@@ -82,24 +80,15 @@
 		managedObjectContext = [(WriteNowAppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext]; 
         NSLog(@"CURRENT VIEWCONTROLLER: After managedObjectContext: %@",  managedObjectContext);
 	}    
-    self.title = @"Write Now";
     //[self.view setBackgroundColor:[UIColor colorWithRed:0.2 green:0.2 blue:0.5 alpha:1]];
     UIImage *background = [UIImage imageNamed:@"wallpaper.png"];
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:background]];
-    
-    previousTextInput = @"";
-    
-    //TEXTVIEW: setup and add to self.view
-    textView = [[CustomTextView alloc] initWithFrame:textViewRect];
-    textView.delegate = self;    
-   // UIImage *patternImage = [UIImage imageNamed:@"54700.png"];
-    //self.textView.backgroundColor = [UIColor colorWithPatternImage:patternImage];
-    [self.view addSubview:textView];
-    MyDataObject *myData = [self myDataObject];
-    myData.isEditing = [NSNumber numberWithInt:0];
 }
 
 - (void) viewWillAppear:(BOOL)animated{
+    MyDataObject *myData = [self myDataObject];
+    myData.isEditing = [NSNumber numberWithInt:0];
+    
     if (self.navigationController.navigationBarHidden == YES){
         self.navigationController.navigationBarHidden = NO;
     }
@@ -115,12 +104,18 @@
     [toolBar.fourthButton setAction:@selector(send:)];
     [toolBar.dismissKeyboard setTarget:self];
     [toolBar.dismissKeyboard setAction:@selector(dismissKeyboard)];
-
+    if (textView == nil){
+        textView = [[CustomTextView alloc] initWithFrame:CGRectMake(textViewRect.origin.x, -(textViewRect.size.height+textViewRect.origin.y), textViewRect.size.width, textViewRect.size.height)];
+    }
+    if (textView.superview == nil) {
+        [self.view addSubview:textView];
+    }
+    textView.delegate = self;    
     textView.inputAccessoryView = toolBar;
     
     if (tableViewController == nil) {
         tableViewController = [[CurrentTableViewController alloc]init];
-    }
+        }
     
     if (tableViewController.tableView.superview == nil) {
         [self.view addSubview:tableViewController.tableView];
@@ -129,8 +124,6 @@
     [tableViewController.tableView setSectionHeaderHeight:18];
     tableViewController.tableView.rowHeight = 48.0;
     //[tableViewController.tableView setTableHeaderView:tableLabel];
-
-    //CGRect startFrame = CGRectMake(-screenRect.size.width, bottomViewRect.origin.y, bottomViewRect.size.width, bottomViewRect.size.height);
     
     CGRect startFrame = CGRectMake(bottomViewRect.origin.x, screenRect.size.height, bottomViewRect.size.width, bottomViewRect.size.height);
     tableViewController.tableView.frame = startFrame;   
@@ -138,25 +131,29 @@
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.4];    
     [UIView setAnimationDelegate:self];
+    textView.frame = textViewRect;
     tableViewController.tableView.frame = bottomViewRect;
    
     [UIView commitAnimations]; 
     
     NSIndexPath *tableSelection = [tableViewController.tableView indexPathForSelectedRow];
 	[tableViewController.tableView deselectRowAtIndexPath:tableSelection animated:NO];
+    NSLog(@"Current View Controller Subviews: %@", [self.view subviews]);
 }
 
 - (void) viewWillDisappear:(BOOL)animated{
     [[NSNotificationCenter defaultCenter] removeObserver:nil name: UITableViewSelectionDidChangeNotification object:nil];
-
+    [self.textView removeFromSuperview];
+    //[self.textView release];
+    self.textView = nil;
     [tableViewController.tableView removeFromSuperview];
-    [navPopover setDelegate:nil];
-    [navPopover autorelease];
-    navPopover = nil;
-    tableViewController.tableView = nil;
     [tableViewController release];
     tableViewController = nil;
+    [navPopover setDelegate:nil];
+    [navPopover release];
+    navPopover = nil;
     [toolBar release];
+    toolBar = nil;
 }
 
 #pragma mark -

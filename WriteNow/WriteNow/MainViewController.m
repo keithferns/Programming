@@ -13,7 +13,7 @@
 
 #import "CurrentViewController.h"
 #import "CalendarViewController.h"
-#import "FoldersViewController.h"
+#import "FoldersFilesViewController.h"
 #import "DiaryViewController.h"
 #import "SettingsViewController.h"
 
@@ -37,6 +37,7 @@
 - (void)didReceiveMemoryWarning{
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
+    NSLog(@"memory warning received - mainview controller");
     // Release any cached data, images, etc that aren't in use.
 }
 
@@ -58,23 +59,26 @@
     NSLog(@"Main View Did Load: %@", self.tabBarItem.title);
     if(self.tabBarItem.title == @"Today") {
     CurrentViewController *viewController = [[CurrentViewController alloc] init];
-
+        viewController.managedObjectContext = self.managedObjectContext;
     [self pushViewController:viewController animated:YES];
     [viewController release];
     }
     else if (self.tabBarItem.title == @"Calendar") {	
     CalendarViewController *viewController = [[CalendarViewController alloc] init];
     [self pushViewController:viewController animated:YES];
+        viewController.managedObjectContext =self.managedObjectContext;
     [viewController release];
     } 
     else if (self.tabBarItem.title == @"Archive") {	
-    FoldersViewController *viewController = [[FoldersViewController alloc] init];
+    FoldersFilesViewController *viewController = [[FoldersFilesViewController alloc] init];
+        viewController.managedObjectContext = self.managedObjectContext;
     [self pushViewController:viewController animated:YES];
     [viewController release];
     } 
     else if (self.tabBarItem.title == @"Diary") {	
     DiaryViewController  *viewController = [[DiaryViewController alloc] init];
     [self pushViewController:viewController animated:YES];
+        viewController.managedObjectContext =self.managedObjectContext;
     [viewController release];
     } 
     else if (self.tabBarItem.title == @"Settings") {	
@@ -82,7 +86,6 @@
     [self pushViewController:viewController animated:YES];
     [viewController release];
     }
-
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation{

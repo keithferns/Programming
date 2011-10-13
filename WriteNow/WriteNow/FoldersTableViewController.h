@@ -14,7 +14,7 @@
     NSFetchedResultsController *_fetchedResultsController;
     NSManagedObjectContext *managedObjectContext;
     UISearchBar *searchBar;
-    BOOL isFolderView;
+    //BOOL isFolderView;
 
 }
 

@@ -1,5 +1,5 @@
 //
-//  FoldersViewController.h
+//  FoldersFilesViewController.h
 //  WriteNow
 //
 //  Created by Keith Fernandes on 8/17/11.
@@ -12,7 +12,7 @@
 #import "CustomTextView.h"
 
 
-@interface FoldersViewController : UIViewController <UITextViewDelegate, UITextFieldDelegate, PopoverControllerDelegate> {
+@interface FoldersFilesViewController : UIViewController <UITextViewDelegate, UITextFieldDelegate, PopoverControllerDelegate> {
     
     NSManagedObjectContext *managedObjectContext;
     UITableViewController *tableViewController;
@@ -23,6 +23,7 @@
     BOOL swappingViews, isSelected;
     CustomToolBar *toolBar;
     WEPopoverController *navPopover;
+    UIView *flipperView;
 
 }
 
@@ -37,15 +38,15 @@
 @property (nonatomic, retain) CustomToolBar *toolBar;
 @property (nonatomic, retain) UIButton *saveNewFolderButton;
 @property (nonatomic, retain) WEPopoverController *navPopover;
-
+@property (nonatomic,retain) UIButton *flipIndicatorButton;
+@property (assign) BOOL frontViewIsVisible;
+@property (nonatomic, retain) UIView *flipperView;
 
 - (void) makeFolderFile:(id)sender;
 
 - (void) dismissKeyboard;
 - (void) makeFolder;
 - (void) makeFile;
-
-- (void) addFolderFile:(UIBarButtonItem *)barButtonItem;
 
 
 @end

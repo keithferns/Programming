@@ -39,7 +39,7 @@
     	
     // Create instances of the MainViewController for the 4 TabBar buttons
 	MainViewController *viewController1 = [[[MainViewController alloc] initWithNibName:nil bundle:nil] autorelease];
-    viewController1.managedObjectContext = self.managedObjectContext;
+    //viewController1.managedObjectContext = self.managedObjectContext;
 	viewController1.tabBarItem.title = @"Today";
     UIImage *dayCalendarImage = [UIImage imageNamed:@"179-notepad.png"];
 	[viewController1.tabBarItem setImage:dayCalendarImage];
@@ -54,14 +54,14 @@
     viewController2.tabBarItem.tag = 2;
 
     MainViewController *viewController3 = [[[MainViewController alloc] initWithNibName:nil bundle:nil] autorelease];
-    viewController3.managedObjectContext = self.managedObjectContext;
+    //viewController3.managedObjectContext = self.managedObjectContext;
 	viewController3.tabBarItem.title = @"Archive";
     UIImage *archiveImage = [UIImage imageNamed:@"storage_24.png"];	
 	[viewController3.tabBarItem setImage:archiveImage];
     viewController3.tabBarItem.tag = 3;
     
     MainViewController *viewController4 = [[[MainViewController alloc] initWithNibName:nil bundle:nil] autorelease];
-    viewController4.managedObjectContext = self.managedObjectContext;
+    //viewController4.managedObjectContext = self.managedObjectContext;
 	viewController4.tabBarItem.title = @"Diary";
     UIImage *documentImage = [UIImage imageNamed:@"book_24.png"];	
 	[viewController4.tabBarItem setImage:documentImage];

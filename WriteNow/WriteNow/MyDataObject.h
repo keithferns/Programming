@@ -19,6 +19,7 @@
     NSDate *myDate;
     NSString *myText;
     NSNumber *isEditing;
+    NSNumber *saveType;
 }
 
 @property (nonatomic, retain) Note *myNote;
@@ -28,5 +29,6 @@
 @property (nonatomic, retain) Appointment *selectedAppointment;
 @property (nonatomic, retain) Task *selectedTask;
 @property (nonatomic, retain) Memo *selectedMemo;
+@property (nonatomic, retain) NSNumber *saveType;
 
 @end

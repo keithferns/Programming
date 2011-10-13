@@ -12,7 +12,7 @@
 
 @synthesize dateField, startTimeField, endTimeField, recurringField;
 @synthesize button1, button2;
-
+@synthesize tableViewController;
 
 #define screenRect [[UIScreen mainScreen] applicationFrame]
 #define toolBarRect CGRectMake(screenRect.size.width, 0, screenRect.size.width, 40)
@@ -46,14 +46,14 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateFields:) name:@"PopOverShouldUpdateNotification" object:nil];
    
     
-    button1 = [[UIButton alloc] initWithFrame:CGRectMake(5, 5, 40, 40)];
+    button1 = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
     //[button1 setTitle:@"Done" forState:UIControlStateNormal];
     [button1 setImage:[UIImage imageNamed:@"red_round.png"] forState:UIControlStateNormal];
     [button1 setTag:1];
     [button1.layer setCornerRadius:10.0];
     [button1 addTarget:self.parentViewController action:@selector(cancelPopover:) forControlEvents:UIControlEventTouchUpInside];
     
-    button2 = [[UIButton alloc] initWithFrame:CGRectMake(95, 5, 40, 40)];
+    button2 = [[UIButton alloc] initWithFrame:CGRectMake(260, 0, 40, 40)];
     //[button2 setTitle:@"Done" forState:UIControlStateNormal];
     [button2 setImage:[UIImage imageNamed:@"blue_round.png"] forState:UIControlStateNormal];
     [button2 setTag:2];
@@ -64,6 +64,8 @@
     [self.view addSubview:button2];
     [button1 release];
     [button2 release];
+    [tableViewController.tableView setFrame:CGRectMake(145, 43, 145, 140)];
+    [self.view  addSubview:tableViewController.tableView];
 }
 
 - (void) viewWillAppear:(BOOL)animated{
@@ -89,8 +91,6 @@
 
 - (void) updateFields:(NSNotification *) notification {
     NSDictionary *inputObjects = [notification userInfo];    
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"EEE, MMM d, yyyy"];
     
     switch ([[inputObjects objectForKey:@"num"] intValue]) {
         case 1:
@@ -98,7 +98,7 @@
             if (dateField.superview == nil) {
                 NSLog(@"DateField.superView is nil. Adding");
                 dateField = [[CustomTextField alloc] init];
-                [dateField setFrame:CGRectMake(0, 50, 140, 40)];
+                [dateField setFrame:CGRectMake(0, 43, 140, 40)];
                 dateField.tag = 12;
                 [dateField setPlaceholder:@"Date:"];
                 [self.view addSubview:dateField];
@@ -112,14 +112,17 @@
                 [dateFormatter setDateFormat:@"EEE, MMM d, yyyy"];
                 self.dateField.text = [dateFormatter stringFromDate:tempAppointment.doDate];
                 [dateFormatter release];
-                [tempAppointment release];
             }
             break;
         
         case 2:
             NSLog(@"GetDateNotification Received: Updating DateField");
+            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+            [dateFormatter setDateFormat:@"EEE, MMM d, yyyy"];
             NSString *dateString = [dateFormatter stringFromDate:[notification object]];
             [dateField setText:dateString];
+            [dateFormatter release];
+
             break;
         case 3:
             NSLog(@"PopOverShoudlUpdate Notification Recieved:Adding StartTimeField");
@@ -136,15 +139,17 @@
         
         case 4: 
             NSLog(@"PopOverShoudlUpdate Notification Recieved:Updating StartTimeField OR EndTimeField");
-            [dateFormatter setDateFormat:@"hh:mm a"];
+            NSDateFormatter *timeFormatter = [[NSDateFormatter alloc] init];
+            [timeFormatter setDateFormat:@"hh:mm a"];
             if ([startTimeField isFirstResponder]){
-                NSString *timeString = [dateFormatter stringFromDate:[notification object]];
+                NSString *timeString = [timeFormatter stringFromDate:[notification object]];
                 [startTimeField setText:timeString];
             }
             else if ([endTimeField isFirstResponder]){
-                NSString *timeString = [dateFormatter stringFromDate:[notification object]];
+                NSString *timeString = [timeFormatter stringFromDate:[notification object]];
                 [endTimeField setText:timeString];
             }
+            [timeFormatter release];
             break;
             
         case 5:
@@ -183,7 +188,6 @@
         default:
             break;
  
-    [dateFormatter  release];
             }
         }
 @end

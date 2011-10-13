@@ -21,11 +21,10 @@
         //[self setAccessoryType:UITableViewCellAccessoryDetailDisclosureButton];
         
         textLabel = [[UILabel alloc]initWithFrame:CGRectMake(65, 0, 200, 40)];
+        [textLabel setMinimumFontSize:10.0];
         [textLabel setAdjustsFontSizeToFitWidth:YES];
         [textLabel setTextAlignment:UITextAlignmentLeft];
         [textLabel setBounds:CGRectMake(5, 0, textLabel.frame.size.width, textLabel.frame.size.height)];//???
-
-        
         
         startTimeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 60, 20)];
         [startTimeLabel setBackgroundColor:[UIColor colorWithWhite:0.3 alpha:0.2]];

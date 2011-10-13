@@ -9,6 +9,16 @@
 /* Begin PBXBuildFile section */
 		530153B31437A707005BC977 /* clock_running_black1.png in Resources */ = {isa = PBXBuildFile; fileRef = 530153B21437A6F5005BC977 /* clock_running_black1.png */; };
 		530153B51437A7D0005BC977 /* 179-notepad_22x25.png in Resources */ = {isa = PBXBuildFile; fileRef = 530153B41437A7B8005BC977 /* 179-notepad_22x25.png */; };
+		530BD5F9144187A900663128 /* calendar_date_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 530BD5F8144187A900663128 /* calendar_date_background.png */; };
+		530BD5FC1441931A00663128 /* add_item_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 530BD5FB1441930400663128 /* add_item_white.png */; };
+		530BD63E1443B4F000663128 /* edit_item_white_on_blue_bkg_30x30.png in Resources */ = {isa = PBXBuildFile; fileRef = 530BD63D1443B4DD00663128 /* edit_item_white_on_blue_bkg_30x30.png */; };
+		530BD6401443B5D900663128 /* calendar_bkg_on_blue_bkg.png in Resources */ = {isa = PBXBuildFile; fileRef = 530BD63F1443B5C700663128 /* calendar_bkg_on_blue_bkg.png */; };
+		530BD6421443B91300663128 /* list_white_on_blue_bkg.png in Resources */ = {isa = PBXBuildFile; fileRef = 530BD6411443B90200663128 /* list_white_on_blue_bkg.png */; };
+		530BD64C1443EDC300663128 /* folder_white_on_blue_bkg.png in Resources */ = {isa = PBXBuildFile; fileRef = 530BD64B1443EDAF00663128 /* folder_white_on_blue_bkg.png */; };
+		530BD64E1443EDEB00663128 /* pages_white_on_blue_bkg.png in Resources */ = {isa = PBXBuildFile; fileRef = 530BD64D1443EDD800663128 /* pages_white_on_blue_bkg.png */; };
+		530BD6521443FC3A00663128 /* FilesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 530BD6511443FC3A00663128 /* FilesTableViewController.m */; };
+		530BD66014445BE500663128 /* CalendarTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 530BD65F14445BE500663128 /* CalendarTableViewController.m */; };
+		530BD66414449E8900663128 /* NotesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 530BD66314449E8900663128 /* NotesTableViewController.m */; };
 		530DA07813FAFEDB0044914D /* WriteNow.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 530DA07613FAFEDB0044914D /* WriteNow.xcdatamodeld */; };
 		53119A8814327599003B7182 /* 11-clock.png in Resources */ = {isa = PBXBuildFile; fileRef = 53119A2514327599003B7182 /* 11-clock.png */; };
 		53119A8914327599003B7182 /* clock_running_black.png in Resources */ = {isa = PBXBuildFile; fileRef = 53119A2614327599003B7182 /* clock_running_black.png */; };
@@ -116,12 +126,9 @@
 		5315678313FB4B630044C5A9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5315678213FB4B620044C5A9 /* QuartzCore.framework */; };
 		531567A013FB665F0044C5A9 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5315679F13FB665F0044C5A9 /* SettingsViewController.m */; };
 		531567B113FB7F7F0044C5A9 /* CurrentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 531567AF13FB7F7F0044C5A9 /* CurrentViewController.m */; };
-		531567B213FB7F7F0044C5A9 /* CurrentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 531567B013FB7F7F0044C5A9 /* CurrentViewController.xib */; };
 		531567F513FB83560044C5A9 /* CalendarViewController_2.m in Sources */ = {isa = PBXBuildFile; fileRef = 531567F313FB83560044C5A9 /* CalendarViewController_2.m */; };
-		531567F613FB83560044C5A9 /* CalendarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 531567F413FB83560044C5A9 /* CalendarViewController.xib */; };
 		531567FA13FB83800044C5A9 /* DiaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 531567F813FB83800044C5A9 /* DiaryViewController.m */; };
-		531567FF13FB83B00044C5A9 /* FoldersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 531567FD13FB83B00044C5A9 /* FoldersViewController.m */; };
-		5315680013FB83B00044C5A9 /* FoldersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 531567FE13FB83B00044C5A9 /* FoldersViewController.xib */; };
+		531567FF13FB83B00044C5A9 /* FoldersFilesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 531567FD13FB83B00044C5A9 /* FoldersFilesViewController.m */; };
 		532C02671423CF9400C51DAE /* WEPopoverContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 532C02631423CF9400C51DAE /* WEPopoverContainerView.m */; };
 		532C02681423CF9400C51DAE /* WEPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 532C02651423CF9400C51DAE /* WEPopoverController.m */; };
 		532C02741423CFDC00C51DAE /* popoverArrowDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 532C026A1423CFDC00C51DAE /* popoverArrowDown.png */; };
@@ -143,7 +150,6 @@
 		533D3D44140017130043833E /* DiaryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 533D3D43140017130043833E /* DiaryTableViewController.m */; };
 		533D3D47140017EE0043833E /* TasksTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 533D3D46140017EE0043833E /* TasksTableViewController.m */; };
 		533D3D55140089B60043833E /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 533D3D53140089B60043833E /* DetailViewController.m */; };
-		533D3D56140089B60043833E /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 533D3D54140089B60043833E /* DetailViewController.xib */; };
 		53485BF313FC4EBD001CA9EB /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = 53485BF213FC4EBD001CA9EB /* Place.m */; };
 		53485BF613FC4EBD001CA9EB /* Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = 53485BF513FC4EBD001CA9EB /* Tag.m */; };
 		53485BF913FC4EBD001CA9EB /* Folder.m in Sources */ = {isa = PBXBuildFile; fileRef = 53485BF813FC4EBD001CA9EB /* Folder.m */; };
@@ -157,10 +163,8 @@
 		5360184A141F1A9800F703A6 /* AppDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 53601849141F1A9800F703A6 /* AppDataObject.m */; };
 		5360184D141F1D1D00F703A6 /* MyDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 5360184C141F1D1C00F703A6 /* MyDataObject.m */; };
 		537AD84F1400C9B900259452 /* FoldersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 537AD84E1400C9B900259452 /* FoldersTableViewController.m */; };
-		53980E79140779A200833716 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53980E78140779A200833716 /* SettingsViewController.xib */; };
 		53980E8A1408051500833716 /* CustomTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 53980E891408051500833716 /* CustomTextView.m */; };
 		53980E9514095FF700833716 /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53980E9314095FF700833716 /* CalendarViewController.m */; };
-		53980E9614095FF700833716 /* AddEntityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53980E9414095FF700833716 /* AddEntityViewController.xib */; };
 		53980E991409604500833716 /* CustomToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 53980E981409604500833716 /* CustomToolBar.m */; };
 		53A5997C140E9F1F001AD61F /* CustomToolBarMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 53A5997B140E9F1F001AD61F /* CustomToolBarMainView.m */; };
 		53A59981140EA75C001AD61F /* CurrentTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53A59980140EA75C001AD61F /* CurrentTableViewController.m */; };
@@ -180,6 +184,15 @@
 		53F3D8081415B9BB00122880 /* Appointment.m in Sources */ = {isa = PBXBuildFile; fileRef = 53F3D8071415B9BB00122880 /* Appointment.m */; };
 		53F3D80B1415BA0800122880 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 53F3D80A1415BA0800122880 /* Task.m */; };
 		53F3D80D1415C00600122880 /* 101to101a.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 53F3D80C1415C00600122880 /* 101to101a.xcmappingmodel */; };
+		53F4F9E2143EC2F9002A311C /* NSDate+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 53F4F9D4143EC2F9002A311C /* NSDate+TKCategory.m */; };
+		53F4F9E3143EC2F9002A311C /* TapkuLibrary.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 53F4F9D5143EC2F9002A311C /* TapkuLibrary.bundle */; };
+		53F4F9E4143EC2F9002A311C /* TKCalendarMonthTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53F4F9D7143EC2F9002A311C /* TKCalendarMonthTableViewController.m */; };
+		53F4F9E5143EC2F9002A311C /* TKCalendarMonthView.m in Sources */ = {isa = PBXBuildFile; fileRef = 53F4F9D9143EC2F9002A311C /* TKCalendarMonthView.m */; };
+		53F4F9E6143EC2F9002A311C /* TKCalendarMonthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53F4F9DB143EC2F9002A311C /* TKCalendarMonthViewController.m */; };
+		53F4F9E7143EC2F9002A311C /* TKGlobal.m in Sources */ = {isa = PBXBuildFile; fileRef = 53F4F9DD143EC2F9002A311C /* TKGlobal.m */; };
+		53F4F9E8143EC2F9002A311C /* UIImage+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 53F4F9DF143EC2F9002A311C /* UIImage+TKCategory.m */; };
+		53F4F9E9143EC2F9002A311C /* UIView+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 53F4F9E1143EC2F9002A311C /* UIView+TKCategory.m */; };
+		53F4F9FF143EDAD7002A311C /* edit_light.png in Resources */ = {isa = PBXBuildFile; fileRef = 53F4F9FE143EDAD2002A311C /* edit_light.png */; };
 		53FB859E13FAEC3800765BFC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53FB859D13FAEC3800765BFC /* UIKit.framework */; };
 		53FB85A013FAEC3800765BFC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53FB859F13FAEC3800765BFC /* Foundation.framework */; };
 		53FB85A213FAEC3800765BFC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53FB85A113FAEC3800765BFC /* CoreGraphics.framework */; };
@@ -210,6 +223,19 @@
 /* Begin PBXFileReference section */
 		530153B21437A6F5005BC977 /* clock_running_black1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock_running_black1.png; sourceTree = "<group>"; };
 		530153B41437A7B8005BC977 /* 179-notepad_22x25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "179-notepad_22x25.png"; sourceTree = "<group>"; };
+		530BD5F8144187A900663128 /* calendar_date_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar_date_background.png; sourceTree = "<group>"; };
+		530BD5FB1441930400663128 /* add_item_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add_item_white.png; sourceTree = "<group>"; };
+		530BD63D1443B4DD00663128 /* edit_item_white_on_blue_bkg_30x30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edit_item_white_on_blue_bkg_30x30.png; sourceTree = "<group>"; };
+		530BD63F1443B5C700663128 /* calendar_bkg_on_blue_bkg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar_bkg_on_blue_bkg.png; sourceTree = "<group>"; };
+		530BD6411443B90200663128 /* list_white_on_blue_bkg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list_white_on_blue_bkg.png; sourceTree = "<group>"; };
+		530BD64B1443EDAF00663128 /* folder_white_on_blue_bkg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = folder_white_on_blue_bkg.png; sourceTree = "<group>"; };
+		530BD64D1443EDD800663128 /* pages_white_on_blue_bkg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pages_white_on_blue_bkg.png; sourceTree = "<group>"; };
+		530BD6501443FC3A00663128 /* FilesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilesTableViewController.h; sourceTree = "<group>"; };
+		530BD6511443FC3A00663128 /* FilesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilesTableViewController.m; sourceTree = "<group>"; };
+		530BD65E14445BE500663128 /* CalendarTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarTableViewController.h; sourceTree = "<group>"; };
+		530BD65F14445BE500663128 /* CalendarTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarTableViewController.m; sourceTree = "<group>"; };
+		530BD66214449E8900663128 /* NotesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotesTableViewController.h; sourceTree = "<group>"; };
+		530BD66314449E8900663128 /* NotesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotesTableViewController.m; sourceTree = "<group>"; };
 		530DA07713FAFEDB0044914D /* WriteNow.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WriteNow.xcdatamodel; sourceTree = "<group>"; };
 		53119A2514327599003B7182 /* 11-clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "11-clock.png"; sourceTree = "<group>"; };
 		53119A2614327599003B7182 /* clock_running_black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock_running_black.png; sourceTree = "<group>"; };
@@ -319,15 +345,12 @@
 		5315679F13FB665F0044C5A9 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		531567AE13FB7F7F0044C5A9 /* CurrentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentViewController.h; sourceTree = "<group>"; };
 		531567AF13FB7F7F0044C5A9 /* CurrentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentViewController.m; sourceTree = "<group>"; };
-		531567B013FB7F7F0044C5A9 /* CurrentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CurrentViewController.xib; sourceTree = "<group>"; };
 		531567F213FB83560044C5A9 /* CalendarViewController_2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarViewController_2.h; sourceTree = "<group>"; };
 		531567F313FB83560044C5A9 /* CalendarViewController_2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarViewController_2.m; sourceTree = "<group>"; };
-		531567F413FB83560044C5A9 /* CalendarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarViewController.xib; sourceTree = "<group>"; };
 		531567F713FB83800044C5A9 /* DiaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiaryViewController.h; sourceTree = "<group>"; };
 		531567F813FB83800044C5A9 /* DiaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiaryViewController.m; sourceTree = "<group>"; };
-		531567FC13FB83B00044C5A9 /* FoldersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoldersViewController.h; sourceTree = "<group>"; };
-		531567FD13FB83B00044C5A9 /* FoldersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoldersViewController.m; sourceTree = "<group>"; };
-		531567FE13FB83B00044C5A9 /* FoldersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FoldersViewController.xib; sourceTree = "<group>"; };
+		531567FC13FB83B00044C5A9 /* FoldersFilesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoldersFilesViewController.h; sourceTree = "<group>"; };
+		531567FD13FB83B00044C5A9 /* FoldersFilesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoldersFilesViewController.m; sourceTree = "<group>"; };
 		532C02621423CF9400C51DAE /* WEPopoverContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEPopoverContainerView.h; sourceTree = "<group>"; };
 		532C02631423CF9400C51DAE /* WEPopoverContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEPopoverContainerView.m; sourceTree = "<group>"; };
 		532C02641423CF9400C51DAE /* WEPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEPopoverController.h; sourceTree = "<group>"; };
@@ -358,7 +381,6 @@
 		533D3D46140017EE0043833E /* TasksTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TasksTableViewController.m; sourceTree = "<group>"; };
 		533D3D52140089B60043833E /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		533D3D53140089B60043833E /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
-		533D3D54140089B60043833E /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 		53485BF113FC4EBD001CA9EB /* Place.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Place.h; sourceTree = "<group>"; };
 		53485BF213FC4EBD001CA9EB /* Place.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Place.m; sourceTree = "<group>"; };
 		53485BF413FC4EBD001CA9EB /* Tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tag.h; sourceTree = "<group>"; };
@@ -383,12 +405,10 @@
 		5360184C141F1D1C00F703A6 /* MyDataObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDataObject.m; sourceTree = "<group>"; };
 		537AD84D1400C9B900259452 /* FoldersTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoldersTableViewController.h; sourceTree = "<group>"; };
 		537AD84E1400C9B900259452 /* FoldersTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoldersTableViewController.m; sourceTree = "<group>"; };
-		53980E78140779A200833716 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		53980E881408051400833716 /* CustomTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextView.h; sourceTree = "<group>"; };
 		53980E891408051500833716 /* CustomTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextView.m; sourceTree = "<group>"; };
 		53980E9214095FF700833716 /* CalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarViewController.h; sourceTree = "<group>"; };
 		53980E9314095FF700833716 /* CalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarViewController.m; sourceTree = "<group>"; };
-		53980E9414095FF700833716 /* AddEntityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddEntityViewController.xib; sourceTree = "<group>"; };
 		53980E971409604500833716 /* CustomToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomToolBar.h; sourceTree = "<group>"; };
 		53980E981409604500833716 /* CustomToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomToolBar.m; sourceTree = "<group>"; };
 		53980E9B1409736B00833716 /* AppointmentsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppointmentsTableViewController.h; sourceTree = "<group>"; };
@@ -421,6 +441,22 @@
 		53F3D8091415BA0800122880 /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
 		53F3D80A1415BA0800122880 /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
 		53F3D80C1415C00600122880 /* 101to101a.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = 101to101a.xcmappingmodel; sourceTree = "<group>"; };
+		53F4F9D3143EC2F9002A311C /* NSDate+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+TKCategory.h"; sourceTree = "<group>"; };
+		53F4F9D4143EC2F9002A311C /* NSDate+TKCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+TKCategory.m"; sourceTree = "<group>"; };
+		53F4F9D5143EC2F9002A311C /* TapkuLibrary.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TapkuLibrary.bundle; sourceTree = "<group>"; };
+		53F4F9D6143EC2F9002A311C /* TKCalendarMonthTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKCalendarMonthTableViewController.h; sourceTree = "<group>"; };
+		53F4F9D7143EC2F9002A311C /* TKCalendarMonthTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKCalendarMonthTableViewController.m; sourceTree = "<group>"; };
+		53F4F9D8143EC2F9002A311C /* TKCalendarMonthView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKCalendarMonthView.h; sourceTree = "<group>"; };
+		53F4F9D9143EC2F9002A311C /* TKCalendarMonthView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKCalendarMonthView.m; sourceTree = "<group>"; };
+		53F4F9DA143EC2F9002A311C /* TKCalendarMonthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKCalendarMonthViewController.h; sourceTree = "<group>"; };
+		53F4F9DB143EC2F9002A311C /* TKCalendarMonthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKCalendarMonthViewController.m; sourceTree = "<group>"; };
+		53F4F9DC143EC2F9002A311C /* TKGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKGlobal.h; sourceTree = "<group>"; };
+		53F4F9DD143EC2F9002A311C /* TKGlobal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKGlobal.m; sourceTree = "<group>"; };
+		53F4F9DE143EC2F9002A311C /* UIImage+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+TKCategory.h"; sourceTree = "<group>"; };
+		53F4F9DF143EC2F9002A311C /* UIImage+TKCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+TKCategory.m"; sourceTree = "<group>"; };
+		53F4F9E0143EC2F9002A311C /* UIView+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+TKCategory.h"; sourceTree = "<group>"; };
+		53F4F9E1143EC2F9002A311C /* UIView+TKCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+TKCategory.m"; sourceTree = "<group>"; };
+		53F4F9FE143EDAD2002A311C /* edit_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edit_light.png; sourceTree = "<group>"; };
 		53FB859913FAEC3800765BFC /* WriteNow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WriteNow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		53FB859D13FAEC3800765BFC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		53FB859F13FAEC3800765BFC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -468,32 +504,58 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5315678913FB62E40044C5A9 /* TodayViewController */ = {
+		530BD64F1443FBCE00663128 /* FilesTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				530BD6501443FC3A00663128 /* FilesTableViewController.h */,
+				530BD6511443FC3A00663128 /* FilesTableViewController.m */,
+			);
+			name = FilesTableViewController;
+			sourceTree = "<group>";
+		};
+		530BD65C14445BA200663128 /* CalendarTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				530BD65E14445BE500663128 /* CalendarTableViewController.h */,
+				530BD65F14445BE500663128 /* CalendarTableViewController.m */,
+			);
+			name = CalendarTableViewController;
+			sourceTree = "<group>";
+		};
+		530BD66114449E4C00663128 /* Temp_MemosTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				530BD66214449E8900663128 /* NotesTableViewController.h */,
+				530BD66314449E8900663128 /* NotesTableViewController.m */,
+			);
+			name = Temp_MemosTableViewController;
+			sourceTree = "<group>";
+		};
+		5315678913FB62E40044C5A9 /* CurrentViewController */ = {
 			isa = PBXGroup;
 			children = (
 				53A5997E140EA727001AD61F /* CurrentTableViewController */,
 				531567AE13FB7F7F0044C5A9 /* CurrentViewController.h */,
 				531567AF13FB7F7F0044C5A9 /* CurrentViewController.m */,
-				531567B013FB7F7F0044C5A9 /* CurrentViewController.xib */,
 			);
-			name = TodayViewController;
+			name = CurrentViewController;
 			sourceTree = "<group>";
 		};
-		5315678D13FB636C0044C5A9 /* FolderViewController */ = {
+		5315678D13FB636C0044C5A9 /* FolderFilesViewController */ = {
 			isa = PBXGroup;
 			children = (
-				537AD8581400EF5E00259452 /* FilesTableViewController */,
+				530BD64F1443FBCE00663128 /* FilesTableViewController */,
 				537AD84B1400C98F00259452 /* FoldersTableViewController */,
-				531567FC13FB83B00044C5A9 /* FoldersViewController.h */,
-				531567FD13FB83B00044C5A9 /* FoldersViewController.m */,
-				531567FE13FB83B00044C5A9 /* FoldersViewController.xib */,
+				531567FC13FB83B00044C5A9 /* FoldersFilesViewController.h */,
+				531567FD13FB83B00044C5A9 /* FoldersFilesViewController.m */,
 			);
-			name = FolderViewController;
+			name = FolderFilesViewController;
 			sourceTree = "<group>";
 		};
 		5315679113FB63990044C5A9 /* DiaryViewController */ = {
 			isa = PBXGroup;
 			children = (
+				537AD8581400EF5E00259452 /* DiaryTableViewController */,
 				531567F713FB83800044C5A9 /* DiaryViewController.h */,
 				531567F813FB83800044C5A9 /* DiaryViewController.m */,
 			);
@@ -505,7 +567,6 @@
 			children = (
 				531567F213FB83560044C5A9 /* CalendarViewController_2.h */,
 				531567F313FB83560044C5A9 /* CalendarViewController_2.m */,
-				531567F413FB83560044C5A9 /* CalendarViewController.xib */,
 			);
 			name = CalendarViewController_OldVersion;
 			sourceTree = "<group>";
@@ -513,9 +574,9 @@
 		5315679D13FB663E0044C5A9 /* SettingsViewController */ = {
 			isa = PBXGroup;
 			children = (
+				530BD66114449E4C00663128 /* Temp_MemosTableViewController */,
 				5315679E13FB665F0044C5A9 /* SettingsViewController.h */,
 				5315679F13FB665F0044C5A9 /* SettingsViewController.m */,
-				53980E78140779A200833716 /* SettingsViewController.xib */,
 			);
 			name = SettingsViewController;
 			sourceTree = "<group>";
@@ -539,6 +600,16 @@
 		531567F113FB828B0044C5A9 /* pngs */ = {
 			isa = PBXGroup;
 			children = (
+				530BD64D1443EDD800663128 /* pages_white_on_blue_bkg.png */,
+				530BD64B1443EDAF00663128 /* folder_white_on_blue_bkg.png */,
+				530BD6411443B90200663128 /* list_white_on_blue_bkg.png */,
+				530BD63F1443B5C700663128 /* calendar_bkg_on_blue_bkg.png */,
+				530BD63D1443B4DD00663128 /* edit_item_white_on_blue_bkg_30x30.png */,
+				530BD5FB1441930400663128 /* add_item_white.png */,
+				530BD5F8144187A900663128 /* calendar_date_background.png */,
+				53119A4614327599003B7182 /* calendar_nav.png */,
+				53F4F9FE143EDAD2002A311C /* edit_light.png */,
+				53119A5014327599003B7182 /* edit.png */,
 				530153B41437A7B8005BC977 /* 179-notepad_22x25.png */,
 				530153B21437A6F5005BC977 /* clock_running_black1.png */,
 				53594E6E1434344100829219 /* grey_back.png */,
@@ -581,7 +652,6 @@
 				53119A4314327599003B7182 /* book_button.png */,
 				53119A4414327599003B7182 /* book_nav.png */,
 				53119A4514327599003B7182 /* calendar_24.png */,
-				53119A4614327599003B7182 /* calendar_nav.png */,
 				53119A4714327599003B7182 /* calendar.png */,
 				53119A4814327599003B7182 /* classic_folder_documents.png */,
 				53119A4914327599003B7182 /* clock_24.png */,
@@ -591,7 +661,6 @@
 				53119A4D14327599003B7182 /* documents_folder_white.png */,
 				53119A4E14327599003B7182 /* documents_white_small.png */,
 				53119A4F14327599003B7182 /* documents.png */,
-				53119A5014327599003B7182 /* edit.png */,
 				53119A5114327599003B7182 /* email_button.png */,
 				53119A5214327599003B7182 /* email_white.png */,
 				53119A5314327599003B7182 /* email.png */,
@@ -699,7 +768,6 @@
 			children = (
 				533D3D52140089B60043833E /* DetailViewController.h */,
 				533D3D53140089B60043833E /* DetailViewController.m */,
-				533D3D54140089B60043833E /* DetailViewController.xib */,
 			);
 			name = DetailViewController;
 			sourceTree = "<group>";
@@ -740,13 +808,13 @@
 			name = FoldersTableViewController;
 			sourceTree = "<group>";
 		};
-		537AD8581400EF5E00259452 /* FilesTableViewController */ = {
+		537AD8581400EF5E00259452 /* DiaryTableViewController */ = {
 			isa = PBXGroup;
 			children = (
 				533D3D42140017130043833E /* DiaryTableViewController.h */,
 				533D3D43140017130043833E /* DiaryTableViewController.m */,
 			);
-			name = FilesTableViewController;
+			name = DiaryTableViewController;
 			sourceTree = "<group>";
 		};
 		5381650E1410ED0000E90FD1 /* CustomTextView */ = {
@@ -826,9 +894,9 @@
 				5315679513FB63C20044C5A9 /* CalendarViewController_OldVersion */,
 				53A1E76F14049C7A00481EA4 /* TaskTableViewController */,
 				53980E9A1409732800833716 /* AppointmentsTableViewController */,
+				530BD65C14445BA200663128 /* CalendarTableViewController */,
 				53980E9214095FF700833716 /* CalendarViewController.h */,
 				53980E9314095FF700833716 /* CalendarViewController.m */,
-				53980E9414095FF700833716 /* AddEntityViewController.xib */,
 			);
 			name = CalendarViewController;
 			sourceTree = "<group>";
@@ -892,6 +960,36 @@
 			name = "Application Delegate";
 			sourceTree = "<group>";
 		};
+		53F4F9D0143EC2C8002A311C /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				53F4F9D2143EC2F9002A311C /* TapkuLibrary */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		53F4F9D2143EC2F9002A311C /* TapkuLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				53F4F9D3143EC2F9002A311C /* NSDate+TKCategory.h */,
+				53F4F9D4143EC2F9002A311C /* NSDate+TKCategory.m */,
+				53F4F9D5143EC2F9002A311C /* TapkuLibrary.bundle */,
+				53F4F9D6143EC2F9002A311C /* TKCalendarMonthTableViewController.h */,
+				53F4F9D7143EC2F9002A311C /* TKCalendarMonthTableViewController.m */,
+				53F4F9D8143EC2F9002A311C /* TKCalendarMonthView.h */,
+				53F4F9D9143EC2F9002A311C /* TKCalendarMonthView.m */,
+				53F4F9DA143EC2F9002A311C /* TKCalendarMonthViewController.h */,
+				53F4F9DB143EC2F9002A311C /* TKCalendarMonthViewController.m */,
+				53F4F9DC143EC2F9002A311C /* TKGlobal.h */,
+				53F4F9DD143EC2F9002A311C /* TKGlobal.m */,
+				53F4F9DE143EC2F9002A311C /* UIImage+TKCategory.h */,
+				53F4F9DF143EC2F9002A311C /* UIImage+TKCategory.m */,
+				53F4F9E0143EC2F9002A311C /* UIView+TKCategory.h */,
+				53F4F9E1143EC2F9002A311C /* UIView+TKCategory.m */,
+			);
+			path = TapkuLibrary;
+			sourceTree = "<group>";
+		};
 		53FB858E13FAEC3800765BFC = {
 			isa = PBXGroup;
 			children = (
@@ -926,15 +1024,16 @@
 		53FB85A513FAEC3800765BFC /* WriteNow */ = {
 			isa = PBXGroup;
 			children = (
+				53F4F9D0143EC2C8002A311C /* Libraries */,
 				53E979BC140476AC00B780C8 /* Application Delegate */,
 				533D3D51140089500043833E /* DetailViewController */,
 				536FBF4113FB12AA000B8B28 /* ManagedObjects */,
 				531567B313FB81F80044C5A9 /* CustomViews */,
 				5315679D13FB663E0044C5A9 /* SettingsViewController */,
 				5315679113FB63990044C5A9 /* DiaryViewController */,
-				5315678D13FB636C0044C5A9 /* FolderViewController */,
+				5315678D13FB636C0044C5A9 /* FolderFilesViewController */,
 				53980E8C14095EA800833716 /* CalendarViewController */,
-				5315678913FB62E40044C5A9 /* TodayViewController */,
+				5315678913FB62E40044C5A9 /* CurrentViewController */,
 				532F191013FB0D6500CECBD1 /* MainViewController */,
 				53FB85B113FAEC3800765BFC /* MainWindow.xib */,
 				53FB85A613FAEC3800765BFC /* Supporting Files */,
@@ -1053,13 +1152,7 @@
 			files = (
 				53FB85AA13FAEC3800765BFC /* InfoPlist.strings in Resources */,
 				53FB85B313FAEC3800765BFC /* MainWindow.xib in Resources */,
-				531567B213FB7F7F0044C5A9 /* CurrentViewController.xib in Resources */,
-				531567F613FB83560044C5A9 /* CalendarViewController.xib in Resources */,
-				5315680013FB83B00044C5A9 /* FoldersViewController.xib in Resources */,
 				533D3D3913FF99470043833E /* AppointmentCustomCell.xib in Resources */,
-				533D3D56140089B60043833E /* DetailViewController.xib in Resources */,
-				53980E79140779A200833716 /* SettingsViewController.xib in Resources */,
-				53980E9614095FF700833716 /* AddEntityViewController.xib in Resources */,
 				532C02741423CFDC00C51DAE /* popoverArrowDown.png in Resources */,
 				532C02751423CFDC00C51DAE /* popoverArrowDown@2x.png in Resources */,
 				532C02761423CFDC00C51DAE /* popoverArrowLeft.png in Resources */,
@@ -1186,6 +1279,15 @@
 				53594E6F1434344600829219 /* grey_back.png in Resources */,
 				530153B31437A707005BC977 /* clock_running_black1.png in Resources */,
 				530153B51437A7D0005BC977 /* 179-notepad_22x25.png in Resources */,
+				53F4F9E3143EC2F9002A311C /* TapkuLibrary.bundle in Resources */,
+				53F4F9FF143EDAD7002A311C /* edit_light.png in Resources */,
+				530BD5F9144187A900663128 /* calendar_date_background.png in Resources */,
+				530BD5FC1441931A00663128 /* add_item_white.png in Resources */,
+				530BD63E1443B4F000663128 /* edit_item_white_on_blue_bkg_30x30.png in Resources */,
+				530BD6401443B5D900663128 /* calendar_bkg_on_blue_bkg.png in Resources */,
+				530BD6421443B91300663128 /* list_white_on_blue_bkg.png in Resources */,
+				530BD64C1443EDC300663128 /* folder_white_on_blue_bkg.png in Resources */,
+				530BD64E1443EDEB00663128 /* pages_white_on_blue_bkg.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1229,7 +1331,7 @@
 				531567B113FB7F7F0044C5A9 /* CurrentViewController.m in Sources */,
 				531567F513FB83560044C5A9 /* CalendarViewController_2.m in Sources */,
 				531567FA13FB83800044C5A9 /* DiaryViewController.m in Sources */,
-				531567FF13FB83B00044C5A9 /* FoldersViewController.m in Sources */,
+				531567FF13FB83B00044C5A9 /* FoldersFilesViewController.m in Sources */,
 				53485BF313FC4EBD001CA9EB /* Place.m in Sources */,
 				53485BF613FC4EBD001CA9EB /* Tag.m in Sources */,
 				53485BF913FC4EBD001CA9EB /* Folder.m in Sources */,
@@ -1262,6 +1364,16 @@
 				53E78991142EC0DC00DD74A9 /* StartScreenCustomCell.m in Sources */,
 				53E789C31431924B00DD74A9 /* AppointmentsTableViewController.m in Sources */,
 				53D65F2D143AEAAB00275C4F /* SchedulePopoverViewController.m in Sources */,
+				53F4F9E2143EC2F9002A311C /* NSDate+TKCategory.m in Sources */,
+				53F4F9E4143EC2F9002A311C /* TKCalendarMonthTableViewController.m in Sources */,
+				53F4F9E5143EC2F9002A311C /* TKCalendarMonthView.m in Sources */,
+				53F4F9E6143EC2F9002A311C /* TKCalendarMonthViewController.m in Sources */,
+				53F4F9E7143EC2F9002A311C /* TKGlobal.m in Sources */,
+				53F4F9E8143EC2F9002A311C /* UIImage+TKCategory.m in Sources */,
+				53F4F9E9143EC2F9002A311C /* UIView+TKCategory.m in Sources */,
+				530BD6521443FC3A00663128 /* FilesTableViewController.m in Sources */,
+				530BD66014445BE500663128 /* CalendarTableViewController.m in Sources */,
+				530BD66414449E8900663128 /* NotesTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

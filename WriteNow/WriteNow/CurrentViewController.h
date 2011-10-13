@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "CustomToolBarMainView.h"
+#import "CustomTextView.h"
+
 #import "WEPopoverController.h"
 
 
@@ -15,15 +17,13 @@
     
     NSManagedObjectContext *managedObjectContext;
     UITableViewController *tableViewController;
-    UITextView *textView;
     BOOL swappingViews;
     WEPopoverController *navPopover;
 }
 
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain) UITableViewController *tableViewController;
-@property (nonatomic, retain) NSString *previousTextInput;
-@property (nonatomic, retain) UITextView *textView;
+@property (nonatomic, retain) CustomTextView *textView;
 @property (nonatomic, retain) CustomToolBarMainView *toolBar;
 @property (nonatomic, retain) WEPopoverController *navPopover;
 

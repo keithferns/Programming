@@ -7,9 +7,12 @@
 //
 
 #import "SettingsViewController.h"
-
+#import "WriteNowAppDelegate.h"
+#import "NotesTableViewController.h"
 
 @implementation SettingsViewController
+
+@synthesize tableViewController, managedObjectContext;
 
 - (void)dealloc {
     [super dealloc];
@@ -30,6 +33,12 @@
     [super viewDidLoad];
     NSLog(@"In SettingsViewController");
     
+    /*-- Point current instance of the MOC to the main managedObjectContext --*/
+	if (managedObjectContext == nil) { 
+		managedObjectContext = [(WriteNowAppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext]; 
+        NSLog(@"CURRENT VIEWCONTROLLER: After managedObjectContext: %@",  managedObjectContext);
+	}        
+    
     UIImage *background = [UIImage imageNamed:@"wallpaper.png"];
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:background]];
     
@@ -47,6 +56,16 @@
      */
 }
 
+- (void) viewWillAppear:(BOOL)animated{
+    tableViewController = [[NotesTableViewController alloc] init];
+    tableViewController.tableView.frame = CGRectMake(0, self.navigationController.navigationBar.frame.origin.y+self.navigationController.navigationBar.frame.size.height, 400, 320);
+    [self.view addSubview:tableViewController.tableView];
+    [tableViewController.tableView setSeparatorColor:[UIColor blackColor]];
+    [tableViewController.tableView setSectionHeaderHeight:18];
+    tableViewController.tableView.rowHeight = 36.0;
+    NSIndexPath *tableSelection = [tableViewController.tableView indexPathForSelectedRow];
+	[tableViewController.tableView deselectRowAtIndexPath:tableSelection animated:NO];
+}
 
 - (void)viewDidUnload
 {

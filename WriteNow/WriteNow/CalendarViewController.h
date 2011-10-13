@@ -9,6 +9,8 @@
 #import "CustomTextField.h"
 #import "WEPopoverController.h"
 #import "SchedulePopoverViewController.h"
+#import "TKCalendarMonthView.h"
+
 
 typedef enum{
     ADD_DATE_FIELD = 1,
@@ -17,19 +19,20 @@ typedef enum{
     ADD_RECUR_FIELD = 4
 }AddField;
 
-@interface CalendarViewController : UIViewController <UITextFieldDelegate, UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UINavigationBarDelegate, PopoverControllerDelegate> {
+@interface CalendarViewController : UIViewController <UITextFieldDelegate, UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UINavigationBarDelegate, PopoverControllerDelegate,TKCalendarMonthViewDelegate,TKCalendarMonthViewDataSource > {
+    
         UITableViewController *tableViewController;
         NSManagedObjectContext *managedObjectContext, *addingContext;    
         CustomTextView *textView;    
         BOOL tableIsTop, isSelected;
         Appointment *newAppointment;
         Task *newTask;
-    
         NSArray *recurring;
-    
-        AddField addField;
-
+        AddField addField;    
+        UIView *flipperView;
+        TKCalendarMonthView *calendarView;
     }
+
 @property (nonatomic, retain) UITableViewController *tableViewController;
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain) CustomTextView *textView;
@@ -44,6 +47,11 @@ typedef enum{
 @property (nonatomic, retain) UIPickerView *pickerView;
 @property (nonatomic, retain) NSArray *recurring;
 @property (nonatomic, readwrite) AddField addField;
+@property (nonatomic,retain) UIButton *flipIndicatorButton;
+@property (assign) BOOL frontViewIsVisible;
+@property (nonatomic, retain) TKCalendarMonthView *calendarView;
+@property (readonly) UIImage *flipperImageForDateNavigationItem;
+@property (nonatomic, retain) UIView *flipperView;
 
 
 - (void) addNewAppointment;
@@ -66,11 +74,12 @@ typedef enum{
 -(void) addRecurringField;
 - (void) setAlarm;
 
-//-(void)cancelAddingOrEditing;
-
 - (void)datePickerChanged:(id)sender;
 - (void)timePickerChanged:(id)sender;
 
+- (void)myTransitionDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context;
+
+//-(void)cancelAddingOrEditing;
 
 //- (void) addPickerResizeViews:(UIView *)picker1 removePicker:(UIView *)picker2;
 //- (void) swapViews;

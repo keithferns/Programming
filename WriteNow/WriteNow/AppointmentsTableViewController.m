@@ -48,7 +48,7 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    NSLog(@"APPOINTMENTS TABLEVIEWCONTROLLER: MEMORY WARNING RECEIVED");
+    NSLog(@"APPOINTMENTS TABLEVIEWCONTROLLER: MEMORY WARNING");
 }
 
 #pragma mark - View lifecycle
@@ -59,16 +59,7 @@
     NSLog(@"IN APPOINTMENTS TABLEVIEWCONTROLLER");
     [NSFetchedResultsController deleteCacheWithName:@"Root"];
     
-    tableLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 300, 20)];
-    [tableLabel setBackgroundColor:[UIColor lightGrayColor]];
-    [tableLabel setTextColor:[UIColor whiteColor]];
-    [tableLabel setTextAlignment:UITextAlignmentCenter];
-    [tableLabel setText:@"All Tasks"];
-    //[self.view addSubview:tableLabel];
-    //[self.tableView setTableHeaderView:tableLabel];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    self.clearsSelectionOnViewWillAppear = YES;
         
     /*-- MOC: Initialize--*/
     if (managedObjectContext == nil) { 

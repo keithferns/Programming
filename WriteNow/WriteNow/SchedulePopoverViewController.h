@@ -13,10 +13,11 @@
     
     CustomTextField *dateField, *startTimeField, *endTimeField, *recurringField;
     UIButton *button1, *button2;
+    UITableViewController *tableViewController;
     
     }
 @property (nonatomic, retain) CustomTextField *dateField, *startTimeField, *endTimeField, *recurringField;
 @property (nonatomic, retain) UIButton *button1, *button2;
-
+@property (nonatomic, retain) UITableViewController *tableViewController;
 @end
 
