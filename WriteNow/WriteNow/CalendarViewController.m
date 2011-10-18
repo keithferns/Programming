@@ -49,7 +49,7 @@
 #define tabBarHeight self.tabBarController.tabBar.frame.size.height
 #define navBarHeight self.navigationController.navigationBar.frame.size.height
 #define toolBarRect CGRectMake(screenRect.size.width, 0, screenRect.size.width, 40)
-#define textViewRect CGRectMake(5, navBarHeight+5, screenRect.size.width, 140)
+#define textViewRect CGRectMake(5, navBarHeight+5, screenRect.size.width-10, 140)
 #define bottomViewRect CGRectMake(0, textViewRect.origin.y+textViewRect.size.height+10, screenRect.size.width, screenRect.size.height-textViewRect.origin.y-textViewRect.size.height-10)
 #define mainFrame CGRectMake(screenRect.origin.x, self.navigationController.navigationBar.frame.origin.y+navBarHeight, screenRect.size.width, screenRect.size.height-navBarHeight)
 
@@ -160,29 +160,10 @@
     
     /*-ADD FLIPPER VIEW -*/
     flipperView = [[UIView alloc] initWithFrame:mainFrame];
-    [flipperView setBackgroundColor:[UIColor lightGrayColor]];
+    [flipperView setBackgroundColor:[UIColor yellowColor]];
     [self.view   addSubview:flipperView];
     
-    MyDataObject *myData = [self myDataObject]; //Create instance of Shared Data Object (SDO)- autoreleases.
-    if ([myData.noteType intValue] == 1) {//TODO: Add code here relevant to creating Appointments.
-        NSLog(@"SETTING NEW APPOINTMENT");
-        [self addNewAppointment];
-        if (tableViewController == nil) {
-            tableViewController = [[AppointmentsTableViewController alloc] init];
-        }
-    }
-    else if ([myData.noteType intValue] == 2){//TODO: Add code here relevant to creating Tasks.
-        NSLog(@"SETTING NEW TASK");
-        [self addNewTask];
-        if (self.tableViewController == nil){
-            tableViewController = [[TasksTableViewController alloc]init];
-        }
-    }
-    else {//when tab is selected, tableview/calendar is shown full screen - table view has both tasks and appointments for each date
-        //TODO: TABLEVIEW CONTROLLER WITH BOTH TASKS AND APPOINTMENTS/CALENDER VIEW
-        tableViewController = [[AppointmentsTableViewController alloc] init];
-    }
-    if (calendarView.superview==nil) {
+        if (calendarView.superview==nil) {
         NSLog(@"Adding calendarView");
         calendarView = 	[[TKCalendarMonthView alloc] init];        
         calendarView.delegate = self;
@@ -231,6 +212,26 @@
     
     NSLog(@"SUBVIEWS OF MAIN VIEW ON LOADING ARE:%@", [self.view subviews]);
     frontViewIsVisible = YES;
+    
+    MyDataObject *myData = [self myDataObject]; //Create instance of Shared Data Object (SDO)- autoreleases.
+    if ([myData.noteType intValue] == 1) {//TODO: Add code here relevant to creating Appointments.
+        NSLog(@"SETTING NEW APPOINTMENT");
+        [self addNewAppointment];
+        if (tableViewController == nil) {
+            tableViewController = [[AppointmentsTableViewController alloc] init];
+        }
+    }
+    else if ([myData.noteType intValue] == 2){//TODO: Add code here relevant to creating Tasks.
+        NSLog(@"SETTING NEW TASK");
+        [self addNewTask];
+        if (self.tableViewController == nil){
+            tableViewController = [[TasksTableViewController alloc]init];
+        }
+    }
+    else {//when tab is selected, tableview/calendar is shown full screen - table view has both tasks and appointments for each date
+        //TODO: TABLEVIEW CONTROLLER WITH BOTH TASKS AND APPOINTMENTS/CALENDER VIEW
+        tableViewController = [[AppointmentsTableViewController alloc] init];
+    }
 }
 /*
  UIImage *buttonImageNormal = [UIImage imageNamed:@"action-normal.png"];
@@ -284,7 +285,6 @@
     [calendarView release];
     calendarView = nil;
     NSLog(@"SUBVIEWS OF MAIN VIEW ON LOADING ARE:%@", [self.view subviews]);
-    
 }
 
 
@@ -380,6 +380,9 @@
             [self addStartTimeField];
             [self addEndTimeField];
             [self addRecurringField];
+            break;
+        case 5:
+            [self addRecurringField];
 
         default:
             break;
@@ -424,7 +427,13 @@
     //CASE: the popOver has not been created or it is not visible.
     if (!schedulerPopover || ![schedulerPopover isPopoverVisible]) {
         [self presentSchedulerPopover:nil];
-        addField = 1;
+        MyDataObject *myDate = [self myDataObject];
+        if ([myDate.noteType intValue]== 1) {
+            addField = 1;
+        }
+        else if ([myDate.noteType intValue]== 2){
+            addField = 5;   
+        }
     }
     //CASE: popOver is view, DATEPICKER date selected & SETDATE button tapped --> 
     [self addStartTimeField];  //Call method to add the next field.   
@@ -469,17 +478,28 @@
     }
     //CASE: the popOver in view, TIMEPICKER time selected and  STARTTIME button tapped -> 
     else if ([schedulerPopover isPopoverVisible] && [sender tag] == 3) {
-        [self addEndTimeField]; //call method to add the next field.    
+        [self addEndTimeField]; //call method to add the next field.   
+        MyDataObject *myData = [self myDataObject];
+
         NSCalendar *calendar = [NSCalendar currentCalendar];
         NSDateComponents *timeComponents = [calendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit ) fromDate:[timePicker date]];    
-        [timeComponents setHour:[timeComponents hour]];
-        [timeComponents setMinute:[timeComponents minute]];
-        [timeComponents setSecond:[timeComponents second]];
         [timeComponents setYear:0];
         [timeComponents setMonth:0];
         [timeComponents setDay:0];
         NSDate *selectedTime= [calendar dateFromComponents:timeComponents];
+        if ([myData.noteType intValue]== 1){
+            [timeComponents setHour:[timeComponents hour]];
+            [timeComponents setMinute:[timeComponents minute]];
+            [timeComponents setSecond:[timeComponents second]];
         newAppointment.doTime = selectedTime;
+        }
+        else {
+            [timeComponents setHour:0];
+            [timeComponents setMinute:0];
+            [timeComponents setSecond:0];
+            selectedTime = [calendar dateFromComponents:timeComponents];
+            newTask.doDate = selectedTime;
+        }
     }
 }
 - (void) addEndTimeField{
@@ -505,17 +525,28 @@
     //CASE: popOver in view, TIMEPICKER time selected and the ENDTIME button is tapped --> 
     else if ([schedulerPopover isPopoverVisible] && [sender tag] == 4) {
         [self addRecurringField];//Call method to add next field
+        MyDataObject *myData = [self myDataObject];
 
         NSCalendar *calendar = [NSCalendar currentCalendar];
         NSDateComponents *timeComponents = [calendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit ) fromDate:[timePicker date]];    
-        [timeComponents setHour:[timeComponents hour]];
-        [timeComponents setMinute:[timeComponents minute]];
-        [timeComponents setSecond:[timeComponents second]];
         [timeComponents setYear:0];
         [timeComponents setMonth:0];
         [timeComponents setDay:0];
+        [timeComponents setHour:[timeComponents hour]];
+        [timeComponents setMinute:[timeComponents minute]];
+        [timeComponents setSecond:[timeComponents second]];
         NSDate *selectedTime= [calendar dateFromComponents:timeComponents];
-        newAppointment.endTime = selectedTime;
+
+        if ([myData.noteType intValue]== 1){
+            newAppointment.endTime = selectedTime;
+        }
+        else {
+            [timeComponents setHour:0];
+            [timeComponents setMinute:0];
+            [timeComponents setSecond:0];
+            selectedTime = [calendar dateFromComponents:timeComponents];
+            newTask.doDate = selectedTime;
+        }
     }
 }
 - (void) addRecurringField{
@@ -542,12 +573,20 @@
 #pragma mark PickerView Delegate
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row
       inComponent:(NSInteger)component{
-    newAppointment.recurring = [recurring objectAtIndex:row];
     NSNumber *num = [NSNumber numberWithInt:7];
     NSArray *objects = [NSArray arrayWithObjects:num, nil];
     NSArray *keys   = [NSArray arrayWithObjects:@"num", nil];
     NSDictionary *inputObjects = [NSDictionary dictionaryWithObjects:objects forKeys:keys];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"PopOverShouldUpdateNotification"object:newAppointment userInfo:inputObjects];
+    
+    MyDataObject *myData = [self myDataObject];
+    if ([myData.noteType intValue] == 1) {
+        newAppointment.recurring = [recurring objectAtIndex:row];
+    }
+    else {
+        newTask.recurring = [recurring objectAtIndex:row];
+    }
+    
 }
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
     // tell the picker how many rows are available for a given component
@@ -583,7 +622,7 @@
         reminderPopover = nil;
     }
         
-        [self moveTableViewDown];
+        //[self moveTableViewDown];
         if ([sender tag] == 1){
             [toolBar.firstButton setImage:[UIImage imageNamed:@"calendar_24.png"]];
             [toolBar.firstButton setTitle:@"Schedule"];
@@ -900,15 +939,11 @@
 	return [NSArray arrayWithArray:marks];
 }
 
-    
-
-
 - (void)addItem:(id)sender {
 	NSLog(@"Bookmarks Button Pressed");
     
     if(!schedulerPopover) {
         
-    
         UIButton *button1 = [[UIButton alloc] initWithFrame:CGRectMake(10, 5, 54, 54)];
         [button1 setImage:[UIImage imageNamed:@"task_button.png"] forState:UIControlStateNormal];
         [button1 setTag:1];
@@ -987,7 +1022,8 @@
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Task" inManagedObjectContext:addingContext];
     newTask = [[Task alloc] initWithEntity:entity insertIntoManagedObjectContext:addingContext];
     [newTask setCreationDate:[NSDate date]];
-    [newTask setType:[NSNumber numberWithInt:1]];
+    [newTask setType:[NSNumber numberWithInt:2]];
+    
     
     [self setEditingView];
     [self cancelPopover:nil];
@@ -1044,7 +1080,11 @@
         [UIView setAnimationDuration:0.4];
         [UIView setAnimationDelegate:self];
         textView.frame = textViewRect;
-        tableViewController.tableView.frame = bottomViewRect;
+        //tableViewController.tableView.frame = bottomViewRect;
+        CGRect frame = self.flipperView.frame;
+        frame.origin.y = textViewRect.origin.y + textViewRect.size.height+5;
+        self.flipperView.frame = frame;
+    
     
     if (myData.selectedAppointment != nil && myData.selectedMemo == nil && myData.selectedTask == nil) {
         self.navigationItem.title = @"Appointment";//FIXME: change this to show the title of the appointment
@@ -1143,7 +1183,6 @@
         flipperView.frame = flipperFrame;
         [UIView commitAnimations];
     }
-    
 }
 
 - (void)keyboardWillHide:(NSNotification *)notification {
@@ -1158,8 +1197,8 @@
     [UIView setAnimationDuration:animationDuration];
     if (textView.superview != nil) {
         //resize textView to allow more of the calendar to display
-        textViewFrame.size.height -= 85;
-        flipperFrame.origin.y = textViewFrame.origin.y + textViewFrame.size.height;
+        textViewFrame.size.height -= 75;
+        flipperFrame.origin.y = textViewFrame.origin.y + textViewFrame.size.height+3;
         }
     else {
         flipperFrame.origin.y = mainFrame.origin.y;
@@ -1245,12 +1284,7 @@
 
 
 - (void) doneAction{
-    if (newAppointment.doDate == nil || newAppointment.text == @""){
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Warning" message:@"No Appointment Date or Text" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
-        [alert show];
-        [alert release];
-        return;
-    }
+
     
     MyDataObject *myData = [self myDataObject];
 
@@ -1271,17 +1305,22 @@
         NSString *selectedStart = [timeFormatter stringFromDate:newAppointment.doTime];
         NSString *selectedEnd = [timeFormatter stringFromDate:newAppointment.endTime];
         NSMutableString *text = [NSMutableString stringWithFormat:@"Scheduled Date: %@\nStarts At: %@. Ends At: %@\n\n%@",selectedDate, selectedStart, selectedEnd, newAppointment.text];
-        textView.text = text;          
+        textView.text = text;        
+        if (newAppointment.doDate == nil || newAppointment.text == @""){
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Warning" message:@"No Appointment Date or Text" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+            [alert show];
+            [alert release];
+            return;
+        }
     } else if ([myData.noteType intValue] == 2){
-        newAppointment.text = textView.text;
-
-        
-                if (myData.selectedTask.doDate == nil ||myData.selectedTask.text ==@"") {
-            NSLog(@"NO DATE OR TEXT");
-            return;//TODO: put up the appropriate alert views here
+        newTask.text = textView.text;
+        if (newTask.doDate == nil || newTask.text == @""){
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Warning" message:@"No Appointment Date or Text" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+            [alert show];
+            [alert release];
+            return;
         }
     }
- 
     /*--Save the MOC--*/
     NSError *error;
     if(![addingContext save:&error]){ 
@@ -1298,6 +1337,7 @@
     [textView setUserInteractionEnabled:NO];
 
     myData.selectedAppointment = nil;
+    myData.selectedTask = nil;
     myData.isEditing = [NSNumber numberWithInt:0];
 }
 

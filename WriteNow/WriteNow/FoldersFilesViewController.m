@@ -263,7 +263,7 @@
         tableViewController.tableView.frame = CGRectMake(0, 0, mainFrame.size.width, mainFrame.size.height);
     }
     
-    UIImage *menuLeftButtonImage = [UIImage imageNamed:@"add_item_white.png"];
+    UIImage *menuLeftButtonImage = [UIImage imageNamed:@"add_item_white_on_blue.png"];
     UIButton *menuLeftButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [menuLeftButton setImage:menuLeftButtonImage forState:UIControlStateNormal];
     menuLeftButton.frame = CGRectMake(0, 0, menuLeftButtonImage.size.width, menuLeftButtonImage.size.height);

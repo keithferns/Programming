@@ -168,15 +168,16 @@
     
     [request setPredicate:aPredicate];
     
-	NSSortDescriptor *dateDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"creationDate" ascending:YES] autorelease];
-	NSSortDescriptor *typeDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"type" ascending:NO]autorelease];    
-    [request setSortDescriptors:[NSArray arrayWithObjects:dateDescriptor,typeDescriptor, nil]];
+	NSSortDescriptor *dateDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"doDate" ascending:YES] autorelease];
+	NSSortDescriptor *typeDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"type" ascending:NO]autorelease];
+    NSSortDescriptor *timeDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"doTime" ascending:NO]autorelease];
+    [request setSortDescriptors:[NSArray arrayWithObjects:dateDescriptor,typeDescriptor,timeDescriptor, nil]];
     
     NSString *cacheName = @"Root";
     if (aPredicate) {
         cacheName = nil;
     }
-    NSFetchedResultsController *newController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:managedObjectContext sectionNameKeyPath:@"creationDate" cacheName:cacheName];
+    NSFetchedResultsController *newController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:managedObjectContext sectionNameKeyPath:@"doDate" cacheName:cacheName];
     
     newController.delegate = self;
     NSError *anyError = nil;

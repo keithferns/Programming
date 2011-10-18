@@ -22,32 +22,33 @@
         [self setTag:0];
         
         
-        firstButton  = [[UIBarButtonItem alloc] initWithTitle:@"New" style:UIBarButtonItemStyleBordered target:nil action:nil];
-        //firstButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:nil action:nil];
-        //self.firstButton.title = @"Do";
+        //firstButton = [[UIBarButtonItem alloc] initWithTitle:@"Save ^" style:UIBarButtonItemStyleBordered target:nil action:nil];
+        firstButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"save.png"] style:UIBarButtonItemStylePlain target:nil action:nil];
+        [self.firstButton setTitle:@"Save"];
         [self.firstButton setWidth:60.0];
         [self.firstButton setTag:1];
         
-        secondButton = [[UIBarButtonItem alloc] initWithTitle:@"Save ^" style:UIBarButtonItemStyleBordered target:nil action:nil];
-        //secondButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"save_document.png"] style:UIBarButtonItemStylePlain target:nil action:nil];
-        //[self.secondButton setTitle:@"Note"];
-        [self.secondButton setWidth:60.0];
+        //secondButton = [[UIBarButtonItem alloc] initWithTitle:@"Plan ^" style:UIBarButtonItemStyleBordered target:nil action:nil];
+        secondButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"clock_running.png"]style:UIBarButtonItemStylePlain target:nil action:nil];
+        [self.secondButton setTitle:@"Plan"];
         [self.secondButton setTag:2];
+        [self.secondButton setWidth:60.0];
         
-        thirdButton = [[UIBarButtonItem alloc] initWithTitle:@"Plan ^" style:UIBarButtonItemStyleBordered target:nil action:nil];
-        //thirdButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"clock_running.png"]style:UIBarButtonItemStylePlain target:nil action:nil];
-        //[self.thirdButton setTitle:@"Appointment"];
-        [self.thirdButton setTag:3];
+        
+        //thirdButton  = [[UIBarButtonItem alloc] initWithTitle:@"View" style:UIBarButtonItemStyleBordered target:nil action:nil];
+        thirdButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"12-eye.png"] style:UIBarButtonItemStylePlain target:nil action:nil];
+        self.thirdButton.title = @"View";
         [self.thirdButton setWidth:60.0];
+        [self.thirdButton setTag:3];
         
-        fourthButton = [[UIBarButtonItem alloc] initWithTitle:@"Send ^" style:UIBarButtonItemStyleBordered target:nil action:nil];
-        //fourthButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"document_todo.png"] style:UIBarButtonItemStylePlain target:nil action:nil];
-        //[self.fourthButton setTitle:@"To Do"];
+        //fourthButton = [[UIBarButtonItem alloc] initWithTitle:@"Send ^" style:UIBarButtonItemStyleBordered target:nil action:nil];
+        fourthButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"email.png"] style:UIBarButtonItemStylePlain target:nil action:nil];
+        [self.fourthButton setTitle:@"Send"];
         [self.fourthButton setWidth:60.0];
         [self.fourthButton setTag:4];
         
         dismissKeyboard = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"keyboard_down.png"] style:UIBarButtonItemStylePlain target:nil action:nil];
-        [self.dismissKeyboard setTitle:@"Down Input"];
+        [self.dismissKeyboard setTitle:@"Drop"];
         [self.fourthButton setWidth:60.0];
         [self.fourthButton setTag:5];
         

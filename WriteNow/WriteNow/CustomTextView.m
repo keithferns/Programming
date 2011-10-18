@@ -11,8 +11,8 @@
 - (id)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
-        //UIImage *patternImage = [UIImage imageNamed:@"54700.png"];
-        UIImage *patternImage = [UIImage imageNamed:@"underPageBackground.png"];
+        UIImage *patternImage = [UIImage imageNamed:@"image133.png"];
+        //UIImage *patternImage = [UIImage imageNamed:@"underPageBackground.png"];
 
        // self.backgroundColor = [UIColor colorWithPatternImage:patternImage];
         [self.layer setBackgroundColor:[UIColor colorWithPatternImage:patternImage].CGColor];
@@ -23,6 +23,7 @@
         [self.layer setBorderColor:[UIColor darkGrayColor].CGColor];
         [self.layer setCornerRadius:5.0];
         [self setFont:[UIFont boldSystemFontOfSize:15]];
+        [self setTextColor:[UIColor lightTextColor]];
         //textView.layer.backgroundColor = [UIColor colorWithRed:219.0f/255.0f green:226.0f/255.0f blue:237.0f/255.0f alpha:1].CGColor;
         //textView.layer.frame = CGRectInset(textView.layer.frame, 5, 10);
         //textView.layer.contents = (id) [UIImage imageNamed:@"lined_paper_320x200.png"].CGImage; 

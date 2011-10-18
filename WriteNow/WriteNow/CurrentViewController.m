@@ -27,8 +27,8 @@
 #define tabBarHeight self.tabBarController.tabBar.frame.size.height
 #define navBarHeight self.navigationController.navigationBar.frame.size.height
 #define toolBarRect CGRectMake(screenRect.size.width, 0, screenRect.size.width, 40)
-#define textViewRect CGRectMake(5, navBarHeight+5, screenRect.size.width-10, 140)
-#define bottomViewRect CGRectMake(0, textViewRect.origin.y+textViewRect.size.height+10, screenRect.size.width, screenRect.size.height-textViewRect.origin.y-textViewRect.size.height-10)
+#define textViewRect CGRectMake(0, navBarHeight, screenRect.size.width, 150)
+#define bottomViewRect CGRectMake(0, textViewRect.origin.y+textViewRect.size.height+15, screenRect.size.width, screenRect.size.height-textViewRect.origin.y-textViewRect.size.height-10)
 
 - (MyDataObject *) myDataObject {
 	id<AppDelegateProtocol> theDelegate = (id<AppDelegateProtocol>) [UIApplication sharedApplication].delegate;
@@ -94,16 +94,18 @@
     }
     //TOOLBAR: setup    
     toolBar = [[CustomToolBarMainView alloc] initWithFrame:toolBarRect];
+
     [toolBar.firstButton setTarget:self];
-    [toolBar.firstButton setAction:@selector(saveMemo)];
+    [toolBar.firstButton setAction:@selector(saveTo:)];
     [toolBar.secondButton setTarget:self];
-    [toolBar.secondButton setAction:@selector(saveTo:)];
+    [toolBar.secondButton setAction: @selector(schedule:)];
     [toolBar.thirdButton setTarget:self];
-    [toolBar.thirdButton setAction: @selector(schedule:)];
+    [toolBar.thirdButton setAction:@selector(look:)];
     [toolBar.fourthButton setTarget:self];
     [toolBar.fourthButton setAction:@selector(send:)];
     [toolBar.dismissKeyboard setTarget:self];
     [toolBar.dismissKeyboard setAction:@selector(dismissKeyboard)];
+    
     if (textView == nil){
         textView = [[CustomTextView alloc] initWithFrame:CGRectMake(textViewRect.origin.x, -(textViewRect.size.height+textViewRect.origin.y), textViewRect.size.width, textViewRect.size.height)];
     }
@@ -246,9 +248,29 @@
     Memo *newMemo = [[Memo alloc] initWithEntity:entity insertIntoManagedObjectContext:managedObjectContext];
     [newMemo setText:textView.text];
     [newMemo setCreationDate:[NSDate date]];
-    [newMemo setType:0];
     [newMemo setEditDate:[NSDate date]];
-
+    
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *dateComponents = [calendar components:(NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit) fromDate:[NSDate date]];
+    [dateComponents setYear:[dateComponents year]];
+    [dateComponents setMonth:[dateComponents month]];
+    [dateComponents setDay:[dateComponents day]];
+    [dateComponents setHour:0];
+    [dateComponents setMinute:0];
+    [dateComponents setSecond:0];
+    NSDate *selectedDate = [calendar dateFromComponents:dateComponents];
+    [newMemo setDoDate:selectedDate];
+    
+    [dateComponents setYear:0];
+    [dateComponents setMonth:0];
+    [dateComponents setDay:0];
+    [dateComponents setHour:[dateComponents hour]];
+    [dateComponents setMinute:[dateComponents minute]];
+    [dateComponents setSecond:[dateComponents second]];
+    selectedDate = [calendar dateFromComponents:dateComponents];
+    [newMemo setDoTime:selectedDate];
+    [newMemo setEndTime:selectedDate];
+    
     NSError *error;
     if(![self.managedObjectContext save:&error]){ 
         NSLog(@"MainViewController MOC: DID NOT SAVE");
@@ -264,6 +286,11 @@
      --*/
 }
 
+- (void) look: (id) sender {
+    
+    return;
+}
+
 - (void) addNewAppointment {
     MyDataObject *myData = [self myDataObject];
     [myData setMyText:textView.text];
@@ -273,6 +300,7 @@
     [textView setText:@""];
     [textView resignFirstResponder];
     [navPopover dismissPopoverAnimated:YES];
+    return;
 }
 
 - (void) addNewTask {
@@ -284,23 +312,27 @@
         [textView setText:@""];
     [textView resignFirstResponder];
     [navPopover dismissPopoverAnimated:YES];
-
+    return;
 }
 
 - (void) saveToFile{
-    [self.tabBarController setSelectedIndex:2];
+    //FIXME: Save the memo/note and pass it to the folder view
     
-    [textView setText:@""];
-    [textView resignFirstResponder];
-    [navPopover dismissPopoverAnimated:YES];    
-}
-
-- (void) saveToFolder{
     [self.tabBarController setSelectedIndex:2];
-    
     [textView setText:@""];
     [textView resignFirstResponder];
     [navPopover dismissPopoverAnimated:YES];
+    
+    return;
+}
+
+- (void) saveToFolder{
+    //FIXME: Save the memo/note. Pass it to the FolderView
+    [self.tabBarController setSelectedIndex:2];
+    [textView setText:@""];
+    [textView resignFirstResponder];
+    [navPopover dismissPopoverAnimated:YES];
+    return;
 }
 
 #pragma -

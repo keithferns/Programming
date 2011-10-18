@@ -430,9 +430,7 @@
         //detailViewController.selectedTask = tempTask;
         //[self presentModalViewController:detailViewController animated:YES];	
         [self.navigationController pushViewController:detailViewController animated:YES]; 
-        [detailViewController release];
-        
-        
+        [detailViewController release];        
     }
 }
 

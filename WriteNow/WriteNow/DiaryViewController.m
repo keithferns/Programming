@@ -85,11 +85,17 @@
     
     [self setTitle:@"Diary"];
     
-    textView = [[CustomTextView alloc] initWithFrame:textViewRect];
+    CGRect frame = textViewRect;
+    frame.size.width = 320;
+    frame.size.height = 150;
+    frame.origin.y = navBarHeight;
+    frame.origin.x =0;
+    textView = [[CustomTextView alloc] initWithFrame:frame];
     textView.delegate = self;
     [self.view addSubview:textView];
     
-    diaryView = [[CustomTextView alloc] initWithFrame:CGRectMake(bottomViewRect.origin.x, screenRect.size.height, bottomViewRect.size.width, bottomViewRect.size.height)];
+  
+   diaryView = [[CustomTextView alloc] initWithFrame:CGRectMake(bottomViewRect.origin.x, screenRect.size.height, bottomViewRect.size.width, bottomViewRect.size.height)];
     textView.delegate = self;
     
     CustomToolBarMainView *toolBar = [[CustomToolBarMainView alloc] initWithFrame:CGRectMake(0, 195, 320, 40)];
@@ -118,7 +124,17 @@
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.4];    
     [UIView setAnimationDelegate:self];
-    diaryView.frame = bottomViewRect;
+    CGRect frame = CGRectMake(0, textView.frame.origin.y+textView.frame.size.height+5, 320, 220);
+    diaryView.frame = frame;
+    //diaryView.frame = bottomViewRect;
+
+    //UIImage *patternImage = [UIImage imageNamed:@"54700.png"];
+    UIImage *patternImage = [UIImage imageNamed:@"image133.png"];
+    
+    // self.backgroundColor = [UIColor colorWithPatternImage:patternImage];
+    [self.diaryView.layer setBackgroundColor:[UIColor colorWithPatternImage:patternImage].CGColor];
+    [self.textView.layer setBackgroundColor:[UIColor colorWithPatternImage:patternImage].CGColor];
+    diaryView.userInteractionEnabled = NO;
     
     [UIView commitAnimations]; 
 }

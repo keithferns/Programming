@@ -241,7 +241,7 @@
 	
 
 	row = (row / 7) + ((row % 7 == 0) ? 0:1);
-	float h = 44 * row;
+	float h = 42 * row;
 	
 	TKDateInformation todayInfo = [[NSDate date] dateInformation];
 	today = dateInfo.month == todayInfo.month && dateInfo.year == todayInfo.year ? todayInfo.day : -5;
@@ -289,7 +289,7 @@
 	int row = index / 7;
 	int col = index % 7;
 	
-	return CGRectMake(col*46, row*44+6, 47, 45);
+	return CGRectMake(col*46, row*42+6, 47, 45);
 }
 - (void) drawTileInRect:(CGRect)r day:(int)day mark:(BOOL)mark font:(UIFont*)f1 font2:(UIFont*)f2{
 	
@@ -318,7 +318,7 @@
 	
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	UIImage *tile = [UIImage imageWithContentsOfFile:TKBUNDLE(@"TapkuLibrary.bundle/Images/calendar/Month Calendar Date Tile.png")];
-	CGRect r = CGRectMake(0, 0, 46, 44);
+	CGRect r = CGRectMake(0, 0, 46, 42);
 	CGContextDrawTiledImage(context, r, tile.CGImage);
 	
 	if(today > 0){
@@ -428,7 +428,7 @@
 	
 	CGRect r = self.selectedImageView.frame;
 	r.origin.x = (column*46);
-	r.origin.y = (row*44)-1;
+	r.origin.y = (row*42)-1;
 	self.selectedImageView.frame = r;
 	
 	
@@ -458,10 +458,10 @@
 	CGPoint p = [touch locationInView:self];
 	if(p.y > self.bounds.size.height || p.y < 0) return;
 	
-	int column = p.x / 46, row = p.y / 44;
+	int column = p.x / 46, row = p.y / 42;
 	int day = 1, portion = 0;
 	
-	if(row == (int) (self.bounds.size.height / 44)) row --;
+	if(row == (int) (self.bounds.size.height / 42)) row --;
 	
 	int fir = firstWeekday - 1;
 	if(!startOnSunday && fir == 0) fir = 7;
@@ -515,7 +515,7 @@
 	
 	CGRect r = self.selectedImageView.frame;
 	r.origin.x = (column*46);
-	r.origin.y = (row*44)-1;
+	r.origin.y = (row*42)-1;
 	self.selectedImageView.frame = r;
 	
 	if(day == selectedDay && selectedPortion == portion) return;
@@ -747,9 +747,9 @@
 	int overlap =  0;
 	
 	if(isNext){
-		overlap = [newTile.monthDate isEqualToDate:[dates objectAtIndex:0]] ? 0 : 44;
+		overlap = [newTile.monthDate isEqualToDate:[dates objectAtIndex:0]] ? 0 : 42;
 	}else{
-		overlap = [currentTile.monthDate compare:[dates lastObject]] !=  NSOrderedDescending ? 44 : 0;
+		overlap = [currentTile.monthDate compare:[dates lastObject]] !=  NSOrderedDescending ? 42 : 0;
 	}
 	
 	float y = isNext ? currentTile.bounds.size.height - overlap : newTile.bounds.size.height * -1 + overlap +2;
@@ -857,7 +857,7 @@
 		[currentTile release];
 		currentTile = newTile;
 		[self.tileBox addSubview:currentTile];
-		self.tileBox.frame = CGRectMake(0, 44, newTile.frame.size.width, newTile.frame.size.height);
+		self.tileBox.frame = CGRectMake(0, 42, newTile.frame.size.width, newTile.frame.size.height);
 		self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.bounds.size.width, self.tileBox.frame.size.height+self.tileBox.frame.origin.y);
 
 		self.shadow.frame = CGRectMake(0, self.frame.size.height-self.shadow.frame.size.height+21, self.shadow.frame.size.width, self.shadow.frame.size.height);
@@ -978,7 +978,7 @@
 }
 - (UIScrollView *) tileBox{
 	if(tileBox==nil){
-		tileBox = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 44, 320, currentTile.frame.size.height)];
+		tileBox = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 42, 320, currentTile.frame.size.height)];
 	}
 	return tileBox;
 }

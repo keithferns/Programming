@@ -200,7 +200,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 	return [[_fetchedResultsController sections] count];
 }
-
+/*
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     if (tableIsDown){
@@ -209,7 +209,7 @@
         return 15.0;
     }
 }
-
+*/
 /*
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     
