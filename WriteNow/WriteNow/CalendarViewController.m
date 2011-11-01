@@ -14,7 +14,6 @@
 #import "TasksTableViewController.h"
 #import "CalendarTableViewController.h"
 
-
 #import "CustomTextView.h"
 #import "CustomToolBar.h"
 
@@ -132,7 +131,7 @@
     [datePicker setDatePickerMode:UIDatePickerModeDate];
     [datePicker setDate:[NSDate date]];
     [datePicker setMinimumDate:[NSDate date]];
-    [datePicker setMaximumDate:[NSDate dateWithTimeIntervalSinceNow:(60*60*24*365)]];
+    [datePicker setMaximumDate:[NSDate dateWithTimeIntervalSinceNow:(2*60*60*24*365)]];
     datePicker.timeZone = [NSTimeZone systemTimeZone];
     [datePicker sizeToFit];
     datePicker.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
@@ -163,8 +162,7 @@
     [flipperView setBackgroundColor:[UIColor yellowColor]];
     [self.view   addSubview:flipperView];
     
-        if (calendarView.superview==nil) {
-        NSLog(@"Adding calendarView");
+    if (calendarView.superview==nil) {
         calendarView = 	[[TKCalendarMonthView alloc] init];        
         calendarView.delegate = self;
         calendarView.dataSource = self;
@@ -187,21 +185,24 @@
     [UIView setAnimationDuration:0.4];
     [UIView setAnimationDelegate:self];
     calendarView.frame = CGRectMake(0, 0, mainFrame.size.width, mainFrame.size.height);
-    
-    UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithTitle:@"New" style:UIBarButtonItemStyleBordered target:self action:@selector(addItem:)]; //right button - add NEW item - persists as long as cal/tv is full screen
-    self.navigationItem.leftBarButtonItem  = leftButton;
+
+    UIImage *addButtonImage = [UIImage imageNamed:@"add_item_white_on_blue_button.png"];
+    UIButton *addButton=[[UIButton alloc] initWithFrame:CGRectMake(0, 0, addButtonImage.size.width, addButtonImage.size.height)];
+    [addButton setBackgroundImage:addButtonImage forState:UIControlStateNormal];	
+    UIBarButtonItem *leftButton;
+    leftButton = [[UIBarButtonItem alloc] initWithCustomView:addButton];
+	[self.navigationItem setLeftBarButtonItem:leftButton animated:YES];
     [leftButton release];
-    self.navigationItem.leftBarButtonItem.tag = 1;
-    [self.navigationItem.leftBarButtonItem setStyle:UIBarButtonItemStylePlain];  
+	[addButton addTarget:self action:@selector(addItem:) forControlEvents:(UIControlEventTouchDown)];
+    
     
     //UIImage *menuButtonImage = [self flipperImageForDateNavigationItem];
-    UIImage *menuButtonImage = [UIImage imageNamed:@"list_white_on_blue_bkg.png"];
+    UIImage *menuButtonImage = [UIImage imageNamed:@"list_white_on_blue_button.png"];
     UIButton *localFlipIndicator=[[UIButton alloc] initWithFrame:CGRectMake(0, 0, menuButtonImage.size.width, menuButtonImage.size.height)];
 	//UIButton *localFlipIndicator=[[UIButton alloc] initWithFrame:CGRectMake(0,0,30,30)];
     self.flipIndicatorButton=localFlipIndicator;
 	[localFlipIndicator release];
     [flipIndicatorButton setBackgroundImage:menuButtonImage forState:UIControlStateNormal];	
-    [flipIndicatorButton.layer setCornerRadius:4.0];
 	UIBarButtonItem *flipButtonBarItem;
 	flipButtonBarItem=[[UIBarButtonItem alloc] initWithCustomView:flipIndicatorButton];	
 	[self.navigationItem setRightBarButtonItem:flipButtonBarItem animated:YES];
@@ -294,14 +295,7 @@
 
 - (void)presentSchedulerPopover:(id)sender {//CREATE THE POPOVER AND ADD TO THE VIEW
     [tableViewController.tableView removeFromSuperview];
-	[textView removeFromSuperview];
-    [self.view addSubview:textView];
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:0.4];
-    [UIView setAnimationDelegate:self];    
-    NSLog(@"Changing the textframe");
-    textView.frame = CGRectMake(5, textViewRect.origin.y, textViewRect.size.width-10, textViewRect.size.height);
-    [UIView commitAnimations];
+
     NSLog(@"SUBVIEW OF MAIN VIEW = %@", [self.view subviews]);
     if ([textView isFirstResponder]) {
         [textView resignFirstResponder];
@@ -346,11 +340,8 @@
         SchedulePopoverViewController *viewCon = [[SchedulePopoverViewController alloc]init];
         [viewCon.button1 addTarget:self action:@selector(cancelPopover:) forControlEvents:UIControlEventTouchUpInside];
         
-        //viewCon.tableViewController = [[UITableViewController alloc] init];
-        //viewCon.tableViewController = self.tableViewController;
+        viewCon.tableViewController = self.tableViewController;   
         
-        //[viewCon.view addSubview:tableViewController.tableView];
-        //tableViewController.tableView.frame = CGRectMake(145, 120, 160, 200);
         viewCon.contentSizeForViewInPopover = CGSizeMake(300, 180);
         schedulerPopover = [[WEPopoverController alloc] initWithContentViewController:viewCon];
         [schedulerPopover setDelegate:self];
@@ -577,7 +568,6 @@
     NSArray *objects = [NSArray arrayWithObjects:num, nil];
     NSArray *keys   = [NSArray arrayWithObjects:@"num", nil];
     NSDictionary *inputObjects = [NSDictionary dictionaryWithObjects:objects forKeys:keys];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"PopOverShouldUpdateNotification"object:newAppointment userInfo:inputObjects];
     
     MyDataObject *myData = [self myDataObject];
     if ([myData.noteType intValue] == 1) {
@@ -586,6 +576,7 @@
     else {
         newTask.recurring = [recurring objectAtIndex:row];
     }
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"PopOverShouldUpdateNotification"object:newAppointment userInfo:inputObjects];
     
 }
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
@@ -631,11 +622,9 @@
     }        
 }
 - (void) showSchedule {    
-    
        //TODO: Add recurrance to textView
     NSLog(@"Saving Schedule");
     MyDataObject *myData = [self myDataObject];
-
     CustomTextField * dateField = [[CustomTextField alloc] init];
     [dateField setText:[NSString stringWithFormat:@"Scheduled for %@", [dateFormatter stringFromDate:newAppointment.doDate]]];
     [dateField setFrame:CGRectMake(-screenRect.size.width, textViewRect.origin.y, textViewRect.size.width, 30)];
@@ -649,11 +638,9 @@
     if ([myData.noteType intValue] == 1) {
         [self.view addSubview:timeField];
         }
-  
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.4];
     [UIView setAnimationDelegate:self];
-    
     [dateField setFrame:CGRectMake(textViewRect.origin.x, textViewRect.origin.y, textViewRect.size.width, 30)];
     [timeField setFrame:CGRectMake(textViewRect.origin.x, dateField.frame.origin.y+35, textViewRect.size.width, 30)];
     CGRect frame = textViewRect;
@@ -718,7 +705,7 @@
         CustomTextField *alarm3 = [[CustomTextField alloc] init];
         [alarm3 setFrame:CGRectMake(0, 140, 140, 40)];
         alarm3.tag = 14;
-      //  [alarm3 setInputView:pickerView];
+        //[alarm3 setInputView:pickerView];
         [alarm3 setInputAccessoryView:toolBar];
         [alarm3 setPlaceholder:@"Alarm 3"];
         
@@ -750,10 +737,8 @@
         [reminderPopover autorelease];
         reminderPopover = nil;
     } else {
-        [reminderPopover presentPopoverFromRect:CGRectMake(70, 205, 50, 57)
-                                    inView:self.view 
-                  permittedArrowDirections:UIPopoverArrowDirectionDown
-                                  animated:YES name:@"ReminderPopover"];
+        [reminderPopover presentPopoverFromRect:CGRectMake(70, 205, 50, 57) inView:self.view 
+        permittedArrowDirections:UIPopoverArrowDirectionDown animated:YES name:@"ReminderPopover"];
     }
 }
 - (void)popoverControllerDidDismissPopover:(WEPopoverController *)popoverController {
@@ -768,7 +753,7 @@
 	// returns a 30 x 30 image to display the flipper button in the navigation bar
 	CGSize itemSize=CGSizeMake(30.0,30.0);
 	UIGraphicsBeginImageContext(itemSize);
-	UIImage *backgroundImage = [UIImage imageNamed:[NSString stringWithFormat:@"calendar_bkg_on_blue_bkg.png"]];
+	UIImage *backgroundImage = [UIImage imageNamed:[NSString stringWithFormat:@"calendar_white_on_blue_button.png"]];
 	CGRect calendarRectangle = CGRectMake(0,0, itemSize.width, itemSize.height);
 	[backgroundImage drawInRect:calendarRectangle];
         // draw the element name
@@ -795,7 +780,6 @@
 }
 
 - (void)toggleCalendar {
-    
     // disable user interaction during the flip
     flipperView.userInteractionEnabled = NO;
 	flipIndicatorButton.userInteractionEnabled = NO;
@@ -810,6 +794,7 @@
     if (frontViewIsVisible==YES) {
         [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:flipperView cache:YES];
         [calendarView removeFromSuperview];
+        tableViewController.tableView.frame = CGRectMake(0, 0, flipperView.frame.size.width, flipperView.frame.size.height);
         [self.flipperView addSubview:tableViewController.tableView];
 
     } else {
@@ -830,7 +815,7 @@
 
 	} 
 	else {
-        UIImage *image = [UIImage imageNamed:@"list_white_on_blue_bkg.png"];
+        UIImage *image = [UIImage imageNamed:@"list_white_on_blue_button.png"];
 		[UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:flipIndicatorButton cache:YES];
 		[flipIndicatorButton setBackgroundImage:image forState:UIControlStateNormal];
 
@@ -940,7 +925,6 @@
 }
 
 - (void)addItem:(id)sender {
-	NSLog(@"Bookmarks Button Pressed");
     
     if(!schedulerPopover) {
         
@@ -1278,14 +1262,10 @@
      */
     return;
 }
-/*
-- (UIImage *)flipperImageForAtomicElementNavigationItem {
-*/
 
 
 - (void) doneAction{
 
-    
     MyDataObject *myData = [self myDataObject];
 
     UIImage *menuButtonImage = [UIImage imageNamed:@"edit_light.png"];

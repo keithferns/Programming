@@ -64,7 +64,7 @@
     [self.view addSubview:button2];
     [button1 release];
     [button2 release];
-    [tableViewController.tableView setFrame:CGRectMake(145, 43, 145, 140)];
+    [tableViewController.tableView setFrame:CGRectMake(145, 40, 145, 140)];
     [self.view  addSubview:tableViewController.tableView];
 }
 

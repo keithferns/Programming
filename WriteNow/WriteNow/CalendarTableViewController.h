@@ -16,7 +16,6 @@
         NSFetchedResultsController *_fetchedResultsController;
         AppointmentCustomCell *myCell;
         BOOL tableIsDown;
-        
     }
     @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
     @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;

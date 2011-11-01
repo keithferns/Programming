@@ -13,11 +13,11 @@
 
 
 typedef enum{
-    ADD_DATE_FIELD = 1,
-    ADD_START_FIELD = 2,
-    ADD_END_FIELD = 3,
-    ADD_RECUR_FIELD = 4
-}AddField;
+    ADDING_DATE_FIELD = 1,
+    ADDING_START_FIELD = 2,
+    ADDING_END_FIELD = 3,
+    ADDING_RECUR_FIELD = 4
+}AddingField;
 
 @interface CalendarViewController : UIViewController <UITextFieldDelegate, UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UINavigationBarDelegate, PopoverControllerDelegate,TKCalendarMonthViewDelegate,TKCalendarMonthViewDataSource > {
     
@@ -28,7 +28,7 @@ typedef enum{
         Appointment *newAppointment;
         Task *newTask;
         NSArray *recurring;
-        AddField addField;    
+        AddingField addField;    
         UIView *flipperView;
         TKCalendarMonthView *calendarView;
     }
@@ -46,7 +46,7 @@ typedef enum{
 @property (nonatomic, retain) UIDatePicker *datePicker, *timePicker;
 @property (nonatomic, retain) UIPickerView *pickerView;
 @property (nonatomic, retain) NSArray *recurring;
-@property (nonatomic, readwrite) AddField addField;
+@property (nonatomic, readwrite) AddingField addField;
 @property (nonatomic,retain) UIButton *flipIndicatorButton;
 @property (assign) BOOL frontViewIsVisible;
 @property (nonatomic, retain) TKCalendarMonthView *calendarView;
@@ -56,9 +56,9 @@ typedef enum{
 
 - (void) addNewAppointment;
 - (void) addNewTask;
+- (void) dismissKeyboard;
 
 - (void) setEditingView;
-- (void) dismissKeyboard;
 
 - (void) presentReminderPopover:(id)sender;
 - (void) presentSchedulerPopover:(id)sender;

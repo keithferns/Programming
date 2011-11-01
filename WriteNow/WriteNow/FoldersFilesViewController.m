@@ -263,7 +263,7 @@
         tableViewController.tableView.frame = CGRectMake(0, 0, mainFrame.size.width, mainFrame.size.height);
     }
     
-    UIImage *menuLeftButtonImage = [UIImage imageNamed:@"add_item_white_on_blue.png"];
+    UIImage *menuLeftButtonImage = [UIImage imageNamed:@"add_item_white_on_blue_button.png"];
     UIButton *menuLeftButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [menuLeftButton setImage:menuLeftButtonImage forState:UIControlStateNormal];
     menuLeftButton.frame = CGRectMake(0, 0, menuLeftButtonImage.size.width, menuLeftButtonImage.size.height);
@@ -350,7 +350,7 @@
     
 	if (frontViewIsVisible==YES) {
 		[UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:flipIndicatorButton cache:YES];
-		[flipIndicatorButton setBackgroundImage:[UIImage imageNamed:@"folder_white_on_blue_bkg.png"] forState:UIControlStateNormal];
+		[flipIndicatorButton setBackgroundImage:[UIImage imageNamed:@"folder_white_on_blue_button.png"] forState:UIControlStateNormal];
         //[[NSNotificationCenter defaultCenter] postNotificationName:@"HasToggledToFoldersViewNotification" object:nil];
         //[self makeFolder];
         //[tableViewController.tableView reloadData];
