@@ -11,7 +11,7 @@
 
 #import "StartScreenCustomCell.h"
 #import "TaskCustomCell.h"
-
+#import "HorizontalCells.h"
 
 #import "TasksTableViewController.h"
 #import "AppointmentsTableViewController.h"
@@ -250,9 +250,9 @@
     }
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    //id <NSFetchedResultsSectionInfo> sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
-    //return [sectionInfo numberOfObjects];
-    return 1;
+    id <NSFetchedResultsSectionInfo> sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
+    return [sectionInfo numberOfObjects];
+    //return 1;
 }
 
 - (void) configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath{
@@ -311,6 +311,21 @@
     }
     [self configureCell:cell atIndexPath:indexPath];
     return cell;
+    /*
+    NSArray *mySections = [_fetchedResultsController sections];
+    
+    NSInteger numberOfSections = [mySections count];
+    NSLog(@"Number of Sections = %d", numberOfSections);
+    for (int i = 0; i<numberOfSections; i++) {
+        myObjects = [[mySections objectAtIndex:i] objects];
+        NSInteger numberOfRows;
+        numberOfRows = [myObjects count];
+        NSLog(@"Number of Rows = %d", numberOfRows);
+        break;
+     }
+    
+    */
+    
     /*}
      else if ([aNote.noteType intValue] == 1){
      
