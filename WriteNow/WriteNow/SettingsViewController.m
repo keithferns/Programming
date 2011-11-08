@@ -58,7 +58,7 @@
 
 - (void) viewWillAppear:(BOOL)animated{
     tableViewController = [[NotesTableViewController alloc] init];
-    tableViewController.tableView.frame = CGRectMake(0, self.navigationController.navigationBar.frame.origin.y+self.navigationController.navigationBar.frame.size.height, 400, 320);
+    tableViewController.tableView.frame = CGRectMake(0, self.navigationController.navigationBar.frame.origin.y+self.navigationController.navigationBar.frame.size.height, 320, 400);
     [self.view addSubview:tableViewController.tableView];
     [tableViewController.tableView setSeparatorColor:[UIColor blackColor]];
     [tableViewController.tableView setSectionHeaderHeight:18];

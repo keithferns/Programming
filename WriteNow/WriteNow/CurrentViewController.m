@@ -5,7 +5,7 @@
 //  Created by Keith Fernandes on 8/17/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
-
+#import "ControlVariables.h"
 #import "CurrentViewController.h"
 #import "WriteNowAppDelegate.h"
 
@@ -25,23 +25,15 @@
 @synthesize recurring;
 @synthesize addField;
 @synthesize calendarView;
-@synthesize newAppointment;
+@synthesize newAppointment, newItem;
 @synthesize dateFormatter, timeFormatter;
-@synthesize flipperImageForDateNavigationItem, flipIndicatorButton;
+@synthesize flipperImageForDateNavigationItem;
+@synthesize flipIndicatorButton, cancelButton, addButton, editButton;
 @synthesize frontViewIsVisible;
 
 
 
-#define screenRect [[UIScreen mainScreen] applicationFrame]
-#define statusBarRect [[UIApplication sharedApplication] statusBarFrame];
 
-#define tabBarHeight self.tabBarController.tabBar.frame.size.height
-#define navBarHeight self.navigationController.navigationBar.frame.size.height
-#define topViewRect CGRectMake(0, self.navigationController.navigationBar.frame.origin.y+navBarHeight, screenRect.size.width, 150)
-#define toolBarRect CGRectMake(screenRect.size.width, 0, screenRect.size.width, 40)
-#define textViewRect CGRectMake(0, navBarHeight, screenRect.size.width, 150)
-#define bottomViewRect CGRectMake(0, textViewRect.origin.y+textViewRect.size.height+10, screenRect.size.width, screenRect.size.height-textViewRect.origin.y-textViewRect.size.height-10)
-#define mainFrame CGRectMake(screenRect.origin.x, self.navigationController.navigationBar.frame.origin.y+navBarHeight, screenRect.size.width, screenRect.size.height-navBarHeight)
 
 - (MyDataObject *) myDataObject {
 	id<AppDelegateProtocol> theDelegate = (id<AppDelegateProtocol>) [UIApplication sharedApplication].delegate;
@@ -50,6 +42,7 @@
 	return myDataObject;
 }
 
+#pragma mark - Memory Management
 
 - (void)dealloc {
     [super dealloc];
@@ -59,6 +52,7 @@
     [toolBar release];
     [topView release];
     [bottomView release];
+    [cancelButton release];
 
     [[NSNotificationCenter defaultCenter] removeObserver:self];    
 }
@@ -79,10 +73,6 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];   
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
 
 #pragma mark - View lifecycle
 
@@ -107,15 +97,10 @@
     //TOOLBAR: setup    
     toolBar = [[CustomToolBarMainView alloc] initWithFrame:toolBarRect];
     [toolBar.firstButton setTarget:self];
-    [toolBar.firstButton setAction:@selector(presentActionsPopover:)];
     [toolBar.secondButton setTarget:self];
-    [toolBar.secondButton setAction: @selector(presentActionsPopover:)];
     [toolBar.thirdButton setTarget:self];
-    [toolBar.thirdButton setAction:@selector(presentActionsPopover:)];
     [toolBar.fourthButton setTarget:self];
-    [toolBar.fourthButton setAction:@selector(presentActionsPopover:)];
     [toolBar.dismissKeyboard setTarget:self];
-    [toolBar.dismissKeyboard setAction:@selector(dismissKeyboard)];
     
     //Init and add the top and bottom Views. These views will be used to animate the transitions of textView and the table and calendar Views. 
     if (bottomView.superview == nil && bottomView == nil) {
@@ -165,7 +150,7 @@
         [self.bottomView addSubview:tableViewController.tableView];
         [tableViewController.tableView setSeparatorColor:[UIColor blackColor]];
         [tableViewController.tableView setSectionHeaderHeight:18];
-        tableViewController.tableView.rowHeight = 48.0;
+        tableViewController.tableView.rowHeight = kCellHeight;
         //[tableViewController.tableView setTableHeaderView:tableLabel];
     }
         CGRect startFrame = CGRectMake(0, bottomViewRect.size.height, bottomViewRect.size.width, bottomViewRect.size.height);
@@ -197,31 +182,320 @@
     [navPopover setDelegate:nil];
     [navPopover release];
     navPopover = nil;
+    if (![textView hasText]) {
+        self.navigationItem.leftBarButtonItem = nil;
+        self.navigationItem.rightBarButtonItem = nil;
+    }
 }
 
-- (void) textViewDidBeginEditing:(UITextView *)textView{
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    // Return YES for supported orientations
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
 
+
+#pragma mark - TextView Management
+
+- (void) textViewDidBeginEditing:(UITextView *)textView{
+    UIImage *image = [UIImage imageNamed:@"cancel_white_on_blue_button.png"];
+
+    if (cancelButton == nil) {
+        cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
+        [cancelButton setBackgroundImage:image forState:UIControlStateNormal];
+        UIBarButtonItem *barbutton = [[UIBarButtonItem alloc]initWithCustomView:cancelButton];
+        [self.navigationItem setLeftBarButtonItem:barbutton animated:YES];
+        [barbutton release];
+        [cancelButton addTarget:self action:@selector(cancelAddEvent) forControlEvents:(UIControlEventTouchDown)];
+    }
     if (flipIndicatorButton == nil){
         frontViewIsVisible = YES;
+        flipIndicatorButton=[[UIButton alloc] initWithFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
+        [flipIndicatorButton setBackgroundImage:self.flipperImageForDateNavigationItem forState:UIControlStateNormal];	
+        UIBarButtonItem *calendarBarButton;
+        calendarBarButton=[[UIBarButtonItem alloc] initWithCustomView:flipIndicatorButton];	
+        [self.navigationItem setRightBarButtonItem:calendarBarButton animated:YES];
+        [calendarBarButton release];
+        [flipIndicatorButton addTarget:self action:@selector(toggleCalendar) forControlEvents:(UIControlEventTouchDown)];
+    }
+    
+}
+- (void) textViewDidEndEditing:(UITextView *)textView{
+    if (cancelButton != nil) {
+        self.navigationItem.leftBarButtonItem = nil;
+        cancelButton = nil;
+    }
+}
 
+- (void) setEditingView {//Called only when on calendar/tv view
+    MyDataObject *myData = [self myDataObject];
+    if (textView !=nil) {
+        [textView removeFromSuperview];
+        [textView release];
+        textView = nil;
+    }
+    NSLog(@"textView is nil. Adding textView");
+    //TEXTVIEW: setup and add to self.view
+    textView = [[CustomTextView alloc] initWithFrame:CGRectMake(screenRect.size.width, textViewRect.origin.y, textViewRect.size.width, textViewRect.size.height)];
+    textView.delegate = self;    
+    textView.inputAccessoryView = toolBar;
+    [self.view addSubview:textView];
+    [textView setText:myData.myText];
+    [textView setUserInteractionEnabled:YES];
+    [textView becomeFirstResponder];
+    
+    UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(cancelAddingOrEditing)];
+    self.navigationItem.leftBarButtonItem = leftButton;
+    [leftButton release];
+    self.navigationItem.leftBarButtonItem.tag = 10;
+    [self.navigationItem.leftBarButtonItem setStyle:UIBarButtonItemStylePlain];  
+    
+    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(doneAction)];
+    self.navigationItem.rightBarButtonItem  = rightButton;
+    [rightButton release];
+    self.navigationItem.rightBarButtonItem.tag = 1;
+    [self.navigationItem.rightBarButtonItem setStyle:UIBarButtonItemStylePlain]; 
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.4];
+    [UIView setAnimationDelegate:self];
+    textView.frame = textViewRect;
+    tableViewController.tableView.frame = bottomViewRect;
+    
+    [UIView commitAnimations];
+}
+- (void) clearAll{
+    textView.text = @"";
+    [textView becomeFirstResponder];
+}
+
+#pragma mark Responding to keyboard notifications
+
+- (void)keyboardWillShow:(NSNotification *)notification {
+    NSDictionary *userInfo = [notification userInfo];
+    NSValue* aValue = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey]; // Get the origin of the keyboard when it's displayed.
+    CGRect keyboardRect = [aValue CGRectValue];
+    keyboardRect = [self.view convertRect:keyboardRect fromView:nil];
+    CGFloat keyboardTop = keyboardRect.origin.y;
+    CGRect newTextViewFrame = self.view.bounds;
+    if (textView.frame.origin.y+textView.frame.size.height  > keyboardTop){
+        newTextViewFrame.size.height = keyboardTop - self.view.bounds.origin.y;
+    }
+    // Get the duration of the animation.
+    NSValue *animationDurationValue = [userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey];
+    NSTimeInterval animationDuration;
+    [animationDurationValue getValue:&animationDuration];
+    // Animate the resize of the text view's frame in sync with the keyboard's appearance.
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:animationDuration];
+    //Put endframes for views that are to be resized here.
+    [UIView commitAnimations];
+}
+
+- (void)keyboardWillHide:(NSNotification *)notification {
+    NSDictionary* userInfo = [notification userInfo];
+    NSValue *animationDurationValue = [userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey];
+    NSTimeInterval animationDuration;
+    [animationDurationValue getValue:&animationDuration];
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:animationDuration];
+    //
+    [UIView commitAnimations];
+}
+
+- (void) dismissKeyboard{
+    //Check if textView is firstResponder. If yes, dismiss the keyboard by calling resignFirstResponder;
+    if ([textView isFirstResponder]){
+        [textView resignFirstResponder];
+    }
+    if (self.navigationController.navigationBarHidden == YES) {
+        [self.navigationController.navigationBar setHidden:NO];
+    }
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.4];    
+    [UIView setAnimationDelegate:self];                
+    //
+    [UIView commitAnimations];
+    if([navPopover isPopoverVisible]) {
+        [navPopover dismissPopoverAnimated:YES];
+        [navPopover setDelegate:nil];
+        [navPopover autorelease];
+        navPopover = nil;
+    }
+}
+
+#pragma mark - Data Management
+
+- (void) addNewEvent:(id)sender {
+    [navPopover dismissPopoverAnimated:YES];
+    [self addPickerControls];
+    [toolBar toggleSaveAndSetDate];
+    [self presentSchedulerPopover:nil];
+    
+    NSNumber *num = [NSNumber numberWithInt:1];
+    NSArray *objects = [NSArray arrayWithObjects: datePicker, toolBar, num, nil];
+    NSArray *keys = [NSArray arrayWithObjects: @"picker", @"toolbar",@"num", nil];
+    NSDictionary *inputObjects = [NSDictionary dictionaryWithObjects:objects forKeys:keys];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"PopOverShouldUpdateNotification" object:nil userInfo:inputObjects];
+    
+    
+    NSManagedObjectContext *addingContext = [[NSManagedObjectContext alloc] init];
+    [addingContext setPersistentStoreCoordinator:[self.managedObjectContext persistentStoreCoordinator]];
+    
+    
+    if ([sender tag]==1) {
+        newAppointment = [[NewAppointment alloc] init];//Create new instance of delegate class.
+        newAppointment.addingContext = addingContext; // pass adding MOC to the delegate instance.
+        [newAppointment createNewAppointment:textView.text];//Inserts a new Appointment object and set the text attribute.
+        return;
+    }
+    else {
+        newItem = [[NewItemOrEvent alloc] init];
+        newItem.addingContext = addingContext;
+        [newItem createNewItem:textView.text ofType:[NSNumber numberWithInt:2]];
+        
+    }
+    return;
+}
+
+- (void) cancelAddEvent{
+    NSLog(@"Cancelling Appointment");
+    //release NewAppointment object.
+    //return toolBar to base state.
+    //???clear text
+    return;
+}
+
+- (void) saveMemo:(id)sender {    
+    if (![textView hasText]){
+        return;
+    }
+    NSManagedObjectContext *addingContext = [[NSManagedObjectContext alloc] init];
+    [addingContext setPersistentStoreCoordinator:[self.managedObjectContext persistentStoreCoordinator]];
+    newItem = [[NewItemOrEvent alloc] init];
+    newItem.addingContext = addingContext;
+    [newItem createNewItem:textView.text ofType:[NSNumber numberWithInt:0]];
+    
+    //[[NSNotificationCenter defaultCenter] postNotificationName:NSManagedObjectContextDidSaveNotification object:nil];
+    [newItem saveNewItem];
+    
+    [textView setText:@""];
+    
+    /*--TODO:   SAVE(MEMO/NOTE) option. When the user has added and saved text, then returns to editing but does not add any text. 
+     // if (![newTextInput isEqualToString:previousTextInput]){
+     --*/
+    
+    [navPopover dismissPopoverAnimated:YES];
+    
     UIImage *image = [UIImage imageNamed:@"cancel_white_on_blue_button.png"];
-    UIButton *cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
+    cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
     [cancelButton setBackgroundImage:image forState:UIControlStateNormal];
     UIBarButtonItem *barbutton = [[UIBarButtonItem alloc]initWithCustomView:cancelButton];
     [self.navigationItem setLeftBarButtonItem:barbutton animated:YES];
 	[barbutton release];
 	[cancelButton addTarget:self action:@selector(cancelAddEvent) forControlEvents:(UIControlEventTouchDown)];
     
-    flipIndicatorButton=[[UIButton alloc] initWithFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
-    [flipIndicatorButton setBackgroundImage:self.flipperImageForDateNavigationItem forState:UIControlStateNormal];	
-	UIBarButtonItem *calendarBarButton;
-	calendarBarButton=[[UIBarButtonItem alloc] initWithCustomView:flipIndicatorButton];	
-	[self.navigationItem setRightBarButtonItem:calendarBarButton animated:YES];
-	[calendarBarButton release];
-	[flipIndicatorButton addTarget:self action:@selector(toggleCalendar) forControlEvents:(UIControlEventTouchDown)];
-    }
-
+    
+    if ([sender tag]==1) {
+        //ADD CODE TO SAVE TO FOLDER
+        return;
+        }
+    else {
+        //ADD CODE TO SAVE TO FILE    
+        }
+    return;
 }
+
+- (void) sendItem:(id)sender {
+    [navPopover dismissPopoverAnimated:YES];
+    UIImage *image = [UIImage imageNamed:@"cancel_white_on_blue_button.png"];
+    cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
+    [cancelButton setBackgroundImage:image forState:UIControlStateNormal];
+    UIBarButtonItem *barbutton = [[UIBarButtonItem alloc]initWithCustomView:cancelButton];
+    [self.navigationItem setLeftBarButtonItem:barbutton animated:YES];
+	[barbutton release];
+	[cancelButton addTarget:self action:@selector(cancelAddEvent) forControlEvents:(UIControlEventTouchDown)];
+    
+    if ([sender tag]==1) {
+        
+        //ADD CODE TO SEND EMAIL
+        return;
+    }
+    else {
+        //ADD CODE TO SEND MESSAGE   
+    }
+    return;
+}
+
+- (void) doneAction{
+    
+    MyDataObject *myData = [self myDataObject];
+    
+    UIImage *addButtonImage = [UIImage imageNamed:@"add_item_white_on_blue_button.png"];
+    addButton=[[UIButton alloc] initWithFrame:CGRectMake(0, 0, addButtonImage.size.width, addButtonImage.size.height)];
+    [addButton setBackgroundImage:addButtonImage forState:UIControlStateNormal];	
+    UIBarButtonItem *leftButton;
+    leftButton = [[UIBarButtonItem alloc] initWithCustomView:addButton];
+	[self.navigationItem setLeftBarButtonItem:leftButton animated:YES];
+    [leftButton release];
+	[addButton addTarget:self action:@selector(clearAll) forControlEvents:(UIControlEventTouchDown)];
+    
+    UIImage *menuButtonImage = [UIImage imageNamed:@"edit_white_on_blue_button.png"];
+    UIImage *menuButtonImageHighlighted = [UIImage imageNamed:@"edit.png"];
+    editButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [editButton setImage:menuButtonImage forState:UIControlStateNormal];
+    [editButton setImage:menuButtonImageHighlighted forState:UIControlStateHighlighted];	
+    editButton.frame = CGRectMake(0, 0, menuButtonImage.size.width, menuButtonImage.size.height);
+    UIBarButtonItem *menuBarButton = [[UIBarButtonItem alloc] initWithCustomView:editButton];
+    [editButton addTarget:self action:@selector(editSelectedRow) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.rightBarButtonItem = menuBarButton;
+    [menuBarButton release];
+    
+    if (!([newItem.newNote.type intValue]==2)) {
+        [newAppointment saveNewAppointment];
+        
+        newAppointment.newAppointment.text = textView.text;
+        NSString *selectedDate = [dateFormatter stringFromDate:newAppointment.newAppointment.doDate];
+        NSString *selectedStart = [timeFormatter stringFromDate:newAppointment.newAppointment.doTime];
+        NSString *selectedEnd = [timeFormatter stringFromDate:newAppointment.newAppointment.endTime];
+        NSMutableString *text = [NSMutableString stringWithFormat:@"Scheduled Date: %@\nStarts At: %@. Ends At: %@\n\n%@",selectedDate, selectedStart, selectedEnd, newAppointment.newAppointment.text];
+        textView.text = text;        
+        if (newAppointment.newAppointment.doDate == nil || newAppointment.newAppointment.text == @""){
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Warning" message:@"No Appointment Date or Text" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+            [alert show];
+            [alert release];
+            return;
+        }
+    } else {
+        
+        [newItem saveNewItem];  
+        if (newItem.newNote.doDate == nil || newItem.newNote.text == @""){
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Warning" message:@"No Appointment Date or Text" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+            [alert show];
+            [alert release];
+            
+            return;
+        }
+    }
+    [bottomView addSubview:tableViewController.tableView];
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:0.4];
+    [UIView setAnimationDelegate:self];
+    tableViewController.tableView.frame = CGRectMake(0, 0, bottomViewRect.size.width, bottomViewRect.size.height);
+    [textView setFrame:textViewRect];
+    [UIView commitAnimations];
+    
+    [textView setUserInteractionEnabled:NO];
+    
+    myData.selectedAppointment = nil;
+    myData.selectedTask = nil;
+    myData.isEditing = [NSNumber numberWithInt:0];
+    
+}
+
+
+#pragma mark - ToolBar and NavigationBar Management...
+
 
 - (UIImage *)flipperImageForDateNavigationItem {
 	// returns a 30 x 30 image to display the flipper button in the navigation bar
@@ -247,10 +521,10 @@
     point = CGPointMake((calendarRectangle.size.width-stringSize.width)/2,9);
     NSLog(@"date is %@",[imageDateFormatter stringFromDate:[NSDate date]]);
 	[[imageDateFormatter stringFromDate:[NSDate date]] drawAtPoint:point withFont:font];
+    [imageDateFormatter release];
 	UIImage *theImage=UIGraphicsGetImageFromCurrentImageContext();
 	UIGraphicsEndImageContext();
 	return theImage;
-    [imageDateFormatter release];
 }
 
 - (void) toggleCalendar{
@@ -331,148 +605,13 @@
     return;
 }
 
-- (void) togglePlannerToolBar{
-    toolBar.firstButton.image = [UIImage imageNamed:@"calendar_24.png"];
-    toolBar.firstButton.title = @"Schedule";
-    toolBar.firstButton.target = self;
-    [toolBar.firstButton setAction:@selector(presentSchedulerPopover:)];
-    
-    toolBar.secondButton.image = [UIImage imageNamed:@"alarm_24.png"];
-    toolBar.secondButton.title = @"Remind";
-    toolBar.secondButton.target = self;
-    [toolBar.secondButton setAction:@selector(presentReminderPopover:)];
-}
 
-- (void) addNewEvent:(id)sender {
-    [navPopover dismissPopoverAnimated:YES];
-    [self addPickerControls];
-       
-    [self togglePlannerToolBar];
-    NSManagedObjectContext *addingContext = [[NSManagedObjectContext alloc] init];
-    [addingContext setPersistentStoreCoordinator:[self.managedObjectContext persistentStoreCoordinator]];
-    
-    MyDataObject *myData = [self myDataObject];
-    
-    if ([sender tag]==1) {
-        [myData setNoteType:[NSNumber numberWithInt:1]];
-    newAppointment = [[NewAppointment alloc] init];//Create new instance of delegate class.
-    newAppointment.addingContext = addingContext; // pass adding MOC to the delegate instance.
-    [newAppointment createNewAppointment:textView.text];//Inserts a new Appointment object and set the text attribute.
-        return;
-        }
-    else {
-        [myData setNoteType:[NSNumber numberWithInt:2]];
-
-       //ADD CODE FOR NEW TASK     
-        }
-    return;
-}
-
-- (void) cancelAddEvent{
-    NSLog(@"Cancelling Appointment");
-    //release NewAppointment object.
-    //return toolBar to base state.
-    //???clear text
-    return;
-}
-
-- (void) saveMemo:(id)sender {    
-    if (![textView hasText]){
-        return;
-    }
-    
-    NSManagedObjectContext *addingContext = [[NSManagedObjectContext alloc] init];
-    [addingContext setPersistentStoreCoordinator:[self.managedObjectContext persistentStoreCoordinator]];
-    NSEntityDescription *entity = [NSEntityDescription  entityForName:@"Memo" inManagedObjectContext:addingContext];
-    Memo *newMemo = [[Memo alloc] initWithEntity:entity insertIntoManagedObjectContext:addingContext];
-    [newMemo setText:textView.text];
-    [newMemo setCreationDate:[NSDate date]];
-    [newMemo setEditDate:[NSDate date]];
-    
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSDateComponents *dateComponents = [calendar components:(NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit) fromDate:[NSDate date]];
-    [dateComponents setYear:[dateComponents year]];
-    [dateComponents setMonth:[dateComponents month]];
-    [dateComponents setDay:[dateComponents day]];
-    [dateComponents setHour:0];
-    [dateComponents setMinute:0];
-    [dateComponents setSecond:0];
-    NSDate *selectedDate = [calendar dateFromComponents:dateComponents];
-    [newMemo setDoDate:selectedDate];
-    
-    [dateComponents setYear:0];
-    [dateComponents setMonth:0];
-    [dateComponents setDay:0];
-    [dateComponents setHour:[dateComponents hour]];
-    [dateComponents setMinute:[dateComponents minute]];
-    [dateComponents setSecond:[dateComponents second]];
-    selectedDate = [calendar dateFromComponents:dateComponents];
-    [newMemo setDoTime:selectedDate];
-    [newMemo setEndTime:selectedDate];
-    
-    NSError *error;
-    if(![self.managedObjectContext save:&error]){ 
-        NSLog(@"MainViewController MOC: DID NOT SAVE");
-    }
-    // [[NSNotificationCenter defaultCenter] postNotificationName:NSManagedObjectContextDidSaveNotification object:nil];
-    
-    [textView setText:@""];
-    [textView resignFirstResponder];    
-    [newMemo release];
-    
-    /*--TODO:   SAVE(MEMO/NOTE) option. When the user has added and saved text, then returns to editing but does not add any text. 
-     // if (![newTextInput isEqualToString:previousTextInput]){
-     --*/
-    
-    [navPopover dismissPopoverAnimated:YES];
-    UIImage *image = [UIImage imageNamed:@"cancel_white_on_blue_button.png"];
-    UIButton *cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
-    [cancelButton setBackgroundImage:image forState:UIControlStateNormal];
-    UIBarButtonItem *barbutton = [[UIBarButtonItem alloc]initWithCustomView:cancelButton];
-    [self.navigationItem setLeftBarButtonItem:barbutton animated:YES];
-	[barbutton release];
-	[cancelButton addTarget:self action:@selector(cancelAddEvent) forControlEvents:(UIControlEventTouchDown)];
-    
-    //[self togglePlannerToolBar];
-
-    if ([sender tag]==1) {
-       //ADD CODE TO SAVE TO FOLDER
-        return;
-    }
-    else {
-        //ADD CODE TO SAVE TO FILE    
-    }
-    return;
-}
-
-- (void) sendItem:(id)sender {
-    [navPopover dismissPopoverAnimated:YES];
-    UIImage *image = [UIImage imageNamed:@"cancel_white_on_blue_button.png"];
-    UIButton *cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
-    [cancelButton setBackgroundImage:image forState:UIControlStateNormal];
-    UIBarButtonItem *barbutton = [[UIBarButtonItem alloc]initWithCustomView:cancelButton];
-    [self.navigationItem setLeftBarButtonItem:barbutton animated:YES];
-	[barbutton release];
-	[cancelButton addTarget:self action:@selector(cancelAddEvent) forControlEvents:(UIControlEventTouchDown)];
-    
-    if ([sender tag]==1) {
-       
-        //ADD CODE TO SEND EMAIL
-        return;
-    }
-    else {
-        //ADD CODE TO SEND MESSAGE   
-    }
-    return;
-}
-
-#pragma -
-#pragma mark TOOLBAR AND NAVPOPOVER ACTIONS
+#pragma mark - Popover Management
 
 - (void) presentActionsPopover:(id)sender{
+    
     UIButton *button1 = [[UIButton alloc] initWithFrame:CGRectMake(10, 5, 54, 54)];
     UIButton *button2 = [[UIButton alloc] initWithFrame:CGRectMake(button1.frame.size.width+30, 5, 54, 54)];
-    UIViewController *viewCon = [[UIViewController alloc] init];
     UILabel *label1 = [[UILabel alloc] initWithFrame:CGRectMake(button1.frame.origin.x-10, button1.frame.size.height+5, button1.frame.size.width+20, 30)];
     [label1 setBackgroundColor:[UIColor clearColor]];
     [label1 setTextAlignment:UITextAlignmentCenter];
@@ -484,7 +623,11 @@
     [label2 setFont:[UIFont boldSystemFontOfSize:12]];
     [label2 setTextColor:[UIColor whiteColor]];
     
+    
+    UIViewController *viewCon = [[UIViewController alloc] init];
+
     viewCon.contentSizeForViewInPopover = CGSizeMake(150, button1.frame.size.height+label1.frame.size.height);
+
     [viewCon.view addSubview:button1];
     [viewCon.view addSubview:button2];
     [viewCon.view addSubview:label1];
@@ -501,11 +644,10 @@
         [navPopover autorelease];
         navPopover = nil;
             } else {
-        //CGRect screenBounds = [UIScreen mainScreen].bounds;
         
             if ([sender tag] == 1) {
             NSLog(@"Saving");
-
+            [self saveMemo:nil];
             [button1 setImage:[UIImage imageNamed:@"folder_button.png"] forState:UIControlStateNormal];
             [button1 addTarget:self action:@selector(saveToFolder) forControlEvents:UIControlEventTouchUpInside];
             [button1 setTag:1];
@@ -515,10 +657,16 @@
             [label1 setText:@"To Folder"];
             [label2 setText:@"To File"];
             
-            [navPopover presentPopoverFromRect:CGRectMake(20, 205, 50, 40)
+                            [navPopover presentPopoverFromRect:CGRectMake(20, 205, 50, 40)
                                     inView:self.view    
                   permittedArrowDirections:UIPopoverArrowDirectionDown
                                   animated:YES name:@"Save"];  
+                [button1 release];
+                [button2 release];
+                [label1 release];
+                [label2 release];
+                [viewCon release];
+                return;
         }
         else if ([sender tag] == 2) {
             NSLog(@"Planning");
@@ -533,10 +681,22 @@
             [navPopover presentPopoverFromRect:CGRectMake(90, 205, 50, 40)
                                         inView:self.view
                       permittedArrowDirections: UIPopoverArrowDirectionDown
-                                      animated:YES name:@"Plan"];         
+                                      animated:YES name:@"Plan"];    
+            [button1 release];
+            [button2 release];
+            [label1 release];
+            [label2 release];
+            [viewCon release];
+
+            return;
         }
         else if ([sender tag] == 3) {
             NSLog(@"Changing View");
+            [button1 release];
+            [button2 release];
+            [label1 release];
+            [label2 release];
+            [viewCon release];
             return;
         }
         else {
@@ -550,7 +710,14 @@
             [label1 setText:@"Email"];
             [label2 setText:@"Message"];
             [navPopover presentPopoverFromRect:CGRectMake(205, 205, 50, 50) inView:self.view
-            permittedArrowDirections:UIPopoverArrowDirectionDown animated:YES name:@"Send"];            
+            permittedArrowDirections:UIPopoverArrowDirectionDown animated:YES name:@"Send"]; 
+            [button1 release];
+            [button2 release];
+            [label1 release];
+            [label2 release];
+            [viewCon release];
+
+            return;
         }
     }    
     [button1 release];
@@ -558,21 +725,13 @@
     [label1 release];
     [label2 release];
     [viewCon release];
-}
-
-- (void)popoverControllerDidDismissPopover:(WEPopoverController *)popoverController {
-    NSLog(@"Did dismiss");
-}
-
-- (BOOL)popoverControllerShouldDismissPopover:(WEPopoverController *)popoverController {
-    NSLog(@"Should dismiss");
-    return YES;
+    return;
 }
 
 - (void)presentSchedulerPopover:(id)sender {//CREATE THE POPOVER AND ADD TO THE VIEW
-    if (self.navigationController.navigationBarHidden == NO) {
-        self.navigationController.navigationBarHidden = YES;
-    }
+    //if (self.navigationController.navigationBarHidden == NO) {
+    //    self.navigationController.navigationBarHidden = YES;
+    //}
     [tableViewController.tableView removeFromSuperview];
 	[textView removeFromSuperview];
     [self.view addSubview:textView];
@@ -598,14 +757,10 @@
 
         [schedulerPopover addName:@"Scheduler"];
         SchedulePopoverViewController *viewCon = [[SchedulePopoverViewController alloc]init];
-        [viewCon.button1 addTarget:self action:@selector(cancelPopover:) forControlEvents:UIControlEventTouchUpInside];
+       // [viewCon.button1 addTarget:self action:@selector(cancelPopover:) forControlEvents:UIControlEventTouchUpInside];
         
-        //viewCon.tableViewController = [[UITableViewController alloc] init];
         viewCon.tableViewController = self.tableViewController;
-        
-        //[viewCon.view addSubview:tableViewController.tableView];
-        //tableViewController.tableView.frame = CGRectMake(145, 120, 160, 200);
-        viewCon.contentSizeForViewInPopover = CGSizeMake(300, 180);
+        viewCon.contentSizeForViewInPopover = CGSizeMake(300, 140);
         schedulerPopover = [[WEPopoverController alloc] initWithContentViewController:viewCon];
         [schedulerPopover setDelegate:self];
         [viewCon release];
@@ -752,193 +907,23 @@
     }        
 }
 
-- (void) addDateField{
-    [toolBar.firstButton setAction:@selector(setAppointmentDate:)];
-    [toolBar.firstButton setTitle:@"Set Date"];   
-    [toolBar.firstButton setTag:2];
-    NSNumber *num = [NSNumber numberWithInt:1];
-    NSArray *objects = [NSArray arrayWithObjects: datePicker, toolBar, num, nil];
-    NSArray *keys = [NSArray arrayWithObjects: @"picker", @"toolbar",@"num", nil];
-    NSDictionary *inputObjects = [NSDictionary dictionaryWithObjects:objects forKeys:keys];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"PopOverShouldUpdateNotification" object:nil userInfo:inputObjects];
-}
-- (void)datePickerChanged:(id)sender{
-    NSLog(@"DatePicker Changed");
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSDateComponents *dateComponents = [calendar components:(NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit ) fromDate:[datePicker date]];
-    [dateComponents setYear:[dateComponents year]];
-    [dateComponents setMonth:[dateComponents month]];
-    [dateComponents setDay:[dateComponents day]];
-    [dateComponents setHour:12];
-    [dateComponents setMinute:0];
-    [dateComponents setSecond:0];
-    NSDate *selectedDate = [calendar dateFromComponents:dateComponents];
-    if (newAppointment.newAppointment != nil){
-        newAppointment.newAppointment.doDate = selectedDate;
-    }
-   // else if (newTask != nil){
-   //     newTask.doDate = selectedDate;
-   // }
-    
-    NSNumber *num = [NSNumber numberWithInt:2];
-    NSArray *objects = [NSArray arrayWithObjects:num, nil];
-    NSArray *keys = [NSArray arrayWithObjects:@"num", nil];
-    NSDictionary *inputObjects = [NSDictionary dictionaryWithObjects:objects forKeys:keys];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"GetDateNotification" object:selectedDate userInfo:inputObjects]; 
-    
-}
-- (void) setAppointmentDate:(id)sender{
-    //CASE: the popOver has not been created or it is not visible.
-    if (!schedulerPopover || ![schedulerPopover isPopoverVisible]) {
-        [self presentSchedulerPopover:nil];
-        MyDataObject *myDate = [self myDataObject];
-        if ([myDate.noteType intValue]== 1) {
-            addField = 1;
-        }
-        else if ([myDate.noteType intValue]== 2){
-            addField = 5;   
-        }
-    }
-    //CASE: popOver is view, DATEPICKER date selected & SETDATE button tapped --> 
-    [self addStartTimeField];  //Call method to add the next field.   
-    //NOTE: newAppointment.date is set in the datePickerChanged method
-}
-- (void) addStartTimeField{
-    if ([schedulerPopover isPopoverVisible]) {
-        [toolBar.firstButton setImage:[UIImage imageNamed:@"11-clock.png"]];
-        [toolBar.firstButton setAction:@selector(setStartTime:)];
-        [toolBar.firstButton setTitle:@"Start Time"];   
-        [toolBar.firstButton setTag:3];
-        
-        NSNumber *num = [NSNumber numberWithInt:3];
-        NSArray *objects = [NSArray arrayWithObjects:self.timePicker, self.toolBar, num, nil];
-        NSArray *keys = [NSArray arrayWithObjects:@"picker", @"toolbar", @"num",nil];
-        NSDictionary *inputObjects = [NSDictionary dictionaryWithObjects:objects forKeys:keys];
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"PopOverShouldUpdateNotification"object:nil userInfo:inputObjects];
-    }
-}
-- (void)timePickerChanged:(id)sender{
-    NSLog(@"TimePicker Changed");
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSDateComponents *timeComponents = [calendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit ) fromDate:[timePicker date]];    
-    [timeComponents setHour:[timeComponents hour]];
-    [timeComponents setMinute:[timeComponents minute]];
-    [timeComponents setSecond:[timeComponents second]];
-    [timeComponents setYear:0];
-    [timeComponents setMonth:0];
-    [timeComponents setDay:0];
-    NSDate *selectedTime= [calendar dateFromComponents:timeComponents];
-    NSNumber *num = [NSNumber numberWithInt:4];
-    NSArray *objects = [NSArray arrayWithObjects:num, nil];
-    NSArray *keys = [NSArray arrayWithObjects:@"num", nil];
-    NSDictionary *inputObjects = [NSDictionary dictionaryWithObjects:objects forKeys:keys];
-    [[NSNotificationCenter defaultCenter]  postNotificationName:@"PopOverShouldUpdateNotification" object:selectedTime userInfo:inputObjects];
-}
-- (void) setStartTime:(id)sender{
-    if (!schedulerPopover || ![[schedulerPopover returnName] isEqualToString:@"Scheduler"]){
-        [self cancelPopover:nil];
-        [self presentSchedulerPopover:nil];
-        addField = 2;
-    }
-    //CASE: the popOver in view, TIMEPICKER time selected and  STARTTIME button tapped -> 
-    else if ([schedulerPopover isPopoverVisible] && [sender tag] == 3) {
-        [self addEndTimeField]; //call method to add the next field.   
-        MyDataObject *myData = [self myDataObject];
-        
-        NSCalendar *calendar = [NSCalendar currentCalendar];
-        NSDateComponents *timeComponents = [calendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit ) fromDate:[timePicker date]];    
-        [timeComponents setYear:0];
-        [timeComponents setMonth:0];
-        [timeComponents setDay:0];
-        NSDate *selectedTime= [calendar dateFromComponents:timeComponents];
-        if ([myData.noteType intValue]== 1){
-            [timeComponents setHour:[timeComponents hour]];
-            [timeComponents setMinute:[timeComponents minute]];
-            [timeComponents setSecond:[timeComponents second]];
-            newAppointment.newAppointment.doTime = selectedTime;
-        }
-        else {
-            [timeComponents setHour:0];
-            [timeComponents setMinute:0];
-            [timeComponents setSecond:0];
-            selectedTime = [calendar dateFromComponents:timeComponents];
-        //    newTask.doDate = selectedTime;
-        }
-    }
-}
-- (void) addEndTimeField{
-    if ([schedulerPopover isPopoverVisible]) {
-        [toolBar.firstButton setImage:[UIImage imageNamed:@"11-clock.png"]];
-        [toolBar.firstButton setAction:@selector(setEndTime:)];
-        [toolBar.firstButton setTitle:@"End Time"];   
-        [toolBar.firstButton setTag:4];
-        //PostNotification to schedulepopover  
-        NSNumber *num = [NSNumber numberWithInt:5];
-        NSArray *objects = [NSArray arrayWithObjects:self.timePicker, self.toolBar, num, nil];
-        NSArray *keys = [NSArray arrayWithObjects:@"picker", @"toolbar", @"num",nil];
-        NSDictionary *inputObjects = [NSDictionary dictionaryWithObjects:objects forKeys:keys];
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"PopOverShouldUpdateNotification"object:newAppointment userInfo:inputObjects];
-    }
-}
-- (void) setEndTime:(id)sender{
-    //Put end time in popOver view
-    if (!schedulerPopover || ![schedulerPopover isPopoverVisible]) {
-        [self presentSchedulerPopover:nil];
-        addField = 3;
-    }
-    //CASE: popOver in view, TIMEPICKER time selected and the ENDTIME button is tapped --> 
-    else if ([schedulerPopover isPopoverVisible] && [sender tag] == 4) {
-        [self addRecurringField];//Call method to add next field
-        MyDataObject *myData = [self myDataObject];
-        
-        NSCalendar *calendar = [NSCalendar currentCalendar];
-        NSDateComponents *timeComponents = [calendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit ) fromDate:[timePicker date]];    
-        [timeComponents setYear:0];
-        [timeComponents setMonth:0];
-        [timeComponents setDay:0];
-        [timeComponents setHour:[timeComponents hour]];
-        [timeComponents setMinute:[timeComponents minute]];
-        [timeComponents setSecond:[timeComponents second]];
-        NSDate *selectedTime= [calendar dateFromComponents:timeComponents];
-        
-        if ([myData.noteType intValue]== 1){
-            newAppointment.newAppointment.endTime = selectedTime;
-        }
-        else {
-            [timeComponents setHour:0];
-            [timeComponents setMinute:0];
-            [timeComponents setSecond:0];
-            selectedTime = [calendar dateFromComponents:timeComponents];
-            //newTask.doDate = selectedTime;
-        }
-    }
-}
-- (void) addRecurringField{
-    if ([schedulerPopover isPopoverVisible]) {
-        [toolBar.firstButton setImage:[UIImage imageNamed:@"11-clock.png"]];
-        [toolBar.firstButton setAction:@selector(setRecurrance:)];
-        [toolBar.firstButton setTitle:@"Recurring"];   
-        [toolBar.firstButton setTag:4];
-        //PostNotification to schedulepopover  
-        NSNumber *num = [NSNumber numberWithInt:6];
-        NSArray *objects = [NSArray arrayWithObjects:self.pickerView, self.toolBar, num, nil];
-        NSArray *keys = [NSArray arrayWithObjects:@"picker", @"toolbar", @"num",nil];
-        NSDictionary *inputObjects = [NSDictionary dictionaryWithObjects:objects forKeys:keys];
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"PopOverShouldUpdateNotification"object:newAppointment.newAppointment userInfo:inputObjects];
-    }
-}
-- (void) setRecurrance:(id)sender{
-    [self cancelPopover:nil];
-    [textView becomeFirstResponder];
-    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(doneAction)];
-    self.navigationItem.rightBarButtonItem  = rightButton;
-    [rightButton release];
-    self.navigationItem.rightBarButtonItem.tag = 1;
-    [self.navigationItem.rightBarButtonItem setStyle:UIBarButtonItemStylePlain]; 
-    return;
+- (void)popoverControllerDidDismissPopover:(WEPopoverController *)popoverController {
+    NSLog(@"Did dismiss");
 }
 
-#pragma mark PickerView Delegate
+- (BOOL)popoverControllerShouldDismissPopover:(WEPopoverController *)popoverController {
+    NSLog(@"Should dismiss");
+    return YES;
+}
+
+- (void)myTransitionDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {
+	// re-enable user interaction when the flip is completed.
+	//flipIndicatorButton.userInteractionEnabled = YES;
+    //flipperView.userInteractionEnabled = YES;
+}
+
+
+#pragma mark - PickerView Delegate
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row
       inComponent:(NSInteger)component{
     NSNumber *num = [NSNumber numberWithInt:7];
@@ -951,7 +936,8 @@
         newAppointment.newAppointment.recurring = [recurring objectAtIndex:row];
         }
     else {
-        // newTask.recurring = [recurring objectAtIndex:row];
+        newItem.recurring = [recurring objectAtIndex:row];
+        newAppointment.newAppointment.recurring = [recurring objectAtIndex:row];
         }
     [[NSNotificationCenter defaultCenter] postNotificationName:@"PopOverShouldUpdateNotification"object:newAppointment.newAppointment userInfo:inputObjects];
 }
@@ -973,11 +959,6 @@
     return sectionWidth;
 }
 
-- (void)myTransitionDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {
-	// re-enable user interaction when the flip is completed.
-	//flipIndicatorButton.userInteractionEnabled = YES;
-    //flipperView.userInteractionEnabled = YES;
-}
 
 #pragma mark -
 #pragma mark TKCalendarMonthViewDelegate methods
@@ -1055,114 +1036,188 @@
 	return [NSArray arrayWithArray:marks];
 }
 
+
 - (void) setAlarm {
     return;
 }
-- (void) setEditingView {//Called only when on calendar/tv view
-    MyDataObject *myData = [self myDataObject];
-    if (textView !=nil) {
-        [textView removeFromSuperview];
-        [textView release];
-        textView = nil;
+
+#pragma mark - Scheduling Appointments and Tasks
+- (void) addDateField{
+    
+}
+- (void)datePickerChanged:(id)sender{
+    NSLog(@"DatePicker Changed");
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *dateComponents = [calendar components:(NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit ) fromDate:[datePicker date]];
+    [dateComponents setYear:[dateComponents year]];
+    [dateComponents setMonth:[dateComponents month]];
+    [dateComponents setDay:[dateComponents day]];
+    [dateComponents setHour:12];
+    [dateComponents setMinute:0];
+    [dateComponents setSecond:0];
+    NSDate *selectedDate = [calendar dateFromComponents:dateComponents];
+    if (newAppointment.newAppointment != nil){
+        newAppointment.newAppointment.doDate = selectedDate;
+    }
+    else if (newItem.newNote != nil){
+        newItem.newNote.doDate = selectedDate;
+    }
+    
+    NSNumber *num = [NSNumber numberWithInt:2];
+    NSArray *objects = [NSArray arrayWithObjects:num, nil];
+    NSArray *keys = [NSArray arrayWithObjects:@"num", nil];
+    NSDictionary *inputObjects = [NSDictionary dictionaryWithObjects:objects forKeys:keys];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"GetDateNotification" object:selectedDate userInfo:inputObjects]; 
+    
+}
+- (void) setAppointmentDate:(id)sender{
+    //CASE: the popOver has not been created or it is not visible.
+    if (!schedulerPopover || ![schedulerPopover isPopoverVisible]) {
+        [self presentSchedulerPopover:nil];
+        MyDataObject *myDate = [self myDataObject];
+        if ([myDate.noteType intValue]== 1) {
+            addField = 1;
         }
-    NSLog(@"textView is nil. Adding textView");
-    //TEXTVIEW: setup and add to self.view
-    textView = [[CustomTextView alloc] initWithFrame:CGRectMake(screenRect.size.width, textViewRect.origin.y, textViewRect.size.width, textViewRect.size.height)];
-    textView.delegate = self;    
-    textView.inputAccessoryView = toolBar;
-    [self.view addSubview:textView];
-    [textView setText:myData.myText];
-    [textView setUserInteractionEnabled:YES];
+        else if ([myDate.noteType intValue]== 2){
+            addField = 5;   
+        }
+    }
+    //CASE: popOver is view, DATEPICKER date selected & SETDATE button tapped --> 
+    [self addStartTimeField];  //Call method to add the next field.   
+    //NOTE: newAppointment.date is set in the datePickerChanged method
+}
+- (void) addStartTimeField{
+    if ([schedulerPopover isPopoverVisible]) {
+        [toolBar toggleSetDateAndSetStart];
+        
+        NSNumber *num = [NSNumber numberWithInt:3];
+        NSArray *objects = [NSArray arrayWithObjects:self.timePicker, self.toolBar, num, nil];
+        NSArray *keys = [NSArray arrayWithObjects:@"picker", @"toolbar", @"num",nil];
+        NSDictionary *inputObjects = [NSDictionary dictionaryWithObjects:objects forKeys:keys];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"PopOverShouldUpdateNotification"object:nil userInfo:inputObjects];
+    }
+}
+- (void)timePickerChanged:(id)sender{
+    NSLog(@"TimePicker Changed");
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *timeComponents = [calendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit ) fromDate:[timePicker date]];    
+    [timeComponents setHour:[timeComponents hour]];
+    [timeComponents setMinute:[timeComponents minute]];
+    [timeComponents setSecond:[timeComponents second]];
+    [timeComponents setYear:0];
+    [timeComponents setMonth:0];
+    [timeComponents setDay:0];
+    NSDate *selectedTime= [calendar dateFromComponents:timeComponents];
+    NSNumber *num = [NSNumber numberWithInt:4];
+    NSArray *objects = [NSArray arrayWithObjects:num, nil];
+    NSArray *keys = [NSArray arrayWithObjects:@"num", nil];
+    NSDictionary *inputObjects = [NSDictionary dictionaryWithObjects:objects forKeys:keys];
+    [[NSNotificationCenter defaultCenter]  postNotificationName:@"PopOverShouldUpdateNotification" object:selectedTime userInfo:inputObjects];
+}
+- (void) setStartTime:(id)sender{
+    if (!schedulerPopover || ![[schedulerPopover returnName] isEqualToString:@"Scheduler"]){
+        [self cancelPopover:nil];
+        [self presentSchedulerPopover:nil];
+        addField = 2;
+    }
+    //CASE: the popOver in view, TIMEPICKER time selected and  STARTTIME button tapped -> 
+    else if ([schedulerPopover isPopoverVisible] && [sender tag] == 3) {
+        [self addEndTimeField]; //call method to add the next field.   
+        MyDataObject *myData = [self myDataObject];
+        
+        NSCalendar *calendar = [NSCalendar currentCalendar];
+        NSDateComponents *timeComponents = [calendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit ) fromDate:[timePicker date]];    
+        [timeComponents setYear:0];
+        [timeComponents setMonth:0];
+        [timeComponents setDay:0];
+        NSDate *selectedTime= [calendar dateFromComponents:timeComponents];
+        if ([myData.noteType intValue]== 1){
+            [timeComponents setHour:[timeComponents hour]];
+            [timeComponents setMinute:[timeComponents minute]];
+            [timeComponents setSecond:[timeComponents second]];
+            newAppointment.newAppointment.doTime = selectedTime;
+        }
+        else {
+            [timeComponents setHour:0];
+            [timeComponents setMinute:0];
+            [timeComponents setSecond:0];
+            selectedTime = [calendar dateFromComponents:timeComponents];
+            newItem.newNote.doTime = selectedTime;
+        }
+    }
+}
+- (void) addEndTimeField{
+    if ([schedulerPopover isPopoverVisible]) {
+        [toolBar toggleSetStartAndSetEnd];
+        //PostNotification to schedulepopover  
+        NSNumber *num = [NSNumber numberWithInt:5];
+        NSArray *objects = [NSArray arrayWithObjects:self.timePicker, self.toolBar, num, nil];
+        NSArray *keys = [NSArray arrayWithObjects:@"picker", @"toolbar", @"num",nil];
+        NSDictionary *inputObjects = [NSDictionary dictionaryWithObjects:objects forKeys:keys];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"PopOverShouldUpdateNotification"object:newAppointment userInfo:inputObjects];
+    }
+}
+- (void) setEndTime:(id)sender{
+    //Put end time in popOver view
+    if (!schedulerPopover || ![schedulerPopover isPopoverVisible]) {
+        [self presentSchedulerPopover:nil];
+        addField = 3;
+    }
+    //CASE: popOver in view, TIMEPICKER time selected and the ENDTIME button is tapped --> 
+    else if ([schedulerPopover isPopoverVisible] && [sender tag] == 4) {
+        [self addRecurringField];//Call method to add next field
+        MyDataObject *myData = [self myDataObject];
+        
+        NSCalendar *calendar = [NSCalendar currentCalendar];
+        NSDateComponents *timeComponents = [calendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit ) fromDate:[timePicker date]];    
+        [timeComponents setYear:0];
+        [timeComponents setMonth:0];
+        [timeComponents setDay:0];
+        [timeComponents setHour:[timeComponents hour]];
+        [timeComponents setMinute:[timeComponents minute]];
+        [timeComponents setSecond:[timeComponents second]];
+        NSDate *selectedTime= [calendar dateFromComponents:timeComponents];
+        
+        if ([myData.noteType intValue]== 1){
+            newAppointment.newAppointment.endTime = selectedTime;
+        }
+        else {
+            [timeComponents setHour:0];
+            [timeComponents setMinute:0];
+            [timeComponents setSecond:0];
+            selectedTime = [calendar dateFromComponents:timeComponents];
+            newItem.newNote.endTime = selectedTime;
+        }
+    }
+}
+- (void) addRecurringField{
+    if ([schedulerPopover isPopoverVisible]) {
+        [toolBar.firstButton setImage:[UIImage imageNamed:@"11-clock.png"]];
+        [toolBar.firstButton setAction:@selector(setRecurrance:)];
+        [toolBar.firstButton setTitle:@"Recurring"];   
+        [toolBar.firstButton setTag:4];
+        //PostNotification to schedulepopover  
+        NSNumber *num = [NSNumber numberWithInt:6];
+        NSArray *objects = [NSArray arrayWithObjects:self.pickerView, self.toolBar, num, nil];
+        NSArray *keys = [NSArray arrayWithObjects:@"picker", @"toolbar", @"num",nil];
+        NSDictionary *inputObjects = [NSDictionary dictionaryWithObjects:objects forKeys:keys];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"PopOverShouldUpdateNotification"object:newAppointment.newAppointment userInfo:inputObjects];
+    }
+}
+- (void) setRecurrance:(id)sender{
+    [self cancelPopover:nil];
     [textView becomeFirstResponder];
-    
-    UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(cancelAddingOrEditing)];
-    self.navigationItem.leftBarButtonItem = leftButton;
-    [leftButton release];
-    self.navigationItem.leftBarButtonItem.tag = 10;
-    [self.navigationItem.leftBarButtonItem setStyle:UIBarButtonItemStylePlain];  
-    
     UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(doneAction)];
     self.navigationItem.rightBarButtonItem  = rightButton;
     [rightButton release];
     self.navigationItem.rightBarButtonItem.tag = 1;
     [self.navigationItem.rightBarButtonItem setStyle:UIBarButtonItemStylePlain]; 
-    
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:0.4];
-    [UIView setAnimationDelegate:self];
-    // textView.frame = textViewRect;
-    // tableViewController.tableView.frame = bottomViewRect;
-    
-    [UIView commitAnimations];
+    return;
 }
 
-- (void) doneAction{
-    
-    MyDataObject *myData = [self myDataObject];
-    
-    UIImage *addButtonImage = [UIImage imageNamed:@"add_item_white_on_blue_button.png"];
-    UIButton *addButton=[[UIButton alloc] initWithFrame:CGRectMake(0, 0, addButtonImage.size.width, addButtonImage.size.height)];
-    [addButton setBackgroundImage:addButtonImage forState:UIControlStateNormal];	
-    UIBarButtonItem *leftButton;
-    leftButton = [[UIBarButtonItem alloc] initWithCustomView:addButton];
-	[self.navigationItem setLeftBarButtonItem:leftButton animated:YES];
-    [leftButton release];
-	[addButton addTarget:self action:@selector(clearAll) forControlEvents:(UIControlEventTouchDown)];
-    
-    UIImage *menuButtonImage = [UIImage imageNamed:@"edit_light.png"];
-    UIImage *menuButtonImageHighlighted = [UIImage imageNamed:@"edit.png"];
-    UIButton *menuButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [menuButton setImage:menuButtonImage forState:UIControlStateNormal];
-    [menuButton setImage:menuButtonImageHighlighted forState:UIControlStateHighlighted];	
-    menuButton.frame = CGRectMake(0, 0, menuButtonImage.size.width, menuButtonImage.size.height);
-    UIBarButtonItem *menuBarButton = [[UIBarButtonItem alloc] initWithCustomView:menuButton];
-    [menuButton addTarget:self action:@selector(editSelectedRow) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.rightBarButtonItem = menuBarButton;
-    [menuBarButton release];
-    
-    if ([myData.noteType intValue]==1) {
-        newAppointment.newAppointment.text = textView.text;
-        NSString *selectedDate = [dateFormatter stringFromDate:newAppointment.newAppointment.doDate];
-        NSString *selectedStart = [timeFormatter stringFromDate:newAppointment.newAppointment.doTime];
-        NSString *selectedEnd = [timeFormatter stringFromDate:newAppointment.newAppointment.endTime];
-        NSMutableString *text = [NSMutableString stringWithFormat:@"Scheduled Date: %@\nStarts At: %@. Ends At: %@\n\n%@",selectedDate, selectedStart, selectedEnd, newAppointment.newAppointment.text];
-        textView.text = text;        
-        if (newAppointment.newAppointment.doDate == nil || newAppointment.newAppointment.text == @""){
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Warning" message:@"No Appointment Date or Text" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
-            [alert show];
-            [alert release];
-            return;
-        }
-        } else if ([myData.noteType intValue] == 2){
-        //newTask.text = textView.text;
-        //if (newTask.doDate == nil || newTask.text == @""){
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Warning" message:@"No Appointment Date or Text" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
-            [alert show];
-            [alert release];
-            return;
-        }
-    
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:0.4];
-    [UIView setAnimationDelegate:self];
-    
-    [textView setFrame:textViewRect];
-    [UIView commitAnimations];
-    
-    [textView setUserInteractionEnabled:NO];
-    
-    myData.selectedAppointment = nil;
-    myData.selectedTask = nil;
-    myData.isEditing = [NSNumber numberWithInt:0];
-    
-    [newAppointment saveNewAppointment];
-}
+#pragma mark - TableView Management
 
-- (void) clearAll{
-    textView.text = @"";
-    [textView becomeFirstResponder];
-    
-}
+
 - (void) moveTableViewUp{
     /*
      [[NSNotificationCenter defaultCenter] postNotificationName:@"tableViewMovedUpNotification" object:nil];
@@ -1220,64 +1275,6 @@
 
 
 #pragma mark -
-#pragma mark Responding to keyboard notifications
-
-- (void)keyboardWillShow:(NSNotification *)notification {
-    
-    NSDictionary *userInfo = [notification userInfo];
-    NSValue* aValue = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey]; // Get the origin of the keyboard when it's displayed.
-    CGRect keyboardRect = [aValue CGRectValue];
-    keyboardRect = [self.view convertRect:keyboardRect fromView:nil];
-    
-    CGFloat keyboardTop = keyboardRect.origin.y;
-    CGRect newTextViewFrame = self.view.bounds;
-    if (textView.frame.origin.y+textView.frame.size.height  > keyboardTop){
-        newTextViewFrame.size.height = keyboardTop - self.view.bounds.origin.y;
-    }
-    // Get the duration of the animation.
-    NSValue *animationDurationValue = [userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey];
-    NSTimeInterval animationDuration;
-    [animationDurationValue getValue:&animationDuration];
-    
-    // Animate the resize of the text view's frame in sync with the keyboard's appearance.
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:animationDuration];
-    //Put endframes for views that are to be resized here.
-    [UIView commitAnimations];
-}
-
-- (void)keyboardWillHide:(NSNotification *)notification {
-    NSDictionary* userInfo = [notification userInfo];
-    NSValue *animationDurationValue = [userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey];
-    NSTimeInterval animationDuration;
-    [animationDurationValue getValue:&animationDuration];
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:animationDuration];
-    //
-    [UIView commitAnimations];
-}
-
-- (void) dismissKeyboard{
-    //Check if textView is firstResponder. If yes, dismiss the keyboard by calling resignFirstResponder;
-    if ([textView isFirstResponder]){
-        [textView resignFirstResponder];
-    }
-    if (self.navigationController.navigationBarHidden == YES) {
-        [self.navigationController.navigationBar setHidden:NO];
-    }
-    
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:0.4];    
-    [UIView setAnimationDelegate:self];                
-    //
-    [UIView commitAnimations];
-    if([navPopover isPopoverVisible]) {
-        [navPopover dismissPopoverAnimated:YES];
-        [navPopover setDelegate:nil];
-        [navPopover autorelease];
-        navPopover = nil;
-    }
-}
 
 
 @end

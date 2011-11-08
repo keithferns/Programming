@@ -16,10 +16,10 @@
 
 
 // Height of the cells of the embedded table view (after rotation, which would be the table's width)
-#define kCellHeight  106
+#define kCellHeight  72
 
 // Width of the cells of the embedded table view (after rotation, which means it controls the rowHeight property)
-#define kCellWidth 106
+#define kCellWidth 80
 
 // Padding for the Cell containing the article image and title
 #define kArticleCellVerticalInnerPadding            3
@@ -42,3 +42,15 @@
 
 // The background color on the horizontal table view for when we select a particular cell
 #define kHorizontalTableSelectedBackgroundColor     [UIColor colorWithRed:0.0 green:0.59607843 blue:0.37254902 alpha:1.0]
+
+
+#define screenRect [[UIScreen mainScreen] applicationFrame]
+#define statusBarRect [[UIApplication sharedApplication] statusBarFrame];
+
+#define tabBarHeight self.tabBarController.tabBar.frame.size.height
+#define navBarHeight self.navigationController.navigationBar.frame.size.height
+#define topViewRect CGRectMake(0, self.navigationController.navigationBar.frame.origin.y+navBarHeight, screenRect.size.width, 150)
+#define toolBarRect CGRectMake(screenRect.size.width, 0, screenRect.size.width, 40)
+#define textViewRect CGRectMake(0, navBarHeight, screenRect.size.width, 150)
+#define bottomViewRect CGRectMake(0, textViewRect.origin.y+textViewRect.size.height+10, screenRect.size.width, screenRect.size.height-textViewRect.origin.y-textViewRect.size.height-10-tabBarHeight)
+#define mainFrame CGRectMake(screenRect.origin.x, self.navigationController.navigationBar.frame.origin.y+navBarHeight, screenRect.size.width, screenRect.size.height-navBarHeight)

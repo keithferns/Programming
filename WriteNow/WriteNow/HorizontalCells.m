@@ -7,38 +7,48 @@
 //
 
 #import "HorizontalCells.h"
+#import "CustomTextLabel.h"
 #import "ControlVariables.h"
 #import "EventsCell.h"
+#import "WriteNowAppDelegate.h"
+#import "TasksTableViewController.h"
+#import "AppointmentsTableViewController.h"
+#import "StartScreenCustomCell.h"
 
 @implementation HorizontalCells
 
-@synthesize horizontalTableView = _horizontalTableView;
+@synthesize tableView = _tableView;
+@synthesize myObjects;
 
 
 - (void) dealloc{
-    self.horizontalTableView = nil;
+    self.tableView = nil;
+    myObjects = nil;
+
     [super dealloc];
 }
 
 - (id)initWithFrame:(CGRect)frame {
+
+
    if ((self = [super initWithFrame:frame]))
         {
 
-        //self.horizontalTableView = [[[UITableView alloc] initWithFrame:CGRectMake(0, 0, kCellHeight, kScreenWidth)] autorelease];
-        self.horizontalTableView.showsVerticalScrollIndicator = NO;
-        self.horizontalTableView.showsHorizontalScrollIndicator = NO;
-        self.horizontalTableView.transform = CGAffineTransformMakeRotation(-M_PI * 0.5);
-        [self.horizontalTableView setFrame:CGRectMake(kRowHorizontalPadding * 0.5, kRowVerticalPadding * 0.5, kScreenWidth - kRowHorizontalPadding, kCellHeight)];
+        self.tableView = [[[UITableView alloc] initWithFrame:CGRectMake(0, 0, kCellHeight, kScreenWidth)] autorelease];
+        self.tableView.showsVerticalScrollIndicator = NO;
+        self.tableView.showsHorizontalScrollIndicator = NO;
+        self.tableView.transform = CGAffineTransformMakeRotation(-M_PI * 0.5);
+        [self.tableView setFrame:CGRectMake(kRowHorizontalPadding * 0.5, kRowVerticalPadding * 0.5, kScreenWidth - kRowHorizontalPadding, kCellHeight)];
         
-        self.horizontalTableView.rowHeight = kCellWidth;
-        self.horizontalTableView.backgroundColor = kHorizontalTableBackgroundColor;
+        self.tableView.rowHeight = kCellWidth;
+        self.tableView.backgroundColor = [UIColor blackColor];
         
-        self.horizontalTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-        self.horizontalTableView.separatorColor = [UIColor clearColor];
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+        self.tableView.separatorColor = [UIColor clearColor];
         
-        self.horizontalTableView.dataSource = self;
-        self.horizontalTableView.delegate = self;
-        [self addSubview:self.horizontalTableView];
+        self.tableView.dataSource = self;
+        self.tableView.delegate = self;
+        [self addSubview:self.tableView];
      }
     
     return self;
@@ -47,37 +57,68 @@
 
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSInteger numberOfRows = 1;
+    NSInteger numberOfRows;
+    numberOfRows = [myObjects count];
+    NSLog(@"number of objects is %d", numberOfRows);
     return numberOfRows;
     
 }
 
+- (NSString *) reuseIdentifier{
+    return @"HorizontalCell";
+}
+
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
- 
     static NSString * cellIdentifier = @"EventsCell";
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateStyle:NSDateFormatterShortStyle];
+    
     EventsCell *cell = (EventsCell *) [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil) {
-        cell = [[EventsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        cell = [[[EventsCell alloc] init]autorelease];
     }
-
-    if ([myObject isKindOfClass:[Appointment class]]) {
-        Appointment *currentAppointment = [[Appointment alloc]init];
-        currentAppointment = (Appointment *) myObject;
-        cell.textLabel.text = currentAppointment.text;
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateStyle:NSDateFormatterShortStyle];
+    
+    if ([[myObjects objectAtIndex:0] isKindOfClass:[Appointment class]]) {
+        Appointment *currentAppointment = [myObjects objectAtIndex:indexPath.row];
+        CGSize itemSize=CGSizeMake(kCellWidth,kCellHeight-20);
+        UIGraphicsBeginImageContext(itemSize);
+        [currentAppointment.text drawInRect:CGRectMake(0, 0, itemSize.width, itemSize.height) withFont:[UIFont boldSystemFontOfSize:10]];
+        UIImage *theImage=UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        cell.myTextView.image = theImage;
+       // cell.myTextLabel.text = currentAppointment.text;
         cell.dateLabel.text = [dateFormatter stringFromDate:currentAppointment.doDate];
     }
-    
-    
+    else if ([[myObjects objectAtIndex:0] isKindOfClass:[Task class]]) {
+        Task *currentTask = [myObjects objectAtIndex:indexPath.row];
+        CGSize itemSize=CGSizeMake(kCellWidth-4, kCellHeight-17);
+        UIGraphicsBeginImageContext(itemSize);
+        [currentTask.text drawInRect:CGRectMake(0, 0, itemSize.width, itemSize.height) withFont:[UIFont boldSystemFontOfSize:10]];
+        
+        UIImage *theImage=UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        cell.myTextView.image = theImage;
+        //cell.myTextLabel.text = currentTask.text;
+        cell.dateLabel.text = [dateFormatter stringFromDate:currentTask.doDate];
+
+    }
+    else if ([[myObjects objectAtIndex:0] isKindOfClass:[Memo class]]){
+
+        
+        Memo *currentMemo = [myObjects objectAtIndex:indexPath.row];
+        CGSize itemSize=CGSizeMake(kCellWidth-4, kCellHeight-25);
+        UIGraphicsBeginImageContext(itemSize);
+        [currentMemo.text drawInRect:CGRectMake(0, 0, itemSize.width, itemSize.height) withFont:[UIFont boldSystemFontOfSize:10]];
+        
+        UIImage *theImage=UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        cell.myTextView.image = theImage;
+        //cell.myTextLabel.text = currentMemo.text;
+        cell.dateLabel.text = [dateFormatter stringFromDate:currentMemo.doDate];
+    }
+    [dateFormatter release];
+
     return cell;
+
 }
-
-- (NSString *) reuseIdentifier{
-    return @"HorizontalCells";
-}
-
-
-
 @end

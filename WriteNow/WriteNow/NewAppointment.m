@@ -15,6 +15,16 @@
 @synthesize newAppointment;
 @synthesize addingContext;//note this MOC is an adding MOC passed from the parent.
 
+- (void) dealloc{
+    addingContext = nil;
+    newAppointment = nil;
+    delegate = nil;
+    [addingContext release];
+    [newAppointment release];
+    [delegate release];
+    [super dealloc];
+}
+
 - (void) createNewAppointment:(NSString *)text{
     
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Appointment" inManagedObjectContext:addingContext];

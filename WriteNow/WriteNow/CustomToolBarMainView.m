@@ -12,8 +12,7 @@
 @implementation CustomToolBarMainView
 @synthesize firstButton, secondButton, fourthButton, thirdButton, dismissKeyboard;
 
-- (id)initWithFrame:(CGRect)frame
-{
+- (id)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
         NSLog(@"Creating tool bar");
@@ -22,35 +21,38 @@
         [self setTag:0];
         
         
-        //firstButton = [[UIBarButtonItem alloc] initWithTitle:@"Save ^" style:UIBarButtonItemStyleBordered target:nil action:nil];
         firstButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"save.png"] style:UIBarButtonItemStylePlain target:nil action:nil];
         [self.firstButton setTitle:@"Save"];
         [self.firstButton setWidth:60.0];
         [self.firstButton setTag:1];
+        [firstButton setAction:@selector(presentActionsPopover:)];
+
         
-        //secondButton = [[UIBarButtonItem alloc] initWithTitle:@"Plan ^" style:UIBarButtonItemStyleBordered target:nil action:nil];
         secondButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"clock_running.png"]style:UIBarButtonItemStylePlain target:nil action:nil];
         [self.secondButton setTitle:@"Plan"];
         [self.secondButton setTag:2];
         [self.secondButton setWidth:60.0];
+        [secondButton setAction: @selector(presentActionsPopover:)];
+
         
-        
-        //thirdButton  = [[UIBarButtonItem alloc] initWithTitle:@"View" style:UIBarButtonItemStyleBordered target:nil action:nil];
         thirdButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"12-eye.png"] style:UIBarButtonItemStylePlain target:nil action:nil];
         self.thirdButton.title = @"View";
         [self.thirdButton setWidth:60.0];
         [self.thirdButton setTag:3];
-        
-        //fourthButton = [[UIBarButtonItem alloc] initWithTitle:@"Send ^" style:UIBarButtonItemStyleBordered target:nil action:nil];
+        [thirdButton setAction:@selector(presentActionsPopover:)];
+
         fourthButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"email.png"] style:UIBarButtonItemStylePlain target:nil action:nil];
         [self.fourthButton setTitle:@"Send"];
         [self.fourthButton setWidth:60.0];
         [self.fourthButton setTag:4];
-        
+        [fourthButton setAction:@selector(presentActionsPopover:)];
+
         dismissKeyboard = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"keyboard_down.png"] style:UIBarButtonItemStylePlain target:nil action:nil];
         [self.dismissKeyboard setTitle:@"Drop"];
         [self.fourthButton setWidth:60.0];
         [self.fourthButton setTag:5];
+        [dismissKeyboard setAction:@selector(dismissKeyboard)];
+
         
         //UIBarButtonItem *folderButton = [[UIBarButtonItem alloc] initWithTitle:@"Folder" style:UIBarButtonItemStyleBordered target:self action:@selector(addNewMemo)];
         
@@ -64,7 +66,6 @@
         NSArray *items = [NSArray arrayWithObjects:flexSpace, firstButton, flexSpace, secondButton, flexSpace, thirdButton, flexSpace, fourthButton,flexSpace, dismissKeyboard, flexSpace, nil];
         [self setItems:items];
         
-
         [flexSpace release];    
         
         // After setting the accessory view for the text view, we no longer need a reference to the accessory view.
@@ -73,8 +74,31 @@
     return self;
 }
 
+- (void) toggleSaveAndSetDate {//Toggle  Save --> Schedule AND NOT Save --> Save
+    if (firstButton.title == @"Save") {//Change from Save to Schedule
+        firstButton.image = [UIImage imageNamed:@"calendar_24.png"];
+        firstButton.title = @"Set Date";
+        firstButton.action = @selector(setAppointmentDate:);
 
+        }
+    else {//Change back to Save
+        firstButton.image = [UIImage imageNamed:@"save.png"];
+        firstButton.title = @"Save";
+        firstButton.action = @selector(saveMemo:);
+        }
+}
 
+- (void) toggleSetDateAndSetStart{
+    [firstButton setImage:[UIImage imageNamed:@"11-clock.png"]];
+    [firstButton setAction:@selector(setStartTime:)];
+    [firstButton setTitle:@"Start Time"];   
+}
+
+- (void) toggleSetStartAndSetEnd{
+    [firstButton setImage:[UIImage imageNamed:@"11-clock.png"]];
+    [firstButton setAction:@selector(setEndTime:)];
+    [firstButton setTitle:@"End Time"];   
+}
 - (void)dealloc
 {
     [super dealloc];

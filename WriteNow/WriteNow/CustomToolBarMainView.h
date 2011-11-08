@@ -18,4 +18,7 @@
 
 @property (nonatomic, retain) UIBarButtonItem *firstButton,  *secondButton, *thirdButton, *fourthButton, *dismissKeyboard;
 
+- (void) toggleSaveAndSetDate;
+- (void) toggleSetDateAndSetStart;
+- (void) toggleSetStartAndSetEnd;
 @end

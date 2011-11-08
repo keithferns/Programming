@@ -84,6 +84,9 @@
 		531567FF13FB83B00044C5A9 /* FoldersFilesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 531567FD13FB83B00044C5A9 /* FoldersFilesViewController.m */; };
 		531A29C1144BEFDB00FE5CC2 /* brown_parchment320x460.png in Resources */ = {isa = PBXBuildFile; fileRef = 531A29C0144BEFDB00FE5CC2 /* brown_parchment320x460.png */; };
 		531A29C3144BF0F700FE5CC2 /* image133.png in Resources */ = {isa = PBXBuildFile; fileRef = 531A29C2144BF0F700FE5CC2 /* image133.png */; };
+		531FD6E51462C65200FD9BEC /* CustomTextLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 531FD6E41462C65200FD9BEC /* CustomTextLabel.m */; };
+		531FD6E91463132F00FD9BEC /* white_line_page_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 531FD6E81463132F00FD9BEC /* white_line_page_background.png */; };
+		531FD6EC14631C0200FD9BEC /* NewItemOrEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 531FD6EB14631C0100FD9BEC /* NewItemOrEvent.m */; };
 		532C02671423CF9400C51DAE /* WEPopoverContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 532C02631423CF9400C51DAE /* WEPopoverContainerView.m */; };
 		532C02681423CF9400C51DAE /* WEPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 532C02651423CF9400C51DAE /* WEPopoverController.m */; };
 		532C02741423CFDC00C51DAE /* popoverArrowDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 532C026A1423CFDC00C51DAE /* popoverArrowDown.png */; };
@@ -123,6 +126,7 @@
 		537AD84F1400C9B900259452 /* FoldersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 537AD84E1400C9B900259452 /* FoldersTableViewController.m */; };
 		5381D2C614606282001A17C8 /* HorizontalCells.m in Sources */ = {isa = PBXBuildFile; fileRef = 5381D2C514606282001A17C8 /* HorizontalCells.m */; };
 		5381D2CC14608E8E001A17C8 /* EventsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5381D2CB14608E8E001A17C8 /* EventsCell.m */; };
+		5381D2EF1461D742001A17C8 /* EventsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5381D2EE1461D742001A17C8 /* EventsCell.xib */; };
 		53980E8A1408051500833716 /* CustomTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 53980E891408051500833716 /* CustomTextView.m */; };
 		53980E9514095FF700833716 /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53980E9314095FF700833716 /* CalendarViewController.m */; };
 		53980E991409604500833716 /* CustomToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 53980E981409604500833716 /* CustomToolBar.m */; };
@@ -267,6 +271,11 @@
 		531567FD13FB83B00044C5A9 /* FoldersFilesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoldersFilesViewController.m; sourceTree = "<group>"; };
 		531A29C0144BEFDB00FE5CC2 /* brown_parchment320x460.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = brown_parchment320x460.png; sourceTree = "<group>"; };
 		531A29C2144BF0F700FE5CC2 /* image133.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image133.png; sourceTree = "<group>"; };
+		531FD6E31462C65200FD9BEC /* CustomTextLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextLabel.h; sourceTree = "<group>"; };
+		531FD6E41462C65200FD9BEC /* CustomTextLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextLabel.m; sourceTree = "<group>"; };
+		531FD6E81463132F00FD9BEC /* white_line_page_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = white_line_page_background.png; sourceTree = "<group>"; };
+		531FD6EA14631C0100FD9BEC /* NewItemOrEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewItemOrEvent.h; sourceTree = "<group>"; };
+		531FD6EB14631C0100FD9BEC /* NewItemOrEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewItemOrEvent.m; sourceTree = "<group>"; };
 		532C02621423CF9400C51DAE /* WEPopoverContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEPopoverContainerView.h; sourceTree = "<group>"; };
 		532C02631423CF9400C51DAE /* WEPopoverContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEPopoverContainerView.m; sourceTree = "<group>"; };
 		532C02641423CF9400C51DAE /* WEPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEPopoverController.h; sourceTree = "<group>"; };
@@ -332,6 +341,7 @@
 		5381D2C91460667E001A17C8 /* ControlVariables.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlVariables.h; sourceTree = "<group>"; };
 		5381D2CA14608E8E001A17C8 /* EventsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventsCell.h; sourceTree = "<group>"; };
 		5381D2CB14608E8E001A17C8 /* EventsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventsCell.m; sourceTree = "<group>"; };
+		5381D2EE1461D742001A17C8 /* EventsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventsCell.xib; sourceTree = "<group>"; };
 		53980E881408051400833716 /* CustomTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextView.h; sourceTree = "<group>"; };
 		53980E891408051500833716 /* CustomTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextView.m; sourceTree = "<group>"; };
 		53980E9214095FF700833716 /* CalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarViewController.h; sourceTree = "<group>"; };
@@ -511,6 +521,7 @@
 		531567B313FB81F80044C5A9 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				531FD6E11462C61A00FD9BEC /* CustomTextLabel */,
 				532C02601423CE7C00C51DAE /* PopOver */,
 				5381650E1410ED0000E90FD1 /* CustomTextView */,
 				53A599A41410A106001AD61F /* CustomTextField */,
@@ -530,6 +541,7 @@
 		531567F113FB828B0044C5A9 /* pngs */ = {
 			isa = PBXGroup;
 			children = (
+				531FD6E81463132F00FD9BEC /* white_line_page_background.png */,
 				53025B23145A8DA9006D8F4D /* calendar_white_on_blue_button.png */,
 				53025B21145A8C86006D8F4D /* edit_white_on_blue_button.png */,
 				53025B1F1459093A006D8F4D /* add_item_white_on_blue_button.png */,
@@ -604,6 +616,15 @@
 				53119A8714327599003B7182 /* wallpaper.png */,
 			);
 			name = pngs;
+			sourceTree = "<group>";
+		};
+		531FD6E11462C61A00FD9BEC /* CustomTextLabel */ = {
+			isa = PBXGroup;
+			children = (
+				531FD6E31462C65200FD9BEC /* CustomTextLabel.h */,
+				531FD6E41462C65200FD9BEC /* CustomTextLabel.m */,
+			);
+			name = CustomTextLabel;
 			sourceTree = "<group>";
 		};
 		532C02601423CE7C00C51DAE /* PopOver */ = {
@@ -777,6 +798,7 @@
 			children = (
 				5381D2CA14608E8E001A17C8 /* EventsCell.h */,
 				5381D2CB14608E8E001A17C8 /* EventsCell.m */,
+				5381D2EE1461D742001A17C8 /* EventsCell.xib */,
 			);
 			name = EventsCell;
 			sourceTree = "<group>";
@@ -820,6 +842,8 @@
 			children = (
 				539BDCDE144F3B390002D70F /* NewAppointment.h */,
 				539BDCDF144F3B390002D70F /* NewAppointment.m */,
+				531FD6EA14631C0100FD9BEC /* NewItemOrEvent.h */,
+				531FD6EB14631C0100FD9BEC /* NewItemOrEvent.m */,
 			);
 			name = DelegateClasses;
 			sourceTree = "<group>";
@@ -1159,6 +1183,8 @@
 				53025B201459093C006D8F4D /* add_item_white_on_blue_button.png in Resources */,
 				53025B22145A8C89006D8F4D /* edit_white_on_blue_button.png in Resources */,
 				53025B24145A8DAD006D8F4D /* calendar_white_on_blue_button.png in Resources */,
+				5381D2EF1461D742001A17C8 /* EventsCell.xib in Resources */,
+				531FD6E91463132F00FD9BEC /* white_line_page_background.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1249,6 +1275,8 @@
 				539BDCE0144F3B390002D70F /* NewAppointment.m in Sources */,
 				5381D2C614606282001A17C8 /* HorizontalCells.m in Sources */,
 				5381D2CC14608E8E001A17C8 /* EventsCell.m in Sources */,
+				531FD6E51462C65200FD9BEC /* CustomTextLabel.m in Sources */,
+				531FD6EC14631C0200FD9BEC /* NewItemOrEvent.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

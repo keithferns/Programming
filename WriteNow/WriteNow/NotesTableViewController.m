@@ -99,7 +99,7 @@
 }
 
 - (void)handleDidSaveNotification:(NSNotification *)notification {
-    NSLog(@"NSManagedObjectContextDidSaveNotification Received By CurrentTableViewController");
+    NSLog(@"NSManagedObjectContextDidSaveNotification Received By NotesTableViewController");
     
     [managedObjectContext mergeChangesFromContextDidSaveNotification:notification];
     NSError *error;

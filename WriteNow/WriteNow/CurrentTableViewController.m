@@ -250,9 +250,9 @@
     }
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    id <NSFetchedResultsSectionInfo> sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
-    return [sectionInfo numberOfObjects];
-    //return 1;
+    //id <NSFetchedResultsSectionInfo> sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
+    //return [sectionInfo numberOfObjects];
+    return 1;
 }
 
 - (void) configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath{
@@ -293,8 +293,21 @@
 	}
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString * CellIdentifier = @"HorizontalCell";
     
+    HorizontalCells *cell = (HorizontalCells *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil){
+        cell = [[[HorizontalCells alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, tableView.frame.size.height)] autorelease];
+    }
+    id <NSFetchedResultsSectionInfo> sectionInfo = [[_fetchedResultsController sections] objectAtIndex:indexPath.section];
+
+    NSString *sectionName = [sectionInfo name];
+    NSLog(@"Section name is %@", sectionName);
+    NSArray *sectionObjects = [sectionInfo objects];
+    cell.myObjects = sectionObjects;
     
+    return cell;
+    /*
     static NSString *CellIdentifier = @"StartScreenCustomCell";
     
 	StartScreenCustomCell *cell = (StartScreenCustomCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -311,6 +324,7 @@
     }
     [self configureCell:cell atIndexPath:indexPath];
     return cell;
+     */
     /*
     NSArray *mySections = [_fetchedResultsController sections];
     

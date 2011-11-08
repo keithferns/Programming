@@ -44,7 +44,7 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateFields:) name:@"GetDateNotification" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateFields:) name:@"PopOverShouldUpdateNotification" object:nil];
-   
+   /*
     
     button1 = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
     //[button1 setTitle:@"Done" forState:UIControlStateNormal];
@@ -64,7 +64,8 @@
     [self.view addSubview:button2];
     [button1 release];
     [button2 release];
-    [tableViewController.tableView setFrame:CGRectMake(145, 40, 145, 140)];
+    */
+    [tableViewController.tableView setFrame:CGRectMake(145, 0, 155, 140)];
     [self.view  addSubview:tableViewController.tableView];
 }
 
@@ -98,7 +99,7 @@
             if (dateField.superview == nil) {
                 NSLog(@"DateField.superView is nil. Adding");
                 dateField = [[CustomTextField alloc] init];
-                [dateField setFrame:CGRectMake(0, 43, 140, 40)];
+                [dateField setFrame:CGRectMake(0, 0, 140, 40)];
                 dateField.tag = 12;
                 [dateField setPlaceholder:@"Date:"];
                 [self.view addSubview:dateField];
@@ -128,7 +129,7 @@
             NSLog(@"PopOverShoudlUpdate Notification Recieved:Adding StartTimeField");
             //if (self.startTimeField.superview == nil){
             startTimeField = [[CustomTextField alloc] init];
-            [startTimeField setFrame:CGRectMake(0, 95, 68, 40)];
+            [startTimeField setFrame:CGRectMake(0, 52, 68, 40)];
             startTimeField.tag = 13;
             [startTimeField setPlaceholder:@"From:"];
             [self.view addSubview:startTimeField];
@@ -156,7 +157,7 @@
             NSLog(@"PopOverShoudlUpdate Notification Recieved:Adding EndTimeField");
             if (self.endTimeField.superview == nil){
                 endTimeField = [[CustomTextField alloc]init];
-                [endTimeField setFrame:CGRectMake(72, 95, 68, 40)];
+                [endTimeField setFrame:CGRectMake(72, 52, 68, 40)];
                 endTimeField.tag = 14;
                 [endTimeField setPlaceholder:@"Till:"];
                 [self.view addSubview:endTimeField];
@@ -169,7 +170,7 @@
             NSLog(@"PopOverShoudlUpdate Notification Recieved:Adding RecurringField");
                 recurringField = [[CustomTextField alloc] init];
                 [self.view addSubview:recurringField];
-                [recurringField setFrame:CGRectMake(0, 140, 140, 40)];
+                [recurringField setFrame:CGRectMake(0, 97, 140, 40)];
                 recurringField.tag = 15;
                 [recurringField setPlaceholder:@"Recurring: Never"];
                 //[rightField setText:[recurring objectAtIndex:0]];   

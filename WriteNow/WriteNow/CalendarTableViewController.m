@@ -155,11 +155,8 @@
 - (NSFetchedResultsController *) fetchedResultsControllerWithPredicate:(NSPredicate *)aPredicate {
 	NSFetchRequest *request = [[NSFetchRequest alloc] init];
     [request setEntity:[NSEntityDescription entityForName:@"Note" inManagedObjectContext:managedObjectContext]];
-    [request setFetchBatchSize:10];
-    
-    
+    [request setFetchBatchSize:10];    
     [request setPredicate:aPredicate];
-    
 	NSSortDescriptor *dateDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"doDate" ascending:YES] autorelease];
 	NSSortDescriptor *typeDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"type" ascending:NO]autorelease];
     NSSortDescriptor *timeDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"doTime" ascending:NO]autorelease];
@@ -179,7 +176,6 @@
 	self.fetchedResultsController = newController;
 	[newController release];
 	[request release];
-	
 	return _fetchedResultsController;
 }
 
@@ -240,7 +236,7 @@
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (tableIsDown) {
-        return 40.0;
+        return 80.0;
     }else {
         return 30.0;
     }
@@ -299,6 +295,7 @@
         //if ([_fetchedResultsController objectAtIndexPath:0] != nil) {
         Task *aTask = [_fetchedResultsController objectAtIndexPath:indexPath];	
         [mycell.memoTextLabel setText:[NSString stringWithFormat:@"%@", aTask.text]];
+        [timeFormatter release];
         //}
     }
 }

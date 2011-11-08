@@ -47,7 +47,7 @@ typedef enum{
 @property (nonatomic, retain) UIPickerView *pickerView;
 @property (nonatomic, retain) NSArray *recurring;
 @property (nonatomic, readwrite) AddingField addField;
-@property (nonatomic,retain) UIButton *flipIndicatorButton;
+@property (nonatomic,retain) UIButton *flipIndicatorButton, *addButton, *cancelButton, *editButton;
 @property (assign) BOOL frontViewIsVisible;
 @property (nonatomic, retain) TKCalendarMonthView *calendarView;
 @property (readonly) UIImage *flipperImageForDateNavigationItem;

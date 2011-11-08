@@ -31,7 +31,7 @@
 @synthesize datePicker, timePicker;
 @synthesize newAppointment, newTask;
 @synthesize addField;
-@synthesize flipIndicatorButton;
+@synthesize flipIndicatorButton, addButton, editButton, cancelButton;
 @synthesize frontViewIsVisible;
 @synthesize calendarView, flipperImageForDateNavigationItem, flipperView;
 
@@ -54,8 +54,17 @@
 
 - (void)dealloc {
     [super dealloc];
+    dateFormatter = nil;
+    timeFormatter = nil;
+    textView = nil;    
+    datePicker = nil;
+    timePicker = nil;
+    pickerView = nil;
+    recurring = nil;
+    toolBar = nil;
+    flipIndicatorButton = nil;
     [textView release];
-    //    [toolBar release];
+    [toolBar release];
     [dateFormatter release];
     [timeFormatter release];
     [tableViewController release];
@@ -63,6 +72,7 @@
     [timePicker release];
     [pickerView release];
     [recurring release];
+    [flipIndicatorButton release];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UITableViewSelectionDidChangeNotification object:nil];
 }
 - (void)didReceiveMemoryWarning {
@@ -79,6 +89,7 @@
     timePicker = nil;
     pickerView = nil;
     recurring = nil;
+    flipIndicatorButton = nil;
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UITableViewSelectionDidChangeNotification object:nil];
 }
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -178,7 +189,7 @@
         tableViewController.tableView.frame = CGRectMake(0, 0, mainFrame.size.width, mainFrame.size.height);
         [tableViewController.tableView setSeparatorColor:[UIColor blackColor]];
         [tableViewController.tableView setSectionHeaderHeight:13];
-        tableViewController.tableView.rowHeight = 40.0;
+        tableViewController.tableView.rowHeight = 58.0;
         //[tableViewController.tableView setTableHeaderView:tableLabel]
     }
     [UIView beginAnimations:nil context:NULL];
@@ -187,7 +198,7 @@
     calendarView.frame = CGRectMake(0, 0, mainFrame.size.width, mainFrame.size.height);
 
     UIImage *addButtonImage = [UIImage imageNamed:@"add_item_white_on_blue_button.png"];
-    UIButton *addButton=[[UIButton alloc] initWithFrame:CGRectMake(0, 0, addButtonImage.size.width, addButtonImage.size.height)];
+    addButton=[[UIButton alloc] initWithFrame:CGRectMake(0, 0, addButtonImage.size.width, addButtonImage.size.height)];
     [addButton setBackgroundImage:addButtonImage forState:UIControlStateNormal];	
     UIBarButtonItem *leftButton;
     leftButton = [[UIBarButtonItem alloc] initWithCustomView:addButton];
@@ -283,8 +294,8 @@
     [flipperView release];
     flipperView = nil;
     [calendarView removeFromSuperview];
-    [calendarView release];
     calendarView = nil;
+    [calendarView release];
     NSLog(@"SUBVIEWS OF MAIN VIEW ON LOADING ARE:%@", [self.view subviews]);
 }
 
@@ -773,10 +784,11 @@
     point = CGPointMake((calendarRectangle.size.width-stringSize.width)/2,10);
     NSLog(@"date is %@",[imageDateFormatter stringFromDate:[NSDate date]]);
 	[[imageDateFormatter stringFromDate:[NSDate date]] drawAtPoint:point withFont:font];
+    [imageDateFormatter release];
+
 	UIImage *theImage=UIGraphicsGetImageFromCurrentImageContext();
 	UIGraphicsEndImageContext();
 	return theImage;
-    [imageDateFormatter release];
 }
 
 - (void)toggleCalendar {

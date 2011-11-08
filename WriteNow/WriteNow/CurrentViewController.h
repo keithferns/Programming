@@ -12,6 +12,7 @@
 
 #import "WEPopoverController.h"
 #import "NewAppointment.h"
+#import "NewItemOrEvent.h"
 #import "SchedulePopoverViewController.h"
 #import "TKCalendarMonthView.h"
 
@@ -22,7 +23,7 @@ typedef enum{
     ADD_RECUR_FIELD = 4
 }AddField;
 
-@interface CurrentViewController : UIViewController <UITextViewDelegate, UITextFieldDelegate, UIActionSheetDelegate, PopoverControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, NewAppointmentDelegate, TKCalendarMonthViewDelegate,TKCalendarMonthViewDataSource > {
+@interface CurrentViewController : UIViewController <UITextViewDelegate, UITextFieldDelegate, UIActionSheetDelegate, PopoverControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, NewAppointmentDelegate, TKCalendarMonthViewDelegate,TKCalendarMonthViewDataSource, NewItemOrEventDelegate > {
     
     NSManagedObjectContext *managedObjectContext;
     UITableViewController *tableViewController;
@@ -43,9 +44,10 @@ typedef enum{
 @property (nonatomic, retain) TKCalendarMonthView *calendarView;
 @property (nonatomic, retain) NewAppointment *newAppointment;
 @property (nonatomic, retain) NSDateFormatter *dateFormatter, *timeFormatter;
-@property (nonatomic, retain) UIButton *flipIndicatorButton;
+@property (nonatomic, retain) UIButton *flipIndicatorButton, *cancelButton, *addButton, *editButton;
 @property (readonly) UIImage *flipperImageForDateNavigationItem;
 @property (assign) BOOL frontViewIsVisible;
+@property (nonatomic, retain) NewItemOrEvent *newItem;
 
 
 - (void) dismissKeyboard;
@@ -58,7 +60,6 @@ typedef enum{
 
 - (void) moveTableViewUp;
 - (void) moveTableViewDown;
-
 
 -(void) addDateField;
 -(void) addStartTimeField;
