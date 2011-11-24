@@ -21,7 +21,6 @@
 - (void)dealloc
 {
     [super dealloc];
-
     [dateField release];
     [startTimeField release];
     [endTimeField release];
@@ -36,16 +35,23 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    // Release any retained subviews of the main view.
+    dateField = nil;
+    startTimeField = nil;
+    endTimeField = nil;
+    recurringField = nil;}
+
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
 {
-    //toolBar = [[CustomToolBar alloc] initWithFrame:toolBarRect];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateFields:) name:@"GetDateNotification" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateFields:) name:@"PopOverShouldUpdateNotification" object:nil];
    /*
-    
     button1 = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
     //[button1 setTitle:@"Done" forState:UIControlStateNormal];
     [button1 setImage:[UIImage imageNamed:@"red_round.png"] forState:UIControlStateNormal];
@@ -70,22 +76,10 @@
 }
 
 - (void) viewWillAppear:(BOOL)animated{
-     
+     //
 }
 
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    
-
-    dateField = nil;
-    startTimeField = nil;
-    endTimeField = nil;
-    recurringField = nil;}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation{
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
@@ -180,9 +174,9 @@
             break;
         case 7:
             if ([recurringField isFirstResponder]) {
-                Appointment *tempAppointment = [notification object]; 
-                NSLog(@"TempAppointment.recurring = %@", tempAppointment.recurring);
-                self.recurringField.text = tempAppointment.recurring;
+                NSString *recurring = [notification object]; 
+                NSLog(@"recurring = %@", recurring);
+                self.recurringField.text = recurring;
                 }
             break;    
             

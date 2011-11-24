@@ -99,7 +99,8 @@
 
 - (void)handleDidSaveNotification:(NSNotification *)notification {
     NSLog(@"NSManagedObjectContextDidSaveNotification Received By CurrentTableViewController");
-    
+    //FIXME: setting the fetchedResults controller to nil below is a temporary work-around for the problem created by having 1 row per section in the primary table view. 
+    self.fetchedResultsController = nil;
     [managedObjectContext mergeChangesFromContextDidSaveNotification:notification];
     NSError *error;
 	if (![[self fetchedResultsController] performFetch:&error]) {
@@ -187,8 +188,7 @@
 }
 
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 20;
 }
 
@@ -252,10 +252,14 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     //id <NSFetchedResultsSectionInfo> sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
     //return [sectionInfo numberOfObjects];
-    return 1;
+    NSLog(@"Current Table View Controller: Number of Rows");
+    NSInteger numberOfRows = 1;
+    return numberOfRows;
 }
 
 - (void) configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath{
+    NSLog(@"CurrentTVController: configureCell");
+    /*
 	static NSDateFormatter *dateFormatter = nil;
 	if (dateFormatter == nil) {
 		dateFormatter = [[NSDateFormatter alloc] init];
@@ -291,6 +295,7 @@
         [mycell.dateLabel setText:@"DUE:"];
         mycell.imageView.image = [UIImage imageNamed:@"117-todo.png"];
 	}
+    */
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString * CellIdentifier = @"HorizontalCell";
@@ -301,8 +306,6 @@
     }
     id <NSFetchedResultsSectionInfo> sectionInfo = [[_fetchedResultsController sections] objectAtIndex:indexPath.section];
 
-    NSString *sectionName = [sectionInfo name];
-    NSLog(@"Section name is %@", sectionName);
     NSArray *sectionObjects = [sectionInfo objects];
     cell.myObjects = sectionObjects;
     
@@ -391,7 +394,6 @@
  */
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source.
         NSManagedObjectContext *context = [_fetchedResultsController managedObjectContext];
@@ -401,21 +403,24 @@
 		if (![managedObjectContext save:&error]) {
 			/*
 			 Replace this implementation with code to handle the error appropriately.
-			 
 			 abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. If it is not possible to recover from the error, display an alert panel that instructs the user to quit the application by pressing the Home button.
 			 */
 			NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
 			abort();
         }
+        NSLog(@"commitEditingStyle: delete");
     }   
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
+        NSLog(@"commitEditingStyle: insert");
+
     }   
 }
 
 
 // Override to support rearranging the table view.
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+    
 }
 
 /*
@@ -432,36 +437,37 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     /*
-     MemoText *selectedMemoText = [_fetchedResultsController objectAtIndexPath:indexPath];	
-     if ([selectedMemoText.noteType intValue] == 0){
-     MyMemosViewController *detailViewController = [[MyMemosViewController alloc] initWithNibName:nil bundle:nil];  
-     detailViewController.selectedMemoText = selectedMemoText;
-     [self presentModalViewController:detailViewController animated:YES];	
-     [detailViewController release];
-     }
-     else */
-    if ([[_fetchedResultsController objectAtIndexPath:indexPath] isKindOfClass:[Appointment class]]) {
-        //Appointment *tempAppointment = [_fetchedResultsController objectAtIndexPath:indexPath];
+    //[[NSNotificationCenter defaultCenter] postNotificationName:UITableViewSelectionDidChangeNotification object:[_fetchedResultsController objectAtIndexPath:indexPath] userInfo:nil];    
+    if ([[self.fetchedResultsController objectAtIndexPath:indexPath] isKindOfClass:[Appointment class]]) {
+        NSLog(@"Object is Appointment");
+        Appointment *tempAppointment = [[Appointment alloc] init];
+        tempAppointment =  [_fetchedResultsController objectAtIndexPath:indexPath];
+       // [[NSNotificationCenter defaultCenter] postNotificationName:UITableViewSelectionDidChangeNotification object:[self.fetchedResultsController objectAtIndexPath:indexPath ]];   
         
-        AppointmentsTableViewController *detailViewController = [[AppointmentsTableViewController alloc] initWithNibName:nil bundle:nil];  
-        //detailViewController.selectedAppointment;
-        
-        [self.navigationController pushViewController:detailViewController animated:YES]; 
-        
+        //AppointmentsTableViewController *detailViewController = [[AppointmentsTableViewController alloc] initWithNibName:nil bundle:nil];  
+        //[self.navigationController pushViewController:detailViewController animated:YES]; 
         //[self presentModalViewController:detailViewController animated:YES];
+        //[detailViewController release];
+         
+        }
+    else if ([[self.fetchedResultsController objectAtIndexPath:indexPath] isKindOfClass:[Task class]]){
+        NSLog(@"Object is Task");
+        Task *tempTask = [_fetchedResultsController objectAtIndexPath:indexPath];
+        //[[NSNotificationCenter defaultCenter] postNotificationName:UITableViewSelectionDidChangeNotification object:tempTask userInfo:nil];
         
-        [detailViewController release];
-    }
-    else if ([[_fetchedResultsController objectAtIndexPath:indexPath] isKindOfClass:[Task class]]){
-        //Task *tempTask = [_fetchedResultsController objectAtIndexPath:indexPath];
-        TasksTableViewController *detailViewController = [[TasksTableViewController alloc] initWithNibName:nil bundle:nil]; 
+        //TasksTableViewController *detailViewController = [[TasksTableViewController alloc] initWithNibName:nil bundle:nil]; 
         //detailViewController.selectedTask = tempTask;
         //[self presentModalViewController:detailViewController animated:YES];	
-        [self.navigationController pushViewController:detailViewController animated:YES]; 
-        [detailViewController release];
-        
-        
+        //[self.navigationController pushViewController:detailViewController animated:YES]; 
+        //[detailViewController release];
+         
+        }
+    else{
+        NSLog(@"Object is Memo");
+        //Memo *tempMemo = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        //[[NSNotificationCenter defaultCenter] postNotificationName:UITableViewSelectionDidChangeNotification object:[self.fetchedResultsController objectAtIndexPath:indexPath ]];   
     }
+    */
 }
 
 #pragma mark -
@@ -469,23 +475,22 @@
 
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
     // The fetch controller is about to start sending change notifications, so prepare the table view for updates.
+    NSLog(@"Method: controllerWILLChangeContent");
+
     [self.tableView beginUpdates];
 }
 
 - (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
-	
-	
-    switch(type) {
+	    switch(type) {
 			
         case NSFetchedResultsChangeInsert:
-            [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObjects:newIndexPath, nil] withRowAnimation:UITableViewRowAnimationFade];
             NSLog(@"FetchedResultsController ChangeInsert");
             break;
-
         case NSFetchedResultsChangeDelete:
-			[self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+			[self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:UITableViewRowAnimationFade];
+            [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:UITableViewRowAnimationFade];
             NSLog(@"FetchedResultsController ChangeDelete");
-
             break;
 
         case NSFetchedResultsChangeUpdate:
@@ -494,12 +499,12 @@
             break;
         case NSFetchedResultsChangeMove:
             [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            // Reloading the section inserts a new row and ensures that titles are updated appropriately.
             [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:newIndexPath.section] withRowAnimation:UITableViewRowAnimationFade];
+            // Reloading the section inserts a new row and ensures that titles are updated appropriately.
             NSLog(@"FetchedResultsController ChangeMove");
-
             break;
     }
+    
 }
 
 - (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type {
@@ -516,7 +521,9 @@
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
     // The fetch controller has sent all current change notifications, so tell the table view to process all updates.
+    NSLog(@"Begin Method: controllerDIDChangeContent");
     [self.tableView endUpdates];
+
 }
 
 

@@ -64,9 +64,7 @@
     [NSFetchedResultsController deleteCacheWithName:@"Root"];
     _fetchedResultsController.delegate = self;
     
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleDidSaveNotification:) name:NSManagedObjectContextDidSaveNotification object:nil];
-    
     
     /*configure tableView, set its properties and add it to the main view.*/
     
@@ -82,9 +80,7 @@
     //[tableView setSectionHeaderHeight:15.0];
     [headerLabel release];
     [headerView release];
-    
-    
-    
+        
     [self.view setFrame:CGRectMake(0, 245, 320, 215)];
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 245, 320, 215) style:UITableViewStylePlain];
     
@@ -100,7 +96,7 @@
 
 - (void)handleDidSaveNotification:(NSNotification *)notification {
     NSLog(@"NSManagedObjectContextDidSaveNotification Received By NotesTableViewController");
-    
+    self.fetchedResultsController = nil;
     [managedObjectContext mergeChangesFromContextDidSaveNotification:notification];
     NSError *error;
 	if (![[self fetchedResultsController] performFetch:&error]) {

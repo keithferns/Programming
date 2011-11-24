@@ -18,6 +18,9 @@
     
     id<NewItemOrEventDelegate> delegate;
     Note *newNote;
+    Appointment *newAppointment;
+    Task *newTask;
+    Memo *newMemo;
     NSString *recurring;
     NSManagedObjectContext *_addingContext;
 }
@@ -25,12 +28,17 @@
 @property (nonatomic, retain) Note *newNote;
 @property (nonatomic, retain) NSManagedObjectContext *addingContext;
 @property (nonatomic, retain) NSString *recurring;
+@property (nonatomic, retain) Appointment *newAppointment;
+@property (nonatomic, retain) Task *newTask;
+@property (nonatomic, retain) Memo *newMemo;
 
 - (void) createNewItem:(NSString *)text ofType:(NSNumber *)type;
 - (void) addDateField;
-- (void) setDoDate;
-- (void) saveNewItem;
 
+- (void) updateSelectedDate:(NSDate *)date;
+
+- (void) saveNewItem;
+- (void) deleteItem:(id)sender;
 
 
 @end

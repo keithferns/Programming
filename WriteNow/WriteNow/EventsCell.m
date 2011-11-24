@@ -7,7 +7,6 @@
 //
 
 #import "EventsCell.h"
-#import "CustomTextLabel.h"
 #import "ControlVariables.h"
 
 
@@ -16,11 +15,11 @@
 @synthesize dateLabel;
 //@synthesize myTextLabel = _myTextLabel;
 @synthesize myTextView = _myTextView;
-- (void)dealloc {
-    
-    //self.myTextLabel = nil;
+- (void)dealloc {    
     self.myTextView = nil;
     self.dateLabel = nil;
+    [self.myTextView release];
+    [self.dateLabel release];
     [super dealloc];
 }
 
@@ -31,7 +30,6 @@
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        
         [self setFrame:CGRectMake(0, 0, kCellWidth, kCellHeight)];
         UIImageView *backgroundImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"white_line_page_background.png"]];
         backgroundImage.frame = CGRectMake(1, 1, kCellWidth-2, kCellHeight-2);
@@ -44,8 +42,6 @@
         dateLabel.font = [UIFont boldSystemFontOfSize:9];
         dateLabel.numberOfLines = 1;
         dateLabel.textAlignment = UITextAlignmentRight;
-    
-        
         [self.contentView addSubview:dateLabel];
         /*
         self.myTextLabel= [[CustomTextLabel alloc]initWithFrame:CGRectMake(0, 15, kCellWidth, 60)];
@@ -60,20 +56,12 @@
         */
         self.myTextView = [[UIImageView alloc] initWithFrame:CGRectMake(2, 15, kCellWidth-4, kCellHeight-17)];
         [self.contentView addSubview:self.myTextView];
-        
-        
-        
-        
         self.backgroundColor = [UIColor blackColor];
         self.selectedBackgroundView.backgroundColor = kHorizontalTableSelectedBackgroundColor;
-        
         self.transform = CGAffineTransformMakeRotation(M_PI * 0.5);
     }
-    
-    return self;
-    
+    return self;    
 }
-
 
 @end
 

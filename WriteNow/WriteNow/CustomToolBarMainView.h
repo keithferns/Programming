@@ -15,10 +15,11 @@
     
 }
 
-
 @property (nonatomic, retain) UIBarButtonItem *firstButton,  *secondButton, *thirdButton, *fourthButton, *dismissKeyboard;
+@property (readonly) UIImage *flipperImageForDateNavigationItem;
 
-- (void) toggleSaveAndSetDate;
-- (void) toggleSetDateAndSetStart;
-- (void) toggleSetStartAndSetEnd;
+- (void) toggleDateButton:(id)sender;
+- (void) toggleStartButton:(id)sender;
+- (void) toggleEndButton:(id)sender;
+- (void) toggleRecurButton:(id)sender;
 @end

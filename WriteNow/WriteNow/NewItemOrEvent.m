@@ -13,13 +13,13 @@
 
 @synthesize recurring;
 @synthesize delegate;
-@synthesize newNote;
+@synthesize newNote, newAppointment, newMemo, newTask;
 @synthesize addingContext;//note this MOC is an adding MOC passed from the parent.
 
 - (void) createNewItem:(NSString *)text ofType:(NSNumber *)type {
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Note" inManagedObjectContext:addingContext];
     
-    newNote = [[Memo alloc] initWithEntity:entity insertIntoManagedObjectContext:addingContext];    
+    newNote = [[Note alloc] initWithEntity:entity insertIntoManagedObjectContext:addingContext];    
     
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *dateComponents = [calendar components:(NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit) fromDate:[NSDate date]];
@@ -46,18 +46,17 @@
     newNote.type = type;
     newNote.creationDate = [NSDate date];
     newNote.doTime = [NSDate date];
-    newNote.endTime = [NSDate date];
-    
+    newNote.endTime = [NSDate date];    
 }
-
 
 - (void) addDateField{
     
     return;
 }
 
-- (void) setDoDate{
-    
+- (void) updateSelectedDate:(NSDate *)date{
+    newNote.doDate = date;
+    NSLog(@"newNote.doDate is %@", newNote.doDate);
     return;
 }
 
@@ -77,60 +76,58 @@
     
     if ([newNote.type intValue] == 0) {
         
-        
         NSEntityDescription *entity = [NSEntityDescription entityForName:@"Memo" inManagedObjectContext:addingContext];
         
-        Memo *myMemo = [[Memo alloc] initWithEntity:entity insertIntoManagedObjectContext:addingContext];
-        myMemo.creationDate =  [NSDate date];
-        myMemo.type = newNote.type;
-        myMemo.text = newNote.text;
-        myMemo.creationDate = newNote.creationDate;
-        myMemo.doDate = newNote.doDate;
-        myMemo.doTime = newNote.doTime;
-        myMemo.endTime = newNote.endTime;
-        
-        [myMemo release];
-        return;
+        newMemo = [[Memo alloc] initWithEntity:entity insertIntoManagedObjectContext:addingContext];
+        newMemo.creationDate =  [NSDate date];
+        newMemo.type = newNote.type;
+        newMemo.text = newNote.text;
+        newMemo.creationDate = newNote.creationDate;
+        newMemo.doDate = newNote.doDate;
+        newMemo.doTime = newNote.doTime;
+        newMemo.endTime = newNote.endTime;
+        NSLog(@"NEW MEMO TEXT IS %@", newMemo.text);
+        NSLog(@"NEW MEMO Type IS %d", [newMemo.type intValue]);
+        NSLog(@"NEW MEMO doDate IS %@", newMemo.doDate);
+        NSLog(@"NEW MEMO doTime IS %@", newMemo.doTime);
+        NSLog(@"NEW MEMO endTime IS %@", newMemo.endTime);
     }
     
     else if([newNote.type intValue] == 1){
         NSEntityDescription *entity = [NSEntityDescription entityForName:@"Appointment" inManagedObjectContext:addingContext];
-        
-        Appointment *newAppointment = [[Appointment alloc] initWithEntity:entity insertIntoManagedObjectContext:addingContext];
-        
+        newAppointment = [[Appointment alloc] initWithEntity:entity insertIntoManagedObjectContext:addingContext];        
         newAppointment.creationDate = newNote.creationDate;
         newAppointment.doDate = newNote.doDate;
         newAppointment.doTime = newNote.doTime;
         newAppointment.endTime = newNote.endTime;
         newAppointment.type = newNote.type;
         newAppointment.text = newNote.text;
-        
-        [newAppointment release];
-        return;
+        newAppointment.recurring = recurring;
+        NSLog(@"NEW APPOINTMENT TEXT IS %@", newAppointment.text);
+        NSLog(@"NEW APPOINTMENT Type IS %d", [newAppointment.type intValue]);
+        NSLog(@"NEW APPOINTMENT doDate IS %@", newAppointment.doDate);
+        NSLog(@"NEW APPOINTMENT doTime IS %@", newAppointment.doTime);
+        NSLog(@"NEW APPOINTMENT endTime IS %@", newAppointment.endTime);
+        NSLog(@"NEW APPOINTMENT recurring IS %@", newAppointment.recurring);
     }
     
     else {
-        
-        NSEntityDescription *entity = [NSEntityDescription entityForName:@"Task" inManagedObjectContext:addingContext];
-        
-        Task  *myTask = [[Task alloc] initWithEntity:entity insertIntoManagedObjectContext:addingContext];
-        
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"Task" inManagedObjectContext:addingContext];        
+        newTask = [[Task alloc] initWithEntity:entity insertIntoManagedObjectContext:addingContext];
        // myTask = (Task *)newNote;
-        myTask.creationDate = newNote.creationDate;
-        myTask.doDate = newNote.doDate;
-        myTask.doTime = newNote.doTime;
-        myTask.endTime = newNote.endTime;
-        myTask.type = newNote.type;
-        myTask.text = newNote.text;
-        NSString *recur = @"Never";
-        myTask.recurring = recur;
-        NSLog(@"NEW TASK TEXT IS %@", myTask.text);
-        NSLog(@"NEW TASK Type IS %d", [myTask.type intValue]);
-        NSLog(@"NEW TASK doDate IS %@", myTask.doDate);
-        NSLog(@"NEW TASK doTime IS %@", myTask.doTime);
-        NSLog(@"NEW TASK endTime IS %@", myTask.endTime);
-        NSLog(@"NEW TASK recurring IS %@", myTask.recurring);
-        [myTask release];
+        newTask.creationDate = newNote.creationDate;
+        newTask.doDate = newNote.doDate;
+        newTask.doTime = newNote.doTime;
+        newTask.endTime = newNote.endTime;
+        newTask.type = newNote.type;
+        newTask.text = newNote.text;
+        newTask.recurring = recurring;
+        NSLog(@"NEW TASK TEXT IS %@", newTask.text);
+        NSLog(@"NEW TASK Type IS %d", [newTask.type intValue]);
+        NSLog(@"NEW TASK doDate IS %@", newTask.doDate);
+        NSLog(@"NEW TASK doTime IS %@", newTask.doTime);
+        NSLog(@"NEW TASK endTime IS %@", newTask.endTime);
+        NSLog(@"NEW TASK recurring IS %@", newTask.recurring);
     }
     [addingContext deleteObject:newNote];
      
@@ -139,6 +136,10 @@
     if(![addingContext save:&error]){ 
         NSLog(@"NEWITEMOREVENT ADDING MOC: DID NOT SAVE");
     } 
+}
+
+- (void) deleteItem:(id)sender{
+    [addingContext deleteObject:newNote];
     
 }
 

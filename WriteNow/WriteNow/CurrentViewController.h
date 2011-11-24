@@ -9,12 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "CustomToolBarMainView.h"
 #import "CustomTextView.h"
-
 #import "WEPopoverController.h"
-#import "NewAppointment.h"
-#import "NewItemOrEvent.h"
 #import "SchedulePopoverViewController.h"
 #import "TKCalendarMonthView.h"
+#import "NewItemOrEvent.h"
 
 typedef enum{
     ADD_DATE_FIELD = 1,
@@ -23,7 +21,7 @@ typedef enum{
     ADD_RECUR_FIELD = 4
 }AddField;
 
-@interface CurrentViewController : UIViewController <UITextViewDelegate, UITextFieldDelegate, UIActionSheetDelegate, PopoverControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, NewAppointmentDelegate, TKCalendarMonthViewDelegate,TKCalendarMonthViewDataSource, NewItemOrEventDelegate > {
+@interface CurrentViewController : UIViewController <UITextViewDelegate, UITextFieldDelegate, UIActionSheetDelegate, PopoverControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, TKCalendarMonthViewDelegate,TKCalendarMonthViewDataSource, NewItemOrEventDelegate > {
     
     NSManagedObjectContext *managedObjectContext;
     UITableViewController *tableViewController;
@@ -42,16 +40,13 @@ typedef enum{
 @property (nonatomic, retain) UIPickerView *pickerView;
 @property (nonatomic, readwrite) AddField addField;
 @property (nonatomic, retain) TKCalendarMonthView *calendarView;
-@property (nonatomic, retain) NewAppointment *newAppointment;
 @property (nonatomic, retain) NSDateFormatter *dateFormatter, *timeFormatter;
-@property (nonatomic, retain) UIButton *flipIndicatorButton, *cancelButton, *addButton, *editButton;
+@property (nonatomic, retain) UIButton *flipIndicatorButton, *cancelButton, *addButton, *editButton, *saveButton;
 @property (readonly) UIImage *flipperImageForDateNavigationItem;
 @property (assign) BOOL frontViewIsVisible;
 @property (nonatomic, retain) NewItemOrEvent *newItem;
 
-
 - (void) dismissKeyboard;
-
 - (void) setEditingView;
 
 - (void) presentReminderPopover:(id)sender;
@@ -61,17 +56,20 @@ typedef enum{
 - (void) moveTableViewUp;
 - (void) moveTableViewDown;
 
--(void) addDateField;
--(void) addStartTimeField;
--(void) addEndTimeField;
--(void) addRecurringField;
+- (void) addDateField;
+- (void) addStartTimeField;
+- (void) addEndTimeField;
+- (void) addRecurringField;
 - (void) setAlarm;
+- (void) toggleLeftBarButtonItem:(id) sender;
+- (void) toggleRightBarButtonItem:(id) sender;
+- (void) toggleCalendar:(id) sender;
 
 - (void)datePickerChanged:(id)sender;
 - (void)timePickerChanged:(id)sender;
+- (void) addPickerControls:(id)sender;
 
 - (void)myTransitionDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context;
-
 
 
 @end

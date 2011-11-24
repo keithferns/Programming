@@ -223,12 +223,9 @@
 	marks = [markArray retain];
 	monthDate = [date retain];
 	startOnSunday = sunday;
-	
-
-	
+		
 	TKDateInformation dateInfo = [monthDate dateInformationWithTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
 	firstWeekday = dateInfo.weekday;
-	
 	
 	NSDate *prev = [monthDate previousMonth];
 	//NSDate *next = [monthDate nextMonth];
@@ -834,18 +831,15 @@
 	//TKDateInformation info = [date dateInformation];
 	TKDateInformation info = [date dateInformationWithTimeZone:[NSTimeZone timeZoneWithName:@"GMT"]];
 	NSDate *month = [date firstOfMonth];
-	
+
 	if([month isEqualToDate:[currentTile monthDate]]){
 		[currentTile selectDay:info.day];
 		return;
 	}else {
-		
 		if ([delegate respondsToSelector:@selector(calendarMonthView:monthShouldChange:animated:)] && ![delegate calendarMonthView:self monthShouldChange:month animated:YES] ) 
 			return;
-		
 		if ([delegate respondsToSelector:@selector(calendarMonthView:monthWillChange:animated:)] )
 			[delegate calendarMonthView:self monthWillChange:month animated:YES];
-		
 		
 		NSArray *dates = [TKCalendarMonthTiles rangeOfDatesInMonthGrid:month startOnSunday:sunday];
 		NSArray *data = [dataSource calendarMonthView:self marksFromDate:[dates objectAtIndex:0] toDate:[dates lastObject]];

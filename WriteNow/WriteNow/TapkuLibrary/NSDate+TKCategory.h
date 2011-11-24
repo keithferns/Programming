@@ -52,6 +52,7 @@ typedef struct TKDateInformation TKDateInformation;
 
 - (NSDate *) monthDate;
 - (NSDate *) lastOfMonthDate;
+- (NSDate *) yearMonthDate:(NSDate *)date;
 
 
 

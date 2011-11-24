@@ -33,20 +33,18 @@
 // Horizontal padding for the embedded table view within the row
 #define kRowHorizontalPadding                       0
 
-
 // The background color of the vertical table view
-#define kVerticalTableBackgroundColor               [UIColor colorWithRed:0.58823529 green:0.58823529 blue:0.58823529 alpha:1.0]
+#define kVerticalTableBackgroundColor [UIColor colorWithRed:0.58823529 green:0.58823529 blue:0.58823529 alpha:1.0]
 
 // Background color for the horizontal table view (the one embedded inside the rows of our vertical table)
-#define kHorizontalTableBackgroundColor             [UIColor colorWithRed:0.6745098 green:0.6745098 blue:0.6745098 alpha:1.0]
+#define kHorizontalTableBackgroundColor [UIColor colorWithRed:0.6745098 green:0.6745098 blue:0.6745098 alpha:1.0]
 
 // The background color on the horizontal table view for when we select a particular cell
-#define kHorizontalTableSelectedBackgroundColor     [UIColor colorWithRed:0.0 green:0.59607843 blue:0.37254902 alpha:1.0]
+#define kHorizontalTableSelectedBackgroundColor [UIColor colorWithRed:0.0 green:0.59607843 blue:0.37254902 alpha:1.0]
 
 
 #define screenRect [[UIScreen mainScreen] applicationFrame]
 #define statusBarRect [[UIApplication sharedApplication] statusBarFrame];
-
 #define tabBarHeight self.tabBarController.tabBar.frame.size.height
 #define navBarHeight self.navigationController.navigationBar.frame.size.height
 #define topViewRect CGRectMake(0, self.navigationController.navigationBar.frame.origin.y+navBarHeight, screenRect.size.width, 150)
@@ -54,3 +52,5 @@
 #define textViewRect CGRectMake(0, navBarHeight, screenRect.size.width, 150)
 #define bottomViewRect CGRectMake(0, textViewRect.origin.y+textViewRect.size.height+10, screenRect.size.width, screenRect.size.height-textViewRect.origin.y-textViewRect.size.height-10-tabBarHeight)
 #define mainFrame CGRectMake(screenRect.origin.x, self.navigationController.navigationBar.frame.origin.y+navBarHeight, screenRect.size.width, screenRect.size.height-navBarHeight)
+
+

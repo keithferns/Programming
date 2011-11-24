@@ -14,7 +14,7 @@
 #import "TaskCustomCell.h"
 #import "DetailViewController.h"
 #import "MyDataObject.h"
-
+#import "HorizontalCells.h"
 
 @implementation CalendarTableViewController
 
@@ -128,25 +128,21 @@
     NSLog(@"GET DATE NOTIFICATION RECEIVED by AppointmentsTableViewController");
     selectedDate = [notification object];
     
-    
-    MyDataObject *myData = [self myDataObject];
-    
-    
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    [dateFormatter setDateFormat:@"MM-dd-yyyy"];
     
-    NSString *dateString = [dateFormatter stringFromDate:myData.myDate];
-    NSDate *newDate = [dateFormatter dateFromString:dateString];
-    [dateFormatter release];
-    
-    NSPredicate *checkDate = [NSPredicate predicateWithFormat:@"doDate == %@", newDate];    
+    NSString *dateString = [dateFormatter stringFromDate:selectedDate];
+    selectedDate = [dateFormatter dateFromString:dateString];
+    NSPredicate *checkDate = [NSPredicate predicateWithFormat:@"doDate == %@", selectedDate];
     self.fetchedResultsController = [self fetchedResultsControllerWithPredicate:checkDate];
+    [dateFormatter release];
     NSError *error;
     if (![[self fetchedResultsController] performFetch:&error]) {
     }
-    
-    [tableLabel setText:@""];
+    [tableLabel setText:dateString];
     [self.tableView reloadData];
+    
+    
 }
 
 #pragma mark -
@@ -154,13 +150,12 @@
 
 - (NSFetchedResultsController *) fetchedResultsControllerWithPredicate:(NSPredicate *)aPredicate {
 	NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    [request setEntity:[NSEntityDescription entityForName:@"Note" inManagedObjectContext:managedObjectContext]];
+    [request setEntity:[NSEntityDescription entityForName:@"Appointment" inManagedObjectContext:managedObjectContext]];
     [request setFetchBatchSize:10];    
     [request setPredicate:aPredicate];
 	NSSortDescriptor *dateDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"doDate" ascending:YES] autorelease];
-	NSSortDescriptor *typeDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"type" ascending:NO]autorelease];
-    NSSortDescriptor *timeDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"doTime" ascending:NO]autorelease];
-    [request setSortDescriptors:[NSArray arrayWithObjects:dateDescriptor,typeDescriptor,timeDescriptor, nil]];
+    NSSortDescriptor *timeDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"doTime" ascending:YES]autorelease];
+    [request setSortDescriptors:[NSArray arrayWithObjects:dateDescriptor, timeDescriptor, nil]];
     
     NSString *cacheName = @"Root";
     if (aPredicate) {
@@ -183,12 +178,8 @@
     if(_fetchedResultsController != nil){
         return _fetchedResultsController;
     }
-    //NSNumber *number1 = [NSNumber numberWithInt:1];
-    //NSNumber *number2 = [NSNumber numberWithInt:2];
-    //NSPredicate *firstPredicate = [NSPredicate predicateWithFormat:@"type == 1"];
-    //NSPredicate *secondPredicate = [NSPredicate predicateWithFormat:@"type == 2"];
-    NSPredicate *compPredicate = [NSPredicate predicateWithFormat:@"type == 1 OR type == 2"];
-    self.fetchedResultsController = [self fetchedResultsControllerWithPredicate:compPredicate];
+   // NSPredicate *compPredicate = [NSPredicate predicateWithFormat:@"type == 1 OR type == 2"];
+    self.fetchedResultsController = [self fetchedResultsControllerWithPredicate:nil];
     NSError *error = nil;
     if (![_fetchedResultsController performFetch:&error]){
         NSLog(@"Error Fetching:%@", error);
@@ -244,6 +235,7 @@
 
 - (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 	id<NSFetchedResultsSectionInfo>  sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
+
     NSDateFormatter *tempDateFormatter = [[NSDateFormatter alloc] init];
     
     [tempDateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss ZZZ"];
@@ -262,18 +254,17 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    id <NSFetchedResultsSectionInfo> sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
-    return [sectionInfo numberOfObjects];
+    //id <NSFetchedResultsSectionInfo> sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
+    //return [sectionInfo numberOfObjects];
+    return 1;
 }
 
 - (void) configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath{
-    
+    /*
     NSDateFormatter * timeFormatter = [[NSDateFormatter alloc] init];
     //[timeFormatter setTimeStyle:NSDateFormatterShortStyle];
-        
     [timeFormatter setDateFormat:@"hh:mm a"];
     if ([[_fetchedResultsController objectAtIndexPath:indexPath] isKindOfClass:[Appointment class]]){
-    
         if([cell isKindOfClass:[UITableViewCell class]]){
             myCell = (AppointmentCustomCell *) cell;
             //[mycell setAccessoryType:UITableViewCellAccessoryDetailDisclosureButton];   
@@ -298,6 +289,7 @@
         [timeFormatter release];
         //}
     }
+     */
 }
 
 - (void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -309,8 +301,24 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"AppointmentCustomCell";
     
+    static NSString * CellIdentifier = @"HorizontalCell";
+    
+    HorizontalCells *cell = (HorizontalCells *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil){
+        cell = [[[HorizontalCells alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, tableView.frame.size.height)] autorelease];
+    }
+    id <NSFetchedResultsSectionInfo> sectionInfo = [[_fetchedResultsController sections] objectAtIndex:indexPath.section];
+    
+    NSString *sectionName = [sectionInfo name];
+    NSLog(@"Section name is %@", sectionName);
+    NSArray *sectionObjects = [sectionInfo objects];
+    cell.myObjects = sectionObjects;
+    
+    return cell;
+    /*
+    static NSString *CellIdentifier = @"AppointmentCustomCell";
+
     AppointmentCustomCell *cell = (AppointmentCustomCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	if (cell == nil) {
 		//NSArray *topLevelObjects = [[NSBundle mainBundle]
@@ -349,7 +357,9 @@
 	}
 	[self configureCell:cell atIndexPath:indexPath];
     return cell;
+     */
 }
+     
 /*
  // Override to support conditional editing of the table view.
  - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -402,6 +412,13 @@
     
     MyDataObject *myData = [self myDataObject];
     myData.selectedAppointment = [_fetchedResultsController objectAtIndexPath:indexPath];
+    NSLog(@"MY SELECTED TEXT IS %@", myData.selectedAppointment.text);
+    
+   // id <NSFetchedResultsSectionInfo> sectionInfo = [[_fetchedResultsController sections] objectAtIndex:indexPath.section];
+   // NSArray *sectionObjects = [sectionInfo objects];
+   // if ([[sectionObjects objectAtIndex:0] isKindOfClass:[Appointment class]]){
+   //     NSLog(@"AN APPOINTMENT OBJECT");
+   // }
     
     //[[NSNotificationCenter defaultCenter] postNotificationName:UITableViewSelectionDidChangeNotification object:[_fetchedResultsController objectAtIndexPath:indexPath ]];   
     

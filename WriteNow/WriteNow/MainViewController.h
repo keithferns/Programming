@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Note.h"
 
-@interface MainViewController : UINavigationController <UITextViewDelegate, UISearchBarDelegate, UIActionSheetDelegate> {
+@interface MainViewController : UINavigationController <UISearchBarDelegate, UIActionSheetDelegate> {
     
 	UINavigationController *navigationController;
     NSManagedObjectContext *managedObjectContext;

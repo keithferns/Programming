@@ -4,13 +4,12 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 
 #import <UIKit/UIKit.h>
-#import "CustomToolBar.h"
+#import "CustomToolBarMainView.h"
 #import "CustomTextView.h"
-#import "CustomTextField.h"
 #import "WEPopoverController.h"
 #import "SchedulePopoverViewController.h"
 #import "TKCalendarMonthView.h"
-
+#import "NewItemOrEvent.h"
 
 typedef enum{
     ADDING_DATE_FIELD = 1,
@@ -36,9 +35,9 @@ typedef enum{
 @property (nonatomic, retain) UITableViewController *tableViewController;
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain) CustomTextView *textView;
-@property (nonatomic, retain) CustomToolBar *toolBar;
+@property (nonatomic, retain) CustomToolBarMainView *toolBar;
 
-@property (nonatomic, retain) WEPopoverController *schedulerPopover, *reminderPopover;
+@property (nonatomic, retain) WEPopoverController *schedulerPopover, *reminderPopover, *navPopover;
 @property (nonatomic, retain) Appointment *newAppointment;
 @property (nonatomic, retain) Task *newTask;
 @property (nonatomic, retain) NSDateFormatter *dateFormatter, *timeFormatter;
@@ -67,6 +66,10 @@ typedef enum{
 - (void) moveTableViewUp;
 - (void) moveTableViewDown;
 
+- (void) toggleCancel:(id) sender;
+- (void) toggleDone:(id) sender;
+- (void) toggleAddNew:(id) sender;
+- (void) toggleEdit: (id) sender;
 
 -(void) addDateField;
 -(void) addStartTimeField;

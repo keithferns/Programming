@@ -43,6 +43,8 @@
 
 #pragma mark - VIEW LIFECYCLE
 
+
+
 - (void)viewDidLoad {
 	[super viewDidLoad];
     [self.navigationBar setHidden:NO];

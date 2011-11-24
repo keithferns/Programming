@@ -176,9 +176,7 @@
   }
 
 - (void) viewWillAppear:(BOOL)animated{
-    
-    /*-NOTIFICATIONS: --*/
-    
+    /*-NOTIFICATIONS: --*/    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(searchkeyboardWasShown) name:@"StartedSearching_Notification" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(searchkeyboardWasHidden) name:@"EndedSearching_Notification" object:nil];
     
@@ -272,7 +270,7 @@
     [menuLeftBarButton release];
     [menuLeftButton addTarget:self action:@selector(makeFolderFile:) forControlEvents:UIControlEventTouchUpInside];
     
-    UIImage *menuRightButtonImage = [UIImage imageNamed:@"pages_white_on_blue_bkg.png"];
+    UIImage *menuRightButtonImage = [UIImage imageNamed:@"file_white_on_blue_button.png"];
 	UIButton *localFlipIndicator=[[UIButton alloc] initWithFrame:CGRectMake(0, 0, menuRightButtonImage.size.width, menuRightButtonImage.size.height)];
     self.flipIndicatorButton=localFlipIndicator;
 	[localFlipIndicator release];
@@ -327,9 +325,7 @@
         tableViewController = [[FilesTableViewController alloc]init];
 
         tableViewController.tableView.frame = CGRectMake(0, 0, mainFrame.size.width, mainFrame.size.height);
-        [self.flipperView addSubview:tableViewController.tableView];
-
-        
+        [self.flipperView addSubview:tableViewController.tableView];        
     } else {
         self.title = @"Save To Folder";
 
@@ -340,9 +336,7 @@
         tableViewController.tableView.frame = CGRectMake(0, 0, mainFrame.size.width, mainFrame.size.height);
         [self.flipperView addSubview:tableViewController.tableView];
     }
-
 	[UIView commitAnimations];
-
 	[UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:0.75];
     [UIView setAnimationDelegate:self];
@@ -357,7 +351,7 @@
 	} 
 	else {
         [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:flipIndicatorButton cache:YES];
-        [flipIndicatorButton setBackgroundImage:[UIImage imageNamed:@"pages_white_on_blue_bkg.png"] forState:UIControlStateNormal];
+        [flipIndicatorButton setBackgroundImage:[UIImage imageNamed:@"file_white_on_blue_button.png"] forState:UIControlStateNormal];
         //[[NSNotificationCenter defaultCenter] postNotificationName:@"HasToggledToFilesViewNotification" object:nil];
         //[self makeFile];
         //[tableViewController.tableView reloadData];

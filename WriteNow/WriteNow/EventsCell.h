@@ -12,12 +12,10 @@
 
 @interface EventsCell : UITableViewCell {
     UILabel *dateLabel;  
-//    CustomTextLabel *_myTextLabel;
     UIImageView *_myTextView;
 }
 
 @property (nonatomic, retain) IBOutlet UILabel *dateLabel;
-//@property (nonatomic, retain) CustomTextLabel *myTextLabel;
 @property (nonatomic, retain) UIImageView *myTextView;
 
 @end

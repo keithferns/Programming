@@ -8,6 +8,7 @@
 #import "AppointmentCustomCell.h"
 #import "DetailViewController.h"
 #import "MyDataObject.h"
+#import "HorizontalCells.h"
 
 @implementation AppointmentsTableViewController
 
@@ -226,7 +227,7 @@
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (tableIsDown) {
-        return 40.0;
+        return 70.0;
     }else {
         return 30.0;
     }
@@ -252,8 +253,9 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    id <NSFetchedResultsSectionInfo> sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
-    return [sectionInfo numberOfObjects];
+  //  id <NSFetchedResultsSectionInfo> sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
+   // return [sectionInfo numberOfObjects];
+    return 1;
 }
 
 - (void) configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath{
@@ -284,6 +286,23 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    static NSString * CellIdentifier = @"HorizontalCell";
+    
+    HorizontalCells *cell = (HorizontalCells *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil){
+        cell = [[[HorizontalCells alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, tableView.frame.size.height)] autorelease];
+    }
+    id <NSFetchedResultsSectionInfo> sectionInfo = [[_fetchedResultsController sections] objectAtIndex:indexPath.section];
+    
+    NSString *sectionName = [sectionInfo name];
+    NSLog(@"Section name is %@", sectionName);
+    NSArray *sectionObjects = [sectionInfo objects];
+    cell.myObjects = sectionObjects;
+    
+    return cell;
+    
+    /*
     static NSString *CellIdentifier = @"AppointmentCustomCell";
     
     AppointmentCustomCell *cell = (AppointmentCustomCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -324,6 +343,7 @@
 	}
 	[self configureCell:cell atIndexPath:indexPath];
     return cell;
+     */
 }
 /*
  // Override to support conditional editing of the table view.
@@ -379,7 +399,6 @@
     myData.selectedAppointment = [_fetchedResultsController objectAtIndexPath:indexPath];
     
     //[[NSNotificationCenter defaultCenter] postNotificationName:UITableViewSelectionDidChangeNotification object:[_fetchedResultsController objectAtIndexPath:indexPath ]];   
-    
 }
 
 #pragma mark -
