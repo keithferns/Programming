@@ -11,17 +11,23 @@
 
 @interface CustomToolBar : UIToolbar {
     
-    UIBarButtonItem *firstButton, *secondButton, *thirdButton, *fourthButton, *dismissKeyboard;
+    UIBarButtonItem *firstButton, *secondButton, *thirdButton, *fourthButton, *fifthButton;
     
 }
 
-@property (nonatomic, retain) UIBarButtonItem *firstButton,  *secondButton, *thirdButton, *fourthButton, *dismissKeyboard;
+@property (nonatomic, retain) UIBarButtonItem *firstButton,  *secondButton, *thirdButton, *fourthButton, *fifthButton;
 @property (readonly) UIImage *flipperImageForDateNavigationItem;
 
+
+- (void) changeToSchedulingButtons;
+- (void) changeToEditingButtons;
+
+
+
+@end
+/*
 - (void) toggleDateButton:(id)sender;
 - (void) toggleStartButton:(id)sender;
 - (void) toggleEndButton:(id)sender;
 - (void) toggleRecurButton:(id)sender;
-
-@end
-
+*/

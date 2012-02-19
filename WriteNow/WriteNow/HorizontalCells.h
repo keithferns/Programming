@@ -11,12 +11,12 @@
 
 @interface HorizontalCells : UITableViewCell <UITableViewDataSource, UITableViewDelegate> {
     
-    UITableView *_tableView;
+    UITableView *_hTableView;
     NSArray *myObjects;
 
 }
 
-@property (nonatomic, retain) UITableView *tableView;
+@property (nonatomic, retain) UITableView *hTableView;
 @property (nonatomic, retain) NSArray *myObjects;
 
 

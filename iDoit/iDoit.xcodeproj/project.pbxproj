@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		53008E1214D86C9C004A0D2B /* addDate.png in Resources */ = {isa = PBXBuildFile; fileRef = 53008E1114D86C9C004A0D2B /* addDate.png */; };
+		53008E1B14D8EC89004A0D2B /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53008E1A14D8EC89004A0D2B /* CalendarViewController.m */; };
+		53008E2114D8EDDF004A0D2B /* DiaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53008E2014D8EDDF004A0D2B /* DiaryViewController.m */; };
 		532C6107147CDA970062AC6D /* email_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 532C6106147CDA970062AC6D /* email_white.png */; };
 		532C610A147CDAB40062AC6D /* save.png in Resources */ = {isa = PBXBuildFile; fileRef = 532C6109147CDAB40062AC6D /* save.png */; };
 		532C610C147CDAFE0062AC6D /* calendar_date_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 532C610B147CDAFE0062AC6D /* calendar_date_background.png */; };
@@ -45,6 +48,14 @@
 		532C6190147E17DE0062AC6D /* message_button_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 532C6182147E17DE0062AC6D /* message_button_selected.png */; };
 		532C6191147E17DE0062AC6D /* task_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 532C6183147E17DE0062AC6D /* task_button.png */; };
 		532C6192147E17DE0062AC6D /* task_button_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 532C6184147E17DE0062AC6D /* task_button_selected.png */; };
+		53419B9914D32499006A4C3A /* FoldersDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53419B9814D32499006A4C3A /* FoldersDetailViewController.m */; };
+		53419B9C14D32939006A4C3A /* UINavigationController+NavControllerCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 53419B9B14D32939006A4C3A /* UINavigationController+NavControllerCategory.m */; };
+		538E5C3814AC16BC0088D819 /* ScheduleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 538E5C3714AC16BC0088D819 /* ScheduleView.m */; };
+		538E5C3B14AC73290088D819 /* arrow_left_24.png in Resources */ = {isa = PBXBuildFile; fileRef = 538E5C3914AC73290088D819 /* arrow_left_24.png */; };
+		538E5C3C14AC73290088D819 /* arrow_right_24.png in Resources */ = {isa = PBXBuildFile; fileRef = 538E5C3A14AC73290088D819 /* arrow_right_24.png */; };
+		53B0DECB14CF6904001AB630 /* ArchiveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 53B0DECA14CF6904001AB630 /* ArchiveView.m */; };
+		53B0DF1E14D1E0A5001AB630 /* ArchiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53B0DF1D14D1E0A5001AB630 /* ArchiveViewController.m */; };
+		53B0DF2214D1E84A001AB630 /* FoldersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53B0DF2114D1E84A001AB630 /* FoldersTableViewController.m */; };
 		53D17EA5147BC8EC00A15B7A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53D17EA4147BC8EC00A15B7A /* UIKit.framework */; };
 		53D17EA7147BC8EC00A15B7A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53D17EA6147BC8EC00A15B7A /* Foundation.framework */; };
 		53D17EA9147BC8EC00A15B7A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53D17EA8147BC8EC00A15B7A /* CoreGraphics.framework */; };
@@ -77,6 +88,11 @@
 		53D17F1E147CB88D00A15B7A /* UIView+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D17F16147CB88D00A15B7A /* UIView+TKCategory.m */; };
 		53D17F23147CD8DD00A15B7A /* CustomToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D17F22147CD8DD00A15B7A /* CustomToolBar.m */; };
 		53D17F25147CD99C00A15B7A /* clock_running.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D17F24147CD99C00A15B7A /* clock_running.png */; };
+		53FCD72014CB41D2004FF9F6 /* list.png in Resources */ = {isa = PBXBuildFile; fileRef = 53FCD71F14CB41D2004FF9F6 /* list.png */; };
+		53FCD72414CB421B004FF9F6 /* tag_add_24.png in Resources */ = {isa = PBXBuildFile; fileRef = 53FCD72214CB421B004FF9F6 /* tag_add_24.png */; };
+		53FCD72514CB421B004FF9F6 /* tag_add_48.png in Resources */ = {isa = PBXBuildFile; fileRef = 53FCD72314CB421B004FF9F6 /* tag_add_48.png */; };
+		53FCD72814CB422A004FF9F6 /* tag_24.png in Resources */ = {isa = PBXBuildFile; fileRef = 53FCD72614CB422A004FF9F6 /* tag_24.png */; };
+		53FCD72914CB422A004FF9F6 /* tag_48.png in Resources */ = {isa = PBXBuildFile; fileRef = 53FCD72714CB422A004FF9F6 /* tag_48.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +106,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		53008E1114D86C9C004A0D2B /* addDate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addDate.png; sourceTree = "<group>"; };
+		53008E1914D8EC89004A0D2B /* CalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarViewController.h; sourceTree = "<group>"; };
+		53008E1A14D8EC89004A0D2B /* CalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarViewController.m; sourceTree = "<group>"; };
+		53008E1F14D8EDDF004A0D2B /* DiaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiaryViewController.h; sourceTree = "<group>"; };
+		53008E2014D8EDDF004A0D2B /* DiaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiaryViewController.m; sourceTree = "<group>"; };
 		532C6106147CDA970062AC6D /* email_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = email_white.png; sourceTree = "<group>"; };
 		532C6109147CDAB40062AC6D /* save.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = save.png; sourceTree = "<group>"; };
 		532C610B147CDAFE0062AC6D /* calendar_date_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar_date_background.png; sourceTree = "<group>"; };
@@ -132,6 +153,20 @@
 		532C6182147E17DE0062AC6D /* message_button_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = message_button_selected.png; sourceTree = "<group>"; };
 		532C6183147E17DE0062AC6D /* task_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = task_button.png; sourceTree = "<group>"; };
 		532C6184147E17DE0062AC6D /* task_button_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = task_button_selected.png; sourceTree = "<group>"; };
+		53419B9714D32499006A4C3A /* FoldersDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoldersDetailViewController.h; sourceTree = "<group>"; };
+		53419B9814D32499006A4C3A /* FoldersDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoldersDetailViewController.m; sourceTree = "<group>"; };
+		53419B9A14D32938006A4C3A /* UINavigationController+NavControllerCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+NavControllerCategory.h"; sourceTree = "<group>"; };
+		53419B9B14D32939006A4C3A /* UINavigationController+NavControllerCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+NavControllerCategory.m"; sourceTree = "<group>"; };
+		538E5C3614AC16BC0088D819 /* ScheduleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleView.h; sourceTree = "<group>"; };
+		538E5C3714AC16BC0088D819 /* ScheduleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleView.m; sourceTree = "<group>"; };
+		538E5C3914AC73290088D819 /* arrow_left_24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_left_24.png; sourceTree = "<group>"; };
+		538E5C3A14AC73290088D819 /* arrow_right_24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_right_24.png; sourceTree = "<group>"; };
+		53B0DEC914CF6904001AB630 /* ArchiveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArchiveView.h; sourceTree = "<group>"; };
+		53B0DECA14CF6904001AB630 /* ArchiveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArchiveView.m; sourceTree = "<group>"; };
+		53B0DF1C14D1E0A5001AB630 /* ArchiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArchiveViewController.h; sourceTree = "<group>"; };
+		53B0DF1D14D1E0A5001AB630 /* ArchiveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArchiveViewController.m; sourceTree = "<group>"; };
+		53B0DF2014D1E84A001AB630 /* FoldersTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoldersTableViewController.h; sourceTree = "<group>"; };
+		53B0DF2114D1E84A001AB630 /* FoldersTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoldersTableViewController.m; sourceTree = "<group>"; };
 		53D17EA0147BC8EC00A15B7A /* iDoit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iDoit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		53D17EA4147BC8EC00A15B7A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		53D17EA6147BC8EC00A15B7A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -179,6 +214,11 @@
 		53D17F21147CD8DD00A15B7A /* CustomToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomToolBar.h; sourceTree = "<group>"; };
 		53D17F22147CD8DD00A15B7A /* CustomToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomToolBar.m; sourceTree = "<group>"; };
 		53D17F24147CD99C00A15B7A /* clock_running.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock_running.png; sourceTree = "<group>"; };
+		53FCD71F14CB41D2004FF9F6 /* list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list.png; sourceTree = "<group>"; };
+		53FCD72214CB421B004FF9F6 /* tag_add_24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tag_add_24.png; sourceTree = "<group>"; };
+		53FCD72314CB421B004FF9F6 /* tag_add_48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tag_add_48.png; sourceTree = "<group>"; };
+		53FCD72614CB422A004FF9F6 /* tag_24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tag_24.png; sourceTree = "<group>"; };
+		53FCD72714CB422A004FF9F6 /* tag_48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tag_48.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,9 +247,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		53008E1814D8EC5F004A0D2B /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				53008E1914D8EC89004A0D2B /* CalendarViewController.h */,
+				53008E1A14D8EC89004A0D2B /* CalendarViewController.m */,
+			);
+			name = Calendar;
+			sourceTree = "<group>";
+		};
+		53008E1E14D8EDB2004A0D2B /* Diary */ = {
+			isa = PBXGroup;
+			children = (
+				53008E1F14D8EDDF004A0D2B /* DiaryViewController.h */,
+				53008E2014D8EDDF004A0D2B /* DiaryViewController.m */,
+			);
+			name = Diary;
+			sourceTree = "<group>";
+		};
 		532C6113147CE3920062AC6D /* NavBar Images */ = {
 			isa = PBXGroup;
 			children = (
+				53008E1114D86C9C004A0D2B /* addDate.png */,
 				532C6118147CE5410062AC6D /* cancel_clear_white_on_blue_button.png */,
 				532C6116147CE40B0062AC6D /* add_item_white_on_blue_button.png */,
 				532C6114147CE3E40062AC6D /* cancel_white_on_blue_button.png */,
@@ -287,6 +346,53 @@
 				532C6184147E17DE0062AC6D /* task_button_selected.png */,
 			);
 			path = PopOver_Buttons;
+			sourceTree = "<group>";
+		};
+		53419B9514D3244E006A4C3A /* FoldersDetailView */ = {
+			isa = PBXGroup;
+			children = (
+				53419B9714D32499006A4C3A /* FoldersDetailViewController.h */,
+				53419B9814D32499006A4C3A /* FoldersDetailViewController.m */,
+			);
+			name = FoldersDetailView;
+			sourceTree = "<group>";
+		};
+		538E5C3414AC16880088D819 /* Scheduler */ = {
+			isa = PBXGroup;
+			children = (
+				538E5C3614AC16BC0088D819 /* ScheduleView.h */,
+				538E5C3714AC16BC0088D819 /* ScheduleView.m */,
+			);
+			name = Scheduler;
+			sourceTree = "<group>";
+		};
+		53B0DEC814CF6892001AB630 /* Archiver */ = {
+			isa = PBXGroup;
+			children = (
+				53B0DEC914CF6904001AB630 /* ArchiveView.h */,
+				53B0DECA14CF6904001AB630 /* ArchiveView.m */,
+			);
+			name = Archiver;
+			sourceTree = "<group>";
+		};
+		53B0DF1B14D1E079001AB630 /* Archive */ = {
+			isa = PBXGroup;
+			children = (
+				53419B9514D3244E006A4C3A /* FoldersDetailView */,
+				53B0DF1F14D1E81C001AB630 /* FoldersTableViewController */,
+				53B0DF1C14D1E0A5001AB630 /* ArchiveViewController.h */,
+				53B0DF1D14D1E0A5001AB630 /* ArchiveViewController.m */,
+			);
+			name = Archive;
+			sourceTree = "<group>";
+		};
+		53B0DF1F14D1E81C001AB630 /* FoldersTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				53B0DF2014D1E84A001AB630 /* FoldersTableViewController.h */,
+				53B0DF2114D1E84A001AB630 /* FoldersTableViewController.m */,
+			);
+			name = FoldersTableViewController;
 			sourceTree = "<group>";
 		};
 		53D17E95147BC8EC00A15B7A = {
@@ -400,6 +506,9 @@
 		53D17EF2147C78FF00A15B7A /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				53008E1E14D8EDB2004A0D2B /* Diary */,
+				53008E1814D8EC5F004A0D2B /* Calendar */,
+				53B0DF1B14D1E079001AB630 /* Archive */,
 				532C611A147DD7A20062AC6D /* Write Now */,
 			);
 			name = "View Controllers";
@@ -408,9 +517,13 @@
 		53D17EF6147C7B6400A15B7A /* Custom Classes */ = {
 			isa = PBXGroup;
 			children = (
+				53B0DEC814CF6892001AB630 /* Archiver */,
+				538E5C3414AC16880088D819 /* Scheduler */,
 				532C6123147DF03C0062AC6D /* Custom PopOver */,
 				53D17F1F147CD88700A15B7A /* Custom ToolBar */,
 				53D17F20147CD89800A15B7A /* Custom TextView */,
+				53419B9A14D32938006A4C3A /* UINavigationController+NavControllerCategory.h */,
+				53419B9B14D32939006A4C3A /* UINavigationController+NavControllerCategory.m */,
 			);
 			name = "Custom Classes";
 			sourceTree = "<group>";
@@ -418,6 +531,13 @@
 		53D17F02147CAFC100A15B7A /* ToolBar Images */ = {
 			isa = PBXGroup;
 			children = (
+				53FCD72614CB422A004FF9F6 /* tag_24.png */,
+				53FCD72714CB422A004FF9F6 /* tag_48.png */,
+				53FCD72214CB421B004FF9F6 /* tag_add_24.png */,
+				53FCD72314CB421B004FF9F6 /* tag_add_48.png */,
+				53FCD71F14CB41D2004FF9F6 /* list.png */,
+				538E5C3914AC73290088D819 /* arrow_left_24.png */,
+				538E5C3A14AC73290088D819 /* arrow_right_24.png */,
 				532C6111147CDB5B0062AC6D /* alarm_24.png */,
 				532C610F147CDB430062AC6D /* 11-clock.png */,
 				532C610D147CDB340062AC6D /* calendar_24.png */,
@@ -514,6 +634,9 @@
 /* Begin PBXProject section */
 		53D17E97147BC8EC00A15B7A /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
 			buildConfigurationList = 53D17E9A147BC8EC00A15B7A /* Build configuration list for PBXProject "iDoit" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
@@ -580,6 +703,14 @@
 				532C6190147E17DE0062AC6D /* message_button_selected.png in Resources */,
 				532C6191147E17DE0062AC6D /* task_button.png in Resources */,
 				532C6192147E17DE0062AC6D /* task_button_selected.png in Resources */,
+				538E5C3B14AC73290088D819 /* arrow_left_24.png in Resources */,
+				538E5C3C14AC73290088D819 /* arrow_right_24.png in Resources */,
+				53FCD72014CB41D2004FF9F6 /* list.png in Resources */,
+				53FCD72414CB421B004FF9F6 /* tag_add_24.png in Resources */,
+				53FCD72514CB421B004FF9F6 /* tag_add_48.png in Resources */,
+				53FCD72814CB422A004FF9F6 /* tag_24.png in Resources */,
+				53FCD72914CB422A004FF9F6 /* tag_48.png in Resources */,
+				53008E1214D86C9C004A0D2B /* addDate.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -631,6 +762,14 @@
 				532C6139147DF03C0062AC6D /* WEPopoverContainerView.m in Sources */,
 				532C613A147DF03C0062AC6D /* WEPopoverContentViewController.m in Sources */,
 				532C613B147DF03C0062AC6D /* WEPopoverController.m in Sources */,
+				538E5C3814AC16BC0088D819 /* ScheduleView.m in Sources */,
+				53B0DECB14CF6904001AB630 /* ArchiveView.m in Sources */,
+				53B0DF1E14D1E0A5001AB630 /* ArchiveViewController.m in Sources */,
+				53B0DF2214D1E84A001AB630 /* FoldersTableViewController.m in Sources */,
+				53419B9914D32499006A4C3A /* FoldersDetailViewController.m in Sources */,
+				53419B9C14D32939006A4C3A /* UINavigationController+NavControllerCategory.m in Sources */,
+				53008E1B14D8EC89004A0D2B /* CalendarViewController.m in Sources */,
+				53008E2114D8EDDF004A0D2B /* DiaryViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -720,6 +859,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iDoit/iDoit-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "iDoit/iDoit-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -734,6 +874,7 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iDoit/iDoit-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "iDoit/iDoit-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -753,6 +894,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iDoitTests/iDoitTests-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "iDoitTests/iDoitTests-Info.plist";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -775,6 +917,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iDoitTests/iDoitTests-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "iDoitTests/iDoitTests-Info.plist";
 				OTHER_LDFLAGS = (
 					"-framework",

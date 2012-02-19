@@ -291,10 +291,8 @@
     return YES;    
 }  
 
-
 - (void) textViewDidBeginEditing:(UITextView *)textView{
-    [self toggleCancel:nil];
-    
+    [self toggleCancel:nil];    
     if (flipIndicatorButton == nil){
         UIImage *image = [UIImage imageNamed:@"calendar_date_background.png"];//
         frontViewIsVisible = YES;
@@ -306,7 +304,6 @@
         [calendarBarButton release];
         [flipIndicatorButton addTarget:self action:@selector(toggleCalendar) forControlEvents:(UIControlEventTouchDown)];
     }
-    
 }
 - (void) textViewDidEndEditing:(UITextView *)textView{    
     //
@@ -642,24 +639,7 @@
 	}
 	[UIView commitAnimations];
     frontViewIsVisible=!frontViewIsVisible;
-    /*
-     // If calendar is off the screen, show it, else hide it (both with animations)
-     //if (calendarView.frame.origin.y == -calendarView.frame.size.height+calendarShadowOffset) {
-     if (calendarView.frame.origin.y == screenRect.size.height) {
-     NSLog(@"Showing Calendar: %.1f = %.1f", calendarView.frame.origin.y, screenRect.size.height);
-     [UIView beginAnimations:nil context:NULL];
-     [UIView setAnimationDuration:0.5];
-     calendarView.frame = CGRectMake(0, self.navigationController.navigationBar.frame.origin.y+navBarHeight, calendarView.frame.size.width, calendarView.frame.size.height);
-     [UIView commitAnimations];
-     } else {
-     NSLog(@"Hiding Calendar: %.1f = %.1f", calendarView.frame.origin.y, screenRect.size.height);
-     [UIView beginAnimations:nil context:NULL];
-     [UIView setAnimationDuration:0.5];
-     //calendarView.frame = CGRectMake(0, -calendarView.frame.size.height+calendarShadowOffset, calendarView.frame.size.width, calendarView.frame.size.height);	
-     calendarView.frame = CGRectMake(0, screenRect.size.height, calendarView.frame.size.width, calendarView.frame.size.height);
-     [UIView commitAnimations];
-     }	
-     */
+   
 }
 
 - (void) toggleCancel:(id) sender {

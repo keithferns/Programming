@@ -1,5 +1,5 @@
 //
-//  Contants.h
+//  Constants.h
 //  iDoit
 //
 //  Created by Keith Fernandes on 11/22/11.
@@ -30,4 +30,4 @@
 
 //Define TextView Properties
 
-#define kTextViewRect CGRectMake(0,0,kScreenWidth, kTopViewRect.size.height-5)
+#define kTextViewRect CGRectMake(0,0,kScreenWidth, kTopViewRect.size.height)

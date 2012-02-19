@@ -9,6 +9,7 @@
 #import "iDoitAppDelegate.h"
 #import "Contants.h"
 #import "WriteNowViewController.h"
+#import "ArchiveViewController.h"
 
 @implementation iDoitAppDelegate
 
@@ -57,7 +58,8 @@
     [theArray addObject:tempNavController3];
     [tempNavController3 release];
     
-    UIViewController *viewController4 = [[UIViewController alloc] initWithNibName:nil bundle:nil];
+    ArchiveViewController *viewController4 = [[ArchiveViewController alloc] initWithNibName:nil bundle:nil];
+    viewController4.isSaving = NO;
     viewController4.tabBarItem.title = @"Archive";
     viewController4.tabBarItem.image = [UIImage imageNamed:@"tab_notepad.png"];
     viewController4.tabBarItem.tag = 4;    
@@ -81,8 +83,7 @@
 }
 
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     //Initialize the tabBarController and set the frame to the application screen
     _tabBarController = [[UITabBarController alloc] initWithNibName:nil bundle:nil];
     _tabBarController.view.frame = kScreenRect;

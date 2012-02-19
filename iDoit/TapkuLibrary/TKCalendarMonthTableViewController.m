@@ -31,6 +31,9 @@
 #import "TKCalendarMonthTableViewController.h"
 #import "NSDate+TKCategory.h"
 
+#define ROW_HEIGHT 40
+
+
 @implementation TKCalendarMonthTableViewController
 @synthesize tableView = _tableView;
 
@@ -59,9 +62,6 @@
 	[self.view sendSubviewToBack:_tableView];
 }
 
-
-
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 	return 0;	
 }
@@ -71,17 +71,20 @@
 - (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *CellIdentifier = @"Cell";
-    
     UITableViewCell *cell = [tv dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
-    }
 
+    if (cell == nil) {
+		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+		cell.frame = CGRectMake(0.0, 0.0, 320.0, ROW_HEIGHT);
+    }
+    /* kjf: the above is the replacement for the deprecated 'initWithFrame: reuseIdentifier:'    
+    if (cell == nil) {
+    cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
+	}
+	*/
 	
     return cell;
-	
 }
-
 
 - (void) calendarMonthView:(TKCalendarMonthView*)monthView didSelectDate:(NSDate*)d{
 }

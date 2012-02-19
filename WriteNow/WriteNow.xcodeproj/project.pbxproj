@@ -1072,6 +1072,9 @@
 /* Begin PBXProject section */
 		53FB859013FAEC3800765BFC /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
 			buildConfigurationList = 53FB859313FAEC3800765BFC /* Build configuration list for PBXProject "WriteNow" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
@@ -1372,6 +1375,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WriteNow/WriteNow-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "WriteNow/WriteNow-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1386,6 +1390,7 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WriteNow/WriteNow-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "WriteNow/WriteNow-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1405,6 +1410,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WriteNowTests/WriteNowTests-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "WriteNowTests/WriteNowTests-Info.plist";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -1427,6 +1433,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WriteNowTests/WriteNowTests-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "WriteNowTests/WriteNowTests-Info.plist";
 				OTHER_LDFLAGS = (
 					"-framework",

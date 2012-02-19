@@ -172,22 +172,16 @@
 		}else{
 			info2.day = preDayCnt - info.weekday + 3;
 		}
-		firstDate = [NSDate dateFromDateInformation:info2 timeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
-		
-		
+		firstDate = [NSDate dateFromDateInformation:info2 timeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];		
 		
 	}else{
 		firstDate = currentMonth;
 	}
 	
-	
-	
-	int daysInMonth = [currentMonth daysBetweenDate:nextMonth];		
+    int daysInMonth = [currentMonth daysBetweenDate:nextMonth];		
 	info.day = daysInMonth;
 	NSDate *lastInMonth = [NSDate dateFromDateInformation:info timeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
 	TKDateInformation lastDateInfo = [lastInMonth dateInformationWithTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
-
-	
 	
 	if(lastDateInfo.weekday < 7 && sunday){
 		
@@ -621,18 +615,14 @@
 	if (!(self = [super initWithFrame:CGRectZero])) return nil;
 	
 	sunday = s;
-	
-	
-	
+		
 	currentTile = [[[TKCalendarMonthTiles alloc] initWithMonth:[[NSDate date] firstOfMonth] marks:nil startDayOnSunday:sunday] autorelease];
 	[currentTile setTarget:self action:@selector(tile:)];
 	
 	[currentTile setTarget:self action:@selector(tile:)];
 	CGRect r = CGRectMake(0, 0, self.tileBox.bounds.size.width, self.tileBox.bounds.size.height + self.tileBox.frame.origin.y);
-
 	
 	self.frame = r;
-	
 	
 	[currentTile retain];
 	
@@ -643,7 +633,6 @@
 	NSDate *date = [NSDate date];
 	self.monthYear.text = [NSString stringWithFormat:@"%@ %@",[date month],[date year]];
 	[self addSubview:self.monthYear];
-	
 	
 	[self addSubview:self.leftArrow];
 	[self addSubview:self.rightArrow];
@@ -657,7 +646,6 @@
 	[dateFormat setDateFormat:@"eee"];
 	[dateFormat setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
 	
-	
 	TKDateInformation sund;
 	sund.day = 5;
 	sund.month = 12;
@@ -665,7 +653,6 @@
 	sund.hour = 0;
 	sund.minute = 0;
 	sund.second = 0;
-	
 	
 	NSTimeZone *tz = [NSTimeZone timeZoneForSecondsFromGMT:0];
 	NSString * sun = [dateFormat stringFromDate:[NSDate dateFromDateInformation:sund timeZone:tz]];

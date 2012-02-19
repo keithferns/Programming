@@ -17,14 +17,14 @@
 
 @implementation HorizontalCells
 
-@synthesize tableView = _tableView;
+@synthesize hTableView = _hTableView;
 @synthesize myObjects;
 
 
 - (void) dealloc{
-    self.tableView = nil;
+    self.hTableView = nil;
     myObjects = nil;
-    [self.tableView release];
+    [self.hTableView release];
     [myObjects release];
     [super dealloc];
 }
@@ -32,18 +32,18 @@
 - (id)initWithFrame:(CGRect)frame {
 
    if ((self = [super initWithFrame:frame])){
-        self.tableView = [[[UITableView alloc] initWithFrame:CGRectMake(0, 0, kCellHeight, kScreenWidth)] autorelease];
-        self.tableView.showsVerticalScrollIndicator = NO;
-        self.tableView.showsHorizontalScrollIndicator = NO;
-        self.tableView.transform = CGAffineTransformMakeRotation(-M_PI * 0.5);
-        [self.tableView setFrame:CGRectMake(kRowHorizontalPadding * 0.5, kRowVerticalPadding * 0.5, kScreenWidth - kRowHorizontalPadding, kCellHeight)];
-        self.tableView.rowHeight = kCellWidth;
-        self.tableView.backgroundColor = [UIColor blackColor];        
-        self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-        self.tableView.separatorColor = [UIColor clearColor];
-        self.tableView.dataSource = self;
-        self.tableView.delegate = self;
-        [self addSubview:self.tableView];
+        self.hTableView = [[[UITableView alloc] initWithFrame:CGRectMake(0, 0, kCellHeight, kScreenWidth)] autorelease];
+        self.hTableView.showsVerticalScrollIndicator = NO;
+        self.hTableView.showsHorizontalScrollIndicator = NO;
+        self.hTableView.transform = CGAffineTransformMakeRotation(-M_PI * 0.5);
+        [self.hTableView setFrame:CGRectMake(kRowHorizontalPadding * 0.5, kRowVerticalPadding * 0.5, kScreenWidth - kRowHorizontalPadding, kCellHeight)];
+        self.hTableView.rowHeight = kCellWidth;
+        self.hTableView.backgroundColor = [UIColor blackColor];        
+        self.hTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+        self.hTableView.separatorColor = [UIColor clearColor];
+        self.hTableView.dataSource = self;
+        self.hTableView.delegate = self;
+        [self addSubview:self.hTableView];
      }
     return self;
 }

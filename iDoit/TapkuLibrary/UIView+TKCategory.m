@@ -72,16 +72,12 @@ CGFloat demoRGInnerRadius(CGRect bounds)
 		[ar addObject:(id)c.CGColor];
 	}
 	
-	
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	CGContextSaveGState(context);
-	
-	
-	
+		
 	CGColorSpaceRef colorSpace = CGColorGetColorSpace([[colors lastObject] CGColor]);
 	CGGradientRef gradient = CGGradientCreateWithColors(colorSpace, (CFArrayRef)ar, NULL);
 	
-
 	CGContextClipToRect(context, rect);
 	
 	CGPoint start = CGPointMake(0.0, 0.0);

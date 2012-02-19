@@ -498,8 +498,7 @@
     UIImage *image = [UIImage imageNamed:@"add_item_white_on_blue_button.png"];
     addButton=[[UIButton alloc] initWithFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
     [addButton setBackgroundImage:image forState:UIControlStateNormal];	
-    UIBarButtonItem *leftButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
-    leftButton = [[UIBarButtonItem alloc] initWithCustomView:addButton];
+    UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithCustomView:addButton];
 	[self.navigationItem setLeftBarButtonItem:leftButton animated:YES];
     [leftButton release];
 	[addButton addTarget:self action:@selector(clearAll) forControlEvents:UIControlEventTouchUpInside];
