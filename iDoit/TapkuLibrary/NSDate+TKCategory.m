@@ -162,6 +162,7 @@
 	NSDateComponents *comp = [gregorian components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:day];
 	return [gregorian dateFromComponents:comp];
 }
+
 - (NSDate*) monthlessDate {
 	NSDate *day = self;
 	NSCalendar *gregorian = [[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar] autorelease];

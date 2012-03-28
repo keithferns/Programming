@@ -11,19 +11,13 @@
 
 @implementation CustomTextView
 
+@synthesize isEditing;
 
 - (id) initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
 
     if (self) {
-        self.textColor = [UIColor lightTextColor];
-        self.font = [UIFont systemFontOfSize:15];
-        self.showsVerticalScrollIndicator = YES;
-        
-        UIImage *patternImage = [UIImage imageNamed:@"textview_background.png"];
-        [self.layer setBackgroundColor:[UIColor colorWithPatternImage:patternImage].CGColor];
-        self.layer.cornerRadius = 5.0;
-        
+      
     }
     
     

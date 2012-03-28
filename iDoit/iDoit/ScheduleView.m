@@ -383,9 +383,10 @@
 - (void) datePickerChanged:(id)sender{
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"EEE, MMM dd, yyyy"];
-     
+    
     self.dateField.text = [dateFormatter stringFromDate:[datePicker date]];
     [dateFormatter release];
+    
 }
 
 - (void) timePickerChanged:(id) sender{

@@ -31,6 +31,8 @@ typedef enum{
 
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain) UITableViewController *tableViewController;
+
+
 @property (nonatomic, retain) CustomTextView *textView;
 @property (nonatomic, retain) CustomToolBarMainView *toolBar;
 @property (nonatomic, retain) WEPopoverController *navPopover, *schedulerPopover, *reminderPopover;

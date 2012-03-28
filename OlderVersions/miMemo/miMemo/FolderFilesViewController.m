@@ -26,15 +26,11 @@
 //#define FOLDERS_SECTION 2
 
 
-- (void)dealloc
-{
+- (void)dealloc {
     [super dealloc];
-
-    
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
     
@@ -43,8 +39,7 @@
 
 #pragma mark - View lifecycle
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     [self makeToolbar];
     [self.view addSubview:toolbar];
@@ -84,8 +79,6 @@
    // [memos addObjectsFromArray:[folder.containsFile allObjects]];
     
     [self.tableView reloadData]; 
-    
-
 }
 
 - (IBAction) changeFolderName{

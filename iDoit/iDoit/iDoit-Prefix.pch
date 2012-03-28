@@ -13,4 +13,17 @@
     #import <Foundation/Foundation.h>
     #import <CoreData/CoreData.h>
     #import <QuartzCore/QuartzCore.h>
+
+#import "Note.h"
+#import "Event.h"
+#import "Person.h"
+#import "Memo.h"
+#import "Appointment.h"
+#import "Project.h"
+#import "Alarm.h"
+#import "ToDo.h"
+#import "Tags.h"
+#import "Folder.h"
+#import "Document.h"
+
 #endif

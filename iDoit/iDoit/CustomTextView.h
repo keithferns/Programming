@@ -9,7 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface CustomTextView : UITextView {
+
+    BOOL isEditing;
     
 }
+
+@property (nonatomic, readwrite) BOOL isEditing;
 
 @end

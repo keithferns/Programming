@@ -7,7 +7,23 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NewItemOrEvent.h"
+@interface FoldersTableViewController : UITableViewController<NSFetchedResultsControllerDelegate, UISearchBarDelegate> {
+    
+    NSFetchedResultsController *_fetchedResultsController;
+    NSManagedObjectContext *managedObjectContext;
+    UISearchBar *searchBar;
+    BOOL saving;
+    NewItemOrEvent *theItem;
+    
+    
+}
+@property (nonatomic,retain) NewItemOrEvent *theItem;
+@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
+@property (nonatomic, retain) UISearchBar *searchBar;
+@property (nonatomic, readwrite) BOOL saving;
 
-@interface FoldersTableViewController : UITableViewController
+- (NSFetchedResultsController *) fetchedResultsControllerWithPredicate:(NSPredicate *)aPredicate; 
 
 @end

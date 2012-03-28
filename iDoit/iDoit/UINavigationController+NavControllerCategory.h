@@ -16,6 +16,10 @@
 - (UIBarButtonItem *) addOrganizeButton;
 - (UIBarButtonItem *) addAddButton;
 - (UIBarButtonItem *) addCancelButton;
+- (UIBarButtonItem *) addListButton;
+- (UIBarButtonItem *) addLeftArrowButton;
+- (UIBarButtonItem *) addRightArrowButton;
+
 //- (UIBarButtonItem *) addDateButton;
 @end
 

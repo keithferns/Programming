@@ -1,4 +1,3 @@
-//
 //  iDoitAppDelegate.m
 //  iDoit
 //
@@ -10,9 +9,10 @@
 #import "Contants.h"
 #import "WriteNowViewController.h"
 #import "ArchiveViewController.h"
+#import "CalendarViewController.h"
+#import "DiaryViewController.h"
 
 @implementation iDoitAppDelegate
-
 
 @synthesize window=_window;
 
@@ -26,7 +26,7 @@
 
 - (NSArray *) arrayWithnavigationControllerWrappingsForTabbedViewControllers {
     //Creates the viewController array for the tabBarController
-    NSMutableArray *theArray = [[NSMutableArray alloc] initWithCapacity:5];
+    NSMutableArray *theArray = [[[NSMutableArray alloc] initWithCapacity:5] autorelease];
     
     WriteNowViewController *viewController1 = [[WriteNowViewController alloc] initWithNibName:nil bundle:nil];
     viewController1.tabBarItem.title = @"Write Now";
@@ -38,9 +38,9 @@
     [theArray addObject:tempNavController1];
     [tempNavController1 release];
     
-    UIViewController *viewController2 = [[UIViewController alloc] initWithNibName:nil bundle:nil];
+    DiaryViewController *viewController2 = [[DiaryViewController alloc] initWithNibName:nil bundle:nil];
     viewController2.tabBarItem.title = @"Diary";
-    viewController2.tabBarItem.image = [UIImage imageNamed:@"tab_notepad.png"];
+    viewController2.tabBarItem.image = [UIImage imageNamed:@"nav_book.png"];
     viewController2.tabBarItem.tag = 2;    
     UINavigationController *tempNavController2 = [[UINavigationController alloc] initWithRootViewController:viewController2];
     [viewController2 release];
@@ -48,9 +48,9 @@
     [theArray addObject:tempNavController2];
     [tempNavController2 release];
 
-    UIViewController *viewController3 = [[UIViewController alloc] initWithNibName:nil bundle:nil];
+    CalendarViewController *viewController3 = [[CalendarViewController alloc] initWithNibName:nil bundle:nil];
     viewController3.tabBarItem.title = @"Calendar";
-    viewController3.tabBarItem.image = [UIImage imageNamed:@"tab_notepad.png"];
+    viewController3.tabBarItem.image = [UIImage imageNamed:@"nav-calendar.png"];
     viewController3.tabBarItem.tag = 3;    
     UINavigationController *tempNavController3 = [[UINavigationController alloc] initWithRootViewController:viewController3];
     [viewController3 release];
@@ -59,9 +59,9 @@
     [tempNavController3 release];
     
     ArchiveViewController *viewController4 = [[ArchiveViewController alloc] initWithNibName:nil bundle:nil];
-    viewController4.isSaving = NO;
+    viewController4.saving = NO;
     viewController4.tabBarItem.title = @"Archive";
-    viewController4.tabBarItem.image = [UIImage imageNamed:@"tab_notepad.png"];
+    viewController4.tabBarItem.image = [UIImage imageNamed:@"nav_cabinet.png"];
     viewController4.tabBarItem.tag = 4;    
     UINavigationController *tempNavController4 = [[UINavigationController alloc] initWithRootViewController:viewController4];
     [viewController4 release];
@@ -69,9 +69,9 @@
     [theArray addObject:tempNavController4];
     [tempNavController4 release];
 
-    UIViewController *viewController5 = [[UIViewController alloc] initWithNibName:nil bundle:nil];
-    viewController5.tabBarItem.title = @"Other";
-    viewController5.tabBarItem.image = [UIImage imageNamed:@"tab_notepad.png"];
+    UIViewController  *viewController5 = [[UIViewController alloc] initWithNibName:nil bundle:nil];
+    viewController5.tabBarItem.title = @"Settings";
+    viewController5.tabBarItem.image = [UIImage imageNamed:@"nav_configuration.png"];
     viewController5.tabBarItem.tag = 5;    
     UINavigationController *tempNavController5 = [[UINavigationController alloc] initWithRootViewController:viewController5];
     [viewController5 release];

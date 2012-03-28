@@ -126,6 +126,7 @@
         if (tableViewController == nil) {
             tableViewController = [[CurrentTableViewController alloc]init];
             }
+        
         [self.bottomView addSubview:tableViewController.tableView];
         [tableViewController.tableView setSeparatorColor:[UIColor blackColor]];
         [tableViewController.tableView setSectionHeaderHeight:18];

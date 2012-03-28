@@ -7,7 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TKCalendarMonthView.h"
 
-@interface DiaryViewController : UIViewController
+
+@interface DiaryViewController : UIViewController<TKCalendarMonthViewDelegate>{
+    NSInteger dateCounter;
+}
+
+@property NSInteger dateCounter;
+@property (nonatomic, retain) TKCalendarMonthView *calendarView;
+@property (nonatomic, retain) UILabel *datelabel;
+
+//@property (nonatomic, strong)  UIScrollView *scrollView;
+//@property (nonatomic, strong)  UIPageControl *pageControl;
+
+- (void) postSelectedDateNotification:(id) sender;
 
 @end

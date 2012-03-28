@@ -303,7 +303,6 @@
     NSLog(@"The file text is %@", tempString);
 
     myFile.fileText = tempString;
-    [tempString release];
     
     textView.text = myFile.fileText;
     
