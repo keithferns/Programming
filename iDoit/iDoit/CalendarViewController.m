@@ -11,7 +11,7 @@
 #import "UINavigationController+NavControllerCategory.h"
 #import "Contants.h"
 #import "iDoitAppDelegate.h"
-
+#import "NSCalendar+CalendarCalculations.h"
 @implementation CalendarViewController
 
     
@@ -29,7 +29,10 @@
 @synthesize tableViewController;
 
 - (void) dealloc{
+    NSLog(@"CalendarViewController:dealloc -> deallocing");
+
     [super dealloc];
+        
     [actionsPopover dealloc];
     [theItem release];
     [toolbar release];
@@ -42,8 +45,8 @@
     [flipperImageForDateNavigationItem release];
     [listImageForFlipperView release];
     [flipIndicatorButton release];
-    [tableViewController release];
-    NSLog(@"CalendarViewController:dealloc -> deallocing");
+    //[self.tableViewController release];
+
 }
 
 - (void)viewDidUnload{
@@ -61,7 +64,7 @@
     flipperImageForDateNavigationItem = nil;
     listImageForFlipperView = nil;
     segmentedControl = nil;
-    tableViewController = nil;
+    self.tableViewController = nil;
     NSLog(@"CalendarViewController:viewDidUnload -> Unloading");
 }
 
@@ -79,12 +82,9 @@
     NSLog(@"CalendaViewController:viewDidLoad - loading View");
     
     [super viewDidLoad];
-        
     frontViewIsVisible = YES;
-
-    //Navigation Bar SetUP
- 
     
+    //Navigation Bar SetUP
     //Init and add the top and bottom Views. These views will be used to animate the transitions the table and calendar Views. 
     if (bottomView.superview == nil && bottomView == nil) {
         bottomView = [[UIView alloc] initWithFrame:kBottomViewRect];
@@ -101,37 +101,45 @@
     //Initialize the toolbar. disable 'save' and 'send' buttons.
     if (toolbar == nil) {
         
-    toolbar = [[CustomToolBar alloc] init];
-    [toolbar.firstButton setTarget:self];
-    [toolbar.secondButton setTarget:self];
-    [toolbar.thirdButton setTarget:self];
-    [toolbar.fourthButton setTarget:self];
-    [toolbar.fifthButton setTarget:self];
-    }
-        
-    tableViewController = [[CalendarTableViewController alloc]init ];
+        toolbar = [[CustomToolBar alloc] init];
+        [toolbar.firstButton setTarget:self];
+        [toolbar.secondButton setTarget:self];
+        [toolbar.thirdButton setTarget:self];
+        [toolbar.fourthButton setTarget:self];
+        [toolbar.fifthButton setTarget:self];
+        }
     
-    tableViewController.tableView.frame = CGRectMake(0,kNavBarHeight,kScreenWidth, kScreenHeight-kNavBarHeight);
+    //CHECK if 
     
-    UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 40)];
-    searchBar.tintColor = [UIColor blackColor];
-    
-    tableViewController.tableView.tableHeaderView = searchBar;
-    [searchBar release];
-        
     
     if (!isScheduling){
-        
         /*-- Point current instance of the MOC to the main managedObjectContext --*/
         if (managedObjectContext == nil) { 
             managedObjectContext = [(iDoitAppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext]; 
             NSLog(@"CURRENT VIEWCONTROLLER: After managedObjectContext: %@",  managedObjectContext);
         }    
-        
         /*-ADD FLIPPER VIEW -*/
         flipperView = [[UIView alloc] initWithFrame:mainFrame];
         [flipperView setBackgroundColor:[UIColor blackColor]];
         [self.view   addSubview:flipperView];
+        
+        if (tableViewController == nil){
+            NSLog (@"CalendarViewController:viewDidLoad: Creating New Intance of CalendarTableViewController");
+            
+            tableViewController = [[CalendarTableViewController alloc]init ];
+            
+            tableViewController.tableView.frame = CGRectMake(0, 0, flipperView.frame.size.width, flipperView.frame.size.height);
+            
+            [tableViewController.tableView setSeparatorColor:[UIColor blackColor]];
+            [tableViewController.tableView setSectionHeaderHeight:13];
+            tableViewController.tableView.rowHeight = 58.0;
+            
+            UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 40)];
+            searchBar.tintColor = [UIColor blackColor];
+            
+            tableViewController.tableView.tableHeaderView = searchBar;
+            [searchBar release];
+        }
         
         if (calendarView.superview==nil) {
             calendarView = 	[[TKCalendarMonthView alloc] init];        
@@ -142,25 +150,15 @@
             // Ensure this is the last "addSubview" because the calendar must be the top most view layer	
             [self.flipperView addSubview:calendarView];
             [calendarView reload];
-            
-            //[self.flipperView addSubview:tableViewController.tableView];
-            tableViewController.tableView.frame = CGRectMake(0, 0, flipperView.frame.size.width, flipperView.frame.size.height);
-            [tableViewController.tableView setSeparatorColor:[UIColor blackColor]];
-            [tableViewController.tableView setSectionHeaderHeight:13];
-            tableViewController.tableView.rowHeight = 58.0;
-            //[tableViewController.tableView setTableHeaderView:tableLabel]
         }
         [UIView beginAnimations:nil context:NULL];
         [UIView setAnimationDuration:0.4];
         [UIView setAnimationDelegate:self];
         
         calendarView.frame = CGRectMake(0, 0, mainFrame.size.width, mainFrame.size.height);
-        
         UIImage *image = self.listImageForFlipperView;
-        CGSize theSize = image.size;
-        
+        CGSize theSize = image.size;        
         UIButton *tempButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, theSize.width, theSize.height)];    
-        
         self.flipIndicatorButton=tempButton;
         [flipIndicatorButton setBackgroundImage:image forState:UIControlStateNormal];
         flipIndicatorButton.layer.cornerRadius = 4.0;
@@ -203,12 +201,9 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     UIBarButtonItem *firstItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(presentActionsPopover:)];
-    //firstItem.title = @"Do Something";
     [firstItem setTag:1];
     
-    
     UIBarButtonItem *secondItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(presentActionsPopover:)];
-    
     [secondItem setTag:2];
     
     UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
@@ -224,19 +219,22 @@
     if (isScheduling){
         [self flipScheduleView:nil];
     }
-    
-    
     if (!tableViewController){
+        NSLog(@"CalendarViewController: viewWillAppear: CreatingNewTableViewController");
         tableViewController = [[CalendarTableViewController alloc]init ];
         
         tableViewController.tableView.frame = CGRectMake(0,kNavBarHeight,kScreenWidth, kScreenHeight-kNavBarHeight);
     }
+    if (self.calendarView.superview == nil && self.tableViewController.tableView.superview == nil){
+        self. tableViewController.tableView.frame = CGRectMake(0, 0, flipperView.frame.size.width, flipperView.frame.size.height);
+        [self.flipperView addSubview:tableViewController.tableView];
+    }
     
 }
 -(void) viewWillDisappear:(BOOL)animated{
-    
-    //KJF: 3/12. Why was  tableViewController set to nil here??? 
-    tableViewController = nil;   
+    NSLog (@"CalendarViewController: viewWillDisappear");
+    [self.tableViewController.tableView removeFromSuperview];
+    self.tableViewController = nil;   
     
     //Check for visisble instance of actionsPopover. if yes dismiss.
     if([actionsPopover isPopoverVisible]) {
@@ -289,7 +287,6 @@
 	font = [UIFont boldSystemFontOfSize:8];
     stringSize = [[imageDateFormatter stringFromDate:[NSDate date]] sizeWithFont:font];
     point = CGPointMake((calendarRectangle.size.width-stringSize.width)/2,9);
-    NSLog(@"date is %@",[imageDateFormatter stringFromDate:[NSDate date]]);
 	[[imageDateFormatter stringFromDate:[NSDate date]] drawAtPoint:point withFont:font];
     [imageDateFormatter release];
 	UIImage *theImage=UIGraphicsGetImageFromCurrentImageContext();
@@ -512,6 +509,9 @@
     [self.navigationController popViewControllerAnimated:YES];
 
 }
+
+#pragma mark - DATA 
+
 - (void) saveSchedule:(id)sender {
     
     NSLog(@"CalendarViewController: Saving Schedule");
@@ -521,11 +521,15 @@
     [gregorian setTimeZone:[NSTimeZone localTimeZone]];
     //[gregorian setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
     
-    NSDateComponents *timeComponents = [gregorian components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:[scheduleView.datePicker date]];    
+    //GET DATE COMPONENTS FROM DATEPICKER
+    NSDateComponents *timeComponents = [gregorian components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:[scheduleView.datePicker date]];  
+    
     [timeComponents setYear:[timeComponents year]];
     [timeComponents setMonth:[timeComponents month]];
     [timeComponents setDay:[timeComponents day]];
-    NSDate *selectedDate= [gregorian dateFromComponents:timeComponents];
+    
+    NSDate *tempDate= [gregorian dateFromComponents:timeComponents];
+    NSDate *selectedDate = [tempDate dateByAddingTimeInterval:kTimeZoneOffset];     
         
     NSLog(@"the selectedDate is %@", selectedDate);
     
@@ -533,24 +537,22 @@
         //set the Appointment date
         
         [theItem.theAppointment setADate:selectedDate];
-        timeComponents = [gregorian components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit|NSSecondCalendarUnit) fromDate:[scheduleView.timePicker date]]; 
-        [timeComponents setYear:0];
-        [timeComponents setMonth:0];
-        [timeComponents setDay:0];
-        [timeComponents setSecond:0];
-        [timeComponents setHour:[timeComponents hour]];
-        [timeComponents setMinute:[timeComponents minute]];
-        selectedDate = [gregorian dateFromComponents:timeComponents];
+  
+        
         NSDateFormatter *timeFormatter = [[NSDateFormatter alloc] init];
-        
         [timeFormatter setDateFormat:@"h:mm a"];
-        selectedDate = [timeFormatter dateFromString:scheduleView.startTimeField.text];
         
-            [theItem.theAppointment setAStartTime:selectedDate];
+        selectedDate = [timeFormatter dateFromString:scheduleView.startTimeField.text];
+        [theItem.theAppointment setAStartTime:selectedDate];
+        
         selectedDate = [timeFormatter dateFromString:scheduleView.endTimeField.text];
-            [theItem.theAppointment setAEndTime:selectedDate];
+        
+        
+        [theItem.theAppointment setAEndTime:selectedDate];
         
         NSLog(@"this appointment date is %@",theItem.theAppointment.aDate);
+        NSLog(@"this appointment startTime is %@",theItem.theAppointment.aStartTime);
+        NSLog(@"this appointment endTime is %@",theItem.theAppointment.aEndTime);
         
         [timeFormatter release];
         
@@ -644,23 +646,24 @@
     //kjf the array data contains Event objects. need to convert this to an array which has date objects 
     NSLog(@"Number of objects in results = %d", [results count]);
     NSMutableArray *data = [[[NSMutableArray alloc]init]autorelease];
+    NSTimeZone *myTimeZone = [NSTimeZone localTimeZone];    
+    NSInteger timeZoneOffset = [myTimeZone secondsFromGMT];
+    NSLog (@"Time Zone offset is %d", timeZoneOffset);
+
     //NSMutableArray *data = [NSMutableArray arrayWithCapacity:[results count]];
     for (int i=0; i<[results count]; i++) {
-        NSLog(@"Will get data Array");
         
         if ([[results objectAtIndex:i] isKindOfClass:[Appointment class]]){
             Appointment *tempAppointment = [results objectAtIndex:i];
             [data addObject:tempAppointment.aDate];
-            NSLog(@"Appointment date is %@", tempAppointment.aDate);
+
+            //[data addObject:[tempAppointment.aDate dateByAddingTimeInterval:timeZoneOffset]];
         } 
-        
         else if ([[results objectAtIndex:i] isKindOfClass:[ToDo class]]){
             ToDo *tempToDo = [results objectAtIndex:i];
             [data addObject:tempToDo.aDate];
-            NSLog(@"ToDo date is %@", tempToDo.aDate);
-        }
-        else{
-            NSLog(@"Object at index %d is not an Appointment or ToDo", i);
+
+           //[data addObject:[tempToDo.aDate dateByAddingTimeInterval:timeZoneOffset]];
         }
         
     }
@@ -682,13 +685,14 @@
 	
 	// Initialise calendar to current type and set the timezone to never have daylight saving
 	NSCalendar *cal = [NSCalendar currentCalendar];
-	[cal setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+    [cal setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
 	
 	// Construct DateComponents based on startDate so the iterating date can be created.
 	// Its massively important to do this assigning via the NSCalendar and NSDateComponents because of daylight saving has been removed 
 	// with the timezone that was set above. If you just used "startDate" directly (ie, NSDate *date = startDate;) as the first 
 	// iterating date then times would go up and down based on daylight savings.
 	NSDateComponents *comp = [cal components:(NSMonthCalendarUnit | NSMinuteCalendarUnit | NSYearCalendarUnit | NSDayCalendarUnit | NSWeekdayCalendarUnit | NSHourCalendarUnit | NSSecondCalendarUnit) fromDate:startDate];
+    
 	NSDate *d = [cal dateFromComponents:comp];
 	
 	// Init offset components to increment days in the loop by one each time

@@ -158,7 +158,7 @@
 
 
 - (NSFetchedResultsController *) fetchedResultsController{
-    NSLog(@"Fetching");
+    NSLog(@"WriteNowTableViewController:fetchedResultsController -> Fetching");
     
     [NSFetchedResultsController deleteCacheWithName:@"Root"];
     
@@ -194,7 +194,15 @@
     }
     else {
         NSLog(@"SelectedDate is %@", selectedDate);
-        NSPredicate *checkDate = [NSPredicate predicateWithFormat:@"aDate == %@", selectedDate];
+        /*
+        NSTimeZone *myTimeZone = [NSTimeZone localTimeZone];
+        NSInteger timeZoneOffset = [myTimeZone secondsFromGMT];
+        NSDate *temp = [selectedDate dateByAddingTimeInterval:-timeZoneOffset];
+        */
+        
+        NSDate *temp = [selectedDate dateByAddingTimeInterval:-kTimeZoneOffset];
+
+        NSPredicate *checkDate = [NSPredicate predicateWithFormat:@"aDate == %@", temp];
         [request setPredicate:checkDate];
         checkDate = nil;
     }
@@ -419,25 +427,25 @@
 			
         case NSFetchedResultsChangeInsert:
             [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
-            NSLog(@"FetchedResultsController ChangeInsert");
+            NSLog(@"WriteNowTableViewController:FetchedResultsController ChangeInsert");
             break;
             
         case NSFetchedResultsChangeDelete:
 			[self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            NSLog(@"FetchedResultsController ChangeDelete");
+            NSLog(@"WriteNowTableViewController:FetchedResultsController: ChangeDelete");
             
             break;
             
         case NSFetchedResultsChangeUpdate:
             [self.tableView cellForRowAtIndexPath:indexPath];
 			//[self configureCell:[self.tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
-            NSLog(@"FetchedResultsController ChangeUpdate");
+            NSLog(@"WriteNowTableViewController:FetchedResultsController: ChangeUpdate");
             break;
         case NSFetchedResultsChangeMove:
             [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
             // Reloading the section inserts a new row and ensures that titles are updated appropriately.
             [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:newIndexPath.section] withRowAnimation:UITableViewRowAnimationFade];
-            NSLog(@"FetchedResultsController ChangeMove");
+            NSLog(@"WriteNowTableViewController:FetchedResultsController ChangeMove");
             
             break;
     }

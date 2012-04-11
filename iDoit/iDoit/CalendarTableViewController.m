@@ -34,6 +34,12 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+- (void) dealloc{
+    [super dealloc];
+    [_fetchedResultsController release];
+    NSLog(@"CalendarTableViewController:dealloc -> deallocing");
+}
+
 - (void)viewDidUnload{
     NSLog(@"CalendarTableViewController:viewDidUnload --> Unloading");
     [super viewDidUnload];
@@ -42,10 +48,9 @@
 	self.fetchedResultsController = nil;
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"GetEventTypeNotification" object:nil];
-
     
-
-}
+    [[NSNotificationCenter defaultCenter] removeObserver:self name: NSManagedObjectContextDidSaveNotification object:nil];
+ }
 
 #pragma mark - View lifecycle
 
@@ -98,9 +103,6 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleEventTypeNotification:) name:@"GetEventTypeNotification" object:nil];
     
 }
-
-
-
 - (void)handleDidSaveNotification:(NSNotification *)notification {
     NSLog(@"NSManagedObjectContextDidSaveNotification Received By CalendarTableViewController");
     //FIXME: setting the fetchedResults controller to nil below is a temporary work-around for the problem created by having 1 row per section in the primary table view. 
@@ -468,25 +470,25 @@
 			
         case NSFetchedResultsChangeInsert:
             [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
-            NSLog(@"FetchedResultsController ChangeInsert");
+            NSLog(@"CalendarTableViewController:FetchedResultsController ChangeInsert");
             break;
             
         case NSFetchedResultsChangeDelete:
 			[self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            NSLog(@"FetchedResultsController ChangeDelete");
+            NSLog(@"CalendarTableViewController:FetchedResultsController ChangeDelete");
             
             break;
             
         case NSFetchedResultsChangeUpdate:
             [self.tableView cellForRowAtIndexPath:indexPath];
 			//[self configureCell:[self.tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
-            NSLog(@"FetchedResultsController ChangeUpdate");
+            NSLog(@"CalendarTableViewController:FetchedResultsController ChangeUpdate");
             break;
         case NSFetchedResultsChangeMove:
             [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
             // Reloading the section inserts a new row and ensures that titles are updated appropriately.
             [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:newIndexPath.section] withRowAnimation:UITableViewRowAnimationFade];
-            NSLog(@"FetchedResultsController ChangeMove");
+            NSLog(@"CalendarTableViewController:FetchedResultsController ChangeMove");
             
             break;
     }

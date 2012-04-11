@@ -49,6 +49,7 @@
 		532C6190147E17DE0062AC6D /* message_button_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 532C6182147E17DE0062AC6D /* message_button_selected.png */; };
 		532C6191147E17DE0062AC6D /* task_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 532C6183147E17DE0062AC6D /* task_button.png */; };
 		532C6192147E17DE0062AC6D /* task_button_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 532C6184147E17DE0062AC6D /* task_button_selected.png */; };
+		5340396B153533850022918F /* NSCalendar+CalendarCalculations.m in Sources */ = {isa = PBXBuildFile; fileRef = 5340396A153533850022918F /* NSCalendar+CalendarCalculations.m */; };
 		53419B9C14D32939006A4C3A /* UINavigationController+NavControllerCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 53419B9B14D32939006A4C3A /* UINavigationController+NavControllerCategory.m */; };
 		5361085A1507CD5200B37D40 /* todo_nav.png in Resources */ = {isa = PBXBuildFile; fileRef = 536108591507CD5200B37D40 /* todo_nav.png */; };
 		5361085D1507CD7900B37D40 /* NotePad_nav.png in Resources */ = {isa = PBXBuildFile; fileRef = 5361085C1507CD7900B37D40 /* NotePad_nav.png */; };
@@ -193,6 +194,8 @@
 		532C6182147E17DE0062AC6D /* message_button_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = message_button_selected.png; sourceTree = "<group>"; };
 		532C6183147E17DE0062AC6D /* task_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = task_button.png; sourceTree = "<group>"; };
 		532C6184147E17DE0062AC6D /* task_button_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = task_button_selected.png; sourceTree = "<group>"; };
+		53403969153533850022918F /* NSCalendar+CalendarCalculations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSCalendar+CalendarCalculations.h"; sourceTree = "<group>"; };
+		5340396A153533850022918F /* NSCalendar+CalendarCalculations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSCalendar+CalendarCalculations.m"; sourceTree = "<group>"; };
 		53419B9A14D32938006A4C3A /* UINavigationController+NavControllerCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+NavControllerCategory.h"; sourceTree = "<group>"; };
 		53419B9B14D32939006A4C3A /* UINavigationController+NavControllerCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+NavControllerCategory.m"; sourceTree = "<group>"; };
 		536108591507CD5200B37D40 /* todo_nav.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = todo_nav.png; sourceTree = "<group>"; };
@@ -774,6 +777,8 @@
 				53D17F20147CD89800A15B7A /* Custom TextView */,
 				53419B9A14D32938006A4C3A /* UINavigationController+NavControllerCategory.h */,
 				53419B9B14D32939006A4C3A /* UINavigationController+NavControllerCategory.m */,
+				53403969153533850022918F /* NSCalendar+CalendarCalculations.h */,
+				5340396A153533850022918F /* NSCalendar+CalendarCalculations.m */,
 			);
 			name = "Custom Classes";
 			sourceTree = "<group>";
@@ -1060,6 +1065,7 @@
 				536D9913150972170093690E /* FilesTableViewController.m in Sources */,
 				5301015A150ED267009BB41F /* DiaryTableViewController.m in Sources */,
 				537BBDE71512A87F00660756 /* Event.m in Sources */,
+				5340396B153533850022918F /* NSCalendar+CalendarCalculations.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

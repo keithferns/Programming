@@ -69,15 +69,37 @@
     isScrolling = NO;
     
     NSLog(@"The date is %@", [NSDate date]);
-
     
-    NSCalendar * calendar = [NSCalendar currentCalendar];
-    // NSDateComponents *components = [calendar components:(NSYearCalendarUnit |NSMonthCalendarUnit |NSDayCalendarUnit) fromDate:[self aDate]];
-    NSDateComponents *components = [calendar components:(NSYearCalendarUnit |NSMonthCalendarUnit |NSDayCalendarUnit) fromDate:[NSDate date]];
+    NSDateFormatter *dateformatter = [[NSDateFormatter alloc] init];
+    [dateformatter setDateFormat: @"MM/dd/yyyy hh:mm"];
+    
+    NSString *temp = [dateformatter stringFromDate:[NSDate date]];
+    
+    NSLog(@"The date is %@", temp);
+
+    NSLog(@"The date after formatting and reverting is %@", [dateformatter dateFromString:temp]);
+    
+    NSCalendar *gregorian=[[NSCalendar alloc] initWithCalendarIdentifier:
+                           NSGregorianCalendar];
+    NSTimeZone *myTimeZone = [NSTimeZone localTimeZone];
+    [gregorian setTimeZone:myTimeZone];
+    
+    NSInteger timeZoneOffset = [myTimeZone secondsFromGMT];
+    
+    
+    NSDateComponents *components = [gregorian components:(NSYearCalendarUnit |NSMonthCalendarUnit |NSDayCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit|NSSecondCalendarUnit) fromDate:[NSDate date]];
     
     NSString *tmp = [NSString stringWithFormat:@"%d", (([components year] * 1000000) + ([components month] *1000) + [components day])];
     NSLog(@"%@", tmp);
-          
+    
+    
+    NSDate *timeZonedDate = [[NSDate date] dateByAddingTimeInterval:timeZoneOffset];
+    
+    NSLog(@"The timeZonedDate is %@", timeZonedDate);
+    NSLog (@"Timezone is %@", [NSTimeZone systemTimeZone]);
+
+    
+    
     //Navigation Bar
     self.navigationController.navigationBar.topItem.title = @"Write Now";    
     
@@ -257,6 +279,10 @@
         self.navigationItem.rightBarButtonItem = [self.navigationController addDoneButton];
         self.navigationItem.rightBarButtonItem.action = @selector(saveItem);
         self.navigationItem.rightBarButtonItem.target =self;
+        
+        self.navigationItem.leftBarButtonItem = [self.navigationController addAddButton]; 
+        self.navigationItem.leftBarButtonItem.action = @selector(startNewItem:);
+        self.navigationItem.leftBarButtonItem.target = self;    
     }
 }
 
@@ -287,8 +313,8 @@
         self.navigationItem.rightBarButtonItem = [self.navigationController addDoneButton];
         self.navigationItem.rightBarButtonItem.action = @selector(saveItem);
         self.navigationItem.rightBarButtonItem.target =self;
-        self.navigationItem.leftBarButtonItem = [self.navigationController addAddButton]; 
         
+        self.navigationItem.leftBarButtonItem = [self.navigationController addAddButton]; 
         self.navigationItem.leftBarButtonItem.action = @selector(startNewItem:);
         self.navigationItem.leftBarButtonItem.target = self;    
         if (toolbar.firstButton.enabled == NO && toolbar.fourthButton.enabled == NO && [self.textView hasText]) {
@@ -536,9 +562,6 @@
 }
 
 
-
-
-
 #pragma mark Responding to keyboard notifications
 
 - (void)keyboardWillShow:(NSNotification *)notification {
@@ -622,6 +645,7 @@
     if ([textView isFirstResponder]){
         [textView resignFirstResponder];       
     }
+    /*
     //Check if TV has text. Y then add reset navButtons to  addbutton(left) and  doneButton(right)
     if ([textView hasText]){//2/29 - 0:29
     self.navigationItem.leftBarButtonItem = [self.navigationController addAddButton];
@@ -632,6 +656,7 @@
     self.navigationItem.rightBarButtonItem.action = @selector(newItemOrEvent:);
     self.navigationItem.rightBarButtonItem.target = self;    
     }
+    */
     //If TV no text, then enable TV and clear the navButtons
     else {
     self.navigationItem.leftBarButtonItem = nil;
@@ -757,9 +782,7 @@
 #pragma mark - TKCalendarMonthViewDelegate methods
 - (void)calendarMonthView:(TKCalendarMonthView *)monthView didSelectDate:(NSDate *)d {
 	NSLog(@"calendarMonthView didSelectDate: %@", d);
-    //ADD DATE TO CURRENT EVENT
-    
-    
+    //ADD DATE TO CURRENT EVENT    
     [[NSNotificationCenter defaultCenter] postNotificationName:@"GetDateNotification" object:d userInfo:nil]; 
 }
 - (void)calendarMonthView:(TKCalendarMonthView *)monthView monthDidChange:(NSDate *)d {
@@ -800,27 +823,26 @@
 
     //kjf the array data contains Event objects. need to convert this to an array which has date objects 
     NSLog(@"Number of objects in results = %d", [results count]);
-    NSMutableArray *data = [[[NSMutableArray alloc]init]autorelease];
+    NSMutableArray *data = [[[NSMutableArray alloc]init]autorelease];    
+    NSTimeZone *myTimeZone = [NSTimeZone localTimeZone];    
+    NSInteger timeZoneOffset = [myTimeZone secondsFromGMT];
+    NSLog (@"Time Zone offset is %d", timeZoneOffset);
+    
     //NSMutableArray *data = [NSMutableArray arrayWithCapacity:[results count]];
     for (int i=0; i<[results count]; i++) {
-        NSLog(@"Will get data Array");
         
         if ([[results objectAtIndex:i] isKindOfClass:[Appointment class]]){
             Appointment *tempAppointment = [results objectAtIndex:i];
             [data addObject:tempAppointment.aDate];
-            NSLog(@"Appointment date is %@", tempAppointment.aDate);
+           // [data addObject:[tempAppointment.aDate dateByAddingTimeInterval:timeZoneOffset]];
         } 
-        
         else if ([[results objectAtIndex:i] isKindOfClass:[ToDo class]]){
             ToDo *tempToDo = [results objectAtIndex:i];
-            [data addObject:tempToDo.aDate];
-            NSLog(@"ToDo date is %@", tempToDo.aDate);
-        }
-        else{
-            NSLog(@"Object at index %d is not an Appointment or ToDo", i);
+            [data addObject:[tempToDo.aDate dateByAddingTimeInterval:timeZoneOffset]];
         }
         
     }
+    
     NSLog(@"Number of objects in data = %d", [data count]);
     
     NSLog(@"Contents of data array = %@", data);

@@ -7,6 +7,12 @@
 //
 
 
+//Define the timeZone and TimeZone Offset
+
+#define kTimeZone [NSTimeZone localTimeZone]
+
+#define kTimeZoneOffset [kTimeZone secondsFromGMT]
+
 //Define the frame and dimensions for the application screen
 #define kScreenRect [[UIScreen mainScreen] applicationFrame]
 
