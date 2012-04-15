@@ -7,7 +7,6 @@
 //
 #import "iDoitAppDelegate.h"
 #import "FoldersTableViewController.h"
-#import "FoldersDetailTableViewController.h"
 #import "Contants.h"
 #import "FolderCell.h"
 
@@ -120,6 +119,10 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    
+    NSIndexPath *tableSelection = [self.tableView indexPathForSelectedRow];
+	[self.tableView deselectRowAtIndexPath:tableSelection animated:NO];
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -250,16 +253,10 @@
 	if([cell isKindOfClass:[UITableViewCell class]]){
 		mycell = (FolderCell *) cell;
 	}
-    //if (isFolderView) {
     Folder *aFolder = [_fetchedResultsController objectAtIndexPath:indexPath];	
     
     [mycell.folderName setText:aFolder.name];
-    //}
-    //else if (!isFolderView){
-    //    File *aFile = [_fetchedResultsController objectAtIndexPath:indexPath];	
-    
-    //    [mycell.folderName setText:aFile.name];
-    //}
+   
     
 }
 
@@ -389,28 +386,14 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+
  
     if (saving) {            
         //ArchieViewController Will receive this notification and add the selected folder to theItem
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"TableCellSelected" object:[_fetchedResultsController objectAtIndexPath:indexPath]];
+        [[NSNotificationCenter defaultCenter] postNotificationName:UITableViewSelectionDidChangeNotification object:[_fetchedResultsController objectAtIndexPath:indexPath ]];      
     }
-    /*
-    //VIEWING
-     Folder *selectedFolder = [_fetchedResultsController objectAtIndexPath:indexPath];
-     //  Create another view controller.
-     
-    FoldersDetailTableViewController *detailViewController = [[FoldersDetailTableViewController alloc] init];
-     
-     NSLog(@"the selectedFolderis %@", selectedFolder);
-     // Pass the selected object to the new view controller.
-     
-     detailViewController.folder = selectedFolder;
-     detailViewController.managedObjectContext = self.managedObjectContext;
-     
-     //Push the detail viewController
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */   
+    
+ 
  
 }
 @end

@@ -8,7 +8,6 @@
 
 #import "DiaryTableViewController.h"
 #import "iDoitAppDelegate.h"
-#import "StartScreenCustomCell.h"
 #import "Contants.h"
 
 @implementation DiaryTableViewController

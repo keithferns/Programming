@@ -11,6 +11,9 @@
 		53008E1B14D8EC89004A0D2B /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53008E1A14D8EC89004A0D2B /* CalendarViewController.m */; };
 		53008E2114D8EDDF004A0D2B /* DiaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53008E2014D8EDDF004A0D2B /* DiaryViewController.m */; };
 		5301015A150ED267009BB41F /* DiaryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53010159150ED267009BB41F /* DiaryTableViewController.m */; };
+		5303768D153A8C9B009BBF94 /* FileCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5303768A153A8C9B009BBF94 /* FileCustomCell.xib */; };
+		5303768E153A8C9B009BBF94 /* FileCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5303768B153A8C9B009BBF94 /* FileCustomCell.m */; };
+		531E9C66153B1FE9009E967A /* HorizontalCells.m in Sources */ = {isa = PBXBuildFile; fileRef = 531E9C65153B1FE9009E967A /* HorizontalCells.m */; };
 		532C6107147CDA970062AC6D /* email_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 532C6106147CDA970062AC6D /* email_white.png */; };
 		532C610A147CDAB40062AC6D /* save.png in Resources */ = {isa = PBXBuildFile; fileRef = 532C6109147CDAB40062AC6D /* save.png */; };
 		532C610C147CDAFE0062AC6D /* calendar_date_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 532C610B147CDAFE0062AC6D /* calendar_date_background.png */; };
@@ -62,18 +65,10 @@
 		538E5C3814AC16BC0088D819 /* ScheduleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 538E5C3714AC16BC0088D819 /* ScheduleView.m */; };
 		538E5C3B14AC73290088D819 /* arrow_left_24.png in Resources */ = {isa = PBXBuildFile; fileRef = 538E5C3914AC73290088D819 /* arrow_left_24.png */; };
 		538E5C3C14AC73290088D819 /* arrow_right_24.png in Resources */ = {isa = PBXBuildFile; fileRef = 538E5C3A14AC73290088D819 /* arrow_right_24.png */; };
-		5395D44A1505D75D0053EBBC /* AppointmentCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5395D43F1505D75A0053EBBC /* AppointmentCustomCell.m */; };
-		5395D44B1505D75D0053EBBC /* AppointmentCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5395D4401505D75A0053EBBC /* AppointmentCustomCell.xib */; };
-		5395D44C1505D75D0053EBBC /* FileCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5395D4421505D75B0053EBBC /* FileCustomCell.m */; };
-		5395D44D1505D75D0053EBBC /* FileCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5395D4431505D75B0053EBBC /* FileCustomCell.xib */; };
 		5395D44E1505D75D0053EBBC /* FolderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5395D4451505D75B0053EBBC /* FolderCell.m */; };
 		5395D44F1505D75D0053EBBC /* FolderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5395D4461505D75C0053EBBC /* FolderCell.xib */; };
-		5395D4501505D75D0053EBBC /* TaskCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5395D4481505D75C0053EBBC /* TaskCustomCell.m */; };
-		5395D4511505D75D0053EBBC /* TaskCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5395D4491505D75C0053EBBC /* TaskCustomCell.xib */; };
 		5395D4591505DF4E0053EBBC /* CalendarTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5395D4581505DF4E0053EBBC /* CalendarTableViewController.m */; };
 		5398D68414F9E861002A98A2 /* WriteNowTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5398D68314F9E861002A98A2 /* WriteNowTableViewController.m */; };
-		5398D68914F9F10E002A98A2 /* StartScreenCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5398D68714F9F10E002A98A2 /* StartScreenCustomCell.m */; };
-		5398D68A14F9F10F002A98A2 /* StartScreenCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5398D68814F9F10E002A98A2 /* StartScreenCustomCell.xib */; };
 		5398D69914FBFC00002A98A2 /* CoreDataNotes.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 5398D69814FBFC00002A98A2 /* CoreDataNotes.rtf */; };
 		5398D6A014FC3407002A98A2 /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 5398D69F14FC3407002A98A2 /* Note.m */; };
 		5398D6A314FC3407002A98A2 /* Alarm.m in Sources */ = {isa = PBXBuildFile; fileRef = 5398D6A214FC3407002A98A2 /* Alarm.m */; };
@@ -94,6 +89,11 @@
 		53A296E8150BEB88005126BF /* list_nav.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A296E7150BEB88005126BF /* list_nav.png */; };
 		53B0DF1E14D1E0A5001AB630 /* ArchiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53B0DF1D14D1E0A5001AB630 /* ArchiveViewController.m */; };
 		53B0DF2214D1E84A001AB630 /* FoldersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53B0DF2114D1E84A001AB630 /* FoldersTableViewController.m */; };
+		53B4CFBC153A91240085DE35 /* MemoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53B4CFBB153A91240085DE35 /* MemoDetailViewController.m */; };
+		53BA3183153AAA1B0003329D /* ToDoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53BA3182153AAA1B0003329D /* ToDoDetailViewController.m */; };
+		53BA3188153AB0C80003329D /* DocumentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53BA3187153AB0C80003329D /* DocumentDetailViewController.m */; };
+		53BA318B153AB0E20003329D /* FolderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53BA318A153AB0E20003329D /* FolderDetailViewController.m */; };
+		53CCB48F1538B82400AA6A33 /* AppointmentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53CCB48D1538B82400AA6A33 /* AppointmentDetailViewController.m */; };
 		53D1426A1511AA7D00A613A9 /* Calendar-Month-30x30.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D142691511AA7D00A613A9 /* Calendar-Month-30x30.png */; };
 		53D17EA5147BC8EC00A15B7A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53D17EA4147BC8EC00A15B7A /* UIKit.framework */; };
 		53D17EA7147BC8EC00A15B7A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53D17EA6147BC8EC00A15B7A /* Foundation.framework */; };
@@ -152,6 +152,11 @@
 		53008E2014D8EDDF004A0D2B /* DiaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiaryViewController.m; sourceTree = "<group>"; };
 		53010158150ED267009BB41F /* DiaryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiaryTableViewController.h; sourceTree = "<group>"; };
 		53010159150ED267009BB41F /* DiaryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiaryTableViewController.m; sourceTree = "<group>"; };
+		5303768A153A8C9B009BBF94 /* FileCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FileCustomCell.xib; sourceTree = "<group>"; };
+		5303768B153A8C9B009BBF94 /* FileCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileCustomCell.m; sourceTree = "<group>"; };
+		5303768C153A8C9B009BBF94 /* FileCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileCustomCell.h; sourceTree = "<group>"; };
+		531E9C64153B1FE9009E967A /* HorizontalCells.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HorizontalCells.h; sourceTree = "<group>"; };
+		531E9C65153B1FE9009E967A /* HorizontalCells.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HorizontalCells.m; sourceTree = "<group>"; };
 		532C6106147CDA970062AC6D /* email_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = email_white.png; sourceTree = "<group>"; };
 		532C6109147CDAB40062AC6D /* save.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = save.png; sourceTree = "<group>"; };
 		532C610B147CDAFE0062AC6D /* calendar_date_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar_date_background.png; sourceTree = "<group>"; };
@@ -214,25 +219,13 @@
 		538E5C3714AC16BC0088D819 /* ScheduleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleView.m; sourceTree = "<group>"; };
 		538E5C3914AC73290088D819 /* arrow_left_24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_left_24.png; sourceTree = "<group>"; };
 		538E5C3A14AC73290088D819 /* arrow_right_24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_right_24.png; sourceTree = "<group>"; };
-		5395D43E1505D75A0053EBBC /* AppointmentCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppointmentCustomCell.h; sourceTree = "<group>"; };
-		5395D43F1505D75A0053EBBC /* AppointmentCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppointmentCustomCell.m; sourceTree = "<group>"; };
-		5395D4401505D75A0053EBBC /* AppointmentCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppointmentCustomCell.xib; sourceTree = "<group>"; };
-		5395D4411505D75B0053EBBC /* FileCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileCustomCell.h; sourceTree = "<group>"; };
-		5395D4421505D75B0053EBBC /* FileCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileCustomCell.m; sourceTree = "<group>"; };
-		5395D4431505D75B0053EBBC /* FileCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FileCustomCell.xib; sourceTree = "<group>"; };
 		5395D4441505D75B0053EBBC /* FolderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FolderCell.h; sourceTree = "<group>"; };
 		5395D4451505D75B0053EBBC /* FolderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FolderCell.m; sourceTree = "<group>"; };
 		5395D4461505D75C0053EBBC /* FolderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FolderCell.xib; sourceTree = "<group>"; };
-		5395D4471505D75C0053EBBC /* TaskCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskCustomCell.h; sourceTree = "<group>"; };
-		5395D4481505D75C0053EBBC /* TaskCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskCustomCell.m; sourceTree = "<group>"; };
-		5395D4491505D75C0053EBBC /* TaskCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskCustomCell.xib; sourceTree = "<group>"; };
 		5395D4571505DF4E0053EBBC /* CalendarTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarTableViewController.h; sourceTree = "<group>"; };
 		5395D4581505DF4E0053EBBC /* CalendarTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarTableViewController.m; sourceTree = "<group>"; };
 		5398D68214F9E861002A98A2 /* WriteNowTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WriteNowTableViewController.h; sourceTree = "<group>"; };
 		5398D68314F9E861002A98A2 /* WriteNowTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WriteNowTableViewController.m; sourceTree = "<group>"; };
-		5398D68614F9F10E002A98A2 /* StartScreenCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartScreenCustomCell.h; sourceTree = "<group>"; };
-		5398D68714F9F10E002A98A2 /* StartScreenCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartScreenCustomCell.m; sourceTree = "<group>"; };
-		5398D68814F9F10E002A98A2 /* StartScreenCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StartScreenCustomCell.xib; sourceTree = "<group>"; };
 		5398D69814FBFC00002A98A2 /* CoreDataNotes.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = CoreDataNotes.rtf; sourceTree = "<group>"; };
 		5398D69E14FC3407002A98A2 /* Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Note.h; path = ManagedObjectClasses/Note.h; sourceTree = "<group>"; };
 		5398D69F14FC3407002A98A2 /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Note.m; path = ManagedObjectClasses/Note.m; sourceTree = "<group>"; };
@@ -266,6 +259,16 @@
 		53B0DF1D14D1E0A5001AB630 /* ArchiveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArchiveViewController.m; sourceTree = "<group>"; };
 		53B0DF2014D1E84A001AB630 /* FoldersTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoldersTableViewController.h; sourceTree = "<group>"; };
 		53B0DF2114D1E84A001AB630 /* FoldersTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoldersTableViewController.m; sourceTree = "<group>"; };
+		53B4CFBA153A91240085DE35 /* MemoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemoDetailViewController.h; sourceTree = "<group>"; };
+		53B4CFBB153A91240085DE35 /* MemoDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemoDetailViewController.m; sourceTree = "<group>"; };
+		53BA3181153AAA1B0003329D /* ToDoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToDoDetailViewController.h; sourceTree = "<group>"; };
+		53BA3182153AAA1B0003329D /* ToDoDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToDoDetailViewController.m; sourceTree = "<group>"; };
+		53BA3186153AB0C80003329D /* DocumentDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocumentDetailViewController.h; sourceTree = "<group>"; };
+		53BA3187153AB0C80003329D /* DocumentDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentDetailViewController.m; sourceTree = "<group>"; };
+		53BA3189153AB0E20003329D /* FolderDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FolderDetailViewController.h; sourceTree = "<group>"; };
+		53BA318A153AB0E20003329D /* FolderDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FolderDetailViewController.m; sourceTree = "<group>"; };
+		53CCB48C1538B82400AA6A33 /* AppointmentDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppointmentDetailViewController.h; sourceTree = "<group>"; };
+		53CCB48D1538B82400AA6A33 /* AppointmentDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppointmentDetailViewController.m; sourceTree = "<group>"; };
 		53D142691511AA7D00A613A9 /* Calendar-Month-30x30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Calendar-Month-30x30.png"; sourceTree = "<group>"; };
 		53D17EA0147BC8EC00A15B7A /* iDoit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iDoit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		53D17EA4147BC8EC00A15B7A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -377,6 +380,25 @@
 			name = DiaryTableViewController;
 			sourceTree = "<group>";
 		};
+		5303768F153A8CA3009BBF94 /* FileCustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				5303768A153A8C9B009BBF94 /* FileCustomCell.xib */,
+				5303768B153A8C9B009BBF94 /* FileCustomCell.m */,
+				5303768C153A8C9B009BBF94 /* FileCustomCell.h */,
+			);
+			name = FileCustomCell;
+			sourceTree = "<group>";
+		};
+		531E9C62153B1F1D009E967A /* HorizontalCells */ = {
+			isa = PBXGroup;
+			children = (
+				531E9C64153B1FE9009E967A /* HorizontalCells.h */,
+				531E9C65153B1FE9009E967A /* HorizontalCells.m */,
+			);
+			name = HorizontalCells;
+			sourceTree = "<group>";
+		};
 		531FF6BA150278220022EC83 /* NewItemOrEvent */ = {
 			isa = PBXGroup;
 			children = (
@@ -413,7 +435,6 @@
 			children = (
 				53D17EF3147C794F00A15B7A /* WriteNowViewController.h */,
 				53D17EF4147C794F00A15B7A /* WriteNowViewController.m */,
-				531FF6BA150278220022EC83 /* NewItemOrEvent */,
 				531FF6BB150278550022EC83 /* WriteNowTableViewController */,
 			);
 			name = "Write Now";
@@ -482,9 +503,10 @@
 			path = PopOver_Buttons;
 			sourceTree = "<group>";
 		};
-		53311EFB14F0D4730079002A /* CoreData */ = {
+		53311EFB14F0D4730079002A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				531FF6BA150278220022EC83 /* NewItemOrEvent */,
 				537BBDE51512A87F00660756 /* Event.h */,
 				537BBDE61512A87F00660756 /* Event.m */,
 				5398D6BF14FC3422002A98A2 /* Memo.h */,
@@ -512,7 +534,7 @@
 				5398D69F14FC3407002A98A2 /* Note.m */,
 				5398D69814FBFC00002A98A2 /* CoreDataNotes.rtf */,
 			);
-			name = CoreData;
+			name = Model;
 			sourceTree = "<group>";
 		};
 		53419B9514D3244E006A4C3A /* FoldersDetailView */ = {
@@ -522,6 +544,15 @@
 				536D990B150969490093690E /* FoldersDetailTableViewController.m */,
 			);
 			name = FoldersDetailView;
+			sourceTree = "<group>";
+		};
+		535891D8153663EB00F79AF3 /* AppointmentDetailViewController */ = {
+			isa = PBXGroup;
+			children = (
+				53CCB48C1538B82400AA6A33 /* AppointmentDetailViewController.h */,
+				53CCB48D1538B82400AA6A33 /* AppointmentDetailViewController.m */,
+			);
+			name = AppointmentDetailViewController;
 			sourceTree = "<group>";
 		};
 		536D9914150972200093690E /* FilesTableViewController */ = {
@@ -542,16 +573,6 @@
 			name = Scheduler;
 			sourceTree = "<group>";
 		};
-		5395D4521505D7850053EBBC /* TaskCustomCell */ = {
-			isa = PBXGroup;
-			children = (
-				5395D4471505D75C0053EBBC /* TaskCustomCell.h */,
-				5395D4481505D75C0053EBBC /* TaskCustomCell.m */,
-				5395D4491505D75C0053EBBC /* TaskCustomCell.xib */,
-			);
-			name = TaskCustomCell;
-			sourceTree = "<group>";
-		};
 		5395D4531505D7A60053EBBC /* FolderCustomCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -562,26 +583,6 @@
 			name = FolderCustomCell;
 			sourceTree = "<group>";
 		};
-		5395D4541505D8BD0053EBBC /* FileCustomCell */ = {
-			isa = PBXGroup;
-			children = (
-				5395D4411505D75B0053EBBC /* FileCustomCell.h */,
-				5395D4421505D75B0053EBBC /* FileCustomCell.m */,
-				5395D4431505D75B0053EBBC /* FileCustomCell.xib */,
-			);
-			name = FileCustomCell;
-			sourceTree = "<group>";
-		};
-		5395D4551505D8E10053EBBC /* AppointmentCustomCell */ = {
-			isa = PBXGroup;
-			children = (
-				5395D43E1505D75A0053EBBC /* AppointmentCustomCell.h */,
-				5395D43F1505D75A0053EBBC /* AppointmentCustomCell.m */,
-				5395D4401505D75A0053EBBC /* AppointmentCustomCell.xib */,
-			);
-			name = AppointmentCustomCell;
-			sourceTree = "<group>";
-		};
 		5395D4561505DEA70053EBBC /* CalendarTableViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -589,16 +590,6 @@
 				5395D4581505DF4E0053EBBC /* CalendarTableViewController.m */,
 			);
 			name = CalendarTableViewController;
-			sourceTree = "<group>";
-		};
-		5398D68514F9F0E5002A98A2 /* StartScreenCustomCell */ = {
-			isa = PBXGroup;
-			children = (
-				5398D68614F9F10E002A98A2 /* StartScreenCustomCell.h */,
-				5398D68714F9F10E002A98A2 /* StartScreenCustomCell.m */,
-				5398D68814F9F10E002A98A2 /* StartScreenCustomCell.xib */,
-			);
-			name = StartScreenCustomCell;
 			sourceTree = "<group>";
 		};
 		53A296E5150BDDE3005126BF /* TableCell Icons */ = {
@@ -640,6 +631,65 @@
 			name = FoldersTableViewController;
 			sourceTree = "<group>";
 		};
+		53B4CFB8153A90F90085DE35 /* MemoDetailViewController */ = {
+			isa = PBXGroup;
+			children = (
+				53B4CFBA153A91240085DE35 /* MemoDetailViewController.h */,
+				53B4CFBB153A91240085DE35 /* MemoDetailViewController.m */,
+			);
+			name = MemoDetailViewController;
+			sourceTree = "<group>";
+		};
+		53B4CFBD153A92030085DE35 /* DetailViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				53BA3185153AB09D0003329D /* DocumentDetailViewController */,
+				53BA3184153AB0870003329D /* FolderDetailViewController */,
+				53BA317F153AA9F90003329D /* ToDoDetailViewController */,
+				535891D8153663EB00F79AF3 /* AppointmentDetailViewController */,
+				53B4CFB8153A90F90085DE35 /* MemoDetailViewController */,
+			);
+			name = DetailViewControllers;
+			sourceTree = "<group>";
+		};
+		53B4CFBF153A92500085DE35 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				53419B9A14D32938006A4C3A /* UINavigationController+NavControllerCategory.h */,
+				53419B9B14D32939006A4C3A /* UINavigationController+NavControllerCategory.m */,
+				53403969153533850022918F /* NSCalendar+CalendarCalculations.h */,
+				5340396A153533850022918F /* NSCalendar+CalendarCalculations.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		53BA317F153AA9F90003329D /* ToDoDetailViewController */ = {
+			isa = PBXGroup;
+			children = (
+				53BA3181153AAA1B0003329D /* ToDoDetailViewController.h */,
+				53BA3182153AAA1B0003329D /* ToDoDetailViewController.m */,
+			);
+			name = ToDoDetailViewController;
+			sourceTree = "<group>";
+		};
+		53BA3184153AB0870003329D /* FolderDetailViewController */ = {
+			isa = PBXGroup;
+			children = (
+				53BA3189153AB0E20003329D /* FolderDetailViewController.h */,
+				53BA318A153AB0E20003329D /* FolderDetailViewController.m */,
+			);
+			name = FolderDetailViewController;
+			sourceTree = "<group>";
+		};
+		53BA3185153AB09D0003329D /* DocumentDetailViewController */ = {
+			isa = PBXGroup;
+			children = (
+				53BA3186153AB0C80003329D /* DocumentDetailViewController.h */,
+				53BA3187153AB0C80003329D /* DocumentDetailViewController.m */,
+			);
+			name = DocumentDetailViewController;
+			sourceTree = "<group>";
+		};
 		53D17E95147BC8EC00A15B7A = {
 			isa = PBXGroup;
 			children = (
@@ -676,11 +726,11 @@
 			isa = PBXGroup;
 			children = (
 				536108611507D68600B37D40 /* BUGS.rtf */,
-				53D17EF6147C7B6400A15B7A /* Custom Classes */,
-				53D17EF2147C78FF00A15B7A /* View Controllers */,
 				53D17EB5147BC8EC00A15B7A /* iDoitAppDelegate.h */,
 				53D17EB6147BC8EC00A15B7A /* iDoitAppDelegate.m */,
-				53311EFB14F0D4730079002A /* CoreData */,
+				53311EFB14F0D4730079002A /* Model */,
+				53D17EF2147C78FF00A15B7A /* View Controllers */,
+				53D17EF6147C7B6400A15B7A /* Custom Classes */,
 				53D17EB8147BC8EC00A15B7A /* MainWindow.xib */,
 				53D17EAD147BC8EC00A15B7A /* Supporting Files */,
 			);
@@ -756,6 +806,7 @@
 		53D17EF2147C78FF00A15B7A /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				53B4CFBD153A92030085DE35 /* DetailViewControllers */,
 				53B0DF1B14D1E079001AB630 /* Archive */,
 				53008E1814D8EC5F004A0D2B /* Calendar */,
 				53008E1E14D8EDB2004A0D2B /* Diary */,
@@ -767,18 +818,13 @@
 		53D17EF6147C7B6400A15B7A /* Custom Classes */ = {
 			isa = PBXGroup;
 			children = (
-				5395D4551505D8E10053EBBC /* AppointmentCustomCell */,
-				5395D4541505D8BD0053EBBC /* FileCustomCell */,
+				531E9C62153B1F1D009E967A /* HorizontalCells */,
+				5303768F153A8CA3009BBF94 /* FileCustomCell */,
 				5395D4531505D7A60053EBBC /* FolderCustomCell */,
-				5395D4521505D7850053EBBC /* TaskCustomCell */,
-				5398D68514F9F0E5002A98A2 /* StartScreenCustomCell */,
 				532C6123147DF03C0062AC6D /* Custom PopOver */,
 				53D17F1F147CD88700A15B7A /* Custom ToolBar */,
 				53D17F20147CD89800A15B7A /* Custom TextView */,
-				53419B9A14D32938006A4C3A /* UINavigationController+NavControllerCategory.h */,
-				53419B9B14D32939006A4C3A /* UINavigationController+NavControllerCategory.m */,
-				53403969153533850022918F /* NSCalendar+CalendarCalculations.h */,
-				5340396A153533850022918F /* NSCalendar+CalendarCalculations.m */,
+				53B4CFBF153A92500085DE35 /* Categories */,
 			);
 			name = "Custom Classes";
 			sourceTree = "<group>";
@@ -968,12 +1014,8 @@
 				53FCD72814CB422A004FF9F6 /* tag_24.png in Resources */,
 				53FCD72914CB422A004FF9F6 /* tag_48.png in Resources */,
 				53008E1214D86C9C004A0D2B /* addDate.png in Resources */,
-				5398D68A14F9F10F002A98A2 /* StartScreenCustomCell.xib in Resources */,
 				5398D69914FBFC00002A98A2 /* CoreDataNotes.rtf in Resources */,
-				5395D44B1505D75D0053EBBC /* AppointmentCustomCell.xib in Resources */,
-				5395D44D1505D75D0053EBBC /* FileCustomCell.xib in Resources */,
 				5395D44F1505D75D0053EBBC /* FolderCell.xib in Resources */,
-				5395D4511505D75D0053EBBC /* TaskCustomCell.xib in Resources */,
 				5361085A1507CD5200B37D40 /* todo_nav.png in Resources */,
 				5361085D1507CD7900B37D40 /* NotePad_nav.png in Resources */,
 				536108621507D68600B37D40 /* BUGS.rtf in Resources */,
@@ -985,6 +1027,7 @@
 				53A296E4150BDDB2005126BF /* 54700.png in Resources */,
 				53A296E8150BEB88005126BF /* list_nav.png in Resources */,
 				53D1426A1511AA7D00A613A9 /* Calendar-Month-30x30.png in Resources */,
+				5303768D153A8C9B009BBF94 /* FileCustomCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1043,7 +1086,6 @@
 				53008E1B14D8EC89004A0D2B /* CalendarViewController.m in Sources */,
 				53008E2114D8EDDF004A0D2B /* DiaryViewController.m in Sources */,
 				5398D68414F9E861002A98A2 /* WriteNowTableViewController.m in Sources */,
-				5398D68914F9F10E002A98A2 /* StartScreenCustomCell.m in Sources */,
 				5398D6A014FC3407002A98A2 /* Note.m in Sources */,
 				5398D6A314FC3407002A98A2 /* Alarm.m in Sources */,
 				5398D6A614FC3408002A98A2 /* Place.m in Sources */,
@@ -1056,16 +1098,20 @@
 				5398D6BE14FC3422002A98A2 /* Project.m in Sources */,
 				5398D6C114FC3422002A98A2 /* Memo.m in Sources */,
 				5362EF9D1501407800DE7F99 /* NewItemOrEvent.m in Sources */,
-				5395D44A1505D75D0053EBBC /* AppointmentCustomCell.m in Sources */,
-				5395D44C1505D75D0053EBBC /* FileCustomCell.m in Sources */,
 				5395D44E1505D75D0053EBBC /* FolderCell.m in Sources */,
-				5395D4501505D75D0053EBBC /* TaskCustomCell.m in Sources */,
 				5395D4591505DF4E0053EBBC /* CalendarTableViewController.m in Sources */,
 				536D990C150969490093690E /* FoldersDetailTableViewController.m in Sources */,
 				536D9913150972170093690E /* FilesTableViewController.m in Sources */,
 				5301015A150ED267009BB41F /* DiaryTableViewController.m in Sources */,
 				537BBDE71512A87F00660756 /* Event.m in Sources */,
 				5340396B153533850022918F /* NSCalendar+CalendarCalculations.m in Sources */,
+				53CCB48F1538B82400AA6A33 /* AppointmentDetailViewController.m in Sources */,
+				5303768E153A8C9B009BBF94 /* FileCustomCell.m in Sources */,
+				53B4CFBC153A91240085DE35 /* MemoDetailViewController.m in Sources */,
+				53BA3183153AAA1B0003329D /* ToDoDetailViewController.m in Sources */,
+				53BA3188153AB0C80003329D /* DocumentDetailViewController.m in Sources */,
+				53BA318B153AB0E20003329D /* FolderDetailViewController.m in Sources */,
+				531E9C66153B1FE9009E967A /* HorizontalCells.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

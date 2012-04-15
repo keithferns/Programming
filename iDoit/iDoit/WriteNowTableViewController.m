@@ -8,7 +8,6 @@
 
 #import "WriteNowTableViewController.h"
 #import "iDoitAppDelegate.h"
-#import "StartScreenCustomCell.h"
 #import "Contants.h"
 
 @implementation WriteNowTableViewController
@@ -72,7 +71,7 @@
     //self.tableView.rowHeight = kCellHeight;
     
     self.tableView.frame = CGRectMake(0, 0, kScreenWidth, kBottomViewRect.size.height-kTabBarHeight);
-    self.tableView.backgroundColor = [UIColor blackColor];
+    self.tableView.backgroundColor = [UIColor clearColor];
 
     if (managedObjectContext == nil) { 
 		managedObjectContext = [(iDoitAppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext]; 
@@ -325,7 +324,17 @@
     
 }
 
-
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell
+forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == 0 || indexPath.row%2 == 0) {
+        UIColor *altCellColor = [UIColor colorWithWhite:0.1 alpha:0.1];
+        cell.backgroundColor = altCellColor;
+    }
+    else {
+        UIColor *altCellColor = [UIColor colorWithWhite:0.7 alpha:0.1];
+        cell.backgroundColor = altCellColor;
+    }
+}  
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 	
 	id <NSFetchedResultsSectionInfo> theSection = [[_fetchedResultsController sections] objectAtIndex:section];
@@ -406,6 +415,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     //[tableView deselectRowAtIndexPath:indexPath animated:YES];    
+    
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:UITableViewSelectionDidChangeNotification object:[_fetchedResultsController objectAtIndexPath:indexPath ]];      
+ 
+    
 }
 
 

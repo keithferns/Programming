@@ -15,7 +15,7 @@
 @synthesize delegate;
 @synthesize theMemo, theNote,theToDo,theAppointment, theProject, theFolder, theDocument;
 @synthesize addingContext;//note this MOC is an adding MOC passed from the parent.
-
+@synthesize eventType;
 
 - (void) createNewItem:(NSString *)text ofType:(NSNumber *)type {
     
@@ -41,6 +41,7 @@
    
         case 1://insert a Memo object into the managedObjectContext
             if (theMemo == nil && theNote != nil){
+                type = [NSNumber numberWithInt:0];
                 NSLog(@"NewItemOrEvent:createNewItem - Trying to create new Memo Object");
             NSEntityDescription *entity = [NSEntityDescription entityForName:@"Memo" inManagedObjectContext:addingContext];
             
@@ -58,6 +59,8 @@
             
         case 2://:insert an Appointment object into the MOC
             if (theAppointment == nil && theNote != nil){
+                type = [NSNumber numberWithInt:1];
+
                 NSLog(@"NewItemOrEvent:createNewItem - Trying to create new Appointment Object");
 
                 NSEntityDescription *entity = [NSEntityDescription entityForName:@"Appointment" inManagedObjectContext:addingContext];
@@ -75,6 +78,8 @@
         case 3://insert a ToDo object into the MOC
             
             if (theToDo == nil && theNote != nil){
+                type = [NSNumber numberWithInt:3];
+
                 NSLog(@"NewItemOrEvent:createNewItem - Trying to create new ToDo Object");
 
                 NSEntityDescription *entity = [NSEntityDescription entityForName:@"ToDo" inManagedObjectContext:addingContext];
@@ -92,6 +97,8 @@
                 
         case 4://insert a Project object into the MOC
             if (theProject == nil && theNote != nil){
+                type = [NSNumber numberWithInt:4];
+
                 NSLog(@"NewItemOrEvent:createNewItem - Trying to create new Project Object");
 
                 NSEntityDescription *entity = [NSEntityDescription entityForName:@"Project" inManagedObjectContext:addingContext];
@@ -99,6 +106,7 @@
                 theProject = [[Project alloc] initWithEntity:entity insertIntoManagedObjectContext:addingContext];    
                 
                 [theProject addRNoteObject:theNote];
+                [theProject setAType:[NSNumber numberWithInt:3]];
             }
             break;
             
@@ -120,7 +128,8 @@
             break;
             
         case 6://insert a Document object intot the MOC:
-            
+                 type = [NSNumber numberWithInt:6];
+
             if (theDocument == nil && theNote != nil){
                 NSLog(@"NewItemOrEvent:createNewItem - Trying to create new document Object");
 
@@ -128,6 +137,7 @@
                 
                 theDocument = [[Document alloc] initWithEntity:entity insertIntoManagedObjectContext:addingContext];    
                 [theDocument addRNoteObject:theNote];
+                [theDocument setAType:[NSNumber numberWithInt:5]];
             
             }
             break;
@@ -189,5 +199,24 @@
     [addingContext deleteObject:theNote];
     
 }
+
+#pragma mark - Get Values From Event Objects
+
+- (NSArray *) dateTimeArrayfromObject: (id)theObject{
+    
+    
+    NSArray *theArray = [theObject allObjects];
+    
+    return theArray;
+}
+
+-(NSArray *) alarmArrayFromEventObject:(id)theObject{
+        
+    
+    NSArray *theArray = [theObject allObjects];
+    
+    return theArray;
+}
+
 
 @end

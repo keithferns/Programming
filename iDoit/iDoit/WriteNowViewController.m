@@ -14,6 +14,10 @@
 #import "UINavigationController+NavControllerCategory.h"
 #import "Contants.h"
 
+#import "ToDoDetailViewController.h"
+#import "AppointmentDetailViewController.h"
+#import "MemoDetailViewController.h"
+
 
 @implementation WriteNowViewController
 
@@ -67,6 +71,7 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     isScrolling = NO;
+    
     
     NSLog(@"The date is %@", [NSDate date]);
     
@@ -195,8 +200,10 @@
     [self.navigationController hidesBottomBarWhenPushed];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
-    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleTableRowSelection:) name:UITableViewSelectionDidChangeNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleTableRowSelection:) name:UITableViewSelectionDidChangeNotification object:nil];
 
 
     NSIndexPath *tableSelection = [tableViewController.tableView indexPathForSelectedRow];
@@ -238,7 +245,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
 
-   // [[NSNotificationCenter defaultCenter] removeObserver:nil name: UITableViewSelectionDidChangeNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name: UITableViewSelectionDidChangeNotification object:nil];
     
     [actionsPopover setDelegate:nil];//CHECK WHERE SET TO SELF
     [actionsPopover release];
@@ -451,7 +458,7 @@
         [self.navigationController pushViewController:calendarViewController animated:YES];
         
         
-    } else if ([sender tag] == 5 || [sender tag] == 5){
+    } else if ([sender tag] == 4 || [sender tag] == 5){
         NSLog(@"WriteNowViewController:newItemOrEvent -> pushing ArchiveViewController");
 
         [actionsPopover dismissPopoverAnimated:YES];
@@ -579,7 +586,14 @@
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDelegate:self];
     [UIView setAnimationDuration:animationDuration];
-
+    
+    
+    //move bottomView below toolbar.
+    CGRect frame = bottomView.frame;
+    frame.origin.y = keyboardTop + self.toolbar.frame.size.height;
+    self.bottomView.frame = frame;
+    
+    /*
     if (self.topView.frame.origin.y + self.topView.frame.size.height < keyboardTop){
         //grow topView
         CGRect frame = topView.frame;
@@ -596,6 +610,7 @@
         frame.origin.y = keyboardTop + self.toolbar.frame.size.height;
         self.bottomView.frame = frame;
     }
+     */
     [UIView commitAnimations];
 }
 
@@ -608,22 +623,32 @@
     [animationDurationValue getValue:&animationDuration];
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:animationDuration];
-    
+    /*
     //Shrink topView
     CGRect frame = topView.frame;
     frame.size.height = kTopViewRect.size.height;
     self.topView.frame = frame;
+    */
+    //Raise the bottomView
+    CGRect frame = self.bottomView.frame;
+    frame.origin.y = kBottomViewRect.origin.y;
+    self.bottomView.frame = frame;
     
+    //FIXME: if just Note then do not change the 
     if (textView.superview != nil) {
+    /*    
     //Shrink textView
     frame = self.textView.frame;
-    frame.size.height = kTextViewRect.size.height;
+    frame.size.height = kTextViewRect.size.height/2;
     self.textView.frame = frame;
+     */
+     
     //Raise the bottomView
     frame = self.bottomView.frame;
     frame.origin.y = kBottomViewRect.origin.y;
     self.bottomView.frame = frame;
     }
+    
     [UIView commitAnimations];
 }
 
@@ -1034,13 +1059,68 @@
 }
 
 
+#pragma mark - Details
+
+- (void) handleTableRowSelection:(NSNotification *) notification {
+    //NOTE: Multiple messages are being posted. Apparently this is normal behavior so ignore.
+    
+    
+    NSLog(@"WriteNowViewController:handleTableRowSelection - notification received");
+
+
+    
+    if ([[notification object] isKindOfClass:[Appointment class]]) {
+        AppointmentDetailViewController *detailViewController = [[[AppointmentDetailViewController alloc] initWithStyle:UITableViewStyleGrouped] autorelease];
+        NSLog(@"THE SELECTED NOTIFICATION OBJECT IS AN APPOINTMENT");
+        Appointment *selectedAppointment = [notification object];
+        NewItemOrEvent *selectedItem = [[NewItemOrEvent alloc] init];
+        selectedItem.theAppointment = selectedAppointment;
+        selectedItem.eventType = [NSNumber numberWithInt:2];
+        NSLog (@"WriteNowViewController: The text is %@", [[selectedItem.theAppointment.rNote anyObject] text]);
+        detailViewController.theItem = selectedItem;
+        
+        [self.navigationController pushViewController:detailViewController animated:YES];
+        [selectedItem release];
+    } 
+
+    else if ([[notification object] isKindOfClass:[ToDo class]]){
+        NSLog(@"THE SELECTED NOTIFICATION OBJECT IS A TASK");
+        ToDoDetailViewController *detailViewController = [[[ToDoDetailViewController alloc] initWithStyle:UITableViewStyleGrouped] autorelease];
+        ToDo *selectedToDo = [notification object];
+        NewItemOrEvent *selectedItem = [[NewItemOrEvent alloc] init];
+        selectedItem.theToDo = selectedToDo;
+        selectedItem.eventType = [NSNumber numberWithInt:3];
+        NSLog (@"WriteNowViewController: The text is %@", [[selectedItem.theToDo.rNote anyObject] text]);
+        detailViewController.theItem = selectedItem;
+        
+        [self.navigationController pushViewController:detailViewController animated:YES];
+        [selectedItem release];
+    }
+    else if ([[notification object] isKindOfClass:[Memo class]]){
+        MemoDetailViewController *detailViewController = [[[MemoDetailViewController alloc] initWithStyle:UITableViewStyleGrouped] autorelease];
+
+        NSLog(@"THE SELECTED NOTIFICATION OBJECT IS A MEMO");
+        Memo *selectedMemo = [notification object];
+        NewItemOrEvent *selectedItem = [[NewItemOrEvent alloc] init];
+        selectedItem.theMemo = selectedMemo;
+        selectedItem.eventType = [NSNumber numberWithInt:1];
+        NSLog (@"WriteNowViewController: The text is %@", [[selectedItem.theMemo.rNote anyObject] text]);
+        detailViewController.theItem = selectedItem;
+
+        [self.navigationController pushViewController:detailViewController animated:YES];
+        [selectedItem release];  
+    }
+    
+}
+
 
 @end
 
 
 
-#pragma mark - Internal View Management
 /*
+ #pragma mark - Internal View Management
+
 - (void) toggleTextAndScheduleView:(id) sender{
     NSLog(@"Toggling Text and Schedule Views");
     if (self.scheduleView == nil){

@@ -29,7 +29,7 @@
 //Define TopView Properties
 
 
-#define kTopViewRect CGRectMake(0, self.navigationController.navigationBar.frame.origin.y+kNavBarHeight, kScreenWidth, 115)
+#define kTopViewRect CGRectMake(0, self.navigationController.navigationBar.frame.origin.y+kNavBarHeight, kScreenWidth, 150)
 
 //Define BottomView Properties
 

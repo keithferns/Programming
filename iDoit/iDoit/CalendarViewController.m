@@ -474,8 +474,6 @@
 }
 
 
-
-
 - (void) addReminders {
     NSLog(@"Adding Reminders");
     [scheduleView addReminderFields];
@@ -537,8 +535,9 @@
         //set the Appointment date
         
         [theItem.theAppointment setADate:selectedDate];
-  
         
+        NSLog (@"CalendarViewController: The text is %@", [[theItem.theAppointment.rNote anyObject] text]);
+
         NSDateFormatter *timeFormatter = [[NSDateFormatter alloc] init];
         [timeFormatter setDateFormat:@"h:mm a"];
         
@@ -546,7 +545,6 @@
         [theItem.theAppointment setAStartTime:selectedDate];
         
         selectedDate = [timeFormatter dateFromString:scheduleView.endTimeField.text];
-        
         
         [theItem.theAppointment setAEndTime:selectedDate];
         

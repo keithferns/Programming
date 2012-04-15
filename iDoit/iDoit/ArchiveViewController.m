@@ -8,7 +8,7 @@
 #import "iDoitAppDelegate.h"
 #import "ArchiveViewController.h"
 
-#import "FoldersDetailTableViewController.h"//testing
+#import "FolderDetailViewController.h"
 #import "Contants.h"
 #import "UINavigationController+NavControllerCategory.h"
 
@@ -120,9 +120,14 @@
 }
 
 - (void) viewWillAppear:(BOOL)animated{
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleTableRowSelection:) name:@"TableCellSelected" object:nil];
+    self.title =@"Archive";
 
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleTableRowSelection:) name:UITableViewSelectionDidChangeNotification object:nil];
+
+    
+    NSIndexPath *tableSelection = [foldersTableViewController.tableView indexPathForSelectedRow];
+	[foldersTableViewController.tableView deselectRowAtIndexPath:tableSelection animated:NO];
+    
     
     UIBarButtonItem *firstItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(presentActionsPopover:)];
     //firstItem.title = @"Do Something";
@@ -144,7 +149,7 @@
 }
 
 - (void) viewDidDisappear:(BOOL)animated{
-    [[NSNotificationCenter defaultCenter] removeObserver:nil name: UITableViewSelectionDidChangeNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name: UITableViewSelectionDidChangeNotification object:nil];
     
     if([actionsPopover isPopoverVisible]) {
         [actionsPopover dismissPopoverAnimated:YES];
@@ -366,11 +371,6 @@
 
 
 
-- (void) pushingDetail {
-    FoldersDetailTableViewController *detailViewController = [[FoldersDetailTableViewController alloc] init];
-    [self.navigationController pushViewController:detailViewController animated:YES];
-    [detailViewController release];
-}
 
 - (void) handleTableRowSelection:(NSNotification *)notification{
     
@@ -388,6 +388,22 @@
         NSLog(@"the folder name for the current note is %@", theItem.theNote.folder.name);
         return;
     }
+    
+    //VIEWING
+    Folder *selectedFolder = [notification object];
+    
+    FolderDetailViewController *detailViewController = [[FolderDetailViewController alloc] init];
+    
+    NSLog(@"the selectedFolderis %@", selectedFolder.name);
+    // Pass the selected object to the new view controller.
+    
+    detailViewController.theFolder = selectedFolder;
+    //detailViewController.managedObjectContext = self.managedObjectContext;
+    
+    //Push the detail viewController
+    [self.navigationController pushViewController:detailViewController animated:YES];
+    [detailViewController release];
+    
 }
 
 -(void)saveFolderFile:(id) sender{

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WriteNowTableViewController : UITableViewController <NSFetchedResultsControllerDelegate, UISearchBarDelegate> {
+@interface WriteNowTableViewController : UITableViewController <NSFetchedResultsControllerDelegate, UISearchBarDelegate, UINavigationControllerDelegate> {
     
     NSFetchedResultsController *_fetchedResultsController;
     NSManagedObjectContext *managedObjectContext;
@@ -18,6 +18,7 @@
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, retain) NSDate *selectedDate;
+
 
 //- (NSFetchedResultsController *) fetchedResultsControllerWithPredicate:(NSPredicate *)aPredicate; 
 
