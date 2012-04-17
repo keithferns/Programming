@@ -40,9 +40,11 @@
 
 #define kTextViewRect CGRectMake(0,0,kScreenWidth, kTopViewRect.size.height)
 
+//Define TableView Properties
+
 
 // Height of the cells of the embedded table view (after rotation, which would be the table's width)
-#define kCellHeight  72
+#define kCellHeight  88
 
 // Width of the cells of the embedded table view (after rotation, which means it controls the rowHeight property)
 #define kCellWidth 80

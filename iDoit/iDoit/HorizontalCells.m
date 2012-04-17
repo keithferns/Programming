@@ -7,13 +7,8 @@
 //
 
 #import "HorizontalCells.h"
-#import "CustomTextLabel.h"
-#import "ControlVariables.h"
+#import "Contants.h"
 #import "EventsCell.h"
-#import "WriteNowAppDelegate.h"
-#import "TasksTableViewController.h"
-#import "AppointmentsTableViewController.h"
-#import "StartScreenCustomCell.h"
 
 @implementation HorizontalCells
 
@@ -67,38 +62,40 @@
     if (cell == nil) {
         cell = [[[EventsCell alloc] init]autorelease];
     }
-    if ([[myObjects objectAtIndex:0] isKindOfClass:[Appointment class]]) {
+    
+    //CHANGING FROM 0 to indexpath.row
+    if ([[myObjects objectAtIndex:indexPath.row] isKindOfClass:[Appointment class]]) {
         Appointment *currentAppointment = [myObjects objectAtIndex:indexPath.row];
         CGSize itemSize=CGSizeMake(kCellWidth,kCellHeight-20);
         UIGraphicsBeginImageContext(itemSize);
-        [currentAppointment.text drawInRect:CGRectMake(0, 0, itemSize.width, itemSize.height) withFont:[UIFont boldSystemFontOfSize:10]];
+        [[[currentAppointment.rNote anyObject] text] drawInRect:CGRectMake(0, 0, itemSize.width, itemSize.height) withFont:[UIFont boldSystemFontOfSize:10]];
         UIImage *theImage=UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
         cell.myTextView.image = theImage;
        // cell.myTextLabel.text = currentAppointment.text;
-        cell.dateLabel.text = [dateFormatter stringFromDate:currentAppointment.doDate];
+        cell.dateLabel.text = [dateFormatter stringFromDate:currentAppointment.aDate];
     }
-    else if ([[myObjects objectAtIndex:0] isKindOfClass:[Task class]]) {
-        Task *currentTask = [myObjects objectAtIndex:indexPath.row];
+    else if ([[myObjects objectAtIndex:indexPath.row] isKindOfClass:[ToDo class]]) {
+        ToDo *currentTask = [myObjects objectAtIndex:indexPath.row];
         CGSize itemSize=CGSizeMake(kCellWidth-4, kCellHeight-17);
         UIGraphicsBeginImageContext(itemSize);
-        [currentTask.text drawInRect:CGRectMake(0, 0, itemSize.width, itemSize.height) withFont:[UIFont boldSystemFontOfSize:10]];
+        [[[currentTask.rNote anyObject] text] drawInRect:CGRectMake(0, 0, itemSize.width, itemSize.height) withFont:[UIFont boldSystemFontOfSize:10]];
         UIImage *theImage=UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
         cell.myTextView.image = theImage;
         //cell.myTextLabel.text = currentTask.text;
-        cell.dateLabel.text = [dateFormatter stringFromDate:currentTask.doDate];
+        cell.dateLabel.text = [dateFormatter stringFromDate:currentTask.aDate];
     }
-    else if ([[myObjects objectAtIndex:0] isKindOfClass:[Memo class]]){
+    else if ([[myObjects objectAtIndex:indexPath.row] isKindOfClass:[Memo class]]){
         Memo *currentMemo = [myObjects objectAtIndex:indexPath.row];
         CGSize itemSize=CGSizeMake(kCellWidth-4, kCellHeight-25);
         UIGraphicsBeginImageContext(itemSize);
-        [currentMemo.text drawInRect:CGRectMake(0, 0, itemSize.width, itemSize.height) withFont:[UIFont boldSystemFontOfSize:10]];
+        [[[currentMemo.rNote anyObject] text] drawInRect:CGRectMake(0, 0, itemSize.width, itemSize.height) withFont:[UIFont boldSystemFontOfSize:10]];
         UIImage *theImage=UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
         cell.myTextView.image = theImage;
         //cell.myTextLabel.text = currentMemo.text;
-        cell.dateLabel.text = [dateFormatter stringFromDate:currentMemo.doDate];
+        cell.dateLabel.text = [dateFormatter stringFromDate:currentMemo.creationDate];
     }
     [dateFormatter release];
     return cell;
@@ -119,11 +116,11 @@
     if ([[myObjects objectAtIndex:indexPath.row] isKindOfClass:[Appointment class]]) {
         NSLog(@"Object is Appointment");
         Appointment *tempAppointment  =  [myObjects objectAtIndex:indexPath.row];
-        NSLog(@"My Appointment Text is %@", tempAppointment.text);
+        NSLog(@"My Appointment Text is %@", [[tempAppointment.rNote anyObject] text]);
     }
-    else if ([[myObjects objectAtIndex:indexPath.row] isKindOfClass:[Task class]]){
+    else if ([[myObjects objectAtIndex:indexPath.row] isKindOfClass:[ToDo class]]){
         NSLog(@"Object is Task");
-        //Task *tempTask = [myObjects objectAtIndex:indexPath.row];
+        //ToDo *tempTask = [myObjects objectAtIndex:indexPath.row];
         
     }
     else{

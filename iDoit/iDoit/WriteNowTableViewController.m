@@ -10,6 +10,8 @@
 #import "iDoitAppDelegate.h"
 #import "Contants.h"
 
+#import "HorizontalCells.h"
+
 @implementation WriteNowTableViewController
 
 
@@ -158,21 +160,21 @@
 
 - (NSFetchedResultsController *) fetchedResultsController{
     NSLog(@"WriteNowTableViewController:fetchedResultsController -> Fetching");
-    
     [NSFetchedResultsController deleteCacheWithName:@"Root"];
-    
+
     //check if an instance of fetchedResultsController exists.  If it does, return fetchedResultsController
-    if (_fetchedResultsController != nil){
-        return _fetchedResultsController;
-    }
+    if (_fetchedResultsController!=nil) {
+		return _fetchedResultsController;
+	}
     //Else create a new fetchedResultsController
     //Create a new fetchRequest
-    NSFetchRequest *request = [[NSFetchRequest alloc] init];
     
+	NSFetchRequest *request = [[NSFetchRequest alloc] init];
     //set the entity to retrieved by this fetchrequest
-    [request setEntity:[NSEntityDescription entityForName:@"Event" inManagedObjectContext:managedObjectContext]];
 
-	NSCalendar *gregorian = [[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar] autorelease];    
+    [request setEntity:[NSEntityDescription entityForName:@"Event" inManagedObjectContext:managedObjectContext]];
+    
+    NSCalendar *gregorian = [[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar] autorelease];    
     [gregorian setLocale:[NSLocale currentLocale]];
     [gregorian setTimeZone:[NSTimeZone localTimeZone]];
     //[gregorian setTimeZone:[NSTimeZone timeZoneWithName:@"GMT"]];
@@ -183,7 +185,7 @@
     [timeComponents setMonth:[timeComponents month]];
     [timeComponents setDay:[timeComponents day]];
     NSDate *currentDate= [gregorian dateFromComponents:timeComponents];
-                   
+    
     NSLog(@"Current Date is %@", currentDate);
     
     if (selectedDate == nil) {
@@ -193,68 +195,78 @@
     }
     else {
         NSLog(@"SelectedDate is %@", selectedDate);
-        /*
-        NSTimeZone *myTimeZone = [NSTimeZone localTimeZone];
-        NSInteger timeZoneOffset = [myTimeZone secondsFromGMT];
-        NSDate *temp = [selectedDate dateByAddingTimeInterval:-timeZoneOffset];
-        */
+        
+        //NSTimeZone *myTimeZone = [NSTimeZone localTimeZone];
+        //NSInteger timeZoneOffset = [myTimeZone secondsFromGMT];
+        //NSDate *temp = [selectedDate dateByAddingTimeInterval:-timeZoneOffset];
+        
         
         NSDate *temp = [selectedDate dateByAddingTimeInterval:-kTimeZoneOffset];
-
+        
         NSPredicate *checkDate = [NSPredicate predicateWithFormat:@"aDate == %@", temp];
         [request setPredicate:checkDate];
         checkDate = nil;
     }
-        
     
-    //create the sort descriptors which will sort rows in the table view
     
-    NSSortDescriptor *dateDescriptor = [[NSSortDescriptor alloc] initWithKey:@"aDate" ascending:YES];
-    //NSSortDescriptor *textDescriptor = [[NSSortDescriptor alloc] initWithKey:@"rNote.text" ascending:YES];
+	NSSortDescriptor *typeDescriptor = [[NSSortDescriptor alloc] initWithKey:@"aType" ascending:YES  comparator:^NSComparisonResult(id obj1, id obj2) {
+        NSComparisonResult compR;
+        if ([[obj1 aType] intValue] == 0 && [[obj1 aType] intValue] < [[obj2 aType] intValue]) { 
+            compR =  NSOrderedAscending; 
+        }
+        else if ([[obj2 aType] intValue] == 0 && [[obj1 aType] intValue] > [[obj2 aType] intValue])
+        { compR =  NSOrderedDescending;}
+        else if (obj1 == 0 && obj2 == 0){
+            compR =  NSOrderedSame;}
+        else if (obj1 != 0 && obj2 != 0){
+            compR =  NSOrderedSame;
+        }
+        return compR;
+    }];
     
-    //set the sort descriptors for the current request
     
-    [request setSortDescriptors:[NSArray arrayWithObjects:dateDescriptor, nil]];
+	NSSortDescriptor *dateDescriptor = [[NSSortDescriptor alloc] initWithKey:@"aDate" ascending:YES];// just here to test the sections and row calls
     
+    
+    /*FIXME:  set Predicate to filter all tasks and appointments for a time after NOW --*/
+    
+    //NSArray *checkDateArray = [NSArray arrayWithObjects:@"memotext.savedAppointment.doDate",@"memotext.saveMemo.doDate", @"memotext.saveTask.doDate", nil];
+    //NSPredicate *checkDate = [NSPredicate predicateWithFormat:@"'[NSDate date]' < %@" argumentArray:checkDateArray];
+    //[request setPredicate:checkDate];
+    /* -- --*/
+    
+	[request setSortDescriptors:[NSArray arrayWithObjects:typeDescriptor,dateDescriptor, nil]];
     //release the sort descriptors now that they are held by the request
-    
+
+    [typeDescriptor release];
     [dateDescriptor release];
-    //[textDescriptor release];
     
-    //set the batch size for the request
-    
-    [request setFetchBatchSize:20];
+	[request setFetchBatchSize:10];
     
     //Init a temp fetchedResultsController and set its fetchRequest to the current fetchRequest
-    
-    NSFetchedResultsController *newController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:managedObjectContext sectionNameKeyPath:@"sectionIdentifier" cacheName:@"Root"];
-    
-    //set the controller delegate
-    
-    [newController setDelegate:self];
-    
-    //
-    self.fetchedResultsController = newController;
-    
-    //release the temp fetchedResultsController and fetchrequest
-    
-    [newController release];
-    [request release];
-    //return the fetchedResultsController 
-    
-    NSLog(@"End Fetching");
+
+	NSFetchedResultsController *newController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:managedObjectContext sectionNameKeyPath:@"aType" cacheName:@"Root"];
+    // NSFetchedResultsController *newController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:managedObjectContext sectionNameKeyPath:@"sectionIdentifier" cacheName:@"Root"];
 
     
-    return _fetchedResultsController;
+	newController.delegate = self;
+	self.fetchedResultsController = newController;
     
+    //release the temp fetchedResultsController and fetchrequest
+
+	[newController release];
+	[request release];
+	
+	return _fetchedResultsController;
+
 }
 
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // Return the number of sections.
-	return [[_fetchedResultsController sections] count];
+	//return [[_fetchedResultsController sections] count];
+    return 3;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -263,13 +275,17 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
-    id <NSFetchedResultsSectionInfo> sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
-    return [sectionInfo numberOfObjects];
+    //id <NSFetchedResultsSectionInfo> sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
+    //return [sectionInfo numberOfObjects];
+    NSLog(@"WriteNowTableViewController: numberOfRowsInSection 1");
+    NSInteger numberOfRows = 1;
+    return numberOfRows;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
+    
+    /*
     NSString *cellIdentifier = @"";
     
     if ([[_fetchedResultsController objectAtIndexPath:indexPath] isKindOfClass:[Appointment class]]){
@@ -281,9 +297,9 @@
         cellIdentifier = @"mCell";
         
     } 
-    /*
-     Use a default table view cell to display the event's title.
-     */
+    
+    //Use a default table view cell to display the event's title.
+     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil) {
         if (cellIdentifier == @"aCell"){
@@ -321,6 +337,19 @@
         cell.textLabel.textColor = [UIColor lightTextColor];
         }
     return cell;
+     */
+    static NSString * CellIdentifier = @"HorizontalCell";
+    
+    HorizontalCells *cell = (HorizontalCells *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil){
+        cell = [[[HorizontalCells alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, tableView.frame.size.height)] autorelease];
+    }
+    id <NSFetchedResultsSectionInfo> sectionInfo = [[_fetchedResultsController sections] objectAtIndex:indexPath.section];
+    
+    NSArray *sectionObjects = [sectionInfo objects];
+    cell.myObjects = sectionObjects;
+    
+    return cell;
     
 }
 
@@ -337,12 +366,21 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 }  
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 	
+    id<NSFetchedResultsSectionInfo>  sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
+    int mySection;
+    mySection = [[sectionInfo name] intValue];
+    if (mySection > 0){
+        return	@"Events";
+    }
+        return @"Notes";
+
+    /*
 	id <NSFetchedResultsSectionInfo> theSection = [[_fetchedResultsController sections] objectAtIndex:section];
     
-    /*
-     Section information derives from an event's sectionIdentifier, which is a string representing the number (year * 1000) + month.
+    
+    // Section information derives from an event's sectionIdentifier, which is a string representing the number (year * 1000) + month.
      To display the section title, convert the year and month components to a string representation.
-     */
+    
     static NSArray *monthSymbols = nil;
     
     if (!monthSymbols) {
@@ -360,6 +398,8 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 	NSString *titleString = [NSString stringWithFormat:@"%@ %d, %d", [monthSymbols objectAtIndex:month-1],day,year];
 	
 	return titleString;
+    
+    */
 }
 
 

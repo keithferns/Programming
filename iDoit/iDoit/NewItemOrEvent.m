@@ -41,7 +41,7 @@
    
         case 1://insert a Memo object into the managedObjectContext
             if (theMemo == nil && theNote != nil){
-                type = [NSNumber numberWithInt:0];
+                eventType = [NSNumber numberWithInt:0];
                 NSLog(@"NewItemOrEvent:createNewItem - Trying to create new Memo Object");
             NSEntityDescription *entity = [NSEntityDescription entityForName:@"Memo" inManagedObjectContext:addingContext];
             
@@ -59,7 +59,7 @@
             
         case 2://:insert an Appointment object into the MOC
             if (theAppointment == nil && theNote != nil){
-                type = [NSNumber numberWithInt:1];
+                eventType = [NSNumber numberWithInt:1];
 
                 NSLog(@"NewItemOrEvent:createNewItem - Trying to create new Appointment Object");
 
@@ -78,7 +78,7 @@
         case 3://insert a ToDo object into the MOC
             
             if (theToDo == nil && theNote != nil){
-                type = [NSNumber numberWithInt:3];
+                eventType = [NSNumber numberWithInt:2];
 
                 NSLog(@"NewItemOrEvent:createNewItem - Trying to create new ToDo Object");
 
@@ -97,7 +97,7 @@
                 
         case 4://insert a Project object into the MOC
             if (theProject == nil && theNote != nil){
-                type = [NSNumber numberWithInt:4];
+                eventType = [NSNumber numberWithInt:3];
 
                 NSLog(@"NewItemOrEvent:createNewItem - Trying to create new Project Object");
 

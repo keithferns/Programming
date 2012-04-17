@@ -169,8 +169,7 @@
             }            
         [tableViewController.tableView setSeparatorColor:[UIColor whiteColor]];
         [tableViewController.tableView setSectionHeaderHeight:18];
-        //tableViewController.tableView.rowHeight = kCellHeight;
-    tableViewController.tableView.rowHeight = 65;
+        tableViewController.tableView.rowHeight = kCellHeight;
         //[tableViewController.tableView setTableHeaderView:tableLabel];
 
     //add the tableView to the bottomView.

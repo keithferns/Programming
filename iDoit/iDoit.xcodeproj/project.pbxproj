@@ -14,6 +14,8 @@
 		5303768D153A8C9B009BBF94 /* FileCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5303768A153A8C9B009BBF94 /* FileCustomCell.xib */; };
 		5303768E153A8C9B009BBF94 /* FileCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5303768B153A8C9B009BBF94 /* FileCustomCell.m */; };
 		531E9C66153B1FE9009E967A /* HorizontalCells.m in Sources */ = {isa = PBXBuildFile; fileRef = 531E9C65153B1FE9009E967A /* HorizontalCells.m */; };
+		531E9C6B153B231F009E967A /* EventsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 531E9C69153B231F009E967A /* EventsCell.m */; };
+		531E9C6C153B231F009E967A /* white_line_page_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 531E9C6A153B231F009E967A /* white_line_page_background.png */; };
 		532C6107147CDA970062AC6D /* email_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 532C6106147CDA970062AC6D /* email_white.png */; };
 		532C610A147CDAB40062AC6D /* save.png in Resources */ = {isa = PBXBuildFile; fileRef = 532C6109147CDAB40062AC6D /* save.png */; };
 		532C610C147CDAFE0062AC6D /* calendar_date_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 532C610B147CDAFE0062AC6D /* calendar_date_background.png */; };
@@ -157,6 +159,9 @@
 		5303768C153A8C9B009BBF94 /* FileCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileCustomCell.h; sourceTree = "<group>"; };
 		531E9C64153B1FE9009E967A /* HorizontalCells.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HorizontalCells.h; sourceTree = "<group>"; };
 		531E9C65153B1FE9009E967A /* HorizontalCells.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HorizontalCells.m; sourceTree = "<group>"; };
+		531E9C68153B231F009E967A /* EventsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventsCell.h; sourceTree = "<group>"; };
+		531E9C69153B231F009E967A /* EventsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventsCell.m; sourceTree = "<group>"; };
+		531E9C6A153B231F009E967A /* white_line_page_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = white_line_page_background.png; sourceTree = "<group>"; };
 		532C6106147CDA970062AC6D /* email_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = email_white.png; sourceTree = "<group>"; };
 		532C6109147CDAB40062AC6D /* save.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = save.png; sourceTree = "<group>"; };
 		532C610B147CDAFE0062AC6D /* calendar_date_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar_date_background.png; sourceTree = "<group>"; };
@@ -397,6 +402,16 @@
 				531E9C65153B1FE9009E967A /* HorizontalCells.m */,
 			);
 			name = HorizontalCells;
+			sourceTree = "<group>";
+		};
+		531E9C67153B22C8009E967A /* EventCell */ = {
+			isa = PBXGroup;
+			children = (
+				531E9C68153B231F009E967A /* EventsCell.h */,
+				531E9C69153B231F009E967A /* EventsCell.m */,
+				531E9C6A153B231F009E967A /* white_line_page_background.png */,
+			);
+			name = EventCell;
 			sourceTree = "<group>";
 		};
 		531FF6BA150278220022EC83 /* NewItemOrEvent */ = {
@@ -818,6 +833,7 @@
 		53D17EF6147C7B6400A15B7A /* Custom Classes */ = {
 			isa = PBXGroup;
 			children = (
+				531E9C67153B22C8009E967A /* EventCell */,
 				531E9C62153B1F1D009E967A /* HorizontalCells */,
 				5303768F153A8CA3009BBF94 /* FileCustomCell */,
 				5395D4531505D7A60053EBBC /* FolderCustomCell */,
@@ -1028,6 +1044,7 @@
 				53A296E8150BEB88005126BF /* list_nav.png in Resources */,
 				53D1426A1511AA7D00A613A9 /* Calendar-Month-30x30.png in Resources */,
 				5303768D153A8C9B009BBF94 /* FileCustomCell.xib in Resources */,
+				531E9C6C153B231F009E967A /* white_line_page_background.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1112,6 +1129,7 @@
 				53BA3188153AB0C80003329D /* DocumentDetailViewController.m in Sources */,
 				53BA318B153AB0E20003329D /* FolderDetailViewController.m in Sources */,
 				531E9C66153B1FE9009E967A /* HorizontalCells.m in Sources */,
+				531E9C6B153B231F009E967A /* EventsCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
